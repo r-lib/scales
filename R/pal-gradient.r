@@ -1,7 +1,7 @@
 #' Colour gradient palette (continous).
 #' 
 #' @export
-gradient_n_palette <- function(colours, values = NULL, space="Lab") {
+gradient_n_pal <- function(colours, values = NULL, space="Lab") {
   if (!is.null(values)) {
     xs <- seq(0, 1, length = length(values))      
     f <- approxfun(values, xs)
@@ -12,8 +12,8 @@ gradient_n_palette <- function(colours, values = NULL, space="Lab") {
   function(x) rgb(ramp(x), max = 255)
 }
 
-gradient_2_palette <- function(low = "#3B4FB8", mid = "white", high = "#B71B1A", space = "Lab") {
-  gradient_n_palette(c(low, mid, high), space = space)
+gradient_2_pal <- function(low = "#3B4FB8", mid = "white", high = "#B71B1A", space = "Lab") {
+  gradient_n_pal(c(low, mid, high), space = space)
 }
 
 # rng <- .$output_set()  - .$midpoint
@@ -29,6 +29,6 @@ gradient_2_palette <- function(low = "#3B4FB8", mid = "white", high = "#B71B1A",
 # rgb(ramp(x), max = 255)
 # 
 
-gradient_palette <- function(low = "#3B4FB8", high = "#B71B1A", space = "Lab") {
-  gradient_n_palette(c(low, high), space = space)
+gradient_pal <- function(low = "#3B4FB8", high = "#B71B1A", space = "Lab") {
+  gradient_n_pal(c(low, high), space = space)
 }

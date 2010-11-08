@@ -2,7 +2,7 @@
 #'
 #' @importFrom grDevices hcl
 #' @export
-hue_palette <- function(h = c(0, 360) + 15, l = 65, h.start = 0, direction = 1) {
+hue_pal <- function(h = c(0, 360) + 15, l = 65, h.start = 0, direction = 1) {
   
   function(n) {
     if ((diff(h) %% 360) < 1) {

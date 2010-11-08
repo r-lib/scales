@@ -5,7 +5,7 @@
 #'   index into the list of palettes of appropriate \code{type}
 #' @references \url{http://colorbrewer2.org}
 #' @export
-brewer_palette <- function(type = "seq", palette = 1) {
+brewer_pal <- function(type = "seq", palette = 1) {
   pal <- pal_name(palette, type)
   
   function(n) {

@@ -16,7 +16,7 @@ map_continuous <- function(palette, x, limits) {
 #'
 #' @export
 #' @examples
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_palette())))
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
 cscale <- function(x, palette) {
   limits <- train_continuous(x)
   map_continuous(palette, x, limits)
@@ -68,7 +68,7 @@ map_discrete <- function(palette, x, limits) {
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 3,
-#'   col = dscale(factor(cyl), brewer_palette())))
+#'   col = dscale(factor(cyl), brewer_pal())))
 dscale <- function(x, palette) {
   limits <- train_discrete(x)
   map_discrete(palette, x, limits)
