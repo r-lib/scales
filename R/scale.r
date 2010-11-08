@@ -3,7 +3,7 @@
 #' @docType package
 #' @name package-scales
 #' @aliases scales package-scales
-#' @import RColorBrewer stringr
+#' @import RColorBrewer stringr munsell
 
 # Basic properties of a scale:
 #   * train -> learn range
