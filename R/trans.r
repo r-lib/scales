@@ -23,6 +23,8 @@
 # }
 
 #' Create a new transformation function
+#'
+#' @export
 new_trans <- function(name, transform, inverse, labels = inverse) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
@@ -36,6 +38,8 @@ is.trans <- function(x) inherits(x, "trans")
 print.trans <- function(x, ...) cat("Transformer: ", x$name)
 
 #' Arc-sin square root transformation
+#'
+#' @export
 asn_trans <- function() {
   new_trans(
     "asn", 
@@ -44,11 +48,15 @@ asn_trans <- function() {
 }
 
 #' Arc-tangent transformation
+#'
+#' @export
 atanh_trans <- function() {
   new_trans("atanh", "atanh", "tanh")
 }
 
 #' Box-Cox power transformation
+#'
+#' @export
 boxcox_trans <- function(p) {
   if (abs(p) < 1e-07) return(log_trans)
   
@@ -59,6 +67,8 @@ boxcox_trans <- function(p) {
 }
 
 #' Exponential transformation (inverse of log transformation)
+#'
+#' @export
 exp_trans <- function(base = exp(1)) {
   new_trans(
     str_c("power-", format(base)), 
@@ -67,6 +77,8 @@ exp_trans <- function(base = exp(1)) {
 }
 
 #' Identity transformation (do nothing)
+#'
+#' @export
 identity_trans <- function() {
   new_trans("identity", "force", "force")
 }
@@ -76,6 +88,7 @@ identity_trans <- function() {
 #' 
 #' @param base base of logarithm
 #' @aliases log_trans log10_trans log2_trans
+#' @export
 log_trans <- function(base = exp(1)) {
   new_trans(str_c("log-", format(base)),
     function(x) log(x, base),
@@ -98,6 +111,7 @@ log1p_trans <- function() {
 #'   so that p + distribution is a valid probability density function.
 #' @param ... other arguments passed on to distribution and quantile functions
 #' @aliases probability_trans logit_trans, probit_trans
+#' @export
 probability_trans <- function(distribution, ...) {
   qfun <- match.fun(str_c("q", distribution))
   pfun <- match.fun(str_c("p", distribution))
@@ -111,6 +125,8 @@ logit_trans <- function() probability_trans("logis")
 probit_trans <- function() probability_trans("norm")
 
 #' Reciprocal transformation
+#'
+#' @export
 reciprocal_trans <- function() {
   new_trans("reciprocal", 
     function(x) 1 / x, 
@@ -118,13 +134,15 @@ reciprocal_trans <- function() {
 }
 
 #' Reverse transformation
+#'
+#' @export
 reverse_trans <- function() {
   new_trans("reverse", function(x) -x, function(x) -x)
 }
 
 #' Square-root transformation (special case of Box-Cox)
+#'
+#' @export
 sqrt_trans <- function() {
   boxcox_trans(2)
 }
-
-# Need centering transformation for scale_gradient2

@@ -1,9 +1,9 @@
 #' Generic plot scaling methods
 #'
 #' @docType package
+#' @name package-scales
 #' @aliases scales package-scales
 #' @import RColorBrewer stringr
-
 
 # Basic properties of a scale:
 #   * train -> learn range

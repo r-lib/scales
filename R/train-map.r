@@ -12,6 +12,9 @@ map_continuous <- function(palette, x, limits) {
   palette(x)
 }
 
+#' Continuous scale
+#'
+#' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_palette())))
 cscale <- function(x, palette) {
@@ -28,10 +31,6 @@ train_discrete <- function(new, existing = NULL) {
   discrete_range(existing, new)
 }
 
-# Calculate range for discrete position variables
-# This is the equivalent of range for discrete variables 
-# 
-# @keyword internal
 discrete_range <- function(..., drop = FALSE) {
   levels <- lapply(list(...), clevels, drop = drop)
 
@@ -64,6 +63,9 @@ map_discrete <- function(palette, x, limits) {
   palette(n)[match(as.character(x), limits)]
 }
 
+#' Discrete scale
+#'
+#' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 3,
 #'   col = dscale(factor(cyl), brewer_palette())))

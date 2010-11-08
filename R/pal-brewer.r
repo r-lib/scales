@@ -1,4 +1,4 @@
-#' Color Brewer palette 
+#' Color Brewer palette (discrete).
 #'
 #' @param type One of seq (sequential), div (diverging) or qual (qualitative)
 #' @param palette If a string, will use that named palette.  If a number, will

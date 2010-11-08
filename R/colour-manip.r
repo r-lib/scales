@@ -1,8 +1,10 @@
-# Modify standard R colour in hcl colour space
-# Transforms rgb to hcl, sets non-missing arguments and then backtransforms to rgb
-#
-# @keyword internal
-# @examples col2hcl(colors())
+#' Modify standard R colour in hcl colour space.
+#' Transforms rgb to hcl, sets non-missing arguments and then backtransforms
+#' to rgb.
+#'
+#' @export
+#' @examples 
+#' col2hcl(colors())
 col2hcl <- function(colour, h, c, l, alpha = 1) {
   col <- colorspace::RGB(t(col2rgb(colour)) / 256)
   coords <- colorspace::coords(as(col, "polarLUV"))
@@ -16,8 +18,8 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
   hcl_colours
 }
 
-# Mute standard R colours.
-# This produces colours with moderate luminance and saturation.
-# 
-# @keyword internal
+#' Mute standard colour.
+#' Produces a colours with moderate luminance and saturation.
+#' 
+#' @export
 muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)

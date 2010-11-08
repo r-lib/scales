@@ -1,6 +1,7 @@
 #' Comma formatter: format number with commas separating thousands
 #' 
 #' @param x numeric vector to format
+#' @export
 comma <- function(x) {
   format(x, big.mark = ",", trim = TRUE, scientific = FALSE)
 }
@@ -8,6 +9,7 @@ comma <- function(x) {
 #' Currency formatter: round to nearest cent and display dollar sign
 #' 
 #' @param x numeric vector to format
+#' @export
 dollar <- function(x) {
   x <- round_any(x, 0.01)
   nsmall <- if (max(x) < 100) 2 else 0
@@ -17,6 +19,7 @@ dollar <- function(x) {
 #' Percent formatter: multiply by one hundred and display percent sign
 #' 
 #' @param x numeric vector to format
+#' @export
 percent <- function(x) {
   x <- round_any(x, precision(x) / 10)
   paste(comma(x * 100), "%", sep="")
@@ -25,6 +28,7 @@ percent <- function(x) {
 #' Scientific formatter
 #' 
 #' @param x numeric vector to format
+#' @export
 scientific <- function(x) {
   format(x, trim = TRUE)
 }

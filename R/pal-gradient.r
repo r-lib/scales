@@ -1,3 +1,6 @@
+#' Colour gradient palette (continous).
+#' 
+#' @export
 gradient_n_palette <- function(colours, values = NULL, space="Lab") {
   if (!is.null(values)) {
     xs <- seq(0, 1, length = length(values))      

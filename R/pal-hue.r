@@ -1,4 +1,7 @@
+#' Hue palette (discrete).
+#'
 #' @importFrom grDevices hcl
+#' @export
 hue_palette <- function(h = c(0, 360) + 15, l = 65, h.start = 0, direction = 1) {
   
   function(n) {

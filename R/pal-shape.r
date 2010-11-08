@@ -1,3 +1,6 @@
+#' Shape palette (discrete).
+#'
+#' @export
 shape_palette <- function(solid = TRUE) {
   function(n) {
     if (solid) {
