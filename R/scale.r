@@ -26,45 +26,18 @@ Scale <- setRefClass("Scale",
     initialize = function(palette = NULL) {
       initFields(user_limits = NULL, data_limits = NULL, palette = palette)
     }
-    
   )
 )
 
 DiscreteScale <- setRefClass("DiscreteScale", contains = "Scale", 
   methods = list(
-    train = function(x) {
-      if (!is.discrete(x)) {
-        stop("Continuous value supplied to discrete scale", call. = FALSE) 
-      }
-      data_limits <<- discrete_range(data_limits, x)
-    },
-    map = function(x) {
-      n <- length(limits())
-      palette(n)[match(as.character(x), limits())]      
-    }
+    train = function(x) data_limits <<- train_discrete(x, data_limits),
+    map = function(x)   map_discrete(palette, x, limits())
   )
 )
-discrete_scale <- function(x, palette) {
-  scale <- DiscreteScale$new(palette)
-  scale$train(x)
-  scale$map(x)
-}
 
 ContinuousScale <- setRefClass("ContinuousScale", contains = "Scale", 
   methods = list(
-    train = function(x) {
-      if (!is.numeric(x)) {
-        stop("Discrete value supplied to continuous scale",  call. = FALSE)
-      }
-      data_limits <<- range(data_limits, x, na.rm = TRUE, finite = TRUE)
-    }, 
-    map = function(x) {
-      x <- rescale(x, from = limits())
-      palette(x)
-    }
+    train = function(x) data_limits <<- train_continuous(x, data_limits),
+    map = function(x)   map_continuous(palette, x, limits)
 ))
-continuous_scale <- function(x, palette) {
-  scale <- ContinousScale$new(palette)
-  scale$train(x)
-  scale$map(x)
-}

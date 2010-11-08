@@ -35,5 +35,5 @@ brewer_scale <- function(..., na.colour = "grey50") {
 }
 
 brewer <- function(x, ...) {
-  discrete_scale(x, brewer_palette(...))
+  scale_discete(x, brewer_palette(...))
 }
