@@ -28,12 +28,3 @@ pal_name <- function(palette, type) {
     seq = RColorBrewer:::seqlist
   )[palette]  
 }
-
-# 
-brewer_scale <- function(..., na.colour = "grey50") {
-  ContinuousScale$new(brewer_palette(...), na = na.colour)
-}
-
-brewer <- function(x, ...) {
-  scale_discete(x, brewer_palette(...))
-}
