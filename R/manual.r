@@ -1,3 +1,3 @@
-manual_palette <- function(n, values) {
-  values[seq_len(n)]
+manual_palette <- function(values) {
+  function(n) values[seq_len(n)]
 }

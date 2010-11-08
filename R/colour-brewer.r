@@ -1,35 +1,32 @@
-brewer <- function(x, limits, palette) {
+brewer_palette <- function(palette = "Greens", type) {
+  pal <- pal_name(palette, type)
   
+  function(n) {
+    brewer.pal(n, pal)[seq_len(n)]    
+  }
 }
 
-brewer_palette <- function(n, palette, na.colour, ) {
-  missing <- is.na(.$input_set())
-  n <- sum(!missing)
-  
-  palette <- RColorBrewer::brewer.pal(n, .$pal_name())[1:n]
-  missing_colour(palette, missing, .$na.colour)
-  
-}
-
-output_set <- function(.) {
-}
-
-pal_name <- function(.) {
-  if (is.character(.$palette)) {
-    if (!.$palette %in% RColorBrewer:::namelist) {
-      warning("Unknown palette ", .$palette)
-      .$palette <- "Greens"
+pal_name <- function(palette, type) {
+  if (is.character(palette)) {
+    if (!palette %in% RColorBrewer:::namelist) {
+      warning("Unknown palette ", palette)
+      palette <- "Greens"
     }
-    return(.$palette)
+    return(palette)
   }
   
-  switch(.$type, 
+  switch(type, 
     div = RColorBrewer:::divlist, 
     qual = RColorBrewer:::quallist, 
     seq = RColorBrewer:::seqlist
-  )[.$palette]
+  )[palette]  
 }
 
-max_levels <- function(.) {
-  RColorBrewer:::maxcolors[RColorBrewer:::namelist == .$pal_name()]
+# 
+brewer_scale <- function(..., na.colour = "grey50") {
+  ContinuousScale$new(brewer_palette(...), na = na.colour)
+}
+
+brewer <- function(x, ...) {
+  discrete_scale(x, brewer_palette(...))
 }

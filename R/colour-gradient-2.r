@@ -1,6 +1,7 @@
 gradient2_palette <- function(low = muted("red"), mid = "white", high = muted("blue"), space = "Lab") {
   ramp  <- colorRamp(c(low, mid, high), space = space)
-  alpha_ramp(ramp(x), alpha)
+  
+  function(x) rgb(ramp(x), max = 255)
 }
 
 # rng <- .$output_set()  - .$midpoint

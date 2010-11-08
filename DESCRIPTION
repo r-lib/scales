@@ -1,0 +1,9 @@
+Package: scales
+Type: Package
+Title: Graphical scale functions usable by any graphics package.
+Version: 0.0.0
+Author: Hadley Wickham <h.wickham@gmail.com>
+Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Description:
+Imports: RColorBrewer
+License: MIT

@@ -1,3 +1,3 @@
-size_palette <- function(x, to = c(1, 6)) {
-  rescale(x, to, c(0, 1))
+size_palette <- function(to = c(1, 6)) {
+  function(x) rescale(x, to, c(0, 1))
 }

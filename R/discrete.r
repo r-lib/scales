@@ -1,3 +1,3 @@
-position_palette <- function(n) {
-  seq_len(n)
+position_palette <- function() {
+  function(n) seq_len(n)
 }

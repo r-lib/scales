@@ -23,3 +23,7 @@ rescale <- function(x, to=c(0,1), from=range(x, na.rm=TRUE), clip = TRUE) {
     scaled
   }
 }
+
+"%inside%" <- function(x, interval) {
+  x >= interval[1] & x <= interval[2]
+}

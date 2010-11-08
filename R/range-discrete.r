@@ -3,9 +3,9 @@
 # 
 # @keyword internal
 discrete_range <- function(..., drop = FALSE) {
-  pieces <- list(...)
-  
-  all <- unique(unlist(lapply(pieces, clevels, drop = drop)))
+  levels <- lapply(list(...), clevels, drop = drop)
+
+  all <- unique(unlist(levels))
   if (is.numeric(all)) {
     all <- all[order(all)]
     all <- as.character(all)
@@ -14,7 +14,7 @@ discrete_range <- function(..., drop = FALSE) {
   all
 }
 
-clevels <- function(x) {
+clevels <- function(x, drop = FALSE) {
   if (is.null(x)) return(character())
   
   if (is.factor(x)) {
