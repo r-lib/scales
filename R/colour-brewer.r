@@ -1,4 +1,11 @@
-brewer_palette <- function(palette = "Greens", type) {
+#' Color Brewer palette 
+#'
+#' @param type One of seq (sequential), div (diverging) or qual (qualitative)
+#' @param palette If a string, will use that named palette.  If a number, will
+#'   index into the list of palettes of appropriate \code{type}
+#' @references \url{http://colorbrewer2.org}
+#' @export
+brewer_palette <- function(type = "seq", palette = 1) {
   pal <- pal_name(palette, type)
   
   function(n) {
