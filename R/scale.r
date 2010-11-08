@@ -2,7 +2,7 @@
 #'
 #' @docType package
 #' @aliases scales package-scales
-#' @import RColorBrewer
+#' @import RColorBrewer stringr
 
 
 # Basic properties of a scale:

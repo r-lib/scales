@@ -1,115 +1,130 @@
-# Trans <- proto(TopLevel, {
-#   .transform <- force
-#   .transform_inverse <- force
-#   .transform_labels <- transform 
+# # Create regular sequence in original scale, then transform back
+# seq <- function(., from, to, length) {
+#   .$transform(get("seq", pos=1)(.$inverse(from), .$inverse(to), length=length))
+# }
 # 
-#   objname <- "Transformer"
-#   class <- function(.) "trans"
+# input_breaks <- function(., range) {
+#   grid.pretty(range)
+# }
 # 
-#   new <- function(., name, f="force", inverse="force", labels="force", ...) {
-#     .$proto(
-#       objname = name, 
-#       .transform = f,
-#       .transform_inverse = inverse,
-#       .transform_labels = labels,
-#       ...
-#     )
-#   }
+# # Minor breaks are regular on the original scale
+# # and need to cover entire range of plot
+# output_breaks <- function(., n = 2, b, r) {
+#   if (length(b) == 1) return(b)
+# 
+#   bd <- diff(b)[1]
+#   if (min(r) < min(b)) b <- c(b[1] - bd, b)
+#   if (max(r) > max(b)) b <- c(b, b[length(b)] + bd)
+#   unique(unlist(mapply(.$seq, b[-length(b)], b[-1], length=n+1, SIMPLIFY=F)))
+# }
 #   
-#   transform <- function(., values) {
-#     if (is.null(values)) return()
-#     match.fun(get(".transform", .))(values)
-#   }
-# 
-#   inverse <- function(., values) {
-#     if (is.null(values)) return()
-#     match.fun(get(".transform_inverse", .))(values)
-#   }
-# 
-#   label <- function(., values) {
-#     if (is.null(values)) return()
-#     lapply(values, match.fun(get(".transform_labels", .)))
-#   }
-# 
-#   # Create regular sequence in original scale, then transform back
-#   seq <- function(., from, to, length) {
-#     .$transform(get("seq", pos=1)(.$inverse(from), .$inverse(to), length=length))
-#   }
-#   
-#   input_breaks <- function(., range) {
-#     grid.pretty(range)
-#   }
-#   
-#   # Minor breaks are regular on the original scale
-#   # and need to cover entire range of plot
-#   output_breaks <- function(., n = 2, b, r) {
-#     if (length(b) == 1) return(b)
-# 
-#     bd <- diff(b)[1]
-#     if (min(r) < min(b)) b <- c(b[1] - bd, b)
-#     if (max(r) > max(b)) b <- c(b, b[length(b)] + bd)
-#     unique(unlist(mapply(.$seq, b[-length(b)], b[-1], length=n+1, SIMPLIFY=F)))
-#   }
-#   
-#   
-#   check <- function(., values) {
-#     .$inverse(.$transform(values))
-#   }
-# 
-#   pprint <- function(., newline=TRUE) {
-#     cat(deparse(get(".transform", .)), " <-> ", deparse(get(".transform_inverse", .)))
-#     if (newline) cat("\n") 
-#   }
-#   
-# })
-# 
-# 
-# PowerTrans <- proto(Trans, {
-#   new <- function(., exponent) {
-#     .$proto(objname = paste("pow", exponent, sep=""), p = exponent)
-#   }
-#   transform <- function(., values) {
-#     (values^.$p - 1) / .$p * sign(values - 1)
-#   }
-#   inverse <- function(., values) {
-#     (abs(values) * .$p + 1 * sign(values)) ^ (1 / .$p) 
-#   }
-#   label <- function(., values) .$inverse(values)
-# })
-# 
-# ProbabilityTrans <- proto(Trans, {
-#   new <- function(., family) {
-#     .$proto(objname=family, family = family)
-#   }
-#   transform <- function(., values) {
-#     if (is.null(values)) return()
-#     match.fun(paste("q", .$family, sep=""))(values)
-#   }
-#   inverse <- function(., values) {
-#     match.fun(paste("p", .$family, sep=""))(values)
-#   }
-#   label <- function(., values) .$inverse(values)
-# })
-# 
-# TransAsn <- Trans$new(
-#   "asn", 
-#   function(x) 2 * asin(sqrt(x)), 
-#   function(x) sin(x / 2)^2
-# )
-# TransAtanh <- Trans$new("atanh", "atanh", "tanh", "force")
-# TransExp <- Trans$new("exp", "exp", "log", function(x) bquote(log(.(x))))
-# TransIdentity <- Trans$new("identity", "force", "force", "force")
-# TransInverse <- Trans$new("inverse", function(x) 1/x, function(x) 1/x,  function(x) bquote(phantom()^1 / phantom()[.(x)]))
-# TransLog <- Trans$new("log", "log", "exp", function(x) bquote(e^.(x)))
-# TransLog10 <- Trans$new("log10", "log10", function(x) 10^x, function(x) bquote(10^.(x)))
-# TransLog2 <- Trans$new("log2", "log2", function(x) 2^x, function(x) bquote(2^.(x)))
-# TransLog1p <- Trans$new("log1p", "log1p", "expm1", function(x) bquote(e^.(x+1)))
-# TransPow10 <- Trans$new("pow10",function(x) 10^x, "log10", function(x) log10(x))
-# TransReverse <- Trans$new("reverse", function(x) -x, function(x) -x, function(x) bquote(.(-x)))
-# TransSqrt <- Trans$new("sqrt", "sqrt", function(x) x^2, function(x) x^2)
-# 
-# TransDate <- Trans$new("date", "as.numeric", "to_date")
-# TransDatetime <- Trans$new("datetime", "as.numeric", "to_time")
-# 
-# TransLogit <- ProbabilityTrans$new("logis")
-# TransProbit <- ProbabilityTrans$new("norm")
+# check <- function(., values) {
+#   .$inverse(.$transform(values))
+# }
+
+#' Create a new transformation function
+new_trans <- function(name, transform, inverse, labels = inverse) {
+  if (is.character(transform)) transform <- match.fun(transform)
+  if (is.character(inverse)) inverse <- match.fun(inverse)
+  if (is.character(labels)) labels <- match.fun(labels)
+  
+  structure(list(name = name, transform = transform, inverse = inverse, 
+    labels = labels), class = "trans")
+}
+
+is.trans <- function(x) inherits(x, "trans")
+print.trans <- function(x, ...) cat("Transformer: ", x$name)
+
+#' Arc-sin square root transformation
+asn_trans <- function() {
+  new_trans(
+    "asn", 
+    function(x) 2 * asin(sqrt(x)), 
+    function(x) sin(x / 2) ^ 2)
+}
+
+#' Arc-tangent transformation
+atanh_trans <- function() {
+  new_trans("atanh", "atanh", "tanh")
+}
+
+#' Box-Cox power transformation
+boxcox_trans <- function(p) {
+  if (abs(p) < 1e-07) return(log_trans)
+  
+  new_trans(
+    str_c("pow-", format(exponent)),
+    function(x) (x ^ p - 1) / p * sign(x - 1),
+    function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p))
+}
+
+#' Exponential transformation (inverse of log transformation)
+exp_trans <- function(base = exp(1)) {
+  new_trans(
+    str_c("power-", format(base)), 
+    function(x) base ^ x,
+    function(x) log(x, base = base))
+}
+
+#' Identity transformation (do nothing)
+identity_trans <- function() {
+  new_trans("identity", "force", "force")
+}
+
+
+#' Log transformation
+#' 
+#' @param base base of logarithm
+#' @aliases log_trans log10_trans log2_trans
+log_trans <- function(base = exp(1)) {
+  new_trans(str_c("log-", format(base)),
+    function(x) log(x, base),
+    function(x) base ^ x)
+}
+log10_trans <- function() {
+  log_trans(10)
+}
+log2_trans <- function() {
+  log_trans(2)
+}
+
+log1p_trans <- function() {
+  new_trans("log1p", "log1p", "expm1")
+}
+
+#' Probability transformation
+#' 
+#' @param family probability distribution.  Should be standard R abbreviation
+#'   so that p + distribution is a valid probability density function.
+#' @param ... other arguments passed on to distribution and quantile functions
+#' @aliases probability_trans logit_trans, probit_trans
+probability_trans <- function(distribution, ...) {
+  qfun <- match.fun(str_c("q", distribution))
+  pfun <- match.fun(str_c("p", distribution))
+  
+  new_trans(
+    str_c("prob-", distribution), 
+    function(x) qfun(x, ...), 
+    function(x) pfun(x, ...))
+}
+logit_trans <- function() probability_trans("logis")
+probit_trans <- function() probability_trans("norm")
+
+#' Reciprocal transformation
+reciprocal_trans <- function() {
+  new_trans("reciprocal", 
+    function(x) 1 / x, 
+    function(x) 1 / x)
+}
+
+#' Reverse transformation
+reverse_trans <- function() {
+  new_trans("reverse", function(x) -x, function(x) -x)
+}
+
+#' Square-root transformation (special case of Box-Cox)
+sqrt_trans <- function() {
+  boxcox_trans(2)
+}
+
+# Need centering transformation for scale_gradient2
