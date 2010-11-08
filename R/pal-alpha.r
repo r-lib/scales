@@ -5,12 +5,15 @@ alpha_pal <- function(x, to = c(0.1, 1)) {
   rescale(x, to, c(0, 1))
 }
 
-# Alpha
-# Give a colour an alpha level
-# 
-# @arguments colour
-# @arguments alpha level [0,1]
-# @keyword internal 
+#' Modify colour transparency.
+#' Vectorised in both colour and alpha.
+#' 
+#' @param colour colour
+#' @param alpha new alpha level in [0,1]
+#' @examples
+#' alpha("red", 0.1)
+#' alpha(colours(), 0.5)
+#' alpha("red", seq(0, 1, length = 10))
 alpha <- function(colour, alpha) {
   alpha[is.na(alpha)] <- 0
   col <- col2rgb(colour, TRUE) / 255
