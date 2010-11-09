@@ -6,7 +6,11 @@
 #' @param clip should values be clipped to specified range?
 #' @keywords manip
 rescale <- function(x, to=c(0,1), from=range(x, na.rm=TRUE), clip = TRUE) {
-  zero_range <- function(x) length(x) == 1 || isTRUE(all.equal(x[1], x[2]))
+  zero_range <- function(x) {
+    if (length(x) == 1) return(TRUE)
+    x <- x / mean(x)
+    isTRUE(all.equal(x[1], x[2]))
+  }
   # If to range is (FP) 0, use that point
   if (zero_range(to))  return(rep(to[1], length(x)))
   # If from range is (FP) 0, use middle of to range
