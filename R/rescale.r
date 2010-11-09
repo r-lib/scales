@@ -6,8 +6,14 @@
 #' @param clip should values be clipped to specified range?
 #' @keywords manip
 rescale <- function(x, to=c(0,1), from=range(x, na.rm=TRUE), clip = TRUE) {
-  if (length(to) == 1 || abs(to[1] - to[2]) < 1e-6) return(to[1])
-  if (length(from) == 1 || abs(from[1] - from[2]) < 1e-6) return(mean(to))
+  # If to range is (FP) 0, use that point
+  if (length(to) == 1 || isTRUE(all.equal(to[1], to[2]))) {
+    return(rep(to[1], length(x))
+  }
+  # If from range is (FP) 0, use middle of to range
+  if (length(from) == 1 || isTRUE(all.equal(from[1], from[2]))) {
+    return(rep(mean(to), length(x)))
+  } 
 
   if (is.factor(x)) {
     warning("Categorical variable automatically converted to continuous", call.=FALSE)
