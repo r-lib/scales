@@ -12,7 +12,7 @@ gradient_n_pal <- function(colours, values = NULL, space="Lab") {
   function(x) rgb(ramp(x), max = 255)
 }
 
-gradient_2_pal <- function(low = "#3B4FB8", mid = "white", high = "#B71B1A", space = "Lab") {
+gradient_2_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 4/0"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, mid, high), space = space)
 }
 
@@ -29,6 +29,6 @@ gradient_2_pal <- function(low = "#3B4FB8", mid = "white", high = "#B71B1A", spa
 # rgb(ramp(x), max = 255)
 # 
 
-gradient_pal <- function(low = "#3B4FB8", high = "#B71B1A", space = "Lab") {
+gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, high), space = space)
 }
