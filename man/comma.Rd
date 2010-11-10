@@ -1,7 +1,7 @@
 \name{comma}
 \alias{comma}
 \title{Comma formatter: format number with commas separating thousands...}
-\usage{comma(x)}
+\usage{comma(x, ...)}
 
 \description{
   Comma formatter: format number with commas separating

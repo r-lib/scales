@@ -2,8 +2,8 @@
 #' 
 #' @param x numeric vector to format
 #' @export
-comma <- function(x) {
-  format(x, big.mark = ",", trim = TRUE, scientific = FALSE)
+comma <- function(x, ...) {
+  format(x, big.mark = ",", trim = TRUE, scientific = FALSE, ...)
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign

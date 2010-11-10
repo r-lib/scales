@@ -1,4 +1,4 @@
-#' Colour gradient palette (continous).
+#' N colour gradient palette (continous).
 #' 
 #' @export
 gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
@@ -15,6 +15,9 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   }
 }
 
+#' Colour gradient palette with mid-point (continous).
+#' 
+#' @export
 #' @examples
 #' x <- seq(-1, 1, length = 100)
 #' r <- sqrt(outer(x^2, x^2, "+"))
@@ -27,6 +30,9 @@ gradient_2_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mn
   gradient_n_pal(c(low, mid, high), space = space)
 }
 
+#' Colour gradient palette (continous).
+#' 
+#' @export
 gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, high), space = space)
 }
