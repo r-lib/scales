@@ -4,8 +4,17 @@
 \usage{col2hcl(colour, h, c, l, alpha=1)}
 
 \description{
-  Modify standard R colour in hcl colour space. Transforms
-  rgb to hcl, sets non-missing arguments and then
-  backtransforms to rgb.
+  Modify standard R colour in hcl colour space.
+}
+
+\details{
+  Transforms rgb to hcl, sets non-missing arguments and
+  then backtransforms to rgb.
+}
+\arguments{
+  \item{h}{new hue}
+  \item{l}{new luminance}
+  \item{c}{new chroma}
+  \item{alpha}{alpha value.  Defaults to 1.}
 }
 \examples{col2hcl(colors())}

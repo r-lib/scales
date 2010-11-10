@@ -4,6 +4,12 @@
 \usage{muted(colour, l=30, c=70)}
 
 \description{
-  Mute standard colour. Produces a colours with moderate
-  luminance and saturation.
+  Mute standard colour.
 }
+\arguments{
+  \item{colour}{character vector of colours to modify}
+  \item{l}{new luminance}
+  \item{c}{new chroma}
+}
+\examples{muted("red")
+muted("blue")}

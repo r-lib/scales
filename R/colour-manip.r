@@ -1,9 +1,14 @@
 #' Modify standard R colour in hcl colour space.
+#'
 #' Transforms rgb to hcl, sets non-missing arguments and then backtransforms
 #' to rgb.
 #'
 #' @importFrom colorspace RGB
 #' @importFrom colorspace coords
+#' @param h new hue
+#' @param l new luminance
+#' @param c new chroma
+#' @param alpha alpha value.  Defaults to 1.
 #' @export
 #' @examples 
 #' col2hcl(colors())
@@ -21,9 +26,14 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
 }
 
 #' Mute standard colour.
-#' Produces a colours with moderate luminance and saturation.
 #' 
+#' @param colour character vector of colours to modify
+#' @param l new luminance
+#' @param c new chroma
 #' @export
+#' @examples
+#' muted("red")
+#' muted("blue")
 muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
 
 #' Modify colour transparency.

@@ -24,6 +24,11 @@
 
 #' Create a new transformation function
 #'
+#' @param name transformation name
+#' @param transform function, or name of function, that performs the
+#    transformation
+#' @param inverse function, or name of function, that performs the
+#    inverse of the transformation
 #' @export
 new_trans <- function(name, transform, inverse, labels = inverse) {
   if (is.character(transform)) transform <- match.fun(transform)

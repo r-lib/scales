@@ -1,5 +1,6 @@
 #' Shape palette (discrete).
 #'
+#' @param solid should shapes be solid or not?
 #' @export
 shape_pal <- function(solid = TRUE) {
   function(n) {

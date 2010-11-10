@@ -6,3 +6,11 @@
 \description{
   Hue palette (discrete).
 }
+\arguments{
+  \item{h}{range of hues to use, in [0, 360]}
+  \item{l}{luminance (lightness), in [0, 100]}
+  \item{c}{chroma (intensity of colour), maximum value varies depending on}
+  \item{h.start}{hue to start at}
+  \item{direction}{direction to travel around the colour wheel, 
+1 = clockwise, -1 = counter-clockwise}
+}

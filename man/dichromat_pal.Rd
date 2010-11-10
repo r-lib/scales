@@ -6,6 +6,9 @@
 \description{
   Dichromat (colour-blind) palette (discrete)
 }
+\arguments{
+  \item{name}{Name of colour palette.}
+}
 \examples{dichromat_pal("BluetoOrange.10")(10)
 dichromat_pal("BluetoOrange.10")(5)
 

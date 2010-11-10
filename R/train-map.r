@@ -14,6 +14,8 @@ map_continuous <- function(palette, x, limits) {
 
 #' Continuous scale
 #'
+#' @param x vector of continuous values to scale
+#' @param palette aesthetic palette to use
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
@@ -68,6 +70,8 @@ map_discrete <- function(palette, x, limits) {
 
 #' Discrete scale
 #'
+#' @param x vector of discrete values to scale
+#' @param palette aesthetic palette to use
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 3,

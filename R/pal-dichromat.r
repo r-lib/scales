@@ -1,5 +1,6 @@
 #' Dichromat (colour-blind) palette (discrete)
 #'
+#' @param name Name of colour palette.
 #' @importFrom dichromat colorschemes
 #' @export
 #' @examples

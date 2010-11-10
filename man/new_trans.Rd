@@ -6,3 +6,8 @@
 \description{
   Create a new transformation function
 }
+\arguments{
+  \item{name}{transformation name}
+  \item{transform}{function, or name of function, that performs the}
+  \item{inverse}{function, or name of function, that performs the}
+}

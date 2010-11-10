@@ -6,3 +6,6 @@
 \description{
   Manual palette (manual)
 }
+\arguments{
+  \item{values}{vector of values to be used as a palette.}
+}

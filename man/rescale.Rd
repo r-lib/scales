@@ -9,7 +9,8 @@
 }
 \keyword{manip}
 \arguments{
-  \item{x}{data to rescale}
-  \item{to}{range to scale to}
-  \item{from}{range to scale from, defaults to range of data}
+  \item{x}{numeric vector of values to manipulate.}
+  \item{to}{output range (numeric vector of length two)}
+  \item{from}{input range (numeric vector of length two).  If not given, is
+calculated from the range of \code{x}}
 }

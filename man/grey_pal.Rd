@@ -7,3 +7,7 @@
   Grey scale palette (discrete).
 }
 \seealso{\code{\link{seq_gradient_pal}} for continuous version}
+\arguments{
+  \item{start}{gray value at low end of palette}
+  \item{end}{gray value at high end of palette}
+}

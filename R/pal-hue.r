@@ -1,5 +1,12 @@
 #' Hue palette (discrete).
 #'
+#' @param h range of hues to use, in [0, 360]
+#' @param l luminance (lightness), in [0, 100]
+#' @param c chroma (intensity of colour), maximum value varies depending on
+#    combination of hue and luminance.
+#' @param h.start hue to start at
+#' @param direction direction to travel around the colour wheel, 
+#'   1 = clockwise, -1 = counter-clockwise
 #' @importFrom grDevices hcl
 #' @export
 hue_pal <- function(h = c(0, 360) + 15, l = 65, h.start = 0, direction = 1) {

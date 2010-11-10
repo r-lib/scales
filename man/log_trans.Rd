@@ -1,9 +1,9 @@
 \name{log_trans}
-\title{Log transformation...}
+\title{Log transformation.}
 \usage{log_trans(base=exp(1))}
 
 \description{
-  Log transformation
+  Log transformation.
 }
 \alias{log_trans}
 \alias{log10_trans}

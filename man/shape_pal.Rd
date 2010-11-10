@@ -6,3 +6,6 @@
 \description{
   Shape palette (discrete).
 }
+\arguments{
+  \item{solid}{should shapes be solid or not?}
+}
