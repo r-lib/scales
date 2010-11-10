@@ -6,4 +6,4 @@
 \description{
   Grey scale palette (discrete).
 }
-\seealso{\code{\link{gradient_pal}} for continuous version}
+\seealso{\code{\link{seq_gradient_pal}} for continuous version}

@@ -1,0 +1,15 @@
+\name{seq_gradient_pal}
+\alias{seq_gradient_pal}
+\title{Sequential colour gradient palette (continous).}
+\usage{seq_gradient_pal(low=mnsl("10B 4/6"), high=mnsl("10R 4/6"),
+    space="Lab")}
+
+\description{
+  Sequential colour gradient palette (continous).
+}
+\arguments{
+  \item{low}{colour for low end of gradient.}
+  \item{high}{colour for high end of gradient.}
+  \item{space}{colour space in which to calculate gradient.  "Lab" usually
+best unless gradient goes through white.}
+}

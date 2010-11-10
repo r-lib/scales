@@ -1,4 +1,4 @@
-#' N colour gradient palette (continous).
+#' Arbitrary colour gradient palette (continous).
 #' 
 #' @export
 gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
@@ -15,24 +15,33 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   }
 }
 
-#' Colour gradient palette with mid-point (continous).
+#' Diverging colour gradient (continous).
 #' 
+#' @param low colour for low end of gradient.
+#' @param mid colour for mid point
+#' @param high colour for high end of gradient.
+#' @param space colour space in which to calculate gradient.  "Lab" usually
+#'   best unless gradient goes through white. 
 #' @export
 #' @examples
 #' x <- seq(-1, 1, length = 100)
 #' r <- sqrt(outer(x^2, x^2, "+"))
-#' image(r, col = gradient_2_pal()(seq(0, 1, length = 12)))
-#' image(r, col = gradient_2_pal()(seq(0, 1, length = 30)))
-#' image(r, col = gradient_2_pal()(seq(0, 1, length = 100)))
-#' image(r, col = gradient_2_pal(low = 
+#' image(r, col = div_gradient_pal()(seq(0, 1, length = 12)))
+#' image(r, col = div_gradient_pal()(seq(0, 1, length = 30)))
+#' image(r, col = div_gradient_pal()(seq(0, 1, length = 100)))
+#' image(r, col = div_gradient_pal(low = 
 #'    mnsl(complement("10R 4/6", fix = T)))(seq(0, 1, length = 100)))
-gradient_2_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
+div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, mid, high), space = space)
 }
 
-#' Colour gradient palette (continous).
+#' Sequential colour gradient palette (continous).
 #' 
+#' @param low colour for low end of gradient.
+#' @param high colour for high end of gradient.
+#' @param space colour space in which to calculate gradient.  "Lab" usually
+#'   best unless gradient goes through white. 
 #' @export
-gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
+seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, high), space = space)
 }
