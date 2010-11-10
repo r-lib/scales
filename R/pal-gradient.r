@@ -48,6 +48,11 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
 #' @param space colour space in which to calculate gradient.  "Lab" usually
 #'   best unless gradient goes through white. 
 #' @export
+#' @examples
+#' x <- seq(0, 1, length = 25)
+#' show_col(seq_gradient_pal()(x))
+#' show_col(seq_gradient_pal("white", "black")(x))
+#' show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))
 seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, high), space = space)
 }

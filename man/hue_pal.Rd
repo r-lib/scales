@@ -1,7 +1,8 @@
 \name{hue_pal}
 \alias{hue_pal}
 \title{Hue palette (discrete).}
-\usage{hue_pal(h=c(0, 360) + 15, l=65, h.start=0, direction=1)}
+\usage{hue_pal(h=c(0, 360) + 15, c=100, l=65, h.start=0,
+    direction=1)}
 
 \description{
   Hue palette (discrete).
@@ -14,3 +15,16 @@
   \item{direction}{direction to travel around the colour wheel, 
 1 = clockwise, -1 = counter-clockwise}
 }
+\examples{show_col(hue_pal()(4))
+show_col(hue_pal()(9))
+show_col(hue_pal(l = 90)(9))
+show_col(hue_pal(l = 30)(9))
+
+show_col(hue_pal()(9))
+show_col(hue_pal(direction = -1)(9))
+
+show_col(hue_pal()(9))
+show_col(hue_pal(h = c(0, 90))(9))
+show_col(hue_pal(h = c(90, 180))(9))
+show_col(hue_pal(h = c(180, 270))(9))
+show_col(hue_pal(h = c(270, 360))(9))}

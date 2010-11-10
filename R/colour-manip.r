@@ -34,6 +34,7 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
 #' @examples
 #' muted("red")
 #' muted("blue")
+#' show_col(c("red", "blue", muted("red"), muted("blue")))
 muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
 
 #' Modify colour transparency.
@@ -67,4 +68,28 @@ alpha <- function(colour, alpha) {
   new_col <- rgb(col[1,], col[2,], col[3,], col[4,])
   new_col[is.na(colour)] <- NA  
   new_col
+}
+
+#' Show colours.
+#' 
+#' A quick and dirty way to show colours in a plot.
+#'
+#' @param colours a character vector of colours
+#' @export
+show_col <- function(colours) {
+  n <- length(colours)
+  ncol <- ceiling(sqrt(n))
+  nrow <- ceiling(n / ncol)
+  
+  colours <- c(colours, rep(NA, nrow * ncol - length(colours)))
+  colours <- matrix(colours, ncol = ncol, byrow = TRUE)
+  
+  old <- par(pty = "s", mar = c(0, 0, 0, 0))
+  on.exit(par(old))
+  
+  size <- max(dim(colours))
+  plot(c(0, size), c(0, -size), type = "n", xlab="", ylab="", axes = FALSE)
+  rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
+    col = colours)
+  text(col(colours) - 0.5, -row(colours) + 0.5, colours)
 }

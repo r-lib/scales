@@ -5,6 +5,13 @@
 #'   index into the list of palettes of appropriate \code{type}
 #' @references \url{http://colorbrewer2.org}
 #' @export
+#' show_col(brewer_pal()(10))
+#' show_col(brewer_pal("div")(5))
+#' show_col(brewer_pal(pal = "Greens")(5))
+#'
+#' # Can use with gradient_n to create a continous gradient
+#' cols <- brewer_pal("div")(5)
+#' show_col(gradient_n_pal(cols)(seq(0, 1, length = 30)))
 brewer_pal <- function(type = "seq", palette = 1) {
   pal <- pal_name(palette, type)
   

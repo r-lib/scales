@@ -12,4 +12,5 @@
   \item{c}{new chroma}
 }
 \examples{muted("red")
-muted("blue")}
+muted("blue")
+show_col(c("red", "blue", muted("red"), muted("blue")))}

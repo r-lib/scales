@@ -11,3 +11,5 @@
   \item{start}{gray value at low end of palette}
   \item{end}{gray value at high end of palette}
 }
+\examples{show_col(grey_pal()(25))
+show_col(grey_pal(0, 1)(25))}
