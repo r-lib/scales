@@ -2,12 +2,14 @@
 #' Transforms rgb to hcl, sets non-missing arguments and then backtransforms
 #' to rgb.
 #'
+#' @importFrom colorspace RGB
+#' @importFrom colorspace coords
 #' @export
 #' @examples 
 #' col2hcl(colors())
 col2hcl <- function(colour, h, c, l, alpha = 1) {
-  col <- colorspace::RGB(t(col2rgb(colour)) / 256)
-  coords <- colorspace::coords(as(col, "polarLUV"))
+  col <- RGB(t(col2rgb(colour)) / 256)
+  coords <- coords(as(col, "polarLUV"))
   
   if (missing(h)) h <- coords[, "H"]
   if (missing(c)) c <- coords[, "C"]

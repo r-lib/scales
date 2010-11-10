@@ -10,6 +10,7 @@ alpha_pal <- function(x, to = c(0.1, 1)) {
 #' 
 #' @param colour colour
 #' @param alpha new alpha level in [0,1]
+#' @export
 #' @examples
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)

@@ -7,7 +7,7 @@ Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description:
 Imports: RColorBrewer, stringr, dichromat, munsell (>=
-    0.2), plyr (>= 1.2)
+    0.2), plyr (>= 1.2), colorspace
 License: MIT
 Collate: 'colour-manip.r' 'formatter.r' 'pal-alpha.r'
     'pal-brewer.r' 'pal-dichromat.r' 'pal-discrete.r'
