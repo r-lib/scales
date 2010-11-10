@@ -1,9 +1,17 @@
 Package: scales
 Type: Package
-Title: Graphical scale functions usable by any graphics package.
+Title: Graphical scale functions usable by any graphics
+    package.
 Version: 0.0.0
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description:
-Imports: RColorBrewer, stringr, dichromat, munsell (>= 0.2), plyr (>= 1.2)
+Imports: RColorBrewer, stringr, dichromat, munsell (>=
+    0.2), plyr (>= 1.2)
 License: MIT
+Collate: 'colour-manip.r' 'formatter.r' 'pal-alpha.r'
+    'pal-brewer.r' 'pal-dichromat.r' 'pal-discrete.r'
+    'pal-gradient.r' 'pal-grey.r' 'pal-hue.r'
+    'pal-linetype.r' 'pal-manual.r' 'pal-shape.r'
+    'pal-size.r' 'range.r' 'rescale.r' 'scale.r'
+    'train-map.r' 'trans.r'

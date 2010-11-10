@@ -4,6 +4,7 @@
 #' @param to range to scale to
 #' @param from range to scale from, defaults to range of data
 #' @keywords manip
+#' @export
 rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
   
@@ -11,6 +12,8 @@ rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
 }
 
 #' Rescale numeric vector to have specified minimum, midpoint, and maximum.
+#'
+#' @export
 rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
   
@@ -18,16 +21,26 @@ rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0)
   (x - mid) / extent * diff(to) + mean(to)
 }
 
+#' Censor any values outside of range.
+#'
+#' @export
 censor <- function(x, range = c(0, 1)) {
   ifelse(x >= range[1] & x <= range[2], x, NA)
 }
 
-#' @author Homer Strong <homer.strong@gmail.com>
+#' Clip values to range.
+#'
+#' @author Homer Strong <homer.strong@@gmail.com>
+#' @export
 clip <- function(x, range = c(0, 1)) {
   x[x < range[1]] <- range[1]
   x[x > range[2]] <- range[2]
   x
 }
+
+#' Clip infinite values to range.
+#'
+#' @export
 clip_infinite <- function(x, range = c(0, 1)) {
   x[x == -Inf] <- range[1]
   x[x == Inf] <- range[2]
