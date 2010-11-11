@@ -20,6 +20,23 @@ log_breaks <- function() {
   }
 }
 
+#' Evenly spaced breaks on transformed scale.
+#' These often do not produce very attractive breaks.
+#' 
+#' @export
+#' @examples
+#' trans_breaks(log10_trans())(c(1, 1e6))
+#' trans_breaks(sqrt_trans())(c(1, 100))
+#' trans_breaks(reciprocal_trans())(c(1, 100))
+#' trans_breaks(reverse_trans())(c(1, 100))
+trans_breaks <- function(trans, n = 5, ...) {
+  stopifnot(is.trans(trans))
+  
+  function(x) {
+    trans$inverse(pretty(trans$transform(x), n, ...))
+  }
+}
+
 #' Compute breaks for continuous scale.
 #'
 #' This function wraps up the components needed to go from a continuous range

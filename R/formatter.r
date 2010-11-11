@@ -82,6 +82,23 @@ math_format <- function(expr = 10 ^ .x, format = force) {
   }
 }
 
+#' Format labels after transformation.
+#'
+#' @param trans transformation to apply
+#' @param format additional formatter to apply after transformation
+#' @return a function with single paramater x, a numeric vector, that
+#'    returns a character vector of list of expressions
+#' @export
+#' @examples
+#' tf <- trans_format("log10", scientific_format())
+#' tf(10 ^ 1:6)
+trans_format <- function(trans, format = force) {
+  if (is.character(trans)) trans <- match.fun(trans)
+  function(x) {
+    x <- trans(x)
+    format(x)
+  }
+}
 
 precision <- function(x) {
   10 ^ floor(log10(diff(range(x, na.rm = TRUE))))
