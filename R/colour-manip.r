@@ -5,6 +5,7 @@
 #'
 #' @importFrom colorspace RGB
 #' @importFrom colorspace coords
+#' @param colour character vector of colours to be modified
 #' @param h new hue
 #' @param l new luminance
 #' @param c new chroma

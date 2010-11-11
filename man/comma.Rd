@@ -9,4 +9,5 @@
 }
 \arguments{
   \item{x}{numeric vector to format}
+  \item{...}{other arguments passed on to \code{\link{format}}}
 }

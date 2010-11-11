@@ -16,4 +16,6 @@ best unless gradient goes through white.}
 \examples{x <- seq(0, 1, length = 25)
 show_col(seq_gradient_pal()(x))
 show_col(seq_gradient_pal("white", "black")(x))
+
+library(munsell)
 show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))}

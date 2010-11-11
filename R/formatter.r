@@ -1,6 +1,7 @@
 #' Comma formatter: format number with commas separating thousands
 #' 
 #' @param x numeric vector to format
+#' @param ... other arguments passed on to \code{\link{format}}
 #' @export
 comma <- function(x, ...) {
   format(x, big.mark = ",", trim = TRUE, scientific = FALSE, ...)

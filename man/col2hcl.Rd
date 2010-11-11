@@ -12,6 +12,7 @@
   then backtransforms to rgb.
 }
 \arguments{
+  \item{colour}{character vector of colours to be modified}
   \item{h}{new hue}
   \item{l}{new luminance}
   \item{c}{new chroma}

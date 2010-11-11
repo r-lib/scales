@@ -35,8 +35,10 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 #' image(r, col = div_gradient_pal()(seq(0, 1, length = 12)))
 #' image(r, col = div_gradient_pal()(seq(0, 1, length = 30)))
 #' image(r, col = div_gradient_pal()(seq(0, 1, length = 100)))
+#'
+#' library(munsell)
 #' image(r, col = div_gradient_pal(low = 
-#'    mnsl(complement("10R 4/6", fix = T)))(seq(0, 1, length = 100)))
+#'    mnsl(complement("10R 4/6", fix = TRUE)))(seq(0, 1, length = 100)))
 div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, mid, high), space = space)
 }
@@ -52,6 +54,8 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
 #' x <- seq(0, 1, length = 25)
 #' show_col(seq_gradient_pal()(x))
 #' show_col(seq_gradient_pal("white", "black")(x))
+#'
+#' library(munsell)
 #' show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))
 seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, high), space = space)
