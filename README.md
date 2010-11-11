@@ -1,0 +1,30 @@
+# Scales
+
+One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The idea of the `scales` package is to implement scales in a way that is graphics system agnostic, so that everyone can benefit by pooling knowledge and resources about this tricky topic.
+
+# Components
+
+The `scales` package is made up of the following interdependent components
+
+* Palettes, or pal for short, describe the useful palettes of aesthetics.
+
+* Transformations describes common scale transformations, and their inverses
+
+* Bounds: various ways of rescaling the data
+
+* Scaling functions: these pull together palettes, bounding functions and
+  transformations to provide a complete pathway from raw data to perceptual
+  properties
+
+* Mutable scale objects: in many graphics pathways, scale ranges can not be
+  computed in a single pass, but must be computed over multiple groups or
+  multiple panels. The mutable scale objects (implemented with R's new
+  reference based class) provide a thin layer of mutability to make this task
+  easier.
+
+Guide-related:
+
+* Breaks and formats: ways of computing how tick marks/legend keys should be
+  distributed across the data range, as well as how to convert those numeric
+  positions into reader-friendly labels
+  
