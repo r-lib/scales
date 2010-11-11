@@ -96,7 +96,7 @@ identity_trans <- function() {
 #' 
 #' @param base base of logarithm
 #' @aliases log_trans log10_trans log2_trans
-#' @export
+#' @export log_trans log10_trans log2_trans
 log_trans <- function(base = exp(1)) {
   new_trans(str_c("log-", format(base)),
     function(x) log(x, base),
@@ -109,6 +109,9 @@ log2_trans <- function() {
   log_trans(2)
 }
 
+#' Log plus one transformation
+#'
+#' @export
 log1p_trans <- function() {
   new_trans("log1p", "log1p", "expm1")
 }
@@ -119,8 +122,8 @@ log1p_trans <- function() {
 #'   abbreviation so that "p" + distribution is a valid probability density
 #'   function, and "q" + distribution is a valid quantile function.
 #' @param ... other arguments passed on to distribution and quantile functions
-#' @aliases probability_trans logit_trans, probit_trans
-#' @export
+#' @aliases probability_trans logit_trans probit_trans
+#' @export probability_trans logit_trans probit_trans
 probability_trans <- function(distribution, ...) {
   qfun <- match.fun(str_c("q", distribution))
   pfun <- match.fun(str_c("p", distribution))

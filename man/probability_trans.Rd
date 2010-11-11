@@ -6,7 +6,7 @@
   Probability transformation.
 }
 \alias{probability_trans}
-\alias{logit_trans,}
+\alias{logit_trans}
 \alias{probit_trans}
 \arguments{
   \item{distribution}{probability distribution.  Should be standard R
