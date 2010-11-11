@@ -25,6 +25,8 @@ called with a vector of breaks}
 \examples{cbreaks(c(0, 100))
 cbreaks(c(0, 100), pretty_breaks(3))
 cbreaks(c(0, 100), pretty_breaks(10))
+cbreaks(c(1, 100), log_breaks())
+cbreaks(c(1, 1e4), log_breaks())
 
 cbreaks(c(0, 100), labels = math_format())
 cbreaks(c(0, 1), labels = percent_format())

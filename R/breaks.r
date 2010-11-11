@@ -9,6 +9,17 @@ pretty_breaks <- function(n = 5, ...) {
   function(x) pretty(x, n, ...)
 }
 
+#' Pretty breaks on log scale.
+#' Create ticks at evenly spaced powers of ten.
+#'
+#' @export
+log_breaks <- function() {
+  function(x) {
+    rng <- range(log10(x))
+    10 ^ seq(floor(rng[1]), ceiling(rng[2]), by = 1)
+  }
+}
+
 #' Compute breaks for continuous scale.
 #'
 #' This function wraps up the components needed to go from a continuous range
@@ -25,6 +36,8 @@ pretty_breaks <- function(n = 5, ...) {
 #' cbreaks(c(0, 100))
 #' cbreaks(c(0, 100), pretty_breaks(3))
 #' cbreaks(c(0, 100), pretty_breaks(10))
+#' cbreaks(c(1, 100), log_breaks())
+#' cbreaks(c(1, 1e4), log_breaks())
 #'
 #' cbreaks(c(0, 100), labels = math_format())
 #' cbreaks(c(0, 1), labels = percent_format())
