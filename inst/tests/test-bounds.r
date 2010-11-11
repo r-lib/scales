@@ -1,4 +1,4 @@
-context("Rescale")
+context("Bounds")
 
 test_that("rescale_mid returns correct results", {
   x <- c(-1, 0, 1)
