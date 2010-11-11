@@ -17,15 +17,16 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #'
 #' @param x vector of continuous values to scale
 #' @param palette aesthetic palette to use
+#' @param NA.value aesthetic to use for missing values
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))))
-cscale <- function(x, palette) {
+cscale <- function(x, palette, na.value = NA) {
   limits <- train_continuous(x)
-  map_continuous(palette, x, limits)
+  map_continuous(palette, x, limits, na.value)
 }
 
 # Discrete scales ------------------------------------------------------------
@@ -74,11 +75,12 @@ map_discrete <- function(palette, x, limits, na.value = NA) {
 #'
 #' @param x vector of discrete values to scale
 #' @param palette aesthetic palette to use
+#' @param NA.value aesthetic to use for missing values
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 3,
 #'   col = dscale(factor(cyl), brewer_pal())))
-dscale <- function(x, palette) {
+dscale <- function(x, palette, na.value = NA) {
   limits <- train_discrete(x)
-  map_discrete(palette, x, limits)
+  map_discrete(palette, x, limits, na.value)
 }
