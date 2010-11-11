@@ -5,6 +5,7 @@
 #'   index into the list of palettes of appropriate \code{type}
 #' @references \url{http://colorbrewer2.org}
 #' @export
+#' @examples
 #' show_col(brewer_pal()(10))
 #' show_col(brewer_pal("div")(5))
 #' show_col(brewer_pal(pal = "Greens")(5))
