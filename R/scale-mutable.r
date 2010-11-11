@@ -17,7 +17,8 @@ NULL
 #  
 # Scale becomes an implementation of the strategy pattern. The scale object
 # just provides a thin layer of mutable state which allows the ranges to be
-# updated multiple times.
+# updated multiple times, and provides a convenient way of bundling all scale
+# related parameters together.
 #
 # Discrete palette functions are parameterised by the number of levels.
 # Continuous palette functions are parameterised by a value between 0 and 1.
@@ -35,12 +36,12 @@ Scale <- setRefClass("Scale",
 DiscreteScale <- setRefClass("DiscreteScale", contains = "Scale", 
   methods = list(
     train = function(x) data_limits <<- train_discrete(x, data_limits),
-    map = function(x)   map_discrete(palette, x, limits())
+    map = function(x)   map_discrete(palette, x, limits(), na.value)
   )
 )
 
 ContinuousScale <- setRefClass("ContinuousScale", contains = "Scale", 
   methods = list(
     train = function(x) data_limits <<- train_continuous(x, data_limits),
-    map = function(x)   map_continuous(palette, x, limits)
+    map = function(x)   map_continuous(palette, x, limits, na.value)
 ))
