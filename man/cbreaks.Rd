@@ -20,7 +20,9 @@ data}
 will make a vector of breaks when given the range of the data}
   \item{labels}{either a vector of labels (character vector or list of 
 expression) or a format function that will make a vector of labels when
-called with a vector of breaks}
+called with a vector of breaks. Labels can only be specified manually if
+breaks are - it is extremely dangerous to supply labels if you don't know
+what the breaks will be.}
 }
 \examples{cbreaks(c(0, 100))
 cbreaks(c(0, 100), pretty_breaks(3))
@@ -32,4 +34,10 @@ cbreaks(c(0, 100), labels = math_format())
 cbreaks(c(0, 1), labels = percent_format())
 cbreaks(c(0, 1e6), labels = comma_format())
 cbreaks(c(0, 1e6), labels = dollar_format())
-cbreaks(c(0, 30), labels = dollar_format())}
+cbreaks(c(0, 30), labels = dollar_format())
+
+# You can also specify them manually:
+cbreaks(c(0, 100), breaks = c(15, 20, 80))
+cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
+cbreaks(c(0, 100), breaks = c(15, 20, 80), 
+labels = expression(alpha, beta, gamma))}
