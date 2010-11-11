@@ -30,13 +30,12 @@
 #' @param inverse function, or name of function, that performs the
 #    inverse of the transformation
 #' @export
-new_trans <- function(name, transform, inverse, labels = inverse) {
+new_trans <- function(name, transform, inverse) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
-  if (is.character(labels)) labels <- match.fun(labels)
   
-  structure(list(name = name, transform = transform, inverse = inverse, 
-    labels = labels), class = "trans")
+  structure(list(name = name, transform = transform, inverse = inverse), 
+    class = "trans")
 }
 
 is.trans <- function(x) inherits(x, "trans")
