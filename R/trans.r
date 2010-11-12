@@ -29,7 +29,8 @@ new_trans <- function(name, transform, inverse, breaks = pretty_breaks(transform
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   
-  structure(list(name = name, transform = transform, inverse = inverse), 
+  structure(list(name = name, transform = transform, inverse = inverse,
+    breaks = breaks, labels = labels), 
     class = "trans")
 }
 

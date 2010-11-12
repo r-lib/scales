@@ -18,13 +18,19 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #' @param x vector of continuous values to scale
 #' @param palette aesthetic palette to use
 #' @param NA.value aesthetic to use for missing values
+#' @param trans transformation object describing the how to transform the
+#'  raw data prior to scaling.  Defaults to the identity transformation which
+#'  leaves the data unchanged.
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))))
-cscale <- function(x, palette, na.value = NA) {
+cscale <- function(x, palette, na.value = NA, trans = identity_trans()) {
+  stopifnot(is.trans(trans))
+  
+  x <- trans$trans(x)
   limits <- train_continuous(x)
   map_continuous(palette, x, limits, na.value)
 }
