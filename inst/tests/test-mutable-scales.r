@@ -29,4 +29,10 @@ test_that("default breaks use transformation defaults", {
   scale$train(c(0, 10))
 
   expect_equal(scale$breaks(), pretty_breaks()(scale$limits()))
+  
+  scale <- ContinuousScale$new(size_pal(), log10_trans())
+  scale$train(scale$transform(c(1, 1e5)))
+
+  expect_equal(scale$breaks(), integer_breaks()(c(0, 5)))
+  
 })
