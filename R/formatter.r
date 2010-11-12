@@ -94,6 +94,7 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 #' tf(10 ^ 1:6)
 trans_format <- function(trans, format = force) {
   if (is.character(trans)) trans <- match.fun(trans)
+  
   function(x) {
     x <- trans(x)
     format(x)

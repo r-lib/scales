@@ -20,6 +20,23 @@ log_breaks <- function() {
   }
 }
 
+#' Find breaks on integers.
+#' 
+#' @param n desired number of breaks
+#' @export
+integer_breaks <- function(n = 5, ...) {
+  function(x) {
+    rng <- range(x, na.rm = TRUE)
+    min <- floor(rng[1])
+    max <- ceiling(rng[2])
+    
+    if (max == min) return(min)
+
+    by <- floor((max - min) / n)  + 1
+    seq(min, max, by = by)
+  }
+}
+
 #' Evenly spaced breaks on transformed scale.
 #' These often do not produce very attractive breaks.
 #' 
@@ -30,10 +47,10 @@ log_breaks <- function() {
 #' trans_breaks(reciprocal_trans())(c(1, 100))
 #' trans_breaks(reverse_trans())(c(1, 100))
 trans_breaks <- function(trans, n = 5, ...) {
-  stopifnot(is.trans(trans))
+  stopifnot(is.function(trans))
   
   function(x) {
-    trans$inverse(pretty(trans$transform(x), n, ...))
+    pretty(trans(x), n, ...)
   }
 }
 
