@@ -24,6 +24,8 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal(), 
+#'   trans = sqrt_trans())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))))
