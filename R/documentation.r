@@ -1,7 +1,7 @@
 seealso <- function(pattern) {
   require("scales")
   names <- ls("package:scales", pattern = pattern)
-  str_c("\\code{\\link{", all, "}}", collapse = ", ")
+  str_c("\\code{\\link{", names, "}}", collapse = ", ")
   
 }
 
