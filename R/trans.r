@@ -20,7 +20,7 @@
 #' function is applied on the transformed range of the range, and it's
 #' expected that the labels function will perform some kind of inverse
 #' tranformation on these breaks to give them labels that are meaningful on 
-#' the original scale
+#' the original scale.
 #'
 #' @param name transformation name
 #' @param transform function, or name of function, that performs the
@@ -31,6 +31,7 @@
 #'   function is applied on the transformed scale.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated on the transformed scale.
+#' @seealso \Sexpr[results=rd]{scales:::seealso_trans()}
 #' @export new_trans is.trans
 #' @S3method print trans
 new_trans <- function(name, transform, inverse, breaks = pretty_breaks(transform), format = trans_format(inverse)) {

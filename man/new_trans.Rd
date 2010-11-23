@@ -16,8 +16,9 @@
   applied on the transformed range of the range, and it's
   expected that the labels function will perform some kind
   of inverse tranformation on these breaks to give them
-  labels that are meaningful on the original scale
+  labels that are meaningful on the original scale.
 }
+\seealso{\Sexpr[results=rd]{scales:::seealso_trans()}}
 \arguments{
   \item{name}{transformation name}
   \item{transform}{function, or name of function, that performs the}

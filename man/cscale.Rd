@@ -6,6 +6,11 @@
 \description{
   Continuous scale
 }
+\seealso{Transformations included in package:
+\Sexpr[results=rd]{scales:::seealso_trans()}.
+
+Palettes included in package:
+\Sexpr[results=rd]{scales:::seealso_pal()}}
 \arguments{
   \item{x}{vector of continuous values to scale}
   \item{palette}{aesthetic palette to use}

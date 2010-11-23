@@ -22,6 +22,11 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #'  raw data prior to scaling.  Defaults to the identity transformation which
 #'  leaves the data unchanged.
 #' @export
+#' @seealso Transformations included in package:
+#'  \Sexpr[results=rd]{scales:::seealso_trans()}.
+#'   
+#'   Palettes included in package:
+#'  \Sexpr[results=rd]{scales:::seealso_pal()}
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal(), 
