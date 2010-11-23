@@ -24,7 +24,7 @@ log_breaks <- function() {
 #' 
 #' @param n desired number of breaks
 #' @export
-integer_breaks <- function(n = 5, ...) {
+integer_breaks <- function(n = 5) {
   function(x) {
     rng <- range(x, na.rm = TRUE)
     min <- floor(rng[1])
@@ -40,14 +40,18 @@ integer_breaks <- function(n = 5, ...) {
 #' Evenly spaced breaks on transformed scale.
 #' These often do not produce very attractive breaks.
 #' 
+#' @param trans function of single variable, \code{x}, that given a numeric
+#'   vector returns the transformed values
+#' @param n desired number of ticks
+#' @param ... other arguments passed on to pretty
 #' @export
 #' @examples
-#' trans_breaks(log10_trans())(c(1, 1e6))
-#' trans_breaks(sqrt_trans())(c(1, 100))
-#' trans_breaks(reciprocal_trans())(c(1, 100))
-#' trans_breaks(reverse_trans())(c(1, 100))
+#' trans_breaks("log10")(c(1, 1e6))
+#' trans_breaks("sqrt")(c(1, 100))
+#' trans_breaks(function(x) 1 / x)(c(1, 100))
+#' trans_breaks(function(x) -x)(c(1, 100))
 trans_breaks <- function(trans, n = 5, ...) {
-  stopifnot(is.function(trans))
+  trans <- match.fun(trans)
   
   function(x) {
     pretty(trans(x), n, ...)
@@ -68,6 +72,7 @@ trans_breaks <- function(trans, n = 5, ...) {
 #'   called with a vector of breaks. Labels can only be specified manually if
 #'   breaks are - it is extremely dangerous to supply labels if you don't know
 #'   what the breaks will be.
+#' @export
 #' @examples
 #' cbreaks(c(0, 100))
 #' cbreaks(c(0, 100), pretty_breaks(3))

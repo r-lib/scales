@@ -7,7 +7,13 @@
   Evenly spaced breaks on transformed scale. These often do
   not produce very attractive breaks.
 }
-\examples{trans_breaks(log10_trans())(c(1, 1e6))
-trans_breaks(sqrt_trans())(c(1, 100))
-trans_breaks(reciprocal_trans())(c(1, 100))
-trans_breaks(reverse_trans())(c(1, 100))}
+\arguments{
+  \item{trans}{function of single variable, \code{x}, that given a numeric
+vector returns the transformed values}
+  \item{n}{desired number of ticks}
+  \item{...}{other arguments passed on to pretty}
+}
+\examples{trans_breaks("log10")(c(1, 1e6))
+trans_breaks("sqrt")(c(1, 100))
+trans_breaks(function(x) 1 / x)(c(1, 100))
+trans_breaks(function(x) -x)(c(1, 100))}

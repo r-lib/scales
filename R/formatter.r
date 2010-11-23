@@ -6,8 +6,12 @@
 #' @export
 comma_format <- function(...) {
   function(x) {
-    format(x, big.mark = ",", trim = TRUE, scientific = FALSE, ...)    
+    comma(x, ...)
   }
+}
+
+comma <- function(x, ...) {
+  format(x, big.mark = ",", trim = TRUE, scientific = FALSE, ...)    
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
