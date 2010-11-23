@@ -1,0 +1,15 @@
+\name{expand_range}
+\alias{expand_range}
+\title{Expand a range with a multiplicative or additive constant.}
+\usage{expand_range(range, mul=0, add=0, zero_width=1)}
+
+\description{
+  Expand a range with a multiplicative or additive
+  constant.
+}
+\arguments{
+  \item{range}{range of data, numeric vector of length 2}
+  \item{mul}{multiplicative constract}
+  \item{add}{additive constant}
+  \item{distance}{to use if range has zero width}
+}

@@ -59,9 +59,25 @@ clip_infinite <- function(x, range = c(0, 1)) {
   x
 }
 
+#' Expand a range with a multiplicative or additive constant.
+#' 
+#' @param range range of data, numeric vector of length 2
+#' @param mul multiplicative constract
+#' @param add additive constant
+#' @param distance to use if range has zero width
+#' @export
+expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
+  if (zero_range(range)) {
+    c(range[1] - zero_width / 2, range[1] + zero_width / 2)
+  } else {    
+    range + c(-1, 1) * (diff(range) * mul + add)
+  }
+}
+
 # Determine if range of vector is FP 0.
 zero_range <- function(x) {
   if (length(x) == 1) return(TRUE)
   x <- x / mean(x)
   isTRUE(all.equal(x[1], x[2]))
 }
+
