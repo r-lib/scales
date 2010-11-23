@@ -16,8 +16,8 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #' Continuous scale
 #'
 #' @param x vector of continuous values to scale
-#' @param palette aesthetic palette to use
-#' @param na.value aesthetic to use for missing values
+#' @param palette palette to use
+#' @param na.value value to use for missing values
 #' @param trans transformation object describing the how to transform the
 #'  raw data prior to scaling.  Defaults to the identity transformation which
 #'  leaves the data unchanged.

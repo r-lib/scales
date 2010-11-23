@@ -1,7 +1,7 @@
-\name{new_trans}
-\alias{new_trans}
+\name{trans_new}
+\alias{trans_new}
 \title{Create a new transformation object.}
-\usage{new_trans(name, transform, inverse,
+\usage{trans_new(name, transform, inverse,
     breaks=pretty_breaks(transform),
     format=trans_format(inverse))}
 

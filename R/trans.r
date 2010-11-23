@@ -32,9 +32,9 @@
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated on the transformed scale.
 #' @seealso \Sexpr[results=rd]{scales:::seealso_trans()}
-#' @export new_trans is.trans
+#' @export trans_new is.trans
 #' @S3method print trans
-new_trans <- function(name, transform, inverse, breaks = pretty_breaks(transform), format = trans_format(inverse)) {
+trans_new <- function(name, transform, inverse, breaks = pretty_breaks(transform), format = trans_format(inverse)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   
@@ -50,7 +50,7 @@ print.trans <- function(x, ...) cat("Transformer: ", x$name)
 #'
 #' @export
 asn_trans <- function() {
-  new_trans(
+  trans_new(
     "asn", 
     function(x) 2 * asin(sqrt(x)), 
     function(x) sin(x / 2) ^ 2)
@@ -60,7 +60,7 @@ asn_trans <- function() {
 #'
 #' @export
 atanh_trans <- function() {
-  new_trans("atanh", "atanh", "tanh")
+  trans_new("atanh", "atanh", "tanh")
 }
 
 #' Box-Cox power transformation.
@@ -74,7 +74,7 @@ boxcox_trans <- function(p) {
   trans <- function(x) (x ^ p - 1) / p * sign(x - 1)
   inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)
   
-  new_trans(
+  trans_new(
     str_c("pow-", format(p)), trans, inv,
     trans_breaks(inv), scientific_format())
 }
@@ -84,7 +84,7 @@ boxcox_trans <- function(p) {
 #' @param base Base of logarithm
 #' @export
 exp_trans <- function(base = exp(1)) {
-  new_trans(
+  trans_new(
     str_c("power-", format(base)), 
     function(x) base ^ x,
     function(x) log(x, base = base))
@@ -94,7 +94,7 @@ exp_trans <- function(base = exp(1)) {
 #'
 #' @export
 identity_trans <- function() {
-  new_trans("identity", "force", "force",
+  trans_new("identity", "force", "force",
     pretty_breaks(), scientific_format())
 }
 
@@ -108,7 +108,7 @@ log_trans <- function(base = exp(1)) {
   trans <- function(x) log(x, base)
   inv <- function(x) base ^ x
   
-  new_trans(str_c("log-", format(base)), trans, inv, 
+  trans_new(str_c("log-", format(base)), trans, inv, 
     integer_breaks(), trans_format(inv, scientific_format()))
 }
 log10_trans <- function() {
@@ -122,7 +122,7 @@ log2_trans <- function() {
 #'
 #' @export
 log1p_trans <- function() {
-  new_trans("log1p", "log1p", "expm1")
+  trans_new("log1p", "log1p", "expm1")
 }
 
 #' Probability transformation.
@@ -137,7 +137,7 @@ probability_trans <- function(distribution, ...) {
   qfun <- match.fun(str_c("q", distribution))
   pfun <- match.fun(str_c("p", distribution))
   
-  new_trans(
+  trans_new(
     str_c("prob-", distribution), 
     function(x) qfun(x, ...), 
     function(x) pfun(x, ...))
@@ -149,7 +149,7 @@ probit_trans <- function() probability_trans("norm")
 #'
 #' @export
 reciprocal_trans <- function() {
-  new_trans("reciprocal", 
+  trans_new("reciprocal", 
     function(x) 1 / x, 
     function(x) 1 / x)
 }
@@ -158,7 +158,7 @@ reciprocal_trans <- function() {
 #'
 #' @export
 reverse_trans <- function() {
-  new_trans("reverse", function(x) -x, function(x) -x)
+  trans_new("reverse", function(x) -x, function(x) -x)
 }
 
 #' Square-root transformation (special case of Box-Cox).

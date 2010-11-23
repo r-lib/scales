@@ -13,8 +13,8 @@ Palettes included in package:
 \Sexpr[results=rd]{scales:::seealso_pal()}}
 \arguments{
   \item{x}{vector of continuous values to scale}
-  \item{palette}{aesthetic palette to use}
-  \item{na.value}{aesthetic to use for missing values}
+  \item{palette}{palette to use}
+  \item{na.value}{value to use for missing values}
   \item{trans}{transformation object describing the how to transform the
 raw data prior to scaling.  Defaults to the identity transformation which
 leaves the data unchanged.}

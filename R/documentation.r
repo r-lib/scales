@@ -1,6 +1,6 @@
 seealso <- function(pattern) {
   require("scales")
-  all <- setdiff(ls("package:scales", pattern = pattern), "new_trans")
+  names <- ls("package:scales", pattern = pattern)
   str_c("\\code{\\link{", all, "}}", collapse = ", ")
   
 }
