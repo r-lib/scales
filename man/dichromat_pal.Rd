@@ -7,7 +7,8 @@
   Dichromat (colour-blind) palette (discrete).
 }
 \arguments{
-  \item{name}{Name of colour palette.}
+  \item{name}{Name of colour palette.  One of:
+\Sexpr[results=rd]{scales:::dichromat_schemes()}}
 }
 \examples{show_col(dichromat_pal("BluetoOrange.10")(10))
 show_col(dichromat_pal("BluetoOrange.10")(5))
