@@ -12,7 +12,7 @@ Imports: RColorBrewer, stringr, dichromat, munsell (>=
 License: MIT
 LazyLoad: yes
 Collate: 'bounds.r' 'breaks.r' 'colour-manip.r'
-    'documentation.r' 'formatter.r' 'guide.r' 'pal-alpha.r'
+    'documentation.r' 'formatter.r' 'pal-alpha.r'
     'pal-brewer.r' 'pal-dichromat.r' 'pal-discrete.r'
     'pal-gradient.r' 'pal-grey.r' 'pal-hue.r'
     'pal-linetype.r' 'pal-manual.r' 'pal-shape.r'
