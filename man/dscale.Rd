@@ -1,10 +1,10 @@
 \name{dscale}
 \alias{dscale}
-\title{Discrete scale...}
+\title{Discrete scale.}
 \usage{dscale(x, palette, na.value=NA)}
 
 \description{
-  Discrete scale
+  Discrete scale.
 }
 \arguments{
   \item{x}{vector of discrete values to scale}

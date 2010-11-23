@@ -1,4 +1,4 @@
-#' Manual palette (manual)
+#' Manual palette (manual).
 #'
 #' @param values vector of values to be used as a palette.
 #' @export

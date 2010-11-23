@@ -9,7 +9,7 @@ pretty_breaks <- function(n = 5, ...) {
   function(x) pretty(x, n, ...)
 }
 
-#' Breaks on integers
+#' Breaks on integers.
 #' 
 #' @param n desired number of breaks
 #' @export

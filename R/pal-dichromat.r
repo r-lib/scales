@@ -1,4 +1,4 @@
-#' Dichromat (colour-blind) palette (discrete)
+#' Dichromat (colour-blind) palette (discrete).
 #'
 #' @param name Name of colour palette.
 #' @importFrom dichromat colorschemes

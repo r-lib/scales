@@ -1,10 +1,10 @@
 \name{cscale}
 \alias{cscale}
-\title{Continuous scale...}
+\title{Continuous scale.}
 \usage{cscale(x, palette, na.value=NA, trans=identity_trans())}
 
 \description{
-  Continuous scale
+  Continuous scale.
 }
 \seealso{Transformations included in package:
 \Sexpr[results=rd]{scales:::seealso_trans()}.

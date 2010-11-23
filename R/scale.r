@@ -13,7 +13,7 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
   ifelse(!is.na(x), pal, na.value)
 }
 
-#' Continuous scale
+#' Continuous scale.
 #'
 #' @param x vector of continuous values to scale
 #' @param palette palette to use
@@ -84,7 +84,7 @@ map_discrete <- function(palette, x, limits, na.value = NA) {
   ifelse(!is.na(x), pal, na.value)
 }
 
-#' Discrete scale
+#' Discrete scale.
 #'
 #' @param x vector of discrete values to scale
 #' @param palette aesthetic palette to use

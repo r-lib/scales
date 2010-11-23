@@ -1,10 +1,10 @@
 \name{dichromat_pal}
 \alias{dichromat_pal}
-\title{Dichromat (colour-blind) palette (discrete)...}
+\title{Dichromat (colour-blind) palette (discrete).}
 \usage{dichromat_pal(name)}
 
 \description{
-  Dichromat (colour-blind) palette (discrete)
+  Dichromat (colour-blind) palette (discrete).
 }
 \arguments{
   \item{name}{Name of colour palette.}
