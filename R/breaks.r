@@ -9,18 +9,7 @@ pretty_breaks <- function(n = 5, ...) {
   function(x) pretty(x, n, ...)
 }
 
-#' Pretty breaks on log scale.
-#' Create ticks at evenly spaced powers of ten.
-#'
-#' @export
-log_breaks <- function() {
-  function(x) {
-    rng <- range(log10(x))
-    10 ^ seq(floor(rng[1]), ceiling(rng[2]), by = 1)
-  }
-}
-
-#' Find breaks on integers.
+#' Breaks on integers
 #' 
 #' @param n desired number of breaks
 #' @export

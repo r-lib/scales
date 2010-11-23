@@ -13,7 +13,14 @@
 #   unique(unlist(mapply(.$seq, b[-length(b)], b[-1], length=n+1, SIMPLIFY=F)))
 # }
 
-#' Create a new transformation function.
+#' Create a new transformation object.
+#'
+#' A transformation encapsulates a transformation and its inverse, as well
+#' as the information needed to create pleasing breaks and labels. The breaks
+#' function is applied on the transformed range of the range, and it's
+#' expected that the labels function will perform some kind of inverse
+#' tranformation on these breaks to give them labels that are meaningful on 
+#' the original scale
 #'
 #' @param name transformation name
 #' @param transform function, or name of function, that performs the
@@ -24,7 +31,8 @@
 #'   function is applied on the transformed scale.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated on the transformed scale.
-#' @export
+#' @export new_trans is.trans
+#' @S3method print trans
 new_trans <- function(name, transform, inverse, breaks = pretty_breaks(transform), format = trans_format(inverse)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
