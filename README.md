@@ -6,9 +6,10 @@ One of the most difficult parts of any graphics package is scaling, converting f
 
 The `scales` package is made up of the following interdependent components
 
-* Palettes, or pal for short, describe the useful palettes of aesthetics.
+* Palettes, __pal__ for short, describe the useful palettes of aesthetics.
 
-* Transformations describes common scale transformations, and their inverses
+* Transformations, __trans__ for short, describe common scale transformations,
+  their inverses, and ways of generating breaks and labels.
 
 * Bounds: various ways of rescaling the data
 
