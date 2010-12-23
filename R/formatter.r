@@ -4,14 +4,14 @@
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
+#' @aliases comma_format comma
 comma_format <- function(...) {
   function(x) {
     comma(x, ...)
   }
 }
-
 comma <- function(x, ...) {
-  format(x, big.mark = ",", trim = TRUE, scientific = FALSE, ...)    
+  comma_format(...)(x)
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
@@ -19,6 +19,7 @@ comma <- function(x, ...) {
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
+#' @aliases dollar_format dollar
 dollar_format <- function() {
   function(x) {
     x <- round_any(x, 0.01)
@@ -26,29 +27,35 @@ dollar_format <- function() {
     str_c("$", comma(x, nsmall = nsmall))    
   }
 }
+dollar <- dollar_format()
+
 
 #' Percent formatter: multiply by one hundred and display percent sign.
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
+#' @aliases percent_format percent
 percent_format <- function() {
   function(x) {
     x <- round_any(x, precision(x) / 100)
     str_c(comma(x * 100), "%")    
   }
 }
+percent <- percent_format()
 
 #' Scientific formatter.
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
+#' @aliases scientific_format scientific
 scientific_format <- function() {
   function(x) {
     format(x, trim = TRUE)    
   }
 }
+scientific <- scientific_format()
 
 #' Parse a text label to produce expressions for plotmath.
 #' 

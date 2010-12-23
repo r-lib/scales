@@ -1,5 +1,4 @@
 \name{percent_format}
-\alias{percent_format}
 \title{Percent formatter: multiply by one hundred and display percent sign.}
 
 \description{
@@ -8,3 +7,5 @@
 }
 \value{a function with single paramater x, a numeric vector, that
 returns a character vector}
+\alias{percent_format}
+\alias{percent}
