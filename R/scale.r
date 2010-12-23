@@ -9,8 +9,12 @@ train_continuous <- function(new, existing = NULL) {
   range(existing, new, na.rm = TRUE, finite = TRUE)
 }
 
-map_continuous <- function(palette, x, limits, na.value = NA) {
-  x <- rescale(x, from = limits)
+#' Map values for a continuous palette.
+#' 
+#' @param oob out of bounds behaviour. Defaults to \code{\link{censor}}
+#'   which turns oob values into missing values.
+map_continuous <- function(palette, x, limits, na.value = NA, oob = censor) {
+  x <- oob(rescale(x, from = limits))
   pal <- palette(x)
   ifelse(!is.na(x), pal, na.value)
 }
