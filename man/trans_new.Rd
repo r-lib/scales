@@ -1,5 +1,4 @@
 \name{trans_new}
-\alias{trans_new}
 \title{Create a new transformation object.}
 \usage{trans_new(name, transform, inverse,
     breaks=pretty_breaks(transform),
@@ -19,6 +18,8 @@
   labels that are meaningful on the original scale.
 }
 \seealso{\Sexpr[results=rd]{scales:::seealso_trans()}}
+\alias{trans_new}
+\alias{trans}
 \arguments{
   \item{name}{transformation name}
   \item{transform}{function, or name of function, that performs the}
