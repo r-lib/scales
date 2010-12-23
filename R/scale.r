@@ -1,6 +1,8 @@
 # Continuous scales ----------------------------------------------------------
 
 train_continuous <- function(new, existing = NULL) {
+  if (is.null(new)) return(existing)
+  
   if (!is.numeric(new)) {
     stop("Discrete value supplied to continuous scale",  call. = FALSE)
   }
@@ -46,6 +48,8 @@ cscale <- function(x, palette, na.value = NA, trans = identity_trans()) {
 # Discrete scales ------------------------------------------------------------
 
 train_discrete <- function(new, existing = NULL) {
+  if (is.null(new)) return(existing)
+
   if (!is.discrete(new)) {
     stop("Continuous value supplied to discrete scale", call. = FALSE) 
   }
