@@ -16,17 +16,18 @@ map_continuous <- function(palette, x, limits, na.value = NA) {
 #' Continuous scale.
 #'
 #' @param x vector of continuous values to scale
-#' @param palette palette to use
+#' @param palette palette to use. 
+#' 
+#'   Built in palettes:
+#'   \Sexpr[results=rd]{scales:::seealso_pal()}
 #' @param na.value value to use for missing values
 #' @param trans transformation object describing the how to transform the
 #'  raw data prior to scaling.  Defaults to the identity transformation which
-#'  leaves the data unchanged.
-#' @export
-#' @seealso Transformations included in package:
+#'  leaves the data unchanged. 
+#'  
+#'  Built in transformations:
 #'  \Sexpr[results=rd]{scales:::seealso_trans()}.
-#'   
-#'   Palettes included in package:
-#'  \Sexpr[results=rd]{scales:::seealso_pal()}
+#' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal(), 
