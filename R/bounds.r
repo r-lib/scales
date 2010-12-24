@@ -36,6 +36,15 @@ censor <- function(x, range = c(0, 1)) {
   ifelse(x >= range[1] & x <= range[2], x, NA)
 }
 
+#' Discard any values outside of range.
+#'
+#' @export
+#' @param x numeric vector of values to manipulate.
+#' @param range numeric vector of length two giving desired output range.
+discard <- function(x, range = c(0, 1)) {
+  x[x >= range[1] & x <= range[2]]
+}
+
 #' Clip values to range.
 #'
 #' @author Homer Strong <homer.strong@@gmail.com>

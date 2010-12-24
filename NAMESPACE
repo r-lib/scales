@@ -1,6 +1,7 @@
 export(rescale)
 export(rescale_mid)
 export(censor)
+export(discard)
 export(clip)
 export(clip_infinite)
 export(expand_range)
