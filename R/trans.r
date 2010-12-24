@@ -47,6 +47,17 @@ trans_new <- function(name, transform, inverse, breaks = pretty_breaks(transform
 is.trans <- function(x) inherits(x, "trans")
 print.trans <- function(x, ...) cat("Transformer: ", x$name)
 
+#' Convert character string to transformer.
+#'
+#' @param x name of transformer
+#' @export
+as.trans <- function(x) {
+  if (is.trans(x)) return(x)
+  
+  f <- str_c(x, "_trans")
+  match.fun(f)()
+}
+
 #' Arc-sin square root transformation.
 #'
 #' @export
