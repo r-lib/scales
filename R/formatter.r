@@ -50,9 +50,9 @@ percent <- percent_format()
 #'   returns a character vector
 #' @export
 #' @aliases scientific_format scientific
-scientific_format <- function() {
+scientific_format <- function(digits = 3) {
   function(x) {
-    format(x, trim = TRUE)    
+    format(x, trim = TRUE, digits = 3)
   }
 }
 scientific <- scientific_format()
@@ -103,7 +103,7 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 #' @examples
 #' tf <- trans_format("log10", scientific_format())
 #' tf(10 ^ 1:6)
-trans_format <- function(trans, format = force) {
+trans_format <- function(trans, format = scientific_format()) {
   if (is.character(trans)) trans <- match.fun(trans)
   
   function(x) {

@@ -1,7 +1,7 @@
 \name{trans_format}
 \alias{trans_format}
 \title{Format labels after transformation.}
-\usage{trans_format(trans, format=force)}
+\usage{trans_format(trans, format=scientific_format())}
 
 \description{
   Format labels after transformation.

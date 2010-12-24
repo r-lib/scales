@@ -1,5 +1,6 @@
 \name{scientific_format}
 \title{Scientific formatter.}
+\usage{scientific_format(digits=3)}
 
 \description{
   Scientific formatter.

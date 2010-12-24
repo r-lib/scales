@@ -35,7 +35,7 @@
 #' @export trans_new is.trans
 #' @aliases trans_new trans
 #' @S3method print trans
-trans_new <- function(name, transform, inverse, breaks = pretty_breaks(transform), format = trans_format(inverse)) {
+trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = trans_format(inverse)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   
