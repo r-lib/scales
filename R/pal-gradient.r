@@ -17,8 +17,17 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
       x <- f(x)
     }
     
-    rgb(ramp(x), max = 255)
+    nice_rgb(ramp(x))
   }
+}
+
+nice_rgb <- function(x) {
+  missing <- !complete.cases(x)
+  x[missing, ] <- 0
+
+  col <- rgb(x, maxColorValue = 255)
+  col[missing] <- NA
+  col
 }
 
 #' Diverging colour gradient (continous).
