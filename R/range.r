@@ -7,7 +7,7 @@ Range <- setRefClass("Range", fields = "range", methods = list(
 DiscreteRange <- setRefClass(
   "DiscreteRange", contains = "Range", 
   methods = list(
-    train = function(x) range <<- train_discrete(x, range)
+    train = function(x, drop) range <<- train_discrete(x, range, drop)
   )
 )
 

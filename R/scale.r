@@ -51,13 +51,13 @@ cscale <- function(x, palette, na.value = NA, trans = identity_trans()) {
 
 # Discrete scales ------------------------------------------------------------
 
-train_discrete <- function(new, existing = NULL) {
+train_discrete <- function(new, existing = NULL, drop = FALSE) {
   if (is.null(new)) return(existing)
 
   if (!is.discrete(new)) {
     stop("Continuous value supplied to discrete scale", call. = FALSE) 
   }
-  discrete_range(existing, new)
+  discrete_range(existing, new, drop = drop)
 }
 
 discrete_range <- function(..., drop = FALSE) {
