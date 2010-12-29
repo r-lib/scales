@@ -13,16 +13,19 @@ pretty_breaks <- function(n = 5, ...) {
 #' 
 #' @param n desired number of breaks
 #' @export
-integer_breaks <- function(n = 5) {
+#' @examples
+#' log_breaks()(c(1, 1e6))
+#' log_breaks()(c(1, 1e5))
+log_breaks <- function(n = 5, base = 10) {
   function(x) {
-    rng <- range(x, na.rm = TRUE)
+    rng <- log(range(x, na.rm = TRUE), base = base)
     min <- floor(rng[1])
     max <- ceiling(rng[2])
     
-    if (max == min) return(min)
+    if (max == min) return(base ^ min)
 
-    by <- floor((max - min) / n)  + 1
-    seq(min, max, by = by)
+    by <- floor((max - min) / n) + 1
+    base ^ seq(min, max, by = by)
   }
 }
 
@@ -31,19 +34,21 @@ integer_breaks <- function(n = 5) {
 #' 
 #' @param trans function of single variable, \code{x}, that given a numeric
 #'   vector returns the transformed values
+#' @param inv inverse of the transformation function
 #' @param n desired number of ticks
 #' @param ... other arguments passed on to pretty
 #' @export
 #' @examples
-#' trans_breaks("log10")(c(1, 1e6))
-#' trans_breaks("sqrt")(c(1, 100))
-#' trans_breaks(function(x) 1 / x)(c(1, 100))
-#' trans_breaks(function(x) -x)(c(1, 100))
-trans_breaks <- function(trans, n = 5, ...) {
+#' trans_breaks("log10", function(x) 10 ^ x)(c(1, 1e6))
+#' trans_breaks("sqrt", function(x) x ^ 2)(c(1, 100))
+#' trans_breaks(function(x) 1 / x, function(x) 1 / x)(c(1, 100))
+#' trans_breaks(function(x) -x, function(x) -x)(c(1, 100))
+trans_breaks <- function(trans, inv, n = 5, ...) {
   trans <- match.fun(trans)
+  inv <- match.fun(inv)
   
   function(x) {
-    pretty(trans(x), n, ...)
+    inv(pretty(trans(x), n, ...))
   }
 }
 

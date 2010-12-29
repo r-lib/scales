@@ -1,7 +1,7 @@
 \name{trans_new}
 \title{Create a new transformation object.}
 \usage{trans_new(name, transform, inverse, breaks=pretty_breaks(),
-    format=trans_format(inverse))}
+    format=scientific_format())}
 
 \description{
   Create a new transformation object.
@@ -24,7 +24,7 @@
   \item{transform}{function, or name of function, that performs the}
   \item{inverse}{function, or name of function, that performs the}
   \item{breaks}{default breaks function for this transformation. The breaks
-function is applied on the transformed scale.}
+function is applied to the raw data.}
   \item{format}{default format for this transformation. The format is applied
-to breaks generated on the transformed scale.}
+to breaks generated to the raw data.}
 }

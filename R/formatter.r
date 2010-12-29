@@ -112,6 +112,16 @@ trans_format <- function(trans, format = scientific_format()) {
   }
 }
 
+#' Format with using any arguments to \code{\link{format}}.
+#'
+#' @param ... other arguments passed on to \code{\link{format}}.
+#' @seealso \code{\link{format}}, \code{\link{format.Date}},
+#'   \code{\link{format.POSIXct}}
+#' @export
+format_format <- function(...) {
+  function(x) format(x, ...)
+}
+
 precision <- function(x) {
   10 ^ floor(log10(diff(range(x, na.rm = TRUE))))
 }

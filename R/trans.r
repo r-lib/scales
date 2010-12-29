@@ -28,14 +28,14 @@
 #' @param inverse function, or name of function, that performs the
 #    inverse of the transformation
 #' @param breaks default breaks function for this transformation. The breaks
-#'   function is applied on the transformed scale.
+#'   function is applied to the raw data.
 #' @param format default format for this transformation. The format is applied
-#'   to breaks generated on the transformed scale.
+#'   to breaks generated to the raw data.
 #' @seealso \Sexpr[results=rd]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans
 #' @S3method print trans
-trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = trans_format(inverse)) {
+trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = scientific_format()) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   
@@ -83,12 +83,11 @@ atanh_trans <- function() {
 #' @export
 boxcox_trans <- function(p) {
   if (abs(p) < 1e-07) return(log_trans)
+
   trans <- function(x) (x ^ p - 1) / p * sign(x - 1)
-  inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)
-  
+  inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)  
   trans_new(
-    str_c("pow-", format(p)), trans, inv,
-    trans_breaks(inv), scientific_format())
+    str_c("pow-", format(p)), trans, inv)
 }
 
 #' Exponential transformation (inverse of log transformation).
@@ -106,8 +105,7 @@ exp_trans <- function(base = exp(1)) {
 #'
 #' @export
 identity_trans <- function() {
-  trans_new("identity", "force", "force",
-    pretty_breaks(), scientific_format())
+  trans_new("identity", "force", "force")
 }
 
 
@@ -121,7 +119,7 @@ log_trans <- function(base = exp(1)) {
   inv <- function(x) base ^ x
   
   trans_new(str_c("log-", format(base)), trans, inv, 
-    integer_breaks(), trans_format(inv, scientific_format()))
+    log_breaks(base = base))
 }
 log10_trans <- function() {
   log_trans(10)
@@ -130,7 +128,7 @@ log2_trans <- function() {
   log_trans(2)
 }
 
-#' Log plus one transformation
+#' Log plus one transformation.
 #'
 #' @export
 log1p_trans <- function() {
@@ -173,9 +171,9 @@ reverse_trans <- function() {
   trans_new("reverse", function(x) -x, function(x) -x)
 }
 
-#' Square-root transformation (special case of Box-Cox).
+#' Square-root transformation.
 #'
 #' @export
 sqrt_trans <- function() {
-  boxcox_trans(2)
+  trans_new("sqrt", "sqrt", function(x) x ^ 2)
 }
