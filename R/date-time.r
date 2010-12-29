@@ -1,3 +1,7 @@
+# Minimal date time code so no external dependencies needed, and 
+# we can do the date operations we need.  Need to look at this again once we
+# switch to S4 for lubridate.
+
 floor_date <- function(date, time) {
   prec <- parse_unit_spec(time)
   if (prec$unit == "day") {

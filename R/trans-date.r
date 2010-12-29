@@ -8,12 +8,14 @@
 #' t$inv(t$trans(years))
 #' t$format(t$breaks(range(years)))
 date_trans <- function() {
-  trans_new(
-    "date", 
-    "as.numeric", 
-    function(x) structure(x, class = "Date"),
-    pretty_breaks(),
-    attr_format())
+  trans_new("date", "from_date", "to_date", pretty_breaks(), attr_format())
+}
+
+to_date <- function(x) {
+  structure(x, class = c("Date"), labels = attr(x, "labels"))
+}
+from_date <- function(x) {
+  structure(as.numeric(x), labels = attr(x, "labels"))
 }
 
 #' Transformation for times (class POSIXt).
@@ -26,12 +28,14 @@ date_trans <- function() {
 #' t$inv(t$trans(hours))
 #' t$format(t$breaks(range(hours)))
 time_trans <- function() {
-  trans_new(
-    "time",
-    "as.numeric",
-    function(x) structure(x, class = c("POSIXt", "POSIXct")),
-    pretty_breaks(),
-    attr_format())
+  trans_new("time", "from_time", "to_time", pretty_breaks(), attr_format())
+}
+
+to_time <- function(x) {
+  structure(x, class = c("POSIXt", "POSIXct"), labels = attr(x, "labels"))
+}
+from_time <- function(x) {
+  structure(as.numeric(x), labels = attr(x, "labels"))
 }
 
 #' Format with labels attribute, if present.
