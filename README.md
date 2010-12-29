@@ -17,9 +17,9 @@ The `scales` package is made up of the following interdependent components
   transformations to provide a complete pathway from raw data to perceptual
   properties
 
-* Mutable scale objects: in many graphics pathways, scale ranges can not be
+* Mutable ranges: in many graphics pathways, scale ranges can not be
   computed in a single pass, but must be computed over multiple groups or
-  multiple panels. The mutable scale objects (implemented with R's new
+  multiple panels. The mutable ranges (implemented with R's new
   reference based class) provide a thin layer of mutability to make this task
   easier.
 
