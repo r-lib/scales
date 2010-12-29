@@ -42,7 +42,7 @@ from_time <- function(x) {
 #'
 #' This is currently only useful in conjuction with
 #' \code{\link{pretty_breaks}} applied to date/time data, because 
-#' \code{\link{pretty.breaks}} returns both the position of the breaks and 
+#' \code{\link{pretty.Date}} returns both the position of the breaks and 
 #' their labels as an attribute.
 #'
 #' If labels are missing, the breaks are formatted with \code{\link{format}}.
@@ -50,8 +50,7 @@ from_time <- function(x) {
 #' @export
 attr_format <- function() {
   function(x) {
-    labels <- attr(x, "labels")
-    if (!is.null(labels)) labels else format(x)
+    attr(x, "labels") %||% format(x)
   }
 }
 
@@ -62,6 +61,6 @@ attr_format <- function() {
 #'   followed by "s". 
 #' @export
 date_breaks <- function(width = "1 month") {
-  function(x) fullseq_date(x, width)
+  function(x) fullseq(x, width)
 }
 

@@ -91,7 +91,7 @@ squish_infinite <- function(x, range = c(0, 1)) {
 #' @param range range of data, numeric vector of length 2
 #' @param mul multiplicative constract
 #' @param add additive constant
-#' @param distance to use if range has zero width
+#' @param zero_width distance to use if range has zero width
 #' @export
 expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   if (is.null(range)) return()

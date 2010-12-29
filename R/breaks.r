@@ -14,6 +14,7 @@ pretty_breaks <- function(n = 5, ...) {
 #' Log breaks (integer breaks on log-transformed scales).
 #' 
 #' @param n desired number of breaks
+#' @param base base of logarithm to use
 #' @export
 #' @examples
 #' log_breaks()(c(1, 1e6))

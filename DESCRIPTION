@@ -13,7 +13,7 @@ License: MIT
 LazyLoad: yes
 Collate: 'bounds.r' 'breaks.r' 'colour-manip.r'
     'date-time.r' 'documentation.r' 'formatter.r'
-    'full-seq.r' 'limits.r' 'pal-area.r' 'pal-brewer.r'
+    'full-seq.r' 'pal-area.r' 'pal-brewer.r'
     'pal-dichromat.r' 'pal-gradient.r' 'pal-grey.r'
     'pal-hue.r' 'pal-identity.r' 'pal-linetype.r'
     'pal-manual.r' 'pal-rescale.r' 'pal-shape.r' 'range.r'

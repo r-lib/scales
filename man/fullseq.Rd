@@ -7,7 +7,7 @@
   Generate sequence of fixed size intervals covering range.
 }
 \keyword{internal}
-\seealso{\code{\link{plyr}{round_any}}}
+\seealso{\code{\link[plyr]{round_any}}}
 \arguments{
   \item{range}{range}
   \item{size}{interval size}

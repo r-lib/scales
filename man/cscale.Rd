@@ -20,8 +20,8 @@ leaves the data unchanged.
 Built in transformations:
 \Sexpr[results=rd]{scales:::seealso_trans()}.}
 }
-\examples{with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
-with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal(), 
+\examples{with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
+with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(), 
 trans = sqrt_trans())))
 with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 

@@ -3,7 +3,7 @@
 #' @param ... other arguments passed on to \code{\link{formatC}}
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export
+#' @export comma_format comma
 #' @aliases comma_format comma
 #' @examples
 #' comma_format()(c(1, 1e3, 2000, 1e6))
@@ -20,7 +20,7 @@ comma <- function(x, ...) {
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export
+#' @export dollar_format dollar
 #' @aliases dollar_format dollar
 #' @examples
 #' dollar_format()(c(100, 0.23, 1.456565, 2e3))
@@ -40,7 +40,7 @@ dollar <- dollar_format()
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export
+#' @export percent_format percent
 #' @aliases percent_format percent
 #' @examples
 #' percent_format()(runif(10))
@@ -60,7 +60,7 @@ percent <- percent_format()
 #'   returns a character vector
 #' @param digits number of significant digits to show
 #' @param ... other arguments passed on to \code{\link{format}}
-#' @export
+#' @export scientific_format scientific
 #' @aliases scientific_format scientific
 #' @examples
 #' scientific_format()(1:10)

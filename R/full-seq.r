@@ -7,7 +7,7 @@
 #' @export
 #' @S3method fullseq Date
 #' @S3method fullseq POSIXt
-#' @seealso \code{\link{plyr}{round_any}}
+#' @seealso \code{\link[plyr]{round_any}}
 fullseq <- function(range, size, ...) UseMethod("fullseq")
 
 fullseq.numeric <- function(range, size, ..., pad = FALSE) {

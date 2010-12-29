@@ -8,6 +8,7 @@
 }
 \arguments{
   \item{n}{desired number of breaks}
+  \item{base}{base of logarithm to use}
 }
 \examples{log_breaks()(c(1, 1e6))
 log_breaks()(c(1, 1e5))}

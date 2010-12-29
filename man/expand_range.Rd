@@ -11,5 +11,5 @@
   \item{range}{range of data, numeric vector of length 2}
   \item{mul}{multiplicative constract}
   \item{add}{additive constant}
-  \item{distance}{to use if range has zero width}
+  \item{zero_width}{distance to use if range has zero width}
 }

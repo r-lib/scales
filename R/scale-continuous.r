@@ -14,8 +14,8 @@
 #'  \Sexpr[results=rd]{scales:::seealso_trans()}.
 #' @export
 #' @examples
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal())))
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, size_pal(), 
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(), 
 #'   trans = sqrt_trans())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 
@@ -37,10 +37,10 @@ train_continuous <- function(new, existing = NULL) {
   range(existing, new, na.rm = TRUE, finite = TRUE)
 }
 
-#' Map values for a continuous palette.
-#' 
-#' @param oob out of bounds behaviour. Defaults to \code{\link{censor}}
-#'   which turns oob values into missing values.
+# Map values for a continuous palette.
+# 
+# @param oob out of bounds behaviour. Defaults to \code{\link{censor}}
+#   which turns oob values into missing values.
 map_continuous <- function(palette, x, limits, na.value = NA, oob = censor) {
   x <- oob(rescale(x, from = limits))
   pal <- palette(x)

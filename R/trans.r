@@ -18,7 +18,7 @@
 #'   to breaks generated to the raw data.
 #' @seealso \Sexpr[results=rd]{scales:::seealso_trans()}
 #' @export trans_new is.trans
-#' @aliases trans_new trans
+#' @aliases trans_new trans is.trans
 #' @S3method print trans
 trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = scientific_format()) {
   if (is.character(transform)) transform <- match.fun(transform)

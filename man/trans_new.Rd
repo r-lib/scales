@@ -19,6 +19,7 @@
 \seealso{\Sexpr[results=rd]{scales:::seealso_trans()}}
 \alias{trans_new}
 \alias{trans}
+\alias{is.trans}
 \arguments{
   \item{name}{transformation name}
   \item{transform}{function, or name of function, that performs the}
