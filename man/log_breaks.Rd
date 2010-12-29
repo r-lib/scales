@@ -1,10 +1,10 @@
 \name{log_breaks}
 \alias{log_breaks}
-\title{Breaks on integers.}
+\title{Log breaks (integer breaks on log-transformed scales).}
 \usage{log_breaks(n=5, base=10)}
 
 \description{
-  Breaks on integers.
+  Log breaks (integer breaks on log-transformed scales).
 }
 \arguments{
   \item{n}{desired number of breaks}

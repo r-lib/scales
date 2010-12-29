@@ -14,3 +14,6 @@
   \item{from}{input range (numeric vector of length two).  If not given, is
 calculated from the range of \code{x}}
 }
+\examples{rescale(1:100)
+rescale(runif(50))
+rescale(1)}

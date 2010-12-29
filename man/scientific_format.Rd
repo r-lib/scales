@@ -1,6 +1,6 @@
 \name{scientific_format}
 \title{Scientific formatter.}
-\usage{scientific_format(digits=3)}
+\usage{scientific_format(digits=3, ...)}
 
 \description{
   Scientific formatter.
@@ -9,3 +9,13 @@
 returns a character vector}
 \alias{scientific_format}
 \alias{scientific}
+\arguments{
+  \item{digits}{number of significant digits to show}
+  \item{...}{other arguments passed on to \code{\link{format}}}
+}
+\examples{scientific_format()(1:10)
+scientific_format()(runif(10))
+scientific_format(digits = 2)(runif(10))
+scientific(1:10)
+scientific(runif(10))
+scientific(runif(10), digits = 2)}

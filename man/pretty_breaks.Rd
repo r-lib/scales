@@ -5,9 +5,11 @@
 
 \description{
   Pretty breaks. Uses default R break algorithm as
-  implemented in \code{\link{pretty}}
+  implemented in \code{\link{pretty}}.
 }
 \arguments{
   \item{n}{desired number of breaks}
   \item{...}{other arguments passed on to \code{\link{pretty}}}
 }
+\examples{pretty_breaks()(1:10)
+pretty_breaks()(1:100)}

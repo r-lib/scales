@@ -16,3 +16,7 @@ returns a list of expressions}
 transformation - this makes it easier to use floating point numbers in
 mathematical expressions.}
 }
+\examples{math_format()(1:10)
+math_format(alpha + frac(1, .x))(1:10)
+math_format()(runif(10))
+math_format(format = percent)(runif(10))}

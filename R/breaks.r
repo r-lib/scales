@@ -1,15 +1,17 @@
-
 #' Pretty breaks.
-#' Uses default R break algorithm as implemented in \code{\link{pretty}}
+#' Uses default R break algorithm as implemented in \code{\link{pretty}}.
 #'
 #' @param n desired number of breaks
 #' @param ... other arguments passed on to \code{\link{pretty}}
 #' @export
+#' @examples
+#' pretty_breaks()(1:10)
+#' pretty_breaks()(1:100)
 pretty_breaks <- function(n = 5, ...) {
   function(x) pretty(x, n, ...)
 }
 
-#' Breaks on integers.
+#' Log breaks (integer breaks on log-transformed scales).
 #' 
 #' @param n desired number of breaks
 #' @export
@@ -29,7 +31,8 @@ log_breaks <- function(n = 5, base = 10) {
   }
 }
 
-#' Evenly spaced breaks on transformed scale.
+#' Pretty breaks on transformed scale.
+#'
 #' These often do not produce very attractive breaks.
 #' 
 #' @param trans function of single variable, \code{x}, that given a numeric

@@ -1,11 +1,14 @@
 \name{trans_breaks}
 \alias{trans_breaks}
-\title{Evenly spaced breaks on transformed scale.}
+\title{Pretty breaks on transformed scale.}
 \usage{trans_breaks(trans, inv, n=5, ...)}
 
 \description{
-  Evenly spaced breaks on transformed scale. These often do
-  not produce very attractive breaks.
+  Pretty breaks on transformed scale.
+}
+
+\details{
+  These often do not produce very attractive breaks.
 }
 \arguments{
   \item{trans}{function of single variable, \code{x}, that given a numeric

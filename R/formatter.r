@@ -1,17 +1,19 @@
 #' Comma formatter: format number with commas separating thousands.
 #' 
-#' @param ... other arguments passed on to \code{\link{format}}
+#' @param ... other arguments passed on to \code{\link{formatC}}
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
 #' @aliases comma_format comma
+#' @examples
+#' comma_format()(c(1, 1e3, 2000, 1e6))
+#' comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
+#' comma(c(1, 1e3, 2000, 1e6))
 comma_format <- function(...) {
-  function(x) {
-    comma(x, ...)
-  }
+  function(x) comma(x, ...)
 }
 comma <- function(x, ...) {
-  comma_format(...)(x)
+  str_trim(formatC(x, ..., big.mark = ","))
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
@@ -20,15 +22,19 @@ comma <- function(x, ...) {
 #'   returns a character vector
 #' @export
 #' @aliases dollar_format dollar
+#' @examples
+#' dollar_format()(c(100, 0.23, 1.456565, 2e3))
+#' dollar_format()(c(1:10 * 10))
+#' dollar(c(100, 0.23, 1.456565, 2e3))
+#' dollar(c(1:10 * 10))
 dollar_format <- function() {
   function(x) {
     x <- round_any(x, 0.01)
     nsmall <- if (max(x) < 100) 2 else 0
-    str_c("$", comma(x, nsmall = nsmall))    
+    str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ","))    
   }
 }
 dollar <- dollar_format()
-
 
 #' Percent formatter: multiply by one hundred and display percent sign.
 #' 
@@ -36,6 +42,10 @@ dollar <- dollar_format()
 #'   returns a character vector
 #' @export
 #' @aliases percent_format percent
+#' @examples
+#' percent_format()(runif(10))
+#' percent(runif(10))
+#' percent(runif(10, 1, 10))
 percent_format <- function() {
   function(x) {
     x <- round_any(x, precision(x) / 100)
@@ -48,14 +58,23 @@ percent <- percent_format()
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
+#' @param digits number of significant digits to show
+#' @param ... other arguments passed on to \code{\link{format}}
 #' @export
 #' @aliases scientific_format scientific
-scientific_format <- function(digits = 3) {
-  function(x) {
-    format(x, trim = TRUE, digits = 3)
-  }
+#' @examples
+#' scientific_format()(1:10)
+#' scientific_format()(runif(10))
+#' scientific_format(digits = 2)(runif(10))
+#' scientific(1:10)
+#' scientific(runif(10))
+#' scientific(runif(10), digits = 2)
+scientific_format <- function(digits = 3, ...) {
+  function(x) scientific(x, digits, ...)
 }
-scientific <- scientific_format()
+scientific <- function(x, digits = 3, ...) {
+  format(x, trim = TRUE, digits = digits, ...)
+}
 
 #' Parse a text label to produce expressions for plotmath.
 #' 
@@ -64,6 +83,8 @@ scientific <- scientific_format()
 #'    returns a list of expressions
 #' @export
 #' @param x character vector to format
+#' @examples
+#' parse_format()(c("alpha", "beta", "gamma"))
 parse_format <- function() {
   function(x) {
     llply(as.character(x), function(x) parse(text = x, srcfile = NULL))    
@@ -81,6 +102,11 @@ parse_format <- function() {
 #'    returns a list of expressions
 #' @export
 #' @seealso \code{\link{plotmath}}
+#' @examples
+#' math_format()(1:10)
+#' math_format(alpha + frac(1, .x))(1:10)
+#' math_format()(runif(10))
+#' math_format(format = percent)(runif(10))
 math_format <- function(expr = 10 ^ .x, format = force) {
   quoted <- substitute(expr)
   subs <- function(x) {

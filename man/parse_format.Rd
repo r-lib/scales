@@ -11,3 +11,4 @@ returns a list of expressions}
 \arguments{
   \item{x}{character vector to format}
 }
+\examples{parse_format()(c("alpha", "beta", "gamma"))}

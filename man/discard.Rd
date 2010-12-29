@@ -10,3 +10,4 @@
   \item{x}{numeric vector of values to manipulate.}
   \item{range}{numeric vector of length two giving desired output range.}
 }
+\examples{discard(c(-1, 0.5, 1, 2, NA))}

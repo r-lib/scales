@@ -9,3 +9,6 @@
 returns a character vector}
 \alias{percent_format}
 \alias{percent}
+\examples{percent_format()(runif(10))
+percent(runif(10))
+percent(runif(10, 1, 10))}

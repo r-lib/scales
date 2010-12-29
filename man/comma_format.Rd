@@ -11,5 +11,8 @@ returns a character vector}
 \alias{comma_format}
 \alias{comma}
 \arguments{
-  \item{...}{other arguments passed on to \code{\link{format}}}
+  \item{...}{other arguments passed on to \code{\link{formatC}}}
 }
+\examples{comma_format()(c(1, 1e3, 2000, 1e6))
+comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
+comma(c(1, 1e3, 2000, 1e6))}

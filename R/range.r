@@ -1,3 +1,7 @@
+#' Mutable ranges.
+#' 
+#' @aliases Range DiscreteRange ContinuousRange
+#' @export Range DiscreteRange ContinuousRange
 Range <- setRefClass("Range", fields = "range", methods = list(
   initialize = function() {
     initFields(range = NULL)
