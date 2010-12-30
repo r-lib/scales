@@ -1,7 +1,7 @@
 \name{trans_new}
 \title{Create a new transformation object.}
 \usage{trans_new(name, transform, inverse, breaks=pretty_breaks(),
-    format=scientific_format())}
+    format=format_format())}
 
 \description{
   Create a new transformation object.

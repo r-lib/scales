@@ -140,12 +140,18 @@ trans_format <- function(trans, format = scientific_format()) {
 
 #' Format with using any arguments to \code{\link{format}}.
 #'
+#' If the breaks have names, they will be used in preference to formatting
+#' the breaks.
+#'
 #' @param ... other arguments passed on to \code{\link{format}}.
 #' @seealso \code{\link{format}}, \code{\link{format.Date}},
 #'   \code{\link{format.POSIXct}}
 #' @export
 format_format <- function(...) {
-  function(x) format(x, ...)
+  function(x) {
+    if (!is.null(names(x))) return(names(x))
+    format(x, ...)
+  }
 }
 
 precision <- function(x) {

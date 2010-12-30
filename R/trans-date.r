@@ -8,15 +8,11 @@
 #' t$inv(t$trans(years))
 #' t$format(t$breaks(range(years)))
 date_trans <- function() {
-  trans_new("date", "from_date", "to_date", pretty_breaks(), attr_format())
+  trans_new("date", "from_date", "to_date")
 }
 
-to_date <- function(x) {
-  structure(x, class = c("Date"), labels = attr(x, "labels"))
-}
-from_date <- function(x) {
-  structure(as.numeric(x), labels = attr(x, "labels"))
-}
+to_date <- function(x)   structure(x, class = "Date")
+from_date <- function(x) structure(as.numeric(x), names = names(x))
 
 #' Transformation for times (class POSIXt).
 #'
@@ -28,31 +24,11 @@ from_date <- function(x) {
 #' t$inv(t$trans(hours))
 #' t$format(t$breaks(range(hours)))
 time_trans <- function() {
-  trans_new("time", "from_time", "to_time", pretty_breaks(), attr_format())
+  trans_new("time", "from_time", "to_time")
 }
 
-to_time <- function(x) {
-  structure(x, class = c("POSIXt", "POSIXct"), labels = attr(x, "labels"))
-}
-from_time <- function(x) {
-  structure(as.numeric(x), labels = attr(x, "labels"))
-}
-
-#' Format with labels attribute, if present.
-#'
-#' This is currently only useful in conjuction with
-#' \code{\link{pretty_breaks}} applied to date/time data, because 
-#' \code{\link{pretty.Date}} returns both the position of the breaks and 
-#' their labels as an attribute.
-#'
-#' If labels are missing, the breaks are formatted with \code{\link{format}}.
-#'
-#' @export
-attr_format <- function() {
-  function(x) {
-    attr(x, "labels") %||% format(x)
-  }
-}
+to_time <- function(x)   structure(x, class = c("POSIXt", "POSIXct"))
+from_time <- function(x) structure(as.numeric(x), names = names(x))
 
 #' Regularly spaced dates.
 #' 
