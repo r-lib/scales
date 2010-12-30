@@ -29,8 +29,8 @@ fullseq.numeric <- function(range, size, ..., pad = FALSE) {
 }
 
 fullseq.Date <- function(range, size, ...) {
-  seq(floor_date(range[1], size), ceiling_date(range[2], size), by = time)
+  seq(floor_date(range[1], size), ceiling_date(range[2], size), by = size)
 }
 fullseq.POSIXt <- function(range, size, ...) {
-  seq(floor_time(range[1], size), ceiling_time(range[2], size), by = time)
+  seq(floor_time(range[1], size), ceiling_time(range[2], size), by = size)
 }

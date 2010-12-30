@@ -40,3 +40,12 @@ date_breaks <- function(width = "1 month") {
   function(x) fullseq(x, width)
 }
 
+
+#' Formatted dates.
+#' 
+#' @param format Date format using standard POSIX specification.  See
+#'  \code{\link{strptime}} for possible formats.
+#' @export
+date_format <- function(format = "%Y-%m-%d") {
+  function(x) format(x, format)
+}
