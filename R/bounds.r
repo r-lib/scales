@@ -103,10 +103,12 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   }
 }
 
-# Determine if range of vector is FP 0.
+#' Determine if range of vector is FP 0.
+#' 
+#' @export
+#' @param x numeric range: vector of length 2
 zero_range <- function(x) {
   if (length(x) == 1) return(TRUE)
   x <- x / mean(x)
   isTRUE(all.equal(x[1], x[2]))
 }
-

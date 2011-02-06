@@ -97,6 +97,10 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #'   labels = expression(alpha, beta, gamma))
 cbreaks <- function(range, breaks = pretty_breaks(), labels = scientific_format()) {
   
+  if (zero_range(range)) {
+    return(list(breaks = range[1], labels = format(range[1])))
+  }
+  
   if (is.function(breaks)) {
     breaks <- breaks(range)
 
