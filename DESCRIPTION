@@ -9,6 +9,7 @@ Description:
 Depends: R (>= 2.12), methods
 Imports: RColorBrewer, stringr, dichromat, munsell (>=
     0.2), plyr (>= 1.2), colorspace
+Suggests: testthat
 License: MIT
 LazyLoad: yes
 Collate: 'bounds.r' 'breaks.r' 'colour-manip.r'
