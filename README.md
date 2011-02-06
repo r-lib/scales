@@ -13,7 +13,7 @@ The `scales` package is made up of the following interdependent components
 
 * Bounds: various ways of rescaling the data
 
-* Scaling functions: these pull together palettes, bounding functions and
+* Scaling functions: pull together palettes, bounding functions and
   transformations to provide a complete pathway from raw data to perceptual
   properties
 

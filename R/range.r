@@ -1,7 +1,10 @@
 #' Mutable ranges.
-#' 
-#' @aliases Range DiscreteRange ContinuousRange
-#' @export Range DiscreteRange ContinuousRange
+#'
+#' Mutable ranges have a single method (\code{train}), and make it possible
+#' to build up complete ranges with multiple passes.
+#'
+#' @aliases DiscreteRange ContinuousRange
+#' @export DiscreteRange ContinuousRange
 Range <- setRefClass("Range", fields = "range", methods = list(
   initialize = function() {
     initFields(range = NULL)
