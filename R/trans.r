@@ -54,5 +54,5 @@ as.trans <- function(x) {
 #' @param x a numeric vector to compute the rande of
 trans_range <- function(trans, x) {
   trans <- as.trans(trans)
-  range(trans$trans(range(discard(x, trans$domain), na.rm = TRUE)))
+  range(trans$trans(range(squish(x, trans$domain), na.rm = TRUE)))
 }
