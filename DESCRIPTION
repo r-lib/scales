@@ -14,8 +14,7 @@ Imports:
     RColorBrewer,
     stringr,
     dichromat,
-    munsell (>=
-0.2),
+    munsell (>= 0.2),
     plyr (>= 1.2),
     colorspace
 Suggests:
