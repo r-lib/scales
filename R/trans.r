@@ -52,6 +52,7 @@ as.trans <- function(x) {
 #' @param a transformation object, or the name of a transformation object
 #'   given as a string.
 #' @param x a numeric vector to compute the rande of
+#' @export
 trans_range <- function(trans, x) {
   trans <- as.trans(trans)
   range(trans$trans(range(squish(x, trans$domain), na.rm = TRUE)))
