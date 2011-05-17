@@ -59,7 +59,7 @@ log_trans <- function(base = exp(1)) {
   inv <- function(x) base ^ x
   
   trans_new(str_c("log-", format(base)), trans, inv, 
-    log_breaks(base = base))
+    log_breaks(base = base), domain = c(1e-100, Inf))
 }
 log10_trans <- function() {
   log_trans(10)
@@ -115,5 +115,5 @@ reverse_trans <- function() {
 #'
 #' @export
 sqrt_trans <- function() {
-  trans_new("sqrt", "sqrt", function(x) x ^ 2)
+  trans_new("sqrt", "sqrt", function(x) x ^ 2, domain = c(0, Inf))
 }

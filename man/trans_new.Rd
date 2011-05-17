@@ -1,7 +1,7 @@
 \name{trans_new}
 \title{Create a new transformation object.}
 \usage{trans_new(name, transform, inverse, breaks=pretty_breaks(),
-    format=format_format())}
+    format=format_format(), domain=c(-Inf, Inf))}
 
 \description{
   Create a new transformation object.
@@ -28,4 +28,6 @@
 function is applied to the raw data.}
   \item{format}{default format for this transformation. The format is applied
 to breaks generated to the raw data.}
+  \item{domain}{domain, as numeric vector of length 2, over which 
+transformation is value}
 }

@@ -16,16 +16,18 @@
 #'   function is applied to the raw data.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated to the raw data.
+#' @param domain domain, as numeric vector of length 2, over which 
+#'   transformation is value
 #' @seealso \Sexpr[results=rd]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
 #' @S3method print trans
-trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = format_format()) {
+trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   
   structure(list(name = name, transform = transform, inverse = inverse,
-    breaks = breaks, format = format), 
+    breaks = breaks, format = format, domain = domain), 
     class = "trans")
 }
 
@@ -43,3 +45,14 @@ as.trans <- function(x) {
   match.fun(f)()
 }
 
+#' Compute range of transformed values.
+#'
+#' Silently drops any ranges outside of the domain of \code{trans}.
+#'
+#' @param a transformation object, or the name of a transformation object
+#'   given as a string.
+#' @param x a numeric vector to compute the rande of
+trans_range <- function(trans, x) {
+  trans <- as.trans(trans)
+  trans$trans(range(discard(x, trans$domain), na.rm = TRUE))
+}
