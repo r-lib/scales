@@ -1,5 +1,6 @@
 export(rescale)
 export(rescale_mid)
+export(rescale_none)
 export(censor)
 export(discard)
 export(squish)

@@ -35,6 +35,17 @@ rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0)
   (x - mid) / extent * diff(to) + mean(to)
 }
 
+#' Don't peform rescaling
+#'
+#' @param x numeric vector of values to manipulate.
+#' @param ... all other arguments ignored
+#' @export
+#' @examples
+#' rescale_none(1:100)
+rescale_none <- function(x, ...) {
+  x
+}
+
 #' Censor any values outside of range.
 #'
 #' @export
