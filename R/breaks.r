@@ -34,12 +34,12 @@ log_breaks <- function(n = 5, base = 10) {
     if (max == min) return(base ^ min)
 
     by <- floor((max - min) / n) + 1
+    # If range too small, space evenly in the original data
     if (by == 1) {
-      by <- (rng[2] - rng[1]) / n
+      pretty(base ^ rng, n)
+    } else {
+      base ^ seq(min, max, by = by)            
     }
-    
-    base ^ seq(min, max, by = by)      
-    
   }
 }
 
