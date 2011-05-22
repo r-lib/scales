@@ -12,7 +12,7 @@
   \code{trans}.
 }
 \arguments{
-  \item{a}{transformation object, or the name of a transformation object
+  \item{trans}{a transformation object, or the name of a transformation object
 given as a string.}
   \item{x}{a numeric vector to compute the rande of}
 }

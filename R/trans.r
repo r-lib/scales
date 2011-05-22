@@ -49,7 +49,7 @@ as.trans <- function(x) {
 #'
 #' Silently drops any ranges outside of the domain of \code{trans}.
 #'
-#' @param a transformation object, or the name of a transformation object
+#' @param trans a transformation object, or the name of a transformation object
 #'   given as a string.
 #' @param x a numeric vector to compute the rande of
 #' @export
