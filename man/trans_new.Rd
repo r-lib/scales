@@ -16,7 +16,7 @@
   of inverse tranformation on these breaks to give them
   labels that are meaningful on the original scale.
 }
-\seealso{\Sexpr[results=rd]{scales:::seealso_trans()}}
+\seealso{\Sexpr[results=rd,stage=render]{scales:::seealso_trans()}}
 \alias{trans_new}
 \alias{trans}
 \alias{is.trans}

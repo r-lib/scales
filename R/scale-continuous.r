@@ -4,14 +4,14 @@
 #' @param palette palette to use. 
 #' 
 #'   Built in palettes:
-#'   \Sexpr[results=rd]{scales:::seealso_pal()}
+#'   \Sexpr[results=rd,stage=render]{scales:::seealso_pal()}
 #' @param na.value value to use for missing values
 #' @param trans transformation object describing the how to transform the
 #'  raw data prior to scaling.  Defaults to the identity transformation which
 #'  leaves the data unchanged. 
 #'  
 #'  Built in transformations:
-#'  \Sexpr[results=rd]{scales:::seealso_trans()}.
+#'  \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}.
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
