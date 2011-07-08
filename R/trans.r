@@ -9,15 +9,15 @@
 #'
 #' @param name transformation name
 #' @param transform function, or name of function, that performs the
-#    transformation
+#'   transformation
 #' @param inverse function, or name of function, that performs the
-#    inverse of the transformation
+#'   inverse of the transformation
 #' @param breaks default breaks function for this transformation. The breaks
 #'   function is applied to the raw data.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which 
-#'   transformation is value
+#'   transformation is valued
 #' @seealso \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
