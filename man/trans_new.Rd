@@ -22,12 +22,14 @@
 \alias{is.trans}
 \arguments{
   \item{name}{transformation name}
-  \item{transform}{function, or name of function, that performs the}
-  \item{inverse}{function, or name of function, that performs the}
+  \item{transform}{function, or name of function, that performs the
+transformation}
+  \item{inverse}{function, or name of function, that performs the
+inverse of the transformation}
   \item{breaks}{default breaks function for this transformation. The breaks
 function is applied to the raw data.}
   \item{format}{default format for this transformation. The format is applied
 to breaks generated to the raw data.}
-  \item{domain}{domain, as numeric vector of length 2, over which 
-transformation is value}
+  \item{domain}{domain, as numeric vector of length 2, over which
+transformation is valued}
 }
