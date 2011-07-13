@@ -1,13 +1,33 @@
 \name{trans_new}
+\alias{is.trans}
+\alias{trans}
+\alias{trans_new}
 \title{Create a new transformation object.}
-\usage{trans_new(name, transform, inverse, breaks=pretty_breaks(),
-    format=format_format(), domain=c(-Inf, Inf))}
-
-\description{
-  Create a new transformation object.
+\usage{
+  trans_new(name, transform, inverse, breaks =
+  pretty_breaks(), format = format_format(), domain =
+  c(-Inf, Inf))
 }
+\arguments{
+  \item{name}{transformation name}
 
-\details{
+  \item{transform}{function, or name of function, that
+  performs the}
+
+  \item{inverse}{function, or name of function, that
+  performs the}
+
+  \item{breaks}{default breaks function for this
+  transformation. The breaks function is applied to the raw
+  data.}
+
+  \item{format}{default format for this transformation. The
+  format is applied to breaks generated to the raw data.}
+
+  \item{domain}{domain, as numeric vector of length 2, over
+  which transformation is value}
+}
+\description{
   A transformation encapsulates a transformation and its
   inverse, as well as the information needed to create
   pleasing breaks and labels. The breaks function is
@@ -16,20 +36,6 @@
   of inverse tranformation on these breaks to give them
   labels that are meaningful on the original scale.
 }
-\seealso{\Sexpr[results=rd,stage=render]{scales:::seealso_trans()}}
-\alias{trans_new}
-\alias{trans}
-\alias{is.trans}
-\arguments{
-  \item{name}{transformation name}
-  \item{transform}{function, or name of function, that performs the
-transformation}
-  \item{inverse}{function, or name of function, that performs the
-inverse of the transformation}
-  \item{breaks}{default breaks function for this transformation. The breaks
-function is applied to the raw data.}
-  \item{format}{default format for this transformation. The format is applied
-to breaks generated to the raw data.}
-  \item{domain}{domain, as numeric vector of length 2, over which
-transformation is valued}
-}
+\Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
+
+

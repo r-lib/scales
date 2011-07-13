@@ -1,13 +1,19 @@
 \name{discard}
 \alias{discard}
 \title{Discard any values outside of range.}
-\usage{discard(x, range=c(0, 1))}
-
-\description{
-  Discard any values outside of range.
+\usage{
+  discard(x, range = c(0, 1))
 }
 \arguments{
   \item{x}{numeric vector of values to manipulate.}
-  \item{range}{numeric vector of length two giving desired output range.}
+
+  \item{range}{numeric vector of length two giving desired
+  output range.}
 }
-\examples{discard(c(-1, 0.5, 1, 2, NA))}
+\description{
+  Discard any values outside of range.
+}
+\examples{
+discard(c(-1, 0.5, 1, 2, NA))
+}
+
