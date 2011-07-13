@@ -36,6 +36,7 @@
   of inverse tranformation on these breaks to give them
   labels that are meaningful on the original scale.
 }
-\Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
-
+\seealso{
+  \Sexpr[results=rd,stage=install]{seealso_trans()}
+}
 
