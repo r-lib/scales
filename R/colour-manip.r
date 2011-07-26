@@ -63,10 +63,8 @@ alpha <- function(colour, alpha) {
       col <- col[, rep(1, length(alpha)), drop = FALSE]
     }
   }
-  # Only set if colour is opaque
-  col[4, ] <- ifelse(col[4, ] == 1, alpha, col[4, ])
 
-  new_col <- rgb(col[1,], col[2,], col[3,], col[4,])
+  new_col <- rgb(col[1,], col[2,], col[3,], alpha)
   new_col[is.na(colour)] <- NA  
   new_col
 }
