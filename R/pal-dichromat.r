@@ -1,7 +1,7 @@
 #' Dichromat (colour-blind) palette (discrete).
 #'
 #' @param name Name of colour palette.  One of:
-#'   \Sexpr[results=rd,stage=install]{dichromat_schemes()}
+#'   \Sexpr[results=rd,stage=render]{scales:::dichromat_schemes()}
 #' @importFrom dichromat colorschemes
 #' @export
 #' @examples

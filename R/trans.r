@@ -18,7 +18,7 @@
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which 
 #'   transformation is valued
-#' @seealso \Sexpr[results=rd,stage=install]{seealso_trans()}
+#' @seealso \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
 #' @S3method print trans

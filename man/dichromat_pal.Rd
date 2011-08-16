@@ -6,7 +6,7 @@
 }
 \arguments{
   \item{name}{Name of colour palette.  One of:
-  \Sexpr[results=rd,stage=install]{dichromat_schemes()}}
+  \Sexpr[results=rd,stage=render]{scales:::dichromat_schemes()}}
 }
 \description{
   Dichromat (colour-blind) palette (discrete).

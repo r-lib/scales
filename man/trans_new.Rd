@@ -37,6 +37,6 @@
   labels that are meaningful on the original scale.
 }
 \seealso{
-  \Sexpr[results=rd,stage=install]{seealso_trans()}
+  \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
 }
 
