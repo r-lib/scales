@@ -3,8 +3,6 @@
 #' Transforms rgb to hcl, sets non-missing arguments and then backtransforms
 #' to rgb.
 #'
-#' @importFrom colorspace RGB
-#' @importFrom colorspace coords
 #' @param colour character vector of colours to be modified
 #' @param h new hue
 #' @param l new luminance
@@ -14,11 +12,15 @@
 #' @examples 
 #' col2hcl(colors())
 col2hcl <- function(colour, h, c, l, alpha = 1) {
-  col <- RGB(t(col2rgb(colour)) / 256)
-  coords <- coords(as(col, "polarLUV"))
   
-  if (missing(h)) h <- coords[, "H"]
-  if (missing(c)) c <- coords[, "C"]
+  rgb <- t(col2rgb(colour)) / 256
+  coords <- convertColor(rgb, "sRGB", "Luv")
+
+  # Check for correctness
+  # colorspace::coords(as(RGB(rgb), "polarLUV"))
+  
+  if (missing(h)) h <- atan2(coords[, "v"], coords[, "u"]) * 180 / pi
+  if (missing(c)) c <- sqrt(coords[, "u"]^ 2 + coords[, "v"]^2)
   if (missing(l)) l <- coords[, "L"]
     
   hcl_colours <- hcl(h, c, l, alpha = alpha) 
