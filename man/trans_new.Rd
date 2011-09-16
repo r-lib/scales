@@ -12,10 +12,10 @@
   \item{name}{transformation name}
 
   \item{transform}{function, or name of function, that
-  performs the}
+  performs the transformation}
 
   \item{inverse}{function, or name of function, that
-  performs the}
+  performs the inverse of the transformation}
 
   \item{breaks}{default breaks function for this
   transformation. The breaks function is applied to the raw
@@ -25,7 +25,7 @@
   format is applied to breaks generated to the raw data.}
 
   \item{domain}{domain, as numeric vector of length 2, over
-  which transformation is value}
+  which transformation is valued}
 }
 \description{
   A transformation encapsulates a transformation and its
@@ -37,6 +37,6 @@
   labels that are meaningful on the original scale.
 }
 \seealso{
-  \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}
+  \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 }
 

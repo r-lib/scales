@@ -11,7 +11,7 @@
   \item{palette}{palette to use.
 
   Built in palettes:
-  \Sexpr[results=rd,stage=render]{scales:::seealso_pal()}}
+  \Sexpr[results=rd,stage=build]{scales:::seealso_pal()}}
 
   \item{na.value}{value to use for missing values}
 
@@ -20,7 +20,7 @@
   identity transformation which leaves the data unchanged.
 
   Built in transformations:
-  \Sexpr[results=rd,stage=render]{scales:::seealso_trans()}.}
+  \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
 }
 \description{
   Continuous scale.
