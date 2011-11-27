@@ -46,3 +46,4 @@ Collate:
     'trans-date.r'
     'trans-numeric.r'
     'trans.r'
+BuildManual: yes
