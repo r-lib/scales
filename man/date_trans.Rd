@@ -1,6 +1,9 @@
 \name{date_trans}
 \alias{date_trans}
 \title{Transformation for dates (class Date).}
+\usage{
+  date_trans()
+}
 \description{
   Transformation for dates (class Date).
 }

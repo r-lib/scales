@@ -2,8 +2,8 @@
 \alias{cscale}
 \title{Continuous scale.}
 \usage{
-  cscale(x, palette, na.value = NA, trans =
-  identity_trans())
+  cscale(x, palette, na.value = NA,
+    trans = identity_trans())
 }
 \arguments{
   \item{x}{vector of continuous values to scale}
@@ -28,9 +28,9 @@
 \examples{
 with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
 with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
-trans = sqrt_trans())))
+  trans = sqrt_trans())))
 with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 with(mtcars, plot(disp, mpg, pch = 20, cex = 5,
-col = cscale(hp, seq_gradient_pal("grey80", "black"))))
+  col = cscale(hp, seq_gradient_pal("grey80", "black"))))
 }
 

@@ -1,6 +1,9 @@
 \name{time_trans}
 \alias{time_trans}
 \title{Transformation for times (class POSIXt).}
+\usage{
+  time_trans()
+}
 \description{
   Transformation for times (class POSIXt).
 }

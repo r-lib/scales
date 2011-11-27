@@ -6,7 +6,7 @@
 }
 \arguments{
   \item{range}{Numeric vector of length two, giving range
-  of possible sizes. Should be greater than 0.}
+  of possible sizes.  Should be greater than 0.}
 }
 \description{
   Point area palette (continuous).

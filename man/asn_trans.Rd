@@ -1,6 +1,9 @@
 \name{asn_trans}
 \alias{asn_trans}
 \title{Arc-sin square root transformation.}
+\usage{
+  asn_trans()
+}
 \description{
   Arc-sin square root transformation.
 }

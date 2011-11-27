@@ -4,9 +4,9 @@
 \alias{trans_new}
 \title{Create a new transformation object.}
 \usage{
-  trans_new(name, transform, inverse, breaks =
-  pretty_breaks(), format = format_format(), domain =
-  c(-Inf, Inf))
+  trans_new(name, transform, inverse,
+    breaks = pretty_breaks(), format = format_format(),
+    domain = c(-Inf, Inf))
 }
 \arguments{
   \item{name}{transformation name}

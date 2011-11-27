@@ -1,6 +1,9 @@
 \name{parse_format}
 \alias{parse_format}
 \title{Parse a text label to produce expressions for plotmath.}
+\usage{
+  parse_format()
+}
 \arguments{
   \item{x}{character vector to format}
 }

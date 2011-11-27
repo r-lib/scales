@@ -2,7 +2,9 @@
 \alias{div_gradient_pal}
 \title{Diverging colour gradient (continous).}
 \usage{
-  div_gradient_pal(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab")
+  div_gradient_pal(low = mnsl("10B 4/6"),
+    mid = mnsl("N 8/0"), high = mnsl("10R 4/6"),
+    space = "Lab")
 }
 \arguments{
   \item{low}{colour for low end of gradient.}
@@ -26,6 +28,6 @@ image(r, col = div_gradient_pal()(seq(0, 1, length = 100)))
 
 library(munsell)
 image(r, col = div_gradient_pal(low =
-mnsl(complement("10R 4/6", fix = TRUE)))(seq(0, 1, length = 100)))
+   mnsl(complement("10R 4/6", fix = TRUE)))(seq(0, 1, length = 100)))
 }
 

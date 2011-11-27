@@ -2,8 +2,8 @@
 \alias{cbreaks}
 \title{Compute breaks for continuous scale.}
 \usage{
-  cbreaks(range, breaks = pretty_breaks(), labels =
-  scientific_format())
+  cbreaks(range, breaks = pretty_breaks(),
+    labels = scientific_format())
 }
 \arguments{
   \item{range}{numeric vector of length 2 giving the range
@@ -42,6 +42,6 @@ cbreaks(c(0, 30), labels = dollar_format())
 cbreaks(c(0, 100), breaks = c(15, 20, 80))
 cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
 cbreaks(c(0, 100), breaks = c(15, 20, 80),
-labels = expression(alpha, beta, gamma))
+  labels = expression(alpha, beta, gamma))
 }
 
