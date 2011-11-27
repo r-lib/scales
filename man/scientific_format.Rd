@@ -4,6 +4,8 @@
 \title{Scientific formatter.}
 \usage{
   scientific_format(digits = 3, ...)
+
+  scientific(x, digits = 3, ...)
 }
 \arguments{
   \item{digits}{number of significant digits to show}

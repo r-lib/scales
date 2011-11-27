@@ -4,6 +4,8 @@
 \title{Percent formatter: multiply by one hundred and display percent sign.}
 \usage{
   percent_format()
+
+  percent(x)
 }
 \value{
   a function with single paramater x, a numeric vector,

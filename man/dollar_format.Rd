@@ -4,6 +4,8 @@
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
   dollar_format()
+
+  dollar(x)
 }
 \value{
   a function with single paramater x, a numeric vector,

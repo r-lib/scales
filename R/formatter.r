@@ -3,8 +3,7 @@
 #' @param ... other arguments passed on to \code{\link{formatC}}
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export comma_format comma
-#' @aliases comma_format comma
+#' @export
 #' @examples
 #' comma_format()(c(1, 1e3, 2000, 1e6))
 #' comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
@@ -12,6 +11,9 @@
 comma_format <- function(...) {
   function(x) comma(x, ...)
 }
+
+#' @export
+#' @rdname comma_format
 comma <- function(x, ...) {
   str_trim(formatC(x, ..., big.mark = ","))
 }
@@ -20,8 +22,7 @@ comma <- function(x, ...) {
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export dollar_format dollar
-#' @aliases dollar_format dollar
+#' @export
 #' @examples
 #' dollar_format()(c(100, 0.23, 1.456565, 2e3))
 #' dollar_format()(c(1:10 * 10))
@@ -34,14 +35,16 @@ dollar_format <- function() {
     str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ","))    
   }
 }
+
+#' @export
+#' @rdname dollar_format
 dollar <- dollar_format()
 
 #' Percent formatter: multiply by one hundred and display percent sign.
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
-#' @export percent_format percent
-#' @aliases percent_format percent
+#' @export
 #' @examples
 #' percent_format()(runif(10))
 #' percent(runif(10))
@@ -52,6 +55,8 @@ percent_format <- function() {
     str_c(comma(x * 100), "%")    
   }
 }
+#' @export
+#' @rdname percent_format
 percent <- percent_format()
 
 #' Scientific formatter.
@@ -60,8 +65,7 @@ percent <- percent_format()
 #'   returns a character vector
 #' @param digits number of significant digits to show
 #' @param ... other arguments passed on to \code{\link{format}}
-#' @export scientific_format scientific
-#' @aliases scientific_format scientific
+#' @export
 #' @examples
 #' scientific_format()(1:10)
 #' scientific_format()(runif(10))
@@ -72,6 +76,9 @@ percent <- percent_format()
 scientific_format <- function(digits = 3, ...) {
   function(x) scientific(x, digits, ...)
 }
+
+#' @export
+#' @rdname scientific_format
 scientific <- function(x, digits = 3, ...) {
   format(x, trim = TRUE, digits = digits, ...)
 }

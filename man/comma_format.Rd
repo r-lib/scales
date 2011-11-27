@@ -4,6 +4,8 @@
 \title{Comma formatter: format number with commas separating thousands.}
 \usage{
   comma_format(...)
+
+  comma(x, ...)
 }
 \arguments{
   \item{...}{other arguments passed on to
