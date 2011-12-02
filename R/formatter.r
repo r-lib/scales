@@ -157,7 +157,7 @@ trans_format <- function(trans, format = scientific_format()) {
 format_format <- function(...) {
   function(x) {
     if (!is.null(names(x))) return(names(x))
-    format(x, ...)
+    format(x, ..., trim = TRUE, justify = "left")
   }
 }
 
