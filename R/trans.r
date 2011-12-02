@@ -32,7 +32,7 @@ trans_new <- function(name, transform, inverse, breaks = pretty_breaks(), format
 }
 
 is.trans <- function(x) inherits(x, "trans")
-print.trans <- function(x, ...) cat("Transformer: ", x$name)
+print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 
 #' Convert character string to transformer.
 #'
