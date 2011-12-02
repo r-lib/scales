@@ -162,5 +162,8 @@ format_format <- function(...) {
 }
 
 precision <- function(x) {
-  10 ^ floor(log10(diff(range(x, na.rm = TRUE))))
+  rng <- range(x, na.rm = TRUE)
+  
+  span <- if (zero_range(rng)) rng[1] else diff(rng)
+  10 ^ floor(log10(span))
 }
