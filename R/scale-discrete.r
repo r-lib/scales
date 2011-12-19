@@ -21,31 +21,34 @@ train_discrete <- function(new, existing = NULL, drop = FALSE) {
   discrete_range(existing, new, drop = drop)
 }
 
-discrete_range <- function(..., drop = FALSE) {
-  levels <- lapply(list(...), clevels, drop = drop)
+discrete_range <- function(old, new, drop = FALSE) {
+  new <- clevels(new, drop = drop)
+  if (is.null(old)) return(new)
+  if (!is.character(old)) old <- clevels(old)
 
-  all <- unique(unlist(levels))
-  if (is.numeric(all)) {
-    all <- all[order(all)]
-    all <- as.character(all)
+  new_levels <- setdiff(new, as.character(old))
+  
+  # Keep as a factor if we don't have any new levels
+  if (length(new_levels) == 0) {
+    return(old)
   }
   
-  all
+  sort(c(old, new_levels))
 }
 
 clevels <- function(x, drop = FALSE) {
-  if (is.null(x)) return(character())
-  
-  if (is.factor(x)) {
+  if (is.null(x)) {
+    character()
+  } else if (is.factor(x)) {
     if (drop) x <- factor(x)
+
     values <- levels(x)
-  } else if (is.numeric(x)) {
-    values <- unique(x)
+    if (any(is.na(x))) values <- c(values, NA)
+    
+    values
   } else {
-    values <- as.character(unique(x)) 
+    sort(unique(x))
   }
-  if (any(is.na(x))) values <- c(values, NA)
-  values
 }
 
 map_discrete <- function(palette, x, limits, na.value = NA) {

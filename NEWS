@@ -1,0 +1,4 @@
+* Simplified algorithm for `discrete_range` that is robust to
+  `stringsAsFactors` global option.  Now, the order of a factor will only be 
+  preserved if the full factor is the first object seen, and all subsequent 
+  inputs are subsets of the levels of the original factor.
