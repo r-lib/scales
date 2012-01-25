@@ -66,6 +66,7 @@ censor <- function(x, range = c(0, 1)) {
 #' @examples
 #' discard(c(-1, 0.5, 1, 2, NA))
 discard <- function(x, range = c(0, 1)) {
+  force(range)
   x[x >= range[1] & x <= range[2]]
 }
 
@@ -79,6 +80,7 @@ discard <- function(x, range = c(0, 1)) {
 #' squish(c(-1, 0.5, 1, 2, NA))
 #' squish(c(-1, 0, 0.5, 1, 2))
 squish <- function(x, range = c(0, 1)) {
+  force(range)
   x[x < range[1]] <- range[1]
   x[x > range[2]] <- range[2]
   x
@@ -92,6 +94,7 @@ squish <- function(x, range = c(0, 1)) {
 #' @examples
 #' squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
 squish_infinite <- function(x, range = c(0, 1)) {
+  force(range)
   x[x == -Inf] <- range[1]
   x[x == Inf] <- range[2]
   x

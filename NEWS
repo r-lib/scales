@@ -1,3 +1,6 @@
+* `bounds` functions now `force` evaluation of range to avoid bug with S3
+  method dispatch inside primitive functions (e.g. `[`)
+
 * Simplified algorithm for `discrete_range` that is robust to
   `stringsAsFactors` global option.  Now, the order of a factor will only be 
   preserved if the full factor is the first object seen, and all subsequent 
