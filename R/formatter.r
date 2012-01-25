@@ -31,7 +31,7 @@ comma <- function(x, ...) {
 dollar_format <- function() {
   function(x) {
     x <- round_any(x, 0.01)
-    nsmall <- if (max(x) < 100) 2 else 0
+    nsmall <- if (max(x, na.rm = TRUE) < 100) 2 else 0
     str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ","))    
   }
 }
