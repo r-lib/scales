@@ -2,7 +2,7 @@
 \alias{squish}
 \title{Squish values into range.}
 \usage{
-  squish(x, range = c(0, 1))
+  squish(x, range = c(0, 1), only.finite = TRUE)
 }
 \arguments{
   \item{x}{numeric vector of values to manipulate.}

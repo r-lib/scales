@@ -16,3 +16,11 @@ test_that("zero range inputs return mid range", {
   expect_that(rescale(0), equals(0.5))
   expect_that(rescale(c(0, 0)), equals(c(0.5, 0.5)))  
 })
+
+
+test_that("censor and squish ignore infinite values", {
+  expect_equal(squish(c(1, Inf)), c(1, Inf))
+  expect_equal(censor(c(1, Inf)), c(1, Inf))
+  
+  
+})

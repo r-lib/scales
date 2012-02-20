@@ -1,3 +1,7 @@
+* `censor` and `squish` gain `only.finite` argument and default to operating
+  only on finite values. This is needed for ggplot2, and reflects the use of
+  Inf and -Inf as special values.
+
 * `bounds` functions now `force` evaluation of range to avoid bug with S3
   method dispatch inside primitive functions (e.g. `[`)
 

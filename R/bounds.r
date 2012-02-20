@@ -51,17 +51,22 @@ rescale_none <- function(x, ...) {
 #' @export
 #' @param x numeric vector of values to manipulate.
 #' @param range numeric vector of length two giving desired output range.
+#' @param only.finite if \code{TRUE} (the default), will only modify
+#'   finite values.
 #' @export
 #' @examples
 #' censor(c(-1, 0.5, 1, 2, NA))
-censor <- function(x, range = c(0, 1)) {
-  ifelse(x >= range[1] & x <= range[2], x, NA)
+censor <- function(x, range = c(0, 1), only.finite = TRUE) {
+  force(range)
+  finite <- if (only.finite) is.finite(x) else TRUE
+  x[finite & x < range[1]] <- NA
+  x[finite & x > range[2]] <- NA
+  x
 }
 
 #' Discard any values outside of range.
 #'
-#' @param x numeric vector of values to manipulate.
-#' @param range numeric vector of length two giving desired output range.
+#' @inheritParams censor
 #' @export
 #' @examples
 #' discard(c(-1, 0.5, 1, 2, NA))
@@ -79,10 +84,11 @@ discard <- function(x, range = c(0, 1)) {
 #' @examples
 #' squish(c(-1, 0.5, 1, 2, NA))
 #' squish(c(-1, 0, 0.5, 1, 2))
-squish <- function(x, range = c(0, 1)) {
+squish <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
-  x[x < range[1]] <- range[1]
-  x[x > range[2]] <- range[2]
+  finite <- if (only.finite) is.finite(x) else TRUE
+  x[finite & x < range[1]] <- range[1]
+  x[finite & x > range[2]] <- range[2]
   x
 }
 
