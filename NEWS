@@ -13,3 +13,7 @@
 * `scientific` ensures output is always in scientific format and off the
   specified number of significant digits. `comma` ensures output is never in
   scientific format. (Fixes #7)
+
+* Another tweak to `zero_range` to better detect when a range has zero length.
+  (Fixes #6)
+
