@@ -9,3 +9,7 @@
   `stringsAsFactors` global option.  Now, the order of a factor will only be 
   preserved if the full factor is the first object seen, and all subsequent 
   inputs are subsets of the levels of the original factor.
+
+* `scientific` ensures output is always in scientific format and off the
+  specified number of significant digits. `comma` ensures output is never in
+  scientific format. (Fixes #7)

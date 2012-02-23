@@ -15,7 +15,7 @@ comma_format <- function(...) {
 #' @export
 #' @rdname comma_format
 comma <- function(x, ...) {
-  str_trim(formatC(x, ..., big.mark = ","))
+  format(x, ..., big.mark = ",", scientific = FALSE, trim = TRUE)
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
@@ -80,7 +80,8 @@ scientific_format <- function(digits = 3, ...) {
 #' @export
 #' @rdname scientific_format
 scientific <- function(x, digits = 3, ...) {
-  format(x, trim = TRUE, digits = digits, ...)
+  x <- signif(x, digits)
+  format(x, trim = TRUE, scientific = TRUE, ...)
 }
 
 #' Parse a text label to produce expressions for plotmath.
