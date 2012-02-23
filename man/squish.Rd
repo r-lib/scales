@@ -9,6 +9,9 @@
 
   \item{range}{numeric vector of length two giving desired
   output range.}
+
+  \item{only.finite}{if \code{TRUE} (the default), will
+  only modify finite values.}
 }
 \description{
   Squish values into range.

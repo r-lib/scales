@@ -9,7 +9,9 @@
 }
 \arguments{
   \item{...}{other arguments passed on to
-  \code{\link{formatC}}}
+  \code{\link{format}}}
+
+  \item{x}{a numeric vector to format}
 }
 \value{
   a function with single paramater x, a numeric vector,

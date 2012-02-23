@@ -78,8 +78,7 @@ discard <- function(x, range = c(0, 1)) {
 #' Squish values into range.
 #'
 #' @author Homer Strong <homer.strong@@gmail.com>
-#' @param x numeric vector of values to manipulate.
-#' @param range numeric vector of length two giving desired output range.
+#' @inheritParams censor
 #' @export
 #' @examples
 #' squish(c(-1, 0.5, 1, 2, NA))

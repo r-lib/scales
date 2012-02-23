@@ -1,6 +1,7 @@
 #' Comma formatter: format number with commas separating thousands.
 #' 
-#' @param ... other arguments passed on to \code{\link{formatC}}
+#' @param ... other arguments passed on to \code{\link{format}}
+#' @param x a numeric vector to format
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @export
@@ -22,6 +23,7 @@ comma <- function(x, ...) {
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
+#' @param x a numeric vector to format
 #' @export
 #' @examples
 #' dollar_format()(c(100, 0.23, 1.456565, 2e3))
@@ -44,6 +46,7 @@ dollar <- dollar_format()
 #' 
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
+#' @param x a numeric vector to format
 #' @export
 #' @examples
 #' percent_format()(runif(10))
@@ -65,6 +68,7 @@ percent <- percent_format()
 #'   returns a character vector
 #' @param digits number of significant digits to show
 #' @param ... other arguments passed on to \code{\link{format}}
+#' @param x a numeric vector to format
 #' @export
 #' @examples
 #' scientific_format()(1:10)
@@ -90,7 +94,6 @@ scientific <- function(x, digits = 3, ...) {
 #' @return a function with single paramater x, a character vector, that
 #'    returns a list of expressions
 #' @export
-#' @param x character vector to format
 #' @examples
 #' parse_format()(c("alpha", "beta", "gamma"))
 parse_format <- function() {

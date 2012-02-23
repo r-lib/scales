@@ -4,9 +4,6 @@
 \usage{
   parse_format()
 }
-\arguments{
-  \item{x}{character vector to format}
-}
 \value{
   a function with single paramater x, a character vector,
   that returns a list of expressions
