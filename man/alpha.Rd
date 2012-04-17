@@ -3,12 +3,13 @@
 \title{Modify colour transparency.
 Vectorised in both colour and alpha.}
 \usage{
-  alpha(colour, alpha)
+  alpha(colour, alpha = NA)
 }
 \arguments{
   \item{colour}{colour}
 
-  \item{alpha}{new alpha level in [0,1]}
+  \item{alpha}{new alpha level in [0,1].  If alpha is
+  \code{NA}, existing alpha values are preserved.}
 }
 \description{
   Modify colour transparency. Vectorised in both colour and
