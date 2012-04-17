@@ -15,7 +15,8 @@ Imports:
     stringr,
     dichromat,
     munsell (>= 0.2),
-    plyr (>= 1.2)
+    plyr (>= 1.2),
+    labeling
 Suggests:
     testthat
 License: MIT

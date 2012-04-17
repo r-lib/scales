@@ -17,6 +17,25 @@ pretty_breaks <- function(n = 5, ...) {
   }
 }
 
+#' Extended breaks.
+#' Uses Wilkinon's extended breaks algorithm as implemented in the 
+#' \pkg{labeling} package.
+#'
+#' @param n desired number of breaks
+#' @param ... other arguments passed on to \code{\link[labeling]{extended}}
+#' @references Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
+#'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
+#'  2010.
+#' @export
+#' @examples
+#' extended_breaks()(1:10)
+#' extended_breaks()(1:100)
+extended_breaks <- function(n = 5, ...) {
+  function(x) {
+    extended(min(x), max(x), n, only.loose = FALSE, ...)
+  }
+}
+
 #' Log breaks (integer breaks on log-transformed scales).
 #' 
 #' @param n desired number of breaks
