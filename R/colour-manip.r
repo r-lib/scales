@@ -44,14 +44,14 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
 #' Vectorised in both colour and alpha.
 #' 
 #' @param colour colour
-#' @param alpha new alpha level in [0,1]
+#' @param alpha new alpha level in [0,1].  If alpha is \code{NA}, 
+#'   existing alpha values are preserved.
 #' @export
 #' @examples
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
 #' alpha("red", seq(0, 1, length = 10))
-alpha <- function(colour, alpha) {
-  alpha[is.na(alpha)] <- 0
+alpha <- function(colour, alpha = NA) {
   col <- col2rgb(colour, TRUE) / 255
   
   if (length(colour) != length(alpha)) {
@@ -64,6 +64,8 @@ alpha <- function(colour, alpha) {
     } else if (length(alpha) > 1) {
       col <- col[, rep(1, length(alpha)), drop = FALSE]
     }
+    
+    alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
   }
 
   new_col <- rgb(col[1,], col[2,], col[3,], alpha)

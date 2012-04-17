@@ -1,3 +1,5 @@
+* `alpha` can now preserve existing alpha values if `alpha` is missing.
+
 * `log_breaks` always gives breaks evenly spaced on the log scale, never
   evenly spaced on the data scale. This will result in really bad breaks for
   some ranges (e.g 0.5-0.6), but you probably shouldn't be using log scales in
