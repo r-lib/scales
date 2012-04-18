@@ -26,6 +26,7 @@ pretty_breaks <- function(n = 5, ...) {
 #' @references Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 #'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
 #'  2010.
+#' @importFrom labeling extended
 #' @export
 #' @examples
 #' extended_breaks()(1:10)
