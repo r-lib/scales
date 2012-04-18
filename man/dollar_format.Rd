@@ -3,11 +3,15 @@
 \alias{dollar_format}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
-  dollar_format()
+  dollar_format(largest_with_cents = 1e+05)
 
   dollar(x)
 }
 \arguments{
+  \item{largest_with_cents}{the value that all values of
+  \code{x} must be less than in order for the cents to be
+  displayed}
+
   \item{x}{a numeric vector to format}
 }
 \value{
@@ -15,13 +19,17 @@
   that returns a character vector
 }
 \description{
-  Currency formatter: round to nearest cent and display
-  dollar sign.
+  The returned function will format a vector of values as
+  currency. Values are rounded to the nearest cent, and
+  cents are displayed if any of the values has a non-zero
+  cents and the largest value is less than
+  \code{largest_with_cents} which by default is 100000.
 }
 \examples{
 dollar_format()(c(100, 0.23, 1.456565, 2e3))
 dollar_format()(c(1:10 * 10))
 dollar(c(100, 0.23, 1.456565, 2e3))
 dollar(c(1:10 * 10))
+dollar(10^(1:8))
 }
 

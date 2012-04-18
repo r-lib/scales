@@ -20,9 +20,16 @@ comma <- function(x, ...) {
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
-#' 
+#'
+#' The returned function will format a vector of values as currency.
+#' Values are rounded to the nearest cent, and cents are displayed if
+#' any of the values has a non-zero cents and the largest value is less
+#' than \code{largest_with_cents} which by default is 100000.
+#'
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
+#' @param largest_with_cents the value that all values of \code{x} must
+#'   be less than in order for the cents to be displayed
 #' @param x a numeric vector to format
 #' @export
 #' @examples
@@ -30,11 +37,18 @@ comma <- function(x, ...) {
 #' dollar_format()(c(1:10 * 10))
 #' dollar(c(100, 0.23, 1.456565, 2e3))
 #' dollar(c(1:10 * 10))
-dollar_format <- function() {
+#' dollar(10^(1:8))
+dollar_format <- function(largest_with_cents = 100000) {
   function(x) {
     x <- round_any(x, 0.01)
-    nsmall <- if (max(x, na.rm = TRUE) < 100) 2 else 0
-    str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ","))    
+    if (max(x, na.rm = TRUE) < largest_with_cents &
+        !all(x == floor(x), na.rm = TRUE)) {
+      nsmall <- 2L
+    } else {
+      x <- round_any(x, 1)
+      nsmall <- 0L
+    }
+    str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits=1L))
   }
 }
 
