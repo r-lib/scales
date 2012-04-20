@@ -1,3 +1,5 @@
+* check for zero-length colour in `gradient_n_pal`
+
 * added `extended_breaks` which implements an extension to Wilkinson's
   labelling approach, as implemented in the `labeling` package.  This should
   generally produce nicer breaks than `pretty_breaks`.

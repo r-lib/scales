@@ -11,6 +11,8 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   ramp <- colorRamp(colours, space = space)
 
   function(x) {
+    if (length(x) == 0) return(character())
+    
     if (!is.null(values)) {
       xs <- seq(0, 1, length = length(values))      
       f <- approxfun(values, xs)
