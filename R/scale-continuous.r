@@ -34,7 +34,7 @@ train_continuous <- function(new, existing = NULL) {
   if (!is.numeric(new)) {
     stop("Discrete value supplied to continuous scale",  call. = FALSE)
   }
-  range(existing, new, na.rm = TRUE, finite = TRUE)
+  suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
 }
 
 # Map values for a continuous palette.

@@ -1,3 +1,6 @@
+* `suppressWarnings` from `train_continuous` so zero-row or all infinite data
+  frames don't potentially cause problems.
+
 * check for zero-length colour in `gradient_n_pal`
 
 * added `extended_breaks` which implements an extension to Wilkinson's
