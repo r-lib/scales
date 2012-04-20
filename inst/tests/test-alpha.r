@@ -12,6 +12,8 @@ test_that("missing alpha preserves existing", {
   reds <- rgb(cols[1,], cols[2,], cols[3,], cols[4, ])
 
   expect_equal(reds, alpha(reds, NA))
+  expect_equal(reds, alpha(reds, rep(NA, 5)))
+  
 })
 
 test_that("alpha values recycled to match colour", {

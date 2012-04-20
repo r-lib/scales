@@ -63,10 +63,9 @@ alpha <- function(colour, alpha = NA) {
       alpha <- rep(alpha, length.out = length(colour))    
     } else if (length(alpha) > 1) {
       col <- col[, rep(1, length(alpha)), drop = FALSE]
-    }
-    
-    alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
+    }    
   }
+  alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
 
   new_col <- rgb(col[1,], col[2,], col[3,], alpha)
   new_col[is.na(colour)] <- NA  
