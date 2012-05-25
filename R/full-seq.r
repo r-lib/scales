@@ -5,11 +5,10 @@
 #' @param ... other arguments passed on to methods
 #' @keywords internal
 #' @export
-#' @S3method fullseq Date
-#' @S3method fullseq POSIXt
 #' @seealso \code{\link[plyr]{round_any}}
 fullseq <- function(range, size, ...) UseMethod("fullseq")
 
+#' @S3method fullseq numeric
 fullseq.numeric <- function(range, size, ..., pad = FALSE) {
   if (zero_range(range)) return(range + size * c(-1, 1) / 2)
   
@@ -28,9 +27,11 @@ fullseq.numeric <- function(range, size, ..., pad = FALSE) {
   } 
 }
 
+#' @S3method fullseq Date
 fullseq.Date <- function(range, size, ...) {
   seq(floor_date(range[1], size), ceiling_date(range[2], size), by = size)
 }
+#' @S3method fullseq POSIXt
 fullseq.POSIXt <- function(range, size, ...) {
   seq(floor_time(range[1], size), ceiling_time(range[2], size), by = size)
 }
