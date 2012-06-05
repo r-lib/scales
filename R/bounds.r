@@ -122,10 +122,28 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   }
 }
 
-#' Determine if range of vector is FP 0.
+#' Determine if range of vector is indistinguishable from floating-point 0.
 #' 
 #' @export
 #' @param x numeric range: vector of length 2
+#' @return logical \code{TRUE} if the relative difference of the endpoints of
+#' the range are not distinguishable from 0.
 zero_range <- function(x) {
-  length(x) == 1 || isTRUE(all.equal(x[1] - x[2], 0))
+    if (length(x) == 1) return(TRUE)
+    # determine the relative scale for the difference of the endpoints
+    # Either endpoint or the mean of the endpoints are good candidates
+    # for the scale, but any of those may be 0 which would cause problems
+    # when divided by.  Therefore, check if the mean is 0, and if so use
+    # the lower point of the range unless it is zero. If both the mean and
+    # the lower bound are zero, then do not rescale (set the scale to 1).
+    m <- mean(x)
+    if(m == 0L) {
+        if (x[[1]] == 0L) {
+            m <- 1
+        } else {
+            m <- x[[1]]
+        }
+    }
+    abs(diff(x/m)) < .Machine$double.eps
 }
+
