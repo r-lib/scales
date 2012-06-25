@@ -18,7 +18,7 @@ pretty_breaks <- function(n = 5, ...) {
 }
 
 #' Extended breaks.
-#' Uses Wilkinon's extended breaks algorithm as implemented in the 
+#' Uses Wilkinson's extended breaks algorithm as implemented in the 
 #' \pkg{labeling} package.
 #'
 #' @param n desired number of breaks
