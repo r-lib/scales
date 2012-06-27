@@ -8,7 +8,7 @@
 #' t$inv(t$trans(years))
 #' t$format(t$breaks(range(years)))
 date_trans <- function() {
-  trans_new("date", "from_date", "to_date")
+  trans_new("date", "from_date", "to_date", breaks = pretty_breaks())
 }
 
 to_date <- function(x)   structure(x, class = "Date")
@@ -24,7 +24,7 @@ from_date <- function(x) structure(as.numeric(x), names = names(x))
 #' t$inv(t$trans(hours))
 #' t$format(t$breaks(range(hours)))
 time_trans <- function() {
-  trans_new("time", "from_time", "to_time")
+  trans_new("time", "from_time", "to_time", breaks = pretty_breaks())
 }
 
 to_time <- function(x)   structure(x, class = c("POSIXt", "POSIXct"))
