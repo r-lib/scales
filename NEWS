@@ -1,3 +1,6 @@
+* `brewer_pal` complains if you give it an incorrect palette type. (Fixes #15,
+  thanks to Jean-Olivier Irisson)
+
 * `shape_pal` warns if asked for more than 6 values. (Fixes #16, thanks to
   Jean-Olivier Irisson)
 

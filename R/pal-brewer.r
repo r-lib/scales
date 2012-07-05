@@ -33,6 +33,8 @@ pal_name <- function(palette, type) {
   switch(type, 
     div = RColorBrewer:::divlist, 
     qual = RColorBrewer:::quallist, 
-    seq = RColorBrewer:::seqlist
+    seq = RColorBrewer:::seqlist,
+    stop("Unknown palette type. Should be 'div', 'qual' or 'seq'", 
+      call. = FALSE)
   )[palette]  
 }
