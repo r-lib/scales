@@ -5,7 +5,7 @@
 \title{Create a new transformation object.}
 \usage{
   trans_new(name, transform, inverse,
-    breaks = pretty_breaks(), format = format_format(),
+    breaks = extended_breaks(), format = format_format(),
     domain = c(-Inf, Inf))
 }
 \arguments{

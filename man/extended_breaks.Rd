@@ -1,7 +1,7 @@
 \name{extended_breaks}
 \alias{extended_breaks}
 \title{Extended breaks.
-Uses Wilkinon's extended breaks algorithm as implemented in the
+Uses Wilkinson's extended breaks algorithm as implemented in the
 \pkg{labeling} package.}
 \usage{
   extended_breaks(n = 5, ...)
@@ -13,7 +13,7 @@ Uses Wilkinon's extended breaks algorithm as implemented in the
   \code{\link[labeling]{extended}}}
 }
 \description{
-  Extended breaks. Uses Wilkinon's extended breaks
+  Extended breaks. Uses Wilkinson's extended breaks
   algorithm as implemented in the \pkg{labeling} package.
 }
 \examples{

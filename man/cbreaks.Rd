@@ -2,7 +2,7 @@
 \alias{cbreaks}
 \title{Compute breaks for continuous scale.}
 \usage{
-  cbreaks(range, breaks = pretty_breaks(),
+  cbreaks(range, breaks = extended_breaks(),
     labels = scientific_format())
 }
 \arguments{

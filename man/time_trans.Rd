@@ -2,7 +2,12 @@
 \alias{time_trans}
 \title{Transformation for times (class POSIXt).}
 \usage{
-  time_trans()
+  time_trans(tz = NULL)
+}
+\arguments{
+  \item{tz}{Optionally supply the time zone.  If
+  \code{NULL}, the default, the time zone will be extracted
+  from first input with a non-null tz.}
 }
 \description{
   Transformation for times (class POSIXt).
