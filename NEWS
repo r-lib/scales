@@ -1,3 +1,7 @@
+* `time_trans` gains an optional argument `tz` to specify the time zone to use
+  for the times.  If not specified, it will be guess from the first input with
+  a non-null time zone.
+
 * `date_trans` and `time_trans` now check that their inputs are of the correct
    type.  This prevents ggplot2 scales from silently giving incorrect outputs
    when given incorrect inputs.
