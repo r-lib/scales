@@ -1,3 +1,7 @@
+* `date_trans` and `time_trans` now check that their inputs are of the correct
+   type.  This prevents ggplot2 scales from silently giving incorrect outputs
+   when given incorrect inputs.
+
 * Change the default breaks algorithm for `cbreaks()` and `trans_new()`.
   Previously it was `pretty_breaks()`, and now it's `extended_breaks()`,
   which uses the `extended()` algorithm from the labeling package.

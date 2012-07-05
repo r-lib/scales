@@ -12,7 +12,13 @@ date_trans <- function() {
 }
 
 to_date <- function(x)   structure(x, class = "Date")
-from_date <- function(x) structure(as.numeric(x), names = names(x))
+from_date <- function(x) {
+  if (!inherits(x, "Date")) {
+    stop("Invalid input: date_trans works with objects of class Date only",
+      call. = FALSE)
+  }
+  structure(as.numeric(x), names = names(x))
+}
 
 #' Transformation for times (class POSIXt).
 #'
@@ -28,7 +34,13 @@ time_trans <- function() {
 }
 
 to_time <- function(x)   structure(x, class = c("POSIXt", "POSIXct"))
-from_time <- function(x) structure(as.numeric(x), names = names(x))
+from_time <- function(x) {
+  if (!inherits(x, "POSIXct")) {
+    stop("Invalid input: time_trans works with objects of class POSIXct only",
+      call. = FALSE)
+  }
+  structure(as.numeric(x), names = names(x))
+}
 
 #' Regularly spaced dates.
 #' 
