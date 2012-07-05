@@ -1,3 +1,6 @@
+* `shape_pal` warns if asked for more than 6 values. (Fixes #16, thanks to
+  Jean-Olivier Irisson)
+
 * `time_trans` gains an optional argument `tz` to specify the time zone to use
   for the times.  If not specified, it will be guess from the first input with
   a non-null time zone.
