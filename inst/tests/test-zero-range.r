@@ -1,12 +1,8 @@
 context("Zero range")
 
 test_that("large numbers with small differences", {
-  x <- c(1330020857.8787, 1330020866.8787)
-  expect_false(zero_range(x))
-
-  x <- c(1330020857.8787, 1330020857.8787)
-  expect_true(zero_range(x))
-
+  expect_false(zero_range(c(1330020857.8787, 1330020866.8787)))
+  expect_true(zero_range(c(1330020857.8787, 1330020857.8787)))
   expect_true(zero_range(c(1330020857.8787, 1330020857.8787*(1+1e-20))))
 })
 
@@ -35,4 +31,40 @@ test_that("length 1 ranges", {
   expect_true(zero_range(c(0)))
   expect_true(zero_range(c(1e100)))
   expect_true(zero_range(c(1e-100)))
+})
+
+test_that("NA and Inf", {
+  # Should return NA
+  expect_true(is.na(zero_range(c(NA,NA))))
+  expect_true(is.na(zero_range(c(1,NA))))
+  expect_true(is.na(zero_range(c(1,NaN))))
+
+  # Not zero range
+  expect_false(zero_range(c(1,Inf)))
+  expect_false(zero_range(c(-Inf,Inf)))
+
+  # Can't know if these are truly zero range
+  expect_true(zero_range(c(Inf,Inf)))
+  expect_true(zero_range(c(-Inf,-Inf)))
+})
+
+test_that("Tolerance", {
+  # By default, tolerance is 100 times this
+  eps <- .Machine$double.eps
+
+  expect_true(zero_range(c(1, 1 + eps)))
+  expect_true(zero_range(c(1, 1 + 99 * eps)))
+
+  # Cross the threshold
+  expect_false(zero_range(c(1, 1 + 101 * eps)))
+  expect_false(zero_range(c(1, 1 + 2   * eps), tol = eps))
+
+  # Scaling up or down all the values has no effect since the values
+  # are rescaled to 1 before checking against tol
+  expect_true(zero_range(100000 * c(1, 1 + eps)))
+  expect_true(zero_range(.00001 * c(1, 1 + eps)))
+  expect_true(zero_range(100000 * c(1, 1 + 99 * eps)))
+  expect_true(zero_range(.00001 * c(1, 1 + 99 * eps)))
+  expect_false(zero_range(100000 * c(1, 1 + 200 * eps)))
+  expect_false(zero_range(.00001 * c(1, 1 + 200 * eps)))
 })
