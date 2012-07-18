@@ -1,7 +1,7 @@
 Package: scales
 Type: Package
 Title: Scale functions for graphics.
-Version: 0.2.1.2
+Version: 0.2.1.3
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: Scales map data to aesthetics, and provide
