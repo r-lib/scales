@@ -59,8 +59,10 @@ rescale_none <- function(x, ...) {
 censor <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
-  x[finite & x < range[1]] <- NA
-  x[finite & x > range[2]] <- NA
+  # Assign NA - this makes sure that, even if all elements are
+  # replaced with NA, it stays numeric (and isn't changed to logical)
+  x[finite & x < range[1]] <- NA_real_
+  x[finite & x > range[2]] <- NA_real_
   x
 }
 

@@ -20,7 +20,7 @@
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg, pch = 20, cex = 5, 
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))))
-cscale <- function(x, palette, na.value = NA, trans = identity_trans()) {
+cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
   stopifnot(is.trans(trans))
   
   x <- trans$trans(x)
@@ -41,7 +41,7 @@ train_continuous <- function(new, existing = NULL) {
 # 
 # @param oob out of bounds behaviour. Defaults to \code{\link{censor}}
 #   which turns oob values into missing values.
-map_continuous <- function(palette, x, limits, na.value = NA, oob = censor) {
+map_continuous <- function(palette, x, limits, na.value = NA_real_, oob = censor) {
   x <- oob(rescale(x, from = limits))
   pal <- palette(x)
   ifelse(!is.na(x), pal, na.value)
