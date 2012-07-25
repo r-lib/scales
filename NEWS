@@ -1,3 +1,6 @@
+Version 0.2.2
+------------------------------------------------------------------------------
+
 * `zero_range` has improved behaviour thanks to Brian Diggs.
 
 * `brewer_pal` complains if you give it an incorrect palette type. (Fixes #15,
