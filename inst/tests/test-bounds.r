@@ -12,6 +12,15 @@ test_that("rescale_mid returns correct results", {
 })
 
 
+test_that("resacle_max returns correct results", {
+  expect_equal(rescale_max(0), NaN)
+  expect_equal(rescale_max(1), 1)
+  expect_equal(rescale_max(.3), 1)
+  expect_equal(rescale_max(c(4, 5)), c(0.8, 1.0))
+  expect_equal(rescale_max(c(-3, 0, -1, 2)), c(-1.5, 0, -0.5, 1))
+})
+
+
 test_that("zero range inputs return mid range", {
   expect_that(rescale(0), equals(0.5))
   expect_that(rescale(c(0, 0)), equals(c(0.5, 0.5)))  

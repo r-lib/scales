@@ -6,3 +6,11 @@
 area_pal <- function(range = c(1, 6)) {
   function(x) rescale(sqrt(x), range, c(0, 1))
 }
+
+#' Point area palette (continuous), with area proportional to value.
+#'
+#' @param max A number representing the maxmimum size.
+#' @export
+abs_area <- function(max) {
+  function(x) rescale(sqrt(abs(x)), c(0, max), c(0, 1))
+}

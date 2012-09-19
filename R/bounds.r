@@ -35,6 +35,21 @@ rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0)
   (x - mid) / extent * diff(to) + mean(to)
 }
 
+#' Rescale numeric vector to have specified maximum.
+#'
+#' @export
+#' @param x numeric vector of values to manipulate.
+#' @param to output range (numeric vector of length two)
+#' @param from input range (numeric vector of length two).  If not given, is
+#'   calculated from the range of \code{x}
+#' @examples
+#' rescale_max(1:100)
+#' rescale_max(runif(50))
+#' rescale_max(1)
+rescale_max <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
+  x / from[2] * to[2]
+}
+
 #' Don't peform rescaling
 #'
 #' @param x numeric vector of values to manipulate.
