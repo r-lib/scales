@@ -16,8 +16,18 @@
 brewer_pal <- function(type = "seq", palette = 1) {
   pal <- pal_name(palette, type)
   
+  # If <3 colors are requested, brewer.pal will return a 3-color palette and
+  # give a warning. This warning isn't useful, so suppress it.
+  # If the palette has k colors and >k colors are requested, brewer.pal will
+  # return a k-color palette and give a warning. This warning is useful, so
+  # don't suppress it. In both cases, the seq_len(n) is there to make sure
+  # that the n items are returned, even if brewer.pal returns a different
+  # number of items.
   function(n) {
-    brewer.pal(n, pal)[seq_len(n)]    
+    if (n < 3)
+      suppressWarnings(brewer.pal(n, pal))[seq_len(n)]
+    else
+      brewer.pal(n, pal)[seq_len(n)]
   }
 }
 
