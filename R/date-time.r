@@ -20,10 +20,11 @@ floor_time <- function(date, time) {
   }
 
   prec <- parse_unit_spec(time)
+  t = time_trans()
   if (prec$unit == "sec") {
-    to_time(round_any(as.numeric(date), prec$mult))
+    t$inv(round_any(t$trans(date), prec$mult))
   } else if (prec$unit == "min") {
-    to_time(round_any(as.numeric(date), prec$mult * 60))    
+    t$inv(round_any(t$trans(date), prec$mult * 60))    
   } else {
     as.POSIXct(
       cut(date, time, right = TRUE, include.lowest = TRUE), 
