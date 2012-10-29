@@ -14,6 +14,11 @@ floor_date <- function(date, time) {
   }
 }
 floor_time <- function(date, time) {
+  to_time <- function(x) {
+    force(x)
+    structure(x, class = c("POSIXt", "POSIXct"))
+  }
+
   prec <- parse_unit_spec(time)
   if (prec$unit == "sec") {
     to_time(round_any(as.numeric(date), prec$mult))
