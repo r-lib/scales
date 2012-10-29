@@ -1,3 +1,5 @@
+Version 0.2.3
+------------------------------------------------------------------------------
 
 * `floor_time` calls `to_time`, but that function was moved into a function
   so it was no longer available in the scales namespace. Now `floor_time`
@@ -9,7 +11,6 @@
 * `abs_area and `rescale_max` functions have been added, for scaling the area
   of points to be proportional to their value. These are used by
   `scale_size_area` in ggplot2.
-
 
 Version 0.2.2
 ------------------------------------------------------------------------------
