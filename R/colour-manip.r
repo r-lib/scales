@@ -13,7 +13,7 @@
 #' col2hcl(colors())
 col2hcl <- function(colour, h, c, l, alpha = 1) {
   
-  rgb <- t(col2rgb(colour)) / 256
+  rgb <- t(col2rgb(colour)) / 255
   coords <- convertColor(rgb, "sRGB", "Luv")
 
   # Check for correctness
