@@ -163,6 +163,39 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 }
 globalVariables(".x")
 
+#' Wrap text to a specified width, adding newlines for spaces if text exceeds
+#' width
+#' @param width width above which to wrap
+#' @return a function with single paramater x, a character vector, that
+#'    returns a character vector
+#' @examples
+#' wrap_10 <- wrap(10)
+#' wrap_10('A long line that needs to be wrapped')
+wrap = function(width){
+  function(x){
+    #algorithm from http://en.wikipedia.org/wiki/Word_wrap#Algorithm
+      add_newline = function(x){
+        len = nchar(x)
+        word_breaks = gregexpr('\\s', perl=TRUE, x)[[1]]
+        if(len < width || word_breaks[1] == -1)
+          return(x)
+        space_left = width
+        prev_loc = 0
+        for(loc in c(word_breaks, len)){
+          word_width = (loc-1) - prev_loc
+          if(word_width + 1> space_left){
+            substr(x, prev_loc, prev_loc) = '\n'
+            space_left = width - word_width
+          }
+          else
+            space_left = space_left - (word_width + 1)
+          prev_loc = loc
+        }
+        x
+      }
+    unlist(lapply(x, add_newline))
+  }
+}
 #' Format labels after transformation.
 #'
 #' @param trans transformation to apply
