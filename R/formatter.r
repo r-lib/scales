@@ -168,6 +168,7 @@ globalVariables(".x")
 #' @param width width above which to wrap
 #' @return a function with single paramater x, a character vector, that
 #'    returns a character vector
+#' @export
 #' @examples
 #' wrap_10 <- wrap(10)
 #' wrap_10('A long line that needs to be wrapped')
