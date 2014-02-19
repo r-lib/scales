@@ -57,6 +57,13 @@ test_that("dollar format", {
   						 c("-$100.00", "$0.23", "-$1.46", "$2,000.00"))
 })
 
+test_that("percent format", {
+	expect_equal(percent(0.6), "60%")
+	expect_equal(percent(-0.6), "-60%")
+	expect_equal(percent(seq(0, 1, 0.25)), c("0%", "25%", "50%", "75%", "100%"))
+	expect_equal(percent(-seq(0, 1, 0.25)), c("0%", "-25%", "-50%", "-75%", "-100%"))
+})
+
 test_that("formatters don't add extra spaces", {
   has_space <- function(x) any(grepl("\\s", x))
   x <- 10 ^ c(-1, 0, 1, 3, 6, 9)
