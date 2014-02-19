@@ -53,6 +53,8 @@ test_that("dollar format", {
                  "$600,000", "$700,000", "$800,000", "$900,000", "$1,000,000"))
   expect_equal(dollar(c(9.999)), c("$10"))
   expect_equal(dollar(c(99.999)), c("$100"))
+  expect_equal(dollar(c(-100, 0.23, -1.456565, 2e3)),
+  						 c("-$100.00", "$0.23", "-$1.46", "$2,000.00"))
 })
 
 test_that("formatters don't add extra spaces", {
