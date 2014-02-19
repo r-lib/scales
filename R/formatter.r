@@ -48,7 +48,10 @@ dollar_format <- function(largest_with_cents = 100000) {
       x <- round_any(x, 1)
       nsmall <- 0L
     }
-    str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits=1L))
+    is_negative <- x < 0
+    formatted <- str_c("$", format(abs(x), nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits = 1L))
+    formatted[is_negative] <- paste0("-", formatted[is_negative])
+    return(formatted)
   }
 }
 
