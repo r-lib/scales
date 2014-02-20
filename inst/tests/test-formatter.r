@@ -55,6 +55,7 @@ test_that("dollar format", {
   expect_equal(dollar(c(99.999)), c("$100"))
   expect_equal(dollar(c(-100, 0.23, -1.456565, 2e3)),
   						 c("-$100.00", "$0.23", "-$1.46", "$2,000.00"))
+  expect_equal(dollar(c(NA_integer_, 6)), c("$NA", "$6"))
 })
 
 test_that("percent format", {
