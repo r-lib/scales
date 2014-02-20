@@ -41,7 +41,7 @@ comma <- function(x, ...) {
 dollar_format <- function(largest_with_cents = 100000) {
   function(x) {
     x <- round_any(x, 0.01)
-    if (max(x, na.rm = TRUE) < largest_with_cents &
+    if (max(abs(x), na.rm = TRUE) < largest_with_cents &
         !all(x == floor(x), na.rm = TRUE)) {
       nsmall <- 2L
     } else {
