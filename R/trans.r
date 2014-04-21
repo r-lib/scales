@@ -4,7 +4,7 @@
 #' as the information needed to create pleasing breaks and labels. The breaks
 #' function is applied on the transformed range of the range, and it's
 #' expected that the labels function will perform some kind of inverse
-#' tranformation on these breaks to give them labels that are meaningful on 
+#' tranformation on these breaks to give them labels that are meaningful on
 #' the original scale.
 #'
 #' @param name transformation name
@@ -16,22 +16,23 @@
 #'   function is applied to the raw data.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated to the raw data.
-#' @param domain domain, as numeric vector of length 2, over which 
+#' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
-#' @S3method print trans
 trans_new <- function(name, transform, inverse, breaks = extended_breaks(), format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
-  
+
   structure(list(name = name, transform = transform, inverse = inverse,
-    breaks = breaks, format = format, domain = domain), 
+    breaks = breaks, format = format, domain = domain),
     class = "trans")
 }
 
 is.trans <- function(x) inherits(x, "trans")
+
+#' @export
 print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 
 #' Convert character string to transformer.
@@ -40,7 +41,7 @@ print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 #' @export
 as.trans <- function(x) {
   if (is.trans(x)) return(x)
-  
+
   f <- str_c(x, "_trans")
   match.fun(f)()
 }
