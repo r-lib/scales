@@ -1,5 +1,5 @@
 #' Comma formatter: format number with commas separating thousands.
-#' 
+#'
 #' @param ... other arguments passed on to \code{\link{format}}
 #' @param x a numeric vector to format
 #' @return a function with single paramater x, a numeric vector, that
@@ -57,7 +57,7 @@ dollar_format <- function(largest_with_cents = 100000) {
 dollar <- dollar_format()
 
 #' Percent formatter: multiply by one hundred and display percent sign.
-#' 
+#'
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @param x a numeric vector to format
@@ -69,7 +69,7 @@ dollar <- dollar_format()
 percent_format <- function() {
   function(x) {
     x <- round_any(x, precision(x) / 100)
-    str_c(comma(x * 100), "%")    
+    str_c(comma(x * 100), "%")
   }
 }
 #' @export
@@ -77,7 +77,7 @@ percent_format <- function() {
 percent <- percent_format()
 
 #' Scientific formatter.
-#' 
+#'
 #' @return a function with single paramater x, a numeric vector, that
 #'   returns a character vector
 #' @param digits number of significant digits to show
@@ -103,7 +103,7 @@ scientific <- function(x, digits = 3, ...) {
 }
 
 #' Parse a text label to produce expressions for plotmath.
-#' 
+#'
 #' @seealso \code{\link{plotmath}}
 #' @return a function with single paramater x, a character vector, that
 #'    returns a list of expressions
@@ -112,15 +112,15 @@ scientific <- function(x, digits = 3, ...) {
 #' parse_format()(c("alpha", "beta", "gamma"))
 parse_format <- function() {
   function(x) {
-    llply(as.character(x), function(x) parse(text = x, srcfile = NULL))    
+    llply(as.character(x), function(x) parse(text = x, srcfile = NULL))
   }
 }
 
 #' Add arbitrary expression to a label.
 #' The symbol that will be replace by the label value is \code{.x}.
-#' 
+#'
 #' @param expr expression to use
-#' @param format another format function to apply prior to mathematical 
+#' @param format another format function to apply prior to mathematical
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
 #' @return a function with single paramater x, a numeric vector, that
@@ -137,12 +137,14 @@ math_format <- function(expr = 10 ^ .x, format = force) {
   subs <- function(x) {
     do.call("substitute", list(quoted, list(.x = as.name(x))))
   }
-  
+
   function(x) {
     x <- format(x)
     llply(x, subs)
   }
 }
+
+globalVariables(".x")
 
 #' Format labels after transformation.
 #'
@@ -156,7 +158,7 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 #' tf(10 ^ 1:6)
 trans_format <- function(trans, format = scientific_format()) {
   if (is.character(trans)) trans <- match.fun(trans)
-  
+
   function(x) {
     x <- trans(x)
     format(x)
@@ -181,7 +183,7 @@ format_format <- function(...) {
 
 precision <- function(x) {
   rng <- range(x, na.rm = TRUE)
-  
+
   span <- if (zero_range(rng)) rng[1] else diff(rng)
   10 ^ floor(log10(span))
 }
