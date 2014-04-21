@@ -3,6 +3,8 @@ Version 0.2.3.99
 
 * Eliminate stringr dependency.
 
+* Fix outstanding errors in R CMD check
+
 Version 0.2.3
 ------------------------------------------------------------------------------
 
