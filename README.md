@@ -1,5 +1,7 @@
 # Scales
 
+[![Build Status](https://travis-ci.org/hadley/scales.png?branch=master)](https://travis-ci.org/hadley/scales)
+
 One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The idea of the `scales` package is to implement scales in a way that is graphics system agnostic, so that everyone can benefit by pooling knowledge and resources about this tricky topic.
 
 # Components
