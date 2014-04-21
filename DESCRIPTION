@@ -19,7 +19,7 @@ Imports:
     labeling
 Suggests:
     testthat
-License: MIT
+License: MIT + file LICENSE
 LazyLoad: yes
 Roxygen: list(wrap = FALSE)
 BuildManual: yes
