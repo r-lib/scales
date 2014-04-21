@@ -7,6 +7,8 @@ Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Description: Scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
+URL: https://github.com/hadley/scales
+BugReports: https://github.com/hadley/scales/issues
 Depends:
     R (>= 2.13)
 Imports:
