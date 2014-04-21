@@ -15,7 +15,7 @@
 #' show_col(gradient_n_pal(cols)(seq(0, 1, length = 30)))
 brewer_pal <- function(type = "seq", palette = 1) {
   pal <- pal_name(palette, type)
-  
+
   # If <3 colors are requested, brewer.pal will return a 3-color palette and
   # give a warning. This warning isn't useful, so suppress it.
   # If the palette has k colors and >k colors are requested, brewer.pal will
@@ -33,18 +33,23 @@ brewer_pal <- function(type = "seq", palette = 1) {
 
 pal_name <- function(palette, type) {
   if (is.character(palette)) {
-    if (!palette %in% RColorBrewer:::namelist) {
+    if (!palette %in% unlist(brewer)) {
       warning("Unknown palette ", palette)
       palette <- "Greens"
     }
     return(palette)
   }
-  
-  switch(type, 
-    div = RColorBrewer:::divlist, 
-    qual = RColorBrewer:::quallist, 
-    seq = RColorBrewer:::seqlist,
-    stop("Unknown palette type. Should be 'div', 'qual' or 'seq'", 
-      call. = FALSE)
-  )[palette]  
+
+  type <- match.arg(type, c("div", "qual", "seq"))
+  brewer[[type]][palette]
 }
+
+brewer <- list(
+  div = c("BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
+    "Spectral"),
+  qual = c("Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set2", "Set3"),
+  seq = c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
+    "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
+    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd")
+)
