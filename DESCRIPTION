@@ -17,7 +17,7 @@ Imports:
     labeling,
     methods
 Suggests:
-    testthat
+    testthat (>= 0.8)
 License: MIT + file LICENSE
 LazyLoad: yes
 Roxygen: list(wrap = FALSE)

@@ -1,4 +1,4 @@
 library(testthat)
 library(scales)
 
-test_package("scales")
+test_check("scales")
