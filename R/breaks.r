@@ -18,7 +18,7 @@ pretty_breaks <- function(n = 5, ...) {
 }
 
 #' Extended breaks.
-#' Uses Wilkinson's extended breaks algorithm as implemented in the 
+#' Uses Wilkinson's extended breaks algorithm as implemented in the
 #' \pkg{labeling} package.
 #'
 #' @param n desired number of breaks
@@ -26,19 +26,18 @@ pretty_breaks <- function(n = 5, ...) {
 #' @references Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 #'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
 #'  2010.
-#' @importFrom labeling extended
 #' @export
 #' @examples
 #' extended_breaks()(1:10)
 #' extended_breaks()(1:100)
 extended_breaks <- function(n = 5, ...) {
   function(x) {
-    extended(min(x), max(x), n, only.loose = FALSE, ...)
+    labeling::extended(min(x), max(x), n, only.loose = FALSE, ...)
   }
 }
 
 #' Log breaks (integer breaks on log-transformed scales).
-#' 
+#'
 #' @param n desired number of breaks
 #' @param base base of logarithm to use
 #' @export
@@ -50,18 +49,18 @@ log_breaks <- function(n = 5, base = 10) {
     rng <- log(range(x, na.rm = TRUE), base = base)
     min <- floor(rng[1])
     max <- ceiling(rng[2])
-    
+
     if (max == min) return(base ^ min)
-    
+
     by <- floor((max - min) / n) + 1
-    base ^ seq(min, max, by = by)            
+    base ^ seq(min, max, by = by)
   }
 }
 
 #' Pretty breaks on transformed scale.
 #'
 #' These often do not produce very attractive breaks.
-#' 
+#'
 #' @param trans function of single variable, \code{x}, that given a numeric
 #'   vector returns the transformed values
 #' @param inv inverse of the transformation function
@@ -76,7 +75,7 @@ log_breaks <- function(n = 5, base = 10) {
 trans_breaks <- function(trans, inv, n = 5, ...) {
   trans <- match.fun(trans)
   inv <- match.fun(inv)
-  
+
   function(x) {
     inv(pretty(trans(x), n, ...))
   }
@@ -91,7 +90,7 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #'   data
 #' @param breaks either a vector of break values, or a break function that
 #'   will make a vector of breaks when given the range of the data
-#' @param labels either a vector of labels (character vector or list of 
+#' @param labels either a vector of labels (character vector or list of
 #'   expression) or a format function that will make a vector of labels when
 #'   called with a vector of breaks. Labels can only be specified manually if
 #'   breaks are - it is extremely dangerous to supply labels if you don't know
@@ -113,23 +112,23 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #' # You can also specify them manually:
 #' cbreaks(c(0, 100), breaks = c(15, 20, 80))
 #' cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
-#' cbreaks(c(0, 100), breaks = c(15, 20, 80), 
+#' cbreaks(c(0, 100), breaks = c(15, 20, 80),
 #'   labels = expression(alpha, beta, gamma))
 cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_format()) {
-  
+
   if (zero_range(range)) {
     return(list(breaks = range[1], labels = format(range[1])))
   }
-  
+
   if (is.function(breaks)) {
     breaks <- breaks(range)
 
     if (!is.function(labels)) {
-      stop("Labels can only be manually specified in conjunction with breaks", 
+      stop("Labels can only be manually specified in conjunction with breaks",
         call. = FALSE)
     }
   }
-  
+
   if (is.function(labels)) {
     labels <- labels(breaks)
   } else {
@@ -142,6 +141,6 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
       labels <- as.character(labels)
     }
   }
-  
+
   list(breaks = breaks, labels = labels)
 }

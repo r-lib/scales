@@ -25,9 +25,9 @@ brewer_pal <- function(type = "seq", palette = 1) {
   # number of items.
   function(n) {
     if (n < 3)
-      suppressWarnings(brewer.pal(n, pal))[seq_len(n)]
+      suppressWarnings(RColorBrewer::brewer.pal(n, pal))[seq_len(n)]
     else
-      brewer.pal(n, pal)[seq_len(n)]
+      RColorBrewer::brewer.pal(n, pal)[seq_len(n)]
   }
 }
 

@@ -143,7 +143,6 @@ math_format <- function(expr = 10 ^ .x, format = force) {
     llply(x, subs)
   }
 }
-
 globalVariables(".x")
 
 #' Format labels after transformation.

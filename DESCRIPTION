@@ -8,15 +8,15 @@ Description: Scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
 Depends:
-    R (>= 2.12),
-    methods
+    R (>= 2.12)
 Imports:
     RColorBrewer,
     stringr,
     dichromat,
     munsell (>= 0.2),
     plyr (>= 1.2),
-    labeling
+    labeling,
+    methods
 Suggests:
     testthat
 License: MIT + file LICENSE

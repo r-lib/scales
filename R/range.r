@@ -5,14 +5,14 @@
 #'
 #' @aliases DiscreteRange ContinuousRange
 #' @export DiscreteRange ContinuousRange
-Range <- setRefClass("Range", fields = "range", methods = list(
+Range <- methods::setRefClass("Range", fields = "range", methods = list(
   initialize = function() {
     initFields(range = NULL)
   })
 )
 
-DiscreteRange <- setRefClass(
-  "DiscreteRange", contains = "Range", 
+DiscreteRange <- methods::setRefClass(
+  "DiscreteRange", contains = "Range",
   methods = list(
     train = function(x, drop = FALSE) {
       range <<- train_discrete(x, range, drop)
@@ -21,8 +21,8 @@ DiscreteRange <- setRefClass(
   )
 )
 
-ContinuousRange <- setRefClass(
-  "Continuous", contains = "Range", 
+ContinuousRange <- methods::setRefClass(
+  "Continuous", contains = "Range",
   methods = list(
     train = function(x) range <<- train_continuous(x, range),
     reset = function() range <<- NULL
