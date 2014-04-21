@@ -42,7 +42,7 @@ print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 as.trans <- function(x) {
   if (is.trans(x)) return(x)
 
-  f <- str_c(x, "_trans")
+  f <- paste0(x, "_trans")
   match.fun(f)()
 }
 

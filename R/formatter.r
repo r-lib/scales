@@ -48,7 +48,7 @@ dollar_format <- function(largest_with_cents = 100000) {
       x <- round_any(x, 1)
       nsmall <- 0L
     }
-    str_c("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits=1L))
+    paste0("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits=1L))
   }
 }
 
@@ -69,7 +69,7 @@ dollar <- dollar_format()
 percent_format <- function() {
   function(x) {
     x <- round_any(x, precision(x) / 100)
-    str_c(comma(x * 100), "%")
+    paste0(comma(x * 100), "%")
   }
 }
 #' @export

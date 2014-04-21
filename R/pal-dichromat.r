@@ -13,7 +13,7 @@
 dichromat_pal <- function(name) {
   if (!any(name == names(dichromat::colorschemes))) {
     stop("Palette name must be one of ",
-      str_c(names(dichromat::colorschemes), collapse = ", "), call. = FALSE)
+      paste0(names(dichromat::colorschemes), collapse = ", "), call. = FALSE)
   }
 
   pal <- dichromat::colorschemes[[name]]
@@ -22,5 +22,5 @@ dichromat_pal <- function(name) {
 
 
 dichromat_schemes <- function() {
-  str_c("\\code{", names(dichromat::colorschemes), "}", collapse = ", ")
+  paste0("\\code{", names(dichromat::colorschemes), "}", collapse = ", ")
 }

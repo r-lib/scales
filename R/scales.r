@@ -3,5 +3,5 @@
 #' @docType package
 #' @name package-scales
 #' @aliases scales package-scales
-#' @import stringr munsell plyr
+#' @import munsell plyr
 NULL

@@ -3,8 +3,8 @@
 #' @export
 asn_trans <- function() {
   trans_new(
-    "asn", 
-    function(x) 2 * asin(sqrt(x)), 
+    "asn",
+    function(x) 2 * asin(sqrt(x)),
     function(x) sin(x / 2) ^ 2)
 }
 
@@ -18,16 +18,16 @@ atanh_trans <- function() {
 #' Box-Cox power transformation.
 #'
 #' @param p Exponent of boxcox transformation.
-#' @references See \url{http://en.wikipedia.org/wiki/Power_transform} for 
+#' @references See \url{http://en.wikipedia.org/wiki/Power_transform} for
 #   more details on method.
 #' @export
 boxcox_trans <- function(p) {
   if (abs(p) < 1e-07) return(log_trans)
 
   trans <- function(x) (x ^ p - 1) / p * sign(x - 1)
-  inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)  
+  inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)
   trans_new(
-    str_c("pow-", format(p)), trans, inv)
+    paste0("pow-", format(p)), trans, inv)
 }
 
 #' Exponential transformation (inverse of log transformation).
@@ -36,7 +36,7 @@ boxcox_trans <- function(p) {
 #' @export
 exp_trans <- function(base = exp(1)) {
   trans_new(
-    str_c("power-", format(base)), 
+    paste0("power-", format(base)),
     function(x) base ^ x,
     function(x) log(x, base = base))
 }
@@ -50,15 +50,15 @@ identity_trans <- function() {
 
 
 #' Log transformation.
-#' 
+#'
 #' @param base base of logarithm
 #' @aliases log_trans log10_trans log2_trans
 #' @export log_trans log10_trans log2_trans
 log_trans <- function(base = exp(1)) {
   trans <- function(x) log(x, base)
   inv <- function(x) base ^ x
-  
-  trans_new(str_c("log-", format(base)), trans, inv, 
+
+  trans_new(paste0("log-", format(base)), trans, inv,
     log_breaks(base = base), domain = c(1e-100, Inf))
 }
 log10_trans <- function() {
@@ -76,7 +76,7 @@ log1p_trans <- function() {
 }
 
 #' Probability transformation.
-#' 
+#'
 #' @param distribution probability distribution.  Should be standard R
 #'   abbreviation so that "p" + distribution is a valid probability density
 #'   function, and "q" + distribution is a valid quantile function.
@@ -84,12 +84,12 @@ log1p_trans <- function() {
 #' @aliases probability_trans logit_trans probit_trans
 #' @export probability_trans logit_trans probit_trans
 probability_trans <- function(distribution, ...) {
-  qfun <- match.fun(str_c("q", distribution))
-  pfun <- match.fun(str_c("p", distribution))
-  
+  qfun <- match.fun(paste0("q", distribution))
+  pfun <- match.fun(paste0("p", distribution))
+
   trans_new(
-    str_c("prob-", distribution), 
-    function(x) qfun(x, ...), 
+    paste0("prob-", distribution),
+    function(x) qfun(x, ...),
     function(x) pfun(x, ...))
 }
 logit_trans <- function() probability_trans("logis")
@@ -99,8 +99,8 @@ probit_trans <- function() probability_trans("norm")
 #'
 #' @export
 reciprocal_trans <- function() {
-  trans_new("reciprocal", 
-    function(x) 1 / x, 
+  trans_new("reciprocal",
+    function(x) 1 / x,
     function(x) 1 / x)
 }
 
