@@ -63,5 +63,20 @@ test_that("formatters don't add extra spaces", {
   expect_false(has_space(dollar(x)))
   expect_false(has_space(percent(x)))
   expect_false(has_space(percent(x)))
-  expect_false(has_space(scientific(x)))  
+  expect_false(has_space(scientific(x)))
+})
+
+test_that("unit format", {
+  expect_equal(
+    unit_format(unit = "km", scale = 1e-3)(c(1e3, 2e3)),
+    c("1 km", "2 km")
+  )
+  expect_equal(
+    unit_format(unit = "ha", scale = 1e-4)(c(1e3, 2e3)),
+    c("0.1 ha", "0.2 ha")
+  )
+  expect_equal(
+    unit_format()(c(1e3, 2e3)),
+    c("1,000 m", "2,000 m")
+  )
 })
