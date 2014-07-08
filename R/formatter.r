@@ -186,3 +186,24 @@ precision <- function(x) {
   span <- if (zero_range(rng)) rng[1] else diff(rng)
   10 ^ floor(log10(span))
 }
+
+
+#' Add units to the labels
+#'
+#' @param unit The units to append
+#' @param scale A scaling factor. Useful if the underlying data is on another scale
+#' @param sep The separator between the number and the label
+#' @param ... Arguments passed to \code{\link{comma}}
+#' @export
+#' @examples
+#'   # labels in kilometer when the raw data are in meter
+#'   unit_format(unit = "km", scale = 1e-3)
+#'   # labels in hectares, raw data in square meters
+#'   unit_format(unit = "ha", scale = 1e-4)
+#' @seealso \code{\link{comma}}
+
+unit_format <- function(unit = "m", scale = 1, sep = " ", ...){
+  function(x){
+    paste(comma(x * scale, ...), unit, sep = sep)
+  }
+}
