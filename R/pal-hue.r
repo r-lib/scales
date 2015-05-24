@@ -3,7 +3,7 @@
 #' @param h range of hues to use, in [0, 360]
 #' @param l luminance (lightness), in [0, 100]
 #' @param c chroma (intensity of colour), maximum value varies depending on
-#    combination of hue and luminance.
+#'   combination of hue and luminance.
 #' @param h.start hue to start at
 #' @param direction direction to travel around the colour wheel,
 #'   1 = clockwise, -1 = counter-clockwise
