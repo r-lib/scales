@@ -235,7 +235,7 @@ colors <- c('black', 'white')
 c0 <- function(x) {
   rgb(colorRamp(colors, space = 'Lab')(x) / 255)
 }
-c1 <- createColorRamp(colors)
+c1 <- colour_ramp(colors)
 
 which(c0(x) != c1(x))
 */

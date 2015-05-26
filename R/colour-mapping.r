@@ -277,12 +277,12 @@ toPaletteFunc = function(pal) {
 # of an RColorBrewer palette
 toPaletteFunc.character = function(pal) {
   if (length(pal) == 1 && pal %in% row.names(RColorBrewer::brewer.pal.info)) {
-    return(createColorRamp(
+    return(colour_ramp(
       RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info[pal, 'maxcolors'], pal)
     ))
   }
 
-  createColorRamp(pal)
+  colour_ramp(pal)
 }
 
 # Accept colorRamp style matrix
@@ -371,7 +371,7 @@ filterRange = function(f) {
 #' @seealso \link[grDevices]{colorRamp}
 #'
 #' @export
-createColorRamp <- function(colors, na.color = NA, alpha = FALSE) {
+colour_ramp <- function(colors, na.color = NA, alpha = FALSE) {
   if (length(colors) == 0) {
     stop("Must provide at least one color to create a color ramp")
   }
