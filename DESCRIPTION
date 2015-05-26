@@ -17,7 +17,12 @@ Imports:
     munsell (>= 0.2),
     plyr (>= 1.2),
     labeling,
-    methods
+    methods,
+    Rcpp,
+    RcppParallel
+LinkingTo:
+    Rcpp,
+    RcppParallel
 Suggests:
     testthat (>= 0.8)
 License: MIT + file LICENSE
