@@ -3,6 +3,6 @@
 #' @docType package
 #' @name package-scales
 #' @aliases scales package-scales
-#' @import munsell plyr Rcpp RcppParallel
+#' @import munsell plyr Rcpp methods
 #' @useDynLib scales
 NULL

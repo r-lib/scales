@@ -1,13 +1,10 @@
 #include <Rcpp.h>
-// [[Rcpp::depends(RcppParallel)]]
-#include <RcppParallel.h>
 
 #include <iomanip>
 #include <sstream>
 #include <iostream>
 
 using namespace Rcpp;
-using namespace RcppParallel;
 
 // Convert an integer (0-255) to two ASCII hex digits, starting at buf
 void intToHex(unsigned int x, char* buf) {
@@ -139,100 +136,6 @@ void lab2srgb(double l, double a, double b, double *red, double *green, double *
 // === END SRGB/LAB CONVERSION =======================================
 
 
-class ColorRampWorker : public RcppParallel::Worker {
-  // inputs
-  const RMatrix<double> colors;
-  const RVector<double> x;
-  const bool alpha;
-  const size_t ncolors;
-
-public:
-  // output
-  tbb::concurrent_vector<std::string> result;
-
-  ColorRampWorker(const RMatrix<double> colors, const RVector<double> x, bool alpha)
-    : colors(colors), x(x), alpha(alpha), ncolors(colors.ncol()), result(x.length()) {
-  }
-
-  void operator()(std::size_t begin, std::size_t end) {
-    for (size_t i = begin; i < end; i++) {
-      double xval = x[i];
-      if (xval < 0 || xval > 1 || R_IsNA(xval)) {
-        // Illegal or NA value for this x value. We can't use NA here but "" will
-        // be replaced with NA later, when we're back on the R thread.
-        result[i] = std::string();
-      } else {
-        // Scale the [0,1] value to [0,n-1]
-        xval *= ncolors - 1;
-        // Find the closest color that's *lower* than xval. This'll be one of the
-        // colors we use to interpolate; the other will be colorOffset+1.
-        size_t colorOffset = static_cast<size_t>(::floor(xval));
-        double l, a, b;
-        double opacity = 0;
-        if (colorOffset == ncolors - 1) {
-          // xvalue is exactly at the top of the range. Just use the top color.
-          l = colors(0, colorOffset);
-          a = colors(1, colorOffset);
-          b = colors(2, colorOffset);
-          if (alpha) {
-            opacity = colors(3, colorOffset);
-          }
-        } else {
-          // Do a linear interp between the two closest colors.
-          double factorB = xval - colorOffset;
-          double factorA = 1 - factorB;
-          l = factorA * colors(0, colorOffset) + factorB * colors(0, colorOffset + 1);
-          a = factorA * colors(1, colorOffset) + factorB * colors(1, colorOffset + 1);
-          b = factorA * colors(2, colorOffset) + factorB * colors(2, colorOffset + 1);
-          if (alpha) {
-            opacity = ::round(factorA * colors(3, colorOffset) + factorB * colors(3, colorOffset + 1));
-          }
-        }
-
-        double red, green, blue;
-        lab2srgb(l, a, b, &red, &green, &blue);
-        red = ::round(red * 255);
-        green = ::round(green * 255);
-        blue = ::round(blue * 255);
-
-        // Convert the result to hex string
-        if (!alpha)
-          result[i] = rgbcolor(red, green, blue);
-        else
-          result[i] = rgbacolor(red, green, blue, opacity);
-      }
-    }
-  }
-};
-
-StringVector doColorRampParallel(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
-  // We can't use normal Rcpp data structures on other threads, so use
-  // RcppParallel-provided matrix and vector classes instead.
-  RMatrix<double> rcolors(colors);
-  RVector<double> rx(x);
-  ColorRampWorker crw(rcolors, rx, alpha);
-  parallelFor(0, x.size(), crw);
-
-  // Copy the results from ColorRampWorker's tbb::concurrent_vector<std::string>
-  // to a StringVector that's suitable for returning to R.
-  // TODO: Is there a way to speed this up or do fewer allocations? Last I
-  //   checked we're now spending 50% of our time in this loop.
-  StringVector result(x.length());
-  for (size_t i = 0; i < x.length(); i++) {
-    if (crw.result[i].empty()) {
-      if (naColor.empty())
-        result[i] = NA_STRING;
-      else
-        result[i] = naColor;
-    } else {
-      result[i] = crw.result[i];
-    }
-  }
-  return result;
-}
-
-// Same as doColorRampParallel, but doesn't use multiple cores. Not that much
-// slower than the parallel version, actually.
 StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
 
   size_t ncolors = colors.ncol();
@@ -241,17 +144,18 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
   for (size_t i = 0; i < x.length(); i++) {
     double xval = x[i];
     if (xval < 0 || xval > 1 || R_IsNA(xval)) {
-      if (naColor.empty())
-        result[i] = NA_STRING;
-      else
-        result[i] = naColor;
+      // Illegal or NA value for this x value.
+      result[i] = NA_STRING;
     } else {
+      // Scale the [0,1] value to [0,n-1]
       xval *= ncolors - 1;
+      // Find the closest color that's *lower* than xval. This'll be one of the
+      // colors we use to interpolate; the other will be colorOffset+1.
       size_t colorOffset = static_cast<size_t>(::floor(xval));
       double l, a, b;
       double opacity = 0;
       if (colorOffset == ncolors - 1) {
-        // Just use the top color
+        // xvalue is exactly at the top of the range. Just use the top color.
         l = colors(0, colorOffset);
         a = colors(1, colorOffset);
         b = colors(2, colorOffset);
@@ -259,12 +163,12 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
           opacity = colors(3, colorOffset);
         }
       } else {
-        // Do a linear interp between the two closest colors
+        // Do a linear interp between the two closest colors.
         double factorB = xval - colorOffset;
-        double factorA = colorOffset + 1 - xval;
-        l = ::round(factorA * colors(0, colorOffset) + factorB * colors(0, colorOffset + 1));
-        a = ::round(factorA * colors(1, colorOffset) + factorB * colors(1, colorOffset + 1));
-        b = ::round(factorA * colors(2, colorOffset) + factorB * colors(2, colorOffset + 1));
+        double factorA = 1 - factorB;
+        l = factorA * colors(0, colorOffset) + factorB * colors(0, colorOffset + 1);
+        a = factorA * colors(1, colorOffset) + factorB * colors(1, colorOffset + 1);
+        b = factorA * colors(2, colorOffset) + factorB * colors(2, colorOffset + 1);
         if (alpha) {
           opacity = ::round(factorA * colors(3, colorOffset) + factorB * colors(3, colorOffset + 1));
         }
@@ -272,7 +176,11 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
 
       double red, green, blue;
       lab2srgb(l, a, b, &red, &green, &blue);
+      red = ::round(red * 255);
+      green = ::round(green * 255);
+      blue = ::round(blue * 255);
 
+      // Convert the result to hex string
       if (!alpha)
         result[i] = rgbcolor(red, green, blue);
       else
@@ -294,7 +202,7 @@ StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std:
     colors(1, col) = a;
     colors(2, col) = b;
   }
-  return doColorRampParallel(colors, x, alpha, naColor);
+  return doColorRampSerial(colors, x, alpha, naColor);
 }
 
 // For unit testing
