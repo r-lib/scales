@@ -3,15 +3,15 @@
 #' Conveniently maps data values (numeric or factor/character) to colors
 #' according to a given palette, which can be provided in a variety of formats.
 #'
-#' \code{color_numeric} is a simple linear mapping from continuous numeric data
+#' \code{col_numeric} is a simple linear mapping from continuous numeric data
 #' to an interpolated palette.
 #'
 #' @param palette The colors or color function that values will be mapped to
 #' @param domain The possible values that can be mapped.
 #'
-#'   For \code{color_numeric} and \code{color_bin}, this can be a simple numeric
-#'   range (e.g. \code{c(0, 100)}); \code{color_quantile} needs representative
-#'   numeric data; and \code{color_factor} needs categorical data.
+#'   For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
+#'   range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
+#'   numeric data; and \code{col_factor} needs categorical data.
 #'
 #'   If \code{NULL}, then whenever the resulting color function is called, the
 #'   \code{x} value will represent the domain. This implies that if the function
@@ -22,11 +22,11 @@
 #'   \code{na.color=NA} is valid.
 #'
 #' @return A function that takes a single parameter \code{x}; when called with a
-#'   vector of numbers (except for \code{color_factor}, which expects
+#'   vector of numbers (except for \code{col_factor}, which expects
 #'   factors/characters), #RRGGBB color strings are returned.
 #'
 #' @export
-color_numeric = function(palette, domain, na.color = "#808080") {
+col_numeric = function(palette, domain, na.color = "#808080") {
   rng = NULL
   if (length(domain) > 0) {
     rng = range(domain, na.rm = TRUE)
@@ -81,7 +81,7 @@ getBins = function(domain, x, bins, pretty) {
   }
 }
 
-#' @details \code{color_bin} also maps continuous numeric data, but performs
+#' @details \code{col_bin} also maps continuous numeric data, but performs
 #'   binning based on value (see the \code{\link[base]{cut}} function).
 #' @param bins Either a numeric vector of two or more unique cut points or a
 #'   single number (greater than or equal to 2) giving the number of intervals
@@ -91,9 +91,9 @@ getBins = function(domain, x, bins, pretty) {
 #'   \code{pretty = TRUE}, the actual number of bins may not be the number of
 #'   bins you specified. When \code{pretty = FALSE}, \code{\link{seq}()} is used
 #'   to generate the bins and the breaks may not be "pretty".
-#' @rdname color_numeric
+#' @rdname col_numeric
 #' @export
-color_bin = function(palette, domain, bins = 7, pretty = TRUE, na.color = "#808080") {
+col_bin = function(palette, domain, bins = 7, pretty = TRUE, na.color = "#808080") {
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # breaks are specified
   if (missing(domain) && length(bins) > 1) {
@@ -103,7 +103,7 @@ color_bin = function(palette, domain, bins = 7, pretty = TRUE, na.color = "#8080
   if (!is.null(domain))
     bins = getBins(domain, NULL, bins, pretty)
   numColors = if (length(bins) == 1) bins else length(bins) - 1
-  colorFunc = color_factor(palette, domain = if (!autobin) 1:numColors, na.color = na.color)
+  colorFunc = col_factor(palette, domain = if (!autobin) 1:numColors, na.color = na.color)
   pf = safePaletteFunc(palette, na.color)
 
   withColorAttr('bin', list(bins = bins, na.color = na.color), function(x) {
@@ -118,29 +118,29 @@ color_bin = function(palette, domain, bins = 7, pretty = TRUE, na.color = "#8080
   })
 }
 
-#' @details \code{color_quantile} similarly bins numeric data, but via the
+#' @details \code{col_quantile} similarly bins numeric data, but via the
 #'   \code{\link[stats]{quantile}} function.
 #' @param n Number of equal-size quantiles desired. For more precise control,
 #'   use the \code{probs} argument instead.
 #' @param probs See \code{\link[stats]{quantile}}. If provided, the \code{n}
 #'   argument is ignored.
-#' @rdname color_numeric
+#' @rdname col_numeric
 #' @export
-color_quantile = function(palette, domain, n = 4,
+col_quantile = function(palette, domain, n = 4,
   probs = seq(0, 1, length.out = n + 1), na.color = "#808080") {
 
   if (!is.null(domain)) {
     bins = quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
       'quantile', list(probs = probs, na.color = na.color),
-      color_bin(palette, domain = NULL, bins = bins, na.color = na.color)
+      col_bin(palette, domain = NULL, bins = bins, na.color = na.color)
     ))
   }
 
   # I don't have a precise understanding of how quantiles are meant to map to colors.
   # If you say probs = seq(0, 1, 0.25), which has length 5, does that map to 4 colors
   # or 5? 4, right?
-  colorFunc = color_factor(palette, domain = 1:(length(probs) - 1), na.color = na.color)
+  colorFunc = col_factor(palette, domain = 1:(length(probs) - 1), na.color = na.color)
   withColorAttr('quantile', list(probs = probs, na.color = na.color), function(x) {
     binsToUse = quantile(x, probs, na.rm = TRUE, names = FALSE)
     ints = cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
@@ -177,16 +177,16 @@ getLevels = function(domain, x, lvls, ordered) {
   }
 }
 
-#' @details \code{color_factor} maps factors to colors. If the palette is
+#' @details \code{col_factor} maps factors to colors. If the palette is
 #'   discrete and has a different number of colors than the number of factors,
 #'   interpolation is used.
 #' @param levels An alternate way of specifying levels; if specified, domain is
 #'   ignored
 #' @param ordered If \code{TRUE} and \code{domain} needs to be coerced to a
 #'   factor, treat it as already in the correct order
-#' @rdname color_numeric
+#' @rdname col_numeric
 #' @export
-color_factor = function(palette, domain, levels = NULL, ordered = FALSE,
+col_factor = function(palette, domain, levels = NULL, ordered = FALSE,
   na.color = "#808080") {
 
   # domain usually needs to be explicitly provided (even if NULL) but not if
@@ -236,24 +236,24 @@ color_factor = function(palette, domain, levels = NULL, ordered = FALSE,
 #'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
 #' }
 #' @examples
-#' pal = color_bin("Greens", domain = 0:100)
+#' pal = col_bin("Greens", domain = 0:100)
 #' show_col(pal(sort(runif(10, 60, 100))))
 #'
 #' # Exponential distribution, mapped continuously
-#' show_col(color_numeric("Blues", domain = NULL)(sort(rexp(16))))
+#' show_col(col_numeric("Blues", domain = NULL)(sort(rexp(16))))
 #' # Exponential distribution, mapped by interval
-#' show_col(color_bin("Blues", domain = NULL, bins = 4)(sort(rexp(16))))
+#' show_col(col_bin("Blues", domain = NULL, bins = 4)(sort(rexp(16))))
 #' # Exponential distribution, mapped by quantile
-#' show_col(color_quantile("Blues", domain = NULL)(sort(rexp(16))))
+#' show_col(col_quantile("Blues", domain = NULL)(sort(rexp(16))))
 #'
 #' # Categorical data; by default, the values being colored span the gamut...
-#' show_col(color_factor("RdYlBu", domain = NULL)(LETTERS[1:5]))
+#' show_col(col_factor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 #' # ...unless the data is a factor, without droplevels...
-#' show_col(color_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
+#' show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
 #' # ...or the domain is stated explicitly.
-#' show_col(color_factor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
-#' @rdname color_numeric
-#' @name color_numeric
+#' show_col(col_factor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
+#' @rdname col_numeric
+#' @name col_numeric
 NULL
 
 
