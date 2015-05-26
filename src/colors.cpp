@@ -248,32 +248,35 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
     } else {
       xval *= ncolors - 1;
       size_t colorOffset = static_cast<size_t>(::floor(xval));
-      double r, g, b;
-      double a = 0;
+      double l, a, b;
+      double opacity = 0;
       if (colorOffset == ncolors - 1) {
         // Just use the top color
-        r = colors(0, colorOffset);
-        g = colors(1, colorOffset);
+        l = colors(0, colorOffset);
+        a = colors(1, colorOffset);
         b = colors(2, colorOffset);
         if (alpha) {
-          a = colors(3, colorOffset);
+          opacity = colors(3, colorOffset);
         }
       } else {
         // Do a linear interp between the two closest colors
         double factorB = xval - colorOffset;
         double factorA = colorOffset + 1 - xval;
-        r = ::round(factorA * colors(0, colorOffset) + factorB * colors(0, colorOffset + 1));
-        g = ::round(factorA * colors(1, colorOffset) + factorB * colors(1, colorOffset + 1));
+        l = ::round(factorA * colors(0, colorOffset) + factorB * colors(0, colorOffset + 1));
+        a = ::round(factorA * colors(1, colorOffset) + factorB * colors(1, colorOffset + 1));
         b = ::round(factorA * colors(2, colorOffset) + factorB * colors(2, colorOffset + 1));
         if (alpha) {
-          a = ::round(factorA * colors(3, colorOffset) + factorB * colors(3, colorOffset + 1));
+          opacity = ::round(factorA * colors(3, colorOffset) + factorB * colors(3, colorOffset + 1));
         }
       }
 
+      double red, green, blue;
+      lab2srgb(l, a, b, &red, &green, &blue);
+
       if (!alpha)
-        result[i] = rgbcolor(r, g, b);
+        result[i] = rgbcolor(red, green, blue);
       else
-        result[i] = rgbacolor(r, g, b, a);
+        result[i] = rgbacolor(red, green, blue, opacity);
     }
   }
   return result;

@@ -89,20 +89,20 @@ The \code{palette} argument can be any of the following:
 }
 \examples{
 pal = colorBin("Greens", domain = 0:100)
-pal(runif(10, 60, 100))
+show_col(pal(sort(runif(10, 60, 100))))
 
 # Exponential distribution, mapped continuously
-previewColors(colorNumeric("Blues", domain = NULL), sort(rexp(16)))
+show_col(colorNumeric("Blues", domain = NULL)(sort(rexp(16))))
 # Exponential distribution, mapped by interval
-previewColors(colorBin("Blues", domain = NULL, bins = 4), sort(rexp(16)))
+show_col(colorBin("Blues", domain = NULL, bins = 4)(sort(rexp(16))))
 # Exponential distribution, mapped by quantile
-previewColors(colorQuantile("Blues", domain = NULL), sort(rexp(16)))
+show_col(colorQuantile("Blues", domain = NULL)(sort(rexp(16))))
 
 # Categorical data; by default, the values being colored span the gamut...
-previewColors(colorFactor("RdYlBu", domain = NULL), LETTERS[1:5])
+show_col(colorFactor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 # ...unless the data is a factor, without droplevels...
-previewColors(colorFactor("RdYlBu", domain = NULL), factor(LETTERS[1:5], levels=LETTERS))
+show_col(colorFactor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
 # ...or the domain is stated explicitly.
-previewColors(colorFactor("RdYlBu", levels = LETTERS), LETTERS[1:5])
+show_col(colorFactor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
 }
 

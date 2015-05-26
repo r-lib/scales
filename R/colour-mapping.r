@@ -237,21 +237,21 @@ colorFactor = function(palette, domain, levels = NULL, ordered = FALSE,
 #' }
 #' @examples
 #' pal = colorBin("Greens", domain = 0:100)
-#' pal(runif(10, 60, 100))
+#' show_col(pal(sort(runif(10, 60, 100))))
 #'
 #' # Exponential distribution, mapped continuously
-#' previewColors(colorNumeric("Blues", domain = NULL), sort(rexp(16)))
+#' show_col(colorNumeric("Blues", domain = NULL)(sort(rexp(16))))
 #' # Exponential distribution, mapped by interval
-#' previewColors(colorBin("Blues", domain = NULL, bins = 4), sort(rexp(16)))
+#' show_col(colorBin("Blues", domain = NULL, bins = 4)(sort(rexp(16))))
 #' # Exponential distribution, mapped by quantile
-#' previewColors(colorQuantile("Blues", domain = NULL), sort(rexp(16)))
+#' show_col(colorQuantile("Blues", domain = NULL)(sort(rexp(16))))
 #'
 #' # Categorical data; by default, the values being colored span the gamut...
-#' previewColors(colorFactor("RdYlBu", domain = NULL), LETTERS[1:5])
+#' show_col(colorFactor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 #' # ...unless the data is a factor, without droplevels...
-#' previewColors(colorFactor("RdYlBu", domain = NULL), factor(LETTERS[1:5], levels=LETTERS))
+#' show_col(colorFactor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
 #' # ...or the domain is stated explicitly.
-#' previewColors(colorFactor("RdYlBu", levels = LETTERS), LETTERS[1:5])
+#' show_col(colorFactor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
 #' @rdname colorNumeric
 #' @name colorNumeric
 NULL
@@ -293,40 +293,6 @@ toPaletteFunc.matrix = function(pal) {
 # If a function, just assume it's already a function over [0-1]
 toPaletteFunc.function = function(pal) {
   pal
-}
-
-#' Color previewing utility
-#'
-#' @param pal A color mapping function, like those returned from \code{\link{colorNumeric}}, et al
-#' @param values A set of values to preview colors for
-#' @return An HTML-based list of the colors and values
-#' @export
-previewColors = function(pal, values) {
-  heading = htmltools::tags$code(deparse(substitute(pal)))
-  subheading = htmltools::tags$code(deparse(substitute(values)))
-
-  htmltools::browsable(
-    with(htmltools::tags, htmltools::tagList(
-      head(
-        style(type = "text/css",
-          "table { border-spacing: 1px; }",
-          "body { font-family: Helvetica; font-size: 13px; color: #444; }",
-          ".swatch { width: 24px; height: 18px; }",
-          ".value { padding-left: 6px; }",
-          "h3 code { font-weight: normal; }"
-        )
-      ),
-      h3("Colors:", heading, br(), "Values:", class = "subhead", subheading),
-      table(
-        mapply(pal(values), values, FUN = function(color, x) {
-          htmltools::tagList(tr(
-            td(class = "swatch", style = paste0("background-color:", color)),
-            td(class = "value", format(x, digits = 5))
-          ))
-        })
-      )
-    ))
-  )
 }
 
 # colorRamp(space = 'Lab') throws error when called with
@@ -381,9 +347,9 @@ filterRange = function(f) {
 #'
 #' Returns a function that maps the interval [0,1] to a set of colors.
 #' Interpolation is performed in the CIELAB color space. Similar to
-#' \code{\link[grDevices]{colorRamp(space = 'Lab')}}, but hundreds of times
-#' faster, and provides results in \code{"#RRGGBB"} (or \code{"#RRGGBBAA"})
-#' character form instead of RGB color matrices.
+#' \code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
+#' times faster, and provides results in \code{"#RRGGBB"} (or
+#' \code{"#RRGGBBAA"}) character form instead of RGB color matrices.
 #'
 #' @param colors Colors to interpolate; must be a valid argument to
 #'   \code{\link[grDevices]{col2rgb}}. This can be a character vector of

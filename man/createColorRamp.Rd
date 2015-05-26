@@ -30,9 +30,9 @@ A function that takes a numeric vector and returns a character vector
 \description{
 Returns a function that maps the interval [0,1] to a set of colors.
 Interpolation is performed in the CIELAB color space. Similar to
-\code{\link[grDevices]{colorRamp(space = 'Lab')}}, but hundreds of times
-faster, and provides results in \code{"#RRGGBB"} (or \code{"#RRGGBBAA"})
-character form instead of RGB color matrices.
+\code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
+times faster, and provides results in \code{"#RRGGBB"} (or
+\code{"#RRGGBBAA"}) character form instead of RGB color matrices.
 }
 \seealso{
 \link[grDevices]{colorRamp}
