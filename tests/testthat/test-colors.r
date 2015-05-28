@@ -54,3 +54,7 @@ test_that("Basic color accuracy", {
   expect_identical(c("#000000", "#777777", "#FFFFFF"), col_factor(bw, rev(LETTERS[1:3]))(LETTERS[1:3]))
   expect_identical(rev(c("#000000", "#777777", "#FFFFFF")), col_factor(bw, rev(LETTERS[1:3]), ordered = TRUE)(LETTERS[1:3]))
 })
+
+test_that("CIELab overflow", {
+  expect_identical(c("#FFFFFF", "#CFB1FF", "#9165FF", "#0000FF"), scales::colour_ramp(c("white", "blue"))(0:3/3))
+})

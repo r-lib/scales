@@ -141,7 +141,7 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
   size_t ncolors = colors.ncol();
 
   StringVector result(x.length());
-  for (size_t i = 0; i < x.length(); i++) {
+  for (R_len_t i = 0; i < x.length(); i++) {
     double xval = x[i];
     if (xval < 0 || xval > 1 || R_IsNA(xval)) {
       // Illegal or NA value for this x value.
@@ -176,9 +176,9 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
 
       double red, green, blue;
       lab2srgb(l, a, b, &red, &green, &blue);
-      red = ::round(red * 255);
-      green = ::round(green * 255);
-      blue = ::round(blue * 255);
+      red   = std::max(0.0, std::min(255.0, ::round(red * 255)));
+      green = std::max(0.0, std::min(255.0, ::round(green * 255)));
+      blue  = std::max(0.0, std::min(255.0, ::round(blue * 255)));
 
       // Convert the result to hex string
       if (!alpha)
