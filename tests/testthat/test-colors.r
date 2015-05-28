@@ -1,6 +1,6 @@
 context("Colors")
 
-bw = c("black", "white")
+bw <- c("black", "white")
 
 test_that("Edgy col_bin scenarios", {
   # Do these cases make sense?
