@@ -1,6 +1,6 @@
 Package: scales
 Type: Package
-Title: Scale functions for graphics.
+Title: Scale functions for graphics
 Version: 0.2.4.99
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
@@ -17,7 +17,10 @@ Imports:
     munsell (>= 0.2),
     plyr (>= 1.2),
     labeling,
-    methods
+    methods,
+    Rcpp
+LinkingTo:
+    Rcpp
 Suggests:
     testthat (>= 0.8)
 License: MIT + file LICENSE
