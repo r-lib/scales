@@ -54,7 +54,7 @@ comma <- function(x, ...) {
 #' euro <- dollar_format(prefix = "", suffix = "\u20ac")
 #' euro(100)
 dollar_format <- function(prefix = "$", suffix = "",
-                          largest_with_cents = 100000, big.mark = ",") {
+                          largest_with_cents = 100000, ..., big.mark = ",") {
   function(x) {
     x <- round_any(x, 0.01)
     if (max(x, na.rm = TRUE) < largest_with_cents &

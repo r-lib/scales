@@ -5,7 +5,7 @@
 \alias{dollar_format}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
-dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05,
+dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05, ...,
   big.mark = ",")
 
 dollar(x)
@@ -16,11 +16,11 @@ dollar(x)
 \item{largest_with_cents}{the value that all values of \code{x} must
 be less than in order for the cents to be displayed}
 
+\item{...}{Other arguments passed on to \code{\link{format}}.}
+
 \item{big.mark}{Character used between every 3 digits.}
 
 \item{x}{a numeric vector to format}
-
-\item{...}{Other arguments passed on to \code{\link{format}}.}
 }
 \value{
 a function with single parameter x, a numeric vector, that
