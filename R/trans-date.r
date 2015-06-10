@@ -71,6 +71,6 @@ date_breaks <- function(width = "1 month") {
 #' @param tz a time zone name, see \code{\link{timezones}}. Defaults
 #'  to UTC
 #' @export
-date_format <- function(format = "%Y-%m-%d", tz='UTC') {
-  function(x) format(x, format, tz=tz)
+date_format <- function(format = "%Y-%m-%d", tz = 'UTC') {
+  function(x) format(x, format, tz = tz)
 }
