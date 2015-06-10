@@ -9,4 +9,8 @@ log1p_trans()
 \description{
 Log plus one transformation.
 }
+\examples{
+trans_range(log_trans(), 1:10)
+trans_range(log1p_trans(), 0:9)
+}
 
