@@ -120,6 +120,37 @@ scientific <- function(x, digits = 3, ...) {
   format(x, trim = TRUE, scientific = TRUE, ...)
 }
 
+#' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
+#'
+#' @return a function with single paramater x, a numeric vector, that
+#'   returns a character vector
+#' @param x a numeric vector to format
+#' @export
+#' @examples
+#' ordinal_format()(1:10)
+#' ordinal(1:10)
+
+ordinal_format <- function(x) {
+  function(x) ordinal(x)
+}
+
+#' @export
+#' @rdname ordinal_format
+ordinal <- function(x) {
+  stopifnot(all(x > 0))
+
+  suffixes <- list(
+    st = "(?<!1)1$",
+    nd = "(?<!1)2$",
+    rd = "(?<!1)3$",
+    th = "(?<=1)[123]$",
+    th = "[0456789]$"
+  )
+
+  out <- stack(llply(suffixes, grep, x = x, perl = TRUE))
+  paste0(comma(x), out$ind[order(out$values)])
+}
+
 #' Parse a text label to produce expressions for plotmath.
 #'
 #' @seealso \code{\link{plotmath}}

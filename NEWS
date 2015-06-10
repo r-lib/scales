@@ -13,6 +13,8 @@ Version 0.2.5
 
 * `show_col()` has additional options to showcase colors better (@jiho, #52)
 
+* New formatter function to generate ordinal numbers (@aaronwolen, #55)
+
 Version 0.2.4
 ------------------------------------------------------------------------------
 
