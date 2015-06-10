@@ -164,17 +164,18 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 globalVariables(".x")
 
 #' Wrap text to a specified width, adding newlines for spaces if text exceeds
-#' width
-#' @param width width above which to wrap
-#' @return a function with single paramater x, a character vector, that
-#'    returns a character vector
+#' the width
+#'
+#' @param width value above which to wrap
+#' @return Function with single parameter x, a character vector, that
+#'    returns a wrapped character vector
 #' @export
 #' @examples
-#' wrap_10 <- wrap(10)
+#' wrap_10 <- wrap_format(10)
 #' wrap_10('A long line that needs to be wrapped')
-wrap = function(width){
-  function(x){
-    unlist(lapply(strwrap(x, width=width, simplify=FALSE), paste0, collapse='\n'))
+wrap_format <- function(width) {
+  function(x) {
+    unlist(lapply(strwrap(x, width = width, simplify = FALSE), paste0, collapse = "\n"))
   }
 }
 #' Format labels after transformation.
