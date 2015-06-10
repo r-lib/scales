@@ -17,7 +17,7 @@ scientific(x, digits = 3, ...)
 \item{x}{a numeric vector to format}
 }
 \value{
-a function with single paramater x, a numeric vector, that
+a function with single parameter x, a numeric vector, that
   returns a character vector
 }
 \description{

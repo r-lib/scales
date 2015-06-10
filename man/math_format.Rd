@@ -15,7 +15,7 @@ transformation - this makes it easier to use floating point numbers in
 mathematical expressions.}
 }
 \value{
-a function with single paramater x, a numeric vector, that
+a function with single parameter x, a numeric vector, that
    returns a list of expressions
 }
 \description{

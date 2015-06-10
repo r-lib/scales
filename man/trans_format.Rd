@@ -12,7 +12,7 @@ trans_format(trans, format = scientific_format())
 \item{format}{additional formatter to apply after transformation}
 }
 \value{
-a function with single paramater x, a numeric vector, that
+a function with single parameter x, a numeric vector, that
    returns a character vector of list of expressions
 }
 \description{

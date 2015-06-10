@@ -7,7 +7,7 @@
 parse_format()
 }
 \value{
-a function with single paramater x, a character vector, that
+a function with single parameter x, a character vector, that
    returns a list of expressions
 }
 \description{

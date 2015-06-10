@@ -16,7 +16,7 @@ be less than in order for the cents to be displayed}
 \item{x}{a numeric vector to format}
 }
 \value{
-a function with single paramater x, a numeric vector, that
+a function with single parameter x, a numeric vector, that
   returns a character vector
 }
 \description{
