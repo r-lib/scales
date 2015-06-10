@@ -5,15 +5,22 @@
 \alias{dollar_format}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
-dollar_format(largest_with_cents = 1e+05)
+dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05,
+  big.mark = ",")
 
 dollar(x)
 }
 \arguments{
+\item{prefix,suffix}{Symbols to display before and after amount.}
+
 \item{largest_with_cents}{the value that all values of \code{x} must
 be less than in order for the cents to be displayed}
 
+\item{big.mark}{Character used between every 3 digits.}
+
 \item{x}{a numeric vector to format}
+
+\item{...}{Other arguments passed on to \code{\link{format}}.}
 }
 \value{
 a function with single parameter x, a numeric vector, that
@@ -31,5 +38,11 @@ dollar_format()(c(1:10 * 10))
 dollar(c(100, 0.23, 1.456565, 2e3))
 dollar(c(1:10 * 10))
 dollar(10^(1:8))
+
+usd <- dollar_format(prefix = "USD ")
+usd(100)
+
+euro <- dollar_format(prefix = "", suffix = "\\u20ac")
+euro(100)
 }
 

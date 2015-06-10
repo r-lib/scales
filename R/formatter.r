@@ -36,6 +36,9 @@ comma <- function(x, ...) {
 #'   returns a character vector
 #' @param largest_with_cents the value that all values of \code{x} must
 #'   be less than in order for the cents to be displayed
+#' @param prefix,suffix Symbols to display before and after amount.
+#' @param big.mark Character used between every 3 digits.
+#' @param ... Other arguments passed on to \code{\link{format}}.
 #' @param x a numeric vector to format
 #' @export
 #' @examples
@@ -44,7 +47,14 @@ comma <- function(x, ...) {
 #' dollar(c(100, 0.23, 1.456565, 2e3))
 #' dollar(c(1:10 * 10))
 #' dollar(10^(1:8))
-dollar_format <- function(largest_with_cents = 100000) {
+#'
+#' usd <- dollar_format(prefix = "USD ")
+#' usd(100)
+#'
+#' euro <- dollar_format(prefix = "", suffix = "\u20ac")
+#' euro(100)
+dollar_format <- function(prefix = "$", suffix = "",
+                          largest_with_cents = 100000, big.mark = ",") {
   function(x) {
     x <- round_any(x, 0.01)
     if (max(x, na.rm = TRUE) < largest_with_cents &
@@ -54,7 +64,9 @@ dollar_format <- function(largest_with_cents = 100000) {
       x <- round_any(x, 1)
       nsmall <- 0L
     }
-    paste0("$", format(x, nsmall = nsmall, trim = TRUE, big.mark = ",", scientific = FALSE, digits=1L))
+    amount <- format(x, nsmall = nsmall, trim = TRUE, big.mark = big.mark,
+      scientific = FALSE, digits = 1L)
+    paste0(prefix, amount, suffix)
   }
 }
 
