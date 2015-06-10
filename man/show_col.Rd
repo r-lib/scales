@@ -4,10 +4,14 @@
 \alias{show_col}
 \title{Show colours.}
 \usage{
-show_col(colours)
+show_col(colours, labels = TRUE, borders = NULL)
 }
 \arguments{
 \item{colours}{a character vector of colours}
+
+\item{labels}{boolean, whether to show the hexadecimal representation of the colours in each tile}
+
+\item{borders}{colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.}
 }
 \description{
 A quick and dirty way to show colours in a plot.

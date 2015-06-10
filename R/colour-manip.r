@@ -77,8 +77,10 @@ alpha <- function(colour, alpha = NA) {
 #' A quick and dirty way to show colours in a plot.
 #'
 #' @param colours a character vector of colours
+#' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
+#' @param borders colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.
 #' @export
-show_col <- function(colours) {
+show_col <- function(colours, labels = TRUE, borders = NULL) {
   n <- length(colours)
   ncol <- ceiling(sqrt(n))
   nrow <- ceiling(n / ncol)
@@ -92,6 +94,8 @@ show_col <- function(colours) {
   size <- max(dim(colours))
   plot(c(0, size), c(0, -size), type = "n", xlab="", ylab="", axes = FALSE)
   rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
-    col = colours)
-  text(col(colours) - 0.5, -row(colours) + 0.5, colours)
+    col = colours, border = borders)
+  if ( labels ) {
+    text(col(colours) - 0.5, -row(colours) + 0.5, colours)    
+  }
 }
