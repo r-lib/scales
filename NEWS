@@ -13,6 +13,8 @@ Version 0.2.5
 
 * `show_col()` has additional options to showcase colors better (@jiho, #52)
 
+* `date_format()` has additional option to specify time zone (#51).
+
 Version 0.2.4
 ------------------------------------------------------------------------------
 
