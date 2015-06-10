@@ -1,9 +1,10 @@
 Package: scales
-Type: Package
-Title: Scale functions for graphics
 Version: 0.2.5
-Author: Hadley Wickham <h.wickham@gmail.com>
-Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
+    person("RStudio", role = "cph")
+    )
+Title: Scale Functions for Visualization
 Description: Scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
@@ -15,7 +16,6 @@ Imports:
     RColorBrewer,
     dichromat,
     munsell (>= 0.2),
-    plyr (>= 1.2),
     labeling,
     methods,
     Rcpp
@@ -25,5 +25,3 @@ Suggests:
     testthat (>= 0.8)
 License: MIT + file LICENSE
 LazyLoad: yes
-Roxygen: list(wrap = FALSE)
-BuildManual: yes
