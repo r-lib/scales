@@ -1,6 +1,17 @@
-Version 0.2.4.99
+Version 0.2.5
 ------------------------------------------------------------------------------
 
+* `wrap_format()` function to wrap character vectors to a desired width.
+  (@jimhester, #37).
+
+* Dollar format is now more flexible and can add either prefixes or suffixes
+  for different currencies (#53).
+
+* Relaxed tolerance in `zero_range()` to `sqrt(.Machine$double.eps)` (#33).
+
+* `boxcox_trans()` returns correct value when p is close to zero (#31).
+
+* `show_col()` has additional options to showcase colors better (@jiho, #52)
 
 Version 0.2.4
 ------------------------------------------------------------------------------

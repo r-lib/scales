@@ -22,7 +22,7 @@ atanh_trans <- function() {
 #   more details on method.
 #' @export
 boxcox_trans <- function(p) {
-  if (abs(p) < 1e-07) return(log_trans)
+  if (abs(p) < 1e-07) return(log_trans())
 
   trans <- function(x) (x ^ p - 1) / p * sign(x - 1)
   inv <- function(x) (abs(x) * p + 1 * sign(x)) ^ (1 / p)
@@ -71,6 +71,9 @@ log2_trans <- function() {
 #' Log plus one transformation.
 #'
 #' @export
+#' @examples
+#' trans_range(log_trans(), 1:10)
+#' trans_range(log1p_trans(), 0:9)
 log1p_trans <- function() {
   trans_new("log1p", "log1p", "expm1")
 }

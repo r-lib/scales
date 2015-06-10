@@ -2,8 +2,7 @@ context("Zero range")
 
 test_that("large numbers with small differences", {
   expect_false(zero_range(c(1330020857.8787, 1330020866.8787)))
-  expect_true(zero_range(c(1330020857.8787, 1330020857.8787)))
-  expect_true(zero_range(c(1330020857.8787, 1330020857.8787*(1+1e-20))))
+  expect_true( zero_range(c(1330020857.8787, 1330020857.8787)))
 })
 
 test_that("small numbers with differences on order of values", {
@@ -49,14 +48,14 @@ test_that("NA and Inf", {
 })
 
 test_that("Tolerance", {
-  # By default, tolerance is 100 times this
+  # By default, tolerance is 1000 times this
   eps <- .Machine$double.eps
 
   expect_true(zero_range(c(1, 1 + eps)))
   expect_true(zero_range(c(1, 1 + 99 * eps)))
 
   # Cross the threshold
-  expect_false(zero_range(c(1, 1 + 101 * eps)))
+  expect_false(zero_range(c(1, 1 + 1001 * eps)))
   expect_false(zero_range(c(1, 1 + 2   * eps), tol = eps))
 
   # Scaling up or down all the values has no effect since the values
@@ -65,6 +64,6 @@ test_that("Tolerance", {
   expect_true(zero_range(.00001 * c(1, 1 + eps)))
   expect_true(zero_range(100000 * c(1, 1 + 99 * eps)))
   expect_true(zero_range(.00001 * c(1, 1 + 99 * eps)))
-  expect_false(zero_range(100000 * c(1, 1 + 200 * eps)))
-  expect_false(zero_range(.00001 * c(1, 1 + 200 * eps)))
+  expect_false(zero_range(100000 * c(1, 1 + 1001 * eps)))
+  expect_false(zero_range(.00001 * c(1, 1 + 1001 * eps)))
 })

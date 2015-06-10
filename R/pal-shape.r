@@ -7,7 +7,7 @@ shape_pal <- function(solid = TRUE) {
     if (n > 6) {
       msg <- paste("The shape palette can deal with a maximum of 6 discrete ", 
         "values because more than 6 becomes difficult to discriminate; ",
-        "you have ", n, ". Consider specifying shapes manually. if you ",
+        "you have ", n, ". Consider specifying shapes manually if you ",
         "must have them.", sep = "")
       warning(paste(strwrap(msg), collapse = "\n"), call. = FALSE)
     }

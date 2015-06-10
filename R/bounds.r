@@ -12,7 +12,7 @@
 #' rescale(1)
 rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
-  
+
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
@@ -30,7 +30,7 @@ rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
 #' rescale_mid(1)
 rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
-  
+
   extent <- 2 * max(abs(from - mid))
   (x - mid) / extent * diff(to) + mean(to)
 }
@@ -123,7 +123,7 @@ squish_infinite <- function(x, range = c(0, 1)) {
 }
 
 #' Expand a range with a multiplicative or additive constant.
-#' 
+#'
 #' @param range range of data, numeric vector of length 2
 #' @param mul multiplicative constract
 #' @param add additive constant
@@ -134,7 +134,7 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 
   if (zero_range(range)) {
     c(range[1] - zero_width / 2, range[1] + zero_width / 2)
-  } else {    
+  } else {
     range + c(-1, 1) * (diff(range) * mul + add)
   }
 }
@@ -143,7 +143,7 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 #'
 #' The machine epsilon is the difference between 1.0 and the next number
 #' that can be represented by the machine. By default, this function
-#' uses epsilon * 100 as the tolerance. First it scales the values so that
+#' uses epsilon * 1000 as the tolerance. First it scales the values so that
 #' they have a mean of 1, and then it checks if the difference between
 #' them is larger than the tolerance.
 #'
@@ -151,15 +151,15 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 #' eps <- .Machine$double.eps
 #' zero_range(c(1, 1 + eps))       # TRUE
 #' zero_range(c(1, 1 + 99 * eps))  # TRUE
-#' zero_range(c(1, 1 + 101 * eps)) # FALSE - Crossed the tol threshold
+#' zero_range(c(1, 1 + 1001 * eps)) # FALSE - Crossed the tol threshold
 #' zero_range(c(1, 1 + 2 * eps), tol = eps) # FALSE - Changed tol
 #'
 #' # Scaling up or down all the values has no effect since the values
 #' # are rescaled to 1 before checking against tol
 #' zero_range(100000 * c(1, 1 + eps))        # TRUE
-#' zero_range(100000 * c(1, 1 + 200 * eps))  # FALSE
+#' zero_range(100000 * c(1, 1 + 1001 * eps))  # FALSE
 #' zero_range(.00001 * c(1, 1 + eps))        # TRUE
-#' zero_range(.00001 * c(1, 1 + 200 * eps))  # FALSE
+#' zero_range(.00001 * c(1, 1 + 1001 * eps))  # FALSE
 #'
 #' # NA values
 #' zero_range(c(1, NA))   # NA
@@ -172,11 +172,10 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 #'
 #' @export
 #' @param x numeric range: vector of length 2
-#' @param tol A value specifying the tolerance. Defaults to
-#'   \code{.Machine$double.eps * 100}.
+#' @param tol A value specifying the tolerance.
 #' @return logical \code{TRUE} if the relative difference of the endpoints of
 #' the range are not distinguishable from 0.
-zero_range <- function(x, tol = .Machine$double.eps * 100) {
+zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) return(TRUE)
   if (length(x) != 2) stop("x must be length 1 or 2")
   if (any(is.na(x)))  return(NA)
