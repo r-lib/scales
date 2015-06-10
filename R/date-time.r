@@ -1,4 +1,4 @@
-# Minimal date time code so no external dependencies needed, and 
+# Minimal date time code so no external dependencies needed, and
 # we can do the date operations we need.  Need to look at this again once we
 # switch to S4 for lubridate.
 
@@ -23,33 +23,33 @@ floor_time <- function(date, time) {
   if (prec$unit == "sec") {
     to_time(round_any(as.numeric(date), prec$mult))
   } else if (prec$unit == "min") {
-    to_time(round_any(as.numeric(date), prec$mult * 60))    
+    to_time(round_any(as.numeric(date), prec$mult * 60))
   } else {
     as.POSIXct(
-      cut(date, time, right = TRUE, include.lowest = TRUE), 
+      cut(date, time, right = TRUE, include.lowest = TRUE),
       tz = attr(date, "tz") %||% ""
-    )  
+    )
   }
 }
 
-ceiling_date <- function(date, time) { 
+ceiling_date <- function(date, time) {
   prec <- parse_unit_spec(time)
-  
+
   up <- c("day" = 1, "week" = 7, "month" = 31, "year" = 365)
   date <- date + prec$mult * up[prec$unit]
-  
+
   floor_date(date, time)
 }
 
-ceiling_time <- function(date, time) { 
+ceiling_time <- function(date, time) {
   prec <- parse_unit_spec(time)
-  
+
   up <- c(
-    "sec" = 1, "min" = 60, "hour" = 3600, 
+    "sec" = 1, "min" = 60, "hour" = 3600,
     c("day" = 1, "week" = 7, "month" = 31, "year" = 365) * 3600 * 24
   )
   date <- date + prec$mult * up[prec$unit]
-  
+
   floor_time(date, time)
 }
 
@@ -63,6 +63,6 @@ parse_unit_spec <- function(unitspec) {
     unit <- parts[[2]]
   }
   unit <- gsub("s$", "", unit)
-  
+
   list(unit = unit, mult = mult)
 }
