@@ -3,6 +3,8 @@ Version 0.2.5
 
 * `boxcox_trans()` returns correct value when p is close to zero (#31).
 
+* `show_col()` has additional options to showcase colors better (@jiho, #52)
+
 Version 0.2.4
 ------------------------------------------------------------------------------
 
