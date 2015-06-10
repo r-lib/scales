@@ -66,6 +66,20 @@ test_that("wrap correctly wraps long lines", {
   expect_equal(wrap_format(15)("short line"), "short line")
 })
 
+test_that("ordinal format", {
+  expect_equal(ordinal(1),  "1st")
+  expect_equal(ordinal(2),  "2nd")
+  expect_equal(ordinal(3),  "3rd")
+  expect_equal(ordinal(4),  "4th")
+  expect_equal(ordinal(11), "11th")
+  expect_equal(ordinal(12), "12th")
+  expect_equal(ordinal(21), "21st")
+})
+
+test_that("ordinal format maintains order", {
+  expect_equal(ordinal(c(21, 1, 11)), c("21st", "1st", "11th"))
+})
+
 test_that("formatters don't add extra spaces", {
   has_space <- function(x) any(grepl("\\s", x))
   x <- 10 ^ c(-1, 0, 1, 3, 6, 9)
@@ -74,5 +88,5 @@ test_that("formatters don't add extra spaces", {
   expect_false(has_space(dollar(x)))
   expect_false(has_space(percent(x)))
   expect_false(has_space(percent(x)))
-  expect_false(has_space(scientific(x)))  
+  expect_false(has_space(scientific(x)))
 })
