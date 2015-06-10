@@ -55,6 +55,17 @@ test_that("dollar format", {
   expect_equal(dollar(c(99.999)), c("$100"))
 })
 
+test_that("wrap correctly wraps long lines", {
+  expect_equal(wrap_format(10)("this is a long line"),
+               "this is a\nlong line")
+  expect_equal(wrap_format(10)(c("this is a long line", "this is another long line")),
+               c("this is a\nlong line", "this is\nanother\nlong line"))
+  expect_equal(wrap_format(10)("a_very_long_word_without_spaces"),
+               "a_very_long_word_without_spaces")
+  expect_equal(wrap_format(10)("short line"), "short\nline")
+  expect_equal(wrap_format(15)("short line"), "short line")
+})
+
 test_that("formatters don't add extra spaces", {
   has_space <- function(x) any(grepl("\\s", x))
   x <- 10 ^ c(-1, 0, 1, 3, 6, 9)
