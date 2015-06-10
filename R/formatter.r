@@ -2,7 +2,7 @@
 #'
 #' @param ... other arguments passed on to \code{\link{format}}
 #' @param x a numeric vector to format
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @export
 #' @examples
@@ -26,7 +26,7 @@ comma <- function(x, ...) {
 #' any of the values has a non-zero cents and the largest value is less
 #' than \code{largest_with_cents} which by default is 100000.
 #'
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param largest_with_cents the value that all values of \code{x} must
 #'   be less than in order for the cents to be displayed
@@ -58,7 +58,7 @@ dollar <- dollar_format()
 
 #' Percent formatter: multiply by one hundred and display percent sign.
 #'
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param x a numeric vector to format
 #' @export
@@ -78,7 +78,7 @@ percent <- percent_format()
 
 #' Scientific formatter.
 #'
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param digits number of significant digits to show
 #' @param ... other arguments passed on to \code{\link{format}}
@@ -105,7 +105,7 @@ scientific <- function(x, digits = 3, ...) {
 #' Parse a text label to produce expressions for plotmath.
 #'
 #' @seealso \code{\link{plotmath}}
-#' @return a function with single paramater x, a character vector, that
+#' @return a function with single parameter x, a character vector, that
 #'    returns a list of expressions
 #' @export
 #' @examples
@@ -123,7 +123,7 @@ parse_format <- function() {
 #' @param format another format function to apply prior to mathematical
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'    returns a list of expressions
 #' @export
 #' @seealso \code{\link{plotmath}}
@@ -149,7 +149,7 @@ globalVariables(".x")
 #'
 #' @param trans transformation to apply
 #' @param format additional formatter to apply after transformation
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'    returns a character vector of list of expressions
 #' @export
 #' @examples
