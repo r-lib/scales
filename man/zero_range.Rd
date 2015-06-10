@@ -4,13 +4,12 @@
 \alias{zero_range}
 \title{Determine if range of vector is close to zero, with a specified tolerance}
 \usage{
-zero_range(x, tol = .Machine$double.eps * 100)
+zero_range(x, tol = sqrt(.Machine$double.eps))
 }
 \arguments{
 \item{x}{numeric range: vector of length 2}
 
-\item{tol}{A value specifying the tolerance. Defaults to
-\code{.Machine$double.eps * 100}.}
+\item{tol}{A value specifying the tolerance.}
 }
 \value{
 logical \code{TRUE} if the relative difference of the endpoints of
