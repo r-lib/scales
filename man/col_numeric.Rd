@@ -88,7 +88,7 @@ The \code{palette} argument can be any of the following:
 }
 }
 \examples{
-pal = col_bin("Greens", domain = 0:100)
+pal <- col_bin("Greens", domain = 0:100)
 show_col(pal(sort(runif(10, 60, 100))))
 
 # Exponential distribution, mapped continuously
