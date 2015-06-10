@@ -25,5 +25,11 @@ Comma formatter: format number with commas separating thousands.
 comma_format()(c(1, 1e3, 2000, 1e6))
 comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
 comma(c(1, 1e3, 2000, 1e6))
+
+# If you're European you can switch . and , with the more general
+# format_format
+point <- format_format(big.mark = ".", decimal.mark = ",", scientific = FALSE)
+point(c(1, 1e3, 2000, 1e6))
+point(c(1, 1.021, 1000.01))
 }
 
