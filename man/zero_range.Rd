@@ -4,7 +4,7 @@
 \alias{zero_range}
 \title{Determine if range of vector is close to zero, with a specified tolerance}
 \usage{
-zero_range(x, tol = sqrt(.Machine$double.eps))
+zero_range(x, tol = 1000 * .Machine$double.eps)
 }
 \arguments{
 \item{x}{numeric range: vector of length 2}

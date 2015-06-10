@@ -175,7 +175,7 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 #' @param tol A value specifying the tolerance.
 #' @return logical \code{TRUE} if the relative difference of the endpoints of
 #' the range are not distinguishable from 0.
-zero_range <- function(x, tol = sqrt(.Machine$double.eps)) {
+zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) return(TRUE)
   if (length(x) != 2) stop("x must be length 1 or 2")
   if (any(is.na(x)))  return(NA)
