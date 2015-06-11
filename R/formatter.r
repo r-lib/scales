@@ -56,6 +56,7 @@ comma <- function(x, ...) {
 dollar_format <- function(prefix = "$", suffix = "",
                           largest_with_cents = 100000, ..., big.mark = ",") {
   function(x) {
+    if(length(x) == 0) return(character())
     x <- round_any(x, 0.01)
     if (max(x, na.rm = TRUE) < largest_with_cents &
         !all(x == floor(x), na.rm = TRUE)) {
@@ -86,6 +87,7 @@ dollar <- dollar_format()
 #' percent(runif(10, 1, 10))
 percent_format <- function() {
   function(x) {
+    if(length(x) == 0) return(character())
     x <- round_any(x, precision(x) / 100)
     paste0(comma(x * 100), "%")
   }

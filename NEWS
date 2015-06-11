@@ -17,6 +17,9 @@ Version 0.2.5
 
 * `date_format()` has additional option to specify time zone (#51).
 
+* `dollar()` and `percent()` both correctly return a zero length string
+  for zero length input (@BrianDiggs, #35)
+
 Version 0.2.4
 ------------------------------------------------------------------------------
 
