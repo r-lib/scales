@@ -1,3 +1,6 @@
+* Add a `direction` argument to `brewer_pal` to easily invert the order
+  of colours (@jiho, #36).
+
 Version 0.2.5
 ------------------------------------------------------------------------------
 
@@ -23,6 +26,9 @@ Version 0.2.5
 * New formatter function to generate ordinal numbers (@aaronwolen, #55)
 
 * `date_format()` has additional option to specify time zone (#51).
+
+* `dollar()` and `percent()` both correctly return a zero length string
+  for zero length input (@BrianDiggs, #35)
 
 Version 0.2.4
 ------------------------------------------------------------------------------
