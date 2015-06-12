@@ -3,6 +3,9 @@
 #' @param type One of seq (sequential), div (diverging) or qual (qualitative)
 #' @param palette If a string, will use that named palette.  If a number, will
 #'   index into the list of palettes of appropriate \code{type}
+#' @param direction Sets the order of colors in the scale. If 1, the default,
+#'   colors are as output by \code{\link[RColorBrewer]{brewer.pal}}. If -1, the
+#'   order of colors is reversed.
 #' @references \url{http://colorbrewer2.org}
 #' @export
 #' @examples
@@ -13,7 +16,7 @@
 #' # Can use with gradient_n to create a continous gradient
 #' cols <- brewer_pal("div")(5)
 #' show_col(gradient_n_pal(cols)(seq(0, 1, length = 30)))
-brewer_pal <- function(type = "seq", palette = 1) {
+brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
 
   # If <3 colors are requested, brewer.pal will return a 3-color palette and
@@ -25,9 +28,14 @@ brewer_pal <- function(type = "seq", palette = 1) {
   # number of items.
   function(n) {
     if (n < 3)
-      suppressWarnings(RColorBrewer::brewer.pal(n, pal))[seq_len(n)]
+      pal <- suppressWarnings(RColorBrewer::brewer.pal(n, pal))[seq_len(n)]
     else
-      RColorBrewer::brewer.pal(n, pal)[seq_len(n)]
+      pal <- RColorBrewer::brewer.pal(n, pal)[seq_len(n)]
+
+    if (direction == -1)
+      pal <- rev(pal)
+
+    return(pal)
   }
 }
 
