@@ -30,6 +30,9 @@ Version 0.2.5
 * `dollar()` and `percent()` both correctly return a zero length string
   for zero length input (@BrianDiggs, #35)
 
+* New `unit_format()` makes it easier to add units to labels, optionally
+  scaling (@ThierryO, 46)
+
 Version 0.2.4
 ------------------------------------------------------------------------------
 

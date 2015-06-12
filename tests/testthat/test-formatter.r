@@ -107,3 +107,18 @@ test_that("formats work with 0 length input", {
   expect_identical(scientific_format()(x), expected)
   expect_identical(trans_format(identity)(x), expected)
 })
+
+test_that("unit format", {
+  expect_equal(
+    unit_format(unit = "km", scale = 1e-3)(c(1e3, 2e3)),
+    c("1 km", "2 km")
+  )
+  expect_equal(
+    unit_format(unit = "ha", scale = 1e-4)(c(1e3, 2e3)),
+    c("0.1 ha", "0.2 ha")
+  )
+  expect_equal(
+    unit_format()(c(1e3, 2e3)),
+    c("1,000 m", "2,000 m")
+  )
+})
