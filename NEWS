@@ -15,7 +15,9 @@ Version 0.2.5
   (@jimhester, #37).
 
 * Dollar format is now more flexible and can add either prefixes or suffixes
-  for different currencies (#53).
+  for different currencies (#53). It gains a `negative_parens` argument
+  to show negative values as `($100)` and now passes missing values through
+  unchanged (#40, @dougmitarotonda).
 
 * Relaxed tolerance in `zero_range()` to `sqrt(.Machine$double.eps)` (#33).
 

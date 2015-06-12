@@ -6,7 +6,7 @@
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
 dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05, ...,
-  big.mark = ",")
+  big.mark = ",", negative_parens = FALSE)
 
 dollar(x)
 }
@@ -19,6 +19,8 @@ be less than in order for the cents to be displayed}
 \item{...}{Other arguments passed on to \code{\link{format}}.}
 
 \item{big.mark}{Character used between every 3 digits.}
+
+\item{negative_parens}{Should negative values be shown with parentheses?}
 
 \item{x}{a numeric vector to format}
 }
@@ -33,16 +35,19 @@ any of the values has a non-zero cents and the largest value is less
 than \code{largest_with_cents} which by default is 100000.
 }
 \examples{
-dollar_format()(c(100, 0.23, 1.456565, 2e3))
+dollar_format()(c(-100, 0.23, 1.456565, 2e3))
 dollar_format()(c(1:10 * 10))
 dollar(c(100, 0.23, 1.456565, 2e3))
 dollar(c(1:10 * 10))
 dollar(10^(1:8))
 
 usd <- dollar_format(prefix = "USD ")
-usd(100)
+usd(c(100, -100))
 
 euro <- dollar_format(prefix = "", suffix = "\\u20ac")
 euro(100)
+
+finance <- dollar_format(negative_parens = TRUE)
+finance(c(-100, 100))
 }
 
