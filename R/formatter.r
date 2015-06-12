@@ -38,37 +38,62 @@ comma <- function(x, ...) {
 #'   be less than in order for the cents to be displayed
 #' @param prefix,suffix Symbols to display before and after amount.
 #' @param big.mark Character used between every 3 digits.
+#' @param negative_parens Should negative values be shown with parentheses?
 #' @param ... Other arguments passed on to \code{\link{format}}.
 #' @param x a numeric vector to format
 #' @export
 #' @examples
-#' dollar_format()(c(100, 0.23, 1.456565, 2e3))
+#' dollar_format()(c(-100, 0.23, 1.456565, 2e3))
 #' dollar_format()(c(1:10 * 10))
 #' dollar(c(100, 0.23, 1.456565, 2e3))
 #' dollar(c(1:10 * 10))
 #' dollar(10^(1:8))
 #'
 #' usd <- dollar_format(prefix = "USD ")
-#' usd(100)
+#' usd(c(100, -100))
 #'
 #' euro <- dollar_format(prefix = "", suffix = "\u20ac")
 #' euro(100)
+#'
+#' finance <- dollar_format(negative_parens = TRUE)
+#' finance(c(-100, 100))
 dollar_format <- function(prefix = "$", suffix = "",
-                          largest_with_cents = 100000, ..., big.mark = ",") {
+                          largest_with_cents = 100000, ..., big.mark = ",",
+                          negative_parens = FALSE) {
   function(x) {
-    if(length(x) == 0) return(character())
+    if (length(x) == 0) return(character())
     x <- round_any(x, 0.01)
-    if (max(x, na.rm = TRUE) < largest_with_cents &
-        !all(x == floor(x), na.rm = TRUE)) {
+    if (needs_cents(x, largest_with_cents)) {
       nsmall <- 2L
     } else {
       x <- round_any(x, 1)
       nsmall <- 0L
     }
-    amount <- format(x, nsmall = nsmall, trim = TRUE, big.mark = big.mark,
+
+    negative <- !is.na(x) & x < 0
+    if (negative_parens) {
+      x <- abs(x)
+    }
+
+    amount <- format(abs(x), nsmall = nsmall, trim = TRUE, big.mark = big.mark,
       scientific = FALSE, digits = 1L)
-    paste0(prefix, amount, suffix)
+
+    if (negative_parens) {
+      paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
+    } else {
+      paste0(prefix, ifelse(negative, "-", ""), amount, suffix)
+    }
   }
+}
+
+needs_cents <- function(x, threshold) {
+  if (all(is.na(x)))
+    return(FALSE)
+
+  if (max(abs(x), na.rm = TRUE) > threshold)
+    return(FALSE)
+
+  !all(x == floor(x), na.rm = TRUE)
 }
 
 #' @export
@@ -87,7 +112,7 @@ dollar <- dollar_format()
 #' percent(runif(10, 1, 10))
 percent_format <- function() {
   function(x) {
-    if(length(x) == 0) return(character())
+    if (length(x) == 0) return(character())
     x <- round_any(x, precision(x) / 100)
     paste0(comma(x * 100), "%")
   }
@@ -249,7 +274,7 @@ format_format <- function(...) {
 precision <- function(x) {
   rng <- range(x, na.rm = TRUE)
 
-  span <- if (zero_range(rng)) rng[1] else diff(rng)
+  span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
   10 ^ floor(log10(span))
 }
 
