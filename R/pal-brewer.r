@@ -19,18 +19,19 @@
 brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
 
-  # If <3 colors are requested, brewer.pal will return a 3-color palette and
-  # give a warning. This warning isn't useful, so suppress it.
-  # If the palette has k colors and >k colors are requested, brewer.pal will
-  # return a k-color palette and give a warning. This warning is useful, so
-  # don't suppress it. In both cases, the seq_len(n) is there to make sure
-  # that the n items are returned, even if brewer.pal returns a different
-  # number of items.
   function(n) {
-    if (n < 3)
-      pal <- suppressWarnings(RColorBrewer::brewer.pal(n, pal))[seq_len(n)]
-    else
-      pal <- RColorBrewer::brewer.pal(n, pal)[seq_len(n)]
+    # If <3 colors are requested, brewer.pal will return a 3-color palette and
+    # give a warning. This warning isn't useful, so suppress it.
+    # If the palette has k colors and >k colors are requested, brewer.pal will
+    # return a k-color palette and give a warning. This warning is useful, so
+    # don't suppress it.
+    if (n < 3) {
+      pal <- suppressWarnings(RColorBrewer::brewer.pal(n, pal))
+    } else {
+      pal <- RColorBrewer::brewer.pal(n, pal)
+    }
+    # In both cases ensure we have n items
+    pal <- pal[seq_len(n)]
 
     if (direction == -1)
       pal <- rev(pal)
@@ -45,7 +46,7 @@ pal_name <- function(palette, type) {
       warning("Unknown palette ", palette)
       palette <- "Greens"
     }
-    palette
+    return(palette)
   }
 
   type <- match.arg(type, c("div", "qual", "seq"))
