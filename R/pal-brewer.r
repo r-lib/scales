@@ -35,7 +35,7 @@ brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
     if (direction == -1)
       pal <- rev(pal)
 
-    return(pal)
+    pal
   }
 }
 
@@ -45,7 +45,7 @@ pal_name <- function(palette, type) {
       warning("Unknown palette ", palette)
       palette <- "Greens"
     }
-    return(palette)
+    palette
   }
 
   type <- match.arg(type, c("div", "qual", "seq"))

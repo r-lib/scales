@@ -1,8 +1,8 @@
-* Add a `direction` argument to `brewer_pal` to easily invert the order
-  of colours (@jiho, #36).
-
 Version 0.2.5
 ------------------------------------------------------------------------------
+
+* Add a `direction` argument to `brewer_pal` to easily invert the order
+  of colours (@jiho, #36).
 
 * Add color scaling functions `col_numeric()`, `col_bin()`, `col_quantile()`,
   and `col_factor()`. These functions provide concise ways to map continuous or
