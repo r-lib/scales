@@ -1,6 +1,13 @@
 Version 0.2.5
 ------------------------------------------------------------------------------
 
+* Add color scaling functions `col_numeric()`, `col_bin()`, `col_quantile()`,
+  and `col_factor()`. These functions provide concise ways to map continuous or
+  categorical values to color spectra.
+
+* Add `colour_ramp()` function for performing color interpolation in the CIELAB
+  color space (like `grDevices::colorRamp(space = 'Lab')`, but much faster).
+
 * `wrap_format()` function to wrap character vectors to a desired width.
   (@jimhester, #37).
 
