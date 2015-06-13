@@ -1,24 +1,46 @@
 Version 0.2.5
 ------------------------------------------------------------------------------
 
-* `wrap_format()` function to wrap character vectors to a desired width.
+## Improved formatting functions
+
+* `date_format()` gans an option to specify time zone (#51).
+
+* `dollar_format()` is now more flexible and can add either prefixes or suffixes
+  for different currencies (#53). It gains a `negative_parens` argument
+  to show negative values as `($100)` and now passes missing values through
+  unchanged (#40, @dougmitarotonda).
+
+* New `ordinal_format()` generates ordinal numbers (1st, 2nd etc)
+  (@aaronwolen, #55)
+
+* New `unit_format()` makes it easier to add units to labels, optionally
+  scaling (@ThierryO, 46)
+
+* New `wrap_format()` function to wrap character vectors to a desired width.
   (@jimhester, #37).
 
-* Dollar format is now more flexible and can add either prefixes or suffixes
-  for different currencies (#53).
+## New colour scaling functions
 
-* Relaxed tolerance in `zero_range()` to `sqrt(.Machine$double.eps)` (#33).
+* New color scaling functions `col_numeric()`, `col_bin()`, `col_quantile()`,
+  and `col_factor()`. These functions provide concise ways to map continuous or
+  categorical values to color spectra.
+
+* New `colour_ramp()` function for performing color interpolation in the CIELAB
+  color space (like `grDevices::colorRamp(space = 'Lab')`, but much faster).
+
+## Other bug fixes and minor improvements
 
 * `boxcox_trans()` returns correct value when p is close to zero (#31).
 
-* `show_col()` has additional options to showcase colors better (@jiho, #52)
-
-* New formatter function to generate ordinal numbers (@aaronwolen, #55)
-
-* `date_format()` has additional option to specify time zone (#51).
-
 * `dollar()` and `percent()` both correctly return a zero length string
   for zero length input (@BrianDiggs, #35)
+
+* `brewer_pal()` gains a `direction` argument to easily invert the order
+  of colours (@jiho, #36).
+
+* `show_col()` has additional options to showcase colors better (@jiho, #52)
+
+* Relaxed tolerance in `zero_range()` to `.Machine$double.eps * 1000` (#33).
 
 Version 0.2.4
 ------------------------------------------------------------------------------

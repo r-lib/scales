@@ -5,7 +5,7 @@ Authors@R: c(
     person("RStudio", role = "cph")
     )
 Title: Scale Functions for Visualization
-Description: Scales map data to aesthetics, and provide
+Description: Graphical scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
 URL: https://github.com/hadley/scales
