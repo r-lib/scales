@@ -20,6 +20,6 @@ Vectorised in both colour and alpha.
 \examples{
 alpha("red", 0.1)
 alpha(colours(), 0.5)
-alpha("red", seq(0, 1, length = 10))
+alpha("red", seq(0, 1, length.out = 10))
 }
 

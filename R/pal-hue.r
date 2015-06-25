@@ -30,7 +30,7 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
     }
 
     rotate <- function(x) (x + h.start) %% 360 * direction
-    hues <- rotate(seq(h[1], h[2], length = n))
+    hues <- rotate(seq(h[1], h[2], length.out = n))
 
     grDevices::hcl(hues, c, l)
   }

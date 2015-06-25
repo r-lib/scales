@@ -19,7 +19,7 @@ best unless gradient goes through white.}
 Sequential colour gradient palette (continous).
 }
 \examples{
-x <- seq(0, 1, length = 25)
+x <- seq(0, 1, length.out = 25)
 show_col(seq_gradient_pal()(x))
 show_col(seq_gradient_pal("white", "black")(x))
 
