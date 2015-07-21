@@ -1,6 +1,10 @@
 Version 0.2.5.9000
 ------------------------------------------------------------------------------
 
+* Continuous colour palettes now use `colour_ramp()` instead of `colorRamp()`.
+  This only supports interpolation in Lab colour space, but is hundreds of
+  times faster.
+
 Version 0.2.5
 ------------------------------------------------------------------------------
 

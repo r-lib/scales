@@ -14,8 +14,8 @@ div_gradient_pal(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"),
 
 \item{high}{colour for high end of gradient.}
 
-\item{space}{colour space in which to calculate gradient.  "Lab" usually
-best unless gradient goes through white.}
+\item{space}{colour space in which to calculate gradient. Must be "Lab" -
+other values are deprecated.}
 }
 \description{
 Diverging colour gradient (continous).
