@@ -23,7 +23,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
       x <- f(x)
     }
 
-    nice_rgb(ramp(x))
+    ramp(x)
   }
 }
 
