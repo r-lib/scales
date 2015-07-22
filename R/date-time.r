@@ -27,7 +27,7 @@ floor_time <- function(date, time) {
   } else {
     as.POSIXct(
       cut(date, time, right = TRUE, include.lowest = TRUE),
-      tz = attr(date, "tz") %||% ""
+      tz = attr(date, "tzone", exact = TRUE) %||% ""
     )
   }
 }

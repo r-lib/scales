@@ -50,7 +50,7 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
 #' @examples
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
-#' alpha("red", seq(0, 1, length = 10))
+#' alpha("red", seq(0, 1, length.out = 10))
 alpha <- function(colour, alpha = NA) {
   col <- col2rgb(colour, TRUE) / 255
   

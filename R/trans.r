@@ -56,5 +56,5 @@ as.trans <- function(x) {
 #' @export
 trans_range <- function(trans, x) {
   trans <- as.trans(trans)
-  range(trans$trans(range(squish(x, trans$domain), na.rm = TRUE)))
+  range(trans$transform(range(squish(x, trans$domain), na.rm = TRUE)))
 }

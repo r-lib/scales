@@ -23,7 +23,7 @@
 cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
   stopifnot(is.trans(trans))
   
-  x <- trans$trans(x)
+  x <- trans$transform(x)
   limits <- train_continuous(x)
   map_continuous(palette, x, limits, na.value)
 }

@@ -10,7 +10,7 @@ Version 0.2.5
 
 ## Improved formatting functions
 
-* `date_format()` gans an option to specify time zone (#51).
+* `date_format()` gains an option to specify time zone (#51).
 
 * `dollar_format()` is now more flexible and can add either prefixes or suffixes
   for different currencies (#53). It gains a `negative_parens` argument

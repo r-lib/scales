@@ -18,12 +18,12 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
     if (length(x) == 0) return(character())
 
     if (!is.null(values)) {
-      xs <- seq(0, 1, length = length(values))
+      xs <- seq(0, 1, length.out = length(values))
       f <- approxfun(values, xs)
       x <- f(x)
     }
 
-    ramp(x)
+    nice_rgb(ramp(x))
   }
 }
 
@@ -35,11 +35,11 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 #' @inheritParams gradient_n_pal
 #' @export
 #' @examples
-#' x <- seq(-1, 1, length = 100)
+#' x <- seq(-1, 1, length.out = 100)
 #' r <- sqrt(outer(x^2, x^2, "+"))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length = 12)))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length = 30)))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length = 100)))
+#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 12)))
+#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 30)))
+#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 100)))
 #'
 #' library(munsell)
 #' image(r, col = div_gradient_pal(low =
@@ -55,7 +55,7 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
 #' @inheritParams gradient_n_pal
 #' @export
 #' @examples
-#' x <- seq(0, 1, length = 25)
+#' x <- seq(0, 1, length.out = 25)
 #' show_col(seq_gradient_pal()(x))
 #' show_col(seq_gradient_pal("white", "black")(x))
 #'
