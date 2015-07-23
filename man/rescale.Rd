@@ -4,7 +4,7 @@
 \alias{rescale}
 \title{Rescale numeric vector to have specified minimum and maximum.}
 \usage{
-rescale(x, to = c(0, 1), from = range(x, na.rm = TRUE))
+rescale(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE))
 }
 \arguments{
 \item{x}{numeric vector of values to manipulate.}

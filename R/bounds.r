@@ -10,8 +10,10 @@
 #' rescale(1:100)
 #' rescale(runif(50))
 #' rescale(1)
-rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
-  if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
+rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE)) {
+  if (zero_range(from) || zero_range(to)) {
+    return(ifelse(is.na(x), NA, mean(to)))
+  }
 
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }

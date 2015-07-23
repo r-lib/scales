@@ -1,6 +1,9 @@
 Version 0.2.5.9000
 ------------------------------------------------------------------------------
 
+* `rescale()` preserves missing values in input when the range of `x` is
+  (effectively) 0 (ggplot2#985).
+
 * Continuous colour palettes now use `colour_ramp()` instead of `colorRamp()`.
   This only supports interpolation in Lab colour space, but is hundreds of
   times faster.
