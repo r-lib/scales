@@ -1,30 +1,5 @@
 context("Ranges")
 
-test_that("continuous ranges expands as expected", {
-  r <- ContinuousRange$new()
-
-  r$train(1)  
-  expect_equal(r$range, c(1, 1))
-  
-  r$train(10)
-  expect_equal(r$range, c(1, 10))
-  
-})
-
-test_that("discrete ranges expands as expected", {
-  r <- DiscreteRange$new()
-
-  r$train("a")  
-  expect_equal(r$range, "a")
-  
-  r$train("b")
-  expect_equal(r$range, c("a", "b"))
-  
-  r$train(letters)
-  expect_equal(r$range, letters)  
-  
-})
-
 test_that("starting with NULL always returns new", {
   expect_equal(discrete_range(NULL, 1:3), 1:3)
   expect_equal(discrete_range(NULL, 3:1), 1:3)
