@@ -12,11 +12,17 @@ dscale <- function(x, palette, na.value = NA) {
   map_discrete(palette, x, limits, na.value)
 }
 
+#' Train (update) a discrete scale
+#'
+#' @param new New data to add to scale
+#' @param existing Optional existing scale to update
+#' @param drop \code{TRUE}, will drop factor levels not associated with data
+#' @export
 train_discrete <- function(new, existing = NULL, drop = FALSE) {
   if (is.null(new)) return(existing)
 
   if (!is.discrete(new)) {
-    stop("Continuous value supplied to discrete scale", call. = FALSE) 
+    stop("Continuous value supplied to discrete scale", call. = FALSE)
   }
   discrete_range(existing, new, drop = drop)
 }
@@ -27,12 +33,12 @@ discrete_range <- function(old, new, drop = FALSE) {
   if (!is.character(old)) old <- clevels(old)
 
   new_levels <- setdiff(new, as.character(old))
-  
+
   # Keep as a factor if we don't have any new levels
   if (length(new_levels) == 0) {
     return(old)
   }
-  
+
   sort(c(old, new_levels))
 }
 
@@ -44,7 +50,7 @@ clevels <- function(x, drop = FALSE) {
 
     values <- levels(x)
     if (any(is.na(x))) values <- c(values, NA)
-    
+
     values
   } else {
     sort(unique(x))
