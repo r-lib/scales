@@ -174,7 +174,7 @@ ordinal <- function(x) {
     th = "[0456789]$"
   )
 
-  out <- utils::stack(llply(suffixes, grep, x = x, perl = TRUE))
+  out <- utils::stack(lapply(suffixes, grep, x = x, perl = TRUE))
   paste0(comma(x), out$ind[order(out$values)])
 }
 
@@ -188,7 +188,7 @@ ordinal <- function(x) {
 #' parse_format()(c("alpha", "beta", "gamma"))
 parse_format <- function() {
   function(x) {
-    llply(as.character(x), function(x) parse(text = x, srcfile = NULL))
+    lapply(as.character(x), function(x) parse(text = x, srcfile = NULL))
   }
 }
 
@@ -216,7 +216,7 @@ math_format <- function(expr = 10 ^ .x, format = force) {
 
   function(x) {
     x <- format(x)
-    llply(x, subs)
+    lapply(x, subs)
   }
 }
 globalVariables(".x")
