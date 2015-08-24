@@ -4,12 +4,13 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.0 (2015-04-16) |
+|version  |R version 3.2.1 (2015-06-18) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.584)           |
+|ui       |RStudio (0.99.667)           |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
+|date     |2015-08-24                   |
 
 ## Packages
 
@@ -18,16 +19,21 @@
 |dichromat    |   |2.0-0   |2013-01-24 |CRAN (R 3.2.0) |
 |labeling     |   |0.3     |2014-08-23 |CRAN (R 3.2.0) |
 |munsell      |   |0.4.2   |2013-07-11 |CRAN (R 3.2.0) |
-|plyr         |   |1.8.2   |2015-04-21 |CRAN (R 3.2.0) |
+|plyr         |   |1.8.3   |2015-06-12 |CRAN (R 3.2.0) |
 |RColorBrewer |   |1.1-2   |2014-12-07 |CRAN (R 3.2.0) |
-|Rcpp         |   |0.11.6  |2015-05-01 |CRAN (R 3.2.0) |
+|Rcpp         |   |0.12.0  |2015-07-25 |CRAN (R 3.2.0) |
 |testthat     |*  |0.10.0  |2015-05-22 |CRAN (R 3.2.0) |
 
 # Check results
-73 checked out of 73 dependencies 
+79 checked out of 79 dependencies 
 
 ## aqp (1.8-6)
 Maintainer: Dylan Beaudette <debeaudette@ucdavis.edu>
+
+__OK__
+
+## backtestGraphics (0.1.5)
+Maintainer: Miller Zijie Zhu <zijie.miller.zhu@gmail.com>
 
 __OK__
 
@@ -120,24 +126,10 @@ Bug reports: https://github.com/arilamstein/choroplethr/issues
 
 __OK__
 
-## chron (2.3-45)
+## chron (2.3-47)
 Maintainer: Kurt Hornik <Kurt.Hornik@R-project.org>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking S3 generic/method consistency ... NOTE
-Found the following apparent S3 methods exported but not registered:
-  seq.dates
-See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-manual.
-```
-```
-DONE
-Status: 2 NOTEs
-```
+__OK__
 
 ## clhs (0.5-4)
 Maintainer: Pierre Roudier <roudierp@landcareresearch.co.nz>
@@ -165,6 +157,12 @@ Status: 1 NOTE
 
 ## complmrob (0.5.8)
 Maintainer: David Kepplinger <david.kepplinger@gmail.com>
+
+__OK__
+
+## d3heatmap (0.6.1)
+Maintainer: Joe Cheng <joe@rstudio.com>  
+Bug reports: https://github.com/rstudio/d3heatmap/issues
 
 __OK__
 
@@ -340,17 +338,10 @@ DONE
 Status: 3 NOTEs
 ```
 
-## extracat (1.7-1)
-Maintainer: Alexander Pilhoefer <alexander.pilhoefer@math.uni-augsburg.de>
+## EpiBayes (0.1.2)
+Maintainer: Matthew Branan <matthew.branan@gmail.com>
 
-```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-DONE
-Status: 1 NOTE
-```
+__OK__
 
 ## ez (4.2-2)
 Maintainer: Michael A. Lawrence <mike.lwrnc@gmail.com>
@@ -411,85 +402,17 @@ DONE
 Status: 1 NOTE
 ```
 
-## ggmap (2.4)
+## ggmap (2.5.2)
 Maintainer: David Kahle <david.kahle@gmail.com>  
 Bug reports: https://github.com/dkahle/ggmap/issues
 
-```
-checking examples ... ERROR
-Running examples in ‘ggmap-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: geocode
-> ### Title: Geocode
-> ### Aliases: geocode geocodeQueryCheck
-> 
-> ### ** Examples
-> 
-> # Types of input
-> geocode('Baylor University')
-Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=Baylor+University&sensor=false
-        lon      lat
-1 -97.11844 31.54822
-> geocode('1600 Pennsylvania Avenue, Washington DC')
-Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=1600+Pennsylvania+Avenue,+Washington+DC&sensor=false
-        lon      lat
-1 -76.98168 38.87866
-> geocode('the white house')
-Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=the+white+house&sensor=false
-        lon      lat
-1 -77.03653 38.89768
-> geocode(c('baylor university', 'salvation army waco'))
-Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=baylor+university&sensor=false
-Information from URL : http://maps.googleapis.com/maps/api/geocode/json?address=salvation+army+waco&sensor=false
-        lon      lat
-1 -97.11844 31.54822
-2 -97.12858 31.54158
-> 
-> # Types of output
-> geocode('Baylor University', output = "latlona")
-        lon      lat
-1 -97.11844 31.54822
-                                                        address
-1 baylor university, 1311 south 5th street, waco, tx 76706, usa
-> geocode('Baylor University', output = "more")
-Error in data.frame(long_name = "Baylor University", short_name = "Baylor University",  : 
-  arguments imply differing number of rows: 1, 0
-Calls: geocode ... as.data.frame -> as.data.frame.list -> eval -> eval -> data.frame
-Execution halted
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## ggplot2 (1.0.1)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>  
 Bug reports: https://github.com/hadley/ggplot2/issues
 
-```
-checking tests ... ERROR
-Running the tests in ‘tests/test-all.R’ failed.
-Last 13 lines of output:
-  29: tryCatch(withCallingHandlers(eval(code, new_test_environment),     error = capture_calls, message = function(c) invokeRestart("muffleMessage"),     warning = function(c) invokeRestart("muffleWarning")), error = function(e) {    ok <- FALSE    report <- expectation_error(e$message, e$calls)    get_reporter()$add_result(report)}, skip = function(e) {    report <- expectation_skipped(e$message)    get_reporter()$add_result(report)})
-  30: test_code(desc, substitute(code), env = parent.frame())
-  31: test_that("plot succeeds even if some computation fails", {    p1 <- ggplot(mtcars, aes(disp, mpg)) + geom_point() + facet_grid(gear ~         carb)    p2 <- p1 + geom_smooth()    b1 <- ggplot_build(p1)    expect_equal(length(b1$data), 1)    expect_warning(b2 <- ggplot_build(p2))    expect_equal(length(b2$data), 2)})
-  32: eval(expr, envir, enclos)
-  33: eval(exprs, envir)
-  34: sys.source2(fname, new.env(parent = env))
-  35: FUN(X[[i]], ...)
-  36: lapply(paths, test_file, env = env, reporter = current_reporter,     start_end_reporter = FALSE)
-  37: test_dir(test_path, reporter = reporter, env = env, filter = filter,     ...)
-  38: with_top_env(env, {    test_dir(test_path, reporter = reporter, env = env, filter = filter,         ...)})
-  39: run_tests(package, test_path, filter, reporter, ...)
-  40: test_package("ggplot2")
-  aborting ...
-```
-```
-DONE
-Status: 1 ERROR
-```
+__OK__
 
 ## ggsubplot (0.3.2)
 Maintainer: Garrett Grolemund <garrett@rstudio.com>
@@ -503,12 +426,12 @@ DONE
 Status: 1 NOTE
 ```
 
-## ggtern (1.0.5.0)
+## ggtern (1.0.6.0)
 Maintainer: Nicholas Hamilton <nick@ggtern.com>
 
 __OK__
 
-## ggthemes (2.1.2)
+## ggthemes (2.2.1)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: http://github.com/jrnold/ggthemes
 
@@ -523,9 +446,12 @@ __OK__
 Maintainer: "terrance savitsky" <tds151@gmail.com>
 
 ```
-checking whether package ‘growcurves’ can be installed ... [99s/100s] ERROR
+checking whether package ‘growcurves’ can be installed ... [98s/99s] ERROR
 Installation failed.
-See ‘/private/tmp/RtmpDJHs9Q/check_cran14fc84bd541a/growcurves.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/growcurves.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -533,9 +459,12 @@ Status: 1 ERROR
 Maintainer: Terrance Savitsky <tds151@gmail.com>
 
 ```
-checking whether package ‘growfunctions’ can be installed ... [73s/74s] ERROR
+checking whether package ‘growfunctions’ can be installed ... [74s/75s] ERROR
 Installation failed.
-See ‘/private/tmp/RtmpDJHs9Q/check_cran14fc84bd541a/growfunctions.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/growfunctions.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -545,9 +474,36 @@ Maintainer: Frank E Harrell Jr <f.harrell@vanderbilt.edu>
 ```
 checking whether package ‘Hmisc’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpDJHs9Q/check_cran14fc84bd541a/Hmisc.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/Hmisc.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
+
+## igraph (1.0.1)
+Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
+Bug reports: https://github.com/igraph/igraph/issues
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘graph’
+```
+```
+checking whether package ‘igraph’ can be installed ... ERROR
+Installation failed.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/igraph.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 ERROR, 1 NOTE
+```
+
+## leaflet (1.0.0)
+Maintainer: Joe Cheng <joe@rstudio.com>  
+Bug reports: https://github.com/rstudio/leaflet/issues
+
+__OK__
 
 ## likeLTD (5.5.0)
 Maintainer: Christopher Steele <c.steele.11@ucl.ac.uk>
@@ -559,7 +515,7 @@ Maintainer: Steve C Walker <steve.walker@utoronto.ca>
 
 __OK__
 
-## ncappc (0.1)
+## ncappc (0.2)
 Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
 
 __OK__
@@ -582,29 +538,20 @@ DONE
 Status: 1 NOTE
 ```
 
-## NlsyLinks (1.302)
-Maintainer: Will Beasley <wibeasley@hotmail.com>
+## NlsyLinks (2.0.1)
+Maintainer: Will Beasley <wibeasley@hotmail.com>  
+Bug reports: https://github.com/LiveOak/NlsyLinks/issues
 
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
-Malformed Description field: should contain one or more complete sentences.
-```
-```
-checking dependencies in R code ... NOTE
-Namespace in Imports field not imported from: ‘methods’
-  All declared Imports should be used.
-```
-```
-checking R code for possible problems ... NOTE
-ReadCsvNlsy79Gen1: no visible binding for global variable
-  ‘SubjectDetails79’
-ReadCsvNlsy79Gen2: no visible binding for global variable
-  ‘SubjectDetails79’
+checking installed package size ... NOTE
+  installed size is  6.3Mb
+  sub-directories of 1Mb or more:
+    data   4.3Mb
+    doc    1.0Mb
 ```
 ```
 DONE
-Status: 3 NOTEs
+Status: 1 NOTE
 ```
 
 ## optiRum (0.35)
@@ -631,12 +578,12 @@ DONE
 Status: 1 NOTE
 ```
 
-## pheatmap (1.0.2)
+## pheatmap (1.0.7)
 Maintainer: Raivo Kolde <rkolde@gmail.com>
 
 __OK__
 
-## plotKML (0.5-2)
+## plotKML (0.5-3)
 Maintainer: Tomislav Hengl <tom.hengl@isric.org>
 
 __OK__
@@ -652,7 +599,7 @@ Maintainer: Jim Hester <james.f.hester@gmail.com>
 
 __OK__
 
-## qdap (2.2.1)
+## qdap (2.2.2)
 Maintainer: Tyler Rinker <tyler.rinker@gmail.com>  
 Bug reports: http://github.com/trinker/qdap/issues
 
@@ -662,14 +609,23 @@ __OK__
 Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
 
 ```
-checking whether package ‘quadrupen’ can be installed ... [35s/36s] ERROR
+checking whether package ‘quadrupen’ can be installed ... [35s/35s] ERROR
 Installation failed.
-See ‘/private/tmp/RtmpDJHs9Q/check_cran14fc84bd541a/quadrupen.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/quadrupen.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
-## R6 (2.0.1)
-Maintainer: "Winston Chang" <winston@stdout.org>
+## quantable (0.1)
+Maintainer: Witold Wolski <wewolski@gmail.com>  
+Bug reports: https://github.com/wolski/quantable/issues
+
+__OK__
+
+## R6 (2.1.1)
+Maintainer: Winston Chang <winston@stdout.org>
 
 __OK__
 
@@ -689,7 +645,7 @@ DONE
 Status: 2 NOTEs
 ```
 
-## rAvis (0.1.2)
+## rAvis (0.1.4)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/rAvis/issues
 
@@ -743,15 +699,31 @@ __OK__
 ## RDS (0.7-2)
 Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
 
-__OK__
+```
+checking dependencies in R code ... NOTE
+Missing or unexported object: ‘gridExtra::latticeGrob’
+```
+```
+DONE
+Status: 1 NOTE
+```
 
 ## rgauges (0.2.0)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: https://github.com/ropensci/rgauges/issues
 
-__OK__
+```
+checking files in ‘vignettes’ ... NOTE
+The following directory looks like a leftover from 'knitr':
+  ‘figure’
+Please remove from your package.
+```
+```
+DONE
+Status: 1 NOTE
+```
 
-## rnoaa (0.3.3)
+## rnoaa (0.4.2)
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
 Bug reports: http://www.github.com/ropensci/rnoaa/issues
 
@@ -773,16 +745,32 @@ DONE
 Status: 1 NOTE
 ```
 
+## SciencesPo (1.3.7)
+Maintainer: Daniel Marcelino <dmarcelino@live.com>  
+Bug reports: http://github.com/danielmarcelino/SciencesPo
+
+__OK__
+
 ## sharpshootR (0.7-2)
 Maintainer: Dylan Beaudette <dylan.beaudette@ca.usda.gov>
 
 __OK__
 
-## sjPlot (1.8.1)
+## sjPlot (1.8.2)
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
 Bug reports: https://github.com/sjPlot/devel/issues
 
-__OK__
+```
+checking whether package ‘sjPlot’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘tidyr::%>%’ when loading ‘sjPlot’
+  Warning: replacing previous import by ‘tidyr::replace_na’ when loading ‘sjPlot’
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/sjPlot.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## soc.ca (0.7.1)
 Maintainer: Anton Grau Larsen <alar@soc.ku.dk>
@@ -792,8 +780,68 @@ checking data for non-ASCII characters ... NOTE
   Note: found 833 marked UTF-8 strings
 ```
 ```
+checking examples ... ERROR
+Running examples in ‘soc.ca-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: map.csa.mca.array
+> ### Title: CSA-MCA array
+> ### Aliases: map.csa.mca.array
+> 
+> ### ** Examples
+> 
+> example(soc.csa)
+
+soc.cs> example(soc.ca)
+
+soc.ca> data(taste)
+
+soc.ca> # Create a data frame of factors containing all the active variables
+soc.ca> taste          <- taste[which(taste$Isup == 'Active'), ]
+
+soc.ca> attach(taste)
+
+soc.ca> active         <- data.frame(TV, Film, Art, Eat)
+
+soc.ca> sup            <- data.frame(Gender, Age, Income)
+
+soc.ca> detach(taste)
+
+soc.ca> # Runs the analysis
+soc.ca> result         <- soc.mca(active, sup)
+
+soc.cs> class.age    <- which(taste$Age == '55-64')
+
+soc.cs> res.csa      <- soc.csa(result, class.age)
+
+soc.cs> res.csa
+                     Class Specific Multiple Correspondence Analysis:                      
+ 
+                    Statistics                                   Scree plot               
+	Active dimensions:                            10  |  1.     44.7%   **********************
+	Dimensions explaining 80% of inertia:          3  |  2.     24.0%   ************
+	Active modalities:                            29  |  3.     14.4%   *******
+	Supplementary modalities:                      0  |  4.      6.8%   ****
+	Individuals:                                 183  |  5.      4.9%   **
+	Share of passive mass:                         0  |  6.      2.3%   *
+ Number of passive modalities:                  0  |  7.      1.7%   *
+
+                    The 4 active variables: [No. modalities - share of variance]                    
+
+             TV [8 - 28%]            Film [8 - 28%]             Art [7 - 24%] 
+            Eat [6 - 20%]
+> csa.res <- soc.csa(result, class.age)
+> map.csa.mca.array(csa.res, ndim = 3)
+Warning in grob$wrapvp <- vp : Coercing LHS to a list
+Error in gList(list(grobs = list(list(x = 0.5, y = 0.5, width = 1, height = 1,  : 
+  only 'grobs' allowed in "gList"
+Calls: map.csa.mca.array ... grid.draw.gtable -> gTree -> setChildren -> do.call -> gList
+Execution halted
+```
+```
 DONE
-Status: 1 NOTE
+Status: 1 ERROR, 1 NOTE
 ```
 
 ## soil.spec (2.1.4)
@@ -823,14 +871,17 @@ Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
 
 __OK__
 
-## spikeSlabGAM (1.1-8)
+## spikeSlabGAM (1.1-9)
 Maintainer: Fabian Scheipl
  <fabian.scheipl@stat.uni-muenchen.de>
 
 ```
 checking whether package ‘spikeSlabGAM’ can be installed ... ERROR
 Installation failed.
-See ‘/private/tmp/RtmpDJHs9Q/check_cran14fc84bd541a/spikeSlabGAM.Rcheck/00install.out’ for details.
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/spikeSlabGAM.Rcheck/00install.out’ for details.
+```
+```
+DONE
 Status: 1 ERROR
 ```
 
@@ -846,7 +897,7 @@ Bug reports: https://github.com/OskarHansson/strvalidator/issues
 
 __OK__
 
-## surveillance (1.9-0)
+## surveillance (1.9-1)
 Maintainer: Michael H�hle <hoehle@math.su.se>  
 Bug reports: https://r-forge.r-project.org/tracker/?group_id=45
 
@@ -862,7 +913,16 @@ Status: 1 NOTE
 ## TDA (1.3)
 Maintainer: Fabrizio Lecci <lecci@cmu.edu>
 
-__OK__
+```
+checking whether package ‘TDA’ can be installed ... [14s/14s] WARNING
+Found the following significant warnings:
+  Warning: replacing previous import by ‘igraph::knn’ when loading ‘TDA’
+See ‘/private/tmp/Rtmp5RyTqN/check_cran229b66caa328/TDA.Rcheck/00install.out’ for details.
+```
+```
+DONE
+Status: 1 WARNING
+```
 
 ## tis (1.30)
 Maintainer: Jeff Hallman <jeffrey.j.hallman@frb.gov>
@@ -887,6 +947,11 @@ checking use of S3 registration ... WARNING
 Registered S3 method from a standard package overwritten by 'useful':
  method   from 
  plot.acf stats
+Warning messages:
+1: replacing previous import by ‘Rcpp::evalCpp’ when loading ‘scales’ 
+2: replacing previous import by ‘munsell::mnsl’ when loading ‘scales’ 
+3: replacing previous import by ‘plyr::is.discrete’ when loading ‘scales’ 
+4: replacing previous import by ‘plyr::round_any’ when loading ‘scales’ 
 ```
 ```
 DONE
