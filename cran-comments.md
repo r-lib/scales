@@ -4,7 +4,11 @@
 * win-builder (devel and release)
 
 ## R CMD check results
-There were no ERRORs, WARNINGs or NOTES. 
+There were no ERRORs or WARNINGs. 
+
+There is one NOTE:
+
+* MIT + file LICENSE
 
 ## Downstream dependencies
 I have also run R CMD check on all 79 downstream dependencies of scales 
