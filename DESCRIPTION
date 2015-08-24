@@ -18,6 +18,7 @@ Imports:
     plyr,
     munsell (>= 0.2),
     labeling,
+    methods,
     Rcpp
 LinkingTo:
     Rcpp
