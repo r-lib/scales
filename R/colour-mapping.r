@@ -130,7 +130,7 @@ col_quantile <- function(palette, domain, n = 4,
   probs = seq(0, 1, length.out = n + 1), na.color = "#808080") {
 
   if (!is.null(domain)) {
-    bins <- quantile(domain, probs, na.rm = TRUE, names = FALSE)
+    bins <- stats::quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
       'quantile', list(probs = probs, na.color = na.color),
       col_bin(palette, domain = NULL, bins = bins, na.color = na.color)
@@ -142,7 +142,7 @@ col_quantile <- function(palette, domain, n = 4,
   # or 5? 4, right?
   colorFunc <- col_factor(palette, domain = 1:(length(probs) - 1), na.color = na.color)
   withColorAttr('quantile', list(probs = probs, na.color = na.color), function(x) {
-    binsToUse <- quantile(x, probs, na.rm = TRUE, names = FALSE)
+    binsToUse <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
     if (any(is.na(x) != is.na(ints)))
       warning("Some values were outside the color scale and will be treated as NA")
@@ -287,7 +287,7 @@ toPaletteFunc.character <- function(pal) {
 
 # Accept colorRamp style matrix
 toPaletteFunc.matrix <- function(pal) {
-  toPaletteFunc(rgb(pal, maxColorValue = 255))
+  toPaletteFunc(grDevices::rgb(pal, maxColorValue = 255))
 }
 
 # If a function, just assume it's already a function over [0-1]
@@ -328,7 +328,7 @@ filterRGB <- function(f) {
     if (is.character(results)) {
       results
     } else if (is.matrix(results)) {
-      rgb(results, maxColorValue = 255)
+      grDevices::rgb(results, maxColorValue = 255)
     } else {
       stop("Unexpected result type ", class(x)[[1]])
     }
@@ -376,7 +376,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = FALSE) {
     stop("Must provide at least one color to create a color ramp")
   }
 
-  colorMatrix <- col2rgb(colors, alpha = alpha)
+  colorMatrix <- grDevices::col2rgb(colors, alpha = alpha)
   structure(
     function(x) {
       doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color))

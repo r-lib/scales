@@ -174,7 +174,7 @@ ordinal <- function(x) {
     th = "[0456789]$"
   )
 
-  out <- stack(llply(suffixes, grep, x = x, perl = TRUE))
+  out <- utils::stack(llply(suffixes, grep, x = x, perl = TRUE))
   paste0(comma(x), out$ind[order(out$values)])
 }
 

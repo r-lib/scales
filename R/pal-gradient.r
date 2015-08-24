@@ -19,7 +19,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 
     if (!is.null(values)) {
       xs <- seq(0, 1, length.out = length(values))
-      f <- approxfun(values, xs)
+      f <- stats::approxfun(values, xs)
       x <- f(x)
     }
 
