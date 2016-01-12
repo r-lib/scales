@@ -20,9 +20,9 @@ Imports:
     labeling,
     methods,
     Rcpp
-LinkingTo:
-    Rcpp
+LinkingTo: Rcpp
 Suggests:
     testthat (>= 0.8)
 License: MIT + file LICENSE
 LazyLoad: yes
+RoxygenNote: 5.0.1
