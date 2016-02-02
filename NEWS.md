@@ -1,5 +1,7 @@
 # scales 0.3.0.9000
 
+* `precision(0)` now returns 1, which means `percent(0)` now returns 0% (#50).
+
 * Switched from `NEWS` to `NEWS.md`
 
 * `scale_continuous()` uses a more correct check for numeric values.
