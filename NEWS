@@ -1,6 +1,8 @@
 Version 0.3.0.9000
 ------------------------------------------------------------------------------
 
+* `scale_continuous()` uses a more correct check for numeric values.
+
 * NaN is correctly recognised as a missing value by the gradient palettes
   (ggplot2#1482).
 
