@@ -143,7 +143,7 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
   StringVector result(x.length());
   for (R_len_t i = 0; i < x.length(); i++) {
     double xval = x[i];
-    if (xval < 0 || xval > 1 || R_IsNA(xval)) {
+    if (xval < 0 || xval > 1 || !R_finite(xval)) {
       // Illegal or NA value for this x value.
       result[i] = NA_STRING;
     } else {

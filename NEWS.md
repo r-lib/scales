@@ -1,10 +1,17 @@
-Version 0.3.0.9000
-------------------------------------------------------------------------------
+# scales 0.3.0.9000
 
+* `precision(0)` now returns 1, which means `percent(0)` now returns 0% (#50).
+
+* Switched from `NEWS` to `NEWS.md`
+
+* `scale_continuous()` uses a more correct check for numeric values.
+
+* NaN is correctly recognised as a missing value by the gradient palettes
+  (ggplot2#1482).
+  
 * `manual_pal` produces a warning if n is greater than the number of values in the palette (@jrnold, #68).
 
-Version 0.3.0
-------------------------------------------------------------------------------
+# scales 0.3.0
 
 * `rescale()` preserves missing values in input when the range of `x` is
   (effectively) 0 (ggplot2#985).
@@ -13,8 +20,7 @@ Version 0.3.0
   This only supports interpolation in Lab colour space, but is hundreds of
   times faster.
 
-Version 0.2.5
-------------------------------------------------------------------------------
+# scales 0.2.5
 
 ## Improved formatting functions
 
@@ -57,15 +63,13 @@ Version 0.2.5
 
 * Relaxed tolerance in `zero_range()` to `.Machine$double.eps * 1000` (#33).
 
-Version 0.2.4
-------------------------------------------------------------------------------
+# scales 0.2.4
 
 * Eliminate stringr dependency.
 
 * Fix outstanding errors in R CMD check
 
-Version 0.2.3
-------------------------------------------------------------------------------
+# scales 0.2.3
 
 * `floor_time` calls `to_time`, but that function was moved into a function
   so it was no longer available in the scales namespace. Now `floor_time`
@@ -78,8 +82,7 @@ Version 0.2.3
   of points to be proportional to their value. These are used by
   `scale_size_area` in ggplot2.
 
-Version 0.2.2
-------------------------------------------------------------------------------
+# scales 0.2.2
 
 * `zero_range` has improved behaviour thanks to Brian Diggs.
 
@@ -103,8 +106,7 @@ Version 0.2.2
 
 * fixed namespace problem with `fullseq`
 
-Version 0.2.1
-------------------------------------------------------------------------------
+# scales 0.2.1
 
 * `suppressWarnings` from `train_continuous` so zero-row or all infinite data
   frames don't potentially cause problems.
@@ -122,8 +124,7 @@ Version 0.2.1
   some ranges (e.g 0.5-0.6), but you probably shouldn't be using log scales in
   that situation anyway.
 
-Version 0.2.0
-------------------------------------------------------------------------------
+# scales 0.2.0
 
 * `censor` and `squish` gain `only.finite` argument and default to operating
   only on finite values. This is needed for ggplot2, and reflects the use of
@@ -143,4 +144,3 @@ Version 0.2.0
 
 * Another tweak to `zero_range` to better detect when a range has zero length.
   (Fixes #6)
-

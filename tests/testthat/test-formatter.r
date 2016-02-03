@@ -91,6 +91,10 @@ test_that("negative percents work", {
   expect_equal(percent(-0.6), "-60%")
 })
 
+test_that("Single 0 gives 0%", {
+  expect_equal(percent(0), "0%")
+})
+
 # Dollar formatter --------------------------------------------------------
 
 test_that("negative comes before prefix", {
