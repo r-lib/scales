@@ -8,6 +8,8 @@
 
 * NaN is correctly recognised as a missing value by the gradient palettes
   (ggplot2#1482).
+  
+* `manual_pal` produces a warning if n is greater than the number of values in the palette (@jrnold, #68).
 
 # scales 0.3.0
 
