@@ -6,8 +6,8 @@ manual_pal <- function(values) {
   function(n) {
     n_values <- length(values)
     if (n > n_values) {
-      warning(sprintf(paste("n = %d is greater than the number of values",
-                            "in the palette (%d)", n , n_values)))
+      warning("This manual palette can handle a maximum of ", n_values,
+        " values. You have supplied ", n , ".", call. = FALSE)
     }
     values[seq_len(n)]
   }
