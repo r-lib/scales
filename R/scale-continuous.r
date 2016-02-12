@@ -35,7 +35,7 @@ cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
 train_continuous <- function(new, existing = NULL) {
   if (is.null(new)) return(existing)
 
-  if (!typeof(new) %in% c("integer", "double")) {
+  if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     stop("Discrete value supplied to continuous scale",  call. = FALSE)
   }
   suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
