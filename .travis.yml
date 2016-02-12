@@ -1,5 +1,15 @@
 language: r
-cache: packages
+sudo: required
+warnings_are_errors: true
+
+env:
+  R_LIBS_SITE="/usr/lib/R/site-library"
+
+before_install:
+  - mkdir -p ~/R/Library
+
+r_github_packages:
+  - jimhester/covr
 
 after_success:
   - Rscript -e 'covr::codecov()'
