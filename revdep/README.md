@@ -6,28 +6,35 @@
 |:--------|:----------------------------|
 |version  |R version 3.2.3 (2015-12-10) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.875)           |
+|ui       |X11                          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2016-02-08                   |
+|date     |2016-02-25                   |
 
 ## Packages
 
-|package      |*  |version |date       |source         |
-|:------------|:--|:-------|:----------|:--------------|
-|dichromat    |   |2.0-0   |2013-01-24 |CRAN (R 3.2.0) |
-|labeling     |   |0.3     |2014-08-23 |CRAN (R 3.2.0) |
-|munsell      |   |0.4.2   |2013-07-11 |CRAN (R 3.2.0) |
-|plyr         |   |1.8.3   |2015-06-12 |CRAN (R 3.2.0) |
-|RColorBrewer |   |1.1-2   |2014-12-07 |CRAN (R 3.2.0) |
-|Rcpp         |   |0.12.3  |2016-01-10 |CRAN (R 3.2.3) |
-|testthat     |*  |0.11.0  |2015-10-14 |CRAN (R 3.2.0) |
+|package      |*  |version    |date       |source                |
+|:------------|:--|:----------|:----------|:---------------------|
+|covr         |   |1.2.0      |2015-06-25 |CRAN (R 3.2.0)        |
+|dichromat    |   |2.0-0      |2013-01-24 |CRAN (R 3.2.0)        |
+|labeling     |   |0.3        |2014-08-23 |CRAN (R 3.2.0)        |
+|munsell      |   |0.4.3      |2016-02-13 |CRAN (R 3.2.3)        |
+|plyr         |   |1.8.3      |2015-06-12 |CRAN (R 3.2.0)        |
+|RColorBrewer |   |1.1-2      |2014-12-07 |CRAN (R 3.2.0)        |
+|Rcpp         |   |0.12.3     |2016-01-10 |CRAN (R 3.2.3)        |
+|scales       |   |0.3.0.9000 |2016-02-25 |local (hadley/scales) |
+|testthat     |*  |0.11.0     |2015-10-14 |CRAN (R 3.2.0)        |
 
 # Check results
-101 checked out of 101 dependencies 
+106 checked out of 0 dependencies 
 
-## alakazam (0.2.2)
+## ACSNMineR (0.16.01.29)
+Maintainer: Paul Deveau <paul.deveau@curie.fr>
+
+0 errors | 0 warnings | 0 notes
+
+## alakazam (0.2.3)
 Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
 Bug reports: https://bitbucket.org/kleinstein/alakazam/issues
 
@@ -47,33 +54,55 @@ Maintainer: Miller Zijie Zhu <zijie.miller.zhu@gmail.com>
 Maintainer: Markus Peter Auer <mp.auer@meanerreversion.com>  
 Bug reports: http://github.com/MeanerReversion/bdrift/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘bdrift-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: BDA
+> ### Title: Beta Drift Anaylsis
+> ### Aliases: BDA
+> 
+> ### ** Examples
+... 27 lines ...
+> ####        CRAN-compatible example            ####
+> ###################################################
+> 
+> results <- BDA(data = FFfactors[nrow(FFfactors):(nrow(FFfactors)-300),], 
++                spec = (VOO~SP500),horizon = 250, doplot = TRUE)
+Warning in fun(libname, pkgname) :
+  couldn't connect to display "0.0.0.0"
+Error in structure(.External(.C_dotTclObjv, objv), class = "tclObj") : 
+  [tcl] invalid command name "toplevel".
+Calls: BDA ... <Anonymous> -> tkwidget -> tcl -> .Tcl.objv -> structure
+Execution halted
+```
 
 ## bdscale (1.2)
 Maintainer: Dave Mills <dave.a.mills@gmail.com>
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘bdscale’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘bdscale’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/bdscale.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/bdscale.Rcheck/00install.out’ for details.
 ```
 
 ## benchmark (0.3-6)
 Maintainer: Manuel J. A. Eugster <manuel@mjae.net>
 
-0 errors | 1 warning | 4 notes
+0 errors | 1 warning  | 2 notes
 
 ```
 checking whether package ‘benchmark’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘benchmark’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/benchmark.Rcheck/00install.out’ for details.
-
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Rgraphviz’
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/benchmark.Rcheck/00install.out’ for details.
 
 checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘multcomp’ in package code.
@@ -90,19 +119,7 @@ boxplot.AlgorithmPerformance: no visible binding for global variable
 bsgraph0.dist: no visible global function definition for ‘addEdge’
 bsgraph0.graphNEL: no visible global function definition for
   ‘getDefaultAttrs’
-bsgraph0.graphNEL: no visible global function definition for ‘agopen’
-densityplot.AlgorithmPerformance: no visible binding for global
-  variable ‘value’
-densityplot.AlgorithmPerformance: no visible binding for global
-  variable ‘algorithms’
-mi: no visible global function definition for ‘mi.plugin’
-patch.relation_class_ids: no visible global function definition for
-  ‘relation_is_strict_weak_order’
-plot.DatasetCharacterization: no visible binding for global variable
-  ‘characteristics’
-plot.DatasetCharacterization: no visible binding for global variable
-  ‘value’
-plot.DatasetCharacterization: no visible binding for global variable
+... 14 lines ...
   ‘samples’
 plot.DatasetCharacterization: no visible global function definition for
   ‘theme_text’
@@ -114,15 +131,12 @@ stripchart.AlgorithmPerformance: no visible binding for global variable
   ‘value’
 stripchart.AlgorithmPerformance: no visible binding for global variable
   ‘samples’
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘graph’
 ```
 
 ## bios2mds (1.2.2)
 Maintainer: Marie Chabbert <marie.chabbert@univ-angers.fr>
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking R code for possible problems ... NOTE
@@ -144,7 +158,13 @@ Maintainer: Christopher G. Watson <cgwatson@bu.edu>
 Bug reports: 
         https://groups.google.com/forum/?hl=en#!forum/brainGraph-help
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘brainGraph’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/brainGraph.Rcheck/00install.out’ for details.
+```
 
 ## choroplethr (3.4.0)
 Maintainer: Ari Lamstein <arilamstein@gmail.com>  
@@ -162,19 +182,11 @@ Maintainer: Pierre Roudier <roudierp@landcareresearch.co.nz>
 
 0 errors | 0 warnings | 0 notes
 
-## clifro (2.4-0)
+## clifro (2.4-1)
 Maintainer: Blake Seers <blake.seers@gmail.com>  
 Bug reports: https://github.com/ropensci/clifro/issues
 
-0 errors | 0 warnings | 1 note
-
-```
-checking R code for possible problems ... NOTE
-speed_plot,cfWind-missing : .local: no visible binding for global
-  variable ‘speed’
-speed_plot,cfWind-missing : .local: no visible binding for global
-  variable ‘spd.sd’
-```
+0 errors | 0 warnings | 0 notes
 
 ## complmrob (0.6.1)
 Maintainer: David Kepplinger <david.kepplinger@gmail.com>
@@ -184,9 +196,34 @@ Maintainer: David Kepplinger <david.kepplinger@gmail.com>
 ## covmat (1.0)
 Maintainer: Rohit Arora <emailrohitarora@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
-## d3heatmap (0.6.1)
+```
+checking whether package ‘covmat’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/covmat.Rcheck/00install.out’ for details.
+```
+
+## ctmm (0.3.1)
+Maintainer: C. H. Fleming <flemingc@si.edu>
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘move’
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 182-195 (variogram.Rmd) 
+Error: processing vignette 'variogram.Rmd' failed with diagnostics:
+there is no package called 'move'
+Execution halted
+
+```
+
+## d3heatmap (0.6.1.1)
 Maintainer: Joe Cheng <joe@rstudio.com>  
 Bug reports: https://github.com/rstudio/d3heatmap/issues
 
@@ -195,82 +232,29 @@ Bug reports: https://github.com/rstudio/d3heatmap/issues
 ## Deducer (0.7-9)
 Maintainer: Ian Fellows <ian@fellstat.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘Deducer’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/Deducer.Rcheck/00install.out’ for details.
+```
 
 ## DeducerSpatial (0.7)
 Maintainer: Ian Fellows <ian@fellstat.com>
 
-0 errors | 0 warnings | 6 notes
+1 error  | 0 warnings | 1 note 
 
 ```
+checking whether package ‘DeducerSpatial’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/DeducerSpatial.Rcheck/00install.out’ for details.
+
 checking package dependencies ... NOTE
 Depends: includes the non-default packages:
   ‘JavaGD’ ‘Deducer’ ‘sp’ ‘maptools’ ‘OpenStreetMap’ ‘scales’ ‘rgdal’
 Adding so many packages to the search path is excessive and importing
 selectively is preferable.
-
-checking DESCRIPTION meta-information ... NOTE
-Package listed in more than one of Depends, Imports, Suggests, Enhances:
-  ‘UScensus2010’
-A package should be listed in only one of these fields.
-
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘org’
-
-checking dependencies in R code ... NOTE
-'library' or 'require' call to ‘UScensus2010’ in package code.
-  Please use :: or requireNamespace() instead.
-  See section 'Suggested packages' in the 'Writing R Extensions' manual.
-Namespace in Imports field not imported from: ‘UScensus2010’
-  All declared Imports should be used.
-Packages in Depends field not imported from:
-  ‘JavaGD’ ‘OpenStreetMap’ ‘maptools’ ‘rgdal’ ‘scales’ ‘sp’
-  These packages need to be imported from (in the NAMESPACE file)
-  for when this namespace is loaded but not attached.
-
-checking R code for possible problems ... NOTE
-.containedBy: no visible global function definition for
-  ‘projectMercator’
-.makeCensusDialog: no visible global function definition for ‘J’
-.makeCensusDialog: no visible global function definition for ‘.jnull’
-.onLoad: no visible global function definition for ‘.jnull’
-.onLoad: no visible global function definition for ‘.jpackage’
-.onLoad: no visible global function definition for ‘.jengine’
-.onLoad: no visible global function definition for ‘J’
-.subsetLines: no visible global function definition for
-  ‘projectMercator’
-.subsetPoints: no visible global function definition for
-  ‘projectMercator’
-.subsetPoly: no visible global function definition for
-  ‘projectMercator’
-spatialBubblePlot: no visible global function definition for
-  ‘coordinates’
-spatialChoropleth: no visible global function definition for
-  ‘manual_pal’
-spatialChoropleth: no visible global function definition for
-  ‘gradient_n_pal’
-spatialChoropleth: no visible global function definition for ‘cscale’
-spatialColoredPoints: no visible global function definition for
-  ‘manual_pal’
-spatialColoredPoints: no visible global function definition for
-  ‘gradient_n_pal’
-spatialColoredPoints: no visible global function definition for
-  ‘cscale’
-spatialTextPlot: no visible global function definition for
-  ‘coordinates’
-
-checking Rd line widths ... NOTE
-Rd file 'loadCensusData.Rd':
-  \usage lines wider than 90 characters:
-                     year=c("2010","2000"), verbose=TRUE, osmTransform=TRUE, envir = .GlobalEnv)
-
-Rd file 'spatialTextPlot.Rd':
-  \examples lines wider than 100 characters:
-     plot.window(c(-1.3160249151515616E7,-1.3155204307648793E7),c(3992993.9205893227,3996691.5618326175), xaxs = 'i', yaxs = 'i')
-     plot(openmap(c(33.760525217369974,-118.22052955627441),c(33.73290566922855,-118.17521095275879),14,'bing'),add=TRUE)
-
-These lines will be truncated in the PDF manual.
 ```
 
 ## DescribeDisplay (0.2.5)
@@ -283,7 +267,7 @@ Bug reports: https://github.com/ggobi/DescribeDisplay/issues
 Maintainer: Richard Iannone <riannone@me.com>  
 Bug reports: https://github.com/rich-iannone/DiagrammeR/issues
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking installed package size ... NOTE
@@ -302,7 +286,13 @@ Maintainer: Mikkel Meyer Andersen <mikl@math.aau.dk>
 ## drc (2.5-12)
 Maintainer: Christian Ritz <ritz@bioassay.dk>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘drc’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/drc.Rcheck/00install.out’ for details.
+```
 
 ## dslice (1.1.5)
 Maintainer: Chao Ye <yechao1009@gmail.com>
@@ -351,7 +341,7 @@ Maintainer: Matthew Branan <matthew.branan@gmail.com>
 ## extracat (1.7-4)
 Maintainer: Alexander Pilhoefer <alexander.pilhoefer@gmail.com>
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘extracat’ can be installed ... WARNING
@@ -359,24 +349,30 @@ Found the following significant warnings:
   Warning: replacing previous import by ‘ggplot2::unit’ when loading ‘extracat’
   Warning: replacing previous import by ‘ggplot2::arrow’ when loading ‘extracat’
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘extracat’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/extracat.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/extracat.Rcheck/00install.out’ for details.
 ```
 
 ## ez (4.3)
 Maintainer: Michael A. Lawrence <mike.lwrnc@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ez’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/ez.Rcheck/00install.out’ for details.
+```
 
 ## FAOSTAT (2.0)
 Maintainer: Filippo Gheri <filippo.gheri@fao.org>
 
-0 errors | 1 warning | 1 note
+0 errors | 1 warning  | 1 note 
 
 ```
 checking whether package ‘FAOSTAT’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘FAOSTAT’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/FAOSTAT.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/FAOSTAT.Rcheck/00install.out’ for details.
 
 checking data for non-ASCII characters ... NOTE
   Note: found 179 marked UTF-8 strings
@@ -402,11 +398,11 @@ Maintainer: Pablo Casas <pabloc@datascienceheroes.com>
 Maintainer: Barret Schloerke <schloerke@gmail.com>  
 Bug reports: https://github.com/ggobi/ggally/issues
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking installed package size ... NOTE
-  installed size is  7.8Mb
+  installed size is  7.6Mb
   sub-directories of 1Mb or more:
     doc   6.8Mb
 ```
@@ -426,7 +422,28 @@ Maintainer: Masaaki Horikoshi <sinhrks@gmail.com>
 Maintainer: David Kahle <david.kahle@gmail.com>  
 Bug reports: https://github.com/dkahle/ggmap/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘ggmap-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: get_map
+> ### Title: Grab a map.
+> ### Aliases: get_map
+> 
+> ### ** Examples
+> 
+> map <- get_map()
+Warning in download.file(url, destfile = tmp, quiet = !messaging, mode = "wb") :
+  downloaded length 35131 != reported length 514999
+Map from URL : http://maps.googleapis.com/maps/api/staticmap?center=29.763284,-95.363271&zoom=10&size=640x640&scale=2&maptype=terrain&language=en-EN&sensor=false
+Error in readPNG(tmp) : libpng error: Read Error
+Calls: get_map -> get_googlemap -> readPNG -> .Call
+Execution halted
+```
 
 ## ggplot2 (2.0.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
@@ -443,56 +460,48 @@ Bug reports: https://bitbucket.org/aphalo/ggspectra
 ## ggtern (2.0.1)
 Maintainer: Nicholas Hamilton <nick@ggtern.com>
 
-1 error | 0 warnings | 0 notes
-
-```
-checking examples ... ERROR
-Running examples in ‘ggtern-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: convenience_functions
-> ### Title: Theme Convenience Functions
-> ### Aliases: convenience convenience_functions theme_convenience
-> 
-> ### ** Examples
-> 
-> 
-> #Load data and create the base plot.
-> data(Feldspar)
-> plot <- ggtern(data=Feldspar,aes(x=An,y=Ab,z=Or)) + geom_point() + theme_bw()
-> plot
-Error in ggint$map_layout(panel, plot$facet, layer_data, plot$data) : 
-  unused argument (plot$data)
-Calls: <Anonymous> -> print.ggplot -> ggplot_build -> <Anonymous>
-Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## ggthemes (3.0.1)
 Maintainer: Jeffrey B. Arnold <jeffrey.arnold@gmail.com>  
 Bug reports: http://github.com/jrnold/ggthemes
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
-## gmwm (1.0.0)
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  5: In readLines(filename) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-scale.r'
+  6: In readLines(file) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-scale.r'
+  7: In readLines(filename) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-trans-date.r'
+  8: In readLines(file) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-trans-date.r'
+  9: In readLines(filename) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-trans.r'
+  10: In readLines(file) :
+    incomplete final line found on '/Users/hadley/Documents/ggplot/scales/tests/testthat/test-trans.r'
+  Execution halted
+```
+
+## gmwm (2.0.0)
 Maintainer: Stephane Guerrier <stephane@illinois.edu>  
 Bug reports: https://github.com/SMAC-Group/gmwm/issues
 
-0 errors | 1 warning | 0 notes
+0 errors | 0 warnings | 1 note 
 
 ```
-checking whether package ‘gmwm’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘grid::arrow’ when loading ‘gmwm’
-  Warning: replacing previous import by ‘grid::unit’ when loading ‘gmwm’
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘gmwm’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/gmwm.Rcheck/00install.out’ for details.
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘imudata’
 ```
 
 ## gsDesign (3.0-1)
 Maintainer: Keaven Anderson <keaven_anderson@merck.com>
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking R code for possible problems ... NOTE
@@ -505,12 +514,9 @@ qplotit: no visible global function definition for ‘opts’
 Maintainer: Gabor Csardi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/igraph/igraph/issues
 
-0 errors | 0 warnings | 2 notes
+0 errors | 0 warnings | 1 note 
 
 ```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘graph’
-
 checking installed package size ... NOTE
   installed size is  7.3Mb
   sub-directories of 1Mb or more:
@@ -535,7 +541,7 @@ Bug reports: https://github.com/rstudio/leaflet/issues
 
 0 errors | 0 warnings | 0 notes
 
-## likeLTD (6.0.2)
+## likeLTD (6.0.4)
 Maintainer: Christopher Steele <c.steele.11@ucl.ac.uk>
 
 0 errors | 0 warnings | 0 notes
@@ -548,60 +554,53 @@ Maintainer: Tim Appelhans <admin@environmentalinformatics-marburg.de>
 ## multitable (1.6)
 Maintainer: Steve C Walker <steve.walker@utoronto.ca>
 
-1 error | 0 warnings | 1 note
+1 error  | 0 warnings | 1 note 
 
 ```
 checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘multitable.Rnw’
   ...
-> p <- p + geom_point(aes(x = width, y = abundance, 
-+     shape = life.history))
+> library("ggplot2")
 
-> p <- p + stat_smooth(aes(x = width, y = abundance), 
-+     se = FALSE, method = "bayesglm", family = poisson, form = y ~ 
-+         x + I(x^2), colo .... [TRUNCATED] 
+> library("arm")
+Loading required package: lme4
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
 
   When sourcing ‘multitable.R’:
-Error: Unknown parameters: family, form
+Error: package ‘lme4’ could not be loaded
 Execution halted
 
 
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
-The following object is masked from ‘package:arm’:
-
-    rescale
-
+Loading required package: scales
 dimids automatically generated
 dimids automatically generated
 omitting width because it is not replicated along MARGIN
 omitting temp because it is not replicated along MARGIN
 omitting depth because it is not replicated along MARGIN
 omitting velocity because it is not replicated along MARGIN
-omitting substrate because it is not replicated along MARGIN
-omitting habitat because it is not replicated along MARGIN
-omitting trophic because of the following error:
- Error in median.default(newX[, i], ...) : need numeric data
-
-omitting life.history because of the following error:
- Error in median.default(newX[, i], ...) : need numeric data
+... 8 lines ...
 
 omitting trophic because it is not replicated along MARGIN
 omitting life.history because it is not replicated along MARGIN
+Loading required package: lme4
+Error in loadNamespace(j <- i[[1L]], c(lib.loc, .libPaths()), versionCheck = vI[[j]]) : 
+  namespace ‘nlme’ 3.1-122 is already loaded, but >= 3.1.123 is required
 
 Error: processing vignette 'multitable.Rnw' failed with diagnostics:
  chunk 57 (label = a faceted ggplot scatterplot from a data list) 
-Error : Unknown parameters: family, form
+Error : package ‘lme4’ could not be loaded
 Execution halted
-
 ```
 
-## ncappc (0.2.1.0)
+## ncappc (0.2.1.1)
 Maintainer: Chayan Acharya <chayan.acharya@farmbio.uu.se>
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘ncappc’ can be installed ... WARNING
@@ -609,27 +608,27 @@ Found the following significant warnings:
   Warning: replacing previous import by ‘grid::arrow’ when loading ‘ncappc’
   Warning: replacing previous import by ‘grid::unit’ when loading ‘ncappc’
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘ncappc’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/ncappc.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/ncappc.Rcheck/00install.out’ for details.
 ```
 
 ## NeuralNetTools (1.4.0)
 Maintainer: Marcus W. Beck <mbafs2012@gmail.com>  
 Bug reports: https://github.com/fawda123/NeuralNetTools/issues
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘NeuralNetTools’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘NeuralNetTools’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/NeuralNetTools.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/NeuralNetTools.Rcheck/00install.out’ for details.
 ```
 
 ## NlsyLinks (2.0.1)
 Maintainer: Will Beasley <wibeasley@hotmail.com>  
 Bug reports: https://github.com/LiveOak/NlsyLinks/issues
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking installed package size ... NOTE
@@ -654,7 +653,7 @@ Maintainer: Thibaut Jombart <thibautjombart@gmail.com>
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/paleobioDB/issues
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking DESCRIPTION meta-information ... NOTE
@@ -675,25 +674,25 @@ Maintainer: Tomislav Hengl <tom.hengl@isric.org>
 Maintainer: Carson Sievert <cpsievert1@gmail.com>  
 Bug reports: https://github.com/ropensci/plotly/issues
 
-1 error | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  [1] "Running test: histogram-fixed-fill-color"
-  [1] "Running test: histogram-density-binwidth"
-  [1] "Running test: histogram-fill-factor"
   [1] "Running test: histogram-fill-factor-identity"
   [1] "Running test: histogram-fill-factor-dodge"
   [1] "Running test: histogram-fill-factor-facets"
   [1] "Running test: histogram-vline"
   [1] "Running test: histogram-dates"
-  14. Failure (at test-ggplot-histogram.R#136): dates work well with histograms --
+  6. Failure (at test-ggplot-histogram.R#136): dates work well with histograms ---
   info$layout$xaxis$type is not identical to "date". Differences: 
   1 string mismatch
   
   [1] "Running test: histogram-POSIXt-bins"
+  
+  There were 17 warnings (use warnings() to see them)
+  Execution halted
 ```
 
 ## precintcon (2.2.1)
@@ -721,7 +720,7 @@ Maintainer: Jacob Anhoej <jacob@anhoej.net>
 ## quadrupen (0.2-4)
 Maintainer: Julien Chiquet <julien.chiquet@genopole.cnrs.fr>
 
-0 errors | 1 warning | 1 note
+0 errors | 1 warning  | 1 note 
 
 ```
 checking whether package ‘quadrupen’ can be installed ... WARNING
@@ -729,7 +728,7 @@ Found the following significant warnings:
   Warning: replacing previous import by ‘grid::arrow’ when loading ‘quadrupen’
   Warning: replacing previous import by ‘grid::unit’ when loading ‘quadrupen’
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘quadrupen’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/quadrupen.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/quadrupen.Rcheck/00install.out’ for details.
 
 checking R code for possible problems ... NOTE
 plot,cvpen : .local: no visible binding for global variable ‘lambda1’
@@ -759,46 +758,55 @@ Maintainer: Winston Chang <winston@stdout.org>
 Maintainer: Wen Chen <Wen.Chen@agr.gc.ca>  
 Bug reports: https://bitbucket.org/Wen_Chen/ram_releases/issues/
 
-0 errors | 0 warnings | 2 notes
-
-```
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘Heatplus’
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘Heatplus’
-```
+0 errors | 0 warnings | 0 notes
 
 ## rAvis (0.1.4)
 Maintainer: Sara Varela <svarela@paleobiogeography.org>  
 Bug reports: https://github.com/ropensci/rAvis/issues
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘rAvis’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘sp::nowrapSpatialLines’ when loading ‘rAvis’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/rAvis.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/rAvis.Rcheck/00install.out’ for details.
 ```
 
 ## RcmdrPlugin.KMggplot2 (0.2-3)
 Maintainer: Triad sou. <triadsou@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘RcmdrPlugin.KMggplot2’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/RcmdrPlugin.KMggplot2.Rcheck/00install.out’ for details.
+```
 
 ## RcmdrPlugin.MA (0.0-2)
 Maintainer: A. C. Del Re <acdelre@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
-## RDS (0.7-4)
+```
+checking whether package ‘RcmdrPlugin.MA’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/RcmdrPlugin.MA.Rcheck/00install.out’ for details.
+```
+
+## RDS (0.7-5)
 Maintainer: Mark S. Handcock <handcock@stat.ucla.edu>
 
 0 errors | 0 warnings | 0 notes
 
 ## RImagePalette (0.1.1)
 Maintainer: Joel Carlson <jnkcarlson@gmail.com>
+
+0 errors | 0 warnings | 0 notes
+
+## RNewsflow (1.0)
+Maintainer: Kasper Welbers <kasperwelbers@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -817,13 +825,13 @@ Bug reports: https://github.com/alexgenin/rollply
 ## RSDA (1.3)
 Maintainer: Oldemar Rodriguez <oldemar.rodriguez@ucr.ac.cr>
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘RSDA’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘RSDA’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/RSDA.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/RSDA.Rcheck/00install.out’ for details.
 ```
 
 ## rsvd (0.3)
@@ -847,25 +855,9 @@ Maintainer: Samineh Bagheri <samineh.bagheri@fh-koeln.de>
 Maintainer: Daniel Marcelino <dmarcelino@live.com>  
 Bug reports: http://github.com/danielmarcelino/SciencesPo/issues
 
-1 error | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
-checking examples ... ERROR
-Running examples in ‘SciencesPo-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: theme_pub
-> ### Title: The Default Theme
-> ### Aliases: theme_pub
-> 
-> ### ** Examples
-> 
-> ggplot(diamonds,aes(cut, group=1)) + geom_bar()+
-+ geom_freqpoly(stat="count",size=2) + scale_color_pub() + theme_pub(line_width=1)
-Error: Unknown parameters: pad
-Execution halted
-
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
@@ -876,13 +868,7 @@ cgreene76             Christensen's and Greene's (1976) Data
 galton                Galton's Family Data on Human Stature.
 griliches76           Griliches's (1976) Data
 ltaylor96             Lothian's and Taylor's (1996) Data Set
-marriage              Same Sex Marriage Public Opinion Data
-mishkin92             Mishkin's (1992) Data
-nerlove63             Marc Nerlove's (1963) data
-paired                Paired Data
-sheston91             The Penn World Table
-swatson93             Stock's and Watson's (1993) Data.
-titanic               Titanic
+... 8 lines ...
 turnout               Turnout Data
 twins                 Burt's twin data
 words                 Word frequencies from Mosteller and Wallace
@@ -894,7 +880,6 @@ Quitting from lines 395-399 (SciencesPo.Rmd)
 Error: processing vignette 'SciencesPo.Rmd' failed with diagnostics:
 polygon edge not found
 Execution halted
-
 ```
 
 ## SEERaBomb (2015.2)
@@ -904,6 +889,12 @@ Maintainer: Tomas Radivoyevitch <radivot@ccf.org>
 
 ## sharpshootR (0.9.1)
 Maintainer: Dylan Beaudette <dylan.beaudette@ca.usda.gov>
+
+0 errors | 0 warnings | 0 notes
+
+## shazam (0.1.2)
+Maintainer: Jason Vander Heiden <jason.vanderheiden@yale.edu>  
+Bug reports: https://bitbucket.org/kleinstein/shazam/issues
 
 0 errors | 0 warnings | 0 notes
 
@@ -922,7 +913,13 @@ Maintainer: Emilio L. Cano <emilio.lopez@urjc.es>
 Maintainer: Daniel Lüdecke <d.luedecke@uke.de>  
 Bug reports: https://github.com/sjPlot/devel/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sjPlot’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/sjPlot.Rcheck/00install.out’ for details.
+```
 
 ## soil.spec (2.1.4)
 Maintainer: Andrew Sila <a.sila@cgiar.org>
@@ -952,27 +949,20 @@ Maintainer: Andrey Ziyatdinov <andrey.ziyatdinov@upc.edu>
 Maintainer: Fabian Scheipl
  <fabian.scheipl@stat.uni-muenchen.de>
 
-0 errors | 1 warning | 0 notes
+0 errors | 1 warning  | 0 notes
 
 ```
 checking whether package ‘spikeSlabGAM’ can be installed ... WARNING
 Found the following significant warnings:
   Warning: replacing previous import by ‘scales::alpha’ when loading ‘spikeSlabGAM’
   Warning: replacing previous import by ‘grid::unit’ when loading ‘spikeSlabGAM’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/spikeSlabGAM.Rcheck/00install.out’ for details.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/spikeSlabGAM.Rcheck/00install.out’ for details.
 ```
 
-## starma (1.2)
+## starma (1.3)
 Maintainer: Felix Cheysson <felix@cheysson.fr>
 
-0 errors | 1 warning | 0 notes
-
-```
-checking whether package ‘starma’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: replacing previous import by ‘scales::alpha’ when loading ‘starma’
-See ‘/private/tmp/RtmpbLJwZN/check_cran45381ce01a1e/starma.Rcheck/00install.out’ for details.
-```
+0 errors | 0 warnings | 0 notes
 
 ## statebins (1.2.2)
 Maintainer: Bob Rudis <bob@rudis.net>  
@@ -984,20 +974,26 @@ Bug reports: https://github.com/hrbrmstr/statebins/issues
 Maintainer: Oskar Hansson <oskar.hansson@fhi.no>  
 Bug reports: https://github.com/OskarHansson/strvalidator/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
-## surveillance (1.10-0)
+```
+checking whether package ‘strvalidator’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/strvalidator.Rcheck/00install.out’ for details.
+```
+
+## surveillance (1.11.0)
 Maintainer: Sebastian Meyer <Sebastian.Meyer@ifspm.uzh.ch>  
 Bug reports: https://r-forge.r-project.org/tracker/?group_id=45
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking package dependencies ... NOTE
 Package suggested but not available for checking: ‘INLA’
 ```
 
-## survminer (0.1.1)
+## survminer (0.2.0)
 Maintainer: Alboukadel Kassambara <alboukadel.kassambara@gmail.com>  
 Bug reports: https://github.com/kassambara/survminer/issues
 
@@ -1056,7 +1052,7 @@ Maintainer: Jeff Hallman <jeffrey.j.hallman@frb.gov>
 Maintainer: Gregory Kanevsky <gregory.kanevsky@teradata.com>  
 Bug reports: https://github.com/teradata-aster-field/toaster/issues
 
-1 error | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
 
 ```
 checking package dependencies ... ERROR
@@ -1070,10 +1066,21 @@ manual.
 Maintainer: Jason Bryer <jason@bryer.org>  
 Bug reports: https://github.com/jbryer/TriMatch/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘TriMatch’ can be installed ... ERROR
+Installation failed.
+See ‘/Users/hadley/Documents/ggplot/scales/revdep/checks/TriMatch.Rcheck/00install.out’ for details.
+```
 
 ## useful (1.2.0)
 Maintainer: Jared P. Lander <packages@jaredlander.com>
+
+0 errors | 0 warnings | 0 notes
+
+## vcfR (1.0.0)
+Maintainer: Brian J. Knaus <briank.lists@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
@@ -1098,7 +1105,7 @@ Bug reports: https://github.com/OuhscBbmc/Wats/issues
 ## zoo (1.7-12)
 Maintainer: Achim Zeileis <Achim.Zeileis@R-project.org>
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note 
 
 ```
 checking Rd cross-references ... NOTE
