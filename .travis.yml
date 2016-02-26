@@ -1,4 +1,4 @@
-language: r
+language: R
 cache: packages
 
 after_success:
