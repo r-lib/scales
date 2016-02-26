@@ -1,3 +1,5 @@
+# scales 0.4.0.9000
+
 # scales 0.4.0
 
 * Switched from `NEWS` to `NEWS.md`
