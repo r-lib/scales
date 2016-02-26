@@ -1,16 +1,17 @@
-# scales 0.3.0.9000
-
-* `precision(0)` now returns 1, which means `percent(0)` now returns 0% (#50).
+# scales 0.4.0
 
 * Switched from `NEWS` to `NEWS.md`
+
+* `manual_pal()` produces a warning if n is greater than the number of values 
+  in the palette (@jrnold, #68).
+
+* `precision(0)` now returns 1, which means `percent(0)` now returns 0% (#50).
 
 * `scale_continuous()` uses a more correct check for numeric values.
 
 * NaN is correctly recognised as a missing value by the gradient palettes
   (ggplot2#1482).
   
-* `manual_pal` produces a warning if n is greater than the number of values in the palette (@jrnold, #68).
-
 # scales 0.3.0
 
 * `rescale()` preserves missing values in input when the range of `x` is
