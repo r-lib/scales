@@ -1,3 +1,14 @@
+# If needed, converts input from classes that lack division and multiplication
+# to classes that can be scaled.
+# @param x vector of values to convert, if needed
+adapt_input_class <- function(x) {
+  if (inherits(x, c("Date", "POSIXct", "POSIXlt", "POSIXt"))) {
+    as.numeric(x)
+  } else {
+    x
+  }
+}
+
 #' Rescale numeric vector to have specified minimum and maximum.
 #'
 #' @param x numeric vector of values to manipulate.
@@ -11,6 +22,8 @@
 #' rescale(runif(50))
 #' rescale(1)
 rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE)) {
+  x <- adapt_input_class(x)
+  from <- adapt_input_class(from)
   if (zero_range(from) || zero_range(to)) {
     return(ifelse(is.na(x), NA, mean(to)))
   }
@@ -31,6 +44,9 @@ rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE
 #' rescale_mid(runif(50), mid = 0.5)
 #' rescale_mid(1)
 rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0) {
+  x <- adapt_input_class(x)
+  from <- adapt_input_class(from)
+  mid <- adapt_input_class(mid)
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
 
   extent <- 2 * max(abs(from - mid))
@@ -49,6 +65,8 @@ rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0)
 #' rescale_max(runif(50))
 #' rescale_max(1)
 rescale_max <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
+  x <- adapt_input_class(x)
+  from <- adapt_input_class(from)
   x / from[2] * to[2]
 }
 

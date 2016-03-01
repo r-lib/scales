@@ -9,6 +9,8 @@
 * `train_discrete()` gets a new `na.rm` argument which controls whether
   `NA`s are preserved or dropped.
 
+* `rescale()` works with `Date`, `POSIXct` and `POSIXlt` objects (@zeehio, #74).
+
 # scales 0.4.0
 
 * Switched from `NEWS` to `NEWS.md`
