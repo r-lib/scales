@@ -4,16 +4,22 @@
 \alias{unit_format}
 \title{Add units to the labels}
 \usage{
-unit_format(unit = "m", scale = 1, sep = " ", ...)
+unit_format(unit = "m", scale = 1, sep = " ", suffix = paste0(sep,
+  unit), big.mark = ",", ...)
 }
 \arguments{
 \item{unit}{The units to append}
 
-\item{scale}{A scaling factor. Useful if the underlying data is on another scale}
+\item{scale}{A scaling factor. Useful if the underlying data is
+on another scale}
 
 \item{sep}{The separator between the number and the label}
 
-\item{...}{Arguments passed on to \code{\link[=format]{format()}}}
+\item{suffix}{Symbol to display after value}
+
+\item{big.mark}{Character used between every 3 digits to separate thousands}
+
+\item{...}{Arguments passed on to \code{\link{number_format}}}
 }
 \description{
 Add units to the labels
@@ -24,9 +30,9 @@ km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
 km(runif(10) * 1e3)
 
 # labels in hectares, raw data in square meters
-ha <- unit_format(unit = "ha", scale = 1e-4)
-km(runif(10) * 1e5)
+ha <- unit_format(unit = "ha", scale = 1e-4, accuracy = .1)
+ha(runif(10) * 1e5)
 }
 \seealso{
-\code{\link[=comma]{comma()}}
+\code{\link{number_format}}
 }

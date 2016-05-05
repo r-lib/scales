@@ -5,11 +5,23 @@
 \alias{percent}
 \title{Percent formatter: multiply by one hundred and display percent sign.}
 \usage{
-percent_format()
+percent_format(accuracy = NULL, scale = 100, prefix = "", suffix = "\%",
+  big.mark = ",", ...)
 
-percent(x)
+percent(x, accuracy = NULL, scale = 100, prefix = "", suffix = "\%",
+  big.mark = ",", ...)
 }
 \arguments{
+\item{accuracy}{number to round to}
+
+\item{scale}{number to multiply by}
+
+\item{prefix, suffix}{Symbols to display before and after value}
+
+\item{big.mark}{Character used between every 3 digits.}
+
+\item{...}{Other arguments passed on to \code{\link{number_format}}.}
+
 \item{x}{a numeric vector to format}
 }
 \value{
@@ -22,5 +34,15 @@ Percent formatter: multiply by one hundred and display percent sign.
 \examples{
 percent_format()(runif(10))
 percent(runif(10))
-percent(runif(10, 1, 10))
+percent(runif(10, 1, 100))
+percent(runif(10), accuracy = 1)
+percent(runif(10), accuracy = .1)
+
+# French percentage
+percent(c(0.012345, 0.12345, 1.2345, 12.345), suffix = " \%",
+       big.mark = " ", decimal.mark = ",", accuracy = .1)
+
+# Per mille
+per_mille <- percent_format(scale = 1000, suffix = "\\u2030")
+per_mille(c(0.0015, 0.0234))
 }

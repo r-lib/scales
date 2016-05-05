@@ -1,5 +1,26 @@
 context("Formatters")
 
+test_that("number format works correctly", {
+  expect_equal(number(12345.67, accuracy = 1), "12 346")
+  expect_equal(number(12345.67, accuracy = 10), "12 350")
+  expect_equal(number(12345.67, accuracy = .05), "12 345.65")
+  expect_equal(
+    number(12345.67, decimal.mark = ",", big.mark = "'", accuracy = .1),
+    "12'345,7"
+  )
+  expect_equal(
+    number(1.234567, accuracy = .01, scale = 1000),
+    "1 234.57"
+  )
+  expect_equal(
+    number(123.456, accuracy = .01, prefix = "pre", suffix = "post"),
+    "pre123.46post"
+  )
+  expect_equal(number(c(1, 23)), c("1", "23"))
+  expect_equal(number(c(1, 23), trim = FALSE), c(" 1", "23"))
+})
+
+
 test_that("comma format always adds commas", {
   expect_equal(comma(1e3), "1,000")
   expect_equal(comma(1e6), "1,000,000")
@@ -81,7 +102,7 @@ test_that("unit format", {
     c("1 km", "2 km")
   )
   expect_equal(
-    unit_format(unit = "ha", scale = 1e-4)(c(1e3, 2e3)),
+    unit_format(unit = "ha", scale = 1e-4, accuracy = .1)(c(1e3, 2e3)),
     c("0.1 ha", "0.2 ha")
   )
   expect_equal(
@@ -94,7 +115,7 @@ test_that("unit format", {
 # Percent formatter -------------------------------------------------------
 
 test_that("negative percents work", {
-  expect_equal(percent(-0.6), "-60%")
+  expect_equal(percent(-0.6, accuracy = 1), "-60%")
 })
 
 test_that("Single 0 gives 0%", {
