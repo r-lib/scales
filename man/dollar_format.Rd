@@ -6,7 +6,7 @@
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
 dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05, ...,
-  big.mark = ",", negative_parens = FALSE)
+  big.mark = ",", decimal.mark = ".", negative_parens = FALSE)
 
 dollar(x)
 }
@@ -19,6 +19,8 @@ be less than in order for the cents to be displayed}
 \item{...}{Other arguments passed on to \code{\link{format}}.}
 
 \item{big.mark}{Character used between every 3 digits.}
+
+\item{decimal.mark}{Character used as decimal mark.}
 
 \item{negative_parens}{Should negative values be shown with parentheses?}
 
