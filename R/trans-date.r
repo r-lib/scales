@@ -61,6 +61,7 @@ time_trans <- function(tz = NULL) {
 #' t <- hms_trans()
 #' t$transform(hms)
 #' t$inverse(t$transform(hms))
+#' t$breaks(hms)
 #' }
 hms_trans <- function() {
   trans_new(
@@ -69,9 +70,35 @@ hms_trans <- function() {
       structure(as.numeric(x), names = names(x))
     },
     inverse = hms::as.hms,
-    breaks = pretty_breaks()
+    breaks = time_breaks()
   )
 }
+
+time_breaks <- function(n = 5) {
+  function(x) {
+    rng <- as.numeric(range(x))
+    diff <- rng[2] - rng[1]
+
+    if (diff <= 2 * 60) {
+      scale <- 1
+    } else if (diff <= 2 * 3600) {
+      scale <- 60
+    } else if (diff <= 2 * 86400) {
+      scale <- 3600
+    } else {
+      scale <- 86400
+    }
+
+    rng <- rng / scale
+    breaks <- labeling::extended(
+      rng[1], rng[2], n,
+      Q = c(1, 2, 1.5, 4, 3),
+      only.loose = FALSE
+    )
+    hms::as.hms(breaks * scale)
+  }
+}
+
 
 #' Regularly spaced dates.
 #'
