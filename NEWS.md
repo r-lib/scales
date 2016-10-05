@@ -1,5 +1,8 @@
 # scales 0.4.0.9000
 
+* `train_discrete()` gets a new `na.rm` argument which controls whether
+  `NA`s are preserved or dropped.
+
 # scales 0.4.0
 
 * Switched from `NEWS` to `NEWS.md`

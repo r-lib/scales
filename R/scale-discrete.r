@@ -17,20 +17,21 @@ dscale <- function(x, palette, na.value = NA) {
 #' @param new New data to add to scale
 #' @param existing Optional existing scale to update
 #' @param drop \code{TRUE}, will drop factor levels not associated with data
+#' @param na.rm If \code{TRUE}, will remove missing values
 #' @export
-train_discrete <- function(new, existing = NULL, drop = FALSE) {
+train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
   if (is.null(new)) return(existing)
 
   if (!is.discrete(new)) {
     stop("Continuous value supplied to discrete scale", call. = FALSE)
   }
-  discrete_range(existing, new, drop = drop)
+  discrete_range(existing, new, drop = drop, na.rm = na.rm)
 }
 
-discrete_range <- function(old, new, drop = FALSE) {
-  new <- clevels(new, drop = drop)
+discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
+  new <- clevels(new, drop = drop, na.rm = na.rm)
   if (is.null(old)) return(new)
-  if (!is.character(old)) old <- clevels(old)
+  if (!is.character(old)) old <- clevels(old, na.rm = na.rm)
 
   new_levels <- setdiff(new, as.character(old))
 
@@ -42,18 +43,22 @@ discrete_range <- function(old, new, drop = FALSE) {
   sort(c(old, new_levels))
 }
 
-clevels <- function(x, drop = FALSE) {
+clevels <- function(x, drop = FALSE, na.rm = FALSE) {
   if (is.null(x)) {
     character()
   } else if (is.factor(x)) {
     if (drop) x <- factor(x)
 
     values <- levels(x)
-    if (any(is.na(x))) values <- c(values, NA)
+    if (na.rm) {
+      values <- values[!is.na(values)]
+    } else if (any(is.na(x))) {
+      values <- c(values, NA)
+    }
 
     values
   } else {
-    sort(unique(x))
+    sort(unique(x), na.last = if (na.rm) NA else TRUE)
   }
 }
 
