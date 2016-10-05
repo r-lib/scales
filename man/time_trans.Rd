@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans-date.r
 \name{time_trans}
 \alias{time_trans}
-\title{Transformation for times (class POSIXt).}
+\title{Transformation for date-times (class POSIXt).}
 \usage{
 time_trans(tz = NULL)
 }
@@ -11,7 +11,7 @@ time_trans(tz = NULL)
 the time zone will be extracted from first input with a non-null tz.}
 }
 \description{
-Transformation for times (class POSIXt).
+Transformation for date-times (class POSIXt).
 }
 \examples{
 hours <- seq(ISOdate(2000,3,20, tz = ""), by = "hour", length.out = 10)

@@ -1,5 +1,7 @@
 # scales 0.4.0.9000
 
+* New `hms_trans()` for transforming hms time vectors.
+
 * `train_discrete()` gets a new `na.rm` argument which controls whether
   `NA`s are preserved or dropped.
 

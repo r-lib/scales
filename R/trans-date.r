@@ -20,7 +20,7 @@ from_date <- function(x) {
   structure(as.numeric(x), names = names(x))
 }
 
-#' Transformation for times (class POSIXt).
+#' Transformation for date-times (class POSIXt).
 #'
 #' @param tz Optionally supply the time zone.  If \code{NULL}, the default,
 #'   the time zone will be extracted from first input with a non-null tz.
@@ -52,6 +52,26 @@ time_trans <- function(tz = NULL) {
   trans_new("time", "from_time", "to_time", breaks = pretty_breaks())
 }
 
+#' Transformation for times (class hms).
+#'
+#' @export
+#' @examples
+#' if (require("hms")) {
+#' hms <- round(runif(10) * 86400)
+#' t <- hms_trans()
+#' t$transform(hms)
+#' t$inverse(t$transform(hms))
+#' }
+hms_trans <- function() {
+  trans_new(
+    "hms",
+    transform = function(x) {
+      structure(as.numeric(x), names = names(x))
+    },
+    inverse = hms::as.hms,
+    breaks = pretty_breaks()
+  )
+}
 
 #' Regularly spaced dates.
 #'

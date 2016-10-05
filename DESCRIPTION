@@ -1,5 +1,5 @@
 Package: scales
-Version: 0.4.0.9000
+Version: 0.4.0.9001
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
     person("RStudio", role = "cph")
@@ -23,7 +23,8 @@ Imports:
 LinkingTo: Rcpp
 Suggests:
     testthat (>= 0.8),
-    covr
+    covr,
+    hms
 License: MIT + file LICENSE
 LazyLoad: yes
 RoxygenNote: 5.0.1
