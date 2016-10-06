@@ -32,7 +32,13 @@ pretty_breaks <- function(n = 5, ...) {
 #' extended_breaks()(1:100)
 extended_breaks <- function(n = 5, ...) {
   function(x) {
-    labeling::extended(min(x), max(x), n, only.loose = FALSE, ...)
+    x <- x[is.finite(x)]
+    if (length(x) == 0) {
+      return(numeric())
+    }
+
+    rng <- range(x)
+    labeling::extended(rng[1], rng[2], n, only.loose = FALSE, ...)
   }
 }
 
