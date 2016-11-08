@@ -1,4 +1,4 @@
-# scales 0.4.0.9000
+# scales 0.4.1
 
 * `extended_breaks()` no longer fails on pathological inputs
 
