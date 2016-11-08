@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/hadley/scales.png?branch=master)](https://travis-ci.org/hadley/scales)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hadley/scales/master.svg)](https://codecov.io/github/hadley/scales?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/scales)](http://cran.r-project.org/package=scales)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/scales)](https://cran.r-project.org/package=scales)
 
 One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The idea of the `scales` package is to implement scales in a way that is graphics system agnostic, so that everyone can benefit by pooling knowledge and resources about this tricky topic.
 
