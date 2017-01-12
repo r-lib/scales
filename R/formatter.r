@@ -110,16 +110,17 @@ dollar <- dollar_format()
 #' percent_format()(runif(10))
 #' percent(runif(10))
 #' percent(runif(10, 1, 10))
-percent_format <- function() {
-  function(x) {
-    if (length(x) == 0) return(character())
-    x <- round_any(x, precision(x) / 100)
-    paste0(comma(x * 100), "%")
-  }
+percent_format <- function(sign = "%") {
+  function(x) percent(x, sign)
 }
+
 #' @export
 #' @rdname percent_format
-percent <- percent_format()
+percent <- function(x, sign) {
+  if (length(x) == 0) return(character())
+  x <- round_any(x, precision(x) / 100)
+  paste(comma(x * 100), sign, sep = ifelse(sign == "%", "", " "))
+}
 
 #' Scientific formatter.
 #'
