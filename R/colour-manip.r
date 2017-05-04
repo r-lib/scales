@@ -81,7 +81,7 @@ alpha <- function(colour, alpha = NA) {
 #' @param borders colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.
 #' @export
 #' @importFrom graphics par plot rect text
-show_col <- function(colours, labels = TRUE, borders = NULL, cex_label) {
+show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
   n <- length(colours)
   ncol <- ceiling(sqrt(n))
   nrow <- ceiling(n / ncol)
