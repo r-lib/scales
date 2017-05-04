@@ -4,7 +4,7 @@
 \alias{show_col}
 \title{Show colours.}
 \usage{
-show_col(colours, labels = TRUE, borders = NULL, cex_label)
+show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
 }
 \arguments{
 \item{colours}{a character vector of colours}
@@ -12,11 +12,9 @@ show_col(colours, labels = TRUE, borders = NULL, cex_label)
 \item{labels}{boolean, whether to show the hexadecimal representation of the colours in each tile}
 
 \item{borders}{colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.}
-  
- \item{cex_label}{size of labels, works same as \code{cex} parameter of \code{plot()}}
 
+\item{cex_label}{size of labels; matches the \code{cex} argument of \link[graphics]{plot}}
 }
 \description{
 A quick and dirty way to show colours in a plot.
 }
-

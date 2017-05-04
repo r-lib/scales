@@ -79,6 +79,7 @@ alpha <- function(colour, alpha = NA) {
 #' @param colours a character vector of colours
 #' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
 #' @param borders colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.
+#' @param cex_label size of labels; matches the \code{cex} argument of \link[graphics]{plot}
 #' @export
 #' @importFrom graphics par plot rect text
 show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
