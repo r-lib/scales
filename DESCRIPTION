@@ -27,4 +27,4 @@ Suggests:
     hms
 License: MIT + file LICENSE
 LazyLoad: yes
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
