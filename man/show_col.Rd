@@ -4,7 +4,7 @@
 \alias{show_col}
 \title{Show colours.}
 \usage{
-show_col(colours, labels = TRUE, borders = NULL, text_size)
+show_col(colours, labels = TRUE, borders = NULL, cex_label)
 }
 \arguments{
 \item{colours}{a character vector of colours}
@@ -13,7 +13,7 @@ show_col(colours, labels = TRUE, borders = NULL, text_size)
 
 \item{borders}{colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.}
   
- \item{cex_text}{size of labels, works same as \code{cex} parameter of \code{plot()}}
+ \item{cex_label}{size of labels, works same as \code{cex} parameter of \code{plot()}}
 
 }
 \description{
