@@ -19,7 +19,8 @@ Imports:
     munsell (>= 0.2),
     labeling,
     methods,
-    Rcpp
+    Rcpp,
+    viridisLite
 LinkingTo: Rcpp
 Suggests:
     testthat (>= 0.8),
