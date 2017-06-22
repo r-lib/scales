@@ -13,4 +13,3 @@ Should be greater than 0.}
 \description{
 Point area palette (continuous).
 }
-

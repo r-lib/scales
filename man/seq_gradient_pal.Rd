@@ -26,4 +26,3 @@ show_col(seq_gradient_pal("white", "black")(x))
 library(munsell)
 show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))
 }
-

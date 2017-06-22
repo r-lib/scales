@@ -16,4 +16,3 @@ show_col(colours, labels = TRUE, borders = NULL)
 \description{
 A quick and dirty way to show colours in a plot.
 }
-

@@ -41,3 +41,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"scales_doColorRamp", (DL_FUNC) &scales_doColorRamp, 4},
+    {"scales_rgbToLab", (DL_FUNC) &scales_rgbToLab, 1},
+    {"scales_rgbToXyz", (DL_FUNC) &scales_rgbToXyz, 1},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_scales(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}

@@ -18,4 +18,3 @@ train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE)
 \description{
 Train (update) a discrete scale
 }
-

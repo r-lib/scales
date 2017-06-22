@@ -15,4 +15,3 @@ given as a string.}
 \description{
 Silently drops any ranges outside of the domain of \code{trans}.
 }
-

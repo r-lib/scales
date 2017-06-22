@@ -19,4 +19,3 @@ parse_format()(c("alpha", "beta", "gamma"))
 \seealso{
 \code{\link{plotmath}}
 }
-

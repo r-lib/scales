@@ -17,4 +17,3 @@ Don't peform rescaling
 \examples{
 rescale_none(1:100)
 }
-

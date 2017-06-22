@@ -23,4 +23,3 @@ rescale(runif(50))
 rescale(1)
 }
 \keyword{manip}
-

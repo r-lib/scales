@@ -20,4 +20,3 @@ t$transform(hours)
 t$inverse(t$transform(hours))
 t$format(t$breaks(range(hours)))
 }
-

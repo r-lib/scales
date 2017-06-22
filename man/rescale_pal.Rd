@@ -14,4 +14,3 @@ values.  Should be between 0 and 1.}
 Just rescales the input to the specific output range.  Useful for
 alpha, size, and continuous position.
 }
-

@@ -14,4 +14,3 @@ train_continuous(new, existing = NULL)
 \description{
 Train (update) a continuous scale
 }
-

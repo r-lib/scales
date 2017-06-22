@@ -17,4 +17,3 @@ the breaks.
 \code{\link{format}}, \code{\link{format.Date}},
   \code{\link{format.POSIXct}}
 }
-

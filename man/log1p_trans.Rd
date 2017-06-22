@@ -13,4 +13,3 @@ Log plus one transformation.
 trans_range(log_trans(), 1:10)
 trans_range(log1p_trans(), 0:9)
 }
-

@@ -27,4 +27,3 @@ Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
  2010.
 }
-

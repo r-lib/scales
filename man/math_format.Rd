@@ -31,4 +31,3 @@ math_format(format = percent)(runif(10))
 \seealso{
 \code{\link{plotmath}}
 }
-

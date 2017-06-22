@@ -24,4 +24,3 @@ to rgb.
 \examples{
 col2hcl(colors())
 }
-

@@ -22,4 +22,3 @@ rescale_max(1:100)
 rescale_max(runif(50))
 rescale_max(1)
 }
-

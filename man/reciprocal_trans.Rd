@@ -9,4 +9,3 @@ reciprocal_trans()
 \description{
 Reciprocal transformation.
 }
-

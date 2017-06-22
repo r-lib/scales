@@ -9,4 +9,3 @@ identity_trans()
 \description{
 Identity transformation (do nothing).
 }
-

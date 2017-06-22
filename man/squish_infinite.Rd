@@ -17,4 +17,3 @@ Squish infinite values to range.
 \examples{
 squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
 }
-

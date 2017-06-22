@@ -9,4 +9,3 @@ asn_trans()
 \description{
 Arc-sin square root transformation.
 }
-

@@ -14,4 +14,3 @@ followed by "s".}
 \description{
 Regularly spaced dates.
 }
-

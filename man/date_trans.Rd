@@ -16,4 +16,3 @@ t$transform(years)
 t$inverse(t$transform(years))
 t$format(t$breaks(range(years)))
 }
-

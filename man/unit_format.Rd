@@ -30,4 +30,3 @@ km(runif(10) * 1e5)
 \seealso{
 \code{\link{comma}}
 }
-

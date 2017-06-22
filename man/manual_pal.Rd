@@ -12,4 +12,3 @@ manual_pal(values)
 \description{
 Manual palette (manual).
 }
-

@@ -22,4 +22,3 @@ Format labels after transformation.
 tf <- trans_format("log10", scientific_format())
 tf(10 ^ 1:6)
 }
-

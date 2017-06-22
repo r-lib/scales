@@ -22,4 +22,3 @@ the width
 wrap_10 <- wrap_format(10)
 wrap_10('A long line that needs to be wrapped')
 }
-

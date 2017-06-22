@@ -15,4 +15,3 @@ Box-Cox power transformation.
 \references{
 See \url{http://en.wikipedia.org/wiki/Power_transform} for
 }
-

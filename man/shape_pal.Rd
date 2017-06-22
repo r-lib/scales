@@ -12,4 +12,3 @@ shape_pal(solid = TRUE)
 \description{
 Shape palette (discrete).
 }
-

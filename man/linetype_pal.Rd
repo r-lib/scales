@@ -9,4 +9,3 @@ linetype_pal()
 \description{
 Based on a set supplied by Richard Pearson, University of Manchester
 }
-

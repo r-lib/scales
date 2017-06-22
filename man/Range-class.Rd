@@ -2,10 +2,10 @@
 % Please edit documentation in R/range.r
 \docType{class}
 \name{Range-class}
-\alias{ContinuousRange}
-\alias{DiscreteRange}
-\alias{Range}
 \alias{Range-class}
+\alias{Range}
+\alias{DiscreteRange}
+\alias{ContinuousRange}
 \title{Mutable ranges.}
 \description{
 Mutable ranges have a two methods (\code{train} and \code{reset}), and

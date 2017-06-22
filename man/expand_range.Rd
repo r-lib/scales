@@ -18,4 +18,3 @@ expand_range(range, mul = 0, add = 0, zero_width = 1)
 \description{
 Expand a range with a multiplicative or additive constant.
 }
-

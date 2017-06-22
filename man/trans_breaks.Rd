@@ -25,4 +25,3 @@ trans_breaks("sqrt", function(x) x ^ 2)(c(1, 100))
 trans_breaks(function(x) 1 / x, function(x) 1 / x)(c(1, 100))
 trans_breaks(function(x) -x, function(x) -x)(c(1, 100))
 }
-

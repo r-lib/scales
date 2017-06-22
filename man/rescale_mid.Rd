@@ -24,4 +24,3 @@ rescale_mid(1:100, mid = 50.5)
 rescale_mid(runif(50), mid = 0.5)
 rescale_mid(1)
 }
-

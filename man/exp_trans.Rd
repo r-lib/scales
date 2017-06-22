@@ -12,4 +12,3 @@ exp_trans(base = exp(1))
 \description{
 Exponential transformation (inverse of log transformation).
 }
-

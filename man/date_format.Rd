@@ -16,4 +16,3 @@ to UTC}
 \description{
 Formatted dates.
 }
-

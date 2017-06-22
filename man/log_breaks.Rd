@@ -18,4 +18,3 @@ Log breaks (integer breaks on log-transformed scales).
 log_breaks()(c(1, 1e6))
 log_breaks()(c(1, 1e5))
 }
-

@@ -9,4 +9,3 @@ identity_pal()
 \description{
 Leaves values unchanged - useful when the data is already scaled.
 }
-

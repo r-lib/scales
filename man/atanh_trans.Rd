@@ -9,4 +9,3 @@ atanh_trans()
 \description{
 Arc-tangent transformation.
 }
-

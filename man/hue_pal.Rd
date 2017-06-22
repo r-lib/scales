@@ -38,4 +38,3 @@ show_col(hue_pal(h = c(90, 180))(9))
 show_col(hue_pal(h = c(180, 270))(9))
 show_col(hue_pal(h = c(270, 360))(9))
 }
-

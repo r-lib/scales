@@ -9,4 +9,3 @@ sqrt_trans()
 \description{
 Square-root transformation.
 }
-

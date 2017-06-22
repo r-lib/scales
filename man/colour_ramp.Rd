@@ -37,4 +37,3 @@ times faster, and provides results in \code{"#RRGGBB"} (or
 \seealso{
 \link[grDevices]{colorRamp}
 }
-

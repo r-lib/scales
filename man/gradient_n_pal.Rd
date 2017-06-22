@@ -20,4 +20,3 @@ other values are deprecated.}
 \description{
 Arbitrary colour gradient palette (continous).
 }
-

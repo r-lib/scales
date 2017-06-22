@@ -24,4 +24,3 @@ squish(c(-1, 0, 0.5, 1, 2))
 \author{
 Homer Strong <homer.strong@gmail.com>
 }
-

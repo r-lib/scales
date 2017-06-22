@@ -20,4 +20,3 @@ Censor any values outside of range.
 \examples{
 censor(c(-1, 0.5, 1, 2, NA))
 }
-

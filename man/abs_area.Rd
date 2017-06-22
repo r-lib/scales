@@ -12,4 +12,3 @@ abs_area(max)
 \description{
 Point area palette (continuous), with area proportional to value.
 }
-

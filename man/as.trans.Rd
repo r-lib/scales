@@ -12,4 +12,3 @@ as.trans(x)
 \description{
 Convert character string to transformer.
 }
-

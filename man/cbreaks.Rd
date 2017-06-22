@@ -42,4 +42,3 @@ cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
 cbreaks(c(0, 100), breaks = c(15, 20, 80),
   labels = expression(alpha, beta, gamma))
 }
-
