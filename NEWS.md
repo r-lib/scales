@@ -1,5 +1,8 @@
 # scales 0.4.1.9001
 
+* Adds `viridis_pal()` for creating palettes with color maps from the
+  viridisLite package (@karawoo).
+
 # scales 0.4.1
 
 * `extended_breaks()` no longer fails on pathological inputs
