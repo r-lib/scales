@@ -1,5 +1,5 @@
 Package: scales
-Version: 0.4.1.9000
+Version: 0.4.1.9001
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
     person("RStudio", role = "cph")
@@ -19,7 +19,8 @@ Imports:
     munsell (>= 0.2),
     labeling,
     methods,
-    Rcpp
+    Rcpp,
+    viridisLite
 LinkingTo: Rcpp
 Suggests:
     testthat (>= 0.8),
