@@ -1,5 +1,8 @@
 # scales 0.4.1.9001
 
+* New function `calculate_minor_breaks()` calculates minor breaks as a property
+  of the transformation (@karawoo).
+
 * Adds `viridis_pal()` for creating palettes with color maps from the
   viridisLite package (@karawoo).
 
