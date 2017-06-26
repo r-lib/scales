@@ -9,7 +9,8 @@
 * `train_discrete()` gets a new `na.rm` argument which controls whether
   `NA`s are preserved or dropped.
 
-* `rescale()` works with `Date`, `POSIXct` and `POSIXlt` objects (@zeehio, #74).
+* `rescale()` and `rescale_mid()` are now S3 generics, and work with `numeric`,
+  `Date`, `POSIXct`, `POSIXlt` and `bit64::integer64` objects (@zeehio, #74).
 
 # scales 0.4.0
 
