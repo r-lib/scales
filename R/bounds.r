@@ -25,6 +25,9 @@ rescale.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finit
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
+#' @export
+rescale.NULL <- function(...)  NULL
+
 #' @rdname rescale
 #' @export
 rescale.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
