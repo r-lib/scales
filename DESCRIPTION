@@ -24,6 +24,7 @@ Imports:
 LinkingTo: Rcpp
 Suggests:
     testthat (>= 0.8),
+    bit64,
     covr,
     hms
 License: MIT + file LICENSE

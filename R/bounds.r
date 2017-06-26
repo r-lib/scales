@@ -1,41 +1,105 @@
-#' Rescale numeric vector to have specified minimum and maximum.
+#' Rescale continuous vector to have specified minimum and maximum.
 #'
-#' @param x numeric vector of values to manipulate.
+#' @param x continuous vector of values to manipulate.
 #' @param to output range (numeric vector of length two)
-#' @param from input range (numeric vector of length two).  If not given, is
+#' @param from input range (vector of length two).  If not given, is
 #'   calculated from the range of \code{x}
+#' @param ... other arguments passed on to methods
 #' @keywords manip
 #' @export
 #' @examples
 #' rescale(1:100)
 #' rescale(runif(50))
 #' rescale(1)
-rescale <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE)) {
+rescale <- function(x, to, from, ...) {
+  UseMethod("rescale")
+}
+
+
+#' @rdname rescale
+#' @export
+rescale.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
   if (zero_range(from) || zero_range(to)) {
     return(ifelse(is.na(x), NA, mean(to)))
   }
-
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
-#' Rescale numeric vector to have specified minimum, midpoint, and maximum.
+#' @rdname rescale
+#' @export
+rescale.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
+  x <- as.numeric(x)
+  from <- as.numeric(from)
+  rescale.numeric(x = x, to = to, from = from)
+}
+
+#' @rdname rescale
+#' @export
+rescale.Date <- rescale.POSIXt
+
+#' @rdname rescale
+#' @export
+rescale.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), ...) {
+  if (zero_range(from, tol = 0) || zero_range(to)) {
+    return(ifelse(is.na(x), NA, mean(to)))
+  }
+  (x - from[1]) / diff(from) * diff(to) + to[1]
+}
+
+
+#' Rescale vector to have specified minimum, midpoint, and maximum.
 #'
 #' @export
-#' @param x numeric vector of values to manipulate.
+#' @param x vector of values to manipulate.
 #' @param to output range (numeric vector of length two)
-#' @param from input range (numeric vector of length two).  If not given, is
+#' @param from input range (vector of length two).  If not given, is
 #'   calculated from the range of \code{x}
 #' @param mid mid-point of input range
+#' @param ... other arguments passed on to methods
 #' @examples
 #' rescale_mid(1:100, mid = 50.5)
 #' rescale_mid(runif(50), mid = 0.5)
 #' rescale_mid(1)
-rescale_mid <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0) {
+rescale_mid <- function(x, to, from, mid, ...) {
+  UseMethod("rescale_mid")
+}
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
 
   extent <- 2 * max(abs(from - mid))
   (x - mid) / extent * diff(to) + mean(to)
 }
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE),
+                               mid, ...) {
+  x <- as.numeric(as.POSIXct(x))
+  if (!is.numeric(from)) {
+    from <- as.numeric(as.POSIXct(from))
+  }
+  if (!is.numeric(mid)) {
+    mid <- as.numeric(as.POSIXct(mid))
+  }
+  rescale_mid.numeric(x = x, to = to, from = from, mid = mid)
+}
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.Date <- rescale_mid.POSIXt
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
+  if (zero_range(from, tol = 0) || zero_range(to)) return(rep(mean(to), length(x)))
+
+  extent <- 2 * max(abs(from - mid))
+  (x - mid) / extent * diff(to) + mean(to)
+}
+
 
 #' Rescale numeric vector to have specified maximum.
 #'

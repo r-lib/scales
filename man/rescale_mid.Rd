@@ -2,22 +2,40 @@
 % Please edit documentation in R/bounds.r
 \name{rescale_mid}
 \alias{rescale_mid}
-\title{Rescale numeric vector to have specified minimum, midpoint, and maximum.}
+\alias{rescale_mid.numeric}
+\alias{rescale_mid.POSIXt}
+\alias{rescale_mid.Date}
+\alias{rescale_mid.integer64}
+\title{Rescale vector to have specified minimum, midpoint, and maximum.}
 \usage{
-rescale_mid(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0)
+rescale_mid(x, to, from, mid, ...)
+
+\method{rescale_mid}{numeric}(x, to = c(0, 1), from = range(x, na.rm =
+  TRUE), mid = 0, ...)
+
+\method{rescale_mid}{POSIXt}(x, to = c(0, 1), from = range(x, na.rm = TRUE),
+  mid, ...)
+
+\method{rescale_mid}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE),
+  mid, ...)
+
+\method{rescale_mid}{integer64}(x, to = c(0, 1), from = range(x, na.rm =
+  TRUE), mid = 0, ...)
 }
 \arguments{
-\item{x}{numeric vector of values to manipulate.}
+\item{x}{vector of values to manipulate.}
 
 \item{to}{output range (numeric vector of length two)}
 
-\item{from}{input range (numeric vector of length two).  If not given, is
+\item{from}{input range (vector of length two).  If not given, is
 calculated from the range of \code{x}}
 
 \item{mid}{mid-point of input range}
+
+\item{...}{other arguments passed on to methods}
 }
 \description{
-Rescale numeric vector to have specified minimum, midpoint, and maximum.
+Rescale vector to have specified minimum, midpoint, and maximum.
 }
 \examples{
 rescale_mid(1:100, mid = 50.5)

@@ -2,20 +2,38 @@
 % Please edit documentation in R/bounds.r
 \name{rescale}
 \alias{rescale}
-\title{Rescale numeric vector to have specified minimum and maximum.}
+\alias{rescale.numeric}
+\alias{rescale.POSIXt}
+\alias{rescale.Date}
+\alias{rescale.integer64}
+\title{Rescale continuous vector to have specified minimum and maximum.}
 \usage{
-rescale(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE))
+rescale(x, to, from, ...)
+
+\method{rescale}{numeric}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
+  finite = TRUE), ...)
+
+\method{rescale}{POSIXt}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
+  finite = TRUE), ...)
+
+\method{rescale}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite
+  = TRUE), ...)
+
+\method{rescale}{integer64}(x, to = c(0, 1), from = range(x, na.rm = TRUE),
+  ...)
 }
 \arguments{
-\item{x}{numeric vector of values to manipulate.}
+\item{x}{continuous vector of values to manipulate.}
 
 \item{to}{output range (numeric vector of length two)}
 
-\item{from}{input range (numeric vector of length two).  If not given, is
+\item{from}{input range (vector of length two).  If not given, is
 calculated from the range of \code{x}}
+
+\item{...}{other arguments passed on to methods}
 }
 \description{
-Rescale numeric vector to have specified minimum and maximum.
+Rescale continuous vector to have specified minimum and maximum.
 }
 \examples{
 rescale(1:100)
