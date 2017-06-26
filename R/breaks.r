@@ -150,3 +150,38 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 
   list(breaks = breaks, labels = labels)
 }
+
+#' Minor breaks.
+#' Places minor breaks between major breaks and within limits.
+#'
+#' @param reverse if TRUE, calculates the minor breaks for a reversed scale
+#' @export
+#' @examples
+#' m <- extended_breaks()(1:10)
+#' calculate_minor_breaks()(m, 1:10, n = 2)
+#' 
+#' n <- extended_breaks()(0:-9)
+#' calculate_minor_breaks(reverse = TRUE)(n, 0:-9, n = 2)
+calculate_minor_breaks <- function(reverse = FALSE) {
+  function(b, limits, n) {
+    b <- b[!is.na(b)]
+    if (length(b) < 2) return()
+
+    bd <- diff(b)[1]
+
+    if (!reverse) {
+      if (min(limits) < min(b)) b <- c(b[1] - bd, b)
+      if (max(limits) > max(b)) b <- c(b, b[length(b)] + bd)
+    } else {
+      if (max(limits) > max(b)) b <- c(b[1] - bd, b)
+      if (min(limits) < min(b)) b <- c(b, b[length(b)] + bd)
+    }
+    
+    breaks <- unique(
+      unlist(
+        mapply(seq, b[-length(b)], b[-1], length.out = n + 1, SIMPLIFY = FALSE)
+      )
+    )
+    breaks
+  }
+}
