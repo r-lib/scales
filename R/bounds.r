@@ -30,6 +30,10 @@ rescale.NULL <- function(...)  NULL
 
 #' @rdname rescale
 #' @export
+rescale.logical <- rescale.numeric
+
+#' @rdname rescale
+#' @export
 rescale.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
   x <- as.numeric(x)
   from <- as.numeric(from)
@@ -78,6 +82,10 @@ rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), 
 
 #' @export
 rescale_mid.NULL <- function(...) NULL
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.logical <- rescale_mid.numeric
 
 #' @rdname rescale_mid
 #' @export
