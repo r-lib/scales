@@ -178,7 +178,14 @@ even_minor_breaks <- function(reverse = FALSE) {
       if (min(limits) < min(b)) b <- c(b, b[length(b)] + bd)
     }
 
-    breaks <- unique(unlist(Map(seq, b[-length(b)], b[-1], length.out = n + 1)))
+    # Find minor breaks between major breaks
+    seq_between <- function(a, b) {
+      seq(a, b, length.out = n + 1)[-(n + 1)]
+    }
+    breaks <- unlist(Map(seq_between, b[-length(b)], b[-1]))
+
+    # Add the final break back
+    breaks <- c(breaks, b[length(b)])
     breaks
   }
 }
