@@ -55,3 +55,13 @@ test_that("scaling is possible with integer64 data", {
     rescale_mid(x, mid = bit64::as.integer64(2^60) + 1),
     c(0.25, 0.5, 0.75, 1))
 })
+
+test_that("scaling is possible with NULL values", {
+  expect_null(rescale(NULL))
+  expect_null(rescale_mid(NULL))
+})
+
+test_that("scaling is possible with logical values", {
+  expect_equal(rescale(c(FALSE, TRUE)), c(0, 1))
+  expect_equal(rescale_mid(c(FALSE, TRUE), mid = 0.5), c(0, 1))
+})
