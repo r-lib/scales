@@ -76,6 +76,9 @@ rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), 
   (x - mid) / extent * diff(to) + mean(to)
 }
 
+#' @export
+rescale_mid.NULL <- function(...) NULL
+
 #' @rdname rescale_mid
 #' @export
 rescale_mid.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE),
