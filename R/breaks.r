@@ -169,6 +169,7 @@ calculate_minor_breaks <- function(reverse = FALSE) {
 
     bd <- diff(b)[1]
 
+    # Allow minor breaks to extend outside major breaks towards limits
     if (!reverse) {
       if (min(limits) < min(b)) b <- c(b[1] - bd, b)
       if (max(limits) > max(b)) b <- c(b, b[length(b)] + bd)
