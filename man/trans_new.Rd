@@ -7,7 +7,7 @@
 \title{Create a new transformation object.}
 \usage{
 trans_new(name, transform, inverse, breaks = extended_breaks(),
-  minor_breaks = calculate_minor_breaks(), format = format_format(),
+  minor.breaks = minor_breaks(), format = format_format(),
   domain = c(-Inf, Inf))
 }
 \arguments{
@@ -22,7 +22,7 @@ inverse of the transformation}
 \item{breaks}{default breaks function for this transformation. The breaks
 function is applied to the raw data.}
 
-\item{minor_breaks}{default minor breaks function for this transformation.}
+\item{minor.breaks}{default minor breaks function for this transformation.}
 
 \item{format}{default format for this transformation. The format is applied
 to breaks generated to the raw data.}
