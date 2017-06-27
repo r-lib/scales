@@ -25,6 +25,13 @@ rescale.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finit
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
+#' @export
+rescale.NULL <- function(...)  NULL
+
+#' @rdname rescale
+#' @export
+rescale.logical <- rescale.numeric
+
 #' @rdname rescale
 #' @export
 rescale.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
@@ -72,6 +79,13 @@ rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), 
   extent <- 2 * max(abs(from - mid))
   (x - mid) / extent * diff(to) + mean(to)
 }
+
+#' @export
+rescale_mid.NULL <- function(...) NULL
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.logical <- rescale_mid.numeric
 
 #' @rdname rescale_mid
 #' @export
