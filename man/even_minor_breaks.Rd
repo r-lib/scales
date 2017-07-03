@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{even_minor_breaks}
 \alias{even_minor_breaks}
-\title{Minor breaks.
+\title{Minor breaks
 Places minor breaks between major breaks.}
 \usage{
 even_minor_breaks(reverse = FALSE)
@@ -11,7 +11,7 @@ even_minor_breaks(reverse = FALSE)
 \item{reverse}{if TRUE, calculates the minor breaks for a reversed scale}
 }
 \description{
-Minor breaks.
+Minor breaks
 Places minor breaks between major breaks.
 }
 \examples{
