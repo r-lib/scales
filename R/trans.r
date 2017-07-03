@@ -23,7 +23,7 @@
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
 trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
-                      minor_breaks = even_minor_breaks(),
+                      minor_breaks = regular_minor_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
@@ -34,7 +34,7 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
       transform = transform,
       inverse = inverse,
       breaks = breaks,
-      minor_breaks = even_minor_breaks,
+      minor_breaks = regular_minor_breaks,
       format = format,
       domain = domain),
     class = "trans"

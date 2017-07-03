@@ -158,11 +158,11 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 #' @export
 #' @examples
 #' m <- extended_breaks()(c(1, 10))
-#' even_minor_breaks()(m, c(1, 10), n = 2)
+#' regular_minor_breaks()(m, c(1, 10), n = 2)
 #' 
 #' n <- extended_breaks()(c(0, -9))
-#' even_minor_breaks(reverse = TRUE)(n, c(0, -9), n = 2)
-even_minor_breaks <- function(reverse = FALSE) {
+#' regular_minor_breaks(reverse = TRUE)(n, c(0, -9), n = 2)
+regular_minor_breaks <- function(reverse = FALSE) {
   function(b, limits, n) {
     b <- b[!is.na(b)]
     if (length(b) < 2) return()

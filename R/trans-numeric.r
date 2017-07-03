@@ -115,7 +115,7 @@ reverse_trans <- function() {
     "reverse",
     function(x) -x,
     function(x) -x,
-    minor_breaks = even_minor_breaks(reverse = TRUE))
+    minor_breaks = regular_minor_breaks(reverse = TRUE))
 }
 
 #' Square-root transformation.
