@@ -14,6 +14,7 @@
 #'   inverse of the transformation
 #' @param breaks default breaks function for this transformation. The breaks
 #'   function is applied to the raw data.
+#' @param minor_breaks default minor breaks function for this transformation.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which
@@ -21,13 +22,23 @@
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
-trans_new <- function(name, transform, inverse, breaks = extended_breaks(), format = format_format(), domain = c(-Inf, Inf)) {
+trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
+                      minor_breaks = regular_minor_breaks(),
+                      format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
 
-  structure(list(name = name, transform = transform, inverse = inverse,
-    breaks = breaks, format = format, domain = domain),
-    class = "trans")
+  structure(
+    list(
+      name = name,
+      transform = transform,
+      inverse = inverse,
+      breaks = breaks,
+      minor_breaks = regular_minor_breaks,
+      format = format,
+      domain = domain),
+    class = "trans"
+  )
 }
 
 is.trans <- function(x) inherits(x, "trans")

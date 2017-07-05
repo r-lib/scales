@@ -111,7 +111,11 @@ reciprocal_trans <- function() {
 #'
 #' @export
 reverse_trans <- function() {
-  trans_new("reverse", function(x) -x, function(x) -x)
+  trans_new(
+    "reverse",
+    function(x) -x,
+    function(x) -x,
+    minor_breaks = regular_minor_breaks(reverse = TRUE))
 }
 
 #' Square-root transformation.

@@ -150,3 +150,42 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 
   list(breaks = breaks, labels = labels)
 }
+
+#' Minor breaks
+#' Places minor breaks between major breaks.
+#'
+#' @param reverse if TRUE, calculates the minor breaks for a reversed scale
+#' @export
+#' @examples
+#' m <- extended_breaks()(c(1, 10))
+#' regular_minor_breaks()(m, c(1, 10), n = 2)
+#' 
+#' n <- extended_breaks()(c(0, -9))
+#' regular_minor_breaks(reverse = TRUE)(n, c(0, -9), n = 2)
+regular_minor_breaks <- function(reverse = FALSE) {
+  function(b, limits, n) {
+    b <- b[!is.na(b)]
+    if (length(b) < 2) return()
+
+    bd <- diff(b)[1]
+
+    # Allow minor breaks to extend outside major breaks towards limits
+    if (!reverse) {
+      if (min(limits) < min(b)) b <- c(b[1] - bd, b)
+      if (max(limits) > max(b)) b <- c(b, b[length(b)] + bd)
+    } else {
+      if (max(limits) > max(b)) b <- c(b[1] - bd, b)
+      if (min(limits) < min(b)) b <- c(b, b[length(b)] + bd)
+    }
+
+    # Find minor breaks between major breaks
+    seq_between <- function(a, b) {
+      seq(a, b, length.out = n + 1)[-(n + 1)]
+    }
+    breaks <- unlist(Map(seq_between, b[-length(b)], b[-1]))
+
+    # Add the final break back
+    breaks <- c(breaks, b[length(b)])
+    breaks
+  }
+}
