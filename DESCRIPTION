@@ -18,8 +18,8 @@ Imports:
     plyr,
     munsell (>= 0.2),
     labeling,
-    methods,
     Rcpp,
+    R6,
     viridisLite
 LinkingTo: Rcpp
 Suggests:
