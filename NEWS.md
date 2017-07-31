@@ -6,6 +6,8 @@
 * Adds `viridis_pal()` for creating palettes with color maps from the
   viridisLite package (@karawoo).
 
+* Switched from reference classes to R6 (#96).
+
 # scales 0.4.1
 
 * `extended_breaks()` no longer fails on pathological inputs
