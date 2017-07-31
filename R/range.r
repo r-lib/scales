@@ -5,26 +5,29 @@
 #'
 #' @aliases DiscreteRange ContinuousRange
 #' @export DiscreteRange ContinuousRange
-Range <- methods::setRefClass("Range", fields = "range", methods = list(
+Range <- R6::R6Class("Range", list(
+  range = NULL,
   initialize = function() {
-    initFields(range = NULL)
+    self$range <- NULL
   })
 )
 
-DiscreteRange <- methods::setRefClass(
-  "DiscreteRange", contains = "Range",
-  methods = list(
+DiscreteRange <- R6::R6Class(
+  "DiscreteRange",
+  inherit = "Range",
+  list(
     train = function(x, drop = FALSE) {
-      range <<- train_discrete(x, range, drop)
+      self$range <- train_discrete(x, range, drop)
     },
-    reset = function() range <<- NULL
+    reset = function() self$range <- NULL
   )
 )
 
-ContinuousRange <- methods::setRefClass(
-  "Continuous", contains = "Range",
-  methods = list(
-    train = function(x) range <<- train_continuous(x, range),
-    reset = function() range <<- NULL
+ContinuousRange <- R6::R6Class(
+  "ContinuousRange",
+  inherit = "Range",
+  list(
+    train = function(x) self$range <- train_continuous(x, range),
+    reset = function() self$range <- NULL
   )
 )
