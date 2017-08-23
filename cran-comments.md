@@ -10,6 +10,6 @@
 
 I ran revdep checks on the 272 reverse dependencies (complete results at
 https://github.com/hadley/scales/blob/master/revdep). There were issues with
-three packages; one of these issues appears unrelated to `scales`. The package
-maintainers were notified of the issues that are related to `scales` changes on
-10 August 2017.
+three packages; one of these issues appears unrelated to `scales`, and one has
+since been fixed. The maintainer of the `incidence` package was notified of the
+issue that is related to `scales` changes on 10 August 2017.
