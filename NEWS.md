@@ -1,4 +1,4 @@
-# scales 0.4.1.9001
+# scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
   of the transformation (@karawoo).
