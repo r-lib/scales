@@ -1,3 +1,5 @@
+# scales 0.5.0.9000
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
