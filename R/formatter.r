@@ -38,6 +38,7 @@ comma <- function(x, ...) {
 #'   be less than in order for the cents to be displayed
 #' @param prefix,suffix Symbols to display before and after amount.
 #' @param big.mark Character used between every 3 digits.
+#' @param decimal.mark Character used as decimal mark.
 #' @param negative_parens Should negative values be shown with parentheses?
 #' @param ... Other arguments passed on to \code{\link{format}}.
 #' @param x a numeric vector to format
@@ -58,7 +59,7 @@ comma <- function(x, ...) {
 #' finance <- dollar_format(negative_parens = TRUE)
 #' finance(c(-100, 100))
 dollar_format <- function(prefix = "$", suffix = "",
-                          largest_with_cents = 100000, ..., big.mark = ",",
+                          largest_with_cents = 100000, ..., big.mark = ",", decimal.mark = ".",
                           negative_parens = FALSE) {
   function(x) {
     if (length(x) == 0) return(character())
@@ -75,8 +76,21 @@ dollar_format <- function(prefix = "$", suffix = "",
       x <- abs(x)
     }
 
-    amount <- format(abs(x), nsmall = nsmall, trim = TRUE, big.mark = big.mark,
-      scientific = FALSE, digits = 1L)
+    if (big.mark == decimal.mark) {
+
+      amount <- format(abs(x), nsmall = nsmall, trim = TRUE, decimal.mark = '.',
+                       scientific = FALSE, digits = 1L)
+      warning(paste0("'big.mark' and 'decimal.mark' are equal ",
+                     paste0("'",big.mark, "'"),
+                     " which could be confusing.",
+                     " Try to set decimal.mark.",sep=' '))
+
+    } else {
+
+      amount <- format(abs(x), nsmall = nsmall, trim = TRUE, big.mark = big.mark,
+                       scientific = FALSE, digits = 1L, decimal.mark = decimal.mark)
+    }
+
 
     if (negative_parens) {
       paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
