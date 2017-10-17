@@ -74,7 +74,9 @@ rescale_mid <- function(x, to, from, mid, ...) {
 #' @rdname rescale_mid
 #' @export
 rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
-  if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
+  if (zero_range(from) || zero_range(to)) {
+    return(ifelse(is.na(x), NA, mean(to)))
+  }
 
   extent <- 2 * max(abs(from - mid))
   (x - mid) / extent * diff(to) + mean(to)
@@ -108,7 +110,9 @@ rescale_mid.Date <- rescale_mid.POSIXt
 #' @rdname rescale_mid
 #' @export
 rescale_mid.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
-  if (zero_range(from, tol = 0) || zero_range(to)) return(rep(mean(to), length(x)))
+  if (zero_range(from, tol = 0) || zero_range(to)) {
+    return(ifelse(is.na(x), NA, mean(to)))
+  }
 
   extent <- 2 * max(abs(from - mid))
   (x - mid) / extent * diff(to) + mean(to)

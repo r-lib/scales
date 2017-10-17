@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* Fix `rescale_mid()` to properly handle NAs (@foo-bar-baz-qux).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
