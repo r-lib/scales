@@ -184,7 +184,7 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
       if (!alpha)
         result[i] = rgbcolor(red, green, blue);
       else {
-        if (opacity >= 255.0 && compact_rgba)
+        if (static_cast<unsigned int>(opacity) >= 255 && compact_rgba)
           result[i] = rgbcolor(red, green, blue);
         else
           result[i] = rgbacolor(red, green, blue, opacity);
