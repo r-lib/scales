@@ -365,15 +365,13 @@ filterRange <- function(f) {
 #'   `"#606060"` for dark grey, or `"#00000000"` for transparent) and
 #'   values outside of \[0,1]. Can itself by `NA`, which will simply cause
 #'   an `NA` to be inserted into the output.
-#' @param alpha Whether to include alpha channels in interpolation; otherwise,
-#'   any alpha information will be discarded. If `TRUE` then the returned
-#'   function will provide colors in `"#RRGGBBAA"` format instead of
-#'   `"#RRGGBB"`.
-#' @param compact_rgba Whether to compact RGBA values into RGB values when the
-#'   transparency (alpha) channel indicates that the color is fully opaque.
-#'   If `TRUE` then the returned function will provide colors in `"#RRGGBB"`
-#'   format instead of `"#RRGGBBAA"` format in those cases where
-#'   the `"AA"` part is equal to `"FF"`.
+#' @param alpha Whether to include alpha transparency channels in interpolation.
+#'   If `TRUE` then the alpha information is included in the interpolation.
+#'   The returned colors will be provided in `"#RRGGBBAA"` format when needed,
+#'   i.e., in cases where the color is not fully opaque, so that the `"AA"`
+#'   part is not equal to `"FF"`. Fully opaque colors will be returned in
+#'   `"#RRGGBB"` format. If `FALSE`, the alpha information is discared
+#'   before interpolation and colors are always returned as `"#RRGGBB"`.
 #'
 #' @return A function that takes a numeric vector and returns a character vector
 #'   of the same length with RGB or RGBA hex colors.
@@ -381,7 +379,7 @@ filterRange <- function(f) {
 #' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
-colour_ramp <- function(colors, na.color = NA, alpha = TRUE, compact_rgba = TRUE) {
+colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (length(colors) == 0) {
     stop("Must provide at least one color to create a color ramp")
   }
@@ -389,7 +387,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE, compact_rgba = TRUE
   colorMatrix <- grDevices::col2rgb(colors, alpha = alpha)
   structure(
     function(x) {
-      doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color), compact_rgba)
+      doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color))
     },
     safe_palette_func = TRUE
   )

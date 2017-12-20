@@ -136,7 +136,7 @@ void lab2srgb(double l, double a, double b, double *red, double *green, double *
 // === END SRGB/LAB CONVERSION =======================================
 
 
-StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor, bool compact_rgba) {
+StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
 
   size_t ncolors = colors.ncol();
 
@@ -184,10 +184,10 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
       if (!alpha)
         result[i] = rgbcolor(red, green, blue);
       else {
-        if (static_cast<unsigned int>(opacity) >= 255 && compact_rgba)
-          result[i] = rgbcolor(red, green, blue);
+        if (static_cast<unsigned int>(opacity) >= 255)
+          result[i] = rgbcolor(red, green, blue); // return regular RGB if transparency color is fully opaque
         else
-          result[i] = rgbacolor(red, green, blue, opacity);
+          result[i] = rgbacolor(red, green, blue, opacity); // otherwise return RGBA
       }
     }
   }
@@ -195,7 +195,7 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
 }
 
 // [[Rcpp::export]]
-StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor, bool compact_rgba) {
+StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
   for (int col = 0; col < colors.cols(); col++) {
     double red = colors(0, col) / 255;
     double green = colors(1, col) / 255;
@@ -206,7 +206,7 @@ StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std:
     colors(1, col) = a;
     colors(2, col) = b;
   }
-  return doColorRampSerial(colors, x, alpha, naColor, compact_rgba);
+  return doColorRampSerial(colors, x, alpha, naColor);
 }
 
 // For unit testing
