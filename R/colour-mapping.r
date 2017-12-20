@@ -376,7 +376,7 @@ filterRange <- function(f) {
 #' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
-colour_ramp <- function(colors, na.color = NA, alpha = FALSE) {
+colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (length(colors) == 0) {
     stop("Must provide at least one color to create a color ramp")
   }
