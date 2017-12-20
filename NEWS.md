@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
