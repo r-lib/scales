@@ -4,7 +4,7 @@
 \alias{colour_ramp}
 \title{Fast color interpolation}
 \usage{
-colour_ramp(colors, na.color = NA, alpha = FALSE)
+colour_ramp(colors, na.color = NA, alpha = TRUE)
 }
 \arguments{
 \item{colors}{Colors to interpolate; must be a valid argument to
