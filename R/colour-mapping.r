@@ -369,6 +369,11 @@ filterRange <- function(f) {
 #'   any alpha information will be discarded. If `TRUE` then the returned
 #'   function will provide colors in `"#RRGGBBAA"` format instead of
 #'   `"#RRGGBB"`.
+#' @param compact_rgba Whether to compact RGBA values into RGB values when the
+#'   transparency (alpha) channel indicates that the color is fully opaque.
+#'   If `TRUE` then the returned function will provide colors in `"#RRGGBB"`
+#'   format instead of `"#RRGGBBAA"` format in those cases where
+#'   the `"AA"` part is equal to `"FF"`.
 #'
 #' @return A function that takes a numeric vector and returns a character vector
 #'   of the same length with RGB or RGBA hex colors.
@@ -376,7 +381,7 @@ filterRange <- function(f) {
 #' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
-colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
+colour_ramp <- function(colors, na.color = NA, alpha = TRUE, compact_rgba = TRUE) {
   if (length(colors) == 0) {
     stop("Must provide at least one color to create a color ramp")
   }
@@ -384,7 +389,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   colorMatrix <- grDevices::col2rgb(colors, alpha = alpha)
   structure(
     function(x) {
-      doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color))
+      doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color), compact_rgba)
     },
     safe_palette_func = TRUE
   )

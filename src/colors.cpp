@@ -136,7 +136,7 @@ void lab2srgb(double l, double a, double b, double *red, double *green, double *
 // === END SRGB/LAB CONVERSION =======================================
 
 
-StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
+StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor, bool compact_rgba) {
 
   size_t ncolors = colors.ncol();
 
@@ -183,15 +183,19 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
       // Convert the result to hex string
       if (!alpha)
         result[i] = rgbcolor(red, green, blue);
-      else
-        result[i] = rgbacolor(red, green, blue, opacity);
+      else {
+        if (opacity >= 255.0 && compact_rgba)
+          result[i] = rgbcolor(red, green, blue);
+        else
+          result[i] = rgbacolor(red, green, blue, opacity);
+      }
     }
   }
   return result;
 }
 
 // [[Rcpp::export]]
-StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor) {
+StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor, bool compact_rgba) {
   for (int col = 0; col < colors.cols(); col++) {
     double red = colors(0, col) / 255;
     double green = colors(1, col) / 255;
@@ -202,7 +206,7 @@ StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std:
     colors(1, col) = a;
     colors(2, col) = b;
   }
-  return doColorRampSerial(colors, x, alpha, naColor);
+  return doColorRampSerial(colors, x, alpha, naColor, compact_rgba);
 }
 
 // For unit testing

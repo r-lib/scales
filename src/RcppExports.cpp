@@ -6,8 +6,8 @@
 using namespace Rcpp;
 
 // doColorRamp
-StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor);
-RcppExport SEXP _scales_doColorRamp(SEXP colorsSEXP, SEXP xSEXP, SEXP alphaSEXP, SEXP naColorSEXP) {
+StringVector doColorRamp(NumericMatrix colors, NumericVector x, bool alpha, std::string naColor, bool compact_rgba);
+RcppExport SEXP _scales_doColorRamp(SEXP colorsSEXP, SEXP xSEXP, SEXP alphaSEXP, SEXP naColorSEXP, SEXP compact_rgbaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -15,7 +15,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
     Rcpp::traits::input_parameter< bool >::type alpha(alphaSEXP);
     Rcpp::traits::input_parameter< std::string >::type naColor(naColorSEXP);
-    rcpp_result_gen = Rcpp::wrap(doColorRamp(colors, x, alpha, naColor));
+    Rcpp::traits::input_parameter< bool >::type compact_rgba(compact_rgbaSEXP);
+    rcpp_result_gen = Rcpp::wrap(doColorRamp(colors, x, alpha, naColor, compact_rgba));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -43,7 +44,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_scales_doColorRamp", (DL_FUNC) &_scales_doColorRamp, 4},
+    {"_scales_doColorRamp", (DL_FUNC) &_scales_doColorRamp, 5},
     {"_scales_rgbToLab", (DL_FUNC) &_scales_rgbToLab, 1},
     {"_scales_rgbToXyz", (DL_FUNC) &_scales_rgbToXyz, 1},
     {NULL, NULL, 0}

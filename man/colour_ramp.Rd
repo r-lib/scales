@@ -4,7 +4,7 @@
 \alias{colour_ramp}
 \title{Fast color interpolation}
 \usage{
-colour_ramp(colors, na.color = NA, alpha = TRUE)
+colour_ramp(colors, na.color = NA, alpha = TRUE, compact_rgba = TRUE)
 }
 \arguments{
 \item{colors}{Colors to interpolate; must be a valid argument to
@@ -22,6 +22,12 @@ an \code{NA} to be inserted into the output.}
 any alpha information will be discarded. If \code{TRUE} then the returned
 function will provide colors in \code{"#RRGGBBAA"} format instead of
 \code{"#RRGGBB"}.}
+
+\item{compact_rgba}{Whether to compact RGBA values into RGB values when the
+transparency (alpha) channel indicates that the color is fully opaque.
+If \code{TRUE} then the returned function will provide colors in \code{"#RRGGBB"}
+format instead of \code{"#RRGGBBAA"} format in those cases where
+the \code{"AA"} part is equal to \code{"FF"}.}
 }
 \value{
 A function that takes a numeric vector and returns a character vector
