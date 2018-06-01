@@ -50,6 +50,9 @@ extended_breaks <- function(n = 5, ...) {
 #' @examples
 #' log_breaks()(c(1, 1e6))
 #' log_breaks()(c(1, 1e5))
+#' log_breaks()(c(1664, 14008))
+#' log_breaks()(c(407, 3430))
+#' log_breaks()(c(1761, 8557))
 log_breaks <- function(n = 5, base = 10) {
   function(x) {
     rng <- log(range(x, na.rm = TRUE), base = base)
@@ -59,7 +62,27 @@ log_breaks <- function(n = 5, base = 10) {
     if (max == min) return(base ^ min)
 
     by <- floor((max - min) / n) + 1
-    base ^ seq(min, max, by = by)
+    breaks <- base ^ seq(min, max, by = by)
+    relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
+    if (sum(relevant_breaks) >= (n - 2)) return(breaks)
+
+    steps <- 1
+    delta <- function(x) {
+      min(diff(log(sort(c(x, steps, base)), base = base)))
+    }
+    candidate <- 2:(base - 1)
+    while (length(candidate)) {
+      best <- which.max(sapply(candidate, delta))
+      steps <- c(steps, candidate[best])
+      candidate <- candidate[-best]
+
+      breaks <- as.vector(outer(base ^ seq(min, max), steps))
+      relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
+      if (sum(relevant_breaks) >= (n - 2)) {
+        break
+      }
+    }
+    return(sort(breaks))
   }
 }
 
@@ -159,7 +182,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 #' @examples
 #' m <- extended_breaks()(c(1, 10))
 #' regular_minor_breaks()(m, c(1, 10), n = 2)
-#' 
+#'
 #' n <- extended_breaks()(c(0, -9))
 #' regular_minor_breaks(reverse = TRUE)(n, c(0, -9), n = 2)
 regular_minor_breaks <- function(reverse = FALSE) {
