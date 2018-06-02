@@ -156,8 +156,7 @@ scientific <- function(x, digits = 3, ...) {
 #' @examples
 #' ordinal_format()(1:10)
 #' ordinal(1:10)
-
-ordinal_format <- function(x) {
+ordinal_format <- function() {
   function(x) ordinal(x)
 }
 

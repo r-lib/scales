@@ -5,7 +5,7 @@
 \alias{ordinal}
 \title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.}
 \usage{
-ordinal_format(x)
+ordinal_format()
 
 ordinal(x)
 }
