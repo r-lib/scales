@@ -4,6 +4,7 @@
 #' @param x a numeric vector to format
 #' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
+#' @include utils.r
 #' @export
 #' @examples
 #' comma_format()(c(1, 1e3, 2000, 1e6))
@@ -16,6 +17,7 @@
 #' point(c(1, 1e3, 2000, 1e6))
 #' point(c(1, 1.021, 1000.01))
 comma_format <- function(...) {
+  force_all(...)
   function(x) comma(x, ...)
 }
 
@@ -60,6 +62,7 @@ comma <- function(x, ...) {
 dollar_format <- function(prefix = "$", suffix = "",
                           largest_with_cents = 100000, ..., big.mark = ",",
                           negative_parens = FALSE) {
+  force_all(prefix, suffix, largest_with_cents, big.mark, negative_parens, ...)
   function(x) {
     if (length(x) == 0) return(character())
     x <- round_any(x, 0.01)
@@ -137,6 +140,7 @@ percent <- percent_format()
 #' scientific(runif(10))
 #' scientific(runif(10), digits = 2)
 scientific_format <- function(digits = 3, ...) {
+  force_all(digits, ...)
   function(x) scientific(x, digits, ...)
 }
 
@@ -231,6 +235,7 @@ globalVariables(".x")
 #' wrap_10 <- wrap_format(10)
 #' wrap_10('A long line that needs to be wrapped')
 wrap_format <- function(width) {
+  force(width)
   function(x) {
     unlist(lapply(strwrap(x, width = width, simplify = FALSE), paste0, collapse = "\n"))
   }
@@ -247,6 +252,7 @@ wrap_format <- function(width) {
 #' tf(10 ^ 1:6)
 trans_format <- function(trans, format = scientific_format()) {
   if (is.character(trans)) trans <- match.fun(trans)
+  force(format)
 
   function(x) {
     x <- trans(x)
@@ -264,6 +270,8 @@ trans_format <- function(trans, format = scientific_format()) {
 #'   \code{\link{format.POSIXct}}
 #' @export
 format_format <- function(...) {
+  force_all(...)
+
   function(x) {
     if (!is.null(names(x))) return(names(x))
     format(x, ..., trim = TRUE, justify = "left")
@@ -296,7 +304,8 @@ precision <- function(x) {
 #' ha <- unit_format(unit = "ha", scale = 1e-4)
 #' km(runif(10) * 1e5)
 #' @seealso \code{\link{comma}}
-unit_format <- function(unit = "m", scale = 1, sep = " ", ...){
+unit_format <- function(unit = "m", scale = 1, sep = " ", ...) {
+  force_all(unit, scale, sep, ...)
   function(x){
     paste(comma(x * scale, ...), unit, sep = sep)
   }

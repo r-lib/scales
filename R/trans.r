@@ -27,6 +27,7 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
+  force_all(name, breaks, minor_breaks, format, domain)
 
   structure(
     list(

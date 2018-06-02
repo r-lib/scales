@@ -13,6 +13,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
     warning("Non Lab interpolation is deprecated", call. = FALSE)
   }
   ramp <- colour_ramp(colours)
+  force(values)
 
   function(x) {
     if (length(x) == 0) return(character())

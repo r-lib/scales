@@ -23,7 +23,7 @@
 #' show_col(hue_pal(h = c(180, 270))(9))
 #' show_col(hue_pal(h = c(270, 360))(9))
 hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
-
+  force_all(h, c, l, h.start, direction)
   function(n) {
     if ((diff(h) %% 360) < 1) {
       h[2] <- h[2] - 360 / n

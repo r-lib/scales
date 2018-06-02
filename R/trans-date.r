@@ -32,9 +32,8 @@ from_date <- function(x) {
 #' t$inverse(t$transform(hours))
 #' t$format(t$breaks(range(hours)))
 time_trans <- function(tz = NULL) {
-
+  force(tz)
   to_time <- function(x) {
-    force(x)
     structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
   }
 
@@ -75,6 +74,7 @@ hms_trans <- function() {
 }
 
 time_breaks <- function(n = 5) {
+  force(n)
   function(x) {
     rng <- as.numeric(range(x))
     diff <- rng[2] - rng[1]
@@ -107,6 +107,7 @@ time_breaks <- function(n = 5) {
 #'   followed by "s".
 #' @export
 date_breaks <- function(width = "1 month") {
+  force(width)
   function(x) fullseq(x, width)
 }
 
@@ -119,5 +120,6 @@ date_breaks <- function(width = "1 month") {
 #'  to UTC
 #' @export
 date_format <- function(format = "%Y-%m-%d", tz = 'UTC') {
-  function(x) format(x, format, tz = tz)
+  force_all(format, tz)
+  function(x) base::format(x, format, tz = tz)
 }

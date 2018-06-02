@@ -35,6 +35,7 @@ boxcox_trans <- function(p) {
 #' @param base Base of logarithm
 #' @export
 exp_trans <- function(base = exp(1)) {
+  force(base)
   trans_new(
     paste0("power-", format(base)),
     function(x) base ^ x,
@@ -55,6 +56,7 @@ identity_trans <- function() {
 #' @aliases log_trans log10_trans log2_trans
 #' @export log_trans log10_trans log2_trans
 log_trans <- function(base = exp(1)) {
+  force(base)
   trans <- function(x) log(x, base)
   inv <- function(x) base ^ x
 
