@@ -1,5 +1,10 @@
 # scales 0.5.0.9000
 
+* scales now works as expected when it is used inside a for loop. In previous
+  package versions if a scales function was used with variable custom parameters
+  inside a for loop, some of the parameters were not evaluated until the end
+  of the loop, due to how R lazy evaluation works. (@zeehio, #81).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
