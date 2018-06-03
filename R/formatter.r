@@ -4,7 +4,6 @@
 #' @param x a numeric vector to format
 #' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
-#' @include utils.r
 #' @export
 #' @examples
 #' comma_format()(c(1, 1e3, 2000, 1e6))
@@ -62,7 +61,11 @@ comma <- function(x, ...) {
 dollar_format <- function(prefix = "$", suffix = "",
                           largest_with_cents = 100000, ..., big.mark = ",",
                           negative_parens = FALSE) {
-  force_all(prefix, suffix, largest_with_cents, big.mark, negative_parens, ...)
+  # The dollar_format function is called at build time (see the dollar function below)
+  # force_all is not used here to avoid a build time dependency on it
+  # This line is equivalent to force all:
+  list(prefix, suffix, largest_with_cents, big.mark, negative_parens, ...)
+
   function(x) {
     if (length(x) == 0) return(character())
     x <- round_any(x, 0.01)
