@@ -12,7 +12,6 @@
 #' @examples
 #' col2hcl(colors())
 col2hcl <- function(colour, h, c, l, alpha = 1) {
-
   rgb <- t(grDevices::col2rgb(colour)) / 255
   coords <- grDevices::convertColor(rgb, "sRGB", "Luv")
 
@@ -20,7 +19,7 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
   # colorspace::coords(as(RGB(rgb), "polarLUV"))
 
   if (missing(h)) h <- atan2(coords[, "v"], coords[, "u"]) * 180 / pi
-  if (missing(c)) c <- sqrt(coords[, "u"]^ 2 + coords[, "v"]^2)
+  if (missing(c)) c <- sqrt(coords[, "u"]^2 + coords[, "v"]^2)
   if (missing(l)) l <- coords[, "L"]
 
   hcl_colours <- grDevices::hcl(h, c, l, alpha = alpha)
@@ -38,7 +37,7 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
 #' muted("red")
 #' muted("blue")
 #' show_col(c("red", "blue", muted("red"), muted("blue")))
-muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
+muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 
 #' Modify colour transparency.
 #' Vectorised in both colour and alpha.
@@ -67,7 +66,7 @@ alpha <- function(colour, alpha = NA) {
   }
   alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
 
-  new_col <- grDevices::rgb(col[1,], col[2,], col[3,], alpha)
+  new_col <- grDevices::rgb(col[1, ], col[2, ], col[3, ], alpha)
   new_col[is.na(colour)] <- NA
   new_col
 }
@@ -93,10 +92,11 @@ show_col <- function(colours, labels = TRUE, borders = NULL) {
   on.exit(par(old))
 
   size <- max(dim(colours))
-  plot(c(0, size), c(0, -size), type = "n", xlab="", ylab="", axes = FALSE)
+  plot(c(0, size), c(0, -size), type = "n", xlab = "", ylab = "", axes = FALSE)
   rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
-    col = colours, border = borders)
-  if ( labels ) {
+    col = colours, border = borders
+  )
+  if (labels) {
     text(col(colours) - 0.5, -row(colours) + 0.5, colours)
   }
 }

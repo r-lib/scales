@@ -75,8 +75,10 @@ dollar_format <- function(prefix = "$", suffix = "",
       x <- abs(x)
     }
 
-    amount <- format(abs(x), nsmall = nsmall, trim = TRUE, big.mark = big.mark,
-      scientific = FALSE, digits = 1L)
+    amount <- format(abs(x),
+      nsmall = nsmall, trim = TRUE, big.mark = big.mark,
+      scientific = FALSE, digits = 1L
+    )
 
     if (negative_parens) {
       paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
@@ -87,11 +89,13 @@ dollar_format <- function(prefix = "$", suffix = "",
 }
 
 needs_cents <- function(x, threshold) {
-  if (all(is.na(x)))
+  if (all(is.na(x))) {
     return(FALSE)
+  }
 
-  if (max(abs(x), na.rm = TRUE) > threshold)
+  if (max(abs(x), na.rm = TRUE) > threshold) {
     return(FALSE)
+  }
 
   !all(x == floor(x), na.rm = TRUE)
 }
@@ -208,7 +212,7 @@ parse_format <- function() {
 #' math_format(alpha + frac(1, .x))(1:10)
 #' math_format()(runif(10))
 #' math_format(format = percent)(runif(10))
-math_format <- function(expr = 10 ^ .x, format = force) {
+math_format <- function(expr = 10^.x, format = force) {
   quoted <- substitute(expr)
   subs <- function(x) {
     do.call("substitute", list(quoted, list(.x = as.name(x))))
@@ -275,10 +279,11 @@ precision <- function(x) {
   rng <- range(x, na.rm = TRUE)
 
   span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
-  if (span == 0)
+  if (span == 0) {
     return(1)
+  }
 
-  10 ^ floor(log10(span))
+  10^floor(log10(span))
 }
 
 #' Add units to the labels
@@ -297,8 +302,8 @@ precision <- function(x) {
 #' ha <- unit_format(unit = "ha", scale = 1e-4)
 #' km(runif(10) * 1e5)
 #' @seealso [comma()]
-unit_format <- function(unit = "m", scale = 1, sep = " ", ...){
-  function(x){
+unit_format <- function(unit = "m", scale = 1, sep = " ", ...) {
+  function(x) {
     paste(comma(x * scale, ...), unit, sep = sep)
   }
 }

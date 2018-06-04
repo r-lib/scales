@@ -11,11 +11,12 @@ date_trans <- function() {
   trans_new("date", "from_date", "to_date", breaks = pretty_breaks())
 }
 
-to_date <- function(x)   structure(x, class = "Date")
+to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
   if (!inherits(x, "Date")) {
     stop("Invalid input: date_trans works with objects of class Date only",
-      call. = FALSE)
+      call. = FALSE
+    )
   }
   structure(as.numeric(x), names = names(x))
 }
@@ -32,7 +33,6 @@ from_date <- function(x) {
 #' t$inverse(t$transform(hours))
 #' t$format(t$breaks(range(hours)))
 time_trans <- function(tz = NULL) {
-
   to_time <- function(x) {
     force(x)
     structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
@@ -41,7 +41,9 @@ time_trans <- function(tz = NULL) {
   from_time <- function(x) {
     if (!inherits(x, "POSIXct")) {
       stop("Invalid input: time_trans works with objects of class ",
-        "POSIXct only", call. = FALSE)
+        "POSIXct only",
+        call. = FALSE
+      )
     }
     if (is.null(tz)) {
       tz <<- attr(as.POSIXlt(x), "tzone")[[1]]
@@ -118,6 +120,6 @@ date_breaks <- function(width = "1 month") {
 #' @param tz a time zone name, see [timezones()]. Defaults
 #'  to UTC
 #' @export
-date_format <- function(format = "%Y-%m-%d", tz = 'UTC') {
+date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   function(x) format(x, format, tz = tz)
 }

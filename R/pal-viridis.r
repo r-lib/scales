@@ -1,5 +1,5 @@
 #' Viridis palette
-#' 
+#'
 #' @inheritParams viridisLite::viridis
 #' @references <https://bids.github.io/colormap/>
 #' @export

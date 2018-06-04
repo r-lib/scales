@@ -36,7 +36,7 @@ train_continuous <- function(new, existing = NULL) {
   if (is.null(new)) return(existing)
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
-    stop("Discrete value supplied to continuous scale",  call. = FALSE)
+    stop("Discrete value supplied to continuous scale", call. = FALSE)
   }
   suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
 }
@@ -50,4 +50,3 @@ map_continuous <- function(palette, x, limits, na.value = NA_real_, oob = censor
   pal <- palette(x)
   ifelse(!is.na(x), pal, na.value)
 }
-

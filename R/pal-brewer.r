@@ -33,8 +33,9 @@ brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
     # In both cases ensure we have n items
     pal <- pal[seq_len(n)]
 
-    if (direction == -1)
+    if (direction == -1) {
       pal <- rev(pal)
+    }
 
     pal
   }
@@ -54,11 +55,17 @@ pal_name <- function(palette, type) {
 }
 
 brewer <- list(
-  div = c("BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
-    "Spectral"),
-  qual = c("Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
-    "Set2", "Set3"),
-  seq = c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
+  div = c(
+    "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
+    "Spectral"
+  ),
+  qual = c(
+    "Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set2", "Set3"
+  ),
+  seq = c(
+    "Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
     "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
-    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd")
+    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd"
+  )
 )

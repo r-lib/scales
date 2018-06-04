@@ -37,7 +37,7 @@ col_numeric <- function(palette, domain, na.color = "#808080") {
 
   pf <- safePaletteFunc(palette, na.color)
 
-  withColorAttr('numeric', list(na.color = na.color), function(x) {
+  withColorAttr("numeric", list(na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
@@ -45,8 +45,9 @@ col_numeric <- function(palette, domain, na.color = "#808080") {
     if (is.null(rng)) rng <- range(x, na.rm = TRUE)
 
     rescaled <- scales::rescale(x, from = rng)
-    if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE))
+    if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE)) {
       warning("Some values were outside the color scale and will be treated as NA")
+    }
     pf(rescaled)
   })
 }
@@ -100,20 +101,22 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE, na.color = "#80808
     domain <- NULL
   }
   autobin <- is.null(domain) && length(bins) == 1
-  if (!is.null(domain))
+  if (!is.null(domain)) {
     bins <- getBins(domain, NULL, bins, pretty)
+  }
   numColors <- if (length(bins) == 1) bins else length(bins) - 1
   colorFunc <- col_factor(palette, domain = if (!autobin) 1:numColors, na.color = na.color)
-  pf = safePaletteFunc(palette, na.color)
+  pf <- safePaletteFunc(palette, na.color)
 
-  withColorAttr('bin', list(bins = bins, na.color = na.color), function(x) {
+  withColorAttr("bin", list(bins = bins, na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
     binsToUse <- getBins(domain, x, bins, pretty)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
-    if (any(is.na(x) != is.na(ints)))
+    if (any(is.na(x) != is.na(ints))) {
       warning("Some values were outside the color scale and will be treated as NA")
+    }
     colorFunc(ints)
   })
 }
@@ -127,12 +130,11 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE, na.color = "#80808
 #' @rdname col_numeric
 #' @export
 col_quantile <- function(palette, domain, n = 4,
-  probs = seq(0, 1, length.out = n + 1), na.color = "#808080") {
-
+                         probs = seq(0, 1, length.out = n + 1), na.color = "#808080") {
   if (!is.null(domain)) {
     bins <- stats::quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
-      'quantile', list(probs = probs, na.color = na.color),
+      "quantile", list(probs = probs, na.color = na.color),
       col_bin(palette, domain = NULL, bins = bins, na.color = na.color)
     ))
   }
@@ -141,11 +143,12 @@ col_quantile <- function(palette, domain, n = 4,
   # If you say probs = seq(0, 1, 0.25), which has length 5, does that map to 4 colors
   # or 5? 4, right?
   colorFunc <- col_factor(palette, domain = 1:(length(probs) - 1), na.color = na.color)
-  withColorAttr('quantile', list(probs = probs, na.color = na.color), function(x) {
+  withColorAttr("quantile", list(probs = probs, na.color = na.color), function(x) {
     binsToUse <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = FALSE)
-    if (any(is.na(x) != is.na(ints)))
+    if (any(is.na(x) != is.na(ints))) {
       warning("Some values were outside the color scale and will be treated as NA")
+    }
     colorFunc(ints)
   })
 }
@@ -165,8 +168,9 @@ calcLevels <- function(x, ordered) {
 }
 
 getLevels <- function(domain, x, lvls, ordered) {
-  if (!is.null(lvls))
+  if (!is.null(lvls)) {
     return(lvls)
+  }
 
   if (!is.null(domain)) {
     return(calcLevels(domain, ordered))
@@ -187,7 +191,7 @@ getLevels <- function(domain, x, lvls, ordered) {
 #' @rdname col_numeric
 #' @export
 col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
-  na.color = "#808080") {
+                       na.color = "#808080") {
 
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # levels are specified
@@ -203,7 +207,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
   hasFixedLevels <- is.null(lvls)
   pf <- safePaletteFunc(palette, na.color)
 
-  withColorAttr('factor', list(na.color = na.color), function(x) {
+  withColorAttr("factor", list(na.color = na.color), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
@@ -259,7 +263,8 @@ NULL
 
 safePaletteFunc <- function(pal, na.color) {
   filterRange(
-    filterNA(na.color = na.color,
+    filterNA(
+      na.color = na.color,
       filterZeroLength(
         filterRGB(
           toPaletteFunc(pal)
@@ -278,7 +283,7 @@ toPaletteFunc <- function(pal) {
 toPaletteFunc.character <- function(pal) {
   if (length(pal) == 1 && pal %in% row.names(RColorBrewer::brewer.pal.info)) {
     return(colour_ramp(
-      RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info[pal, 'maxcolors'], pal)
+      RColorBrewer::brewer.pal(RColorBrewer::brewer.pal.info[pal, "maxcolors"], pal)
     ))
   }
 

@@ -9,8 +9,8 @@ Range <- R6::R6Class("Range", list(
   range = NULL,
   initialize = function() {
     self$range <- NULL
-  })
-)
+  }
+))
 
 DiscreteRange <- R6::R6Class(
   "DiscreteRange",

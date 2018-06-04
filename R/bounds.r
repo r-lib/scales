@@ -26,7 +26,7 @@ rescale.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finit
 }
 
 #' @export
-rescale.NULL <- function(...)  NULL
+rescale.NULL <- function(...) NULL
 
 #' @rdname rescale
 #' @export
@@ -258,7 +258,7 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
 zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) return(TRUE)
   if (length(x) != 2) stop("x must be length 1 or 2")
-  if (any(is.na(x)))  return(NA)
+  if (any(is.na(x))) return(NA)
 
   # Special case: if they are equal as determined by ==, then there
   # is zero range. Also handles (Inf, Inf) and (-Inf, -Inf)
@@ -276,5 +276,5 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
 
   # If x[1] - x[2] (scaled to 1) is smaller than tol, then return
   # TRUE; otherwise return FALSE
-  abs((x[1] - x[2])/m) < tol
+  abs((x[1] - x[2]) / m) < tol
 }

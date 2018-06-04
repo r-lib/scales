@@ -36,7 +36,8 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
       breaks = breaks,
       minor_breaks = minor_breaks,
       format = format,
-      domain = domain),
+      domain = domain
+    ),
     class = "trans"
   )
 }

@@ -56,10 +56,10 @@ log_breaks <- function(n = 5, base = 10) {
     min <- floor(rng[1])
     max <- ceiling(rng[2])
 
-    if (max == min) return(base ^ min)
+    if (max == min) return(base^min)
 
     by <- floor((max - min) / n) + 1
-    base ^ seq(min, max, by = by)
+    base^seq(min, max, by = by)
   }
 }
 
@@ -121,7 +121,6 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #' cbreaks(c(0, 100), breaks = c(15, 20, 80),
 #'   labels = expression(alpha, beta, gamma))
 cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_format()) {
-
   if (zero_range(range)) {
     return(list(breaks = range[1], labels = format(range[1])))
   }
@@ -131,7 +130,8 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 
     if (!is.function(labels)) {
       stop("Labels can only be manually specified in conjunction with breaks",
-        call. = FALSE)
+        call. = FALSE
+      )
     }
   }
 
@@ -159,7 +159,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 #' @examples
 #' m <- extended_breaks()(c(1, 10))
 #' regular_minor_breaks()(m, c(1, 10), n = 2)
-#' 
+#'
 #' n <- extended_breaks()(c(0, -9))
 #' regular_minor_breaks(reverse = TRUE)(n, c(0, -9), n = 2)
 regular_minor_breaks <- function(reverse = FALSE) {
