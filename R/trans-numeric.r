@@ -18,7 +18,7 @@ atanh_trans <- function() {
 #' Box-Cox power transformation.
 #'
 #' @param p Exponent of boxcox transformation.
-#' @references See \url{http://en.wikipedia.org/wiki/Power_transform} for
+#' @references See <http://en.wikipedia.org/wiki/Power_transform> for
 #   more details on method.
 #' @export
 boxcox_trans <- function(p) {

@@ -3,26 +3,26 @@
 #' Conveniently maps data values (numeric or factor/character) to colors
 #' according to a given palette, which can be provided in a variety of formats.
 #'
-#' \code{col_numeric} is a simple linear mapping from continuous numeric data
+#' `col_numeric` is a simple linear mapping from continuous numeric data
 #' to an interpolated palette.
 #'
 #' @param palette The colors or color function that values will be mapped to
 #' @param domain The possible values that can be mapped.
 #'
-#'   For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
-#'   range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
-#'   numeric data; and \code{col_factor} needs categorical data.
+#'   For `col_numeric` and `col_bin`, this can be a simple numeric
+#'   range (e.g. `c(0, 100)`); `col_quantile` needs representative
+#'   numeric data; and `col_factor` needs categorical data.
 #'
-#'   If \code{NULL}, then whenever the resulting color function is called, the
-#'   \code{x} value will represent the domain. This implies that if the function
+#'   If `NULL`, then whenever the resulting color function is called, the
+#'   `x` value will represent the domain. This implies that if the function
 #'   is invoked multiple times, the encoding between values and colors may not
-#'   be consistent; if consistency is needed, you must provide a non-\code{NULL}
+#'   be consistent; if consistency is needed, you must provide a non-`NULL`
 #'   domain.
-#' @param na.color The color to return for \code{NA} values. Note that
-#'   \code{na.color=NA} is valid.
+#' @param na.color The color to return for `NA` values. Note that
+#'   `na.color=NA` is valid.
 #'
-#' @return A function that takes a single parameter \code{x}; when called with a
-#'   vector of numbers (except for \code{col_factor}, which expects
+#' @return A function that takes a single parameter `x`; when called with a
+#'   vector of numbers (except for `col_factor`, which expects
 #'   factors/characters), #RRGGBB color strings are returned.
 #'
 #' @export
@@ -81,15 +81,15 @@ getBins <- function(domain, x, bins, pretty) {
   }
 }
 
-#' @details \code{col_bin} also maps continuous numeric data, but performs
-#'   binning based on value (see the \code{\link[base]{cut}} function).
+#' @details `col_bin` also maps continuous numeric data, but performs
+#'   binning based on value (see the [base::cut()] function).
 #' @param bins Either a numeric vector of two or more unique cut points or a
 #'   single number (greater than or equal to 2) giving the number of intervals
 #'   into which the domain values are to be cut.
-#' @param pretty Whether to use the function \code{\link{pretty}()} to generate
-#'   the bins when the argument \code{bins} is a single number. When
-#'   \code{pretty = TRUE}, the actual number of bins may not be the number of
-#'   bins you specified. When \code{pretty = FALSE}, \code{\link{seq}()} is used
+#' @param pretty Whether to use the function [pretty()] to generate
+#'   the bins when the argument `bins` is a single number. When
+#'   `pretty = TRUE`, the actual number of bins may not be the number of
+#'   bins you specified. When `pretty = FALSE`, [seq()] is used
 #'   to generate the bins and the breaks may not be "pretty".
 #' @rdname col_numeric
 #' @export
@@ -118,11 +118,11 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE, na.color = "#80808
   })
 }
 
-#' @details \code{col_quantile} similarly bins numeric data, but via the
-#'   \code{\link[stats]{quantile}} function.
+#' @details `col_quantile` similarly bins numeric data, but via the
+#'   [stats::quantile()] function.
 #' @param n Number of equal-size quantiles desired. For more precise control,
-#'   use the \code{probs} argument instead.
-#' @param probs See \code{\link[stats]{quantile}}. If provided, the \code{n}
+#'   use the `probs` argument instead.
+#' @param probs See [stats::quantile()]. If provided, the `n`
 #'   argument is ignored.
 #' @rdname col_numeric
 #' @export
@@ -177,12 +177,12 @@ getLevels <- function(domain, x, lvls, ordered) {
   }
 }
 
-#' @details \code{col_factor} maps factors to colors. If the palette is
+#' @details `col_factor` maps factors to colors. If the palette is
 #'   discrete and has a different number of colors than the number of factors,
 #'   interpolation is used.
 #' @param levels An alternate way of specifying levels; if specified, domain is
 #'   ignored
-#' @param ordered If \code{TRUE} and \code{domain} needs to be coerced to a
+#' @param ordered If `TRUE` and `domain` needs to be coerced to a
 #'   factor, treat it as already in the correct order
 #' @rdname col_numeric
 #' @export
@@ -229,11 +229,11 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
   })
 }
 
-#' @details The \code{palette} argument can be any of the following:
+#' @details The `palette` argument can be any of the following:
 #' \enumerate{
-#'   \item{A character vector of RGB or named colors. Examples: \code{palette()}, \code{c("#000000", "#0000FF", "#FFFFFF")}, \code{topo.colors(10)}}
-#'   \item{The name of an RColorBrewer palette, e.g. \code{"BuPu"} or \code{"Greens"}.}
-#'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
+#'   \item{A character vector of RGB or named colors. Examples: `palette()`, `c("#000000", "#0000FF", "#FFFFFF")`, `topo.colors(10)`}
+#'   \item{The name of an RColorBrewer palette, e.g. `"BuPu"` or `"Greens"`.}
+#'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: `colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")`.}
 #' }
 #' @examples
 #' pal <- col_bin("Greens", domain = 0:100)
@@ -348,22 +348,22 @@ filterRange <- function(f) {
 #' Returns a function that maps the interval [0,1] to a set of colors.
 #' Interpolation is performed in the CIELAB color space. Similar to
 #' \code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
-#' times faster, and provides results in \code{"#RRGGBB"} (or
-#' \code{"#RRGGBBAA"}) character form instead of RGB color matrices.
+#' times faster, and provides results in `"#RRGGBB"` (or
+#' `"#RRGGBBAA"`) character form instead of RGB color matrices.
 #'
 #' @param colors Colors to interpolate; must be a valid argument to
-#'   \code{\link[grDevices]{col2rgb}}. This can be a character vector of
-#'   \code{"#RRGGBB"} or  \code{"#RRGGBBAA"}, color names from
-#'   \code{\link[grDevices]{colors}}, or a positive integer that indexes into
-#'   \code{\link[grDevices]{palette}()}.
-#' @param na.color The color to map to \code{NA} values (for example,
-#'   \code{"#606060"} for dark grey, or \code{"#00000000"} for transparent) and
-#'   values outside of [0,1]. Can itself by \code{NA}, which will simply cause
-#'   an \code{NA} to be inserted into the output.
+#'   [grDevices::col2rgb()]. This can be a character vector of
+#'   `"#RRGGBB"` or  `"#RRGGBBAA"`, color names from
+#'   [grDevices::colors()], or a positive integer that indexes into
+#'   [grDevices::palette()].
+#' @param na.color The color to map to `NA` values (for example,
+#'   `"#606060"` for dark grey, or `"#00000000"` for transparent) and
+#'   values outside of [0,1]. Can itself by `NA`, which will simply cause
+#'   an `NA` to be inserted into the output.
 #' @param alpha Whether to include alpha channels in interpolation; otherwise,
-#'   any alpha information will be discarded. If \code{TRUE} then the returned
-#'   function will provide colors in \code{"#RRGGBBAA"} format instead of
-#'   \code{"#RRGGBB"}.
+#'   any alpha information will be discarded. If `TRUE` then the returned
+#'   function will provide colors in `"#RRGGBBAA"` format instead of
+#'   `"#RRGGBB"`.
 #'
 #' @return A function that takes a numeric vector and returns a character vector
 #'   of the same length with RGB or RGBA hex colors.

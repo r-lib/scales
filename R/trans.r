@@ -59,7 +59,7 @@ as.trans <- function(x) {
 
 #' Compute range of transformed values.
 #'
-#' Silently drops any ranges outside of the domain of \code{trans}.
+#' Silently drops any ranges outside of the domain of `trans`.
 #'
 #' @param trans a transformation object, or the name of a transformation object
 #'   given as a string.

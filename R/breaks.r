@@ -1,8 +1,8 @@
 #' Pretty breaks.
-#' Uses default R break algorithm as implemented in \code{\link{pretty}}.
+#' Uses default R break algorithm as implemented in [pretty()].
 #'
 #' @param n desired number of breaks
-#' @param ... other arguments passed on to \code{\link{pretty}}
+#' @param ... other arguments passed on to [pretty()]
 #' @export
 #' @examples
 #' pretty_breaks()(1:10)
@@ -22,7 +22,7 @@ pretty_breaks <- function(n = 5, ...) {
 #' \pkg{labeling} package.
 #'
 #' @param n desired number of breaks
-#' @param ... other arguments passed on to \code{\link[labeling]{extended}}
+#' @param ... other arguments passed on to [labeling::extended()]
 #' @references Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 #'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
 #'  2010.
@@ -67,7 +67,7 @@ log_breaks <- function(n = 5, base = 10) {
 #'
 #' These often do not produce very attractive breaks.
 #'
-#' @param trans function of single variable, \code{x}, that given a numeric
+#' @param trans function of single variable, `x`, that given a numeric
 #'   vector returns the transformed values
 #' @param inv inverse of the transformation function
 #' @param n desired number of ticks

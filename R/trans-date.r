@@ -22,7 +22,7 @@ from_date <- function(x) {
 
 #' Transformation for date-times (class POSIXt).
 #'
-#' @param tz Optionally supply the time zone.  If \code{NULL}, the default,
+#' @param tz Optionally supply the time zone.  If `NULL`, the default,
 #'   the time zone will be extracted from first input with a non-null tz.
 #' @export
 #' @examples
@@ -114,8 +114,8 @@ date_breaks <- function(width = "1 month") {
 #' Formatted dates.
 #'
 #' @param format Date format using standard POSIX specification.  See
-#'  \code{\link{strptime}} for possible formats.
-#' @param tz a time zone name, see \code{\link{timezones}}. Defaults
+#'  [strptime()] for possible formats.
+#' @param tz a time zone name, see [timezones()]. Defaults
 #'  to UTC
 #' @export
 date_format <- function(format = "%Y-%m-%d", tz = 'UTC') {

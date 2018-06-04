@@ -1,6 +1,6 @@
 #' Comma formatter: format number with commas separating thousands.
 #'
-#' @param ... other arguments passed on to \code{\link{format}}
+#' @param ... other arguments passed on to [format()]
 #' @param x a numeric vector to format
 #' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
@@ -30,16 +30,16 @@ comma <- function(x, ...) {
 #' The returned function will format a vector of values as currency.
 #' Values are rounded to the nearest cent, and cents are displayed if
 #' any of the values has a non-zero cents and the largest value is less
-#' than \code{largest_with_cents} which by default is 100000.
+#' than `largest_with_cents` which by default is 100000.
 #'
 #' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
-#' @param largest_with_cents the value that all values of \code{x} must
+#' @param largest_with_cents the value that all values of `x` must
 #'   be less than in order for the cents to be displayed
 #' @param prefix,suffix Symbols to display before and after amount.
 #' @param big.mark Character used between every 3 digits.
 #' @param negative_parens Should negative values be shown with parentheses?
-#' @param ... Other arguments passed on to \code{\link{format}}.
+#' @param ... Other arguments passed on to [format()].
 #' @param x a numeric vector to format
 #' @export
 #' @examples
@@ -126,7 +126,7 @@ percent <- percent_format()
 #' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param digits number of significant digits to show
-#' @param ... other arguments passed on to \code{\link{format}}
+#' @param ... other arguments passed on to [format()]
 #' @param x a numeric vector to format
 #' @export
 #' @examples
@@ -180,7 +180,7 @@ ordinal <- function(x) {
 
 #' Parse a text label to produce expressions for plotmath.
 #'
-#' @seealso \code{\link{plotmath}}
+#' @seealso [plotmath()]
 #' @return a function with single parameter x, a character vector, that
 #'    returns a list of expressions
 #' @export
@@ -193,7 +193,7 @@ parse_format <- function() {
 }
 
 #' Add arbitrary expression to a label.
-#' The symbol that will be replace by the label value is \code{.x}.
+#' The symbol that will be replace by the label value is `.x`.
 #'
 #' @param expr expression to use
 #' @param format another format function to apply prior to mathematical
@@ -202,7 +202,7 @@ parse_format <- function() {
 #' @return a function with single parameter x, a numeric vector, that
 #'    returns a list of expressions
 #' @export
-#' @seealso \code{\link{plotmath}}
+#' @seealso [plotmath()]
 #' @examples
 #' math_format()(1:10)
 #' math_format(alpha + frac(1, .x))(1:10)
@@ -255,14 +255,14 @@ trans_format <- function(trans, format = scientific_format()) {
   }
 }
 
-#' Format with using any arguments to \code{\link{format}}.
+#' Format with using any arguments to [format()].
 #'
 #' If the breaks have names, they will be used in preference to formatting
 #' the breaks.
 #'
-#' @param ... other arguments passed on to \code{\link{format}}.
-#' @seealso \code{\link{format}}, \code{\link{format.Date}},
-#'   \code{\link{format.POSIXct}}
+#' @param ... other arguments passed on to [format()].
+#' @seealso [format()], [format.Date()],
+#'   [format.POSIXct()]
 #' @export
 format_format <- function(...) {
   function(x) {
@@ -286,7 +286,7 @@ precision <- function(x) {
 #' @param unit The units to append
 #' @param scale A scaling factor. Useful if the underlying data is on another scale
 #' @param sep The separator between the number and the label
-#' @param ... Arguments passed on to \code{\link{format}}
+#' @param ... Arguments passed on to [format()]
 #' @export
 #' @examples
 #' # labels in kilometer when the raw data are in meter
@@ -296,7 +296,7 @@ precision <- function(x) {
 #' # labels in hectares, raw data in square meters
 #' ha <- unit_format(unit = "ha", scale = 1e-4)
 #' km(runif(10) * 1e5)
-#' @seealso \code{\link{comma}}
+#' @seealso [comma()]
 unit_format <- function(unit = "m", scale = 1, sep = " ", ...){
   function(x){
     paste(comma(x * scale, ...), unit, sep = sep)

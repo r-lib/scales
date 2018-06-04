@@ -44,7 +44,7 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l=l, c=c)
 #' Vectorised in both colour and alpha.
 #'
 #' @param colour colour
-#' @param alpha new alpha level in [0,1].  If alpha is \code{NA},
+#' @param alpha new alpha level in [0,1].  If alpha is `NA`,
 #'   existing alpha values are preserved.
 #' @export
 #' @examples
@@ -78,7 +78,7 @@ alpha <- function(colour, alpha = NA) {
 #'
 #' @param colours a character vector of colours
 #' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
-#' @param borders colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics]{rect}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.
+#' @param borders colour of the borders of the tiles; matches the `border` argument of [graphics::rect()]. The default means `par("fg")`. Use `border = NA` to omit borders.
 #' @export
 #' @importFrom graphics par plot rect text
 show_col <- function(colours, labels = TRUE, borders = NULL) {
