@@ -1,32 +1,34 @@
 Package: scales
+Title: Scale Functions for Visualization
 Version: 0.5.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
     person("RStudio", role = "cph")
     )
-Title: Scale Functions for Visualization
 Description: Graphical scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
+License: MIT + file LICENSE
 URL: https://github.com/hadley/scales
 BugReports: https://github.com/hadley/scales/issues
-Depends:
-    R (>= 2.13)
-Imports:
-    RColorBrewer,
+Depends: 
+    R (>= 3.1)
+Imports: 
     dichromat,
-    plyr,
-    munsell (>= 0.2),
     labeling,
-    Rcpp,
+    munsell (>= 0.2),
+    plyr,
     R6,
+    RColorBrewer,
+    Rcpp,
     viridisLite
-LinkingTo: Rcpp
-Suggests:
-    testthat (>= 0.8),
+Suggests: 
     bit64,
     covr,
-    hms
-License: MIT + file LICENSE
+    hms,
+    testthat (>= 0.8)
+LinkingTo: 
+    Rcpp
 LazyLoad: yes
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1

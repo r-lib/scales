@@ -1,7 +1,7 @@
 #' Viridis palette
-#' 
+#'
 #' @inheritParams viridisLite::viridis
-#' @references \url{https://bids.github.io/colormap/}
+#' @references <https://bids.github.io/colormap/>
 #' @export
 #' @examples
 #' show_col(viridis_pal()(10))
