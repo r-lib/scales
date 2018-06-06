@@ -17,7 +17,6 @@ Imports:
     dichromat,
     labeling,
     munsell (>= 0.2),
-    plyr,
     R6,
     RColorBrewer,
     Rcpp,
