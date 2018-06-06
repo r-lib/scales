@@ -23,15 +23,15 @@ col_factor(palette, domain, levels = NULL, ordered = FALSE,
 
 \item{domain}{The possible values that can be mapped.
 
-  For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
-  range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
-  numeric data; and \code{col_factor} needs categorical data.
+For \code{col_numeric} and \code{col_bin}, this can be a simple numeric
+range (e.g. \code{c(0, 100)}); \code{col_quantile} needs representative
+numeric data; and \code{col_factor} needs categorical data.
 
-  If \code{NULL}, then whenever the resulting color function is called, the
-  \code{x} value will represent the domain. This implies that if the function
-  is invoked multiple times, the encoding between values and colors may not
-  be consistent; if consistency is needed, you must provide a non-\code{NULL}
-  domain.}
+If \code{NULL}, then whenever the resulting color function is called, the
+\code{x} value will represent the domain. This implies that if the function
+is invoked multiple times, the encoding between values and colors may not
+be consistent; if consistency is needed, you must provide a non-\code{NULL}
+domain.}
 
 \item{na.color}{The color to return for \code{NA} values. Note that
 \code{na.color=NA} is valid.}
@@ -40,16 +40,16 @@ col_factor(palette, domain, levels = NULL, ordered = FALSE,
 single number (greater than or equal to 2) giving the number of intervals
 into which the domain values are to be cut.}
 
-\item{pretty}{Whether to use the function \code{\link{pretty}()} to generate
+\item{pretty}{Whether to use the function \code{\link[=pretty]{pretty()}} to generate
 the bins when the argument \code{bins} is a single number. When
 \code{pretty = TRUE}, the actual number of bins may not be the number of
-bins you specified. When \code{pretty = FALSE}, \code{\link{seq}()} is used
+bins you specified. When \code{pretty = FALSE}, \code{\link[=seq]{seq()}} is used
 to generate the bins and the breaks may not be "pretty".}
 
 \item{n}{Number of equal-size quantiles desired. For more precise control,
 use the \code{probs} argument instead.}
 
-\item{probs}{See \code{\link[stats]{quantile}}. If provided, the \code{n}
+\item{probs}{See \code{\link[stats:quantile]{stats::quantile()}}. If provided, the \code{n}
 argument is ignored.}
 
 \item{levels}{An alternate way of specifying levels; if specified, domain is
@@ -60,8 +60,8 @@ factor, treat it as already in the correct order}
 }
 \value{
 A function that takes a single parameter \code{x}; when called with a
-  vector of numbers (except for \code{col_factor}, which expects
-  factors/characters), #RRGGBB color strings are returned.
+vector of numbers (except for \code{col_factor}, which expects
+factors/characters), #RRGGBB color strings are returned.
 }
 \description{
 Conveniently maps data values (numeric or factor/character) to colors
@@ -72,20 +72,20 @@ according to a given palette, which can be provided in a variety of formats.
 to an interpolated palette.
 
 \code{col_bin} also maps continuous numeric data, but performs
-  binning based on value (see the \code{\link[base]{cut}} function).
+binning based on value (see the \code{\link[base:cut]{base::cut()}} function).
 
 \code{col_quantile} similarly bins numeric data, but via the
-  \code{\link[stats]{quantile}} function.
+\code{\link[stats:quantile]{stats::quantile()}} function.
 
 \code{col_factor} maps factors to colors. If the palette is
-  discrete and has a different number of colors than the number of factors,
-  interpolation is used.
+discrete and has a different number of colors than the number of factors,
+interpolation is used.
 
 The \code{palette} argument can be any of the following:
 \enumerate{
-  \item{A character vector of RGB or named colors. Examples: \code{palette()}, \code{c("#000000", "#0000FF", "#FFFFFF")}, \code{topo.colors(10)}}
-  \item{The name of an RColorBrewer palette, e.g. \code{"BuPu"} or \code{"Greens"}.}
-  \item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
+\item{A character vector of RGB or named colors. Examples: \code{palette()}, \code{c("#000000", "#0000FF", "#FFFFFF")}, \code{topo.colors(10)}}
+\item{The name of an RColorBrewer palette, e.g. \code{"BuPu"} or \code{"Greens"}.}
+\item{A function that receives a single value between 0 and 1 and returns a color. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
 }
 }
 \examples{

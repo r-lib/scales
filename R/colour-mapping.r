@@ -350,7 +350,7 @@ filterRange <- function(f) {
 
 #' Fast color interpolation
 #'
-#' Returns a function that maps the interval [0,1] to a set of colors.
+#' Returns a function that maps the interval \[0,1] to a set of colors.
 #' Interpolation is performed in the CIELAB color space. Similar to
 #' \code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
 #' times faster, and provides results in `"#RRGGBB"` (or
@@ -363,7 +363,7 @@ filterRange <- function(f) {
 #'   [grDevices::palette()].
 #' @param na.color The color to map to `NA` values (for example,
 #'   `"#606060"` for dark grey, or `"#00000000"` for transparent) and
-#'   values outside of [0,1]. Can itself by `NA`, which will simply cause
+#'   values outside of \[0,1]. Can itself by `NA`, which will simply cause
 #'   an `NA` to be inserted into the output.
 #' @param alpha Whether to include alpha channels in interpolation; otherwise,
 #'   any alpha information will be discarded. If `TRUE` then the returned
@@ -373,7 +373,7 @@ filterRange <- function(f) {
 #' @return A function that takes a numeric vector and returns a character vector
 #'   of the same length with RGB or RGBA hex colors.
 #'
-#' @seealso \link[grDevices]{colorRamp}
+#' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
 colour_ramp <- function(colors, na.color = NA, alpha = FALSE) {

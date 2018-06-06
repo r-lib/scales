@@ -8,7 +8,7 @@ parse_format()
 }
 \value{
 a function with single parameter x, a character vector, that
-   returns a list of expressions
+returns a list of expressions
 }
 \description{
 Parse a text label to produce expressions for plotmath.
@@ -17,5 +17,5 @@ Parse a text label to produce expressions for plotmath.
 parse_format()(c("alpha", "beta", "gamma"))
 }
 \seealso{
-\code{\link{plotmath}}
+\code{\link[=plotmath]{plotmath()}}
 }

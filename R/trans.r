@@ -19,6 +19,7 @@
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued
+#' @noMd
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans

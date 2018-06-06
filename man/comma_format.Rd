@@ -10,13 +10,13 @@ comma_format(...)
 comma(x, ...)
 }
 \arguments{
-\item{...}{other arguments passed on to \code{\link{format}}}
+\item{...}{other arguments passed on to \code{\link[=format]{format()}}}
 
 \item{x}{a numeric vector to format}
 }
 \value{
 a function with single parameter x, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 Comma formatter: format number with commas separating thousands.

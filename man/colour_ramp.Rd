@@ -8,10 +8,10 @@ colour_ramp(colors, na.color = NA, alpha = FALSE)
 }
 \arguments{
 \item{colors}{Colors to interpolate; must be a valid argument to
-\code{\link[grDevices]{col2rgb}}. This can be a character vector of
+\code{\link[grDevices:col2rgb]{grDevices::col2rgb()}}. This can be a character vector of
 \code{"#RRGGBB"} or  \code{"#RRGGBBAA"}, color names from
-\code{\link[grDevices]{colors}}, or a positive integer that indexes into
-\code{\link[grDevices]{palette}()}.}
+\code{\link[grDevices:colors]{grDevices::colors()}}, or a positive integer that indexes into
+\code{\link[grDevices:palette]{grDevices::palette()}}.}
 
 \item{na.color}{The color to map to \code{NA} values (for example,
 \code{"#606060"} for dark grey, or \code{"#00000000"} for transparent) and
@@ -25,7 +25,7 @@ function will provide colors in \code{"#RRGGBBAA"} format instead of
 }
 \value{
 A function that takes a numeric vector and returns a character vector
-  of the same length with RGB or RGBA hex colors.
+of the same length with RGB or RGBA hex colors.
 }
 \description{
 Returns a function that maps the interval [0,1] to a set of colors.
@@ -35,5 +35,5 @@ times faster, and provides results in \code{"#RRGGBB"} (or
 \code{"#RRGGBBAA"}) character form instead of RGB color matrices.
 }
 \seealso{
-\link[grDevices]{colorRamp}
+\code{\link[grDevices]{colorRamp}}
 }

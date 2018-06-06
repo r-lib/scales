@@ -8,9 +8,9 @@ date_format(format = "\%Y-\%m-\%d", tz = "UTC")
 }
 \arguments{
 \item{format}{Date format using standard POSIX specification.  See
-\code{\link{strptime}} for possible formats.}
+\code{\link[=strptime]{strptime()}} for possible formats.}
 
-\item{tz}{a time zone name, see \code{\link{timezones}}. Defaults
+\item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
 to UTC}
 }
 \description{
