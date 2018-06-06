@@ -12,6 +12,10 @@ dscale <- function(x, palette, na.value = NA) {
   map_discrete(palette, x, limits, na.value)
 }
 
+is.discrete <- function(x) {
+  is.factor(x) || is.character(x) || is.logical(x)
+}
+
 #' Train (update) a discrete scale
 #'
 #' @param new New data to add to scale
@@ -22,7 +26,7 @@ dscale <- function(x, palette, na.value = NA) {
 train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
   if (is.null(new)) return(existing)
 
-  if (!(is.factor(new) || is.character(new) || is.logical(new))) {
+  if (!is.discrete(new)) {
     stop("Continuous value supplied to discrete scale", call. = FALSE)
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm)
