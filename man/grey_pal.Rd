@@ -19,5 +19,5 @@ show_col(grey_pal()(25))
 show_col(grey_pal(0, 1)(25))
 }
 \seealso{
-\code{\link{seq_gradient_pal}} for continuous version
+\code{\link[=seq_gradient_pal]{seq_gradient_pal()}} for continuous version
 }

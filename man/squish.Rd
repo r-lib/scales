@@ -22,5 +22,5 @@ squish(c(-1, 0.5, 1, 2, NA))
 squish(c(-1, 0, 0.5, 1, 2))
 }
 \author{
-Homer Strong <homer.strong@gmail.com>
+Homer Strong \href{mailto:homer.strong@gmail.com}{homer.strong@gmail.com}
 }

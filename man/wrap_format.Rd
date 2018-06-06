@@ -12,7 +12,7 @@ wrap_format(width)
 }
 \value{
 Function with single parameter x, a character vector, that
-   returns a wrapped character vector
+returns a wrapped character vector
 }
 \description{
 Wrap text to a specified width, adding newlines for spaces if text exceeds

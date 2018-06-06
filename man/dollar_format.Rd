@@ -16,7 +16,7 @@ dollar(x)
 \item{largest_with_cents}{the value that all values of \code{x} must
 be less than in order for the cents to be displayed}
 
-\item{...}{Other arguments passed on to \code{\link{format}}.}
+\item{...}{Other arguments passed on to \code{\link[=format]{format()}}.}
 
 \item{big.mark}{Character used between every 3 digits.}
 
@@ -26,7 +26,7 @@ be less than in order for the cents to be displayed}
 }
 \value{
 a function with single parameter x, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 The returned function will format a vector of values as currency.

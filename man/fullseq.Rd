@@ -17,6 +17,6 @@ fullseq(range, size, ...)
 Generate sequence of fixed size intervals covering range.
 }
 \seealso{
-\code{\link[plyr]{round_any}}
+\code{\link[plyr:round_any]{plyr::round_any()}}
 }
 \keyword{internal}
