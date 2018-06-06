@@ -43,7 +43,7 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' Vectorised in both colour and alpha.
 #'
 #' @param colour colour
-#' @param alpha new alpha level in [0,1].  If alpha is `NA`,
+#' @param alpha new alpha level in \[0,1].  If alpha is `NA`,
 #'   existing alpha values are preserved.
 #' @export
 #' @examples
