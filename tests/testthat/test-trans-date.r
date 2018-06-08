@@ -19,6 +19,7 @@ test_that("date/time scales raise error on incorrect inputs", {
 })
 
 test_that("time scales learn timezones", {
+  skip_if_not(getRversion() > "3.3")
   time <- time_trans()
   x <- time$inv(time$trans(a_time))
 
