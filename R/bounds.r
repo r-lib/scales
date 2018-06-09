@@ -18,7 +18,7 @@ rescale <- function(x, to, from, ...) {
 
 #' @rdname rescale
 #' @export
-rescale.default <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
+rescale.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
   if (zero_range(from) || zero_range(to)) {
     return(ifelse(is.na(x), NA, mean(to)))
   }
@@ -30,10 +30,14 @@ rescale.NULL <- function(...) NULL
 
 #' @rdname rescale
 #' @export
+rescale.logical <- rescale.numeric
+
+#' @rdname rescale
+#' @export
 rescale.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...) {
   x <- as.numeric(x)
   from <- as.numeric(from)
-  rescale(x = x, to = to, from = from)
+  rescale.numeric(x = x, to = to, from = from)
 }
 
 #' @rdname rescale
@@ -69,7 +73,7 @@ rescale_mid <- function(x, to, from, mid, ...) {
 
 #' @rdname rescale_mid
 #' @export
-rescale_mid.default <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
+rescale_mid.numeric <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), mid = 0, ...) {
   if (zero_range(from) || zero_range(to)) return(rep(mean(to), length(x)))
 
   extent <- 2 * max(abs(from - mid))
@@ -78,6 +82,10 @@ rescale_mid.default <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), 
 
 #' @export
 rescale_mid.NULL <- function(...) NULL
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.logical <- rescale_mid.numeric
 
 #' @rdname rescale_mid
 #' @export
@@ -90,7 +98,7 @@ rescale_mid.POSIXt <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE),
   if (!is.numeric(mid)) {
     mid <- as.numeric(as.POSIXct(mid))
   }
-  rescale_mid(x = x, to = to, from = from, mid = mid)
+  rescale_mid.numeric(x = x, to = to, from = from, mid = mid)
 }
 
 #' @rdname rescale_mid

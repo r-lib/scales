@@ -1,8 +1,5 @@
 # scales 0.5.0.9000
 
-* `rescale()` and `rescale_mid()` provide a default method, so they
-  work with most objects (@zeehio, #105).
-
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property

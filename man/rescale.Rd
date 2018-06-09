@@ -2,7 +2,8 @@
 % Please edit documentation in R/bounds.r
 \name{rescale}
 \alias{rescale}
-\alias{rescale.default}
+\alias{rescale.numeric}
+\alias{rescale.logical}
 \alias{rescale.POSIXt}
 \alias{rescale.Date}
 \alias{rescale.integer64}
@@ -10,7 +11,10 @@
 \usage{
 rescale(x, to, from, ...)
 
-\method{rescale}{default}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
+\method{rescale}{numeric}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
+  finite = TRUE), ...)
+
+\method{rescale}{logical}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
   finite = TRUE), ...)
 
 \method{rescale}{POSIXt}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
