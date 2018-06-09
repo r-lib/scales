@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* New `pseudo_log_trans()` for transforming numerics into a signed logarithmic scale
+  with a smooth transition to a linear scale around 0
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
