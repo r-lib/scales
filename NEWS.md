@@ -1,6 +1,6 @@
 # scales 0.5.0.9000
 
-* Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke).
+* Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
 
 # scales 0.5.0
 
