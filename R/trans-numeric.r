@@ -126,11 +126,17 @@ sqrt_trans <- function() {
 }
 
 #' Pseudo-log transformation
+#'
+#' A transformation mapping numbers to a signed logarithmic scale
+#' with a smooth transition to linear scale around 0.
+#'
 #' @param sigma scaling factor for the linear part
 #' @param base approximate logarithm base used
 #' @export
 pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
-  trans_new("pseudo_log",
-            function(x) asinh(x / (2 * sigma)) / log(base),
-            function(x)  2 * sigma * sinh(x * log(base)))
+  trans_new(
+    "pseudo_log",
+    function(x) asinh(x / (2 * sigma)) / log(base),
+    function(x) 2 * sigma * sinh(x * log(base))
+  )
 }
