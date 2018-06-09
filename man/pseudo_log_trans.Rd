@@ -12,5 +12,6 @@ pseudo_log_trans(sigma = 1, base = exp(1))
 \item{base}{approximate logarithm base used}
 }
 \description{
-Pseudo-log transformation
+A transformation mapping numbers to a signed logarithmic scale
+with a smooth transition to linear scale around 0.
 }
