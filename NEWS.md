@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* Provide `rescale()` and `rescale_mid()` methods for `dist` objects (@zeehio, #105)
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
