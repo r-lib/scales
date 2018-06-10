@@ -11,7 +11,7 @@ extended_breaks(n = 5, ...)
 \arguments{
 \item{n}{desired number of breaks}
 
-\item{...}{other arguments passed on to \code{\link[labeling]{extended}}}
+\item{...}{other arguments passed on to \code{\link[labeling:extended]{labeling::extended()}}}
 }
 \description{
 Extended breaks.
@@ -24,6 +24,6 @@ extended_breaks()(1:100)
 }
 \references{
 Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
- Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
- 2010.
+Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
+2010.
 }

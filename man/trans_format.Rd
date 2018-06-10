@@ -13,7 +13,7 @@ trans_format(trans, format = scientific_format())
 }
 \value{
 a function with single parameter x, a numeric vector, that
-   returns a character vector of list of expressions
+returns a character vector of list of expressions
 }
 \description{
 Format labels after transformation.

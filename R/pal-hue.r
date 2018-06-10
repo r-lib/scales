@@ -1,7 +1,7 @@
 #' Hue palette (discrete).
 #'
-#' @param h range of hues to use, in [0, 360]
-#' @param l luminance (lightness), in [0, 100]
+#' @param h range of hues to use, in \[0, 360]
+#' @param l luminance (lightness), in \[0, 100]
 #' @param c chroma (intensity of colour), maximum value varies depending on
 #'   combination of hue and luminance.
 #' @param h.start hue to start at
@@ -25,6 +25,10 @@
 hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
   force_all(h, c, l, h.start, direction)
   function(n) {
+    if (n == 0) {
+      stop("Must request at least one colour from a hue palette.", call. = FALSE)
+    }
+
     if ((diff(h) %% 360) < 1) {
       h[2] <- h[2] - 360 / n
     }
