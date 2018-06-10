@@ -66,11 +66,18 @@ log_breaks <- function(n = 5, base = 10) {
     relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
     if (sum(relevant_breaks) >= (n - 2)) return(breaks)
 
+    while (by > 1) {
+      by <- by - 1
+      breaks <- base ^ seq(min, max, by = by)
+      relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
+      if (sum(relevant_breaks) >= (n - 2)) return(breaks)
+    }
+
     steps <- 1
     delta <- function(x) {
       min(diff(log(sort(c(x, steps, base)), base = base)))
     }
-    candidate <- 2:(base - 1)
+    candidate <- tail(seq_len(base - 1), -1)
     while (length(candidate)) {
       best <- which.max(sapply(candidate, delta))
       steps <- c(steps, candidate[best])

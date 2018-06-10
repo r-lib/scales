@@ -42,4 +42,9 @@ test_that("add intermediate breaks when more breaks are needed", {
     log_breaks(base = base)(base ^ c(2, 4) + c(1, -1)),
     c(9, 18, 27, 54, 81, 162)
   )
+  base <- 2
+  expect_equal(
+    log_breaks(n = 5, base = 2)(c(3, 100)),
+    c(2, 4, 8, 16, 32, 64, 128)
+  )
 })
