@@ -58,40 +58,9 @@ comma <- function(x, ...) {
 #'
 #' finance <- dollar_format(negative_parens = TRUE)
 #' finance(c(-100, 100))
-dollar_format <- function(prefix = "$", suffix = "",
-                          largest_with_cents = 100000, ..., big.mark = ",",
-                          negative_parens = FALSE) {
-  # The dollar_format function is called at build time (see the dollar function below)
-  # force_all is not used here to avoid a build time dependency on it
-  # This line is equivalent to force all:
-  list(prefix, suffix, largest_with_cents, big.mark, negative_parens, ...)
-
-  function(x) {
-    if (length(x) == 0) return(character())
-    x <- round_any(x, 0.01)
-    if (needs_cents(x, largest_with_cents)) {
-      nsmall <- 2L
-    } else {
-      x <- round_any(x, 1)
-      nsmall <- 0L
-    }
-
-    negative <- !is.na(x) & x < 0
-    if (negative_parens) {
-      x <- abs(x)
-    }
-
-    amount <- format(abs(x),
-      nsmall = nsmall, trim = TRUE, big.mark = big.mark,
-      scientific = FALSE, digits = 1L
-    )
-
-    if (negative_parens) {
-      paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
-    } else {
-      paste0(prefix, ifelse(negative, "-", ""), amount, suffix)
-    }
-  }
+dollar_format <- function(...) {
+  force_all(...)
+  function(x) dollar(x, ...)
 }
 
 needs_cents <- function(x, threshold) {
@@ -108,7 +77,34 @@ needs_cents <- function(x, threshold) {
 
 #' @export
 #' @rdname dollar_format
-dollar <- dollar_format()
+dollar <- function(x, prefix = "$", suffix = "",
+                   largest_with_cents = 100000, ..., big.mark = ",",
+                   negative_parens = FALSE) {
+  if (length(x) == 0) return(character())
+  x <- round_any(x, 0.01)
+  if (needs_cents(x, largest_with_cents)) {
+    nsmall <- 2L
+  } else {
+    x <- round_any(x, 1)
+    nsmall <- 0L
+  }
+
+  negative <- !is.na(x) & x < 0
+  if (negative_parens) {
+    x <- abs(x)
+  }
+
+  amount <- format(abs(x),
+    nsmall = nsmall, trim = TRUE, big.mark = big.mark,
+    scientific = FALSE, digits = 1L
+  )
+
+  if (negative_parens) {
+    paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
+  } else {
+    paste0(prefix, ifelse(negative, "-", ""), amount, suffix)
+  }
+}
 
 #' Percent formatter: multiply by one hundred and display percent sign.
 #'
