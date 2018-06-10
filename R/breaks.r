@@ -66,6 +66,7 @@ log_breaks <- function(n = 5, base = 10) {
     relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
     if (sum(relevant_breaks) >= (n - 2)) return(breaks)
 
+    # the easy solution to get more breaks is to decrease 'by'
     while (by > 1) {
       by <- by - 1
       breaks <- base ^ seq(min, max, by = by)
@@ -73,13 +74,26 @@ log_breaks <- function(n = 5, base = 10) {
       if (sum(relevant_breaks) >= (n - 2)) return(breaks)
     }
 
+    # still not enough breaks using only integer powers of 'base'
+    # create intermediate values by multiplying the integer powers of 'base' by
+    # integer values between 1 and 'base' (the candidate values)
+    # 'steps' contains currently selected integer values which are multiplied by
+    # the integer powers of 'base'. Therefore it contains 1 by definition.
     steps <- 1
+    # 'delta()' calculates the smallest distance in the log scale between the
+    # currectly selected breaks and a new candidate 'x'
     delta <- function(x) {
       min(diff(log(sort(c(x, steps, base)), base = base)))
     }
-    candidate <- tail(seq_len(base - 1), -1)
+    # 'candidate' contains all integer values between 1 and 'base', excluding 1
+    # and 'base', assuming 'base' is a positive integer
+    candidate <- seq_len(base)
+    candidate <- candidate[1 < candidate & candidate < base]
     while (length(candidate)) {
-      best <- which.max(sapply(candidate, delta))
+      # check which of the `candidate` yields the largest value for `delta`
+      # that 'candidate' splits the largest break interval is two intervals
+      # which are as equal as possible
+      best <- which.max(vapply(candidate, delta, 0))
       steps <- c(steps, candidate[best])
       candidate <- candidate[-best]
 
@@ -89,7 +103,7 @@ log_breaks <- function(n = 5, base = 10) {
         break
       }
     }
-    return(sort(breaks))
+    sort(breaks)
   }
 }
 
