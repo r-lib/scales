@@ -73,38 +73,59 @@ log_breaks <- function(n = 5, base = 10) {
       relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
       if (sum(relevant_breaks) >= (n - 2)) return(breaks)
     }
-
-    # still not enough breaks using only integer powers of 'base'
-    # create intermediate values by multiplying the integer powers of 'base' by
-    # integer values between 1 and 'base' (the candidate values)
-    # 'steps' contains currently selected integer values which are multiplied by
-    # the integer powers of 'base'. Therefore it contains 1 by definition.
-    steps <- 1
-    # 'delta()' calculates the smallest distance in the log scale between the
-    # currectly selected breaks and a new candidate 'x'
-    delta <- function(x) {
-      min(diff(log(sort(c(x, steps, base)), base = base)))
-    }
-    # 'candidate' contains all integer values between 1 and 'base', excluding 1
-    # and 'base', assuming 'base' is a positive integer
-    candidate <- seq_len(base)
-    candidate <- candidate[1 < candidate & candidate < base]
-    while (length(candidate)) {
-      # check which of the `candidate` yields the largest value for `delta`
-      # that 'candidate' splits the largest break interval is two intervals
-      # which are as equal as possible
-      best <- which.max(vapply(candidate, delta, 0))
-      steps <- c(steps, candidate[best])
-      candidate <- candidate[-best]
-
-      breaks <- as.vector(outer(base ^ seq(min, max), steps))
-      relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
-      if (sum(relevant_breaks) >= (n - 2)) {
-        break
-      }
-    }
-    sort(breaks)
+    log_sub_breaks(rng, n = n, base = base)
   }
+}
+
+#' Calculate intermediate log-scale breaks
+#'
+#' Using only integer powers of base is not always sufficient as breaks.
+#' \code{log_sub_breaks} add intermediate breaks which are integer multiples of
+#' integer powers of base. See Details for the implementation.
+#' @param rng log-range of the values
+#' @inheritParams log_breaks
+#' @author Thierry Onkelinx, \email{thierry.onkelinx@inbo.be}
+#' @details We illustrate how it works by using a \code{base = 10} example.
+#' We will always use the integer power of \code{base} (10^-1, 10^0, 10^1, ...),
+#' so the set of integers to multiply them with will always contain 1. Then we
+#' search for the integer between 1 and \code{base} which splits the interval
+#' approximately in half. This is 3 in case of \code{base = 10}, because
+#' \code{log10(3) = 0.477}. Now we have 2 intervals: \code{c(1, 3)} and
+#' \code{c(3, 10)}. Now we look for another integer which splits the largest
+#' interval (in the log-scale) approximately in half, which is 5 (\code{log10(5)
+#' = 0.699}).
+#'
+#' The generic algorithm starts with a set of integers \code{steps} containing
+#' only 1 and a set of candidate integers containing all integers larger than 1
+#' and smaller than \code{base}. Then for each remaining candidate integer
+#' \code{x}, we calculate the smallest interval (in the log-scale) for the
+#' vector \code{sort(c(x, steps, base))}. The candidate \code{x} which yields
+#' the largest minimal interval is added to \code{steps} and removed from the
+#' candidates. This is repeated untill either a sufficient number of breaks is
+#' reached or when all candidates have been used.
+log_sub_breaks <- function(rng, n = 5, base = 10) {
+  min <- floor(rng[1])
+  max <- ceiling(rng[2])
+  steps <- 1
+  # 'delta()' calculates the smallest distance in the log scale between the
+  # currectly selected breaks and a new candidate 'x'
+  delta <- function(x) {
+    min(diff(log(sort(c(x, steps, base)), base = base)))
+  }
+  candidate <- seq_len(base)
+  candidate <- candidate[1 < candidate & candidate < base]
+  while (length(candidate)) {
+    best <- which.max(vapply(candidate, delta, 0))
+    steps <- c(steps, candidate[best])
+    candidate <- candidate[-best]
+
+    breaks <- as.vector(outer(base ^ seq(min, max), steps))
+    relevant_breaks <- base ^ rng[1] <= breaks & breaks <= base ^ rng[2]
+    if (sum(relevant_breaks) >= (n - 2)) {
+      break
+    }
+  }
+  sort(breaks)
 }
 
 #' Pretty breaks on transformed scale.
