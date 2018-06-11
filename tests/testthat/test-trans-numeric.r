@@ -1,4 +1,4 @@
-context("Pseudo-log")
+context("Trans - numeric")
 
 test_that("Pseudo-log is invertible", {
   trans <- pseudo_log_trans()
