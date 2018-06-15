@@ -25,7 +25,7 @@ Suggests:
     bit64,
     covr,
     hms,
-    testthat (>= 0.8)
+    testthat (>= 2.0)
 LinkingTo: 
     Rcpp
 LazyLoad: yes
