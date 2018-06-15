@@ -3,6 +3,7 @@
 \name{rescale}
 \alias{rescale}
 \alias{rescale.numeric}
+\alias{rescale.dist}
 \alias{rescale.logical}
 \alias{rescale.POSIXt}
 \alias{rescale.Date}
@@ -13,6 +14,9 @@ rescale(x, to, from, ...)
 
 \method{rescale}{numeric}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
   finite = TRUE), ...)
+
+\method{rescale}{dist}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite
+  = TRUE), ...)
 
 \method{rescale}{logical}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
   finite = TRUE), ...)

@@ -49,6 +49,7 @@ test_that("scaling is possible with dates and times", {
 })
 
 test_that("scaling is possible with integer64 data", {
+  skip_if_not_installed("bit64")
   x <- bit64::as.integer64(2^60) + c(0:3)
   expect_equal(
     rescale_mid(x, mid = bit64::as.integer64(2^60) + 1),

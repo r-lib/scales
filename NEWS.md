@@ -5,6 +5,13 @@
   inside a for loop, some of the parameters were not evaluated until the end
   of the loop, due to how R lazy evaluation works. (@zeehio, #81).
 
+* New `pseudo_log_trans()` for transforming numerics into a signed logarithmic scale
+  with a smooth transition to a linear scale around 0 (@lepennec, #106) 
+  
+* Provide `rescale()` and `rescale_mid()` methods for `dist` objects (@zeehio, #105)
+
+* Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property

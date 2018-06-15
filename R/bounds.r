@@ -30,6 +30,11 @@ rescale.NULL <- function(...) NULL
 
 #' @rdname rescale
 #' @export
+rescale.dist <- rescale.numeric
+
+
+#' @rdname rescale
+#' @export
 rescale.logical <- rescale.numeric
 
 #' @rdname rescale
@@ -86,6 +91,11 @@ rescale_mid.NULL <- function(...) NULL
 #' @rdname rescale_mid
 #' @export
 rescale_mid.logical <- rescale_mid.numeric
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.dist <- rescale_mid.numeric
+
 
 #' @rdname rescale_mid
 #' @export

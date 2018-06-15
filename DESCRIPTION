@@ -25,9 +25,9 @@ Suggests:
     bit64,
     covr,
     hms,
-    testthat (>= 0.8)
+    testthat (>= 2.0)
 LinkingTo: 
     Rcpp
 LazyLoad: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
