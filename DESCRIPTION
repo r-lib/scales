@@ -16,7 +16,7 @@ Depends:
 Imports: 
     dichromat,
     labeling,
-    munsell (>= 0.2),
+    munsell (>= 0.5),
     R6,
     RColorBrewer,
     Rcpp,
