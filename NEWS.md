@@ -1,6 +1,9 @@
 # scales 0.5.0.9000
 
+* Provide `rescale()` and `rescale_mid()` methods for `dist` objects (@zeehio, #105)
+
 * Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
+
 
 # scales 0.5.0
 
