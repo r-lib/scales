@@ -16,7 +16,7 @@ mathematical expressions.}
 }
 \value{
 a function with single parameter x, a numeric vector, that
-   returns a list of expressions
+returns a list of expressions
 }
 \description{
 Add arbitrary expression to a label.
@@ -29,5 +29,5 @@ math_format()(runif(10))
 math_format(format = percent)(runif(10))
 }
 \seealso{
-\code{\link{plotmath}}
+\code{\link[=plotmath]{plotmath()}}
 }

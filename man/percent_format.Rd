@@ -14,7 +14,7 @@ percent(x)
 }
 \value{
 a function with single parameter x, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 Percent formatter: multiply by one hundred and display percent sign.

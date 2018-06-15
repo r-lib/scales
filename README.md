@@ -1,6 +1,6 @@
 # Scales
 
-[![Build Status](https://travis-ci.org/hadley/scales.png?branch=master)](https://travis-ci.org/hadley/scales)
+[![Build Status](https://travis-ci.org/hadley/scales.svg?branch=master)](https://travis-ci.org/hadley/scales)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hadley/scales/master.svg)](https://codecov.io/github/hadley/scales?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/scales)](https://cran.r-project.org/package=scales)
 

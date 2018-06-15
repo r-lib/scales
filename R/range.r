@@ -1,6 +1,6 @@
 #' Mutable ranges.
 #'
-#' Mutable ranges have a two methods (\code{train} and \code{reset}), and
+#' Mutable ranges have a two methods (`train` and `reset`), and
 #' make it possible to build up complete ranges with multiple passes.
 #'
 #' @aliases DiscreteRange ContinuousRange
@@ -9,8 +9,8 @@ Range <- R6::R6Class("Range", list(
   range = NULL,
   initialize = function() {
     self$range <- NULL
-  })
-)
+  }
+))
 
 DiscreteRange <- R6::R6Class(
   "DiscreteRange",

@@ -2,7 +2,7 @@
 #'
 #' @param start gray value at low end of palette
 #' @param end gray value at high end of palette
-#' @seealso \code{\link{seq_gradient_pal}} for continuous version
+#' @seealso [seq_gradient_pal()] for continuous version
 #' @export
 #' @examples
 #' show_col(grey_pal()(25))

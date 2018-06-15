@@ -3,7 +3,7 @@
 #' @param colours vector of colours
 #' @param values if colours should not be evenly positioned along the gradient
 #'   this vector gives the position (between 0 and 1) for each colour in the
-#'   \code{colours} vector. See \code{\link{rescale}} for a convience function
+#'   `colours` vector. See [rescale()] for a convience function
 #'   to map an arbitrary range to between 0 and 1.
 #' @param space colour space in which to calculate gradient. Must be "Lab" -
 #'   other values are deprecated.

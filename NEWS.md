@@ -2,6 +2,10 @@
 
 * New `pseudo_log_trans()` for transforming numerics into a signed logarithmic scale
   with a smooth transition to a linear scale around 0 (@lepennec, #106) 
+  
+* Provide `rescale()` and `rescale_mid()` methods for `dist` objects (@zeehio, #105)
+
+* Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
 
 # scales 0.5.0
 

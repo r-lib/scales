@@ -2,7 +2,7 @@ context("Zero range")
 
 test_that("large numbers with small differences", {
   expect_false(zero_range(c(1330020857.8787, 1330020866.8787)))
-  expect_true( zero_range(c(1330020857.8787, 1330020857.8787)))
+  expect_true(zero_range(c(1330020857.8787, 1330020857.8787)))
 })
 
 test_that("small numbers with differences on order of values", {
@@ -12,17 +12,17 @@ test_that("small numbers with differences on order of values", {
 })
 
 test_that("ranges with 0 endpoint(s)", {
-  expect_false(zero_range(c(0,10)))
-  expect_true(zero_range(c(0,0)))
-  expect_false(zero_range(c(-10,0)))
-  expect_false(zero_range(c(0,1)*1e-100))
-  expect_false(zero_range(c(0,1)*1e+100))
+  expect_false(zero_range(c(0, 10)))
+  expect_true(zero_range(c(0, 0)))
+  expect_false(zero_range(c(-10, 0)))
+  expect_false(zero_range(c(0, 1) * 1e-100))
+  expect_false(zero_range(c(0, 1) * 1e+100))
 })
 
 test_that("symmetric ranges", {
-  expect_false(zero_range(c(-1,1)))
-  expect_false(zero_range(c(-1,1*(1+1e-20))))
-  expect_false(zero_range(c(-1,1)*1e-100))
+  expect_false(zero_range(c(-1, 1)))
+  expect_false(zero_range(c(-1, 1 * (1 + 1e-20))))
+  expect_false(zero_range(c(-1, 1) * 1e-100))
 })
 
 test_that("length 1 ranges", {
@@ -34,17 +34,17 @@ test_that("length 1 ranges", {
 
 test_that("NA and Inf", {
   # Should return NA
-  expect_true(is.na(zero_range(c(NA,NA))))
-  expect_true(is.na(zero_range(c(1,NA))))
-  expect_true(is.na(zero_range(c(1,NaN))))
+  expect_true(is.na(zero_range(c(NA, NA))))
+  expect_true(is.na(zero_range(c(1, NA))))
+  expect_true(is.na(zero_range(c(1, NaN))))
 
   # Not zero range
-  expect_false(zero_range(c(1,Inf)))
-  expect_false(zero_range(c(-Inf,Inf)))
+  expect_false(zero_range(c(1, Inf)))
+  expect_false(zero_range(c(-Inf, Inf)))
 
   # Can't know if these are truly zero range
-  expect_true(zero_range(c(Inf,Inf)))
-  expect_true(zero_range(c(-Inf,-Inf)))
+  expect_true(zero_range(c(Inf, Inf)))
+  expect_true(zero_range(c(-Inf, -Inf)))
 })
 
 test_that("Tolerance", {
@@ -56,7 +56,7 @@ test_that("Tolerance", {
 
   # Cross the threshold
   expect_false(zero_range(c(1, 1 + 1001 * eps)))
-  expect_false(zero_range(c(1, 1 + 2   * eps), tol = eps))
+  expect_false(zero_range(c(1, 1 + 2 * eps), tol = eps))
 
   # Scaling up or down all the values has no effect since the values
   # are rescaled to 1 before checking against tol

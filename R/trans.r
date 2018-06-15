@@ -19,6 +19,7 @@
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued
+#' @noMd
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
@@ -36,7 +37,8 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
       breaks = breaks,
       minor_breaks = minor_breaks,
       format = format,
-      domain = domain),
+      domain = domain
+    ),
     class = "trans"
   )
 }
@@ -59,7 +61,7 @@ as.trans <- function(x) {
 
 #' Compute range of transformed values.
 #'
-#' Silently drops any ranges outside of the domain of \code{trans}.
+#' Silently drops any ranges outside of the domain of `trans`.
 #'
 #' @param trans a transformation object, or the name of a transformation object
 #'   given as a string.

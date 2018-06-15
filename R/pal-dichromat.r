@@ -1,5 +1,6 @@
 #' Dichromat (colour-blind) palette (discrete).
 #'
+#' @noMd
 #' @param name Name of colour palette.  One of:
 #'   \Sexpr[results=rd,stage=build]{scales:::dichromat_schemes()}
 #' @export
@@ -13,7 +14,9 @@
 dichromat_pal <- function(name) {
   if (!any(name == names(dichromat::colorschemes))) {
     stop("Palette name must be one of ",
-      paste0(names(dichromat::colorschemes), collapse = ", "), call. = FALSE)
+      paste0(names(dichromat::colorschemes), collapse = ", "),
+      call. = FALSE
+    )
   }
 
   pal <- dichromat::colorschemes[[name]]

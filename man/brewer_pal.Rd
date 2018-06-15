@@ -13,7 +13,7 @@ brewer_pal(type = "seq", palette = 1, direction = 1)
 index into the list of palettes of appropriate \code{type}}
 
 \item{direction}{Sets the order of colors in the scale. If 1, the default,
-colors are as output by \code{\link[RColorBrewer]{brewer.pal}}. If -1, the
+colors are as output by \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}. If -1, the
 order of colors is reversed.}
 }
 \description{
