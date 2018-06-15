@@ -5,14 +5,20 @@
 \alias{scientific}
 \title{Scientific formatter.}
 \usage{
-scientific_format(digits = 3, ...)
+scientific_format(digits = 3, prefix = "", suffix = "", trim = TRUE,
+  ...)
 
-scientific(x, digits = 3, ...)
+scientific(x, digits = 3, prefix = "", suffix = "", trim = TRUE, ...)
 }
 \arguments{
 \item{digits}{number of significant digits to show}
 
-\item{...}{other arguments passed on to \code{\link[=format]{format()}}}
+\item{prefix, suffix}{symbols to display before and after value}
+
+\item{trim}{logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base]{format}})}
+
+\item{...}{other arguments passed on to \code{\link[base]{format}}}
 
 \item{x}{a numeric vector to format}
 }

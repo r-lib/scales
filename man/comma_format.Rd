@@ -5,12 +5,14 @@
 \alias{comma}
 \title{Comma formatter: format number with commas separating thousands.}
 \usage{
-comma_format(...)
+comma_format(big.mark = ",", ...)
 
-comma(x, ...)
+comma(x, big.mark = ",", ...)
 }
 \arguments{
-\item{...}{other arguments passed on to \code{\link[=format]{format()}}}
+\item{big.mark}{character used between every 3 digits to separate thousands}
+
+\item{...}{other arguments passed on to \code{\link{number_format}}}
 
 \item{x}{a numeric vector to format}
 }
@@ -23,12 +25,12 @@ Comma formatter: format number with commas separating thousands.
 }
 \examples{
 comma_format()(c(1, 1e3, 2000, 1e6))
-comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
+comma_format(accuracy = .1)(c(1, 1e3, 2000, 1e6))
 comma(c(1, 1e3, 2000, 1e6))
 
-# If you're European you can switch . and , with the more general
-# format_format
-point <- format_format(big.mark = ".", decimal.mark = ",", scientific = FALSE)
+# If you're European you can switch . and , with 'big.mark'
+# and 'decimal.mark' arguments (see number_format)
+point <- comma_format(big.mark = ".", decimal.mark = ",", accuracy = .01)
 point(c(1, 1e3, 2000, 1e6))
 point(c(1, 1.021, 1000.01))
 }

@@ -6,21 +6,25 @@
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
 dollar_format(prefix = "$", suffix = "", largest_with_cents = 1e+05, ...,
-  big.mark = ",", negative_parens = FALSE)
+  big.mark = ",", negative_parens = FALSE, accuracy = NULL)
 
-dollar(x)
+dollar(x, ...)
 }
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after amount.}
 
 \item{largest_with_cents}{the value that all values of \code{x} must
-be less than in order for the cents to be displayed}
+be less than in order for the cents to be displayed (not used
+if \code{accuracy} is provided)}
 
-\item{...}{Other arguments passed on to \code{\link[=format]{format()}}.}
+\item{...}{Other arguments passed on to \code{\link{number_format}}.}
 
 \item{big.mark}{Character used between every 3 digits.}
 
 \item{negative_parens}{Should negative values be shown with parentheses?}
+
+\item{accuracy}{number to round to, if \code{NULL}, \code{x} will be
+displayed with 0 or 2 digits, depending on \code{largest_with_cents}}
 
 \item{x}{a numeric vector to format}
 }
@@ -32,7 +36,8 @@ returns a character vector
 The returned function will format a vector of values as currency.
 Values are rounded to the nearest cent, and cents are displayed if
 any of the values has a non-zero cents and the largest value is less
-than \code{largest_with_cents} which by default is 100000.
+than \code{largest_with_cents} which by default is 100000. The level of
+accuracy could be customised with \code{accuracy}.
 }
 \examples{
 dollar_format()(c(-100, 0.23, 1.456565, 2e3))

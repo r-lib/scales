@@ -5,11 +5,21 @@
 \alias{ordinal}
 \title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.}
 \usage{
-ordinal_format(x)
+ordinal_format(prefix = "", suffix = "", big.mark = ",", rules = NULL,
+  ...)
 
-ordinal(x)
+ordinal(x, prefix = "", suffix = "", big.mark = ",", rules = NULL, ...)
 }
 \arguments{
+\item{prefix, suffix}{Symbols to display before and after value}
+
+\item{big.mark}{Character used between every 3 digits.}
+
+\item{rules}{Custom rules for computing ordinal indicators}
+
+\item{...}{Other arguments passed on to \code{\link{number_format}},
+\code{NULL} for English (see examples).}
+
 \item{x}{a numeric vector to format}
 }
 \value{
@@ -22,4 +32,13 @@ Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
 \examples{
 ordinal_format()(1:10)
 ordinal(1:10)
+
+# Custom rules for French
+french <- list(
+  er = "^1$",
+  nd = "^2$",
+  e = "([0-9]+)[12]$",
+  e = "[03456789]"
+)
+ordinal(1:20, rules = french)
 }
