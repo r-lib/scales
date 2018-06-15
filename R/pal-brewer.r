@@ -18,7 +18,7 @@
 #' show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
 brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
-
+  force(direction)
   function(n) {
     # If <3 colors are requested, brewer.pal will return a 3-color palette and
     # give a warning. This warning isn't useful, so suppress it.
