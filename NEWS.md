@@ -1,7 +1,7 @@
 # scales 0.5.0.9000
 
 * New `pseudo_log_trans()` for transforming numerics into a signed logarithmic scale
-  with a smooth transition to a linear scale around 0
+  with a smooth transition to a linear scale around 0 (@lepennec, #106) 
 
 # scales 0.5.0
 
