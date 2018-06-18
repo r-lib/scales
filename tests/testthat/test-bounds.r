@@ -9,8 +9,9 @@ test_that("rescale_mid returns correct results", {
 
   expect_equal(rescale_mid(x, mid = 1, to = c(0, 10)), c(0, 2.5, 5))
   expect_equal(rescale_mid(x, mid = 1, to = c(8, 10)), c(8, 8.5, 9))
-})
 
+  expect_equal(rescale_mid(c(1, NA, 1)), c(0.5, NA, 0.5))
+})
 
 test_that("rescale_max returns correct results", {
   expect_equal(rescale_max(0), NaN)
