@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* `log_breaks()` returns integer multiples of integer powers of base when finer
+  breaks are needed (@ThierryO, #117)
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
