@@ -5,7 +5,7 @@
 \alias{ordinal}
 \title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.}
 \usage{
-ordinal_format(x)
+ordinal_format()
 
 ordinal(x)
 }
@@ -14,7 +14,7 @@ ordinal(x)
 }
 \value{
 a function with single paramater x, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.

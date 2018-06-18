@@ -3,18 +3,18 @@
 \name{pretty_breaks}
 \alias{pretty_breaks}
 \title{Pretty breaks.
-Uses default R break algorithm as implemented in \code{\link{pretty}}.}
+Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}.}
 \usage{
 pretty_breaks(n = 5, ...)
 }
 \arguments{
 \item{n}{desired number of breaks}
 
-\item{...}{other arguments passed on to \code{\link{pretty}}}
+\item{...}{other arguments passed on to \code{\link[=pretty]{pretty()}}}
 }
 \description{
 Pretty breaks.
-Uses default R break algorithm as implemented in \code{\link{pretty}}.
+Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}.
 }
 \examples{
 pretty_breaks()(1:10)

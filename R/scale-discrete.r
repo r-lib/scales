@@ -12,12 +12,16 @@ dscale <- function(x, palette, na.value = NA) {
   map_discrete(palette, x, limits, na.value)
 }
 
+is.discrete <- function(x) {
+  is.factor(x) || is.character(x) || is.logical(x)
+}
+
 #' Train (update) a discrete scale
 #'
 #' @param new New data to add to scale
 #' @param existing Optional existing scale to update
-#' @param drop \code{TRUE}, will drop factor levels not associated with data
-#' @param na.rm If \code{TRUE}, will remove missing values
+#' @param drop `TRUE`, will drop factor levels not associated with data
+#' @param na.rm If `TRUE`, will remove missing values
 #' @export
 train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
   if (is.null(new)) return(existing)

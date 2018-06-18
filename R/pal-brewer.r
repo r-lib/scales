@@ -2,11 +2,11 @@
 #'
 #' @param type One of seq (sequential), div (diverging) or qual (qualitative)
 #' @param palette If a string, will use that named palette.  If a number, will
-#'   index into the list of palettes of appropriate \code{type}
+#'   index into the list of palettes of appropriate `type`
 #' @param direction Sets the order of colors in the scale. If 1, the default,
-#'   colors are as output by \code{\link[RColorBrewer]{brewer.pal}}. If -1, the
+#'   colors are as output by [RColorBrewer::brewer.pal()]. If -1, the
 #'   order of colors is reversed.
-#' @references \url{http://colorbrewer2.org}
+#' @references <http://colorbrewer2.org>
 #' @export
 #' @examples
 #' show_col(brewer_pal()(10))
@@ -18,7 +18,7 @@
 #' show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
 brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
-
+  force(direction)
   function(n) {
     # If <3 colors are requested, brewer.pal will return a 3-color palette and
     # give a warning. This warning isn't useful, so suppress it.
@@ -33,8 +33,9 @@ brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
     # In both cases ensure we have n items
     pal <- pal[seq_len(n)]
 
-    if (direction == -1)
+    if (direction == -1) {
       pal <- rev(pal)
+    }
 
     pal
   }
@@ -54,11 +55,17 @@ pal_name <- function(palette, type) {
 }
 
 brewer <- list(
-  div = c("BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
-    "Spectral"),
-  qual = c("Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
-    "Set2", "Set3"),
-  seq = c("Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
+  div = c(
+    "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
+    "Spectral"
+  ),
+  qual = c(
+    "Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
+    "Set2", "Set3"
+  ),
+  seq = c(
+    "Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
     "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
-    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd")
+    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd"
+  )
 )

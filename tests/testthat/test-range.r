@@ -21,5 +21,4 @@ test_that("factor discrete ranges stay in order", {
   expect_equal(discrete_range(f, f), letters[3:1])
   expect_equal(discrete_range(f, "c"), letters[3:1])
   expect_equal(discrete_range(f, c("a", "b", "c")), letters[3:1])
-
 })
