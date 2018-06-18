@@ -103,6 +103,7 @@ log_breaks <- function(n = 5, base = 10) {
 #' the largest minimal interval is added to \code{steps} and removed from the
 #' candidates. This is repeated untill either a sufficient number of breaks is
 #' reached or when all candidates have been used.
+#' @noRd
 log_sub_breaks <- function(rng, n = 5, base = 10) {
   min <- floor(rng[1])
   max <- ceiling(rng[2])
