@@ -22,6 +22,18 @@ test_that("rescale_max returns correct results", {
   expect_equal(rescale_max(c(-3, 0, -1, 2)), c(-1.5, 0, -0.5, 1))
 })
 
+test_that("rescale functions handle NAs consistently", {
+  expect_equal(rescale(c(2, NA, 0, -2)), c(1, NA, 0.5, 0))
+  expect_equal(rescale(c(-2, NA, -2)), c(.5, NA, .5))
+
+  expect_equal(rescale_mid(c(NA, 1, 2)), c(NA, 0.75, 1))
+  expect_equal(rescale_mid(c(2, NA, 0, -2), mid = .5), c(0.8, NA, 0.4, 0))
+  expect_equal(rescale_mid(c(-2, NA, -2)), c(.5, NA, .5))
+
+  expect_equal(rescale_max(c(1, NA)), c(1, NA))
+  expect_equal(rescale_max(c(2, NA, 0, -2)), c(1, NA, 0, -1))
+  expect_equal(rescale_max(c(-2, NA, -2)), c(1, NA, 1))
+})
 
 test_that("zero range inputs return mid range", {
   expect_that(rescale(0), equals(0.5))
