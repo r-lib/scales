@@ -19,6 +19,7 @@
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued
+#' @noMd
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export trans_new is.trans
 #' @aliases trans_new trans is.trans
@@ -27,6 +28,7 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
+  force_all(name, breaks, minor_breaks, format, domain)
 
   structure(
     list(

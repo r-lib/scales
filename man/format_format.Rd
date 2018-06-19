@@ -2,18 +2,18 @@
 % Please edit documentation in R/formatter.r
 \name{format_format}
 \alias{format_format}
-\title{Format with using any arguments to \code{\link{format}}.}
+\title{Format with using any arguments to \code{\link[=format]{format()}}.}
 \usage{
 format_format(...)
 }
 \arguments{
-\item{...}{other arguments passed on to \code{\link{format}}.}
+\item{...}{other arguments passed on to \code{\link[=format]{format()}}.}
 }
 \description{
 If the breaks have names, they will be used in preference to formatting
 the breaks.
 }
 \seealso{
-\code{\link{format}}, \code{\link{format.Date}},
-  \code{\link{format.POSIXct}}
+\code{\link[=format]{format()}}, \code{\link[=format.Date]{format.Date()}},
+\code{\link[=format.POSIXct]{format.POSIXct()}}
 }

@@ -13,6 +13,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
     warning("Non Lab interpolation is deprecated", call. = FALSE)
   }
   ramp <- colour_ramp(colours)
+  force(values)
 
   function(x) {
     if (length(x) == 0) return(character())
@@ -43,7 +44,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 #'
 #' library(munsell)
 #' image(r, col = div_gradient_pal(low =
-#'    mnsl(complement("10R 4/6", fix = TRUE)))(seq(0, 1, length = 100)))
+#'    mnsl(complement("10R 4/6"), fix = TRUE))(seq(0, 1, length = 100)))
 #' @importFrom munsell mnsl
 div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, mid, high), space = space)

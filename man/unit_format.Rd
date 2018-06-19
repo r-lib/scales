@@ -13,7 +13,7 @@ unit_format(unit = "m", scale = 1, sep = " ", ...)
 
 \item{sep}{The separator between the number and the label}
 
-\item{...}{Arguments passed on to \code{\link{format}}}
+\item{...}{Arguments passed on to \code{\link[=format]{format()}}}
 }
 \description{
 Add units to the labels
@@ -28,5 +28,5 @@ ha <- unit_format(unit = "ha", scale = 1e-4)
 km(runif(10) * 1e5)
 }
 \seealso{
-\code{\link{comma}}
+\code{\link[=comma]{comma()}}
 }

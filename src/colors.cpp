@@ -183,8 +183,12 @@ StringVector doColorRampSerial(NumericMatrix colors, NumericVector x, bool alpha
       // Convert the result to hex string
       if (!alpha)
         result[i] = rgbcolor(red, green, blue);
-      else
-        result[i] = rgbacolor(red, green, blue, opacity);
+      else {
+        if (static_cast<unsigned int>(opacity) >= 255)
+          result[i] = rgbcolor(red, green, blue); // return regular RGB if transparency color is fully opaque
+        else
+          result[i] = rgbacolor(red, green, blue, opacity); // otherwise return RGBA
+      }
     }
   }
   return result;

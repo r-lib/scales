@@ -37,6 +37,7 @@ boxcox_trans <- function(p) {
 #' @param base Base of logarithm
 #' @export
 exp_trans <- function(base = exp(1)) {
+  force(base)
   trans_new(
     paste0("power-", format(base)),
     function(x) base^x,
@@ -58,6 +59,7 @@ identity_trans <- function() {
 #' @aliases log_trans log10_trans log2_trans
 #' @export log_trans log10_trans log2_trans
 log_trans <- function(base = exp(1)) {
+  force(base)
   trans <- function(x) log(x, base)
   inv <- function(x) base^x
 
@@ -132,4 +134,20 @@ reverse_trans <- function() {
 #' @export
 sqrt_trans <- function() {
   trans_new("sqrt", "sqrt", function(x) x^2, domain = c(0, Inf))
+}
+
+#' Pseudo-log transformation
+#'
+#' A transformation mapping numbers to a signed logarithmic scale
+#' with a smooth transition to linear scale around 0.
+#'
+#' @param sigma scaling factor for the linear part
+#' @param base approximate logarithm base used
+#' @export
+pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
+  trans_new(
+    "pseudo_log",
+    function(x) asinh(x / (2 * sigma)) / log(base),
+    function(x) 2 * sigma * sinh(x * log(base))
+  )
 }

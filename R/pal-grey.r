@@ -8,5 +8,6 @@
 #' show_col(grey_pal()(25))
 #' show_col(grey_pal(0, 1)(25))
 grey_pal <- function(start = 0.2, end = 0.8) {
+  force_all(start, end)
   function(n) grDevices::grey.colors(n, start = start, end = end)
 }

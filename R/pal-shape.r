@@ -3,6 +3,7 @@
 #' @param solid should shapes be solid or not?
 #' @export
 shape_pal <- function(solid = TRUE) {
+  force(solid)
   function(n) {
     if (n > 6) {
       msg <- paste("The shape palette can deal with a maximum of 6 discrete ",

@@ -12,6 +12,10 @@ dscale <- function(x, palette, na.value = NA) {
   map_discrete(palette, x, limits, na.value)
 }
 
+is.discrete <- function(x) {
+  is.factor(x) || is.character(x) || is.logical(x)
+}
+
 #' Train (update) a discrete scale
 #'
 #' @param new New data to add to scale

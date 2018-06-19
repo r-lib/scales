@@ -12,13 +12,13 @@ scientific(x, digits = 3, ...)
 \arguments{
 \item{digits}{number of significant digits to show}
 
-\item{...}{other arguments passed on to \code{\link{format}}}
+\item{...}{other arguments passed on to \code{\link[=format]{format()}}}
 
 \item{x}{a numeric vector to format}
 }
 \value{
 a function with single parameter x, a numeric vector, that
-  returns a character vector
+returns a character vector
 }
 \description{
 Scientific formatter.
