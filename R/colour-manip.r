@@ -95,7 +95,7 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
   size <- max(dim(colours))
   plot(c(0, size), c(0, -size), type = "n", xlab = "", ylab = "", axes = FALSE)
   rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
-    col = colours, border = borders
+       col = colours, border = borders
   )
   if (labels) {
     text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label)
