@@ -109,6 +109,9 @@ log_breaks <- function(n = 5, base = 10) {
 log_sub_breaks <- function(rng, n = 5, base = 10) {
   min <- floor(rng[1])
   max <- ceiling(rng[2])
+  if (base <= 2) {
+    return(base ^ (min:max))
+  }
   steps <- 1
   # 'delta()' calculates the smallest distance in the log scale between the
   # currectly selected breaks and a new candidate 'x'
