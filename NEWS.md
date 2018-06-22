@@ -1,12 +1,14 @@
 # scales 0.5.0.9000
 
+* `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
+
 * `log_breaks()` returns integer multiples of integer powers of base when finer
   breaks are needed (@ThierryO, #117).
 
 * scales now works as expected when it is used inside a for loop. In previous
   package versions if a scales function was used with variable custom parameters
   inside a for loop, some of the parameters were not evaluated until the end
-  of the loop, due to how R lazy evaluation works. (@zeehio, #81).
+  of the loop, due to how R lazy evaluation works (@zeehio, #81).
 
 * New `pseudo_log_trans()` for transforming numerics into a signed logarithmic scale
   with a smooth transition to a linear scale around 0 (@lepennec, #106) 
