@@ -51,6 +51,9 @@ extended_breaks <- function(n = 5, ...) {
 #' @examples
 #' log_breaks()(c(1, 1e6))
 #' log_breaks()(c(1, 1e5))
+#' log_breaks()(c(1664, 14008))
+#' log_breaks()(c(407, 3430))
+#' log_breaks()(c(1761, 8557))
 log_breaks <- function(n = 5, base = 10) {
   force_all(n, base)
   function(x) {
@@ -61,8 +64,77 @@ log_breaks <- function(n = 5, base = 10) {
     if (max == min) return(base^min)
 
     by <- floor((max - min) / n) + 1
-    base^seq(min, max, by = by)
+    breaks <- base^seq(min, max, by = by)
+    relevant_breaks <- base^rng[1] <= breaks & breaks <= base^rng[2]
+    if (sum(relevant_breaks) >= (n - 2)) return(breaks)
+
+    # the easy solution to get more breaks is to decrease 'by'
+    while (by > 1) {
+      by <- by - 1
+      breaks <- base^seq(min, max, by = by)
+      relevant_breaks <- base^rng[1] <= breaks & breaks <= base^rng[2]
+      if (sum(relevant_breaks) >= (n - 2)) return(breaks)
+    }
+    log_sub_breaks(rng, n = n, base = base)
   }
+}
+
+#' Intermediate log-scale breaks
+#'
+#' Integer powers of base do not always return sufficient breaks.
+#' \code{log_sub_breaks} adds intermediate breaks which are integer multiples of
+#' integer powers of base. See Details for the implementation.
+#' @param rng log-range of the values
+#' @inheritParams log_breaks
+#' @author Thierry Onkelinx, \email{thierry.onkelinx@inbo.be}
+#' @details The \code{log_breaks} algorithm will always use the integer power
+#' of \code{base} so the set of integers to multiply with will always
+#' contain 1. \code{log_sub_breaks} searches for the integer between 1 and
+#' \code{base} which splits the interval approximately in half; e.g., in the
+#' case of \code{base = 10}, this integer is 3 because \code{log10(3) = 0.477}.
+#' This leaves 2 intervals: \code{c(1, 3)} and \code{c(3, 10)}. The
+#' algorithm then looks for another integer which splits the largest remaining
+#' interval (in the log-scale) approximately in half, in this case 5
+#' (\code{log10(5) = 0.699}).
+#'
+#' The generic algorithm starts with a set of integers \code{steps} containing
+#' only 1 and a set of candidate integers containing all integers larger than 1
+#' and smaller than \code{base}. Then for each remaining candidate integer
+#' \code{x}, the smallest interval (on the log-scale) in the vector
+#' \code{sort(c(x, steps, base))} is calculated. The candidate \code{x} which
+#' yields the largest minimal interval is added to \code{steps} and removed from
+#' the candidate set. This is repeated until either a sufficient number of
+#' breaks, \code{>= n-2}, are returned or all candidates have been used.
+#' @noRd
+log_sub_breaks <- function(rng, n = 5, base = 10) {
+  min <- floor(rng[1])
+  max <- ceiling(rng[2])
+  if (base <= 2) {
+    return(base^(min:max))
+  }
+  steps <- 1
+  # 'delta()' calculates the smallest distance in the log scale between the
+  # currectly selected breaks and a new candidate 'x'
+  delta <- function(x) {
+    min(diff(log(sort(c(x, steps, base)), base = base)))
+  }
+  candidate <- seq_len(base)
+  candidate <- candidate[1 < candidate & candidate < base]
+  while (length(candidate)) {
+    best <- which.max(vapply(candidate, delta, 0))
+    steps <- c(steps, candidate[best])
+    candidate <- candidate[-best]
+
+    breaks <- as.vector(outer(base^seq(min, max), steps))
+    relevant_breaks <- base^rng[1] <= breaks & breaks <= base^rng[2]
+    if (sum(relevant_breaks) >= (n - 2)) {
+      break
+    }
+  }
+  breaks <- sort(breaks)
+  lower_end <- pmax(min(which(base^rng[1] <= breaks)) - 1, 1)
+  upper_end <- pmin(max(which(breaks <= base^rng[2])) + 1, length(breaks))
+  breaks[lower_end:upper_end]
 }
 
 #' Pretty breaks on transformed scale.

@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* `log_breaks()` returns integer multiples of integer powers of base when finer
+  breaks are needed (@ThierryO, #117).
+
 * scales now works as expected when it is used inside a for loop. In previous
   package versions if a scales function was used with variable custom parameters
   inside a for loop, some of the parameters were not evaluated until the end
