@@ -54,7 +54,7 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
     nsmall <- -floor(log10(accuracy))
   }
   nsmall <- min(max(nsmall, 0), 20)
-  paste0(
+  ret <- paste0(
     prefix,
     format(
       scale * x,
@@ -63,6 +63,8 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
     ),
     suffix
   )
+  ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+  ret
 }
 
 
@@ -405,7 +407,10 @@ format_format <- function(...) {
 }
 
 precision <- function(x) {
-  rng <- range(x, na.rm = TRUE)
+  if (all(is.infinite(x)))
+    return(1)
+
+  rng <- range(x, na.rm = TRUE, finite = TRUE)
 
   span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
   if (span == 0) {

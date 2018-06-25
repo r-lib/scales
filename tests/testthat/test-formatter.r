@@ -122,6 +122,12 @@ test_that("Single 0 gives 0%", {
   expect_equal(percent(0), "0%")
 })
 
+test_that("Inf gives Inf, not Inf%", {
+  expect_equal(percent(c(Inf, -Inf)), c("Inf", "-Inf"))
+})
+
+
+
 # Dollar formatter --------------------------------------------------------
 
 test_that("negative comes before prefix", {
