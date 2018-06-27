@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
+
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
 
 * `log_breaks()` returns integer multiples of integer powers of base when finer
