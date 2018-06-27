@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-gradient.r
 \name{div_gradient_pal}
 \alias{div_gradient_pal}
-\title{Diverging colour gradient (continous).}
+\title{Diverging colour gradient (continuous).}
 \usage{
 div_gradient_pal(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"),
   high = mnsl("10R 4/6"), space = "Lab")
@@ -18,7 +18,7 @@ div_gradient_pal(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"),
 other values are deprecated.}
 }
 \description{
-Diverging colour gradient (continous).
+Diverging colour gradient (continuous).
 }
 \examples{
 x <- seq(-1, 1, length.out = 100)

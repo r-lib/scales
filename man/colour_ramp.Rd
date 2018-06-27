@@ -2,40 +2,40 @@
 % Please edit documentation in R/colour-mapping.r
 \name{colour_ramp}
 \alias{colour_ramp}
-\title{Fast color interpolation}
+\title{Fast colour interpolation}
 \usage{
 colour_ramp(colors, na.color = NA, alpha = TRUE)
 }
 \arguments{
-\item{colors}{Colors to interpolate; must be a valid argument to
+\item{colors}{Colours to interpolate; must be a valid argument to
 \code{\link[grDevices:col2rgb]{grDevices::col2rgb()}}. This can be a character vector of
-\code{"#RRGGBB"} or  \code{"#RRGGBBAA"}, color names from
+\code{"#RRGGBB"} or  \code{"#RRGGBBAA"}, colour names from
 \code{\link[grDevices:colors]{grDevices::colors()}}, or a positive integer that indexes into
 \code{\link[grDevices:palette]{grDevices::palette()}}.}
 
-\item{na.color}{The color to map to \code{NA} values (for example,
+\item{na.color}{The colour to map to \code{NA} values (for example,
 \code{"#606060"} for dark grey, or \code{"#00000000"} for transparent) and
 values outside of [0,1]. Can itself by \code{NA}, which will simply cause
 an \code{NA} to be inserted into the output.}
 
 \item{alpha}{Whether to include alpha transparency channels in interpolation.
 If \code{TRUE} then the alpha information is included in the interpolation.
-The returned colors will be provided in \code{"#RRGGBBAA"} format when needed,
-i.e., in cases where the color is not fully opaque, so that the \code{"AA"}
-part is not equal to \code{"FF"}. Fully opaque colors will be returned in
-\code{"#RRGGBB"} format. If \code{FALSE}, the alpha information is discared
-before interpolation and colors are always returned as \code{"#RRGGBB"}.}
+The returned colours will be provided in \code{"#RRGGBBAA"} format when needed,
+i.e., in cases where the colour is not fully opaque, so that the \code{"AA"}
+part is not equal to \code{"FF"}. Fully opaque colours will be returned in
+\code{"#RRGGBB"} format. If \code{FALSE}, the alpha information is discarded
+before interpolation and colours are always returned as \code{"#RRGGBB"}.}
 }
 \value{
 A function that takes a numeric vector and returns a character vector
-of the same length with RGB or RGBA hex colors.
+of the same length with RGB or RGBA hex colours.
 }
 \description{
-Returns a function that maps the interval [0,1] to a set of colors.
-Interpolation is performed in the CIELAB color space. Similar to
+Returns a function that maps the interval [0,1] to a set of colours.
+Interpolation is performed in the CIELAB colour space. Similar to
 \code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
 times faster, and provides results in \code{"#RRGGBB"} (or
-\code{"#RRGGBBAA"}) character form instead of RGB color matrices.
+\code{"#RRGGBBAA"}) character form instead of RGB colour matrices.
 }
 \seealso{
 \code{\link[grDevices]{colorRamp}}

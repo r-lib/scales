@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-brewer.r
 \name{brewer_pal}
 \alias{brewer_pal}
-\title{Color Brewer palette (discrete).}
+\title{Colour Brewer palette (discrete).}
 \usage{
 brewer_pal(type = "seq", palette = 1, direction = 1)
 }
@@ -12,12 +12,12 @@ brewer_pal(type = "seq", palette = 1, direction = 1)
 \item{palette}{If a string, will use that named palette.  If a number, will
 index into the list of palettes of appropriate \code{type}}
 
-\item{direction}{Sets the order of colors in the scale. If 1, the default,
-colors are as output by \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}. If -1, the
-order of colors is reversed.}
+\item{direction}{Sets the order of colours in the scale. If 1, the default,
+colours are as output by \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brewer.pal()}}. If -1, the
+order of colours is reversed.}
 }
 \description{
-Color Brewer palette (discrete).
+Colour Brewer palette (discrete).
 }
 \examples{
 show_col(brewer_pal()(10))

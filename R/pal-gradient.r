@@ -1,13 +1,14 @@
-#' Arbitrary colour gradient palette (continous).
+#' Arbitrary colour gradient palette (continuous).
 #'
 #' @param colours vector of colours
 #' @param values if colours should not be evenly positioned along the gradient
 #'   this vector gives the position (between 0 and 1) for each colour in the
-#'   `colours` vector. See [rescale()] for a convience function
+#'   `colours` vector. See [rescale()] for a convenience function
 #'   to map an arbitrary range to between 0 and 1.
 #' @param space colour space in which to calculate gradient. Must be "Lab" -
 #'   other values are deprecated.
 #' @export
+
 gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   if (!identical(space, "Lab")) {
     warning("Non Lab interpolation is deprecated", call. = FALSE)
@@ -28,7 +29,7 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   }
 }
 
-#' Diverging colour gradient (continous).
+#' Diverging colour gradient (continuous).
 #'
 #' @param low colour for low end of gradient.
 #' @param mid colour for mid point
@@ -50,7 +51,7 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
   gradient_n_pal(c(low, mid, high), space = space)
 }
 
-#' Sequential colour gradient palette (continous).
+#' Sequential colour gradient palette (continuous).
 #'
 #' @param low colour for low end of gradient.
 #' @param high colour for high end of gradient.

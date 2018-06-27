@@ -144,7 +144,7 @@ rescale_max <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)) {
   x / from[2] * to[2]
 }
 
-#' Don't peform rescaling
+#' Don't perform rescaling
 #'
 #' @param x numeric vector of values to manipulate.
 #' @param ... all other arguments ignored
@@ -219,10 +219,11 @@ squish_infinite <- function(x, range = c(0, 1)) {
 #' Expand a range with a multiplicative or additive constant.
 #'
 #' @param range range of data, numeric vector of length 2
-#' @param mul multiplicative constract
+#' @param mul multiplicative constant
 #' @param add additive constant
 #' @param zero_width distance to use if range has zero width
 #' @export
+
 expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   if (is.null(range)) return()
 

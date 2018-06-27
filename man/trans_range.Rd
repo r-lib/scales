@@ -10,7 +10,7 @@ trans_range(trans, x)
 \item{trans}{a transformation object, or the name of a transformation object
 given as a string.}
 
-\item{x}{a numeric vector to compute the rande of}
+\item{x}{a numeric vector to compute the range of}
 }
 \description{
 Silently drops any ranges outside of the domain of \code{trans}.

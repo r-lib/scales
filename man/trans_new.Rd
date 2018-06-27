@@ -35,7 +35,7 @@ A transformation encapsulates a transformation and its inverse, as well
 as the information needed to create pleasing breaks and labels. The breaks
 function is applied on the transformed range of the range, and it's
 expected that the labels function will perform some kind of inverse
-tranformation on these breaks to give them labels that are meaningful on
+transformation on these breaks to give them labels that are meaningful on
 the original scale.
 }
 \seealso{
