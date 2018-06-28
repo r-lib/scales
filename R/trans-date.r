@@ -34,7 +34,6 @@ from_date <- function(x) {
 #' t$format(t$breaks(range(hours)))
 time_trans <- function(tz = NULL) {
   force(tz)
-  
   to_time <- function(x) {
     structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
   }
@@ -126,4 +125,28 @@ date_breaks <- function(width = "1 month") {
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
   function(x) format(x, format, tz = tz)
+}
+
+#' Formatted times.
+#'
+#' @param format Time format using standard POSIX specification.  See
+#'  [strptime()] for possible formats.
+#' @param tz a time zone name, see [timezones()]. Defaults
+#'  to UTC
+#' @export
+time_format <- function(format = "%H:%M:%S", tz = "UTC") {
+  force_all(format, tz)
+  function(x) {
+    if (inherits(x, "POSIXt")) {
+      format(x, format = format, tz = tz)
+    } else if (inherits(x, "difftime")) {
+      format(as.POSIXct(x), format = format, tz = tz)
+    } else {
+      stop(
+        "time_format can't be used with objects of class ", paste(class(x), collapse = "/"),
+        ".",
+        call. = FALSE
+      )
+    }
+  }
 }
