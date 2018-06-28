@@ -2,17 +2,20 @@
 % Please edit documentation in R/trans-date.r
 \name{date_format}
 \alias{date_format}
-\title{Formatted dates.}
+\alias{time_format}
+\title{Formatted dates and times.}
 \usage{
 date_format(format = "\%Y-\%m-\%d", tz = "UTC")
+
+time_format(format = "\%H:\%M:\%S", tz = "UTC")
 }
 \arguments{
-\item{format}{Date format using standard POSIX specification.  See
+\item{format}{Date/time format using standard POSIX specification.  See
 \code{\link[=strptime]{strptime()}} for possible formats.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
 to UTC}
 }
 \description{
-Formatted dates.
+Formatted dates and times.
 }
