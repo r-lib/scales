@@ -143,8 +143,9 @@ time_format <- function(format = "%H:%M:%S", tz = "UTC") {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
       stop(
-        "Objects of class ", paste(class(x), collapse = "/"),
-        " are not supported by time_format."
+        "time_format can't be used with objects of class ", paste(class(x), collapse = "/"),
+        ".",
+        call. = FALSE
       )
     }
   }
