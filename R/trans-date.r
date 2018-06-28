@@ -114,34 +114,3 @@ date_breaks <- function(width = "1 month") {
   function(x) fullseq(x, width)
 }
 
-
-#' Formatted dates and times.
-#'
-#' @param format Date/time format using standard POSIX specification.  See
-#'  [strptime()] for possible formats.
-#' @param tz a time zone name, see [timezones()]. Defaults
-#'  to UTC
-#' @export
-date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
-  force_all(format, tz)
-  function(x) format(x, format, tz = tz)
-}
-
-#' @export
-#' @rdname date_format
-time_format <- function(format = "%H:%M:%S", tz = "UTC") {
-  force_all(format, tz)
-  function(x) {
-    if (inherits(x, "POSIXt")) {
-      format(x, format = format, tz = tz)
-    } else if (inherits(x, "difftime")) {
-      format(as.POSIXct(x), format = format, tz = tz)
-    } else {
-      stop(
-        "time_format can't be used with objects of class ", paste(class(x), collapse = "/"),
-        ".",
-        call. = FALSE
-      )
-    }
-  }
-}

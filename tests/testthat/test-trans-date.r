@@ -40,10 +40,3 @@ test_that("tz arugment overrules default time zone", {
   expect_equal(tz(x), "GMT")
   expect_equal(tz2(x), "GMT")
 })
-
-test_that("time_format formats hms objects", {
-  expect_equal(time_format()(a_time), "11:30:00")
-  skip_if_not_installed("hms")
-  expect_equal(time_format()(hms::as.hms(a_time, tz = tz(a_time))), "11:30:00")
-  expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = tz(a_time))), "11")
-})
