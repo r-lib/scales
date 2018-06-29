@@ -5,6 +5,7 @@
 \alias{col_bin}
 \alias{col_quantile}
 \alias{col_factor}
+\alias{col_numeric}
 \title{Color mapping}
 \usage{
 col_numeric(palette, domain, na.color = "#808080")
