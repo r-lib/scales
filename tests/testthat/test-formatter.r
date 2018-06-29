@@ -4,7 +4,6 @@ test_that("time_format formats hms objects", {
   a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
 
   expect_equal(time_format()(a_time), "11:30:00")
-  skip_if_not_installed("hms")
   expect_equal(time_format()(hms::as.hms(a_time, tz = "UTC")), "11:30:00")
   expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = "UTC")), "11")
 })

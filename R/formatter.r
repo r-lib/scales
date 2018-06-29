@@ -322,6 +322,13 @@ unit_format <- function(unit = "m", scale = 1, sep = " ", ...) {
 #' @param tz a time zone name, see [timezones()]. Defaults
 #'  to UTC
 #' @export
+#' @examples
+#' a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
+#' a_date <- as.Date(a_time)
+#'
+#' date_format()(a_date)
+#' date_format(format = "%A")(a_date)
+#'
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
   function(x) format(x, format, tz = tz)
@@ -329,6 +336,12 @@ date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
 
 #' @export
 #' @rdname date_format
+#' @examples
+#' time_format()(a_time)
+#' time_format(tz = "Europe/Berlin")(a_time)
+#'
+#' a_hms <- hms::as.hms(a_time, tz = "UTC")
+#' time_format(format = "%H:%M")(a_hms)
 time_format <- function(format = "%H:%M:%S", tz = "UTC") {
   force_all(format, tz)
   function(x) {
