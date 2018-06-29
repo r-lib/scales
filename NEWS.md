@@ -3,6 +3,8 @@
 * `boxcox_trans` now implements the modulus transformation, a generalisation
   appropriate for data with both positive and negative values (@dpseidel, #103).
 
+* New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
+
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
 
 * `log_breaks()` returns integer multiples of integer powers of base when finer
