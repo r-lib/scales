@@ -16,11 +16,11 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Box-Cox (Modulus) power transformation.
+#' Box-Cox (modulus) power transformation.
 #'
-#' @param p Exponent of box-cox transformation.
-#' @details Implements a generalisation of the box-cox transformation that works
-#' for values with both positive and negative values.
+#' @param p Exponent of Box-Cox transformation.
+#' @details Implements a generalisation of the Box-Cox transformation that works
+#' for data with both positive and negative values.
 #' @references J. John and N. Draper. "An alternative family of
 #' transformations." Applied Statistics, pages 190-197, 1980.
 #' \url{http://www.jstor.org/stable/2986305}

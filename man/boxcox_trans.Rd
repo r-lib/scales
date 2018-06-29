@@ -2,19 +2,19 @@
 % Please edit documentation in R/trans-numeric.r
 \name{boxcox_trans}
 \alias{boxcox_trans}
-\title{Box-Cox (Modulus) power transformation.}
+\title{Box-Cox (modulus) power transformation.}
 \usage{
 boxcox_trans(p)
 }
 \arguments{
-\item{p}{Exponent of box-cox transformation.}
+\item{p}{Exponent of Box-Cox transformation.}
 }
 \description{
-Box-Cox (Modulus) power transformation.
+Box-Cox (modulus) power transformation.
 }
 \details{
-Implements a generalisation of the box-cox transformation that works
-for values with both positive and negative values.
+Implements a generalisation of the Box-Cox transformation that works
+for data with both positive and negative values.
 }
 \references{
 J. John and N. Draper. "An alternative family of
