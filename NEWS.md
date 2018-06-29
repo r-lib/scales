@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* `boxcox_trans` now implements the modulus transformation, a generalisation
+  appropriate for data with both positive and negative values (@dpseidel, #103).
+
 * New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
 
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
