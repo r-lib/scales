@@ -9,7 +9,7 @@ expand_range(range, mul = 0, add = 0, zero_width = 1)
 \arguments{
 \item{range}{range of data, numeric vector of length 2}
 
-\item{mul}{multiplicative constract}
+\item{mul}{multiplicative constant}
 
 \item{add}{additive constant}
 

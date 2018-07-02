@@ -156,7 +156,7 @@ scientific <- function(x, digits = 3, ...) {
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
 #'
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param x a numeric vector to format
 #' @export

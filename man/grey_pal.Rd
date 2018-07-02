@@ -7,9 +7,9 @@
 grey_pal(start = 0.2, end = 0.8)
 }
 \arguments{
-\item{start}{gray value at low end of palette}
+\item{start}{grey value at low end of palette}
 
-\item{end}{gray value at high end of palette}
+\item{end}{grey value at high end of palette}
 }
 \description{
 Grey scale palette (discrete).
