@@ -34,7 +34,6 @@ from_date <- function(x) {
 #' t$format(t$breaks(range(hours)))
 time_trans <- function(tz = NULL) {
   force(tz)
-  
   to_time <- function(x) {
     structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
   }
@@ -115,15 +114,3 @@ date_breaks <- function(width = "1 month") {
   function(x) fullseq(x, width)
 }
 
-
-#' Formatted dates.
-#'
-#' @param format Date format using standard POSIX specification.  See
-#'  [strptime()] for possible formats.
-#' @param tz a time zone name, see [timezones()]. Defaults
-#'  to UTC
-#' @export
-date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
-  force_all(format, tz)
-  function(x) format(x, format, tz = tz)
-}
