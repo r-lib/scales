@@ -16,9 +16,9 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Box-Cox (modulus) power transformation.
+#' Modulus transformation.
 #'
-#' @param p Exponent of Box-Cox transformation.
+#' @param p Transformation exponent.
 #' @details Implements a generalisation of the Box-Cox transformation that works
 #' for data with both positive and negative values.
 #' @references J. John and N. Draper. "An alternative family of
@@ -26,7 +26,7 @@ atanh_trans <- function() {
 #' \url{http://www.jstor.org/stable/2986305}
 #'
 #' @export
-boxcox_trans <- function(p) {
+modulus_trans <- function(p) {
   trans <- function(x) {
     if (abs(p) < 1e-07) {
       sign(x) * log(abs(x) + 1)
@@ -45,6 +45,36 @@ boxcox_trans <- function(p) {
     paste0("pow-", format(p)), trans, inv
   )
 }
+
+
+#' Box-Cox power transformation.
+#'
+#' @param p Exponent of Box-Cox transformation.
+#' @details The Box-Cox transformation is suitable for strictly positive values.
+#' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
+#' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
+#' \url{https://www.jstor.org/stable/2984418}
+#'
+#' @export
+boxcox_trans <- function(p) {
+  if (abs(p) < 1e-07) return(log_trans())
+
+  trans <- function(x) {
+    if (any(x < 0)) {
+      stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
+        call. = F
+      )
+    }
+    (x^p - 1) / p * sign(p)
+  }
+
+  inv <- function(x) (x * p * sign(p) + 1)^(1 / p)
+
+  trans_new(
+    paste0("pow-", format(p)), trans, inv
+  )
+}
+
 
 #' Exponential transformation (inverse of log transformation).
 #'
