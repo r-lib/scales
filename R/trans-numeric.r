@@ -65,10 +65,10 @@ boxcox_trans <- function(p) {
         call. = F
       )
     }
-    (x^p - 1) / p * sign(p)
+    (x^p - 1) / p
   }
 
-  inv <- function(x) (x * p * sign(p) + 1)^(1 / p)
+  inv <- function(x) (x * p + 1)^(1 / p)
 
   trans_new(
     paste0("pow-", format(p)), trans, inv
