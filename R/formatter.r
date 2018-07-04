@@ -1,3 +1,79 @@
+#' Number formatter: a generic formatter for numbers
+#'
+#' @return `number_format` returns a function with single parameter
+#'   `x`, a numeric vector, that returns a character vector.
+#' @param x A numeric vector to format.
+#' @param accuracy Number to round to, `NULL` for automatic guess.
+#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#'   formating (useful if the underlying data is on another scale,
+#'   e.g. for computing percentages or thousands).
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#'   width (see [base::format()]).
+#' @param ... Other arguments passed on to [base::format()].
+#' @export
+#' @examples
+#' v <- c(12.3, 4, 12345.789, 0.0002)
+#' number(v)
+#' number(v, big.mark = ",")
+#' number(v, accuracy = .001)
+#' number(v, accuracy = .001, decimal.mark = ",")
+#' number(v, accuracy = .5)
+#'
+#' my_format <- number_format(big.mark = "'", decimal.mark = ",")
+#' my_format(v)
+#'
+#' # Per mille
+#' per_mille <- number_format(
+#'   scale = 1000,
+#'   suffix = "\u2030",
+#'   accuracy = .1
+#' )
+#' per_mille(v)
+number_format <- function(accuracy = 1, scale = 1, prefix = "",
+                          suffix = "", big.mark = " " , decimal.mark = ".",
+                          trim = TRUE, ...) {
+  function(x) number(
+      x,
+      accuracy = accuracy,
+      scale = scale,
+      prefix = prefix,
+      suffix = suffix,
+      big.mark = big.mark,
+      decimal.mark = decimal.mark,
+      trim = trim,
+      ...
+    )
+}
+
+#' @export
+#' @rdname number_format
+number <- function(x, accuracy = 1, scale = 1, prefix = "",
+                   suffix = "", big.mark = " ", decimal.mark = ".",
+                   trim = TRUE, ...) {
+  if (length(x) == 0) return(character())
+  accuracy <- accuracy %||% precision(x)
+  x <- round_any(x, accuracy / scale)
+  nsmall <- -floor(log10(accuracy))
+  nsmall <- min(max(nsmall, 0), 20)
+
+  ret <- format(
+    scale * x,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    nsmall = nsmall,
+    scientific = FALSE,
+    ...
+  )
+  ret <- paste0(prefix, ret, suffix)
+  ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+  ret
+}
+
 #' Comma formatter: format number with commas separating thousands.
 #'
 #' @param ... other arguments passed on to [format()]
@@ -282,7 +358,11 @@ format_format <- function(...) {
 }
 
 precision <- function(x) {
-  rng <- range(x, na.rm = TRUE)
+  if (all(is.infinite(x))) {
+    return(1)
+  }
+
+  rng <- range(x, na.rm = TRUE, finite = TRUE)
 
   span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
   if (span == 0) {

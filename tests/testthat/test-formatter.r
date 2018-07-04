@@ -8,6 +8,37 @@ test_that("time_format formats hms objects", {
   expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = "UTC")), "11")
 })
 
+
+test_that("number format works correctly", {
+  expect_equal(number(123.45, accuracy = 1), "123")
+  expect_equal(number(123.45, accuracy = 10), "120")
+  expect_equal(number(123.45, accuracy = .25), "123.5")
+  expect_equal(
+    number(12345, big.mark = ","),
+    "12,345"
+  )
+  expect_equal(
+    number(12.3, decimal.mark = ",", accuracy = .1),
+    "12,3"
+  )
+  expect_equal(
+    number(1.234, scale = 100),
+    "123"
+  )
+  expect_equal(
+    number(123, prefix = "pre", suffix = "post"),
+    "pre123post"
+  )
+  expect_equal(number(c(1, 23)), c("1", "23"))
+  expect_equal(number(c(1, 23), trim = FALSE), c(" 1", "23"))
+})
+
+test_that("number_format works with Inf", {
+  cust <- number_format(suffix = "suff", accuracy = NULL)
+  expect_equal(cust(c(Inf, -Inf)), c("Inf", "-Inf"))
+})
+
+
 test_that("comma format always adds commas", {
   expect_equal(comma(1e3), "1,000")
   expect_equal(comma(1e6), "1,000,000")

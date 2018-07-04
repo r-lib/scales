@@ -22,6 +22,8 @@
 
 * Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
 
+* New function `number_format()`, a generic formatter for numbers (@larmarange, #142).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
