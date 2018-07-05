@@ -16,41 +16,17 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Modulus transformation.
+#' Box-Cox transformations.
 #'
-#' @param p Transformation exponent.
-#' @details Implements a generalisation of the Box-Cox transformation that works
-#' for data with both positive and negative values.
-#' @references J. John and N. Draper. "An alternative family of
-#' transformations." Applied Statistics, pages 190-197, 1980.
-#' \url{http://www.jstor.org/stable/2986305}
+#' Transformations used to transform non-normal data
+#' to more closely approximate a normal distribution.
 #'
-#' @export
-modulus_trans <- function(p) {
-  trans <- function(x) {
-    if (abs(p) < 1e-07) {
-      sign(x) * log(abs(x) + 1)
-    } else {
-      sign(x) * ((abs(x) + 1)^p - 1) / p
-    }
-  }
-  inv <- function(x) {
-    if (abs(p) < 1e-07) {
-      sign(x) * (exp(abs(x)) - 1)
-    } else {
-      sign(x) * ((abs(x) * p + 1)^(1 / p) - 1)
-    }
-  }
-  trans_new(
-    paste0("pow-", format(p)), trans, inv
-  )
-}
-
-
-#' Box-Cox power transformation.
+#' @param p Transformation exponent, \eqn{\lambda}.
+#' @details The Box-Cox power transformation requires strictly positive values and
+#' takes the following form for `y > 0`:
+#' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
+#' When `y = 0`, the natural log transform is used.
 #'
-#' @param p Exponent of Box-Cox transformation.
-#' @details The Box-Cox transformation is suitable for strictly positive values.
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
@@ -75,6 +51,39 @@ boxcox_trans <- function(p) {
   )
 }
 
+#' @rdname boxcox_trans
+#' @details The modulus transformation implements a generalisation of the
+#' Box-Cox transformation that works for data with both positive and negative values.
+#' The equation takes the following forms, when `y != 0` :
+#' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
+#' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
+#' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+#' y^(\lambda) = sign(y) * ln(|y| + 1)}
+#'
+#' @references John, J. A., & Draper, N. R. (1980).
+#' An alternative family of transformations. Applied Statistics, 190-197.
+#' \url{http://www.jstor.org/stable/2986305}
+#'
+#' @export
+modulus_trans <- function(p) {
+  trans <- function(x) {
+    if (abs(p) < 1e-07) {
+      sign(x) * log(abs(x) + 1)
+    } else {
+      sign(x) * ((abs(x) + 1)^p - 1) / p
+    }
+  }
+  inv <- function(x) {
+    if (abs(p) < 1e-07) {
+      sign(x) * (exp(abs(x)) - 1)
+    } else {
+      sign(x) * ((abs(x) * p + 1)^(1 / p) - 1)
+    }
+  }
+  trans_new(
+    paste0("pow-", format(p)), trans, inv
+  )
+}
 
 #' Exponential transformation (inverse of log transformation).
 #'

@@ -2,21 +2,40 @@
 % Please edit documentation in R/trans-numeric.r
 \name{boxcox_trans}
 \alias{boxcox_trans}
-\title{Box-Cox power transformation.}
+\alias{modulus_trans}
+\title{Box-Cox transformations.}
 \usage{
 boxcox_trans(p)
+
+modulus_trans(p)
 }
 \arguments{
-\item{p}{Exponent of Box-Cox transformation.}
+\item{p}{Transformation exponent, \eqn{\lambda}.}
 }
 \description{
-Box-Cox power transformation.
+Transformations used to transform non-normal data
+to more closely approximate a normal distribution.
 }
 \details{
-The Box-Cox transformation is suitable for strictly positive values.
+The Box-Cox power transformation requires strictly positive values and
+takes the following form for \code{y > 0}:
+\deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
+When \code{y = 0}, the natural log transform is used.
+
+The modulus transformation implements a generalisation of the
+Box-Cox transformation that works for data with both positive and negative values.
+The equation takes the following forms, when \code{y != 0} :
+\deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
+y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
+and when \code{y = 0}: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+y^(\lambda) = sign(y) * ln(|y| + 1)}
 }
 \references{
 Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 \url{https://www.jstor.org/stable/2984418}
+
+John, J. A., & Draper, N. R. (1980).
+An alternative family of transformations. Applied Statistics, 190-197.
+\url{http://www.jstor.org/stable/2986305}
 }
