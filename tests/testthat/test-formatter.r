@@ -147,6 +147,27 @@ test_that("missing values preserved", {
   expect_equal(dollar(NA_real_), "$NA")
 })
 
+# p-value formatter --------------------------------------------------------
+
+test_that("pvalue formatter works", {
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA)),
+    c("0.500", "0.045", "<0.001", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), accuracy = .01),
+    c("0.50", "0.04", "<0.01", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), decimal.mark = ","),
+    c("0,500", "0,045", "<0,001", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), add_p = TRUE),
+    c("p=0.500", "p=0.045", "p<0.001", "p=NA")
+  )
+})
+
 # Common tests --------------------------------------------------------
 
 test_that("formatters don't add extra spaces", {

@@ -34,6 +34,8 @@
 * `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
   `trim` (@larmarange, #147)
 
+* New function `pvalue_format()` to format p-values (@larmarange, #145).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property

@@ -548,3 +548,57 @@ time_format <- function(format = "%H:%M:%S", tz = "UTC") {
     }
   }
 }
+
+#' p-values formatter
+#'
+#' Formatter for p-values, adding a symbol "<" for small p-values.
+#'
+#' @return `pvalue_format` returns a function with single parameter
+#'   `x`, a numeric vector, that returns a character vector.
+#' @param accuracy Number to round to.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param add_p Add "p=" before the value?
+#' @param x A numeric vector of p-values.
+#' @export
+#' @examples
+#' p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
+#' pvalue(p)
+#' pvalue(p, accuracy = .01)
+#' pvalue(p, add_p = TRUE)
+#' custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
+#' custom_function(p)
+pvalue_format <- function(accuracy = .001, decimal.mark = ".", add_p = FALSE) {
+  force_all(accuracy, decimal.mark, add_p)
+  function(x) pvalue(
+    x,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    add_p = add_p
+  )
+}
+
+#' @rdname pvalue_format
+#' @export
+pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
+  res <- number(
+    x,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    big.mark = ""
+  )
+  if (add_p) res <- paste0("p=", res)
+  below <- number(
+    accuracy,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    big.mark = ""
+  )
+  if (add_p) {
+    below <- paste0("p<", below)
+  } else {
+    below <- paste0("<", below)
+  }
+  res[x < accuracy] <- below
+  res
+}
