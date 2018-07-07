@@ -33,6 +33,9 @@
   
 * `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
   `trim` (@larmarange, #147)
+  
+* `ordinal_format()` gains new arguments: `prefix`, `suffix`, `big.mark`, `rules`,
+   and rules for French and Spanish are also provided (@larmarange, #149).
 
 # scales 0.5.0
 

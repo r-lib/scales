@@ -96,7 +96,11 @@ test_that("wrap correctly wraps long lines", {
 
 # Ordinal formatter --------------------------------------------------------
 
-test_that("ordinal format", {
+test_that("ordinal format in English", {
+  expect_equal(
+    ordinal_format()(1:4),
+    c("1st", "2nd", "3rd", "4th")
+  )
   expect_equal(ordinal(1), "1st")
   expect_equal(ordinal(2), "2nd")
   expect_equal(ordinal(3), "3rd")
@@ -104,6 +108,19 @@ test_that("ordinal format", {
   expect_equal(ordinal(11), "11th")
   expect_equal(ordinal(12), "12th")
   expect_equal(ordinal(21), "21st")
+  expect_equal(ordinal(101), "101st")
+})
+
+test_that("ordinal match rules in order", {
+  custom <- list(
+    a = "^1",
+    b = ".",
+    c = "^3"
+  )
+  expect_equal(
+    ordinal(1:3, rules = custom),
+    c("1a", "2b", "3b")
+  )
 })
 
 test_that("ordinal format maintains order", {
