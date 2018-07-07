@@ -30,6 +30,9 @@
 * `comma_format()`, `percent_format()` and `unit_format()` gain new arguments: 
   `accuracy`, `scale`, `prefix`, `suffix`, `decimal.mark`, `big.mark` 
   (@larmarange, #146).
+
+* `dollar_format()` gains new arguments: `accuracy`, `scale`, `decimal.mark`, 
+  `trim` (@larmarange, #148)
   
 * `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
   `trim` (@larmarange, #147)

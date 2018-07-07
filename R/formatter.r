@@ -249,19 +249,27 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' Currency formatter: round to nearest cent and display dollar sign.
 #'
 #' The returned function will format a vector of values as currency.
-#' Values are rounded to the nearest cent, and cents are displayed if
-#' any of the values has a non-zero cents and the largest value is less
-#' than `largest_with_cents` which by default is 100000.
+#' If `accuracy` is not specified, values are rounded to the nearest cent,
+#' and cents are displayed if any of the values has a non-zero cents and
+#' the largest value is less than `largest_with_cents` which by default
+#' is 100,000.
 #'
-#' @return a function with single parameter x, a numeric vector, that
-#'   returns a character vector
-#' @param largest_with_cents the value that all values of `x` must
-#'   be less than in order for the cents to be displayed
-#' @param prefix,suffix Symbols to display before and after amount.
-#' @param big.mark Character used between every 3 digits.
+#' @return A function with single parameter `x`, a numeric vector, that
+#'   returns a character vector.
+#' @param accuracy Number to round to, `NULL` for automatic guess.
+#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#'   formating (useful to display the data on another scale, e.g. in k$).
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#'   width (see [base::format()]).
+#' @param largest_with_cents The value that all values of `x` must
+#'   be less than in order for the cents to be displayed.
 #' @param negative_parens Should negative values be shown with parentheses?
-#' @param ... Arguments passed on to [dollar()].
-#' @param x a numeric vector to format
+#' @param ... Other arguments passed on to [base::format()].
+#' @param x A numeric vector to format.
 #' @export
 #' @examples
 #' dollar_format()(c(-100, 0.23, 1.456565, 2e3))
@@ -278,9 +286,35 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #'
 #' finance <- dollar_format(negative_parens = TRUE)
 #' finance(c(-100, 100))
-dollar_format <- function(...) {
-  force_all(...)
-  function(x) dollar(x, ...)
+dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
+                          suffix = "", big.mark = "," , decimal.mark = ".",
+                          trim = TRUE, largest_with_cents = 100000,
+                          negative_parens = FALSE, ...) {
+  force_all(
+    accuracy,
+    scale,
+    prefix,
+    suffix,
+    big.mark,
+    decimal.mark,
+    trim,
+    largest_with_cents,
+    negative_parens,
+    ...
+  )
+  function(x) dollar(
+    x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    largest_with_cents = largest_with_cents,
+    negative_parens,
+    ...
+  )
 }
 
 needs_cents <- function(x, threshold) {
@@ -297,16 +331,20 @@ needs_cents <- function(x, threshold) {
 
 #' @export
 #' @rdname dollar_format
-dollar <- function(x, prefix = "$", suffix = "",
-                   largest_with_cents = 100000, big.mark = ",",
-                   negative_parens = FALSE) {
+dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
+                   suffix = "", big.mark = "," , decimal.mark = ".",
+                   trim = TRUE, largest_with_cents = 100000,
+                   negative_parens = FALSE, ...) {
   if (length(x) == 0) return(character())
-  x <- round_any(x, 0.01)
-  if (needs_cents(x, largest_with_cents)) {
-    nsmall <- 2L
-  } else {
-    x <- round_any(x, 1)
-    nsmall <- 0L
+  if (is.null(accuracy)) {
+    if (needs_cents(x * scale, largest_with_cents)) {
+      accuracy <- .01
+    } else {
+      accuracy <- 1
+    }
+  }
+  if (identical(big.mark, ",") & identical(decimal.mark, ",")) {
+    big.mark <- " "
   }
 
   negative <- !is.na(x) & x < 0
@@ -314,15 +352,22 @@ dollar <- function(x, prefix = "$", suffix = "",
     x <- abs(x)
   }
 
-  amount <- format(abs(x),
-    nsmall = nsmall, trim = TRUE, big.mark = big.mark,
-    scientific = FALSE, digits = 1L,
+  amount <- number(
+    x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
   )
 
   if (negative_parens) {
-    paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
+    paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
   } else {
-    paste0(prefix, ifelse(negative, "-", ""), amount, suffix)
+    amount
   }
 }
 
