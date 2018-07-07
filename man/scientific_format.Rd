@@ -5,20 +5,34 @@
 \alias{scientific}
 \title{Scientific formatter.}
 \usage{
-scientific_format(digits = 3, ...)
+scientific_format(digits = 3, scale = 1, prefix = "", suffix = "",
+  decimal.mark = ".", trim = TRUE, ...)
 
-scientific(x, digits = 3, ...)
+scientific(x, digits = 3, scale = 1, prefix = "", suffix = "",
+  decimal.mark = ".", trim = TRUE, ...)
 }
 \arguments{
-\item{digits}{number of significant digits to show}
+\item{digits}{Number of significant digits to show.}
 
-\item{...}{other arguments passed on to \code{\link[=format]{format()}}}
+\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
+formating (useful if the underlying data is on another scale,
+e.g. for computing percentages or thousands).}
 
-\item{x}{a numeric vector to format}
+\item{prefix, suffix}{Symbols to display before and after value.}
+
+\item{decimal.mark}{The character to be used to indicate the numeric
+decimal point.}
+
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base:format]{base::format()}}).}
+
+\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{x}{A numeric vector to format.}
 }
 \value{
-a function with single parameter x, a numeric vector, that
-returns a character vector
+A function with single parameter \code{x}, a numeric vector, that
+returns a character vector.
 }
 \description{
 Scientific formatter.
@@ -30,4 +44,5 @@ scientific_format(digits = 2)(runif(10))
 scientific(1:10)
 scientific(runif(10))
 scientific(runif(10), digits = 2)
+scientific(12345, suffix = " cells/mL")
 }

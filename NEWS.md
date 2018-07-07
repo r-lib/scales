@@ -24,6 +24,9 @@
 
 * New function `number_format()`, a generic formatter for numbers (@larmarange, #142).
 
+* `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
+  `trim` (@larmarange, #147)
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
