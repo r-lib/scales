@@ -1,4 +1,4 @@
-# Scales
+# Scales <img src="man/figures/logo.png" align="right" />
 
 [![Build Status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
 [![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/scales/master.svg)](https://codecov.io/github/r-lib/scales?branch=master)
