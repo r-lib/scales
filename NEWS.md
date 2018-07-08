@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* Remove `plyr` and `dichromat` dependencies. `dichromat` is now suggested
+ (@dpseidel, #118).  
+
 * `boxcox_trans` now implements the modulus transformation, a generalisation
   appropriate for data with both positive and negative values (@dpseidel, #103).
 
