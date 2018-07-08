@@ -118,19 +118,19 @@ test_that("unit format", {
     c("1 km", "2 km")
   )
   expect_equal(
-    unit_format(unit = "ha", scale = 1e-4)(c(1e3, 2e3)),
+    unit_format(unit = "ha", scale = 1e-4, accuracy = .1)(c(1e3, 2e3)),
     c("0.1 ha", "0.2 ha")
   )
   expect_equal(
-    unit_format()(c(1e3, 2e3)),
-    c("1,000 m", "2,000 m")
+    unit_format()(c(1e2, 2e2)),
+    c("100 m", "200 m")
   )
 })
 
 # Percent formatter -------------------------------------------------------
 
 test_that("negative percents work", {
-  expect_equal(percent(-0.6), "-60%")
+  expect_equal(percent(-0.6, accuracy = 1), "-60%")
 })
 
 test_that("Single 0 gives 0%", {
@@ -153,16 +153,17 @@ test_that("formatters don't add extra spaces", {
   has_space <- function(x) any(grepl("\\s", x))
   x <- 10^c(-1, 0, 1, 3, 6, 9)
 
+  expect_false(has_space(number(x, big.mark = ",")))
   expect_false(has_space(comma(x)))
   expect_false(has_space(dollar(x)))
-  expect_false(has_space(percent(x)))
-  expect_false(has_space(percent(x)))
+  expect_false(has_space(percent(x, big.mark = ",")))
   expect_false(has_space(scientific(x)))
 })
 
 test_that("formats work with 0 length input", {
   x <- numeric()
   expected <- character()
+  expect_identical(number(x), expected)
   expect_identical(comma(x), expected)
   expect_identical(dollar(x), expected)
   expect_identical(percent(x), expected)
