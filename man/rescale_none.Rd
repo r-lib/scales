@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{rescale_none}
 \alias{rescale_none}
-\title{Don't peform rescaling}
+\title{Don't perform rescaling}
 \usage{
 rescale_none(x, ...)
 }
@@ -12,7 +12,7 @@ rescale_none(x, ...)
 \item{...}{all other arguments ignored}
 }
 \description{
-Don't peform rescaling
+Don't perform rescaling
 }
 \examples{
 rescale_none(1:100)

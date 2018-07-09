@@ -6,6 +6,9 @@
 * `boxcox_trans()` is now invertible for `x >= 0` and requires positive values 
   (@dpseidel, #103).
 
+* Remove `plyr` and `dichromat` dependencies. `dichromat` is now suggested
+ (@dpseidel, #118).  
+
 * New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
 
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
@@ -24,6 +27,15 @@
 * Provide `rescale()` and `rescale_mid()` methods for `dist` objects (@zeehio, #105)
 
 * Function `colour_ramp()` now uses `alpha = TRUE` by default (@clauswilke, #108).
+
+* New function `number_format()`, a generic formatter for numbers (@larmarange, #142).
+
+* `comma_format()`, `percent_format()` and `unit_format()` gain new arguments: 
+  `accuracy`, `scale`, `prefix`, `suffix`, `decimal.mark`, `big.mark` 
+  (@larmarange, #146).
+  
+* `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
+  `trim` (@larmarange, #147)
 
 # scales 0.5.0
 

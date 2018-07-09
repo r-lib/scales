@@ -1,11 +1,11 @@
-#' Color Brewer palette (discrete).
+#' Colour Brewer palette (discrete).
 #'
 #' @param type One of seq (sequential), div (diverging) or qual (qualitative)
 #' @param palette If a string, will use that named palette.  If a number, will
 #'   index into the list of palettes of appropriate `type`
-#' @param direction Sets the order of colors in the scale. If 1, the default,
-#'   colors are as output by [RColorBrewer::brewer.pal()]. If -1, the
-#'   order of colors is reversed.
+#' @param direction Sets the order of colours in the scale. If 1, the default,
+#'   colours are as output by [RColorBrewer::brewer.pal()]. If -1, the
+#'   order of colours is reversed.
 #' @references <http://colorbrewer2.org>
 #' @export
 #' @examples

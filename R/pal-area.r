@@ -10,7 +10,7 @@ area_pal <- function(range = c(1, 6)) {
 
 #' Point area palette (continuous), with area proportional to value.
 #'
-#' @param max A number representing the maxmimum size.
+#' @param max A number representing the maximum size.
 #' @export
 abs_area <- function(max) {
   force(max)

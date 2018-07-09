@@ -7,7 +7,7 @@
 abs_area(max)
 }
 \arguments{
-\item{max}{A number representing the maxmimum size.}
+\item{max}{A number representing the maximum size.}
 }
 \description{
 Point area palette (continuous), with area proportional to value.

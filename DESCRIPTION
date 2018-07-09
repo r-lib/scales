@@ -14,7 +14,6 @@ BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.1)
 Imports: 
-    dichromat,
     labeling,
     munsell (>= 0.5),
     R6,
@@ -22,6 +21,7 @@ Imports:
     Rcpp,
     viridisLite
 Suggests: 
+    dichromat,
     bit64,
     covr,
     hms,

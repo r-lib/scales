@@ -1,29 +1,29 @@
-#' Color mapping
+#' Colour mapping
 #'
-#' Conveniently maps data values (numeric or factor/character) to colors
+#' Conveniently maps data values (numeric or factor/character) to colours
 #' according to a given palette, which can be provided in a variety of formats.
 #'
 #' `col_numeric` is a simple linear mapping from continuous numeric data
 #' to an interpolated palette.
 #'
-#' @param palette The colors or color function that values will be mapped to
+#' @param palette The colours or colour function that values will be mapped to
 #' @param domain The possible values that can be mapped.
 #'
 #'   For `col_numeric` and `col_bin`, this can be a simple numeric
 #'   range (e.g. `c(0, 100)`); `col_quantile` needs representative
 #'   numeric data; and `col_factor` needs categorical data.
 #'
-#'   If `NULL`, then whenever the resulting color function is called, the
+#'   If `NULL`, then whenever the resulting colour function is called, the
 #'   `x` value will represent the domain. This implies that if the function
-#'   is invoked multiple times, the encoding between values and colors may not
+#'   is invoked multiple times, the encoding between values and colours may not
 #'   be consistent; if consistency is needed, you must provide a non-`NULL`
 #'   domain.
-#' @param na.color The color to return for `NA` values. Note that
-#'   `na.color=NA` is valid.
+#' @param na.color The colour to return for `NA` values. Note that
+#'   `na.color = NA` is valid.
 #'
 #' @return A function that takes a single parameter `x`; when called with a
 #'   vector of numbers (except for `col_factor`, which expects
-#'   factors/characters), #RRGGBB color strings are returned.
+#'   factors/characters), #RRGGBB colour strings are returned.
 #'
 #' @export
 col_numeric <- function(palette, domain, na.color = "#808080") {
@@ -46,7 +46,7 @@ col_numeric <- function(palette, domain, na.color = "#808080") {
 
     rescaled <- scales::rescale(x, from = rng)
     if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE)) {
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the colour scale and will be treated as NA")
     }
     pf(rescaled)
   })
@@ -181,8 +181,8 @@ getLevels <- function(domain, x, lvls, ordered) {
   }
 }
 
-#' @details `col_factor` maps factors to colors. If the palette is
-#'   discrete and has a different number of colors than the number of factors,
+#' @details `col_factor` maps factors to colours. If the palette is
+#'   discrete and has a different number of colours than the number of factors,
 #'   interpolation is used.
 #' @param levels An alternate way of specifying levels; if specified, domain is
 #'   ignored
@@ -221,13 +221,13 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
       # when the domain was given and now)
       x <- factor(x, lvls)
       if (any(is.na(x) != origNa)) {
-        warning("Some values were outside the color scale and will be treated as NA")
+        warning("Some values were outside the colour scale and will be treated as NA")
       }
     }
 
     scaled <- scales::rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the colour scale and will be treated as NA")
     }
     pf(scaled)
   })
@@ -235,9 +235,9 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
 
 #' @details The `palette` argument can be any of the following:
 #' \enumerate{
-#'   \item{A character vector of RGB or named colors. Examples: `palette()`, `c("#000000", "#0000FF", "#FFFFFF")`, `topo.colors(10)`}
+#'   \item{A character vector of RGB or named colours. Examples: `palette()`, `c("#000000", "#0000FF", "#FFFFFF")`, `topo.colors(10)`}
 #'   \item{The name of an RColorBrewer palette, e.g. `"BuPu"` or `"Greens"`.}
-#'   \item{A function that receives a single value between 0 and 1 and returns a color. Examples: `colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")`.}
+#'   \item{A function that receives a single value between 0 and 1 and returns a colour. Examples: `colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")`.}
 #' }
 #' @examples
 #' pal <- col_bin("Greens", domain = 0:100)
@@ -250,7 +250,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #' # Exponential distribution, mapped by quantile
 #' show_col(col_quantile("Blues", domain = NULL)(sort(rexp(16))))
 #'
-#' # Categorical data; by default, the values being colored span the gamut...
+#' # Categorical data; by default, the values being coloured span the gamut...
 #' show_col(col_factor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 #' # ...unless the data is a factor, without droplevels...
 #' show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
@@ -348,40 +348,40 @@ filterRange <- function(f) {
   }
 }
 
-#' Fast color interpolation
+#' Fast colour interpolation
 #'
-#' Returns a function that maps the interval \[0,1] to a set of colors.
-#' Interpolation is performed in the CIELAB color space. Similar to
+#' Returns a function that maps the interval \[0,1] to a set of colours.
+#' Interpolation is performed in the CIELAB colour space. Similar to
 #' \code{\link[grDevices]{colorRamp}(space = 'Lab')}, but hundreds of
 #' times faster, and provides results in `"#RRGGBB"` (or
-#' `"#RRGGBBAA"`) character form instead of RGB color matrices.
+#' `"#RRGGBBAA"`) character form instead of RGB colour matrices.
 #'
-#' @param colors Colors to interpolate; must be a valid argument to
+#' @param colors Colours to interpolate; must be a valid argument to
 #'   [grDevices::col2rgb()]. This can be a character vector of
-#'   `"#RRGGBB"` or  `"#RRGGBBAA"`, color names from
+#'   `"#RRGGBB"` or  `"#RRGGBBAA"`, colour names from
 #'   [grDevices::colors()], or a positive integer that indexes into
 #'   [grDevices::palette()].
-#' @param na.color The color to map to `NA` values (for example,
+#' @param na.color The colour to map to `NA` values (for example,
 #'   `"#606060"` for dark grey, or `"#00000000"` for transparent) and
 #'   values outside of \[0,1]. Can itself by `NA`, which will simply cause
 #'   an `NA` to be inserted into the output.
 #' @param alpha Whether to include alpha transparency channels in interpolation.
 #'   If `TRUE` then the alpha information is included in the interpolation.
-#'   The returned colors will be provided in `"#RRGGBBAA"` format when needed,
-#'   i.e., in cases where the color is not fully opaque, so that the `"AA"`
-#'   part is not equal to `"FF"`. Fully opaque colors will be returned in
-#'   `"#RRGGBB"` format. If `FALSE`, the alpha information is discared
-#'   before interpolation and colors are always returned as `"#RRGGBB"`.
+#'   The returned colours will be provided in `"#RRGGBBAA"` format when needed,
+#'   i.e., in cases where the colour is not fully opaque, so that the `"AA"`
+#'   part is not equal to `"FF"`. Fully opaque colours will be returned in
+#'   `"#RRGGBB"` format. If `FALSE`, the alpha information is discarded
+#'   before interpolation and colours are always returned as `"#RRGGBB"`.
 #'
 #' @return A function that takes a numeric vector and returns a character vector
-#'   of the same length with RGB or RGBA hex colors.
+#'   of the same length with RGB or RGBA hex colours.
 #'
 #' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
 colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (length(colors) == 0) {
-    stop("Must provide at least one color to create a color ramp")
+    stop("Must provide at least one colour to create a colour ramp")
   }
 
   colorMatrix <- grDevices::col2rgb(colors, alpha = alpha)

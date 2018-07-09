@@ -1,7 +1,7 @@
 #' Grey scale palette (discrete).
 #'
-#' @param start gray value at low end of palette
-#' @param end gray value at high end of palette
+#' @param start grey value at low end of palette
+#' @param end grey value at high end of palette
 #' @seealso [seq_gradient_pal()] for continuous version
 #' @export
 #' @examples

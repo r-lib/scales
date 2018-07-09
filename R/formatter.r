@@ -1,29 +1,249 @@
-#' Comma formatter: format number with commas separating thousands.
+#' Number formatters
 #'
-#' @param ... other arguments passed on to [format()]
-#' @param x a numeric vector to format
-#' @return a function with single parameter x, a numeric vector, that
-#'   returns a character vector
+#' @description
+#' A set of functions to format numeric values:
+#'
+#' * `number_format()` and `number()` are generic formatters for numbers.
+#' * `comma_format()` and `comma()` format numbers with commas separating
+#'   thousands.
+#' * `percent_format()` and `percent()` multiply values by one hundred and
+#'   display percent sign.
+#' * `unit_format()` add units to the values.
+#'
+#' All formatters allow you to re-`scale` (multiplicatively), to round to
+#' specified `accuracy`, to add custom `suffix` and `prefix` and to specify
+#' `decimal.mark` and `big.mark`.
+#'
+#' @return `*_format()` returns a function with single parameter
+#'   `x`, a numeric vector, that returns a character vector.
+#' @param x A numeric vector to format.
+#' @param accuracy Number to round to, `NULL` for automatic guess.
+#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#'   formating (useful if the underlying data is on another scale,
+#'   e.g. for computing percentages or thousands).
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#'   width (see [base::format()]).
+#' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @examples
-#' comma_format()(c(1, 1e3, 2000, 1e6))
-#' comma_format(digits = 9)(c(1, 1e3, 2000, 1e6))
-#' comma(c(1, 1e3, 2000, 1e6))
+#' # number()
+#' v <- c(12.3, 4, 12345.789, 0.0002)
+#' number(v)
+#' number(v, big.mark = ",")
+#' number(v, accuracy = .001)
+#' number(v, accuracy = .001, decimal.mark = ",")
+#' number(v, accuracy = .5)
 #'
-#' # If you're European you can switch . and , with the more general
-#' # format_format
-#' point <- format_format(big.mark = ".", decimal.mark = ",", scientific = FALSE)
-#' point(c(1, 1e3, 2000, 1e6))
-#' point(c(1, 1.021, 1000.01))
-comma_format <- function(...) {
-  force_all(...)
-  function(x) comma(x, ...)
+#' # number_format()
+#' my_format <- number_format(big.mark = "'", decimal.mark = ",")
+#' my_format(v)
+#'
+number_format <- function(accuracy = 1, scale = 1, prefix = "",
+                          suffix = "", big.mark = " ", decimal.mark = ".",
+                          trim = TRUE, ...) {
+  force_all(
+    accuracy,
+    scale,
+    prefix,
+    suffix,
+    big.mark,
+    decimal.mark,
+    trim,
+    ...
+  )
+  function(x) number(
+      x,
+      accuracy = accuracy,
+      scale = scale,
+      prefix = prefix,
+      suffix = suffix,
+      big.mark = big.mark,
+      decimal.mark = decimal.mark,
+      trim = trim,
+      ...
+    )
 }
 
 #' @export
-#' @rdname comma_format
-comma <- function(x, ...) {
-  format(x, ..., big.mark = ",", scientific = FALSE, trim = TRUE)
+#' @rdname number_format
+number <- function(x, accuracy = 1, scale = 1, prefix = "",
+                   suffix = "", big.mark = " ", decimal.mark = ".",
+                   trim = TRUE, ...) {
+  if (length(x) == 0) return(character())
+  accuracy <- accuracy %||% precision(x)
+  x <- round_any(x, accuracy / scale)
+  nsmall <- -floor(log10(accuracy))
+  nsmall <- min(max(nsmall, 0), 20)
+
+  ret <- format(
+    scale * x,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    nsmall = nsmall,
+    scientific = FALSE,
+    ...
+  )
+  ret <- paste0(prefix, ret, suffix)
+  ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+  ret
+}
+
+precision <- function(x) {
+  if (all(is.infinite(x))) {
+    return(1)
+  }
+
+  rng <- range(x, na.rm = TRUE, finite = TRUE)
+
+  span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
+  if (span == 0) {
+    return(1)
+  }
+
+  10^floor(log10(span))
+}
+
+#' @export
+#' @rdname number_format
+#' @param digits Deprecated, use `accuracy` instead.
+#' @examples
+#' # comma() and comma_format()
+#' comma_format()(c(1, 1e3, 2000, 1e6))
+#' comma_format(accuracy = .01)(c(1, 1e3, 2000, 1e6))
+#' comma(c(1, 1e3, 2000, 1e6))
+#'
+comma_format <- function(accuracy = 1, scale = 1, prefix = "",
+                         suffix = "", big.mark = ",", decimal.mark = ".",
+                         trim = TRUE, digits, ...) {
+  if (!missing(digits)) {
+    warning(
+      "`digits` argument is deprecated, use `accuracy` instead.",
+      .call = FALSE
+    )
+  }
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+#' @export
+#' @rdname number_format
+comma <- function(x, accuracy = 1, scale = 1, prefix = "",
+                  suffix = "", big.mark = ",", decimal.mark = ".",
+                  trim = TRUE, digits, ...) {
+  if (!missing(digits)) {
+    warning(
+      "`digits` argument is deprecated, use `accuracy` instead.",
+      .call = FALSE
+    )
+  }
+  number(
+    x = x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+
+#' @export
+#' @rdname number_format
+#' @examples
+#' # percent() and percent_format()
+#' percent_format()(runif(10))
+#' percent(runif(10))
+#'
+#' per_mille <- percent_format(
+#'   scale = 1000,
+#'   suffix = "\u2030",
+#'   accuracy = .1
+#' )
+#' per_mille(.1234)
+#'
+#' french_percent <- percent_format(
+#'   decimal.mark = ",",
+#'   suffix = " %"
+#' )
+#' french_percent(runif(10))
+#'
+percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
+                           suffix = "%", big.mark = " ", decimal.mark = ".",
+                           trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+#' @export
+#' @rdname number_format
+percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
+                    suffix = "%", big.mark = " ", decimal.mark = ".",
+                    trim = TRUE, ...) {
+  number(
+    x = x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+#' @export
+#' @rdname number_format
+#' @param unit The units to append.
+#' @param sep The separator between the number and the unit label.
+#' @examples
+#' # unit_format()
+#' # labels in kilometer when the raw data are in meter
+#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
+#' km(runif(10) * 1e3)
+#'
+#' # labels in hectares, raw data in square meters
+#' ha <- unit_format(unit = "ha", scale = 1e-4)
+#' km(runif(10) * 1e5)
+#'
+unit_format <- function(accuracy = 1, scale = 1, prefix = "",
+                        unit = "m", sep = " ", suffix = paste0(sep, unit),
+                        big.mark = " ", decimal.mark = ".",
+                        trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
@@ -106,34 +326,22 @@ dollar <- function(x, prefix = "$", suffix = "",
   }
 }
 
-#' Percent formatter: multiply by one hundred and display percent sign.
-#'
-#' @return a function with single parameter x, a numeric vector, that
-#'   returns a character vector
-#' @param x a numeric vector to format
-#' @export
-#' @examples
-#' percent_format()(runif(10))
-#' percent(runif(10))
-#' percent(runif(10, 1, 10))
-percent_format <- function() {
-  function(x) percent(x)
-}
-#' @export
-#' @rdname percent_format
-percent <- function(x) {
-  if (length(x) == 0) return(character())
-  x <- round_any(x, precision(x) / 100)
-  paste0(comma(x * 100), "%")
-}
 
 #' Scientific formatter.
 #'
-#' @return a function with single parameter x, a numeric vector, that
-#'   returns a character vector
-#' @param digits number of significant digits to show
-#' @param ... other arguments passed on to [format()]
-#' @param x a numeric vector to format
+#' @return A function with single parameter `x`, a numeric vector, that
+#'   returns a character vector.
+#' @param digits Number of significant digits to show.
+#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#'   formating (useful if the underlying data is on another scale,
+#'   e.g. for computing percentages or thousands).
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#'   width (see [base::format()]).
+#' @param ... Other arguments passed on to [base::format()].
+#' @param x A numeric vector to format.
 #' @export
 #' @examples
 #' scientific_format()(1:10)
@@ -142,21 +350,37 @@ percent <- function(x) {
 #' scientific(1:10)
 #' scientific(runif(10))
 #' scientific(runif(10), digits = 2)
-scientific_format <- function(digits = 3, ...) {
-  force_all(digits, ...)
-  function(x) scientific(x, digits, ...)
+#' scientific(12345, suffix = " cells/mL")
+scientific_format <- function(digits = 3, scale = 1, prefix = "", suffix = "",
+                              decimal.mark = ".", trim = TRUE, ...) {
+  force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)
+  function(x) scientific(
+    x,
+    digits = digits,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    decimal.mark = decimal.mark,
+    ...
+  )
 }
 
 #' @export
 #' @rdname scientific_format
-scientific <- function(x, digits = 3, ...) {
-  x <- signif(x, digits)
-  format(x, trim = TRUE, scientific = TRUE, ...)
+scientific <- function(x, digits = 3, scale= 1, prefix = "", suffix = "",
+                       decimal.mark = ".", trim = TRUE, ...) {
+  if (length(x) == 0) return(character())
+  x <- signif(x * scale, digits)
+  paste0(
+    prefix,
+    format(x, decimal.mark = decimal.mark, trim = trim, scientific = TRUE, ...),
+    suffix
+  )
 }
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
 #'
-#' @return a function with single paramater x, a numeric vector, that
+#' @return a function with single parameter x, a numeric vector, that
 #'   returns a character vector
 #' @param x a numeric vector to format
 #' @export
@@ -278,40 +502,6 @@ format_format <- function(...) {
   function(x) {
     if (!is.null(names(x))) return(names(x))
     format(x, ..., trim = TRUE, justify = "left")
-  }
-}
-
-precision <- function(x) {
-  rng <- range(x, na.rm = TRUE)
-
-  span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
-  if (span == 0) {
-    return(1)
-  }
-
-  10^floor(log10(span))
-}
-
-#' Add units to the labels
-#'
-#' @param unit The units to append
-#' @param scale A scaling factor. Useful if the underlying data is on another scale
-#' @param sep The separator between the number and the label
-#' @param ... Arguments passed on to [format()]
-#' @export
-#' @examples
-#' # labels in kilometer when the raw data are in meter
-#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
-#' km(runif(10) * 1e3)
-#'
-#' # labels in hectares, raw data in square meters
-#' ha <- unit_format(unit = "ha", scale = 1e-4)
-#' km(runif(10) * 1e5)
-#' @seealso [comma()]
-unit_format <- function(unit = "m", scale = 1, sep = " ", ...) {
-  force_all(unit, scale, sep, ...)
-  function(x) {
-    paste(comma(x * scale, ...), unit, sep = sep)
   }
 }
 
