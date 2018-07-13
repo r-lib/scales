@@ -9,7 +9,7 @@ Description: Graphical scales map data to aesthetics, and provide
     methods for automatically determining breaks and labels
     for axes and legends.
 License: MIT + file LICENSE
-URL: https://github.com/r-lib/scales
+URL: https://scales.r-lib.org, https://github.com/r-lib/scales
 BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.1)
