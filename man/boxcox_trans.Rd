@@ -4,20 +4,29 @@
 \alias{boxcox_trans}
 \title{Box-Cox (modulus) power transformation.}
 \usage{
-boxcox_trans(p)
+boxcox_trans(p, offset = as.numeric(mt), mt = FALSE)
 }
 \arguments{
 \item{p}{Exponent of Box-Cox transformation.}
+
+\item{offset}{Constant offset, default 0 (Box-Cox type 1) or 1
+(modulus transformation), otherwise non-negative (Box-Cox type 2).}
+
+\item{mt}{Logical to specify modulus transformation.}
 }
 \description{
 Box-Cox (modulus) power transformation.
 }
 \details{
-Implements a generalisation of the Box-Cox transformation that works
-for data with both positive and negative values.
+The modulus transformation is a generalisation of the two Box-Cox
+transformations that works for data with both positive and negative values.
 }
 \references{
-J. John and N. Draper. "An alternative family of
-transformations." Applied Statistics, pages 190-197, 1980.
+G. E. P. Box and D. R. Cox. "An Analysis of Transformations."
+JRSS B, Vol. 26, pages 211-252, 1964.
+\url{http://www.jstor.org/stable/2984418}
+
+J. A. John and N. R. Draper. "An alternative family of
+transformations." Applied Statistics, Vol. 29, pages 190-197, 1980.
 \url{http://www.jstor.org/stable/2986305}
 }

@@ -3,8 +3,9 @@
 * Remove `plyr` and `dichromat` dependencies. `dichromat` is now suggested
  (@dpseidel, #118).  
 
-* `boxcox_trans` now implements the modulus transformation, a generalisation
+* `boxcox_trans` now optionally implements the modulus transformation, a generalisation
   appropriate for data with both positive and negative values (@dpseidel, #103).
+  As a result `boxcox_trans` gains two new arguments: `offset` and `mt` (@statist7).
 
 * New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
 
