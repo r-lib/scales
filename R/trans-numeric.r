@@ -19,30 +19,40 @@ atanh_trans <- function() {
 #' Box-Cox (modulus) power transformation.
 #'
 #' @param p Exponent of Box-Cox transformation.
-#' @details Implements a generalisation of the Box-Cox transformation that works
-#' for data with both positive and negative values.
-#' @references J. John and N. Draper. "An alternative family of
-#' transformations." Applied Statistics, pages 190-197, 1980.
+#' @param offset Constant offset, default 0 (Box-Cox type 1) or 1
+#' (modulus transformation), otherwise non-negative (Box-Cox type 2).
+#' @param mt Logical to specify modulus transformation.
+#' @details The modulus transformation is a generalisation of the two Box-Cox
+#' transformations that works for data with both positive and negative values.
+#' @references G. E. P. Box and D. R. Cox. "An Analysis of Transformations."
+#' JRSS B, Vol. 26, pages 211-252, 1964.
+#' \url{http://www.jstor.org/stable/2984418}
+#' @references J. A. John and N. R. Draper. "An alternative family of
+#' transformations." Applied Statistics, Vol. 29, pages 190-197, 1980.
 #' \url{http://www.jstor.org/stable/2986305}
 #'
 #' @export
-boxcox_trans <- function(p) {
-  trans <- function(x) {
+boxcox_trans <- function(p, offset = as.numeric(mt), mt = FALSE) {
+  if (mt) {
     if (abs(p) < 1e-07) {
-      sign(x) * log(abs(x) + 1)
+      trans <- function(x) sign(x) * log(abs(x) + offset)
+      inv <- function(x) sign(x) * (exp(abs(x)) - offset)
     } else {
-      sign(x) * ((abs(x) + 1)^p - 1) / p
+      trans <- function(x) sign(x) * ((abs(x) + offset)^p - 1) / p
+      inv <- function(x) sign(x) * ((abs(x) * p + 1)^(1 / p) - offset)
     }
-  }
-  inv <- function(x) {
+  } else {
     if (abs(p) < 1e-07) {
-      sign(x) * (exp(abs(x)) - 1)
+      trans <- function(x) log(x + offset)
+      inv <- function(x) exp(x) - offset
     } else {
-      sign(x) * ((abs(x) * p + 1)^(1 / p) - 1)
+      trans <- function(x) ((x + offset)^p - 1) / p
+      inv <- function(x) (x * p + 1)^(1 / p) - offset
     }
   }
   trans_new(
-    paste0("pow-", format(p)), trans, inv
+    paste0(ifelse(mt, "mt", "bc"), "-pow:", format(p), ":", format(offset)),
+    trans, inv
   )
 }
 
@@ -65,7 +75,6 @@ exp_trans <- function(base = exp(1)) {
 identity_trans <- function() {
   trans_new("identity", "force", "force")
 }
-
 
 #' Log transformation.
 #'
