@@ -5,8 +5,8 @@
 \alias{dollar}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
-dollar_format(accuracy = NULL, scale = 1, prefix = "$", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE,
+dollar_format(accuracy = NULL, scale = 1, prefix = "$",
+  suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE,
   largest_with_cents = 1e+05, negative_parens = FALSE, ...)
 
 dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
