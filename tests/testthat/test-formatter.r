@@ -202,7 +202,7 @@ test_that("Byte formatter can take a symbol designator", {
   )
   expect_equal(
     bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
-    c("3 MiB", "4 Mib", "5 Mib")
+    c("3 MiB", "4 MiB", "5 MiB")
   )
 
   # informative warning for incorrect spelling

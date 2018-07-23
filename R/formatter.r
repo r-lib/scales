@@ -722,10 +722,10 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 #'   `si` for ISI metric units).
 #' @param x a numeric vector to format
 #' @param symbol byte symbol to use. If "auto" the symbol used will be
-#'   determined by the maximum value of \code{x}. Valid symbols are
-#'   "b", "K", "Mb", "Gb", "Tb", "Pb",
+#'   determined by the maximum value of `x`. Valid symbols are
+#'   "b", "Kb", "Mb", "Gb", "Tb", "Pb",
 #'   "Eb", "Zb", and "Yb", along with their upper case
-#'   equivalents and iB}" equivalents.
+#'   equivalents and "iB" equivalents.
 #' @param units which unit base to use, "binary" (1024 base) or
 #'   "si" (1000 base) for ISI units.
 #' @param ... other arguments passed to [number()]

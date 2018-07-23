@@ -10,6 +10,12 @@ byte_format(symbol = "auto", units = "binary", ...)
 bytes(x, symbol = "auto", units = c("binary", "si"), ...)
 }
 \arguments{
+\item{symbol}{byte symbol to use. If "auto" the symbol used will be
+determined by the maximum value of \code{x}. Valid symbols are
+"b", "Kb", "Mb", "Gb", "Tb", "Pb",
+"Eb", "Zb", and "Yb", along with their upper case
+equivalents and "iB" equivalents.}
+
 \item{units}{which unit base to use, "binary" (1024 base) or
 "si" (1000 base) for ISI units.}
 
