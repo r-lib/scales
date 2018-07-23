@@ -11,17 +11,17 @@ cscale(x, palette, na.value = NA_real_, trans = identity_trans())
 
 \item{palette}{palette to use.
 
-  Built in palettes:
-  \Sexpr[results=rd,stage=build]{scales:::seealso_pal()}}
+Built in palettes:
+\Sexpr[results=rd,stage=build]{scales:::seealso_pal()}}
 
 \item{na.value}{value to use for missing values}
 
 \item{trans}{transformation object describing the how to transform the
- raw data prior to scaling.  Defaults to the identity transformation which
- leaves the data unchanged.
+raw data prior to scaling.  Defaults to the identity transformation which
+leaves the data unchanged.
 
- Built in transformations:
- \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
+Built in transformations:
+\Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
 }
 \description{
 Continuous scale.

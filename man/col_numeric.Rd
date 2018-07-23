@@ -9,10 +9,11 @@
 \usage{
 col_numeric(palette, domain, na.color = "#808080")
 
-col_bin(palette, domain, bins = 7, pretty = TRUE, na.color = "#808080")
-
-col_quantile(palette, domain, n = 4, probs = seq(0, 1, length.out = n + 1),
+col_bin(palette, domain, bins = 7, pretty = TRUE,
   na.color = "#808080")
+
+col_quantile(palette, domain, n = 4, probs = seq(0, 1, length.out = n +
+  1), na.color = "#808080")
 
 col_factor(palette, domain, levels = NULL, ordered = FALSE,
   na.color = "#808080")

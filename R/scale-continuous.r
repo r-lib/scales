@@ -1,6 +1,5 @@
 #' Continuous scale.
 #'
-#' @noMd
 #' @param x vector of continuous values to scale
 #' @param palette palette to use.
 #'
