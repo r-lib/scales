@@ -3,7 +3,7 @@
 \name{boxcox_trans}
 \alias{boxcox_trans}
 \alias{modulus_trans}
-\title{Box-Cox transformations.}
+\title{Box-Cox & modulus transformations.}
 \usage{
 boxcox_trans(p)
 

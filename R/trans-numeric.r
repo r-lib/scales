@@ -16,7 +16,7 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Box-Cox transformations.
+#' Box-Cox & modulus transformations.
 #'
 #' Transformations used to transform non-normal data
 #' to more closely approximate a normal distribution.
@@ -27,9 +27,21 @@ atanh_trans <- function() {
 #' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 #' When `y = 0`, the natural log transform is used.
 #'
+#' The modulus transformation implements a generalisation of the
+#' Box-Cox transformation that works for data with both positive and negative values.
+#' The equation takes the following forms, when `y != 0` :
+#' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
+#' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
+#' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+#' y^(\lambda) = sign(y) * ln(|y| + 1)}
+#'
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
+#'
+#' John, J. A., & Draper, N. R. (1980).
+#' An alternative family of transformations. Applied Statistics, 190-197.
+#' \url{http://www.jstor.org/stable/2986305}
 #'
 #' @export
 boxcox_trans <- function(p) {
@@ -52,18 +64,6 @@ boxcox_trans <- function(p) {
 }
 
 #' @rdname boxcox_trans
-#' @details The modulus transformation implements a generalisation of the
-#' Box-Cox transformation that works for data with both positive and negative values.
-#' The equation takes the following forms, when `y != 0` :
-#' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
-#' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
-#' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
-#' y^(\lambda) = sign(y) * ln(|y| + 1)}
-#'
-#' @references John, J. A., & Draper, N. R. (1980).
-#' An alternative family of transformations. Applied Statistics, 190-197.
-#' \url{http://www.jstor.org/stable/2986305}
-#'
 #' @export
 modulus_trans <- function(p) {
   trans <- function(x) {
