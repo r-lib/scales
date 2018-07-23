@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* New functions `byte_format()` and `bytes()` format numeric vectors into byte
+  measurements (@hrbrmstr, @dpseidel).
+
 * `extended_breaks()` no longer forces `labeling::extended` argument
   `only.loose = FALSE` to allow for more flexible breaks specification 
   (@dpseidel, #99).
