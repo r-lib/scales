@@ -22,11 +22,13 @@ comma_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
 comma(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
 
-percent_format(accuracy = NULL, scale = 100, prefix = "", suffix = "\%",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+percent_format(accuracy = NULL, scale = 100, prefix = "",
+  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
+  ...)
 
-percent(x, accuracy = NULL, scale = 100, prefix = "", suffix = "\%",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+percent(x, accuracy = NULL, scale = 100, prefix = "",
+  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
+  ...)
 
 unit_format(accuracy = 1, scale = 1, prefix = "", unit = "m",
   sep = " ", suffix = paste0(sep, unit), big.mark = " ",

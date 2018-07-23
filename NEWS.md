@@ -6,6 +6,10 @@
 * `boxcox_trans()` is now invertible for `x >= 0` and requires positive values 
   (@dpseidel, #103).
 
+* `extended_breaks()` no longer forces `labeling::extended` argument
+  `only.loose = FALSE` to allow for more flexible breaks specification 
+  (@dpseidel, #99).
+
 * Remove `plyr` and `dichromat` dependencies. `dichromat` is now suggested
  (@dpseidel, #118).  
 
@@ -33,9 +37,17 @@
 * `comma_format()`, `percent_format()` and `unit_format()` gain new arguments: 
   `accuracy`, `scale`, `prefix`, `suffix`, `decimal.mark`, `big.mark` 
   (@larmarange, #146).
+
+* `dollar_format()` gains new arguments: `accuracy`, `scale`, `decimal.mark`, 
+  `trim` (@larmarange, #148)
   
 * `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
   `trim` (@larmarange, #147)
+  
+* `ordinal_format()` gains new arguments: `prefix`, `suffix`, `big.mark`, `rules`,
+   and rules for French and Spanish are also provided (@larmarange, #149).
+
+* New function `pvalue_format()` to format p-values (@larmarange, #145).
 
 # scales 0.5.0
 

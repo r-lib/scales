@@ -96,7 +96,11 @@ test_that("wrap correctly wraps long lines", {
 
 # Ordinal formatter --------------------------------------------------------
 
-test_that("ordinal format", {
+test_that("ordinal format in English", {
+  expect_equal(
+    ordinal_format()(1:4),
+    c("1st", "2nd", "3rd", "4th")
+  )
   expect_equal(ordinal(1), "1st")
   expect_equal(ordinal(2), "2nd")
   expect_equal(ordinal(3), "3rd")
@@ -104,6 +108,19 @@ test_that("ordinal format", {
   expect_equal(ordinal(11), "11th")
   expect_equal(ordinal(12), "12th")
   expect_equal(ordinal(21), "21st")
+  expect_equal(ordinal(101), "101st")
+})
+
+test_that("ordinal match rules in order", {
+  custom <- list(
+    a = "^1",
+    b = ".",
+    c = "^3"
+  )
+  expect_equal(
+    ordinal(1:3, rules = custom),
+    c("1a", "2b", "3b")
+  )
 })
 
 test_that("ordinal format maintains order", {
@@ -143,8 +160,37 @@ test_that("negative comes before prefix", {
   expect_equal(dollar(-1), "$-1")
 })
 
+test_that("prefix is inside parentheses", {
+  expect_equal(dollar(-1, negative_parens = TRUE), "($1)")
+})
+
 test_that("missing values preserved", {
   expect_equal(dollar(NA_real_), "$NA")
+})
+
+test_that("decimal.mark could be modified", {
+  expect_equal(dollar(123.45, decimal.mark = ","), "$123,45")
+})
+
+# p-value formatter --------------------------------------------------------
+
+test_that("pvalue formatter works", {
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA)),
+    c("0.500", "0.045", "<0.001", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), accuracy = .01),
+    c("0.50", "0.04", "<0.01", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), decimal.mark = ","),
+    c("0,500", "0,045", "<0,001", "NA")
+  )
+  expect_equal(
+    pvalue(c(.5, .045, .0002, NA), add_p = TRUE),
+    c("p=0.500", "p=0.045", "p<0.001", "p=NA")
+  )
 })
 
 # Common tests --------------------------------------------------------

@@ -249,19 +249,27 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' Currency formatter: round to nearest cent and display dollar sign.
 #'
 #' The returned function will format a vector of values as currency.
-#' Values are rounded to the nearest cent, and cents are displayed if
-#' any of the values has a non-zero cents and the largest value is less
-#' than `largest_with_cents` which by default is 100000.
+#' If `accuracy` is not specified, values are rounded to the nearest cent,
+#' and cents are displayed if any of the values has a non-zero cents and
+#' the largest value is less than `largest_with_cents` which by default
+#' is 100,000.
 #'
-#' @return a function with single parameter x, a numeric vector, that
-#'   returns a character vector
-#' @param largest_with_cents the value that all values of `x` must
-#'   be less than in order for the cents to be displayed
-#' @param prefix,suffix Symbols to display before and after amount.
-#' @param big.mark Character used between every 3 digits.
+#' @return A function with single parameter `x`, a numeric vector, that
+#'   returns a character vector.
+#' @param accuracy Number to round to, `NULL` for automatic guess.
+#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#'   formating (useful to display the data on another scale, e.g. in k$).
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#'   width (see [base::format()]).
+#' @param largest_with_cents The value that all values of `x` must
+#'   be less than in order for the cents to be displayed.
 #' @param negative_parens Should negative values be shown with parentheses?
-#' @param ... Arguments passed on to [dollar()].
-#' @param x a numeric vector to format
+#' @param ... Other arguments passed on to [base::format()].
+#' @param x A numeric vector to format.
 #' @export
 #' @examples
 #' dollar_format()(c(-100, 0.23, 1.456565, 2e3))
@@ -278,9 +286,35 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #'
 #' finance <- dollar_format(negative_parens = TRUE)
 #' finance(c(-100, 100))
-dollar_format <- function(...) {
-  force_all(...)
-  function(x) dollar(x, ...)
+dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
+                          suffix = "", big.mark = "," , decimal.mark = ".",
+                          trim = TRUE, largest_with_cents = 100000,
+                          negative_parens = FALSE, ...) {
+  force_all(
+    accuracy,
+    scale,
+    prefix,
+    suffix,
+    big.mark,
+    decimal.mark,
+    trim,
+    largest_with_cents,
+    negative_parens,
+    ...
+  )
+  function(x) dollar(
+    x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    largest_with_cents = largest_with_cents,
+    negative_parens,
+    ...
+  )
 }
 
 needs_cents <- function(x, threshold) {
@@ -297,16 +331,20 @@ needs_cents <- function(x, threshold) {
 
 #' @export
 #' @rdname dollar_format
-dollar <- function(x, prefix = "$", suffix = "",
-                   largest_with_cents = 100000, big.mark = ",",
-                   negative_parens = FALSE) {
+dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
+                   suffix = "", big.mark = "," , decimal.mark = ".",
+                   trim = TRUE, largest_with_cents = 100000,
+                   negative_parens = FALSE, ...) {
   if (length(x) == 0) return(character())
-  x <- round_any(x, 0.01)
-  if (needs_cents(x, largest_with_cents)) {
-    nsmall <- 2L
-  } else {
-    x <- round_any(x, 1)
-    nsmall <- 0L
+  if (is.null(accuracy)) {
+    if (needs_cents(x * scale, largest_with_cents)) {
+      accuracy <- .01
+    } else {
+      accuracy <- 1
+    }
+  }
+  if (identical(big.mark, ",") & identical(decimal.mark, ",")) {
+    big.mark <- " "
   }
 
   negative <- !is.na(x) & x < 0
@@ -314,15 +352,22 @@ dollar <- function(x, prefix = "$", suffix = "",
     x <- abs(x)
   }
 
-  amount <- format(abs(x),
-    nsmall = nsmall, trim = TRUE, big.mark = big.mark,
-    scientific = FALSE, digits = 1L,
+  amount <- number(
+    x,
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
   )
 
   if (negative_parens) {
-    paste0(ifelse(negative, "(", ""), prefix, amount, suffix, ifelse(negative, ")", ""))
+    paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
   } else {
-    paste0(prefix, ifelse(negative, "-", ""), amount, suffix)
+    amount
   }
 }
 
@@ -380,32 +425,97 @@ scientific <- function(x, digits = 3, scale= 1, prefix = "", suffix = "",
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
 #'
-#' @return a function with single parameter x, a numeric vector, that
+#' `ordinal_english()`, `ordinal_french()` and `ordinal_spanish()` provide
+#' rules for computing ordinal indicators in English, French and Spanish
+#' respectively.
+#'
+#' @return A function with single parameter `x`, a numeric vector, that
 #'   returns a character vector
-#' @param x a numeric vector to format
+#' @param x A numeric vector of positive values to format.
+#' @param prefix,suffix Symbols to display before and after value.
+#' @param big.mark Character used between every 3 digits to separate thousands.
+#' @param rules Named list of regular expressions, match in order. Name gives
+#'   suffix, and value specifies which numbers to match.
+#' @param ... Other arguments passed on to [base::format()].
+#' @note
+#' Values in `x` will be rounded before formating.
 #' @export
 #' @examples
 #' ordinal_format()(1:10)
 #' ordinal(1:10)
-ordinal_format <- function() {
-  function(x) ordinal(x)
+#'
+#' # Custom rules for French
+#' french <- list(
+#'   er = "^1$",
+#'   nd = "^2$",
+#'   e = "."
+#' )
+#' ordinal(1:20, rules = french)
+#'
+#' # You can also use directly
+#' ordinal(1:20, rules = ordinal_french())
+ordinal_format <- function(prefix = "", suffix = "", big.mark = " ",
+                           rules = ordinal_english(), ...) {
+  force_all(prefix, suffix, big.mark, rules, ...)
+  function(x) ordinal(
+    x,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    rules = rules,
+    ...
+  )
 }
 
 #' @export
 #' @rdname ordinal_format
-ordinal <- function(x) {
-  stopifnot(all(x > 0))
+ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
+                    rules = ordinal_english(), ...) {
+  x <- round(x, digits = 0)
+  out <- utils::stack(lapply(rules, grep, x = x, perl = TRUE))
+  out <- out[!duplicated(out$values), ] # only first result should be considered
+  paste0(
+    number(
+      x,
+      prefix = prefix,
+      suffix = "",
+      big.mark = big.mark,
+      ...
+    ),
+    out$ind[order(out$values)],
+    suffix
+  )
+}
 
-  suffixes <- list(
+#' @export
+#' @rdname ordinal_format
+ordinal_english <- function() {
+  list(
     st = "(?<!1)1$",
     nd = "(?<!1)2$",
     rd = "(?<!1)3$",
     th = "(?<=1)[123]$",
-    th = "[0456789]$"
+    th = "[0456789]$",
+    th = "."
   )
+}
 
-  out <- utils::stack(lapply(suffixes, grep, x = x, perl = TRUE))
-  paste0(comma(x), out$ind[order(out$values)])
+#' @export
+#' @rdname ordinal_format
+ordinal_french <- function() {
+  list(
+    er = "^1$",
+    nd = "^2$",
+    e = "."
+  )
+}
+
+#' @export
+#' @rdname ordinal_format
+ordinal_spanish <- function() {
+  list(
+    ".\u00ba" = "."
+  )
 }
 
 #' Parse a text label to produce expressions for plotmath.
@@ -547,4 +657,58 @@ time_format <- function(format = "%H:%M:%S", tz = "UTC") {
       )
     }
   }
+}
+
+#' p-values formatter
+#'
+#' Formatter for p-values, adding a symbol "<" for small p-values.
+#'
+#' @return `pvalue_format` returns a function with single parameter
+#'   `x`, a numeric vector, that returns a character vector.
+#' @param accuracy Number to round to.
+#' @param decimal.mark The character to be used to indicate the numeric
+#'   decimal point.
+#' @param add_p Add "p=" before the value?
+#' @param x A numeric vector of p-values.
+#' @export
+#' @examples
+#' p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
+#' pvalue(p)
+#' pvalue(p, accuracy = .01)
+#' pvalue(p, add_p = TRUE)
+#' custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
+#' custom_function(p)
+pvalue_format <- function(accuracy = .001, decimal.mark = ".", add_p = FALSE) {
+  force_all(accuracy, decimal.mark, add_p)
+  function(x) pvalue(
+    x,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    add_p = add_p
+  )
+}
+
+#' @rdname pvalue_format
+#' @export
+pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
+  res <- number(
+    x,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    big.mark = ""
+  )
+  if (add_p) res <- paste0("p=", res)
+  below <- number(
+    accuracy,
+    accuracy = accuracy,
+    decimal.mark = decimal.mark,
+    big.mark = ""
+  )
+  if (add_p) {
+    below <- paste0("p<", below)
+  } else {
+    below <- paste0("<", below)
+  }
+  res[x < accuracy] <- below
+  res
 }

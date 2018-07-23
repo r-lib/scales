@@ -39,7 +39,7 @@ extended_breaks <- function(n = 5, ...) {
     }
 
     rng <- range(x)
-    labeling::extended(rng[1], rng[2], n, only.loose = FALSE, ...)
+    labeling::extended(rng[1], rng[2], n, ...)
   }
 }
 

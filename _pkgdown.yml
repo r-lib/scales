@@ -1,0 +1,74 @@
+reference:
+- title: Scales basics
+  desc: >
+    Scales control the details of how data values are translated to visual
+    properties. The following functions help users create (and update)
+    custom scales.
+  contents:
+  - cscale
+  - dscale
+  - starts_with("train_")
+
+- title: "Colour Palettes & Colour Mapping"
+  desc: >
+    Functions for specifying colour palettes, colour mapping, and
+    various helper functions.
+  contents:
+  - brewer_pal
+  - dichromat_pal
+  - div_gradient_pal
+  - gradient_n_pal
+  - grey_pal
+  - hue_pal
+  - seq_gradient_pal
+  - rescale_pal
+  - viridis_pal
+  - contains("col")
+  - muted
+  - alpha
+
+- title: Non-Colour Palette functions
+  desc: >
+    Functions to help scale non-colour aesthetics.
+  contents:
+  - abs_area
+  - area_pal
+  - identity_pal
+  - linetype_pal
+  - manual_pal
+  - rescale_pal
+  - shape_pal
+
+- title: Transformations
+  desc: >
+    Functions to describe common and custom scale transformations
+    and their inverses.
+  contents:
+  - matches("trans")
+  - -trans_breaks
+
+- title: "Bounds: Ranges & Rescaling"
+  desc: >
+    Functions for rescaling values and adjusting scale ranges.
+  contents:
+  - starts_with("rescale")
+  - matches("range")
+  - squish
+  - squish_infinite
+  - expand_range
+  - discard
+  - censor
+
+- title: Breaks
+  desc: >
+    Functions for computing scale breaks.
+  contents:
+  - matches("breaks")
+
+- title:  Label Formatters
+  desc: >
+    Functions for formatting nice labels.
+  contents:
+  - matches("format")
+
+
