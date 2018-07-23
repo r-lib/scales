@@ -5,34 +5,49 @@
 \alias{dollar}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
-dollar_format(...)
+dollar_format(accuracy = NULL, scale = 1, prefix = "$", suffix = "",
+  big.mark = ",", decimal.mark = ".", trim = TRUE,
+  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
 
-dollar(x, prefix = "$", suffix = "", largest_with_cents = 1e+05,
-  big.mark = ",", negative_parens = FALSE)
+dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
+  big.mark = ",", decimal.mark = ".", trim = TRUE,
+  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
 }
 \arguments{
-\item{...}{Arguments passed on to \code{\link[=dollar]{dollar()}}.}
+\item{accuracy}{Number to round to, \code{NULL} for automatic guess.}
 
-\item{x}{a numeric vector to format}
+\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
+formating (useful to display the data on another scale, e.g. in k$).}
 
-\item{prefix, suffix}{Symbols to display before and after amount.}
+\item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{largest_with_cents}{the value that all values of \code{x} must
-be less than in order for the cents to be displayed}
+\item{big.mark}{Character used between every 3 digits to separate thousands.}
 
-\item{big.mark}{Character used between every 3 digits.}
+\item{decimal.mark}{The character to be used to indicate the numeric
+decimal point.}
+
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base:format]{base::format()}}).}
+
+\item{largest_with_cents}{The value that all values of \code{x} must
+be less than in order for the cents to be displayed.}
 
 \item{negative_parens}{Should negative values be shown with parentheses?}
+
+\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{x}{A numeric vector to format.}
 }
 \value{
-a function with single parameter x, a numeric vector, that
-returns a character vector
+A function with single parameter \code{x}, a numeric vector, that
+returns a character vector.
 }
 \description{
 The returned function will format a vector of values as currency.
-Values are rounded to the nearest cent, and cents are displayed if
-any of the values has a non-zero cents and the largest value is less
-than \code{largest_with_cents} which by default is 100000.
+If \code{accuracy} is not specified, values are rounded to the nearest cent,
+and cents are displayed if any of the values has a non-zero cents and
+the largest value is less than \code{largest_with_cents} which by default
+is 100,000.
 }
 \examples{
 dollar_format()(c(-100, 0.23, 1.456565, 2e3))

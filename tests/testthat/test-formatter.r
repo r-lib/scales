@@ -160,8 +160,16 @@ test_that("negative comes before prefix", {
   expect_equal(dollar(-1), "$-1")
 })
 
+test_that("prefix is inside parentheses", {
+  expect_equal(dollar(-1, negative_parens = TRUE), "($1)")
+})
+
 test_that("missing values preserved", {
   expect_equal(dollar(NA_real_), "$NA")
+})
+
+test_that("decimal.mark could be modified", {
+  expect_equal(dollar(123.45, decimal.mark = ","), "$123,45")
 })
 
 # p-value formatter --------------------------------------------------------
