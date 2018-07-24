@@ -228,7 +228,7 @@ expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   if (is.null(range)) return()
 
   if (zero_range(range)) {
-    c(range[1] - zero_width / 2, range[1] + zero_width / 2)
+    range + c(-1, 1) * (zero_width * mul + add)
   } else {
     range + c(-1, 1) * (diff(range) * mul + add)
   }
