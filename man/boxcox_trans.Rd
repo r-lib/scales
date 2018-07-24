@@ -2,22 +2,45 @@
 % Please edit documentation in R/trans-numeric.r
 \name{boxcox_trans}
 \alias{boxcox_trans}
-\title{Box-Cox (modulus) power transformation.}
+\alias{modulus_trans}
+\title{Box-Cox & modulus transformations.}
 \usage{
-boxcox_trans(p)
+boxcox_trans(p, offset = 0)
+
+modulus_trans(p, offset = 1)
 }
 \arguments{
-\item{p}{Exponent of Box-Cox transformation.}
+\item{p}{Transformation exponent, \eqn{\lambda}.}
+
+\item{offset}{Constant offset. 0 for Box-Cox type 1,
+otherwise any non-negative constant (Box-Cox type 2). \code{modulus_trans()}
+sets the default to 1.}
 }
 \description{
-Box-Cox (modulus) power transformation.
+The Box-Cox transformation is a flexible transformation, often used to
+transform data towards normality. The modulus transformation generalises
+Box-Cox to also work with negative values.
 }
 \details{
-Implements a generalisation of the Box-Cox transformation that works
-for data with both positive and negative values.
+The Box-Cox power transformation (type 1) requires strictly positive values and
+takes the following form for \code{y > 0}:
+\deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
+When \code{y = 0}, the natural log transform is used.
+
+The modulus transformation implements a generalisation of the Box-Cox
+transformation that works for data with both positive and negative values.
+The equation takes the following forms, when \code{y != 0} :
+\deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
+y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
+and when \code{y = 0}: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+y^(\lambda) = sign(y) * ln(|y| + 1)}
 }
 \references{
-J. John and N. Draper. "An alternative family of
-transformations." Applied Statistics, pages 190-197, 1980.
+Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
+Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
+\url{https://www.jstor.org/stable/2984418}
+
+John, J. A., & Draper, N. R. (1980).
+An alternative family of transformations. Applied Statistics, 190-197.
 \url{http://www.jstor.org/stable/2986305}
 }
