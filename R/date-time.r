@@ -17,8 +17,10 @@ floor_date <- function(date, time) {
 floor_time <- function(date, time) {
   to_time <- function(x) {
     force(x)
-    structure(x, class = c("POSIXt", "POSIXct"),
-              tzone = attr(date, "tzone", exact = TRUE) %||% "")
+    structure(x,
+      class = c("POSIXt", "POSIXct"),
+      tzone = attr(date, "tzone", exact = TRUE) %||% ""
+    )
   }
 
   prec <- parse_unit_spec(time)
