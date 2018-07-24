@@ -18,26 +18,27 @@ atanh_trans <- function() {
 
 #' Box-Cox & modulus transformations.
 #'
-#' Transformations used to transform non-normal data
-#' to more closely approximate a normal distribution.
+#' The Box-Cox transformation is a flexible transformation, often used to
+#' transform data towards normality. The modulus transformation generalises
+#' Box-Cox to also work with negative values.
 #'
-#' @param p Transformation exponent, \eqn{\lambda}.
-#' @param offset Constant offset. 0 for Box-Cox type 1,
-#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
-#'   sets the default to 1.
-#' @details The Box-Cox power transformation (type 1) requires strictly positive values and
+#' The Box-Cox power transformation (type 1) requires strictly positive values and
 #' takes the following form for `y > 0`:
 #' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 #' When `y = 0`, the natural log transform is used.
 #'
-#' The modulus transformation implements a generalisation of the
-#' Box-Cox transformation that works for data with both positive and negative values.
+#' The modulus transformation implements a generalisation of the Box-Cox
+#' transformation that works for data with both positive and negative values.
 #' The equation takes the following forms, when `y != 0` :
 #' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
 #' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
 #' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
 #' y^(\lambda) = sign(y) * ln(|y| + 1)}
 #'
+#' @param p Transformation exponent, \eqn{\lambda}.
+#' @param offset Constant offset. 0 for Box-Cox type 1,
+#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
+#'   sets the default to 1.
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
@@ -45,7 +46,6 @@ atanh_trans <- function() {
 #' John, J. A., & Draper, N. R. (1980).
 #' An alternative family of transformations. Applied Statistics, 190-197.
 #' \url{http://www.jstor.org/stable/2986305}
-#'
 #' @export
 boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {

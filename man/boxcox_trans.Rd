@@ -17,8 +17,9 @@ otherwise any non-negative constant (Box-Cox type 2). \code{modulus_trans()}
 sets the default to 1.}
 }
 \description{
-Transformations used to transform non-normal data
-to more closely approximate a normal distribution.
+The Box-Cox transformation is a flexible transformation, often used to
+transform data towards normality. The modulus transformation generalises
+Box-Cox to also work with negative values.
 }
 \details{
 The Box-Cox power transformation (type 1) requires strictly positive values and
@@ -26,8 +27,8 @@ takes the following form for \code{y > 0}:
 \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 When \code{y = 0}, the natural log transform is used.
 
-The modulus transformation implements a generalisation of the
-Box-Cox transformation that works for data with both positive and negative values.
+The modulus transformation implements a generalisation of the Box-Cox
+transformation that works for data with both positive and negative values.
 The equation takes the following forms, when \code{y != 0} :
 \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
 y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
