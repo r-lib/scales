@@ -1,5 +1,11 @@
 # scales 0.5.0.9000
 
+* New function `modulus_trans()` implements the modulus transformation for positive
+  and negative values (@dpseidel).
+
+* `boxcox_trans()` is now invertible for `x >= 0` and requires positive values 
+  (@dpseidel, #103).
+
 * New functions `byte_format()` and `bytes()` format numeric vectors into byte
   measurements (@hrbrmstr, @dpseidel).
 
@@ -9,9 +15,6 @@
 
 * Remove `plyr` and `dichromat` dependencies. `dichromat` is now suggested
  (@dpseidel, #118).  
-
-* `boxcox_trans` now implements the modulus transformation, a generalisation
-  appropriate for data with both positive and negative values (@dpseidel, #103).
 
 * New function `time_format()` formats `POSIXt` and `hms` objects (@dpseidel, #88).
 

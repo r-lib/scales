@@ -16,33 +16,76 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Box-Cox (modulus) power transformation.
+#' Box-Cox & modulus transformations.
 #'
-#' @param p Exponent of Box-Cox transformation.
-#' @details Implements a generalisation of the Box-Cox transformation that works
-#' for data with both positive and negative values.
-#' @references J. John and N. Draper. "An alternative family of
-#' transformations." Applied Statistics, pages 190-197, 1980.
+#' The Box-Cox transformation is a flexible transformation, often used to
+#' transform data towards normality. The modulus transformation generalises
+#' Box-Cox to also work with negative values.
+#'
+#' The Box-Cox power transformation (type 1) requires strictly positive values and
+#' takes the following form for `y > 0`:
+#' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
+#' When `y = 0`, the natural log transform is used.
+#'
+#' The modulus transformation implements a generalisation of the Box-Cox
+#' transformation that works for data with both positive and negative values.
+#' The equation takes the following forms, when `y != 0` :
+#' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
+#' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
+#' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+#' y^(\lambda) = sign(y) * ln(|y| + 1)}
+#'
+#' @param p Transformation exponent, \eqn{\lambda}.
+#' @param offset Constant offset. 0 for Box-Cox type 1,
+#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
+#'   sets the default to 1.
+#' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
+#' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
+#' \url{https://www.jstor.org/stable/2984418}
+#'
+#' John, J. A., & Draper, N. R. (1980).
+#' An alternative family of transformations. Applied Statistics, 190-197.
 #' \url{http://www.jstor.org/stable/2986305}
-#'
 #' @export
-boxcox_trans <- function(p) {
+boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
+    if (any((x + offset) < 0)) {
+      stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
+        call. = F
+      )
+    }
     if (abs(p) < 1e-07) {
-      sign(x) * log(abs(x) + 1)
+      log(x + offset)
     } else {
-      sign(x) * ((abs(x) + 1)^p - 1) / p
+      ((x + offset)^p - 1) / p
     }
   }
+
   inv <- function(x) {
     if (abs(p) < 1e-07) {
-      sign(x) * (exp(abs(x)) - 1)
+      exp(x) - offset
     } else {
-      sign(x) * ((abs(x) * p + 1)^(1 / p) - 1)
+      (x * p + 1)^(1 / p) - offset
     }
   }
+
   trans_new(
     paste0("pow-", format(p)), trans, inv
+  )
+}
+
+#' @rdname boxcox_trans
+#' @export
+modulus_trans <- function(p, offset = 1) {
+  if (abs(p) < 1e-07) {
+    trans <- function(x) sign(x) * log(abs(x) + offset)
+    inv <- function(x) sign(x) * (exp(abs(x)) - offset)
+  } else {
+    trans <- function(x) sign(x) * ((abs(x) + offset)^p - 1) / p
+    inv <- function(x) sign(x) * ((abs(x) * p + 1)^(1 / p) - offset)
+  }
+  trans_new(
+    paste0("mt-pow-", format(p)), trans, inv
   )
 }
 
