@@ -6,6 +6,9 @@
 * `boxcox_trans()` is now invertible for `x >= 0` and requires positive values 
   (@dpseidel, #103).
 
+* New functions `byte_format()` and `bytes()` format numeric vectors into byte
+  measurements (@hrbrmstr, @dpseidel).
+
 * `extended_breaks()` no longer forces `labeling::extended` argument
   `only.loose = FALSE` to allow for more flexible breaks specification 
   (@dpseidel, #99).

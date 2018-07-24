@@ -287,7 +287,7 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' finance <- dollar_format(negative_parens = TRUE)
 #' finance(c(-100, 100))
 dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
-                          suffix = "", big.mark = "," , decimal.mark = ".",
+                          suffix = "", big.mark = ",", decimal.mark = ".",
                           trim = TRUE, largest_with_cents = 100000,
                           negative_parens = FALSE, ...) {
   force_all(
@@ -303,18 +303,18 @@ dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
     ...
   )
   function(x) dollar(
-    x,
-    accuracy = accuracy,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    largest_with_cents = largest_with_cents,
-    negative_parens,
-    ...
-  )
+      x,
+      accuracy = accuracy,
+      scale = scale,
+      prefix = prefix,
+      suffix = suffix,
+      big.mark = big.mark,
+      decimal.mark = decimal.mark,
+      trim = trim,
+      largest_with_cents = largest_with_cents,
+      negative_parens,
+      ...
+    )
 }
 
 needs_cents <- function(x, threshold) {
@@ -332,7 +332,7 @@ needs_cents <- function(x, threshold) {
 #' @export
 #' @rdname dollar_format
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
-                   suffix = "", big.mark = "," , decimal.mark = ".",
+                   suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
                    negative_parens = FALSE, ...) {
   if (length(x) == 0) return(character())
@@ -400,19 +400,19 @@ scientific_format <- function(digits = 3, scale = 1, prefix = "", suffix = "",
                               decimal.mark = ".", trim = TRUE, ...) {
   force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)
   function(x) scientific(
-    x,
-    digits = digits,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    decimal.mark = decimal.mark,
-    ...
-  )
+      x,
+      digits = digits,
+      scale = scale,
+      prefix = prefix,
+      suffix = suffix,
+      decimal.mark = decimal.mark,
+      ...
+    )
 }
 
 #' @export
 #' @rdname scientific_format
-scientific <- function(x, digits = 3, scale= 1, prefix = "", suffix = "",
+scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
                        decimal.mark = ".", trim = TRUE, ...) {
   if (length(x) == 0) return(character())
   x <- signif(x * scale, digits)
@@ -458,13 +458,13 @@ ordinal_format <- function(prefix = "", suffix = "", big.mark = " ",
                            rules = ordinal_english(), ...) {
   force_all(prefix, suffix, big.mark, rules, ...)
   function(x) ordinal(
-    x,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    rules = rules,
-    ...
-  )
+      x,
+      prefix = prefix,
+      suffix = suffix,
+      big.mark = big.mark,
+      rules = rules,
+      ...
+    )
 }
 
 #' @export
@@ -577,6 +577,7 @@ wrap_format <- function(width) {
     unlist(lapply(strwrap(x, width = width, simplify = FALSE), paste0, collapse = "\n"))
   }
 }
+
 #' Format labels after transformation.
 #'
 #' @param trans transformation to apply
@@ -681,11 +682,11 @@ time_format <- function(format = "%H:%M:%S", tz = "UTC") {
 pvalue_format <- function(accuracy = .001, decimal.mark = ".", add_p = FALSE) {
   force_all(accuracy, decimal.mark, add_p)
   function(x) pvalue(
-    x,
-    accuracy = accuracy,
-    decimal.mark = decimal.mark,
-    add_p = add_p
-  )
+      x,
+      accuracy = accuracy,
+      decimal.mark = decimal.mark,
+      add_p = add_p
+    )
 }
 
 #' @rdname pvalue_format
@@ -711,4 +712,80 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
   }
   res[x < accuracy] <- below
   res
+}
+
+#' Bytes formatter: convert to byte measurement and display symbol.
+#'
+#' @return a function with three parameters, `x``, a numeric vector that
+#'   returns a character vector, `symbol` the byte symbol (e.g. "Kb")
+#'   desired and the measurement `units` (traditional `binary` or
+#'   `si` for ISI metric units).
+#' @param x a numeric vector to format
+#' @param symbol byte symbol to use. If "auto" the symbol used will be
+#'   determined by the maximum value of `x`. Valid symbols are
+#'   "b", "Kb", "Mb", "Gb", "Tb", "Pb",
+#'   "Eb", "Zb", and "Yb", along with their upper case
+#'   equivalents and "iB" equivalents.
+#' @param units which unit base to use, "binary" (1024 base) or
+#'   "si" (1000 base) for ISI units.
+#' @param ... other arguments passed to [number()]
+#' @references Units of Information (Wikipedia) :
+#'   \url{http://en.wikipedia.org/wiki/Units_of_information}
+#' @export
+#' @examples
+#' byte_format()(sample(3000000000, 10))
+#' bytes(sample(3000000000, 10))
+#' bytes(sample(3000000000, 10), accuracy = .1)
+byte_format <- function(symbol = "auto", units = "binary", ...) {
+  function(x) bytes(x, symbol, units, ...)
+}
+
+#' @export
+#' @rdname byte_format
+bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
+  symbols <- c(
+    "auto",
+    "b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb",
+    "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB",
+    "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"
+  )
+
+  if (!(symbol %in% symbols)) {
+    warning(paste(
+      "`symbol` must be one of '", paste0(symbols, collapse = "', '"),
+      "'. Defaulting to 'auto'."
+    ), call. = F)
+    symbol <- "auto"
+  }
+
+  units <- match.arg(units, c("binary", "si"))
+
+  base <- switch(units, binary = 1024, si = 1000)
+
+  if (symbol == "auto") {
+    symbol <- as.character(cut(max(x, na.rm = T),
+      breaks = c(base^(0:8), Inf),
+      labels = c("b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"),
+      right = F
+    ))
+  }
+
+  first <- tolower(substr(symbol, 1, 1))
+  x <- switch(first,
+    "b" = x,
+    "k" = x / (base^1),
+    "m" = x / (base^2),
+    "g" = x / (base^3),
+    "t" = x / (base^4),
+    "p" = x / (base^5),
+    "e" = x / (base^6),
+    "z" = x / (base^7),
+    "y" = x / (base^8)
+  )
+
+  number(
+    x = x,
+    suffix = paste0(" ", symbol),
+    ...
+  )
 }
