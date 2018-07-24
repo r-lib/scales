@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+
 * New functions `byte_format()` and `bytes()` format numeric vectors into byte
   measurements (@hrbrmstr, @dpseidel).
 

@@ -40,3 +40,25 @@ test_that("tz arugment overrules default time zone", {
   expect_equal(tz(x), "GMT")
   expect_equal(tz2(x), "GMT")
 })
+
+test_that("date_breaks() works", {
+  times <- c(a_time, a_time + 60, a_time + 3600)
+
+  expect_equal(
+    date_breaks("1 hour")(times),
+    as.POSIXct(c("2012-01-01 03:00:00 UTC", "2012-01-01 04:00:00 UTC"))
+  )
+  expect_equal(
+    date_breaks(".5 secs")(c(a_time, a_time + 1)),
+    as.POSIXct(c(
+      "2012-01-01 03:30:00.0 UTC", "2012-01-01 03:30:00.5 UTC",
+      "2012-01-01 03:30:01.0 UTC", "2012-01-01 03:30:01.5 UTC"
+    ))
+  )
+
+  dates <- a_date + 1:30
+  expect_equal(
+    date_breaks("1 month")(dates),
+    as.Date(c("2012-01-01", "2012-02-01"))
+  )
+})

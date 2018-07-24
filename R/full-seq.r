@@ -33,5 +33,12 @@ fullseq.Date <- function(range, size, ...) {
 }
 #' @export
 fullseq.POSIXt <- function(range, size, ...) {
-  seq(floor_time(range[1], size), ceiling_time(range[2], size), by = size)
+
+  # for subsecond interval support
+  parsed <- parse_unit_spec(size)
+  if (parsed$unit == "sec") {
+    seq(floor_time(range[1], size), ceiling_time(range[2], size), by = parsed$mult)
+  } else {
+    seq(floor_time(range[1], size), ceiling_time(range[2], size), by = size)
+  }
 }
