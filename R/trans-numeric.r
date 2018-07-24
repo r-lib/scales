@@ -22,7 +22,10 @@ atanh_trans <- function() {
 #' to more closely approximate a normal distribution.
 #'
 #' @param p Transformation exponent, \eqn{\lambda}.
-#' @details The Box-Cox power transformation requires strictly positive values and
+#' @param offset Constant offset. 0 for Box-Cox type 1,
+#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
+#'   sets the default to 1.
+#' @details The Box-Cox power transformation (type 1) requires strictly positive values and
 #' takes the following form for `y > 0`:
 #' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 #' When `y = 0`, the natural log transform is used.
@@ -44,19 +47,27 @@ atanh_trans <- function() {
 #' \url{http://www.jstor.org/stable/2986305}
 #'
 #' @export
-boxcox_trans <- function(p) {
-  if (abs(p) < 1e-07) return(log_trans())
-
+boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
-    if (any(x < 0)) {
+    if (any((x + offset) < 0)) {
       stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
         call. = F
       )
     }
-    (x^p - 1) / p
+    if (abs(p) < 1e-07) {
+      log(x + offset)
+    } else {
+      ((x + offset)^p - 1) / p
+    }
   }
 
-  inv <- function(x) (x * p + 1)^(1 / p)
+  inv <- function(x) {
+    if (abs(p) < 1e-07) {
+      exp(x) - offset
+    } else {
+      (x * p + 1)^(1 / p) - offset
+    }
+  }
 
   trans_new(
     paste0("pow-", format(p)), trans, inv
@@ -65,23 +76,16 @@ boxcox_trans <- function(p) {
 
 #' @rdname boxcox_trans
 #' @export
-modulus_trans <- function(p) {
-  trans <- function(x) {
-    if (abs(p) < 1e-07) {
-      sign(x) * log(abs(x) + 1)
-    } else {
-      sign(x) * ((abs(x) + 1)^p - 1) / p
-    }
-  }
-  inv <- function(x) {
-    if (abs(p) < 1e-07) {
-      sign(x) * (exp(abs(x)) - 1)
-    } else {
-      sign(x) * ((abs(x) * p + 1)^(1 / p) - 1)
-    }
+modulus_trans <- function(p, offset = 1) {
+  if (abs(p) < 1e-07) {
+    trans <- function(x) sign(x) * log(abs(x) + offset)
+    inv <- function(x) sign(x) * (exp(abs(x)) - offset)
+  } else {
+    trans <- function(x) sign(x) * ((abs(x) + offset)^p - 1) / p
+    inv <- function(x) sign(x) * ((abs(x) * p + 1)^(1 / p) - offset)
   }
   trans_new(
-    paste0("pow-", format(p)), trans, inv
+    paste0("mt-pow-", format(p)), trans, inv
   )
 }
 

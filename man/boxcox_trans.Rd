@@ -5,19 +5,23 @@
 \alias{modulus_trans}
 \title{Box-Cox & modulus transformations.}
 \usage{
-boxcox_trans(p)
+boxcox_trans(p, offset = 0)
 
-modulus_trans(p)
+modulus_trans(p, offset = 1)
 }
 \arguments{
 \item{p}{Transformation exponent, \eqn{\lambda}.}
+
+\item{offset}{Constant offset. 0 for Box-Cox type 1,
+otherwise any non-negative constant (Box-Cox type 2). \code{modulus_trans()}
+sets the default to 1.}
 }
 \description{
 Transformations used to transform non-normal data
 to more closely approximate a normal distribution.
 }
 \details{
-The Box-Cox power transformation requires strictly positive values and
+The Box-Cox power transformation (type 1) requires strictly positive values and
 takes the following form for \code{y > 0}:
 \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 When \code{y = 0}, the natural log transform is used.
