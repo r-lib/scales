@@ -1,5 +1,7 @@
 # scales 0.5.0.9000
 
+* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+
 * New function `modulus_trans()` implements the modulus transformation for positive
   and negative values (@dpseidel).
 
