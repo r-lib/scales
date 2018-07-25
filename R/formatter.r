@@ -254,6 +254,11 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' the largest value is less than `largest_with_cents` which by default
 #' is 100,000.
 #'
+#' `nice_dollar()` is a helper function that scales and sets
+#' the `suffix` individually for each data value according to magnitude
+#' ("K" for 10e3+, "M" for 10e6+, "B" for 10e9+, and "T" for 10e12+). It respects
+#' all arguments to dollar except `scale` and `suffix` which are set internally.
+#'
 #' @return A function with single parameter `x`, a numeric vector, that
 #'   returns a character vector.
 #' @param accuracy Number to round to, `NULL` for automatic guess.
@@ -371,6 +376,25 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   }
 }
 
+#' @export
+#' @rdname dollar_format
+nice_dollar <- function(x, prefix = "", ...) {
+  suffix <- as.character(cut(x,
+    breaks = c(0, 1000^(1:4), Inf),
+    labels = c(" ", "K", "M", "B", "T"), right = F
+  ))
+
+  mapply(x, suffix, ..., FUN = function(x, suffix, ...) {
+    scale <- switch(suffix,
+      " " = 1,
+      "K" = 1e-3,
+      "M" = 1e-6,
+      "B" = 1e-9,
+      "T" = 1e-9
+    )
+    dollar(x, scale = scale, suffix = suffix, prefix = prefix, ...)
+  })
+}
 
 #' Scientific formatter.
 #'

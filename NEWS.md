@@ -1,5 +1,9 @@
 # scales 0.5.0.9000
 
+* New function `nice_dollar()` formats numeric vectors into large currency values,
+  scaled and labelled with abbreviations "K", "M", "B", or "T" 
+  dependent on magnitude (@dpseidel, #83).
+  
 * `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
 
 * New function `modulus_trans()` implements the modulus transformation for positive

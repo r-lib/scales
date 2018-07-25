@@ -3,6 +3,7 @@
 \name{dollar_format}
 \alias{dollar_format}
 \alias{dollar}
+\alias{nice_dollar}
 \title{Currency formatter: round to nearest cent and display dollar sign.}
 \usage{
 dollar_format(accuracy = NULL, scale = 1, prefix = "$",
@@ -12,6 +13,8 @@ dollar_format(accuracy = NULL, scale = 1, prefix = "$",
 dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE,
   largest_with_cents = 1e+05, negative_parens = FALSE, ...)
+
+nice_dollar(x, prefix = "", ...)
 }
 \arguments{
 \item{accuracy}{Number to round to, \code{NULL} for automatic guess.}
@@ -48,6 +51,12 @@ If \code{accuracy} is not specified, values are rounded to the nearest cent,
 and cents are displayed if any of the values has a non-zero cents and
 the largest value is less than \code{largest_with_cents} which by default
 is 100,000.
+}
+\details{
+\code{nice_dollar()} is a helper function that scales and sets
+the \code{suffix} individually for each data value according to magnitude
+("K" for 10e3+, "M" for 10e6+, "B" for 10e9+, and "T" for 10e12+). It respects
+all arguments to dollar except \code{scale} and \code{suffix} which are set internally.
 }
 \examples{
 dollar_format()(c(-100, 0.23, 1.456565, 2e3))

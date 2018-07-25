@@ -172,6 +172,10 @@ test_that("decimal.mark could be modified", {
   expect_equal(dollar(123.45, decimal.mark = ","), "$123,45")
 })
 
+test_that("nice_dollar works", {
+  expect_equal(nice_dollar(c(1e3, 1e6, 1e9)), c("1K", "1M", "1B"))
+})
+
 # p-value formatter --------------------------------------------------------
 
 test_that("pvalue formatter works", {
