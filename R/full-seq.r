@@ -35,6 +35,7 @@ fullseq.Date <- function(range, size, ...) {
 fullseq.POSIXt <- function(range, size, ...) {
 
   # for subsecond interval support
+  # seq() does not support partial secs in character strings
   parsed <- parse_unit_spec(size)
   if (parsed$unit == "sec") {
     seq(floor_time(range[1], size), ceiling_time(range[2], size), by = parsed$mult)
