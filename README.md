@@ -48,7 +48,7 @@ types of presentation.
 library(scales)
 
 # percent() function takes a numeric and does your division and labelling for you
-percent(c(0.1, 1/3, 0.56))
+percent(c(0.1, 1 / 3, 0.56))
 #> [1] "10.0%" "33.3%" "56.0%"
 
 # comma() adds commas into large numbers for easier readability
@@ -75,17 +75,18 @@ number(c(12.3, 4, 12345.789, 0.0002), big.mark = ".", decimal.mark = ",")
 #> [1] "12"     "4"      "12.346" "0"
 
 # these functions round by default, but you can set the accuracy
-number(c(12.3, 4, 12345.789, 0.0002), 
-       big.mark = ".", 
-       decimal.mark = ",", 
-       accuracy = .01)
+number(c(12.3, 4, 12345.789, 0.0002),
+  big.mark = ".",
+  decimal.mark = ",",
+  accuracy = .01
+)
 #> [1] "12,30"     "4,00"      "12.345,79" "0,00"
 
 # percent formatting in the French style
 french_percent <- percent_format(decimal.mark = ",", suffix = " %")
 french_percent(runif(10))
-#>  [1] "11,2 %" "47,4 %" "17,3 %" "86,7 %" "99,5 %" "91,9 %" "36,7 %"
-#>  [8] "54,6 %" "56,2 %" "64,4 %"
+#>  [1] "87,8 %" "88,7 %" "96,8 %" "85,3 %" "74,1 %" "70,2 %" "0,4 %" 
+#>  [8] "11,6 %" "29,7 %" "32,3 %"
 
 # currency formatting Euros (and simple conversion!)
 usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)
@@ -134,11 +135,11 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Petal.Length)) +
 # the rescale functions can rescale continuous vectors to new min, mid, or max values
 x <- runif(5, 0, 1)
 rescale(x, to = c(0, 50))
-#> [1]  0.000000 13.878970  2.906766 22.787482 50.000000
+#> [1]  0.00000000 35.84609465  0.05776566 16.13651324 50.00000000
 rescale_mid(x, mid = .25)
-#> [1] 0.3437512 0.5259124 0.3819024 0.6428364 1.0000000
+#> [1] 0.2818947 0.7967201 0.2827244 0.5136490 1.0000000
 rescale_max(x, to = c(0, 50))
-#> [1]  1.749576 15.142899  4.554629 23.739689 50.000000
+#> [1]  2.909815 36.669800  2.964219 18.107243 50.000000
 ```
 
 scales also gives users the ability to define and apply their own custom
@@ -149,9 +150,9 @@ transformation functions for repeated use.
 logp3_trans <- trans_new(
   name = "logp",
   trans = function(x) log(x + 3),
-  inverse =  function(x) exp(x) - 3,
+  inverse = function(x) exp(x) - 3,
   breaks = log_breaks()
-  )
+)
 
 library(dplyr)
 dsamp <- sample_n(diamonds, 100)
@@ -168,7 +169,7 @@ logp3_trans$breaks(dsamp$price)
 
 # scales has some breaks helper functions too
 log_breaks(base = exp(1))(dsamp$price)
-#> [1]   403.4288  1096.6332  2980.9580  8103.0839 22026.4658
+#> [1]   148.4132   403.4288  1096.6332  2980.9580  8103.0839 22026.4658
 
 pretty_breaks()(dsamp$price)
 #> [1]     0  5000 10000 15000 20000

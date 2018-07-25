@@ -57,7 +57,7 @@ functions for formatting numeric data for all types of presentation.
 library(scales)
 
 # percent() function takes a numeric and does your division and labelling for you
-percent(c(0.1, 1/3, 0.56))
+percent(c(0.1, 1 / 3, 0.56))
 
 # comma() adds commas into large numbers for easier readability
 comma(10e6)
@@ -78,10 +78,11 @@ useful for meeting diverse international standards.
 number(c(12.3, 4, 12345.789, 0.0002), big.mark = ".", decimal.mark = ",")
 
 # these functions round by default, but you can set the accuracy
-number(c(12.3, 4, 12345.789, 0.0002), 
-       big.mark = ".", 
-       decimal.mark = ",", 
-       accuracy = .01)
+number(c(12.3, 4, 12345.789, 0.0002),
+  big.mark = ".",
+  decimal.mark = ",",
+  accuracy = .01
+)
 
 # percent formatting in the French style
 french_percent <- percent_format(decimal.mark = ",", suffix = " %")
@@ -136,9 +137,9 @@ transformation functions for repeated use.
 logp3_trans <- trans_new(
   name = "logp",
   trans = function(x) log(x + 3),
-  inverse =  function(x) exp(x) - 3,
+  inverse = function(x) exp(x) - 3,
   breaks = log_breaks()
-  )
+)
 
 library(dplyr)
 dsamp <- sample_n(diamonds, 100)
