@@ -1,5 +1,8 @@
 # scales 0.5.0.9000
 
+* `expand_range()` arguments `mul` and `add` now affect scales with a range of 0
+   (@dpseidel, tidyverse/ggplot2#2281).
+
 * New function `modulus_trans()` implements the modulus transformation for positive
   and negative values (@dpseidel).
 

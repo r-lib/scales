@@ -79,3 +79,10 @@ test_that("scaling is possible with logical values", {
   expect_equal(rescale(c(FALSE, TRUE)), c(0, 1))
   expect_equal(rescale_mid(c(FALSE, TRUE), mid = 0.5), c(0, 1))
 })
+
+test_that("expand_range respects mul and add values", {
+  expect_equal(expand_range(c(1,1), mul = 0, add = 0.6), c(0.4, 1.6))
+  expect_equal(expand_range(c(1,1), mul = 1, add = 0.6), c(-0.1, 2.1))
+  expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
+})
+

@@ -223,15 +223,12 @@ squish_infinite <- function(x, range = c(0, 1)) {
 #' @param add additive constant
 #' @param zero_width distance to use if range has zero width
 #' @export
-
 expand_range <- function(range, mul = 0, add = 0, zero_width = 1) {
   if (is.null(range)) return()
 
-  if (zero_range(range)) {
-    range + c(-1, 1) * (zero_width * mul + add)
-  } else {
-    range + c(-1, 1) * (diff(range) * mul + add)
-  }
+  width <- if (zero_range(range)) zero_width else diff(range)
+
+  range + c(-1, 1) * (width * mul + add)
 }
 
 #' Determine if range of vector is close to zero, with a specified tolerance
