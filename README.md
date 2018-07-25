@@ -37,57 +37,57 @@ devtools::install_github("r-lib/scales")
 
 # Usage
 
-``` r
-library(scales)
-```
-
 ### Formatters
 
 Outside of ggplot2 where it powers all the aesthetic scales, axes
 formatting, and data transformations internally, the scales package also
 provides useful helper functions for formatting numeric data for all
-types of
-presentation:
+types of presentation.
 
 ``` r
-# percent() function takes a numeric and does your division and labelling for you
-percent(seq(.1, .7, .1))
-#> [1] "10.0%" "20.0%" "30.0%" "40.0%" "50.0%" "60.0%" "70.0%"
+library(scales)
 
-# comma() can add commas into large numbers for easier readability
+# percent() function takes a numeric and does your division and labelling for you
+percent(c(0.1, 1/3, 0.56))
+#> [1] "10.0%" "33.3%" "56.0%"
+
+# comma() adds commas into large numbers for easier readability
 comma(10e6)
 #> [1] "10,000,000"
 
-# dollar() can help you present currrency
+# dollar() adds currency symbols
 dollar(c(100, 125, 3000))
 #> [1] "$100"   "$125"   "$3,000"
 
-# unit_format() can help you handle unique units
-# the scale argument doing the conversion on the fly
+# unit_format() adds unique units
+# the scale argument can do simple conversion on the fly
 unit_format(unit = "ha", scale = 1e-4)(c(10e6, 10e4, 8e3))
 #> [1] "1 000 ha" "10 ha"    "1 ha"
 ```
 
-All these formatters allow further customization, especially useful for
-meeting diverse international standards:
+All of these formatters are based on the underlying `number()` formatter
+which has additional arguments that allow further customisation. This
+can be especially useful for meeting diverse international standards.
 
 ``` r
-# for instance European number formatting is easily set:
-number(c(12.3, 4, 12345.789, 0.0002),
-  accuracy = .0001, big.mark = ".", decimal.mark = ","
-)
-#> [1] "12,3000"     "4,0000"      "12.345,7890" "0,0002"
+# for instance, European number formatting is easily set:
+number(c(12.3, 4, 12345.789, 0.0002), big.mark = ".", decimal.mark = ",")
+#> [1] "12"     "4"      "12.346" "0"
 
-# or percent formatting in the French style
-french_percent <- percent_format(
-  decimal.mark = ",",
-  suffix = " %"
-)
+# these functions round by default, but you can set the accuracy
+number(c(12.3, 4, 12345.789, 0.0002), 
+       big.mark = ".", 
+       decimal.mark = ",", 
+       accuracy = .01)
+#> [1] "12,30"     "4,00"      "12.345,79" "0,00"
+
+# percent formatting in the French style
+french_percent <- percent_format(decimal.mark = ",", suffix = " %")
 french_percent(runif(10))
-#>  [1] "53,9 %" "81,3 %" "97,7 %" "17,7 %" "56,0 %" "4,6 %"  "63,1 %"
-#>  [8] "86,2 %" "13,1 %" "39,4 %"
+#>  [1] "11,2 %" "47,4 %" "17,3 %" "86,7 %" "99,5 %" "91,9 %" "36,7 %"
+#>  [8] "54,6 %" "56,2 %" "64,4 %"
 
-# or currency formatting Euros (and simple conversion!)
+# currency formatting Euros (and simple conversion!)
 usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)
 usd_to_euro(100)
 #> [1] "85€"
@@ -95,8 +95,9 @@ usd_to_euro(100)
 
 ### Colour palettes
 
-scales also provides functions to define colour and other aesthetic
-scales, e.g.:
+These are used to power the scales in ggplot2, but you can use them in
+any plotting system. The following example shows how you might apply
+them to a base plot.
 
 ``` r
 # pull a list of colours from any palette
@@ -108,12 +109,12 @@ palette(brewer_pal(palette = "Set2")(4))
 plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
+![](man/figures/README-palettes-1.png)<!-- -->
 
 ### Bounds, breaks, & transformations
 
 scales provides a handful of functions for rescaling data to fit new
-ranges:
+ranges.
 
 ``` r
 # squish() will squish your values into a specified range
@@ -127,21 +128,21 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Petal.Length)) +
   scale_color_continuous(limit = c(2, 4), oob = scales::squish)
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+![](man/figures/README-squish-1.png)<!-- -->
 
 ``` r
-
 # the rescale functions can rescale continuous vectors to new min, mid, or max values
-rescale(runif(5, 0, 1), to = c(0, 50))
-#> [1] 31.81081 50.00000  0.00000 34.58203 22.24573
-rescale_mid(runif(5, 0, 1), mid = .25)
-#> [1] 0.4122574 0.7409577 1.0000000 0.9213960 0.3273563
-rescale_max(runif(5, 0, 1), to = c(0, 50))
-#> [1] 22.83717 45.95011 14.99540 16.72752 50.00000
+x <- runif(5, 0, 1)
+rescale(x, to = c(0, 50))
+#> [1]  0.000000 13.878970  2.906766 22.787482 50.000000
+rescale_mid(x, mid = .25)
+#> [1] 0.3437512 0.5259124 0.3819024 0.6428364 1.0000000
+rescale_max(x, to = c(0, 50))
+#> [1]  1.749576 15.142899  4.554629 23.739689 50.000000
 ```
 
 scales also gives users the ability to define and apply their own custom
-transformation functions for repeated use:
+transformation functions for repeated use.
 
 ``` r
 # use trans_new to build a new transformation
@@ -155,20 +156,19 @@ logp3_trans <- trans_new(
 library(dplyr)
 dsamp <- sample_n(diamonds, 100)
 ggplot(dsamp, aes(x = carat, y = price, colour = color)) +
-  geom_point() + scale_x_continuous(trans = logp3_trans)
+  geom_point() + scale_y_continuous(trans = logp3_trans)
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
+![](man/figures/README-transforms-1.png)<!-- -->
 
 ``` r
-
 # You can always call the functions from the trans object separately
 logp3_trans$breaks(dsamp$price)
 #> [1]   300  1000  3000 10000 30000
 
 # scales has some breaks helper functions too
-log_breaks(base = exp(1))(dsamp$carat)
-#> [1] 0.1353353 0.2706706 0.3678794 0.7357589 1.0000000 2.0000000 2.7182818
+log_breaks(base = exp(1))(dsamp$price)
+#> [1]   403.4288  1096.6332  2980.9580  8103.0839 22026.4658
 
 pretty_breaks()(dsamp$price)
 #> [1]     0  5000 10000 15000 20000
