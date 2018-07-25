@@ -13,10 +13,14 @@ floor_date <- function(date, time) {
     as.Date(cut(date, time, right = TRUE, include.lowest = TRUE))
   }
 }
+
 floor_time <- function(date, time) {
   to_time <- function(x) {
     force(x)
-    structure(x, class = c("POSIXt", "POSIXct"))
+    structure(x,
+      class = c("POSIXt", "POSIXct"),
+      tzone = attr(date, "tzone", exact = TRUE) %||% ""
+    )
   }
 
   prec <- parse_unit_spec(time)

@@ -107,7 +107,7 @@ time_breaks <- function(n = 5) {
 #'
 #' @param width an interval specification, one of "sec", "min", "hour",
 #'   "day", "week", "month", "year". Can be by an integer and a space, or
-#'   followed by "s".
+#'   followed by "s". Fractional seconds are supported.
 #' @export
 date_breaks <- function(width = "1 month") {
   force(width)

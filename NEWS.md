@@ -3,6 +3,8 @@
 * `expand_range()` arguments `mul` and `add` now affect scales with a range of 0
    (@dpseidel, tidyverse/ggplot2#2281).
 
+* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+
 * New function `modulus_trans()` implements the modulus transformation for positive
   and negative values (@dpseidel).
 
