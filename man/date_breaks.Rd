@@ -9,7 +9,7 @@ date_breaks(width = "1 month")
 \arguments{
 \item{width}{an interval specification, one of "sec", "min", "hour",
 "day", "week", "month", "year". Can be by an integer and a space, or
-followed by "s".}
+followed by "s". Fractional seconds are supported.}
 }
 \description{
 Regularly spaced dates.

@@ -228,9 +228,9 @@ width (see <code><a href='http://www.rdocumentation.org/packages/base/topics/for
 <span class='co'># comma() and comma_format()</span>
 <span class='fu'>comma_format</span>()(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1"         "1,000"     "2,000"     "1,000,000"</div><div class='input'><span class='fu'>comma_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.01</span>)(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1.00"         "1,000.00"     "2,000.00"     "1,000,000.00"</div><div class='input'><span class='fu'>comma</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1"         "1,000"     "2,000"     "1,000,000"</div><div class='input'>
 <span class='co'># percent() and percent_format()</span>
-<span class='fu'>percent_format</span>()(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "92.7%" "55.2%" "57.7%" "68.7%" "24.5%" "4.5%"  "91.0%" "7.1%"  "99.7%"
-#&gt; [10] "61.2%"</div><div class='input'><span class='fu'>percent</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "17.3%" "90.9%" "3.7%"  "59.4%" "23.7%" "90.6%" "81.9%" "70.0%" "22.0%"
-#&gt; [10] "72.8%"</div><div class='input'>
+<span class='fu'>percent_format</span>()(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "21.0%" "4.0%"  "94.5%" "24.5%" "78.1%" "28.8%" "87.5%" "29.6%" "98.4%"
+#&gt; [10] "59.0%"</div><div class='input'><span class='fu'>percent</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "75.9%" "83.6%" "76.3%" "41.7%" "13.8%" "8.1%"  "65.6%" "60.2%" "65.7%"
+#&gt; [10] "32.9%"</div><div class='input'>
 <span class='no'>per_mille</span> <span class='kw'>&lt;-</span> <span class='fu'>percent_format</span>(
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
   <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u2030"</span>,
@@ -241,16 +241,16 @@ width (see <code><a href='http://www.rdocumentation.org/packages/base/topics/for
   <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
   <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" %"</span>
 )
-<span class='fu'>french_percent</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "21,7 %" "45,6 %" "33,3 %" "56,8 %" "25,2 %" "46,4 %" "91,8 %" "97,3 %"
-#&gt;  [9] "81,9 %" "90,3 %"</div><div class='input'>
+<span class='fu'>french_percent</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "97,9 %" "71,5 %" "87,3 %" "98,3 %" "21,9 %" "66,5 %" "39,0 %" "4,6 %" 
+#&gt;  [9] "61,7 %" "59,8 %"</div><div class='input'>
 <span class='co'># unit_format()</span>
 <span class='co'># labels in kilometer when the raw data are in meter</span>
 <span class='no'>km</span> <span class='kw'>&lt;-</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"km"</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e-3</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'>km</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>) * <span class='fl'>1e3</span>)</div><div class='output co'>#&gt;  [1] "1 km" "1 km" "1 km" "1 km" "0 km" "0 km" "1 km" "1 km" "0 km" "0 km"</div><div class='input'>
+<span class='fu'>km</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>) * <span class='fl'>1e3</span>)</div><div class='output co'>#&gt;  [1] "0 km" "1 km" "1 km" "1 km" "0 km" "1 km" "0 km" "1 km" "1 km" "1 km"</div><div class='input'>
 <span class='co'># labels in hectares, raw data in square meters</span>
 <span class='no'>ha</span> <span class='kw'>&lt;-</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"ha"</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
-<span class='fu'>km</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>) * <span class='fl'>1e5</span>)</div><div class='output co'>#&gt;  [1] "94 km" "44 km" "75 km" "67 km" "41 km" "35 km" "74 km" "66 km" "9 km" 
-#&gt; [10] "86 km"</div><div class='input'>
+<span class='fu'>km</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>) * <span class='fl'>1e5</span>)</div><div class='output co'>#&gt;  [1] "76 km" "54 km" "24 km" "51 km" "42 km" "73 km" "64 km" "40 km" "96 km"
+#&gt; [10] "30 km"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -225,7 +225,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
   list(breaks = breaks, labels = labels)
 }
 
-#' Minor breaks
+#' Minor breaks.
 #' Places minor breaks between major breaks.
 #'
 #' @param reverse if TRUE, calculates the minor breaks for a reversed scale

@@ -1,15 +1,36 @@
 reference:
-- title: Scales basics
+- title:  Breaks and formatters
   desc: >
-    Scales control the details of how data values are translated to visual
-    properties. The following functions help users create (and update)
-    custom scales.
+    Functions for computing how tick marks/legend keys should be
+    distributed across the data range, as well as how to convert those numeric
+    positions into reader-friendly labels
   contents:
-  - cscale
-  - dscale
-  - starts_with("train_")
+  - matches("breaks")
+  - -cbreaks
+  - matches("format")
 
-- title: "Colour Palettes & Colour Mapping"
+- title: "Bounds: ranges & rescaling"
+  desc: >
+    Functions for rescaling data and adjusting scale ranges.
+  contents:
+  - starts_with("rescale")
+  - matches("range")
+  - squish
+  - squish_infinite
+  - expand_range
+  - discard
+  - censor
+  - -Range
+
+- title: Transformations
+  desc: >
+    Functions to describe common and custom scale transformations
+    their inverses, and ways of generating breaks and labels.
+  contents:
+  - matches("trans")
+  - -trans_breaks
+
+- title: "Colour palettes & colour mapping"
   desc: >
     Functions for specifying colour palettes, colour mapping, and
     various helper functions.
@@ -27,7 +48,7 @@ reference:
   - muted
   - alpha
 
-- title: Non-Colour Palette functions
+- title: Non-colour palette functions
   desc: >
     Functions to help scale non-colour aesthetics.
   contents:
@@ -39,36 +60,18 @@ reference:
   - rescale_pal
   - shape_pal
 
-- title: Transformations
+- title: Creating your own scales and mutable ranges
   desc: >
-    Functions to describe common and custom scale transformations
-    and their inverses.
+    Scales control the details of how data values are translated to visual
+    properties. The following functions help users create (and update)
+    custom scales: pulling together palettes, bounding functions and
+    transformations to provide a complete pathway from raw data to perceptual
+    properties.
   contents:
-  - matches("trans")
-  - -trans_breaks
-
-- title: "Bounds: Ranges & Rescaling"
-  desc: >
-    Functions for rescaling values and adjusting scale ranges.
-  contents:
-  - starts_with("rescale")
-  - matches("range")
-  - squish
-  - squish_infinite
-  - expand_range
-  - discard
-  - censor
-
-- title: Breaks
-  desc: >
-    Functions for computing scale breaks.
-  contents:
-  - matches("breaks")
-
-- title:  Label Formatters
-  desc: >
-    Functions for formatting nice labels.
-  contents:
-  - matches("format")
+  - cscale
+  - cbreaks
+  - dscale
+  - starts_with("train_")
+  - Range
 
 
