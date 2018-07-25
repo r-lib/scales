@@ -9,13 +9,19 @@ Status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci
 Status](https://img.shields.io/codecov/c/github/r-lib/scales/master.svg)](https://codecov.io/github/r-lib/scales?branch=master)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/scales)](https://cran.r-project.org/package=scales)
 
+# Overview
+
 One of the most difficult parts of any graphics package is scaling,
 converting from data values to perceptual properties. The inverse of
 scaling, making guides (legends and axes) that can be used to read the
-graph, is often even harder\! The idea of the `scales` package is to
-implement scales in a way that is graphics system agnostic, so that
-everyone can benefit by pooling knowledge and resources about this
-tricky topic.
+graph, is often even harder\! The scales packages provides the internal
+scaling infrastructure to [ggplot2](github.com/tidyverse/ggplot2) and
+its functions allow users to customize the transformations, breaks,
+guides and palettes used in visualizations.
+
+The idea of the scales package is to implement scales in a way that is
+graphics system agnostic, so that everyone can benefit by pooling
+knowledge and resources about this tricky topic.
 
 # Installation
 
@@ -29,97 +35,141 @@ install.packages("scales")
 devtools::install_github("r-lib/scales")
 ```
 
-# Components
-
-The `scales` package is made up of the following interdependent
-components
-
-  - Palettes, **pal** for short, describe the useful palettes of
-    aesthetics.
-
-  - Transformations, **trans** for short, describe common scale
-    transformations, their inverses, and ways of generating breaks and
-    labels.
-
-  - Bounds: various ways of rescaling the data
-
-  - Scaling functions: pull together palettes, bounding functions and
-    transformations to provide a complete pathway from raw data to
-    perceptual properties
-
-  - Mutable ranges: in many graphics pathways, scale ranges can not be
-    computed in a single pass, but must be computed over multiple groups
-    or multiple panels. The mutable ranges (implemented with R’s new
-    reference based class) provide a thin layer of mutability to make
-    this task easier.
-
-Guide-related:
-
-  - Breaks and formats: ways of computing how tick marks/legend keys
-    should be distributed across the data range, as well as how to
-    convert those numeric positions into reader-friendly labels
-
 # Usage
 
-`scales` provides the internal scaling infrastructure to `ggplot2` but
-its functions can be called independently to specify transformations,
-breaks, guides and palettes.
-
-For example, taking a sample of the diamonds dataset, we can use
-`scales` to specify log transformations on both axes, and separately
-specify our breaks and axis labels to reflect prices of diamonds in
-Euros rather than US dollars:
-
 ``` r
-library(dplyr)
-library(ggplot2)
 library(scales)
-
-dsamp <- sample_n(diamonds, 1000)
-
-ggplot(dsamp, aes(x = carat, y = price, colour = clarity)) +
-  geom_point() +
-  scale_y_continuous(
-    name = "Price in Euros", trans = log10_trans(),
-    breaks = function(x) log_breaks()(x) * 0.85,
-    labels = dollar_format(
-      prefix = "", suffix = "€",
-      largest_with_cents = 1000
-    )
-  ) +
-  scale_x_continuous(trans = log10_trans()) # the same as scale_x_log10()
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+### Formatters
 
-`scales` gives users the ability to define and apply their own custom
+Outside of ggplot2 where it powers all the aesthetic scales, axes
+formatting, and data transformations internally, the scales package also
+provides useful helper functions for formatting numeric data for all
+types of
+presentation:
+
+``` r
+# percent() function takes a numeric and does your division and labelling for you
+percent(seq(.1, .7, .1))
+#> [1] "10.0%" "20.0%" "30.0%" "40.0%" "50.0%" "60.0%" "70.0%"
+
+# comma() can add commas into large numbers for easier readability
+comma(10e6)
+#> [1] "10,000,000"
+
+# dollar() can help you present currrency
+dollar(c(100, 125, 3000))
+#> [1] "$100"   "$125"   "$3,000"
+
+# unit_format() can help you handle unique units
+# the scale argument doing the conversion on the fly
+unit_format(unit = "ha", scale = 1e-4)(c(10e6, 10e4, 8e3))
+#> [1] "1 000 ha" "10 ha"    "1 ha"
+```
+
+All these formatters allow further customization, especially useful for
+meeting diverse international standards:
+
+``` r
+# for instance European number formatting is easily set:
+number(c(12.3, 4, 12345.789, 0.0002),
+  accuracy = .0001, big.mark = ".", decimal.mark = ","
+)
+#> [1] "12,3000"     "4,0000"      "12.345,7890" "0,0002"
+
+# or percent formatting in the French style
+french_percent <- percent_format(
+  decimal.mark = ",",
+  suffix = " %"
+)
+french_percent(runif(10))
+#>  [1] "53,9 %" "81,3 %" "97,7 %" "17,7 %" "56,0 %" "4,6 %"  "63,1 %"
+#>  [8] "86,2 %" "13,1 %" "39,4 %"
+
+# or currency formatting Euros (and simple conversion!)
+usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)
+usd_to_euro(100)
+#> [1] "85€"
+```
+
+### Colour palettes
+
+scales also provides functions to define colour and other aesthetic
+scales, e.g.:
+
+``` r
+# pull a list of colours from any palette
+viridis_pal()(4)
+#> [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"
+
+# use in combination with baseR `palette()` to set new defaults
+palette(brewer_pal(palette = "Set2")(4))
+plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
+```
+
+![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
+
+### Bounds, breaks, & transformations
+
+scales provides a handful of functions for rescaling data to fit new
+ranges:
+
+``` r
+# squish() will squish your values into a specified range
+squish(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
+#> [1] 0.0 0.5 1.0 1.0  NA
+
+# Useful for setting the `oob` argument for a colour scale with reduced limits
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Petal.Length)) +
+  geom_point() +
+  scale_color_continuous(limit = c(2, 4), oob = scales::squish)
+```
+
+![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+
+``` r
+
+# the rescale functions can rescale continuous vectors to new min, mid, or max values
+rescale(runif(5, 0, 1), to = c(0, 50))
+#> [1] 31.81081 50.00000  0.00000 34.58203 22.24573
+rescale_mid(runif(5, 0, 1), mid = .25)
+#> [1] 0.4122574 0.7409577 1.0000000 0.9213960 0.3273563
+rescale_max(runif(5, 0, 1), to = c(0, 50))
+#> [1] 22.83717 45.95011 14.99540 16.72752 50.00000
+```
+
+scales also gives users the ability to define and apply their own custom
 transformation functions for repeated use:
 
 ``` r
-eurolog10_trans <- trans_new(
-  name = "log10_euro",
-  trans = log10_trans()$trans,
-  inverse = log10_trans()$inverse,
-  breaks = function(lim) log_breaks(base = 10)(lim) * .85,
-  format = dollar_format(
-    prefix = "", suffix = "€",
-      largest_with_cents = 1000
+# use trans_new to build a new transformation
+logp3_trans <- trans_new(
+  name = "logp",
+  trans = function(x) log(x + 3),
+  inverse =  function(x) exp(x) - 3,
+  breaks = log_breaks()
   )
-)
 
-
-ggplot(dsamp, aes(x = carat, y = price, colour = clarity)) +
-  geom_point() +
-  scale_y_continuous(trans = eurolog10_trans) +
-  scale_x_continuous(trans = log10_trans()) # the same as scale_x_log10()
+library(dplyr)
+dsamp <- sample_n(diamonds, 100)
+ggplot(dsamp, aes(x = carat, y = price, colour = color)) +
+  geom_point() + scale_x_continuous(trans = logp3_trans)
 ```
 
-![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
-
-And to define colour and other aesthetic scales, e.g.:
+![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
-viridis_pal()(9) %>% show_col()
-```
 
-![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+# You can always call the functions from the trans object separately
+logp3_trans$breaks(dsamp$price)
+#> [1]   300  1000  3000 10000 30000
+
+# scales has some breaks helper functions too
+log_breaks(base = exp(1))(dsamp$carat)
+#> [1] 0.1353353 0.2706706 0.3678794 0.7357589 1.0000000 2.0000000 2.7182818
+
+pretty_breaks()(dsamp$price)
+#> [1]     0  5000 10000 15000 20000
+```
