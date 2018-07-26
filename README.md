@@ -46,6 +46,7 @@ types of presentation.
 
 ``` r
 library(scales)
+set.seed(1234)
 
 # percent() function takes a numeric and does your division and labelling for you
 percent(c(0.1, 1 / 3, 0.56))
@@ -85,8 +86,8 @@ number(c(12.3, 4, 12345.789, 0.0002),
 # percent formatting in the French style
 french_percent <- percent_format(decimal.mark = ",", suffix = " %")
 french_percent(runif(10))
-#>  [1] "87,8 %" "88,7 %" "96,8 %" "85,3 %" "74,1 %" "70,2 %" "0,4 %" 
-#>  [8] "11,6 %" "29,7 %" "32,3 %"
+#>  [1] "11,4 %" "62,2 %" "60,9 %" "62,3 %" "86,1 %" "64,0 %" "0,9 %" 
+#>  [8] "23,3 %" "66,6 %" "51,4 %"
 
 # currency formatting Euros (and simple conversion!)
 usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)
@@ -135,11 +136,11 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Petal.Length)) +
 # the rescale functions can rescale continuous vectors to new min, mid, or max values
 x <- runif(5, 0, 1)
 rescale(x, to = c(0, 50))
-#> [1]  0.00000000 35.84609465  0.05776566 16.13651324 50.00000000
+#> [1] 32.063194 20.465217  0.000000 50.000000  0.747796
 rescale_mid(x, mid = .25)
-#> [1] 0.2818947 0.7967201 0.2827244 0.5136490 1.0000000
+#> [1] 0.8293505 0.7190081 0.5243035 1.0000000 0.5314180
 rescale_max(x, to = c(0, 50))
-#> [1]  2.909815 36.669800  2.964219 18.107243 50.000000
+#> [1] 37.55502 29.50807 15.30882 50.00000 15.82766
 ```
 
 scales also gives users the ability to define and apply their own custom
@@ -169,7 +170,7 @@ logp3_trans$breaks(dsamp$price)
 
 # scales has some breaks helper functions too
 log_breaks(base = exp(1))(dsamp$price)
-#> [1]   148.4132   403.4288  1096.6332  2980.9580  8103.0839 22026.4658
+#> [1]   403.4288  1096.6332  2980.9580  8103.0839 22026.4658
 
 pretty_breaks()(dsamp$price)
 #> [1]     0  5000 10000 15000 20000
