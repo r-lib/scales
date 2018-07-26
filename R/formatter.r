@@ -8,11 +8,16 @@
 #'   thousands.
 #' * `percent_format()` and `percent()` multiply values by one hundred and
 #'   display percent sign.
-#' * `unit_format()` add units to the values.
+#' * `unit_format()` adds units to the values.
+#' * `number_si()` scales and adds abbreviated SI units to the values.
 #'
 #' All formatters allow you to re-`scale` (multiplicatively), to round to
 #' specified `accuracy`, to add custom `suffix` and `prefix` and to specify
 #' `decimal.mark` and `big.mark`.
+#'
+#' `number_si()` gives limited SI unit labels: "K" for values ≥ 10e3, "
+#' M" for ≥ 10e6, "B" for ≥ 10e9, and "T" for ≥ 10e12.
+#' It respects all arguments except `scale` which is set internally.
 #'
 #' @return `*_format()` returns a function with single parameter
 #'   `x`, a numeric vector, that returns a character vector.
@@ -246,6 +251,26 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
   )
 }
 
+#' @rdname number_format
+#' @export
+number_si <- function(x, prefix = "", suffix = "", ...) {
+  breaks <- c(" " = 0, 10^c(K = 3, M = 6, B = 9, "T" = 12))
+
+  n_suffix <- cut(abs(x),
+    breaks = c(unname(breaks), Inf),
+    labels = c(names(breaks)),
+    right = FALSE
+  )
+
+  # for handling NA's correctly
+  n_suffix[is.na(n_suffix)] <- " "
+  scale <- 1 / breaks[n_suffix]
+  # for handling Inf and 0-1 correctly
+  scale[which(scale %in% c(Inf, NA))] <- 1
+
+  number(x, scale = scale, prefix = prefix, suffix = paste0(n_suffix, suffix), ...)
+}
+
 #' Currency formatter: round to nearest cent and display dollar sign.
 #'
 #' The returned function will format a vector of values as currency.
@@ -253,11 +278,6 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' and cents are displayed if any of the values has a non-zero cents and
 #' the largest value is less than `largest_with_cents` which by default
 #' is 100,000.
-#'
-#' `nice_dollar()` is a helper function that scales and sets
-#' the `suffix` individually for each data value according to magnitude
-#' ("K" for 10e3+, "M" for 10e6+, "B" for 10e9+, and "T" for 10e12+). It respects
-#' all arguments to dollar except `scale` and `suffix` which are set internally.
 #'
 #' @return A function with single parameter `x`, a numeric vector, that
 #'   returns a character vector.
@@ -374,26 +394,6 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   } else {
     amount
   }
-}
-
-#' @export
-#' @rdname dollar_format
-nice_dollar <- function(x, prefix = "", ...) {
-  suffix <- as.character(cut(x,
-    breaks = c(0, 1000^(1:4), Inf),
-    labels = c(" ", "K", "M", "B", "T"), right = F
-  ))
-
-  mapply(x, suffix, ..., FUN = function(x, suffix, ...) {
-    scale <- switch(suffix,
-      " " = 1,
-      "K" = 1e-3,
-      "M" = 1e-6,
-      "B" = 1e-9,
-      "T" = 1e-9
-    )
-    dollar(x, scale = scale, suffix = suffix, prefix = prefix, ...)
-  })
 }
 
 #' Scientific formatter.
