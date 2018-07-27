@@ -18,8 +18,8 @@
   
 * New `pvalue_format()` formats p-values (@larmarange, #145).
 
-* `ordinal_format()` gains new arguments: `prefix`, `suffix`, `big.mark`, `rules`,
-   and rules for French and Spanish are also provided (@larmarange, #149).
+* `ordinal_format()` gains new arguments: `prefix`, `suffix`, `big.mark`, `rules`;
+  rules for French and Spanish are also provided (@larmarange, #149).
   
 * `scientific_format()` gains new arguments: `scale`, `prefix`, `suffix`, `decimal.mark`, 
   `trim` (@larmarange, #147).
@@ -29,7 +29,7 @@
 ### Transformations & breaks
 
 * `boxcox_trans()` is now invertible for `x >= 0` and requires positive values.
-  A new argument `offset` allows specification of both type 1 and type 2 Box-Cox 
+  A new argument `offset` allows specification of both type-1 and type-2 Box-Cox 
   transformations (@dpseidel, #103).
 
 * `log_breaks()` returns integer multiples of integer powers of base when finer
