@@ -7,3 +7,6 @@
 ^\.github$
 ^_pkgdown\.yml$
 ^docs$
+^README\.Rmd$
+^README-.*\.png$
+^logo\.png$
