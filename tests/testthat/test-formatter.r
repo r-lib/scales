@@ -197,29 +197,29 @@ test_that("pvalue formatter works", {
 
 test_that("Byte formatter can take a symbol designator", {
   expect_equal(
-    bytes(c(50, 400, 502, NA), symbol = "B"),
+    number_bytes(c(50, 400, 502, NA), symbol = "B"),
     c("50 B", "400 B", "502 B", "NA B")
   )
   expect_equal(
-    bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
+    number_bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
     c("3 MiB", "4 MiB", "5 MiB")
   )
 
   # informative warning for incorrect spelling
-  expect_warning(bytes(c(50, 400, 502, NA), symbol = "k"))
+  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"))
 
   # respects unit designation
-  expect_equal(bytes(1024, accuracy = .01), c("1.00 Kb"))
-  expect_equal(bytes(1024, units = "si", accuracy = .01), c("1.02 Kb"))
-  expect_equal(bytes(1000, units = "si", accuracy = .01), c("1.00 Kb"))
+  expect_equal(number_bytes(1024, accuracy = .01), c("1.00 Kb"))
+  expect_equal(number_bytes(1024, units = "si", accuracy = .01), c("1.02 Kb"))
+  expect_equal(number_bytes(1000, units = "si", accuracy = .01), c("1.00 Kb"))
 
   # takes parameters from number()
   expect_equal(
-    bytes(c(3e6, 4e6, 5e6), accuracy = .001),
+    number_bytes(c(3e6, 4e6, 5e6), accuracy = .001),
     c("2.861 Mb", "3.815 Mb", "4.768 Mb")
   )
   expect_equal(
-    bytes(c(3e6, 4e6, 5e6), units = "si", accuracy = .1),
+    number_bytes(c(3e6, 4e6, 5e6), units = "si", accuracy = .1),
     c("3.0 Mb", "4.0 Mb", "5.0 Mb")
   )
 })

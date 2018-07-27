@@ -4,15 +4,15 @@
 
 ### Formatters
 
-* New `byte_format()` and `bytes()` format numeric vectors into byte
-  measurements (@hrbrmstr, @dpseidel).
-  
 * `comma_format()`, `percent_format()` and `unit_format()` gain new arguments: 
   `accuracy`, `scale`, `prefix`, `suffix`, `decimal.mark`, `big.mark` 
   (@larmarange, #146).
 
 * `dollar_format()` gains new arguments: `accuracy`, `scale`, `decimal.mark`, 
   `trim` (@larmarange, #148).
+
+* New `number_bytes_format()` and `number_bytes()` format numeric vectors into byte
+  measurements (@hrbrmstr, @dpseidel).
 
 * New `number_format()` provides a generic formatter for numbers (@larmarange, #142).
   
