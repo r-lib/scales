@@ -67,6 +67,9 @@
 
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
 
+* `train_continuous()` now maintains the class of inputs when they are not numeric
+  (@billdenney, #166).
+
 # scales 0.5.0
 
 * New function `regular_minor_breaks()` calculates minor breaks as a property
