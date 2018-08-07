@@ -1,7 +1,5 @@
 # scales 1.0.0.9000
 
-## Minor bug fixes and improvements
-
 * `train_continuous()` now maintains the class of inputs when they are not
   numeric (@billdenney, #166).
 
