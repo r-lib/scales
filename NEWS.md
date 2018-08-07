@@ -1,3 +1,10 @@
+# scales 1.0.0.9000
+
+## Minor bug fixes and improvements
+
+* `train_continuous()` now maintains the class of inputs when they are not
+  numeric (@billdenney, #166).
+
 # scales 1.0.0
 
 ## New Features
@@ -66,9 +73,6 @@
 * New `rescale()` and `rescale_mid()` methods support `dist` objects (@zeehio, #105).
 
 * `rescale_mid()` now properly handles NAs (@foo-bar-baz-qux, #104).
-
-* `train_continuous()` now maintains the class of inputs when they are not numeric
-  (@billdenney, #166).
 
 # scales 0.5.0
 
