@@ -14,20 +14,10 @@ comparing R CMD check results across CRAN and dev versions of this package.
  * We saw 5 new problems
  * We failed to check 25 packages
 
-Each of the five new problems were investigated thoroughly and detailed Github 
-issues were filed on 7/28/18 in each affected package's repository to alert
-the maintainers. Three problems are related to changes in scales formatter
-functions which no longer accept character stings. Additionally, the `digits`
-argument has been deprecated in favor of `accuracy`, which broke 
-tests in the `useful` package. The two remianing problems are caused by minor changes
-to the behaviour of two colour palette functions. A single test in the `leaflet`
-package broke because `colour_ramp` now returns fully opaque colors in the 
-"#RRGGBB" format rather than the "#RRGGBBAA" format. Finally, changes to 
-`hue_pal()` to correct evaluation behaviour inside for loops has caused an example
-to fail for package `roahd`. 
-
 ### New problems
 (This reports the first line of each new failure)
+
+These were all deliberate changes to the API (which by and large revealed packages using the functions incorrectly). Detailed Github issues were filed on 2018-07-28.
 
 * choroplethr
   checking examples ... ERROR
