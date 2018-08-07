@@ -1,5 +1,5 @@
-pandoc: 2.2.2.1
-pkgdown: 1.1.0.9000
-pkgdown_sha: 09dacd8454ddb1e0b30e1def39b27e95a0953c53
+pandoc: 2.2.1
+pkgdown: 1.1.0
+pkgdown_sha: ~
 articles: []
 

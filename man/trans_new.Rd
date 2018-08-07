@@ -39,5 +39,5 @@ transformation on these breaks to give them labels that are meaningful on
 the original scale.
 }
 \seealso{
-\Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
+\Sexpr\link{results=rd,stage=build}{scales:::seealso_trans()}
 }

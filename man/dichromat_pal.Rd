@@ -8,7 +8,7 @@ dichromat_pal(name)
 }
 \arguments{
 \item{name}{Name of colour palette.  One of:
-\Sexpr[results=rd,stage=build]{scales:::dichromat_schemes()}}
+\Sexpr\link{results=rd,stage=build}{scales:::dichromat_schemes()}}
 }
 \description{
 Dichromat (colour-blind) palette (discrete).

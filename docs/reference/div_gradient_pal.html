@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scales</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -143,8 +143,7 @@ other values are deprecated.</p></td>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(-<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>100</span>)
 <span class='no'>r</span> <span class='kw'>&lt;-</span> <span class='fu'>sqrt</span>(<span class='fu'>outer</span>(<span class='no'>x</span>^<span class='fl'>2</span>, <span class='no'>x</span>^<span class='fl'>2</span>, <span class='st'>"+"</span>))
 <span class='fu'>image</span>(<span class='no'>r</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>div_gradient_pal</span>()(<span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>12</span>)))</div><div class='img'><img src='div_gradient_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>image</span>(<span class='no'>r</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>div_gradient_pal</span>()(<span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>30</span>)))</div><div class='img'><img src='div_gradient_pal-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>image</span>(<span class='no'>r</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>div_gradient_pal</span>()(<span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>100</span>)))</div><div class='img'><img src='div_gradient_pal-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>library</span>(<span class='no'>munsell</span>)
-<span class='fu'>image</span>(<span class='no'>r</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>div_gradient_pal</span>(<span class='kw'>low</span> <span class='kw'>=</span>
+<span class='fu'>library</span>(<span class='no'>munsell</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: package ‘munsell’ was built under R version 3.4.4</span></div><div class='input'><span class='fu'>image</span>(<span class='no'>r</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>div_gradient_pal</span>(<span class='kw'>low</span> <span class='kw'>=</span>
    <span class='fu'><a href='http://www.rdocumentation.org/packages/munsell/topics/mnsl'>mnsl</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/munsell/topics/complement'>complement</a></span>(<span class='st'>"10R 4/6"</span>), <span class='kw'>fix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))(<span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>100</span>)))</div><div class='img'><img src='div_gradient_pal-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
