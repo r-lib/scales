@@ -8,13 +8,13 @@ test_that("R6 inheritance works", {
 })
 
 test_that("Mutable ranges work", {
- x <- ContinuousRange$new()
- x$train(c(-1, 45, 10))
- expect_equal(x$range, c(-1, 45))
- x$train(c(1000))
- expect_equal(x$range, c(-1, 1000))
- x$reset()
- expect_equal(x$range, NULL)
+  x <- ContinuousRange$new()
+  x$train(c(-1, 45, 10))
+  expect_equal(x$range, c(-1, 45))
+  x$train(c(1000))
+  expect_equal(x$range, c(-1, 1000))
+  x$reset()
+  expect_equal(x$range, NULL)
 })
 
 test_that("starting with NULL always returns new", {
