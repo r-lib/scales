@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `log_breaks()` provides usable breaks even with very small ranges
+  (@billdenney, #168)
+
 # scales 1.0.0
 
 ## New Features
