@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scales</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -164,12 +164,12 @@ returns a character vector.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>scientific_format</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
-#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific_format</span>()(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2.18e-01" "7.21e-03" "3.64e-01" "5.26e-01" "8.44e-01" "1.36e-01"
-#&gt;  [7] "3.76e-01" "2.63e-01" "4.98e-01" "1.95e-02"</div><div class='input'><span class='fu'>scientific_format</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "8.7e-02" "1.0e+00" "9.4e-01" "1.2e-01" "1.2e-01" "3.7e-01" "4.7e-01"
-#&gt;  [8] "7.8e-01" "4.9e-01" "1.0e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
-#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "9.43e-01" "7.06e-01" "5.02e-01" "5.30e-01" "2.58e-01" "7.12e-01"
-#&gt;  [7] "9.68e-01" "6.61e-01" "7.96e-01" "7.32e-02"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt;  [1] "8.8e-01" "8.3e-01" "7.3e-01" "3.7e-01" "5.2e-01" "4.7e-01" "9.9e-02"
-#&gt;  [8] "5.2e-01" "4.5e-01" "5.5e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>12345</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" cells/mL"</span>)</div><div class='output co'>#&gt; [1] "1.23e+04 cells/mL"</div></pre>
+#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific_format</span>()(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "7.28e-01" "8.73e-01" "3.82e-01" "8.93e-01" "8.44e-01" "7.30e-01"
+#&gt;  [7] "3.84e-02" "3.34e-01" "7.49e-01" "9.13e-01"</div><div class='input'><span class='fu'>scientific_format</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2.0e-01" "4.7e-01" "3.9e-01" "3.9e-01" "2.2e-01" "7.2e-03" "3.6e-01"
+#&gt;  [8] "5.3e-01" "8.4e-01" "1.4e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
+#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "3.76e-01" "2.63e-01" "4.98e-01" "1.95e-02" "8.72e-02" "9.96e-01"
+#&gt;  [7] "9.42e-01" "1.24e-01" "1.15e-01" "3.67e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'>runif</span>(<span class='fl'>10</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt;  [1] "4.7e-01" "7.8e-01" "4.9e-01" "1.0e-01" "9.4e-01" "7.1e-01" "5.0e-01"
+#&gt;  [8] "5.3e-01" "2.6e-01" "7.1e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>12345</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" cells/mL"</span>)</div><div class='output co'>#&gt; [1] "1.23e+04 cells/mL"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

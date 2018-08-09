@@ -61,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scales</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -115,12 +115,12 @@
 <h3 class="hasAnchor">
 <a href="#formatters" class="anchor"></a>Formatters</h3>
 <ul>
-<li><p>New <code><a href="../reference/byte_format.html">byte_format()</a></code> and <code><a href="../reference/byte_format.html">bytes()</a></code> format numeric vectors into byte measurements (<a href='http://github.com/hrbrmstr'>@hrbrmstr</a>, <a href='http://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p><code><a href="../reference/number_format.html">comma_format()</a></code>, <code><a href="../reference/number_format.html">percent_format()</a></code> and <code><a href="../reference/number_format.html">unit_format()</a></code> gain new arguments: <code>accuracy</code>, <code>scale</code>, <code>prefix</code>, <code>suffix</code>, <code>decimal.mark</code>, <code>big.mark</code> (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/146'>#146</a>).</p></li>
 <li><p><code><a href="../reference/dollar_format.html">dollar_format()</a></code> gains new arguments: <code>accuracy</code>, <code>scale</code>, <code>decimal.mark</code>, <code>trim</code> (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/148'>#148</a>).</p></li>
+<li><p>New <code><a href="../reference/number_bytes_format.html">number_bytes_format()</a></code> and <code><a href="../reference/number_bytes_format.html">number_bytes()</a></code> format numeric vectors into byte measurements (<a href='http://github.com/hrbrmstr'>@hrbrmstr</a>, <a href='http://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p>New <code><a href="../reference/number_format.html">number_format()</a></code> provides a generic formatter for numbers (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/142'>#142</a>).</p></li>
 <li><p>New <code><a href="../reference/pvalue_format.html">pvalue_format()</a></code> formats p-values (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/145'>#145</a>).</p></li>
-<li><p><code><a href="../reference/ordinal_format.html">ordinal_format()</a></code> gains new arguments: <code>prefix</code>, <code>suffix</code>, <code>big.mark</code>, <code>rules</code>, and rules for French and Spanish are also provided (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/149'>#149</a>).</p></li>
+<li><p><code><a href="../reference/ordinal_format.html">ordinal_format()</a></code> gains new arguments: <code>prefix</code>, <code>suffix</code>, <code>big.mark</code>, <code>rules</code>; rules for French and Spanish are also provided (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/149'>#149</a>).</p></li>
 <li><p><code><a href="../reference/scientific_format.html">scientific_format()</a></code> gains new arguments: <code>scale</code>, <code>prefix</code>, <code>suffix</code>, <code>decimal.mark</code>, <code>trim</code> (<a href='http://github.com/larmarange'>@larmarange</a>, <a href='https://github.com/r-lib/scales/issues/147'>#147</a>).</p></li>
 <li><p>New <code><a href="../reference/date_format.html">time_format()</a></code> formats <code>POSIXt</code> and <code>hms</code> objects (<a href='http://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/88'>#88</a>).</p></li>
 </ul>
@@ -129,7 +129,7 @@
 <h3 class="hasAnchor">
 <a href="#transformations-breaks" class="anchor"></a>Transformations &amp; breaks</h3>
 <ul>
-<li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> is now invertible for <code>x &gt;= 0</code> and requires positive values. A new argument <code>offset</code> allows specification of both type 1 and type 2 Box-Cox transformations (<a href='http://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/103'>#103</a>).</p></li>
+<li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> is now invertible for <code>x &gt;= 0</code> and requires positive values. A new argument <code>offset</code> allows specification of both type-1 and type-2 Box-Cox transformations (<a href='http://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/103'>#103</a>).</p></li>
 <li><p><code><a href="../reference/log_breaks.html">log_breaks()</a></code> returns integer multiples of integer powers of base when finer breaks are needed (<a href='http://github.com/ThierryO'>@ThierryO</a>, <a href='https://github.com/r-lib/scales/issues/117'>#117</a>).</p></li>
 <li><p>New function <code><a href="../reference/boxcox_trans.html">modulus_trans()</a></code> implements the modulus transformation for positive and negative values (<a href='http://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p>New <code><a href="../reference/pseudo_log_trans.html">pseudo_log_trans()</a></code> for transforming numerics into a signed logarithmic scale with a smooth transition to a linear scale around 0 (<a href='http://github.com/lepennec'>@lepennec</a>, <a href='https://github.com/r-lib/scales/issues/106'>#106</a>).</p></li>
@@ -148,7 +148,7 @@
 (<a href='http://github.com/dpseidel'>@dpseidel</a>, <a href="https://www.github.com/tidyverse/ggplot2/issues/2281">ggplot2-2281</a>).</p></li>
 <li><p><code><a href="../reference/extended_breaks.html">extended_breaks()</a></code> now allows user specification of the <code><a href="http://www.rdocumentation.org/packages/labeling/topics/extended">labeling::extended()</a></code> argument <code>only.loose</code> to permit more flexible breaks specification (<a href='http://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/99'>#99</a>).</p></li>
 <li><p>New <code><a href="../reference/rescale.html">rescale()</a></code> and <code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> methods support <code>dist</code> objects (<a href='http://github.com/zeehio'>@zeehio</a>, <a href='https://github.com/r-lib/scales/issues/105'>#105</a>).</p></li>
-<li><p><code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> now properly handles NAs (<a href='http://github.com/foo-bar-baz-qux'>@foo-bar-baz-qux</a>, <a href='https://github.com/r-lib/scales/issues/104'>#104</a>).</p></li>
+<li><p><code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> now properly handles NAs (<a href='http://github.com/foo'>@foo</a>-bar-baz-qux, <a href='https://github.com/r-lib/scales/issues/104'>#104</a>).</p></li>
 </ul>
 </div>
 </div>
