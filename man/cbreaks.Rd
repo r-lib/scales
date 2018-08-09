@@ -4,7 +4,8 @@
 \alias{cbreaks}
 \title{Compute breaks for continuous scale.}
 \usage{
-cbreaks(range, breaks = extended_breaks(), labels = scientific_format())
+cbreaks(range, breaks = extended_breaks(),
+  labels = scientific_format())
 }
 \arguments{
 \item{range}{numeric vector of length 2 giving the range of the underlying

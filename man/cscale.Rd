@@ -12,7 +12,7 @@ cscale(x, palette, na.value = NA_real_, trans = identity_trans())
 \item{palette}{palette to use.
 
 Built in palettes:
-\Sexpr\link{results=rd,stage=build}{scales:::seealso_pal()}}
+\Sexpr[results=rd,stage=build]{scales:::seealso_pal()}}
 
 \item{na.value}{value to use for missing values}
 
@@ -21,7 +21,7 @@ raw data prior to scaling.  Defaults to the identity transformation which
 leaves the data unchanged.
 
 Built in transformations:
-\Sexpr\link{results=rd,stage=build}{scales:::seealso_trans()}.}
+\Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
 }
 \description{
 Continuous scale.
