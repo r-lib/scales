@@ -17,7 +17,7 @@ DiscreteRange <- R6::R6Class(
   inherit = Range,
   list(
     train = function(x, drop = FALSE) {
-      self$range <- train_discrete(x, range, drop)
+      self$range <- train_discrete(x, self$range, drop)
     },
     reset = function() self$range <- NULL
   )
@@ -27,7 +27,7 @@ ContinuousRange <- R6::R6Class(
   "ContinuousRange",
   inherit = Range,
   list(
-    train = function(x) self$range <- train_continuous(x, range),
+    train = function(x) self$range <- train_continuous(x, self$range),
     reset = function() self$range <- NULL
   )
 )
