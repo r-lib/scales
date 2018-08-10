@@ -64,14 +64,22 @@ test_that("log_breaks arguments are forcely evaluated on each call #81", {
 })
 
 test_that("log_breaks with very small ranges fall back to extended_breaks", {
-  expect_equal(log_breaks(n = 5, base = 10)(c(2.001, 2.002)),
-               extended_breaks(n = 5)(c(2.001, 2.002)))
-  expect_equal(log_breaks(n = 5, base = 10)(c(0.95, 1.1)),
-               extended_breaks(n = 5)(c(0.95, 1.1)))
+  expect_equal(
+    log_breaks(n = 5, base = 10)(c(2.001, 2.002)),
+    extended_breaks(n = 5)(c(2.001, 2.002))
+  )
+  expect_equal(
+    log_breaks(n = 5, base = 10)(c(0.95, 1.1)),
+    extended_breaks(n = 5)(c(0.95, 1.1))
+  )
 
   # The switch to extended_breaks occurs at approximately the half-log point
-  expect_equal(log_breaks(n = 5, base = 10)(c(0.95, 2.9)),
-               extended_breaks(n = 5)(c(0.95, 2.9)))
-  expect_false(identical(log_breaks(n = 5, base = 10)(c(0.95, 3)),
-                         extended_breaks(n = 5)(c(0.95, 3))))
+  expect_equal(
+    log_breaks(n = 5, base = 10)(c(0.95, 2.9)),
+    extended_breaks(n = 5)(c(0.95, 2.9))
+  )
+  expect_false(identical(
+    log_breaks(n = 5, base = 10)(c(0.95, 3)),
+    extended_breaks(n = 5)(c(0.95, 3))
+  ))
 })
