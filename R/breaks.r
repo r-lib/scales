@@ -131,10 +131,14 @@ log_sub_breaks <- function(rng, n = 5, base = 10) {
       break
     }
   }
-  breaks <- sort(breaks)
-  lower_end <- pmax(min(which(base^rng[1] <= breaks)) - 1, 1)
-  upper_end <- pmin(max(which(breaks <= base^rng[2])) + 1, length(breaks))
-  breaks[lower_end:upper_end]
+  if (sum(relevant_breaks) >= (n - 2)) {
+    breaks <- sort(breaks)
+    lower_end <- pmax(min(which(base^rng[1] <= breaks)) - 1, 1)
+    upper_end <- pmin(max(which(breaks <= base^rng[2])) + 1, length(breaks))
+    breaks[lower_end:upper_end]
+  } else {
+    extended_breaks(n = n)(base^rng)
+  }
 }
 
 #' Pretty breaks on transformed scale.
