@@ -137,7 +137,7 @@ log_sub_breaks <- function(rng, n = 5, base = 10) {
     upper_end <- pmin(max(which(breaks <= base^rng[2])) + 1, length(breaks))
     breaks[lower_end:upper_end]
   } else {
-    extended_breaks(n=n)(base^rng)
+    extended_breaks(n = n)(base^rng)
   }
 }
 
