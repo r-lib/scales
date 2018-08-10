@@ -15,6 +15,14 @@ test_that("Mutable ranges work", {
   expect_equal(x$range, c(-1, 1000))
   x$reset()
   expect_equal(x$range, NULL)
+
+  x <- DiscreteRange$new()
+  x$train(factor(letters[1:3]))
+  expect_equal(x$range, c("a", "b", "c"))
+  x$train(factor("a", "h"))
+  expect_equal(x$range, c("a", "b", "c", "h"))
+  x$reset()
+  expect_equal(x$range, NULL)
 })
 
 test_that("starting with NULL always returns new", {
