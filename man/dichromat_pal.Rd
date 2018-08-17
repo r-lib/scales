@@ -8,16 +8,18 @@ dichromat_pal(name)
 }
 \arguments{
 \item{name}{Name of colour palette.  One of:
-\Sexpr[results=rd,stage=build]{scales:::dichromat_schemes()}}
+\Sexpr[results=rd,stage=build]{if (requireNamespace("dichromat", quietly = TRUE)){scales:::dichromat_schemes()}}}
 }
 \description{
 Dichromat (colour-blind) palette (discrete).
 }
 \examples{
+if (requireNamespace("dichromat", quietly = TRUE)) {
 show_col(dichromat_pal("BluetoOrange.10")(10))
 show_col(dichromat_pal("BluetoOrange.10")(5))
 
 # Can use with gradient_n to create a continous gradient
 cols <- dichromat_pal("DarkRedtoBlue.12")(12)
 show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
+}
 }
