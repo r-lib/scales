@@ -1,7 +1,7 @@
 #' Dichromat (colour-blind) palette (discrete).
 #'
 #' @param name Name of colour palette.  One of:
-#'   \Sexpr[results=rd,stage=build]{if (requireNamespace("dichromat", quietly = TRUE)){scales:::dichromat_schemes()}}
+#'   \Sexpr[results=rd,stage=build]{scales:::dichromat_schemes()}
 #' @export
 #' @examples
 #' if (requireNamespace("dichromat", quietly = TRUE)) {
@@ -32,5 +32,7 @@ dichromat_pal <- function(name) {
 
 
 dichromat_schemes <- function() {
+  if (requireNamespace("dichromat", quietly = TRUE)){
   paste0("\\code{", names(dichromat::colorschemes), "}", collapse = ", ")
+  }
 }
