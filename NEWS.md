@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `dichromat_pal()` documentation now builds without requiring suggested `dichromat` 
+   package to be installed (@dpseidel, #172).
+
 * New function `number_si()` formats numeric vectors with limited SI units.
   Individual values are scaled and labelled with abbreviations "K", "M", "B",
   or "T" dependent on magnitude (@dpseidel, #83).
