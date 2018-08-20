@@ -1,5 +1,30 @@
 context("Ranges")
 
+test_that("R6 inheritance works", {
+  expect_error(ContinuousRange$new(), NA)
+  expect_error(DiscreteRange$new(), NA)
+  expect_true(R6::is.R6(ContinuousRange$new()))
+  expect_true(R6::is.R6(DiscreteRange$new()))
+})
+
+test_that("Mutable ranges work", {
+  x <- ContinuousRange$new()
+  x$train(c(-1, 45, 10))
+  expect_equal(x$range, c(-1, 45))
+  x$train(c(1000))
+  expect_equal(x$range, c(-1, 1000))
+  x$reset()
+  expect_equal(x$range, NULL)
+
+  x <- DiscreteRange$new()
+  x$train(factor(letters[1:3]))
+  expect_equal(x$range, c("a", "b", "c"))
+  x$train(factor("a", "h"))
+  expect_equal(x$range, c("a", "b", "c", "h"))
+  x$reset()
+  expect_equal(x$range, NULL)
+})
+
 test_that("starting with NULL always returns new", {
   expect_equal(discrete_range(NULL, 1:3), 1:3)
   expect_equal(discrete_range(NULL, 3:1), 1:3)

@@ -41,6 +41,20 @@ test_that("number_format works with Inf", {
   expect_equal(cust(c(Inf, -Inf)), c("Inf", "-Inf"))
 })
 
+test_that("number_si works", {
+  expect_equal(number_si(c(1e3, 1e6, 1e9)), c("1K", "1M", "1B"))
+  expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1K", "1M", "1B"))
+  expect_equal(number_si(c(.50, 1e6, 1e15)), c("0 ", "1M", "1 000T"))
+  expect_equal(
+    number_si(c(.50, 1e6, 1e9), accuracy = .1, prefix = "$"),
+    c("$0.5 ", "$1.0M", "$1.0B")
+  )
+  expect_equal(
+    number_si(c(.50, 100, NA, Inf), accuracy = .1, prefix = "$"),
+    c("$0.5 ", "$100.0 ", "$NA ", "Inf")
+  )
+})
+
 # Comma formatter --------------------------------------------------------
 
 test_that("comma format always adds commas", {
