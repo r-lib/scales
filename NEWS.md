@@ -1,5 +1,11 @@
 # scales 1.0.0.9000
 
+* New function `number_si()` formats numeric vectors with limited SI units.
+  Individual values are scaled and labelled with abbreviations "K", "M", "B",
+  or "T" dependent on magnitude (@dpseidel, #83).
+  
+* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+
 * `ContinuousRange` and `DiscreteRange` methods now properly inherit and are fully
   mutable (@dpseidel).
   
