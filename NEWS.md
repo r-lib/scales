@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `ContinuousRange` and `DiscreteRange` methods now properly inherit and are fully
+  mutable (@dpseidel).
+  
 * `log_breaks()` provides usable breaks even with very small ranges
   (@billdenney, #168)
 
