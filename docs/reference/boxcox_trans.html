@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Box-Cox (modulus) power transformation. — boxcox_trans • scales</title>
+<title>Box-Cox &amp; modulus transformations. — boxcox_trans • scales</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Box-Cox (modulus) power transformation. — boxcox_trans" />
+<meta property="og:title" content="Box-Cox &amp; modulus transformations. — boxcox_trans" />
 
-<meta property="og:description" content="Box-Cox (modulus) power transformation." />
+<meta property="og:description" content="The Box-Cox transformation is a flexible transformation, often used to
+transform data towards normality. The modulus transformation generalises
+Box-Cox to also work with negative values." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scales</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -102,37 +104,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Box-Cox (modulus) power transformation.</h1>
+    <h1>Box-Cox &amp; modulus transformations.</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/trans-numeric.r'><code>R/trans-numeric.r</code></a></small>
     <div class="hidden name"><code>boxcox_trans.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Box-Cox (modulus) power transformation.</p>
+    <p>The Box-Cox transformation is a flexible transformation, often used to
+transform data towards normality. The modulus transformation generalises
+Box-Cox to also work with negative values.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>boxcox_trans</span>(<span class='no'>p</span>)</pre>
+    <pre class="usage"><span class='fu'>boxcox_trans</span>(<span class='no'>p</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+
+<span class='fu'>modulus_trans</span>(<span class='no'>p</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>p</th>
-      <td><p>Exponent of Box-Cox transformation.</p></td>
+      <td><p>Transformation exponent, \(\lambda\).</p></td>
+    </tr>
+    <tr>
+      <th>offset</th>
+      <td><p>Constant offset. 0 for Box-Cox type 1,
+otherwise any non-negative constant (Box-Cox type 2). <code>modulus_trans()</code>
+sets the default to 1.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Implements a generalisation of the Box-Cox transformation that works
-for data with both positive and negative values.</p>
+    <p>The Box-Cox power transformation (type 1) requires strictly positive values and
+takes the following form for <code>y &gt; 0</code>:
+$$y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}$$
+When <code>y = 0</code>, the natural log transform is used.</p>
+<p>The modulus transformation implements a generalisation of the Box-Cox
+transformation that works for data with both positive and negative values.
+The equation takes the following forms, when <code>y != 0</code> :
+$$y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}$$
+and when <code>y = 0</code>: $$y^{(\lambda)} =  sign(y) * \ln(|y| + 1)$$</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>J. John and N. Draper. "An alternative family of
-transformations." Applied Statistics, pages 190-197, 1980.
+    <p>Box, G. E., &amp; Cox, D. R. (1964). An analysis of transformations.
+Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
+<a href='https://www.jstor.org/stable/2984418'>https://www.jstor.org/stable/2984418</a></p>
+<p>John, J. A., &amp; Draper, N. R. (1980).
+An alternative family of transformations. Applied Statistics, 190-197.
 <a href='http://www.jstor.org/stable/2986305'>http://www.jstor.org/stable/2986305</a></p>
     
 

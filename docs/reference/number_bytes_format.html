@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sequential colour gradient palette (continuous). — seq_gradient_pal • scales</title>
+<title>Bytes formatter: convert to byte measurement and display symbol. — number_bytes_format • scales</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Sequential colour gradient palette (continuous). — seq_gradient_pal" />
+<meta property="og:title" content="Bytes formatter: convert to byte measurement and display symbol. — number_bytes_format" />
 
-<meta property="og:description" content="Sequential colour gradient palette (continuous)." />
+<meta property="og:description" content="Bytes formatter: convert to byte measurement and display symbol." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -102,50 +102,70 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sequential colour gradient palette (continuous).</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/pal-gradient.r'><code>R/pal-gradient.r</code></a></small>
-    <div class="hidden name"><code>seq_gradient_pal.Rd</code></div>
+    <h1>Bytes formatter: convert to byte measurement and display symbol.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/formatter.r'><code>R/formatter.r</code></a></small>
+    <div class="hidden name"><code>number_bytes_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Sequential colour gradient palette (continuous).</p>
+    <p>Bytes formatter: convert to byte measurement and display symbol.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>seq_gradient_pal</span>(<span class='kw'>low</span> <span class='kw'>=</span> <span class='fu'>mnsl</span>(<span class='st'>"10B 4/6"</span>), <span class='kw'>high</span> <span class='kw'>=</span> <span class='fu'>mnsl</span>(<span class='st'>"10R 4/6"</span>),
-  <span class='kw'>space</span> <span class='kw'>=</span> <span class='st'>"Lab"</span>)</pre>
+    <pre class="usage"><span class='fu'>number_bytes_format</span>(<span class='kw'>symbol</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"binary"</span>, <span class='no'>...</span>)
+
+<span class='fu'>number_bytes</span>(<span class='no'>x</span>, <span class='kw'>symbol</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"binary"</span>, <span class='st'>"si"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>low</th>
-      <td><p>colour for low end of gradient.</p></td>
+      <th>symbol</th>
+      <td><p>byte symbol to use. If "auto" the symbol used will be
+determined by the maximum value of <code>x</code>. Valid symbols are
+"b", "Kb", "Mb", "Gb", "Tb", "Pb",
+"Eb", "Zb", and "Yb", along with their upper case
+equivalents and "iB" equivalents.</p></td>
     </tr>
     <tr>
-      <th>high</th>
-      <td><p>colour for high end of gradient.</p></td>
+      <th>units</th>
+      <td><p>which unit base to use, "binary" (1024 base) or
+"si" (1000 base) for ISI units.</p></td>
     </tr>
     <tr>
-      <th>space</th>
-      <td><p>colour space in which to calculate gradient. Must be "Lab" -
-other values are deprecated.</p></td>
+      <th>...</th>
+      <td><p>other arguments passed to <code><a href='number_format.html'>number()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>a numeric vector to format</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a function with three parameters, <code>x``, a numeric vector that returns a character vector,</code>symbol<code>the byte symbol (e.g. "Kb") desired and the measurement</code>units<code>(traditional</code>binary<code>or</code>si` for ISI metric units).</p>
+    
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Units of Information (Wikipedia) :
+<a href='http://en.wikipedia.org/wiki/Units_of_information'>http://en.wikipedia.org/wiki/Units_of_information</a></p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>seq</span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>()(<span class='no'>x</span>))</div><div class='img'><img src='seq_gradient_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>(<span class='st'>"white"</span>, <span class='st'>"black"</span>)(<span class='no'>x</span>))</div><div class='img'><img src='seq_gradient_pal-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>library</span>(<span class='no'>munsell</span>)
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>(<span class='st'>"white"</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/munsell/topics/mnsl'>mnsl</a></span>(<span class='st'>"10R 4/6"</span>))(<span class='no'>x</span>))</div><div class='img'><img src='seq_gradient_pal-3.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>number_bytes_format</span>()(<span class='fu'>sample</span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "3 Gb" "2 Gb" "1 Gb" "3 Gb" "3 Gb" "0 Gb" "0 Gb" "1 Gb" "2 Gb" "1 Gb"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'>sample</span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "1 Gb" "1 Gb" "1 Gb" "3 Gb" "2 Gb" "2 Gb" "3 Gb" "1 Gb" "2 Gb" "1 Gb"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'>sample</span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>), <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "2.6 Gb" "2.1 Gb" "1.1 Gb" "2.1 Gb" "0.2 Gb" "0.2 Gb" "0.3 Gb" "0.7 Gb"
+#&gt;  [9] "0.5 Gb" "0.9 Gb"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#references">References</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

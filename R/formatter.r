@@ -757,16 +757,16 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 #'   \url{http://en.wikipedia.org/wiki/Units_of_information}
 #' @export
 #' @examples
-#' byte_format()(sample(3000000000, 10))
-#' bytes(sample(3000000000, 10))
-#' bytes(sample(3000000000, 10), accuracy = .1)
-byte_format <- function(symbol = "auto", units = "binary", ...) {
-  function(x) bytes(x, symbol, units, ...)
+#' number_bytes_format()(sample(3000000000, 10))
+#' number_bytes(sample(3000000000, 10))
+#' number_bytes(sample(3000000000, 10), accuracy = .1)
+number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
+  function(x) number_bytes(x, symbol, units, ...)
 }
 
 #' @export
-#' @rdname byte_format
-bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
+#' @rdname number_bytes_format
+number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   symbols <- c(
     "auto",
     "b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb",

@@ -33,9 +33,10 @@
 <meta property="og:title" content="Currency formatter: round to nearest cent and display dollar sign. — dollar_format" />
 
 <meta property="og:description" content="The returned function will format a vector of values as currency.
-Values are rounded to the nearest cent, and cents are displayed if
-any of the values has a non-zero cents and the largest value is less
-than largest_with_cents which by default is 100000." />
+If accuracy is not specified, values are rounded to the nearest cent,
+and cents are displayed if any of the values has a non-zero cents and
+the largest value is less than largest_with_cents which by default
+is 100,000." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -66,7 +67,7 @@ than largest_with_cents which by default is 100000." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">scales</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -113,51 +114,74 @@ than largest_with_cents which by default is 100000." />
     <div class="ref-description">
     
     <p>The returned function will format a vector of values as currency.
-Values are rounded to the nearest cent, and cents are displayed if
-any of the values has a non-zero cents and the largest value is less
-than <code>largest_with_cents</code> which by default is 100000.</p>
+If <code>accuracy</code> is not specified, values are rounded to the nearest cent,
+and cents are displayed if any of the values has a non-zero cents and
+the largest value is less than <code>largest_with_cents</code> which by default
+is 100,000.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dollar_format</span>(<span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>dollar_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"$"</span>,
+  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>largest_with_cents</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>negative_parens</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
-<span class='fu'>dollar</span>(<span class='no'>x</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"$"</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>largest_with_cents</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>negative_parens</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>dollar</span>(<span class='no'>x</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"$"</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
+  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>, <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>largest_with_cents</span> <span class='kw'>=</span> <span class='fl'>1e+05</span>, <span class='kw'>negative_parens</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed on to <code>dollar()</code>.</p></td>
+      <th>accuracy</th>
+      <td><p>Number to round to, <code>NULL</code> for automatic guess.</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>a numeric vector to format</p></td>
+      <th>scale</th>
+      <td><p>A scaling factor: <code>x</code> will be multiply by <code>scale</code> before
+formating (useful to display the data on another scale, e.g. in k$).</p></td>
     </tr>
     <tr>
       <th>prefix, suffix</th>
-      <td><p>Symbols to display before and after amount.</p></td>
-    </tr>
-    <tr>
-      <th>largest_with_cents</th>
-      <td><p>the value that all values of <code>x</code> must
-be less than in order for the cents to be displayed</p></td>
+      <td><p>Symbols to display before and after value.</p></td>
     </tr>
     <tr>
       <th>big.mark</th>
-      <td><p>Character used between every 3 digits.</p></td>
+      <td><p>Character used between every 3 digits to separate thousands.</p></td>
+    </tr>
+    <tr>
+      <th>decimal.mark</th>
+      <td><p>The character to be used to indicate the numeric
+decimal point.</p></td>
+    </tr>
+    <tr>
+      <th>trim</th>
+      <td><p>Logical, if <code>FALSE</code>, values are right-justified to a common
+width (see <code><a href='http://www.rdocumentation.org/packages/base/topics/format'>base::format()</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>largest_with_cents</th>
+      <td><p>The value that all values of <code>x</code> must
+be less than in order for the cents to be displayed.</p></td>
     </tr>
     <tr>
       <th>negative_parens</th>
       <td><p>Should negative values be shown with parentheses?</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed on to <code><a href='http://www.rdocumentation.org/packages/base/topics/format'>base::format()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>A numeric vector to format.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a function with single parameter x, a numeric vector, that
-returns a character vector</p>
+    <p>A function with single parameter <code>x</code>, a numeric vector, that
+returns a character vector.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
