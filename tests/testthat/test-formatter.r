@@ -251,7 +251,8 @@ test_that("Byte formatter handles zero values", {
 })
 
 test_that("Byte formatter handles large values", {
-  expect_equal(number_bytes(1024^9), "1 024 YiB")
+  expect_equal(number_bytes(1024^11), "1 073 741 824 YiB")
+  expect_equal(number_bytes(1000^9, units = "si"), "1 000 YB")
 })
 
 test_that("Byte formatter handles negative values", {
