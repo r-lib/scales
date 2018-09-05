@@ -33,6 +33,7 @@ number_bytes(sample(3000000000, 10))
 number_bytes(sample(3000000000, 10), accuracy = .1)
 number_bytes(1024^(0:4))
 number_bytes(1024^(0:4), units = "si", accuracy = .01)
+number_bytes(1000^(1:3), "kB", units = "si")
 }
 \references{
 Units of Information (Wikipedia) :
