@@ -786,7 +786,7 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
-    power <- findInterval(x, c(base^powers, Inf))
+    power <- findInterval(abs(x), base^powers)
     symbol <- setdiff(symbols, "auto")[1L + power]
   } else {
     power <- match(symbol, setdiff(symbols, "auto")) - 1L

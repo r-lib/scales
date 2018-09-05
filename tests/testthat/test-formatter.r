@@ -250,6 +250,14 @@ test_that("Byte formatter handles zero values", {
   expect_equal(number_bytes(0), "0 B")
 })
 
+test_that("Byte formatter handles large values", {
+  expect_equal(number_bytes(1024^9), "1 024 YiB")
+})
+
+test_that("Byte formatter handles negative values", {
+  expect_equal(number_bytes(-1024^2), "-1 MiB")
+})
+
 test_that('Byte formatter symbol = "auto" can show variable multiples', {
   expect_equal(number_bytes(1024^(1:3)), c("1 KiB", "1 MiB", "1 GiB"))
 })
