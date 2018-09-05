@@ -779,8 +779,8 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
 
   if (!(symbol %in% symbols)) {
     warning(paste0(
-      "`symbol` must be one of '", paste0(symbols, collapse = "', '"),
-      "'. Defaulting to 'auto'."
+      "`symbol` must be one of: '", paste0(symbols, collapse = "', '"),
+      "'; not '", symbol, "'.\n", "Defaulting to 'auto'."
     ), call. = F)
     symbol <- "auto"
   }
