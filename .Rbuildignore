@@ -11,4 +11,3 @@
 ^README\.Rmd$
 ^README-.*\.png$
 ^logo\.png$
-^data-raw$
