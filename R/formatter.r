@@ -769,11 +769,14 @@ number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
 number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   units <- match.arg(units, c("binary", "si"))
 
+  powers <- 1:8 # powers of 1000 or 1024, based on units
+  prefix <- with(si_prefixes, symbol[match(powers * 3L, power)])
+
   symbols <- c(
     "auto", "B",
     switch(units,
-      si     = c( "kB",  "MB",  "GB",  "TB",  "PB",  "EB",  "ZB",  "YB"),
-      binary = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
+      si     = paste0(prefix, "B"),
+      binary = paste0(toupper(prefix), "iB")
     )
   )
 
@@ -786,11 +789,11 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
-    pow <- findInterval(x, c(0, base^(1:8), Inf)) - 1L
-    symbol <- setdiff(symbols, "auto")[1L + pow]
+    power <- findInterval(x, c(0, base^powers, Inf)) - 1L
+    symbol <- setdiff(symbols, "auto")[1L + power]
   } else {
-    pow <- match(symbol, setdiff(symbols, "auto")) - 1L
+    power <- match(symbol, setdiff(symbols, "auto")) - 1L
   }
 
-  number(x / base^pow, suffix = paste0(" ", symbol), ...)
+  number(x / base^power, suffix = paste0(" ", symbol), ...)
 }
