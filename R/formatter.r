@@ -788,28 +788,19 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
-    symbol <- as.character(cut(max(x, na.rm = T),
+    symbol <- as.character(cut(x,
       breaks = c(0, base^(1:8), Inf),
       labels = setdiff(symbols, "auto"),
       right = FALSE
     ))
+  } else {
+    symbol <- rep_len(symbol, length(x))
   }
 
-  first <- tolower(substr(symbol, 1, 1))
-  x <- switch(first,
-    "b" = x,
-    "k" = x / (base^1),
-    "m" = x / (base^2),
-    "g" = x / (base^3),
-    "t" = x / (base^4),
-    "p" = x / (base^5),
-    "e" = x / (base^6),
-    "z" = x / (base^7),
-    "y" = x / (base^8)
-  )
+  pow <- match(symbol, setdiff(symbols, "auto")) - 1L
 
   number(
-    x = x,
+    x = x / base^pow,
     suffix = paste0(" ", symbol),
     ...
   )
