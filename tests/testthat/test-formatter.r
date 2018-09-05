@@ -218,6 +218,10 @@ test_that("Byte formatter can take a symbol designator", {
     number_bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
     c("3 MiB", "4 MiB", "5 MiB")
   )
+  expect_equal(
+    number_bytes(1000^(1:3), symbol = "kB", units = "si"),
+    c("1 kB", "1 000 kB", "1 000 000 kB")
+  )
 
   # informative warning for incorrect spelling
   expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"), "must be")
