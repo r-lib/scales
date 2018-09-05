@@ -789,9 +789,9 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
 
   if (symbol == "auto") {
     symbol <- as.character(cut(max(x, na.rm = T),
-      breaks = c(base^(0:8), Inf),
+      breaks = c(0, base^(1:8), Inf),
       labels = setdiff(symbols, "auto"),
-      right = F
+      right = FALSE
     ))
   }
 

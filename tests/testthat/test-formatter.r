@@ -238,6 +238,10 @@ test_that("Byte formatter can take a symbol designator", {
   )
 })
 
+test_that("Byte formatter handles zero values", {
+  expect_equal(number_bytes(0), "0 B")
+})
+
 
 # Common tests --------------------------------------------------------
 
