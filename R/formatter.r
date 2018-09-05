@@ -769,8 +769,8 @@ number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
 number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   units <- match.arg(units, c("binary", "si"))
 
-  powers <- 1:8 # powers of 1000 or 1024, based on units
-  prefix <- with(si_prefixes, symbol[match(powers * 3L, power)])
+  powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
+  prefix <- names(powers)
 
   symbols <- c("auto", "B", switch(units,
     si     = paste0(prefix, "B"),
