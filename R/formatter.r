@@ -794,9 +794,5 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
     pow <- match(symbol, setdiff(symbols, "auto")) - 1L
   }
 
-  number(
-    x = x / base^pow,
-    suffix = paste0(" ", symbol),
-    ...
-  )
+  number(x / base^pow, suffix = paste0(" ", symbol), ...)
 }
