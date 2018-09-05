@@ -788,16 +788,11 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
-    symbol <- as.character(cut(x,
-      breaks = c(0, base^(1:8), Inf),
-      labels = setdiff(symbols, "auto"),
-      right = FALSE
-    ))
+    pow <- findInterval(x, c(0, base^(1:8), Inf)) - 1L
+    symbol <- setdiff(symbols, "auto")[1L + pow]
   } else {
-    symbol <- rep_len(symbol, length(x))
+    pow <- match(symbol, setdiff(symbols, "auto")) - 1L
   }
-
-  pow <- match(symbol, setdiff(symbols, "auto")) - 1L
 
   number(
     x = x / base^pow,
