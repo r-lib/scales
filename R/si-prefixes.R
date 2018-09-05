@@ -22,5 +22,3 @@ si_prefixes <- tibble::tribble(
   "zepto",     "z",    -21L,
   "yocto",     "y",    -24L
 )
-
-usethis::use_data(si_prefixes, internal = TRUE)
