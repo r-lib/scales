@@ -236,6 +236,10 @@ test_that("Byte formatter can take a symbol designator", {
     number_bytes(c(3e6, 4e6, 5e6), units = "si", accuracy = .1),
     c("3.0 MB", "4.0 MB", "5.0 MB")
   )
+
+  # unit system is enforced
+  expect_warning(number_bytes(1024^(1:2), "kB", units = "binary"), "KiB")
+  expect_warning(number_bytes(1024^(1:2), "KiB", units = "si"), "kB")
 })
 
 test_that("Byte formatter handles zero values", {
