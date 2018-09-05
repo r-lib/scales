@@ -740,18 +740,15 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 
 #' Bytes formatter: convert to byte measurement and display symbol.
 #'
-#' @return a function with three parameters, `x``, a numeric vector that
-#'   returns a character vector, `symbol` the byte symbol (e.g. "Kb")
-#'   desired and the measurement `units` (traditional `binary` or
-#'   `si` for ISI metric units).
+#' @return a function with three parameters, `x``, a numeric vector that returns
+#'   a character vector, `symbol` the byte symbol (e.g. "kB") desired and the
+#'   measurement `units` (traditional `binary` or `si` for SI metric units).
 #' @param x a numeric vector to format
 #' @param symbol byte symbol to use. If "auto" the symbol used will be
-#'   determined by the maximum value of `x`. Valid symbols are
-#'   "b", "Kb", "Mb", "Gb", "Tb", "Pb",
-#'   "Eb", "Zb", and "Yb", along with their upper case
-#'   equivalents and "iB" equivalents.
-#' @param units which unit base to use, "binary" (1024 base) or
-#'   "si" (1000 base) for ISI units.
+#'   determined separately for each value of `x`. Valid symbols are "B", "kB",
+#'   "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for SI units, and the "iB"
+#'   variants for binary units.
+#' @param units which unit base to use, "binary" (1024 base) or "si" (1000 base)
 #' @param ... other arguments passed to [number()]
 #' @references Units of Information (Wikipedia) :
 #'   \url{http://en.wikipedia.org/wiki/Units_of_information}
@@ -760,6 +757,8 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 #' number_bytes_format()(sample(3000000000, 10))
 #' number_bytes(sample(3000000000, 10))
 #' number_bytes(sample(3000000000, 10), accuracy = .1)
+#' number_bytes(1024^(0:4))
+#' number_bytes(1024^(0:4), units = "si", accuracy = .01)
 number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
   function(x) number_bytes(x, symbol, units, ...)
 }
