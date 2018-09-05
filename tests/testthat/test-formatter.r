@@ -220,21 +220,21 @@ test_that("Byte formatter can take a symbol designator", {
   )
 
   # informative warning for incorrect spelling
-  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"))
+  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"), "must be")
 
   # respects unit designation
-  expect_equal(number_bytes(1024, accuracy = .01), c("1.00 Kb"))
-  expect_equal(number_bytes(1024, units = "si", accuracy = .01), c("1.02 Kb"))
-  expect_equal(number_bytes(1000, units = "si", accuracy = .01), c("1.00 Kb"))
+  expect_equal(number_bytes(1024, accuracy = .01), c("1.00 KiB"))
+  expect_equal(number_bytes(1024, units = "si", accuracy = .01), c("1.02 kB"))
+  expect_equal(number_bytes(1000, units = "si", accuracy = .01), c("1.00 kB"))
 
   # takes parameters from number()
   expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), accuracy = .001),
-    c("2.861 Mb", "3.815 Mb", "4.768 Mb")
+    c("2.861 MiB", "3.815 MiB", "4.768 MiB")
   )
   expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), units = "si", accuracy = .1),
-    c("3.0 Mb", "4.0 Mb", "5.0 Mb")
+    c("3.0 MB", "4.0 MB", "5.0 MB")
   )
 })
 
