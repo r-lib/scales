@@ -772,13 +772,10 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   powers <- 1:8 # powers of 1000 or 1024, based on units
   prefix <- with(si_prefixes, symbol[match(powers * 3L, power)])
 
-  symbols <- c(
-    "auto", "B",
-    switch(units,
-      si     = paste0(prefix, "B"),
-      binary = paste0(toupper(prefix), "iB")
-    )
-  )
+  symbols <- c("auto", "B", switch(units,
+    si     = paste0(prefix, "B"),
+    binary = paste0(toupper(prefix), "iB")
+  ))
 
   if (!(symbol %in% symbols)) {
     warning("`symbol` must be one of: '", paste0(symbols, collapse = "', '"),
