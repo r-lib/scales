@@ -767,11 +767,14 @@ number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
 #' @export
 #' @rdname number_bytes_format
 number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
+  units <- match.arg(units, c("binary", "si"))
+
   symbols <- c(
-    "auto",
-    "b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb",
-    "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB",
-    "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"
+    "auto", "B",
+    switch(units,
+      si     = c( "kB",  "MB",  "GB",  "TB",  "PB",  "EB",  "ZB",  "YB"),
+      binary = c("KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB")
+    )
   )
 
   if (!(symbol %in% symbols)) {
@@ -782,14 +785,12 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
     symbol <- "auto"
   }
 
-  units <- match.arg(units, c("binary", "si"))
-
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
     symbol <- as.character(cut(max(x, na.rm = T),
       breaks = c(base^(0:8), Inf),
-      labels = c("b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"),
+      labels = setdiff(symbols, "auto"),
       right = F
     ))
   }
