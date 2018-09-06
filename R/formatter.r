@@ -253,6 +253,32 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @rdname number_format
 #' @export
+#' @examples
+#' # degree_format()
+#' celcius <- degree_format(unit = "C")
+#' celcius(rnorm(10) * 10)
+#'
+#' west <- degree_format(unit = "W")
+#' west(runif(10) * 100)
+degree_format <- function(accuracy = 1, scale = 1, prefix = "",
+                          unit = "", sep = "",
+                          suffix = paste0(sep, "\u00b0", unit),
+                          big.mark = " ", decimal.mark = ".",
+                          trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+#' @rdname number_format
+#' @export
 number_si <- function(x, prefix = "", suffix = "", ...) {
   breaks <- c(" " = 0, 10^c(K = 3, M = 6, B = 9, "T" = 12))
 

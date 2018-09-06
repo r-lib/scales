@@ -8,6 +8,7 @@
 \alias{percent_format}
 \alias{percent}
 \alias{unit_format}
+\alias{degree_format}
 \alias{number_si}
 \title{Number formatters}
 \usage{
@@ -33,6 +34,10 @@ percent(x, accuracy = NULL, scale = 100, prefix = "",
 
 unit_format(accuracy = 1, scale = 1, prefix = "", unit = "m",
   sep = " ", suffix = paste0(sep, unit), big.mark = " ",
+  decimal.mark = ".", trim = TRUE, ...)
+
+degree_format(accuracy = 1, scale = 1, prefix = "", unit = "",
+  sep = "", suffix = paste0(sep, "°", unit), big.mark = " ",
   decimal.mark = ".", trim = TRUE, ...)
 
 number_si(x, prefix = "", suffix = "", ...)
@@ -132,4 +137,10 @@ km(runif(10) * 1e3)
 ha <- unit_format(unit = "ha", scale = 1e-4)
 km(runif(10) * 1e5)
 
+# degree_format()
+celcius <- degree_format(unit = "C")
+celcius(rnorm(10) * 10)
+
+west <- degree_format(unit = "W")
+west(runif(10) * 100)
 }

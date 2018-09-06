@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* New `degree_format()` adds degree symbols to numbers (@mikmart, #159).
+
 * `number_bytes()` now:
 
     1. Always uses "B" as the symbol for bytes (#174).
