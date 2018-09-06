@@ -1,5 +1,20 @@
 # scales 1.0.0.9000
 
+* `number_bytes()` now:
+
+    1. Always uses "B" as the symbol for bytes (#174).
+    2. Enforces given `units` for symbols, i.e. SI symbols with a binary base
+       (or vice versa) are not allowed.
+    3. Formats zero and negative values.
+  
+    Additionally, `symbol = "auto"` is now used to determine the symbol
+    separately for each value (@mikmart):
+    
+    ```R
+    number_bytes(1024^(0:3), symbol = "auto")
+    #> [1] "1 B"   "1 KiB" "1 MiB" "1 GiB"
+    ```
+  
 * `dichromat_pal()` documentation now builds without requiring suggested `dichromat` 
    package to be installed (@dpseidel, #172).
 
