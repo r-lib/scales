@@ -2,10 +2,10 @@
 
 * `number_bytes()` now:
 
-    @. Always uses "B" as the symbol for bytes (#174).
-    @. Enforces given `units` for symbols, i.e. SI symbols with a binary base
+    1. Always uses "B" as the symbol for bytes (#174).
+    2. Enforces given `units` for symbols, i.e. SI symbols with a binary base
        (or vice versa) are not allowed.
-    @. Formats zero and negative values.
+    3. Formats zero and negative values.
   
     Additionally, `symbol = "auto"` is now used to determine the symbol
     separately for each value (@mikmart):
