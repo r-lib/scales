@@ -263,6 +263,11 @@ test_that('Byte formatter symbol = "auto" can show variable multiples', {
   expect_equal(number_bytes(1024^(1:3)), c("1 KiB", "1 MiB", "1 GiB"))
 })
 
+test_that("Byte formatter throws informative error for wrong length symbol", {
+  expect_error(number_bytes(symbol = character()), "not length 0")
+  expect_error(number_bytes(symbol = c("kB", "MB")), "not length 2")
+})
+
 
 # Common tests --------------------------------------------------------
 
