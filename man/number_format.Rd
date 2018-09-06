@@ -137,4 +137,10 @@ km(runif(10) * 1e3)
 ha <- unit_format(unit = "ha", scale = 1e-4)
 km(runif(10) * 1e5)
 
+# degree_format()
+celcius <- degree_format(unit = "C")
+celcius(rnorm(10) * 10)
+
+west <- degree_format(unit = "W")
+west(runif(10) * 100)
 }

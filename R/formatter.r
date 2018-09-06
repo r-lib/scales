@@ -253,7 +253,7 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @rdname number_format
 #' @export
-#' @exaomples
+#' @examples
 #' # degree_format()
 #' celcius <- degree_format(unit = "C")
 #' celcius(rnorm(10) * 10)
