@@ -777,17 +777,7 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
     binary = paste0(toupper(prefix), "iB")
   ))
 
-  if (length(symbol) != 1) {
-    n <- length(symbol)
-    stop("`symbol` must have length 1, not length ", n, ".", call. = FALSE)
-  }
-
-  if (!(symbol %in% symbols)) {
-    warning("`symbol` must be one of: '", paste0(symbols, collapse = "', '"),
-            "'; not '", symbol, "'.\n", "Defaulting to 'auto'.", call. = FALSE)
-    symbol <- "auto"
-  }
-
+  symbol <- validate_byte_symbol(symbol, symbols)
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
@@ -798,4 +788,18 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   }
 
   number(x / base^power, suffix = paste0(" ", symbol), ...)
+}
+
+validate_byte_symbol <- function(symbol, symbols) {
+  if (length(symbol) != 1) {
+    n <- length(symbol)
+    stop("`symbol` must have length 1, not length ", n, ".", call. = FALSE)
+  }
+
+  if (!(symbol %in% symbols)) {
+    warning("`symbol` must be one of: '", paste0(symbols, collapse = "', '"),
+            "'; not '", symbol, "'.\n", "Defaulting to 'auto'.", call. = FALSE)
+    symbol <- "auto"
+  }
+  symbol
 }
