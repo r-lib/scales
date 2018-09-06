@@ -772,7 +772,7 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
   powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
   prefix <- names(powers)
 
-  symbols <- c("auto", "B", switch(units,
+  symbols <- c("B", switch(units,
     si     = paste0(prefix, "B"),
     binary = paste0(toupper(prefix), "iB")
   ))
@@ -782,24 +782,30 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
 
   if (symbol == "auto") {
     power <- findInterval(abs(x), base^powers)
-    symbol <- setdiff(symbols, "auto")[1L + power]
+    symbol <- symbols[1L + power]
   } else {
-    power <- match(symbol, setdiff(symbols, "auto")) - 1L
+    power <- match(symbol, symbols) - 1L
   }
 
   number(x / base^power, suffix = paste0(" ", symbol), ...)
 }
 
-validate_byte_symbol <- function(symbol, symbols) {
+validate_byte_symbol <- function(symbol, symbols, default = "auto") {
   if (length(symbol) != 1) {
     n <- length(symbol)
     stop("`symbol` must have length 1, not length ", n, ".", call. = FALSE)
   }
 
-  if (!(symbol %in% symbols)) {
-    warning("`symbol` must be one of: '", paste0(symbols, collapse = "', '"),
-            "'; not '", symbol, "'.\n", "Defaulting to 'auto'.", call. = FALSE)
-    symbol <- "auto"
+  valid_symbols <- c(default, symbols)
+  if (!(symbol %in% valid_symbols)) {
+    warning(
+      "`symbol` must be one of: '", paste0(valid_symbols, collapse = "', '"),
+      "'; not '", symbol, "'.\n",
+      "Defaulting to '", default, "'.",
+      call. = FALSE
+    )
+    symbol <- default
   }
+
   symbol
 }
