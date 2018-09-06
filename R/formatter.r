@@ -740,7 +740,7 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 
 #' Bytes formatter: convert to byte measurement and display symbol.
 #'
-#' @return a function with three parameters, `x``, a numeric vector that returns
+#' @return a function with three parameters, `x`, a numeric vector that returns
 #'   a character vector, `symbol` the byte symbol (e.g. "kB") desired and the
 #'   measurement `units` (traditional `binary` or `si` for SI metric units).
 #' @param x a numeric vector to format

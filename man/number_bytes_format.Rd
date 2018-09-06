@@ -22,7 +22,9 @@ variants for binary units.}
 \item{x}{a numeric vector to format}
 }
 \value{
-a function with three parameters, \code{x``, a numeric vector that returns a character vector,}symbol\code{the byte symbol (e.g. "kB") desired and the measurement}units\code{(traditional}binary\code{or}si` for SI metric units).
+a function with three parameters, \code{x}, a numeric vector that returns
+a character vector, \code{symbol} the byte symbol (e.g. "kB") desired and the
+measurement \code{units} (traditional \code{binary} or \code{si} for SI metric units).
 }
 \description{
 Bytes formatter: convert to byte measurement and display symbol.
