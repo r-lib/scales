@@ -38,6 +38,7 @@ train_continuous <- function(new, existing = NULL) {
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     stop("Discrete value supplied to continuous scale", call. = FALSE)
   }
+  # range(NULL, x) strips attributes
   if (is.null(existing)) {
     suppressWarnings(range(new, na.rm = TRUE, finite = TRUE))
   } else {

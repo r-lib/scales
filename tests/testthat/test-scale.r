@@ -20,23 +20,35 @@ test_that("NA.value works for discrete", {
   expect_that(dscale(x, pal, "grey50")[5], equals("grey50"))
 })
 
-test_that("train_continuous maintains class", {
-  expect_equal(train_continuous(1:5),
-               c(1, 5),
-               info = "Normal numeric input works with train_continuous")
+test_that(paste(
+  "train_continuous maintains class with `existing=NULL`,",
+  "and changes class to the class of `existing` when not NULL."
+), {
+  expect_equal(
+    train_continuous(1:5),
+    c(1, 5)
+  )
   expect_error(train_continuous(LETTERS[1:5]),
-               regexp = "Discrete value supplied to continuous scale")
+    regexp = "Discrete value supplied to continuous scale"
+  )
   my_date <- as.POSIXct("2018-01-01")
-  expect_equal(train_continuous(my_date),
-               c(my_date, my_date),
-               info = "Class is maintained through train_continuous with NULL existing")
-  expect_equal(train_continuous(my_date, existing = 1),
-               c(1, my_date),
-               info = "Class is changed through train_continuous with numeric existing")
+  expect_equal(
+    train_continuous(my_date),
+    c(my_date, my_date)
+  )
+  expect_equal(
+    train_continuous(my_date, existing = 1),
+    c(1, my_date)
+  )
+  expect_equal(
+    train_continuous(1, existing = my_date),
+    c(as.POSIXct(1, origin = "1970-01-01"), my_date)
+  )
 })
 
-test_that("train_continuous with NULL input", {
-  expect_equal(train_continuous(new = NULL, existing = c(1, 5)),
-               c(1, 5),
-               info = "train_continuous with NULL new input returns the existing scale.")
+test_that("train_continuous with new=NULL maintains existing range.", {
+  expect_equal(
+    train_continuous(NULL, existing = c(1, 5)),
+    c(1, 5)
+  )
 })
