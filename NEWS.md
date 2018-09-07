@@ -32,6 +32,9 @@
 * `log_breaks()` provides usable breaks even with very small ranges
   (@billdenney, #168)
 
+* `train_continuous()` now maintains the class of inputs when they are not
+  numeric (@billdenney, #166).
+
 # scales 1.0.0
 
 ## New Features
