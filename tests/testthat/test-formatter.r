@@ -41,6 +41,20 @@ test_that("number_format works with Inf", {
   expect_equal(cust(c(Inf, -Inf)), c("Inf", "-Inf"))
 })
 
+test_that("number_si works", {
+  expect_equal(number_si(c(1e3, 1e6, 1e9)), c("1K", "1M", "1B"))
+  expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1K", "1M", "1B"))
+  expect_equal(number_si(c(.50, 1e6, 1e15)), c("0 ", "1M", "1 000T"))
+  expect_equal(
+    number_si(c(.50, 1e6, 1e9), accuracy = .1, prefix = "$"),
+    c("$0.5 ", "$1.0M", "$1.0B")
+  )
+  expect_equal(
+    number_si(c(.50, 100, NA, Inf), accuracy = .1, prefix = "$"),
+    c("$0.5 ", "$100.0 ", "$NA ", "Inf")
+  )
+})
+
 # Comma formatter --------------------------------------------------------
 
 test_that("comma format always adds commas", {
@@ -144,6 +158,20 @@ test_that("unit format", {
   )
 })
 
+
+# Degree formatter --------------------------------------------------------
+
+test_that("Degree format adds degree symbol", {
+  degree <- degree_format()
+  expect_equal(degree(c(-10, 0, 20, NA)), c("-10°", "0°", "20°", "NA°"))
+})
+
+test_that("Degree format can also add unit symbols", {
+  celcius <- degree_format(unit = "C")
+  expect_equal(celcius(c(-10, 0, 20)), c("-10°C", "0°C", "20°C"))
+})
+
+
 # Percent formatter -------------------------------------------------------
 
 test_that("negative percents work", {
@@ -204,24 +232,54 @@ test_that("Byte formatter can take a symbol designator", {
     number_bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
     c("3 MiB", "4 MiB", "5 MiB")
   )
+  expect_equal(
+    number_bytes(1000^(1:3), symbol = "kB", units = "si"),
+    c("1 kB", "1 000 kB", "1 000 000 kB")
+  )
 
   # informative warning for incorrect spelling
-  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"))
+  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"), "must be")
 
   # respects unit designation
-  expect_equal(number_bytes(1024, accuracy = .01), c("1.00 Kb"))
-  expect_equal(number_bytes(1024, units = "si", accuracy = .01), c("1.02 Kb"))
-  expect_equal(number_bytes(1000, units = "si", accuracy = .01), c("1.00 Kb"))
+  expect_equal(number_bytes(1024, accuracy = .01), c("1.00 KiB"))
+  expect_equal(number_bytes(1024, units = "si", accuracy = .01), c("1.02 kB"))
+  expect_equal(number_bytes(1000, units = "si", accuracy = .01), c("1.00 kB"))
 
   # takes parameters from number()
   expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), accuracy = .001),
-    c("2.861 Mb", "3.815 Mb", "4.768 Mb")
+    c("2.861 MiB", "3.815 MiB", "4.768 MiB")
   )
   expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), units = "si", accuracy = .1),
-    c("3.0 Mb", "4.0 Mb", "5.0 Mb")
+    c("3.0 MB", "4.0 MB", "5.0 MB")
   )
+
+  # unit system is enforced
+  expect_warning(number_bytes(1024^(1:2), "kB", units = "binary"), "KiB")
+  expect_warning(number_bytes(1024^(1:2), "KiB", units = "si"), "kB")
+})
+
+test_that("Byte formatter handles zero values", {
+  expect_equal(number_bytes(0), "0 B")
+})
+
+test_that("Byte formatter handles large values", {
+  expect_equal(number_bytes(1024^11), "1 073 741 824 YiB")
+  expect_equal(number_bytes(1000^9, units = "si"), "1 000 YB")
+})
+
+test_that("Byte formatter handles negative values", {
+  expect_equal(number_bytes(-1024^2), "-1 MiB")
+})
+
+test_that('Byte formatter symbol = "auto" can show variable multiples', {
+  expect_equal(number_bytes(1024^(1:3)), c("1 KiB", "1 MiB", "1 GiB"))
+})
+
+test_that("Byte formatter throws informative error for wrong length symbol", {
+  expect_error(number_bytes(symbol = character()), "not length 0")
+  expect_error(number_bytes(symbol = c("kB", "MB")), "not length 2")
 })
 
 

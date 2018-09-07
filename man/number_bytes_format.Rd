@@ -11,20 +11,20 @@ number_bytes(x, symbol = "auto", units = c("binary", "si"), ...)
 }
 \arguments{
 \item{symbol}{byte symbol to use. If "auto" the symbol used will be
-determined by the maximum value of \code{x}. Valid symbols are
-"b", "Kb", "Mb", "Gb", "Tb", "Pb",
-"Eb", "Zb", and "Yb", along with their upper case
-equivalents and "iB" equivalents.}
+determined separately for each value of \code{x}. Valid symbols are "B", "kB",
+"MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for SI units, and the "iB"
+variants for binary units.}
 
-\item{units}{which unit base to use, "binary" (1024 base) or
-"si" (1000 base) for ISI units.}
+\item{units}{which unit base to use, "binary" (1024 base) or "si" (1000 base)}
 
 \item{...}{other arguments passed to \code{\link[=number]{number()}}}
 
 \item{x}{a numeric vector to format}
 }
 \value{
-a function with three parameters, \code{x``, a numeric vector that returns a character vector,}symbol\code{the byte symbol (e.g. "Kb") desired and the measurement}units\code{(traditional}binary\code{or}si` for ISI metric units).
+a function with three parameters, \code{x}, a numeric vector that returns
+a character vector, \code{symbol} the byte symbol (e.g. "kB") desired and the
+measurement \code{units} (traditional \code{binary} or \code{si} for SI metric units).
 }
 \description{
 Bytes formatter: convert to byte measurement and display symbol.
@@ -33,6 +33,9 @@ Bytes formatter: convert to byte measurement and display symbol.
 number_bytes_format()(sample(3000000000, 10))
 number_bytes(sample(3000000000, 10))
 number_bytes(sample(3000000000, 10), accuracy = .1)
+number_bytes(1024^(0:4))
+number_bytes(1024^(0:4), units = "si", accuracy = .01)
+number_bytes(1000^(1:3), "kB", units = "si")
 }
 \references{
 Units of Information (Wikipedia) :

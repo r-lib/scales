@@ -8,11 +8,16 @@
 #'   thousands.
 #' * `percent_format()` and `percent()` multiply values by one hundred and
 #'   display percent sign.
-#' * `unit_format()` add units to the values.
+#' * `unit_format()` adds units to the values.
+#' * `number_si()` scales and adds abbreviated SI units to the values.
 #'
 #' All formatters allow you to re-`scale` (multiplicatively), to round to
 #' specified `accuracy`, to add custom `suffix` and `prefix` and to specify
 #' `decimal.mark` and `big.mark`.
+#'
+#' `number_si()` gives limited SI unit labels: "K" for values ≥ 10e3, "
+#' M" for ≥ 10e6, "B" for ≥ 10e9, and "T" for ≥ 10e12.
+#' It respects all arguments except `scale` which is set internally.
 #'
 #' @return `*_format()` returns a function with single parameter
 #'   `x`, a numeric vector, that returns a character vector.
@@ -246,6 +251,52 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
   )
 }
 
+#' @rdname number_format
+#' @export
+#' @examples
+#' # degree_format()
+#' celcius <- degree_format(unit = "C")
+#' celcius(rnorm(10) * 10)
+#'
+#' west <- degree_format(unit = "W")
+#' west(runif(10) * 100)
+degree_format <- function(accuracy = 1, scale = 1, prefix = "",
+                          unit = "", sep = "",
+                          suffix = paste0(sep, "\u00b0", unit),
+                          big.mark = " ", decimal.mark = ".",
+                          trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}
+
+#' @rdname number_format
+#' @export
+number_si <- function(x, prefix = "", suffix = "", ...) {
+  breaks <- c(" " = 0, 10^c(K = 3, M = 6, B = 9, "T" = 12))
+
+  n_suffix <- cut(abs(x),
+    breaks = c(unname(breaks), Inf),
+    labels = c(names(breaks)),
+    right = FALSE
+  )
+
+  # for handling NA's correctly
+  n_suffix[is.na(n_suffix)] <- " "
+  scale <- 1 / breaks[n_suffix]
+  # for handling Inf and 0-1 correctly
+  scale[which(scale %in% c(Inf, NA))] <- 1
+
+  number(x, scale = scale, prefix = prefix, suffix = paste0(n_suffix, suffix), ...)
+}
+
 #' Currency formatter: round to nearest cent and display dollar sign.
 #'
 #' The returned function will format a vector of values as currency.
@@ -370,7 +421,6 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     amount
   }
 }
-
 
 #' Scientific formatter.
 #'
@@ -716,18 +766,15 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 
 #' Bytes formatter: convert to byte measurement and display symbol.
 #'
-#' @return a function with three parameters, `x``, a numeric vector that
-#'   returns a character vector, `symbol` the byte symbol (e.g. "Kb")
-#'   desired and the measurement `units` (traditional `binary` or
-#'   `si` for ISI metric units).
+#' @return a function with three parameters, `x`, a numeric vector that returns
+#'   a character vector, `symbol` the byte symbol (e.g. "kB") desired and the
+#'   measurement `units` (traditional `binary` or `si` for SI metric units).
 #' @param x a numeric vector to format
 #' @param symbol byte symbol to use. If "auto" the symbol used will be
-#'   determined by the maximum value of `x`. Valid symbols are
-#'   "b", "Kb", "Mb", "Gb", "Tb", "Pb",
-#'   "Eb", "Zb", and "Yb", along with their upper case
-#'   equivalents and "iB" equivalents.
-#' @param units which unit base to use, "binary" (1024 base) or
-#'   "si" (1000 base) for ISI units.
+#'   determined separately for each value of `x`. Valid symbols are "B", "kB",
+#'   "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for SI units, and the "iB"
+#'   variants for binary units.
+#' @param units which unit base to use, "binary" (1024 base) or "si" (1000 base)
 #' @param ... other arguments passed to [number()]
 #' @references Units of Information (Wikipedia) :
 #'   \url{http://en.wikipedia.org/wiki/Units_of_information}
@@ -736,6 +783,9 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
 #' number_bytes_format()(sample(3000000000, 10))
 #' number_bytes(sample(3000000000, 10))
 #' number_bytes(sample(3000000000, 10), accuracy = .1)
+#' number_bytes(1024^(0:4))
+#' number_bytes(1024^(0:4), units = "si", accuracy = .01)
+#' number_bytes(1000^(1:3), "kB", units = "si")
 number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
   function(x) number_bytes(x, symbol, units, ...)
 }
@@ -743,49 +793,45 @@ number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
 #' @export
 #' @rdname number_bytes_format
 number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), ...) {
-  symbols <- c(
-    "auto",
-    "b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb",
-    "B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB",
-    "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"
-  )
-
-  if (!(symbol %in% symbols)) {
-    warning(paste(
-      "`symbol` must be one of '", paste0(symbols, collapse = "', '"),
-      "'. Defaulting to 'auto'."
-    ), call. = F)
-    symbol <- "auto"
-  }
-
   units <- match.arg(units, c("binary", "si"))
 
+  powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
+  prefix <- names(powers)
+
+  symbols <- c("B", switch(units,
+    si     = paste0(prefix, "B"),
+    binary = paste0(toupper(prefix), "iB")
+  ))
+
+  symbol <- validate_byte_symbol(symbol, symbols)
   base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
-    symbol <- as.character(cut(max(x, na.rm = T),
-      breaks = c(base^(0:8), Inf),
-      labels = c("b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"),
-      right = F
-    ))
+    power <- findInterval(abs(x), base^powers)
+    symbol <- symbols[1L + power]
+  } else {
+    power <- match(symbol, symbols) - 1L
   }
 
-  first <- tolower(substr(symbol, 1, 1))
-  x <- switch(first,
-    "b" = x,
-    "k" = x / (base^1),
-    "m" = x / (base^2),
-    "g" = x / (base^3),
-    "t" = x / (base^4),
-    "p" = x / (base^5),
-    "e" = x / (base^6),
-    "z" = x / (base^7),
-    "y" = x / (base^8)
-  )
+  number(x / base^power, suffix = paste0(" ", symbol), ...)
+}
 
-  number(
-    x = x,
-    suffix = paste0(" ", symbol),
-    ...
-  )
+validate_byte_symbol <- function(symbol, symbols, default = "auto") {
+  if (length(symbol) != 1) {
+    n <- length(symbol)
+    stop("`symbol` must have length 1, not length ", n, ".", call. = FALSE)
+  }
+
+  valid_symbols <- c(default, symbols)
+  if (!(symbol %in% valid_symbols)) {
+    warning(
+      "`symbol` must be one of: '", paste0(valid_symbols, collapse = "', '"),
+      "'; not '", symbol, "'.\n",
+      "Defaulting to '", default, "'.",
+      call. = FALSE
+    )
+    symbol <- default
+  }
+
+  symbol
 }

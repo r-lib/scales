@@ -8,6 +8,8 @@
 \alias{percent_format}
 \alias{percent}
 \alias{unit_format}
+\alias{degree_format}
+\alias{number_si}
 \title{Number formatters}
 \usage{
 number_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
@@ -33,6 +35,12 @@ percent(x, accuracy = NULL, scale = 100, prefix = "",
 unit_format(accuracy = 1, scale = 1, prefix = "", unit = "m",
   sep = " ", suffix = paste0(sep, unit), big.mark = " ",
   decimal.mark = ".", trim = TRUE, ...)
+
+degree_format(accuracy = 1, scale = 1, prefix = "", unit = "",
+  sep = "", suffix = paste0(sep, "°", unit), big.mark = " ",
+  decimal.mark = ".", trim = TRUE, ...)
+
+number_si(x, prefix = "", suffix = "", ...)
 }
 \arguments{
 \item{accuracy}{Number to round to, \code{NULL} for automatic guess.}
@@ -73,12 +81,17 @@ A set of functions to format numeric values:
 thousands.
 \item \code{percent_format()} and \code{percent()} multiply values by one hundred and
 display percent sign.
-\item \code{unit_format()} add units to the values.
+\item \code{unit_format()} adds units to the values.
+\item \code{number_si()} scales and adds abbreviated SI units to the values.
 }
 
 All formatters allow you to re-\code{scale} (multiplicatively), to round to
 specified \code{accuracy}, to add custom \code{suffix} and \code{prefix} and to specify
 \code{decimal.mark} and \code{big.mark}.
+
+\code{number_si()} gives limited SI unit labels: "K" for values ≥ 10e3, "
+M" for ≥ 10e6, "B" for ≥ 10e9, and "T" for ≥ 10e12.
+It respects all arguments except \code{scale} which is set internally.
 }
 \examples{
 # number()
@@ -124,4 +137,10 @@ km(runif(10) * 1e3)
 ha <- unit_format(unit = "ha", scale = 1e-4)
 km(runif(10) * 1e5)
 
+# degree_format()
+celcius <- degree_format(unit = "C")
+celcius(rnorm(10) * 10)
+
+west <- degree_format(unit = "W")
+west(runif(10) * 100)
 }
