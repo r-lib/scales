@@ -49,7 +49,7 @@ atanh_trans <- function() {
 #' @export
 boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
-    if (any((x + offset) < 0)) {
+    if (any((x + offset) < 0, na.rm = TRUE)) {
       stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
         call. = F
       )

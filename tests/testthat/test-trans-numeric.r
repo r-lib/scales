@@ -24,6 +24,11 @@ test_that("Boxcox gives error for negative values", {
   expect_error(trans$trans(-10:10))
 })
 
+test_that("Boxcox can handle NA values", {
+  trans <- boxcox_trans(p = 0)
+  expect_equal(trans$trans(c(1, NA_real_)), c(0, NA_real_))
+})
+
 test_that("Boxcox is invertible", {
   trans <- boxcox_trans(p = .1)
   expect_equal(trans$inv(trans$trans(0:10)), 0:10)
