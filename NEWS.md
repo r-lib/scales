@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* `boxcox_trans()` no longer throws an error when given NA values (@sflippl, #181)
+
 * New `degree_format()` adds degree symbols to numbers (@mikmart, #159).
 
 * `number_bytes()` now:
