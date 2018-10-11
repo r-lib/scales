@@ -3,7 +3,7 @@ Title: Scale Functions for Visualization
 Version: 1.0.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
-    person("Dana", "Seidel", role = "aut")
+    person("Dana", "Seidel", role = "aut"),
     person("RStudio", role = "cph")
     )
 Description: Graphical scales map data to aesthetics, and provide
