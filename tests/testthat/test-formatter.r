@@ -229,10 +229,6 @@ test_that("Byte formatter can take a symbol designator", {
     c("50 B", "400 B", "502 B", NA)
   )
   expect_equal(
-    number_bytes(c(50, 400, 502, NA), symbol = "B", na.exclude = FALSE),
-    c("50 B", "400 B", "502 B", NA)
-  )
-  expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),
     c("3 MiB", "4 MiB", "5 MiB")
   )

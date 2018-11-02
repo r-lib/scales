@@ -753,8 +753,7 @@ pvalue <- function(x, accuracy = .001, decimal.mark = ".", add_p = FALSE) {
     x,
     accuracy = accuracy,
     decimal.mark = decimal.mark,
-    big.mark = "",
-    na.exclude = FALSE
+    big.mark = ""
   )
   if (add_p) res <- paste0("p=", res)
   below <- number(
