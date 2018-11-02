@@ -13,32 +13,36 @@
 \title{Number formatters}
 \usage{
 number_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+  big.mark = " ", decimal.mark = ".", trim = TRUE,
+  na.exclude = TRUE, ...)
 
 number(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+  big.mark = " ", decimal.mark = ".", trim = TRUE,
+  na.exclude = TRUE, ...)
 
 comma_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
+  big.mark = ",", decimal.mark = ".", trim = TRUE,
+  na.exclude = TRUE, digits, ...)
 
 comma(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
+  big.mark = ",", decimal.mark = ".", trim = TRUE,
+  na.exclude = TRUE, digits, ...)
 
 percent_format(accuracy = NULL, scale = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+  na.exclude = TRUE, ...)
 
 percent(x, accuracy = NULL, scale = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+  na.exclude = TRUE, ...)
 
 unit_format(accuracy = 1, scale = 1, prefix = "", unit = "m",
   sep = " ", suffix = paste0(sep, unit), big.mark = " ",
-  decimal.mark = ".", trim = TRUE, ...)
+  decimal.mark = ".", trim = TRUE, na.exclude = TRUE, ...)
 
 degree_format(accuracy = 1, scale = 1, prefix = "", unit = "",
   sep = "", suffix = paste0(sep, "°", unit), big.mark = " ",
-  decimal.mark = ".", trim = TRUE, ...)
+  decimal.mark = ".", trim = TRUE, na.exclude = TRUE, ...)
 
 number_si(x, prefix = "", suffix = "", ...)
 }
@@ -58,6 +62,9 @@ decimal point.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
+
+\item{na.exclude}{Logical, if \code{TRUE} (the default), \code{NA} values are excluded
+from formatting and kept as \code{NA}.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
