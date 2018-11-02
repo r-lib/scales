@@ -7,13 +7,11 @@
 \usage{
 dollar_format(accuracy = NULL, scale = 1, prefix = "$",
   suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE,
-  na.exclude = TRUE, ...)
+  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
 
 dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE,
-  na.exclude = TRUE, ...)
+  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
 }
 \arguments{
 \item{accuracy}{Number to round to, \code{NULL} for automatic guess.}

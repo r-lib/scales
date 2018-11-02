@@ -53,10 +53,6 @@ test_that("number_si works", {
     number_si(c(.50, 100, NA, Inf), accuracy = .1, prefix = "$"),
     c("$0.5 ", "$100.0 ", NA, "Inf")
   )
-  expect_equal(
-    number_si(c(.50, 100, NA, Inf), accuracy = .1, prefix = "$", na.exclude = FALSE),
-    c("$0.5 ", "$100.0 ", "$NA ", "Inf")
-  )
 })
 
 # Comma formatter --------------------------------------------------------
@@ -168,8 +164,6 @@ test_that("unit format", {
 test_that("Degree format adds degree symbol", {
   degree <- degree_format()
   expect_equal(degree(c(-10, 0, 20, NA)), c("-10°", "0°", "20°", NA))
-  degree_na <- degree_format(na.exclude = FALSE)
-  expect_equal(degree_na(c(-10, 0, 20, NA)), c("-10°", "0°", "20°", "NA°"))
 })
 
 test_that("Degree format can also add unit symbols", {
@@ -199,9 +193,7 @@ test_that("prefix is inside parentheses", {
 })
 
 test_that("missing values preserved", {
-  expect_equal(dollar(NA_real_), NA)
-  expect_equal(dollar(NA_real_, na.exclude = FALSE), "$NA")
-  expect_equal(dollar(NA_real_, na.exclude = TRUE), NA)
+  expect_equal(dollar(NA_real_), NA_character_)
 })
 
 test_that("decimal.mark could be modified", {
@@ -213,15 +205,15 @@ test_that("decimal.mark could be modified", {
 test_that("pvalue formatter works", {
   expect_equal(
     pvalue(c(.5, .045, .0002, NA)),
-    c("0.500", "0.045", "<0.001", "NA")
+    c("0.500", "0.045", "<0.001", NA)
   )
   expect_equal(
     pvalue(c(.5, .045, .0002, NA), accuracy = .01),
-    c("0.50", "0.04", "<0.01", "NA")
+    c("0.50", "0.04", "<0.01", NA)
   )
   expect_equal(
     pvalue(c(.5, .045, .0002, NA), decimal.mark = ","),
-    c("0,500", "0,045", "<0,001", "NA")
+    c("0,500", "0,045", "<0,001", NA)
   )
   expect_equal(
     pvalue(c(.5, .045, .0002, NA), add_p = TRUE),
@@ -238,7 +230,7 @@ test_that("Byte formatter can take a symbol designator", {
   )
   expect_equal(
     number_bytes(c(50, 400, 502, NA), symbol = "B", na.exclude = FALSE),
-    c("50 B", "400 B", "502 B", "NA B")
+    c("50 B", "400 B", "502 B", NA)
   )
   expect_equal(
     number_bytes(c(3e6, 4e6, 5e6), symbol = "MiB"),

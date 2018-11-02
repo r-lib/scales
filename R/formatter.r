@@ -32,8 +32,6 @@
 #'   decimal point.
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
-#' @param na.exclude Logical, if `TRUE` (the default), `NA` values are excluded
-#'   from formatting and kept as `NA`.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @examples
@@ -51,7 +49,7 @@
 #'
 number_format <- function(accuracy = 1, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
-                          trim = TRUE, na.exclude = TRUE, ...) {
+                          trim = TRUE, ...) {
   force_all(
     accuracy,
     scale,
@@ -60,7 +58,6 @@ number_format <- function(accuracy = 1, scale = 1, prefix = "",
     big.mark,
     decimal.mark,
     trim,
-    na.exclude,
     ...
   )
   function(x) number(
@@ -72,7 +69,6 @@ number_format <- function(accuracy = 1, scale = 1, prefix = "",
       big.mark = big.mark,
       decimal.mark = decimal.mark,
       trim = trim,
-      na.exclude = na.exclude,
       ...
     )
 }
@@ -81,7 +77,7 @@ number_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' @rdname number_format
 number <- function(x, accuracy = 1, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
-                   trim = TRUE, na.exclude = TRUE, ...) {
+                   trim = TRUE, ...) {
   if (length(x) == 0) return(character())
   accuracy <- accuracy %||% precision(x)
   x <- round_any(x, accuracy / scale)
@@ -100,12 +96,10 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
 
-  # restore NAs from input vector if na.exclude is TRUE
-  if (na.exclude) {
-    ifelse(is.na(unname(x)), NA, ret)
-  } else {
-    ret
-  }
+  # restore NAs from input vector
+  ret[is.na(x)] <- NA
+
+  ret
 }
 
 precision <- function(x) {
@@ -134,7 +128,7 @@ precision <- function(x) {
 #'
 comma_format <- function(accuracy = 1, scale = 1, prefix = "",
                          suffix = "", big.mark = ",", decimal.mark = ".",
-                         trim = TRUE, na.exclude = TRUE, digits, ...) {
+                         trim = TRUE, digits, ...) {
   if (!missing(digits)) {
     warning(
       "`digits` argument is deprecated, use `accuracy` instead.",
@@ -149,7 +143,6 @@ comma_format <- function(accuracy = 1, scale = 1, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -158,7 +151,7 @@ comma_format <- function(accuracy = 1, scale = 1, prefix = "",
 #' @rdname number_format
 comma <- function(x, accuracy = 1, scale = 1, prefix = "",
                   suffix = "", big.mark = ",", decimal.mark = ".",
-                  trim = TRUE, na.exclude = TRUE, digits, ...) {
+                  trim = TRUE, digits, ...) {
   if (!missing(digits)) {
     warning(
       "`digits` argument is deprecated, use `accuracy` instead.",
@@ -174,7 +167,6 @@ comma <- function(x, accuracy = 1, scale = 1, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -202,7 +194,7 @@ comma <- function(x, accuracy = 1, scale = 1, prefix = "",
 #'
 percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
                            suffix = "%", big.mark = " ", decimal.mark = ".",
-                           trim = TRUE, na.exclude = TRUE, ...) {
+                           trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,
     scale = scale,
@@ -211,7 +203,6 @@ percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -220,7 +211,7 @@ percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
 #' @rdname number_format
 percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
                     suffix = "%", big.mark = " ", decimal.mark = ".",
-                    trim = TRUE, na.exclude = TRUE, ...) {
+                    trim = TRUE, ...) {
   number(
     x = x,
     accuracy = accuracy,
@@ -230,7 +221,6 @@ percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -252,7 +242,7 @@ percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
 unit_format <- function(accuracy = 1, scale = 1, prefix = "",
                         unit = "m", sep = " ", suffix = paste0(sep, unit),
                         big.mark = " ", decimal.mark = ".",
-                        trim = TRUE, na.exclude = TRUE, ...) {
+                        trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,
     scale = scale,
@@ -261,7 +251,6 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -279,7 +268,7 @@ degree_format <- function(accuracy = 1, scale = 1, prefix = "",
                           unit = "", sep = "",
                           suffix = paste0(sep, "\u00b0", unit),
                           big.mark = " ", decimal.mark = ".",
-                          trim = TRUE, na.exclude = TRUE, ...) {
+                          trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,
     scale = scale,
@@ -288,7 +277,6 @@ degree_format <- function(accuracy = 1, scale = 1, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = na.exclude,
     ...
   )
 }
@@ -356,7 +344,7 @@ number_si <- function(x, prefix = "", suffix = "", ...) {
 dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
                           suffix = "", big.mark = ",", decimal.mark = ".",
                           trim = TRUE, largest_with_cents = 100000,
-                          negative_parens = FALSE, na.exclude = TRUE, ...) {
+                          negative_parens = FALSE, ...) {
   force_all(
     accuracy,
     scale,
@@ -367,7 +355,6 @@ dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
     trim,
     largest_with_cents,
     negative_parens,
-    na.exclude,
     ...
   )
   function(x) dollar(
@@ -381,7 +368,6 @@ dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
       trim = trim,
       largest_with_cents = largest_with_cents,
       negative_parens,
-      na.exclude = na.exclude,
       ...
     )
 }
@@ -403,7 +389,7 @@ needs_cents <- function(x, threshold) {
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = FALSE, na.exclude = TRUE, ...) {
+                   negative_parens = FALSE, ...) {
   if (length(x) == 0) return(character())
   if (is.null(accuracy)) {
     if (needs_cents(x * scale, largest_with_cents)) {
@@ -430,7 +416,6 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    na.exclude = FALSE, # we handle NAs manually below
     ...
   )
 
@@ -438,12 +423,10 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     amount <- paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
   }
 
-  # restore NAs from input vector if na.exclude is TRUE
-  if (na.exclude) {
-    ifelse(is.na(unname(x)), NA, amount)
-  } else {
-    amount
-  }
+  # restore NAs from input vector
+  amount[is.na(x)] <- NA
+
+  amount
 }
 
 #' Scientific formatter.
