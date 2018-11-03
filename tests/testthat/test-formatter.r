@@ -1,14 +1,30 @@
 context("Formatters")
 
+# Date formatter --------------------------------------------------------
+
+test_that("date_format works correctly", {
+  a_date <- ISOdate(2012, 1, 1, 11, tz = "UTC")
+  na_date <- ISOdate(NA, 1, 1) # date of value NA
+
+  expect_equal(date_format()(a_date), "2012-01-01")
+  expect_equal(date_format(format = "%m/%d/%Y")(a_date), "01/01/2012")
+  expect_equal(date_format(format = "%m/%d/%Y", tz = "Etc/GMT+12")(a_date), "12/31/2011")
+  expect_equal(date_format()(na_date), NA_character_)
+})
+
+
 # Time formatter --------------------------------------------------------
 
-test_that("time_format formats hms objects", {
+test_that("time_format works correctly", {
   a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
+  na_time <- ISOdatetime(NA, 1, 1, 1, 1, 0) # time of value NA
 
   expect_equal(time_format()(a_time), "11:30:00")
   expect_equal(time_format()(hms::as.hms(a_time, tz = "UTC")), "11:30:00")
   expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = "UTC")), "11")
+  expect_equal(time_format()(na_time), NA_character_)
 })
+
 
 # Number formatter --------------------------------------------------------
 
@@ -88,6 +104,10 @@ test_that("decimal.mark works with scientific format", {
   expect_equal(scientific(123456, digits = 2, decimal.mark = ","), "1,2e+05")
 })
 
+test_that("scientific format respects NAs", {
+  expect_equal(scientific(NA), NA_character_)
+})
+
 
 # Wrap formatter --------------------------------------------------------
 
@@ -123,6 +143,7 @@ test_that("ordinal format in English", {
   expect_equal(ordinal(12), "12th")
   expect_equal(ordinal(21), "21st")
   expect_equal(ordinal(101), "101st")
+  expect_equal(ordinal(NA), NA_character_)
 })
 
 test_that("ordinal match rules in order", {
@@ -138,15 +159,15 @@ test_that("ordinal match rules in order", {
 })
 
 test_that("ordinal format maintains order", {
-  expect_equal(ordinal(c(21, 1, 11)), c("21st", "1st", "11th"))
+  expect_equal(ordinal(c(21, 1, NA, 11)), c("21st", "1st", NA, "11th"))
 })
 
 # Unit formatter --------------------------------------------------------
 
 test_that("unit format", {
   expect_equal(
-    unit_format(unit = "km", scale = 1e-3)(c(1e3, 2e3)),
-    c("1 km", "2 km")
+    unit_format(unit = "km", scale = 1e-3)(c(1e3, NA, 2e3)),
+    c("1 km", NA, "2 km")
   )
   expect_equal(
     unit_format(unit = "ha", scale = 1e-4, accuracy = .1)(c(1e3, 2e3)),
@@ -181,6 +202,15 @@ test_that("negative percents work", {
 test_that("Single 0 gives 0%", {
   expect_equal(percent(0), "0%")
 })
+
+test_that("NAs are preserved", {
+  expect_equal(percent(c(NA, 1, 2, 3)), c(NA, "100%", "200%", "300%"))
+})
+
+test_that("Single NA gives NA", {
+  expect_equal(percent(NA_real_), NA_character_)
+})
+
 
 # Dollar formatter --------------------------------------------------------
 
