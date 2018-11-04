@@ -712,9 +712,7 @@ format_format <- function(...) {
 #'
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
-  function(x) {
-    format(x, format, tz = tz) # format handles NAs correctly when dealing with dates
-  }
+  function(x) format(x, format, tz = tz) # format handles NAs correctly when dealing with dates
 }
 
 #' @export
