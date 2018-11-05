@@ -95,11 +95,16 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
   )
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+
+  # restore NAs from input vector
+  ret[is.na(x)] <- NA
+
   ret
 }
 
 precision <- function(x) {
-  if (all(is.infinite(x))) {
+  # cannot calculate a precision if all values are Inf or NA
+  if (all(is.infinite(x) | is.na(x))) {
     return(1)
   }
 
@@ -416,10 +421,13 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   )
 
   if (negative_parens) {
-    paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
-  } else {
-    amount
+    amount <- paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
   }
+
+  # restore NAs from input vector
+  amount[is.na(x)] <- NA
+
+  amount
 }
 
 #' Scientific formatter.
@@ -466,11 +474,16 @@ scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
                        decimal.mark = ".", trim = TRUE, ...) {
   if (length(x) == 0) return(character())
   x <- signif(x * scale, digits)
-  paste0(
+  ret <- paste0(
     prefix,
     format(x, decimal.mark = decimal.mark, trim = trim, scientific = TRUE, ...),
     suffix
   )
+
+  # restore NAs from input vector
+  ret[is.na(x)] <- NA
+
+  ret
 }
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
@@ -521,10 +534,12 @@ ordinal_format <- function(prefix = "", suffix = "", big.mark = " ",
 #' @rdname ordinal_format
 ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
                     rules = ordinal_english(), ...) {
+  na_idx <- is.na(x)
   x <- round(x, digits = 0)
+  x[na_idx] <- 1 # replace NAs with dummy value
   out <- utils::stack(lapply(rules, grep, x = x, perl = TRUE))
   out <- out[!duplicated(out$values), ] # only first result should be considered
-  paste0(
+  ret <- paste0(
     number(
       x,
       prefix = prefix,
@@ -535,6 +550,11 @@ ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
     out$ind[order(out$values)],
     suffix
   )
+
+  # restore NAs from input vector
+  ret[na_idx] <- NA
+
+  ret
 }
 
 #' @export
@@ -606,7 +626,12 @@ math_format <- function(expr = 10^.x, format = force) {
 
   function(x) {
     x <- format(x)
-    lapply(x, subs)
+    ret <- lapply(x, subs)
+
+    # restore NAs from input vector
+    ret[is.na(x)] <- NA
+
+    ret
   }
 }
 globalVariables(".x")
@@ -662,7 +687,12 @@ format_format <- function(...) {
 
   function(x) {
     if (!is.null(names(x))) return(names(x))
-    format(x, ..., trim = TRUE, justify = "left")
+    ret <- format(x, ..., trim = TRUE, justify = "left")
+
+    # restore NAs from input vector
+    ret[is.na(x)] <- NA
+
+    ret
   }
 }
 
@@ -682,7 +712,7 @@ format_format <- function(...) {
 #'
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
-  function(x) format(x, format, tz = tz)
+  function(x) format(x, format, tz = tz) # format handles NAs correctly when dealing with dates
 }
 
 #' @export
@@ -697,7 +727,7 @@ time_format <- function(format = "%H:%M:%S", tz = "UTC") {
   force_all(format, tz)
   function(x) {
     if (inherits(x, "POSIXt")) {
-      format(x, format = format, tz = tz)
+      format(x, format = format, tz = tz) # format handles NAs correctly for times
     } else if (inherits(x, "difftime")) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {

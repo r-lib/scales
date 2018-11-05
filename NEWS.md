@@ -2,6 +2,9 @@
 
 * New `degree_format()` adds degree symbols to numbers (@mikmart, #159).
 
+* Formatting functions now consistently keep `NA`s as `NA`s instead of trying
+  to format them (@clauswilke, #187).
+
 * `number_bytes()` now:
 
     1. Always uses "B" as the symbol for bytes (#174).
