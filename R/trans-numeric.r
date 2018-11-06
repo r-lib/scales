@@ -208,3 +208,32 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
     function(x) 2 * sigma * sinh(x * log(base))
   )
 }
+
+
+#' Power_of_ten transformation.
+#'
+#' @param base Power of ten
+#' @aliases power_of_ten_trans thousands_trans millions_trans billions_trans trillions_trans
+#' @export power_of_ten_trans thousands_trans millions_trans billions_trans trillions_trans
+power_of_ten_trans <- function(base = 1) {
+  force(base)
+  trans <- function(x) x/(10^base)
+  inv <- function(x) x*(10^base)
+
+  trans_new(paste0("10^", format(base)), trans, inv,
+    log_breaks(base = base),
+    domain = c(1e-100, Inf)
+  )
+}
+thousands_trans <- function() {
+  power_of_ten_trans(3)
+}
+millions_trans <- function() {
+  power_of_ten_trans(6)
+}
+billions_trans <- function() {
+  power_of_ten_trans(9)
+}
+trillions_trans <- function() {
+  power_of_ten_trans(12)
+}
