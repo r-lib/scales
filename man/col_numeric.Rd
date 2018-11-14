@@ -7,16 +7,19 @@
 \alias{col_factor}
 \title{Colour mapping}
 \usage{
-col_numeric(palette, domain, na.color = "#808080")
+col_numeric(palette, domain, na.color = "#808080", alpha = FALSE,
+  reverse = FALSE)
 
 col_bin(palette, domain, bins = 7, pretty = TRUE,
-  na.color = "#808080")
+  na.color = "#808080", alpha = FALSE, reverse = FALSE,
+  right = FALSE)
 
 col_quantile(palette, domain, n = 4, probs = seq(0, 1, length.out = n +
-  1), na.color = "#808080")
+  1), na.color = "#808080", alpha = FALSE, reverse = FALSE,
+  right = FALSE)
 
 col_factor(palette, domain, levels = NULL, ordered = FALSE,
-  na.color = "#808080")
+  na.color = "#808080", alpha = FALSE, reverse = FALSE)
 }
 \arguments{
 \item{palette}{The colours or colour function that values will be mapped to}
@@ -36,6 +39,15 @@ domain.}
 \item{na.color}{The colour to return for \code{NA} values. Note that
 \code{na.color = NA} is valid.}
 
+\item{alpha}{Whether alpha channels should be respected or ignored. If \code{TRUE}
+then colors without explicit alpha information will be treated as fully
+opaque.}
+
+\item{reverse}{Whether the colors (or color function) in \code{palette} should be
+used in reverse order. For example, if the default order of a palette goes
+from blue to green, then \code{reverse = TRUE} will result in the colors going
+from green to blue.}
+
 \item{bins}{Either a numeric vector of two or more unique cut points or a
 single number (greater than or equal to 2) giving the number of intervals
 into which the domain values are to be cut.}
@@ -45,6 +57,8 @@ the bins when the argument \code{bins} is a single number. When
 \code{pretty = TRUE}, the actual number of bins may not be the number of
 bins you specified. When \code{pretty = FALSE}, \code{\link[=seq]{seq()}} is used
 to generate the bins and the breaks may not be "pretty".}
+
+\item{right}{parameter supplied to \code{\link[base:cut]{base::cut()}}. See Details}
 
 \item{n}{Number of equal-size quantiles desired. For more precise control,
 use the \code{probs} argument instead.}
@@ -61,7 +75,8 @@ factor, treat it as already in the correct order}
 \value{
 A function that takes a single parameter \code{x}; when called with a
 vector of numbers (except for \code{col_factor}, which expects
-factors/characters), #RRGGBB colour strings are returned.
+factors/characters), #RRGGBB colour strings are returned (unless
+\code{alpha = TRUE} in which case #RRGGBBAA may also be possible).
 }
 \description{
 Conveniently maps data values (numeric or factor/character) to colours
@@ -72,7 +87,9 @@ according to a given palette, which can be provided in a variety of formats.
 to an interpolated palette.
 
 \code{col_bin} also maps continuous numeric data, but performs
-binning based on value (see the \code{\link[base:cut]{base::cut()}} function).
+binning based on value (see the \code{\link[base:cut]{base::cut()}} function). \code{col_bin}
+defaults for the \code{cut} function are \code{include.lowest = TRUE} and
+\code{right = FALSE}.
 
 \code{col_quantile} similarly bins numeric data, but via the
 \code{\link[stats:quantile]{stats::quantile()}} function.
@@ -85,6 +102,7 @@ The \code{palette} argument can be any of the following:
 \enumerate{
 \item{A character vector of RGB or named colours. Examples: \code{palette()}, \code{c("#000000", "#0000FF", "#FFFFFF")}, \code{topo.colors(10)}}
 \item{The name of an RColorBrewer palette, e.g. \code{"BuPu"} or \code{"Greens"}.}
+\item{The full name of a viridis palette: \code{"viridis"}, \code{"magma"}, \code{"inferno"}, or \code{"plasma"}.}
 \item{A function that receives a single value between 0 and 1 and returns a colour. Examples: \code{colorRamp(c("#000000", "#FFFFFF"), interpolate="spline")}.}
 }
 }
