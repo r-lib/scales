@@ -53,7 +53,7 @@ col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, re
 
     rescaled <- rescale(x, from = rng)
     if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE))
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
 
     if (reverse) {
       rescaled <- 1 - rescaled
@@ -123,14 +123,14 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
     na.color = na.color, alpha = alpha, reverse = reverse)
   pf <- safePaletteFunc(palette, na.color, alpha)
 
-  withColorAttr("bin", list(bins = bins, na.color = na.color), function(x) {
+  withColorAttr("bin", list(bins = bins, na.color = na.color, right = right), function(x) {
     if (length(x) == 0 || all(is.na(x))) {
       return(pf(x))
     }
     binsToUse <- getBins(domain, x, bins, pretty)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
     if (any(is.na(x) != is.na(ints)))
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     colorFunc(ints)
   })
 }
@@ -150,7 +150,7 @@ col_quantile <- function(palette, domain, n = 4,
   if (!is.null(domain)) {
     bins <- stats::quantile(domain, probs, na.rm = TRUE, names = FALSE)
     return(withColorAttr(
-      "quantile", list(probs = probs, na.color = na.color),
+      "quantile", list(probs = probs, na.color = na.color, right = right),
       col_bin(palette, domain = NULL, bins = bins, na.color = na.color,
         alpha = alpha, reverse = reverse)
     ))
@@ -162,11 +162,11 @@ col_quantile <- function(palette, domain, n = 4,
   colorFunc <- col_factor(palette, domain = 1:(length(probs) - 1),
     na.color = na.color, alpha = alpha, reverse = reverse)
 
-  withColorAttr("quantile", list(probs = probs, na.color = na.color), function(x) {
+  withColorAttr("quantile", list(probs = probs, na.color = na.color, right = right), function(x) {
     binsToUse <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
     if (any(is.na(x) != is.na(ints)))
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     colorFunc(ints)
   })
 }
@@ -218,7 +218,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
   }
 
   if (!is.null(levels) && anyDuplicated(levels)) {
-    warning("Duplicate levels detected")
+    warning("Duplicate levels detected", call. = FALSE)
     levels <- unique(levels)
   }
   lvls <- getLevels(domain, NULL, levels, ordered)
@@ -235,12 +235,12 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
     origNa <- is.na(x)
     x <- match(as.character(x), lvls)
     if (any(is.na(x) != origNa)) {
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     }
 
     scaled <- scales::rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
-      warning("Some values were outside the color scale and will be treated as NA")
+      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     }
     if (reverse) {
       scaled <- 1 - scaled
@@ -295,38 +295,16 @@ toPaletteFunc <- function(pal, alpha, nlevels) {
   UseMethod("toPaletteFunc")
 }
 
-# Wrapper function for brewer.pal that deals with n < 3, plus returns maxcolors
-# by default. Differs from scales::brewer_pal in that it actually returns the
-# colors, in particular it can return the max number of colors supported by the
-# palette if n is NULL.
-brewer_pal_colors <- function(palette, n = NULL) {
-  if (is.null(n))
-    n <- RColorBrewer::brewer.pal.info[palette, "maxcolors"]
-
-  # Work around the fact that if brewer.pal is passed a number smaller than 3,
-  # it returns 3 colors anyway with a warning.
-  #
-  # It also warns if passed a number greater than maxcolors, but that's OK, we
-  # want the user to see that warning.
-  colors <- RColorBrewer::brewer.pal(max(3, n), palette)
-  if (n == 1) {
-    colors[1]
-  } else if (n == 2) {
-    colors[c(1, 3)]
-  } else {
-    colors
-  }
-}
-
 # Strings are interpreted as color names, unless length is 1 and it's the name
 # of an RColorBrewer palette that is marked as qualitative
 toPaletteFunc.character <- function(pal, alpha, nlevels) {
   if (length(pal) == 1 && pal %in% row.names(RColorBrewer::brewer.pal.info)) {
     paletteInfo <- RColorBrewer::brewer.pal.info[pal, ]
     if (!is.null(nlevels)) {
-      colors <- brewer_pal_colors(pal, abs(nlevels))
+      # brewer_pal will return NAs if you ask for more colors than the palette has
+      colors <- na.omit(brewer_pal(palette = pal)(abs(nlevels)))
     } else {
-      colors <- brewer_pal_colors(pal) # Get all colors
+      colors <- brewer_pal(palette = pal)(RColorBrewer::brewer.pal.info[pal, "maxcolors"]) # Get all colors
     }
   } else if (length(pal) == 1 && pal %in% c("viridis", "magma", "inferno", "plasma")) {
     colors <- viridis_pal(option = pal)(256)
