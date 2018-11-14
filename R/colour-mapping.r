@@ -302,7 +302,8 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
     paletteInfo <- RColorBrewer::brewer.pal.info[pal, ]
     if (!is.null(nlevels)) {
       # brewer_pal will return NAs if you ask for more colors than the palette has
-      colors <- na.omit(brewer_pal(palette = pal)(abs(nlevels)))
+      colors <- brewer_pal(palette = pal)(abs(nlevels))
+      colors <- colors[!is.na(colors)]
     } else {
       colors <- brewer_pal(palette = pal)(RColorBrewer::brewer.pal.info[pal, "maxcolors"]) # Get all colors
     }
