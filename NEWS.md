@@ -38,6 +38,23 @@
 * `train_continuous()` now maintains the class of inputs when they are not
   numeric (@billdenney, #166).
 
+* `col_numeric()`, `col_bin()`, `col_quantile()`, and `col_factor()` now support
+  viridis colors. Just pass a palette name (`"magma"`, `"inferno"`, `"plasma"`,
+  or `"viridis"`) as the `palette` argument (@jcheng5, #191).
+
+* `col_numeric()`, `col_bin()`, `col_quantile()`, and `col_factor()` now have a
+  `reverse` parameter, to apply color palettes in the opposite of their usual
+  order (i.e. high-to-low instead of low-to-high) (@jcheng5, #191).
+
+* `col_bin()` and `col_quantile()` now take a `right` argument, which is passed
+  to `base::cut()`; it indicates whether the bin/quantile intervals should be
+  closed on the right (and open on the left), or vice versa (@jcheng5, #191).
+
+* `col_factor()` now tries to avoid interpolating qualitative RColorBrewer
+  palettes. Instead, it attempts to assign a palette color to each factor level.
+  Interpolation will still be used if there are more factor levels than
+  available colors, and a warning will be emitted in that case (@jcheng5, #191).
+
 # scales 1.0.0
 
 ## New Features
