@@ -238,7 +238,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     }
 
-    scaled <- scales::rescale(as.integer(x), from = c(1, length(lvls)))
+    scaled <- rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     }
@@ -313,7 +313,7 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
     colors <- pal
   }
 
-  scales::colour_ramp(colors, alpha = alpha)
+  colour_ramp(colors, alpha = alpha)
 }
 
 # Accept colorRamp style matrix
