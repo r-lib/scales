@@ -58,6 +58,12 @@ test_that("Yeo-Johnson is identity function for p = 1", {
   expect_equal(trans$transform(x), x)
 })
 
+test_that("Yeo-Johnson transforms NAs to NAs without error", {
+  x <- c(1, 2, NA, 4)
+  trans <- yj_trans(p = 1)
+  expect_equal(trans$transform(x), x)
+})
+
 test_that("Yeo-Johnson transform works", {
   # example data adpated from recipes package
   # https://github.com/tidymodels/recipes/blob/master/tests/testthat/test_YeoJohnson.R

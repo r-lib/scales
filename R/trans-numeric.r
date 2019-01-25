@@ -89,6 +89,21 @@ modulus_trans <- function(p, offset = 1) {
   )
 }
 
+#' Transform vector with a function
+#'
+#' Transforms x at locations i with function f. If i is NA, it will not
+#' transform the value.
+#'
+#' @param x vector
+#' @param i logical vector specifying condition (ex. `x >= 0`)
+#' @param f function that does the transform
+#' @keywords internal
+transform_with <- function(x, i, f) {
+  i[is.na(i)] <- FALSE
+  x[i] <- f(x[i])
+  x
+}
+
 #' Yeo-Johnson transformation.
 #'
 #' The Yeo-Johnson transformation is a flexible transformation that is similiar
@@ -131,9 +146,8 @@ yj_trans <- function(p) {
   }
 
   trans <- function(x) {
-    y <- vector(mode(x), length(x))
-    y[x >= 0] <- trans_pos(x[x >=0])
-    y[x < 0] <- trans_neg(x[x < 0])
+    y <- transform_with(x, x >= 0, trans_pos)
+    y <- transform_with(y, x < 0, trans_neg)
     y
   }
 
@@ -150,9 +164,8 @@ yj_trans <- function(p) {
   }
 
   inv <- function(x) {
-    y <- vector(mode(x), length(x))
-    y[x >= 0] <- inv_pos(x[x >=0])
-    y[x < 0] <- inv_neg(x[x < 0])
+    y <- transform_with(x, x >= 0, inv_pos)
+    y <- transform_with(y, x < 0, inv_neg)
     y
   }
 
