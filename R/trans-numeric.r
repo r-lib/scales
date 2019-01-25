@@ -89,6 +89,80 @@ modulus_trans <- function(p, offset = 1) {
   )
 }
 
+#' Yeo-Johnson transformation.
+#'
+#' The Yeo-Johnson transformation is a flexible transformation that is similiar
+#' to Box-Cox but does not require input values to be strictly positive.
+#'
+#' The transformation takes one of four forms depending on the values of `y` and \eqn{\lambda}.
+#'
+#' When \eqn{y >= 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
+#' \deqn{y^{(\lambda)} = \frac{(y + 1)^\lambda - 1}{\lambda}}{y^(\lambda) = ((y + 1)^\lambda - 1)/\lambda}
+#'
+#' when \eqn{y >= 0} and \eqn{\lambda = 0}:
+#' \deqn{y^{(\lambda)} = \ln(y + 1)}{y^(\lambda) = ln(y + 1)}
+#'
+#' when \eqn{y < 0} and \eqn{\lambda \neq 2}{\lambda != 2}:
+#' \deqn{y^{(\lambda)} = -\frac{(-y + 1)^(2 - \lambda) - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
+#'
+#' when \eqn{y < 0} and \eqn{\lambda = 2}:
+#' \deqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
+#'
+#' @param p Transformation exponent, \eqn{\lambda}.
+#'
+#' @references Yeo, I., & Johnson, R. (2000).
+#' A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
+#' \url{http://www.jstor.org/stable/2673623}
+#' @export
+yj_trans <- function(p) {
+  # cutoff
+  eps <- 1E-7
+
+  # transformation for positive values of x
+  trans_pos <- function(x) {
+    if (abs(p) < eps) log(x + 1)
+    else ((x + 1)^p - 1)/p
+  }
+
+  # transformation for negative values of x
+  trans_neg <- function(x) {
+    if (abs(2 - p) < eps) -log(-x + 1)
+    else -((-x + 1)^(2 - p) - 1)/(2 - p)
+  }
+
+  trans <- function(x) {
+    y <- vector(mode(x), length(x))
+    y[x >= 0] <- trans_pos(x[x >=0])
+    y[x < 0] <- trans_neg(x[x < 0])
+    y
+  }
+
+  # inv transformation for positive values of x
+  inv_pos <- function(x) {
+    if (abs(p) < eps) exp(x) - 1
+    else (p*x + 1)^(1/p) - 1
+  }
+
+  # inv transformation for negative values of x
+  inv_neg <- function(x) {
+    if (abs(2 - p) < eps) 1 - exp(-x)
+    else 1 - (-(2 - p)*x + 1)^(1/(2 - p))
+  }
+
+  inv <- function(x) {
+    y <- vector(mode(x), length(x))
+    y[x >= 0] <- inv_pos(x[x >=0])
+    y[x < 0] <- inv_neg(x[x < 0])
+    y
+  }
+
+  # create transformation
+  trans_new(
+    paste0("yeo-johnson-", format(p)), trans, inv
+  )
+}
+
+
 #' Exponential transformation (inverse of log transformation).
 #'
 #' @param base Base of logarithm
