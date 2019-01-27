@@ -55,6 +55,8 @@
   Interpolation will still be used if there are more factor levels than
   available colors, and a warning will be emitted in that case (@jcheng5, #191).
 
+* `alpha()` preserve element names (@wibeasley, #195)
+
 # scales 1.0.0
 
 ## New Features
