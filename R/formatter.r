@@ -15,8 +15,8 @@
 #' specified `accuracy`, to add custom `suffix` and `prefix` and to specify
 #' `decimal.mark` and `big.mark`.
 #'
-#' `number_si()` gives limited SI unit labels: "K" for values ≥ 10e3, "
-#' M" for ≥ 10e6, "B" for ≥ 10e9, and "T" for ≥ 10e12.
+#' `number_si()` gives limited SI unit labels: "K" for values \eqn{\ge} 10e3, "
+#' M" for \eqn{\ge} 10e6, "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
 #' It respects all arguments except `scale` which is set internally.
 #'
 #' @return `*_format()` returns a function with single parameter
