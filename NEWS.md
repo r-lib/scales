@@ -54,6 +54,10 @@
   palettes. Instead, it attempts to assign a palette color to each factor level.
   Interpolation will still be used if there are more factor levels than
   available colors, and a warning will be emitted in that case (@jcheng5, #191).
+  
+* The build in breaks functions now return a function that takes both a range 
+  and a desired number of breaks, making it possible to overwrite the defaults
+  number of desired breaks given in the constructor call (@thomasp85).
 
 # scales 1.0.0
 
