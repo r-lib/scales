@@ -111,14 +111,14 @@ transform_with <- function(x, i, f) {
 #'
 #' The transformation takes one of four forms depending on the values of `y` and \eqn{\lambda}.
 #'
-#' When \eqn{y >= 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
+#' When \eqn{y \ge 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
 #' \deqn{y^{(\lambda)} = \frac{(y + 1)^\lambda - 1}{\lambda}}{y^(\lambda) = ((y + 1)^\lambda - 1)/\lambda}
 #'
-#' when \eqn{y >= 0} and \eqn{\lambda = 0}:
+#' when \eqn{y \ge 0} and \eqn{\lambda = 0}:
 #' \deqn{y^{(\lambda)} = \ln(y + 1)}{y^(\lambda) = ln(y + 1)}
 #'
 #' when \eqn{y < 0} and \eqn{\lambda \neq 2}{\lambda != 2}:
-#' \deqn{y^{(\lambda)} = -\frac{(-y + 1)^(2 - \lambda) - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
+#' \deqn{y^{(\lambda)} = -\frac{(-y + 1)^{(2 - \lambda)} - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
 #'
 #' when \eqn{y < 0} and \eqn{\lambda = 2}:
 #' \deqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
