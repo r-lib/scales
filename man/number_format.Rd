@@ -89,8 +89,8 @@ All formatters allow you to re-\code{scale} (multiplicatively), to round to
 specified \code{accuracy}, to add custom \code{suffix} and \code{prefix} and to specify
 \code{decimal.mark} and \code{big.mark}.
 
-\code{number_si()} gives limited SI unit labels: "K" for values ≥ 10e3, "
-M" for ≥ 10e6, "B" for ≥ 10e9, and "T" for ≥ 10e12.
+\code{number_si()} gives limited SI unit labels: "K" for values \eqn{\ge} 10e3, "
+M" for \eqn{\ge} 10e6, "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
 It respects all arguments except \code{scale} which is set internally.
 }
 \examples{
