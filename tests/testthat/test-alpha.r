@@ -31,15 +31,11 @@ test_that("col values recycled to match alpha", {
 })
 
 test_that("preserves element names", {
-  expect_equal(c("first", "second", "third"), names(alpha(c(first   = "gold", second   = "lightgray", third   = "#cd7f32"), .5)))   # not quoted
   expect_equal(c("first", "second", "third"), names(alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)))   # quoted
   expect_equal(as.character(1:3)            , names(alpha(c("1"     = "gold", "2"      = "lightgray", "3"     = "#cd7f32"), .5)))   # numeric characters
-  expect_equal(as.character(1:3)            , names(alpha(c(`1`     = "gold", `2`      = "lightgray", `3`     = "#cd7f32"), .5)))   # in backticks
 
   expect_equal(c(""     , "second", "third"), names(alpha(c(          "gold", second   = "lightgray", third   = "#cd7f32"), .5)))   # first element name is missing
-  expect_equal(c("first", ""      , "third"), names(alpha(c(first   = "gold",            "lightgray", third   = "#cd7f32"), .5)))   # middle element name is missing
   expect_equal(c("first", "second", ""     ), names(alpha(c(first   = "gold", second   = "lightgray",           "#cd7f32"), .5)))   # last element name is missing
-  expect_equal(c("NULL" , "second", ""     ), names(alpha(c(NULL    = "gold", second   = "lightgray",           "#cd7f32"), .5)))   # last element looks like 'NULL', but is really a character
 })
 
 
