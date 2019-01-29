@@ -50,8 +50,6 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
 #' alpha("red", seq(0, 1, length.out = 10))
-#' alpha(c(`1` = "gold", `2` = "lightgray", `3` = "#cd7f32"), .5)
-#' alpha(c(first = "gold", second = "lightgray", third = "#cd7f32"), .5)
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
   col <- grDevices::col2rgb(colour, TRUE) / 255
