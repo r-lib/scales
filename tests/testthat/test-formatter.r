@@ -162,6 +162,21 @@ test_that("ordinal format maintains order", {
   expect_equal(ordinal(c(21, 1, NA, 11)), c("21st", "1st", NA, "11th"))
 })
 
+# parse formatter ---------------------------------------------------------
+
+test_that("parse format returns an expression object", {
+  expect_equal(
+    parse_format(c("alpha", "beta", "gamma")),
+    expression(alpha, beta, gamma)
+  )
+
+  expect_equal(
+    parse_format(1:5),
+    expression(1, 2, 3, 4, 5)
+  )
+})
+
+
 # Unit formatter --------------------------------------------------------
 
 test_that("unit format", {
@@ -338,7 +353,8 @@ test_that("formats work with 0 length input", {
   expect_identical(date_format()(as.Date(character(0))), expected)
   expect_identical(dollar_format()(x), expected)
   expect_identical(math_format()(x), list())
-  expect_identical(parse_format()(x), list())
+  expect_identical(parse_format(x), expression())
+  expect_identical(parse_format(character()), expression())
   expect_identical(percent_format()(x), expected)
   expect_identical(scientific_format()(x), expected)
   expect_identical(trans_format(identity)(x), expected)

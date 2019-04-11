@@ -2,19 +2,23 @@
 % Please edit documentation in R/formatter.r
 \name{parse_format}
 \alias{parse_format}
-\title{Parse a text label to produce expressions for plotmath.}
+\title{Parse a label to produce expressions for plotmath.}
 \usage{
-parse_format()
+parse_format(text)
+}
+\arguments{
+\item{text}{A character vector to parse. Other R objects will be coerced to
+character if possible}
 }
 \value{
-a function with single parameter x, a character vector, that
-returns a list of expressions
+An expression object.
 }
 \description{
-Parse a text label to produce expressions for plotmath.
+Parse a label to produce expressions for plotmath.
 }
 \examples{
-parse_format()(c("alpha", "beta", "gamma"))
+parse_format(c("alpha", "beta", "gamma"))
+parse_format(1:5)
 }
 \seealso{
 \code{\link[=plotmath]{plotmath()}}
