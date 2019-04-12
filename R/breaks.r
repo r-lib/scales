@@ -11,7 +11,8 @@
 #' pretty_breaks()(as.Date(c("2008-01-01", "2090-01-01")))
 pretty_breaks <- function(n = 5, ...) {
   force_all(n, ...)
-  function(x) {
+  n_default <- n
+  function(x, n = n_default) {
     breaks <- pretty(x, n, ...)
     names(breaks) <- attr(breaks, "labels")
     breaks
@@ -32,7 +33,8 @@ pretty_breaks <- function(n = 5, ...) {
 #' extended_breaks()(1:10)
 #' extended_breaks()(1:100)
 extended_breaks <- function(n = 5, ...) {
-  function(x) {
+  n_default <- n
+  function(x, n = n_default) {
     x <- x[is.finite(x)]
     if (length(x) == 0) {
       return(numeric())
@@ -56,7 +58,8 @@ extended_breaks <- function(n = 5, ...) {
 #' log_breaks()(c(1761, 8557))
 log_breaks <- function(n = 5, base = 10) {
   force_all(n, base)
-  function(x) {
+  n_default = n
+  function(x, n = n_default) {
     rng <- log(range(x, na.rm = TRUE), base = base)
     min <- floor(rng[1])
     max <- ceiling(rng[2])
@@ -160,7 +163,8 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
   trans <- match.fun(trans)
   inv <- match.fun(inv)
   force_all(n, ...)
-  function(x) {
+  n_default <- n
+  function(x, n = n_default) {
     inv(pretty(trans(x), n, ...))
   }
 }
