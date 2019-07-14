@@ -590,26 +590,28 @@ ordinal_spanish <- function() {
 
 #' Parse a label to produce expressions for plotmath.
 #'
-#' @param text A character vector to parse. Other R objects will be coerced to
-#' character if possible
-#'
 #' @seealso [plotmath()]
-#' @return An expression object.
+#' @return A function with a single parameter that returns an expression
+#' object.
 #'
 #' @export
 #' @examples
-#' parse_format(c("alpha", "beta", "gamma"))
-#' parse_format(1:5)
-parse_format <- function(text) {
-  text <- as.character(text)
-  out <- vector("expression", length(text))
-  for (i in seq_along(text)) {
-    expr <- parse(text = text[[i]])
-    out[[i]] <- if (length(expr) == 0)
-      NA
-    else expr[[1]]
+#' parse_format()(c("alpha", "beta", "gamma"))
+#' parse_format()(1:5)
+parse_format <- function() {
+  function(text) {
+    text <- as.character(text)
+    out <- vector("expression", length(text))
+    for (i in seq_along(text)) {
+      expr <- parse(text = text[[i]])
+      out[[i]] <- if (length(expr) == 0) {
+        NA
+      } else {
+        expr[[1]]
+      }
+    }
+    out
   }
-  out
 }
 
 #' Add arbitrary expression to a label.

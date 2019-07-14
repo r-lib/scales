@@ -4,21 +4,18 @@
 \alias{parse_format}
 \title{Parse a label to produce expressions for plotmath.}
 \usage{
-parse_format(text)
-}
-\arguments{
-\item{text}{A character vector to parse. Other R objects will be coerced to
-character if possible}
+parse_format()
 }
 \value{
-An expression object.
+A function with a single parameter that returns an expression
+object.
 }
 \description{
 Parse a label to produce expressions for plotmath.
 }
 \examples{
-parse_format(c("alpha", "beta", "gamma"))
-parse_format(1:5)
+parse_format()(c("alpha", "beta", "gamma"))
+parse_format()(1:5)
 }
 \seealso{
 \code{\link[=plotmath]{plotmath()}}
