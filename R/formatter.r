@@ -486,24 +486,23 @@ scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
  # restore NAs from input vector
  ret[is.na(x)] <- NA
 
- # Replace 0 values with "0" if exact_zero mode
- if(exact_zero){
-   index_zero <- which(x == 0)
-   ret[index_zero] <- "0"
- }
+  # Replace 0 values with "0" if exact_zero mode
+  if(exact_zero){
+    index_zero <- which(x == 0)
+    ret[index_zero] <- "0"
+  }
 
   # if 10 exponent (10^x) mode
   exponent <- match.arg(exponent)
   if(exponent == "10"){
-    ret <- gsub("e", " %*% 10^{", ret)   # Change from e to * 10^ style
-    ret <- gsub("{-0", "{-", ret, fixed = TRUE)
-    ret <- gsub("{+", "{", ret, fixed = TRUE)
-    ret <- gsub("{0", "{", ret, fixed = TRUE)
-    ret <- paste(ret, "}",sep = "")
-    parse(text=ret)
-  } else{
-    ret
+    ret <- gsub("e", " %*% 10^", ret)   # Change from e to * 10^ style
+    ret <- gsub("e", " %*% 10^", ret)   # Change from e to * 10^ style
+    ret <- gsub("-0", "-", ret, fixed = TRUE)
+    ret <- gsub("+", "", ret, fixed = TRUE)
+    ret <- parse(text=ret)
   }
+
+  ret
 }
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
