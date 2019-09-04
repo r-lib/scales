@@ -6,15 +6,17 @@
 \title{Scientific formatter.}
 \usage{
 scientific_format(digits = 3, scale = 1, prefix = "", suffix = "",
-  decimal.mark = ".", trim = TRUE, ...)
+  decimal.mark = ".", trim = TRUE, exponent = c("e", "10"),
+  exact_zero = FALSE, ...)
 
 scientific(x, digits = 3, scale = 1, prefix = "", suffix = "",
-  decimal.mark = ".", trim = TRUE, ...)
+  decimal.mark = ".", trim = TRUE, exponent = c("e", "10"),
+  exact_zero = FALSE, ...)
 }
 \arguments{
 \item{digits}{Number of significant digits to show.}
 
-\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
+\item{scale}{A scaling factor: x will be multiply by scale before
 formating (useful if the underlying data is on another scale,
 e.g. for computing percentages or thousands).}
 
@@ -23,15 +25,19 @@ e.g. for computing percentages or thousands).}
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
 
-\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
+\item{trim}{Logical, if FALSE, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
+
+\item{exponent}{The character to be used to xponential notation. Valid values are "e" and "10".}
+
+\item{exact_zero}{Logical, if FALSE, 0 value is also shown like 0e+00}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{A numeric vector to format.}
 }
 \value{
-A function with single parameter \code{x}, a numeric vector, that
+A function with single parameter x, a numeric vector, that
 returns a character vector.
 }
 \description{

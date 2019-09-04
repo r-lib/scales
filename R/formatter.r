@@ -432,17 +432,19 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
 #' Scientific formatter.
 #'
-#' @return A function with single parameter `x`, a numeric vector, that
+#' @return A function with single parameter x, a numeric vector, that
 #'   returns a character vector.
 #' @param digits Number of significant digits to show.
-#' @param scale A scaling factor: `x` will be multiply by `scale` before
+#' @param scale A scaling factor: x will be multiply by scale before
 #'   formating (useful if the underlying data is on another scale,
 #'   e.g. for computing percentages or thousands).
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param decimal.mark The character to be used to indicate the numeric
 #'   decimal point.
-#' @param trim Logical, if `FALSE`, values are right-justified to a common
+#' @param trim Logical, if FALSE, values are right-justified to a common
 #'   width (see [base::format()]).
+#' @param exponent The character to be used to xponential notation. Valid values are "e" and "10".
+#' @param exact_zero Logical, if FALSE, 0 value is also shown like 0e+00
 #' @param ... Other arguments passed on to [base::format()].
 #' @param x A numeric vector to format.
 #' @export
@@ -455,35 +457,53 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 #' scientific(runif(10), digits = 2)
 #' scientific(12345, suffix = " cells/mL")
 scientific_format <- function(digits = 3, scale = 1, prefix = "", suffix = "",
-                              decimal.mark = ".", trim = TRUE, ...) {
-  force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)
-  function(x) scientific(
-      x,
-      digits = digits,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      decimal.mark = decimal.mark,
-      ...
-    )
+                             decimal.mark = ".", trim = TRUE, exponent = c("e", "10"), exact_zero = FALSE, ...) {
+ scales:::force_all(digits, scale, prefix, suffix, decimal.mark, trim, exponent, exact_zero, ...)
+ function(x) scientific(
+     x,
+     digits = digits,
+     scale = scale,
+     prefix = prefix,
+     suffix = suffix,
+     decimal.mark = decimal.mark,
+     trim = trim,
+     exponent = exponent,
+     exact_zero = exact_zero,
+     ...
+   )
 }
-
 #' @export
 #' @rdname scientific_format
 scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
-                       decimal.mark = ".", trim = TRUE, ...) {
-  if (length(x) == 0) return(character())
-  x <- signif(x * scale, digits)
-  ret <- paste0(
-    prefix,
-    format(x, decimal.mark = decimal.mark, trim = trim, scientific = TRUE, ...),
-    suffix
-  )
+                      decimal.mark = ".", trim = TRUE, exponent = c("e", "10"), exact_zero = FALSE,...) {
+ if (length(x) == 0) return(character())
+ x <- signif(x * scale, digits)
+ ret <- paste0(
+   prefix,
+   format(x, decimal.mark = decimal.mark, trim = trim, scientific = TRUE, ...),
+   suffix
+ )
+ # restore NAs from input vector
+ ret[is.na(x)] <- NA
 
-  # restore NAs from input vector
-  ret[is.na(x)] <- NA
+ # Replace 0 values with "0" if exact_zero mode
+ if(exact_zero){
+   index_zero <- which(x == 0)
+   ret[index_zero] <- "0"
+ }
 
-  ret
+  # if 10 exponent (10^x) mode
+  exponent <- match.arg(exponent)
+  if(exponent == "10"){
+    ret <- gsub("e", " %*% 10^{", ret)   # Change from e to * 10^ style
+    ret <- gsub("{-0", "{-", ret, fixed = TRUE)
+    ret <- gsub("{+", "{", ret, fixed = TRUE)
+    ret <- gsub("{0", "{", ret, fixed = TRUE)
+    ret <- paste(ret, "}",sep = "")
+    parse(text=ret)
+  } else{
+    ret
+  }
 }
 
 #' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
