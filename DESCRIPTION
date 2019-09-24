@@ -20,6 +20,7 @@ Imports:
     R6,
     RColorBrewer,
     Rcpp,
+    utils,
     viridisLite
 Suggests: 
     dichromat,
@@ -31,5 +32,5 @@ LinkingTo:
     Rcpp
 LazyLoad: yes
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Encoding: UTF-8

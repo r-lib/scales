@@ -634,6 +634,7 @@ math_format <- function(expr = 10^.x, format = force) {
     ret
   }
 }
+#' @importFrom utils globalVariables
 globalVariables(".x")
 
 #' Wrap text to a specified width, adding newlines for spaces if text exceeds
