@@ -620,6 +620,7 @@ parse_format <- function() {
 #' math_format(format = percent)(runif(10))
 math_format <- function(expr = 10^.x, format = force) {
   quoted <- substitute(expr)
+  .x <- NULL
   subs <- function(x) {
     do.call("substitute", list(quoted, list(.x = as.name(x))))
   }
@@ -634,7 +635,6 @@ math_format <- function(expr = 10^.x, format = force) {
     ret
   }
 }
-globalVariables(".x")
 
 #' Wrap text to a specified width, adding newlines for spaces if text exceeds
 #' the width
