@@ -60,9 +60,9 @@ plot.trans <- function(x, y, ..., xlim) {
     main = paste0("Transformer: ", x$name),
   )
 
-  grid(lty = "solid")
-  abline(h = 0, v = 0, col = "grey90", lwd = 5)
-  lines(xgrid, y)
+  graphics::grid(lty = "solid")
+  graphics::abline(h = 0, v = 0, col = "grey90", lwd = 5)
+  graphics::lines(xgrid, y)
 }
 
 
