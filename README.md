@@ -1,13 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Scales <img src="man/figures/logo.png" align="right" />
+# scales <img src="man/figures/logo.png" align="right" />
 
-[![Build
-Status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/r-lib/scales/master.svg)](https://codecov.io/github/r-lib/scales?branch=master)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/scales)](https://cran.r-project.org/package=scales)
+<!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
+[![Travis build
+status](https://travis-ci.org/hadley/scales.svg?branch=master)](https://travis-ci.org/hadley/scales)
+[![Codecov test
+coverage](https://codecov.io/gh/hadley/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/hadley/scales?branch=master)
+<!-- badges: end -->
 
 # Overview
 
