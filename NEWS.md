@@ -1,5 +1,9 @@
 # scales 1.0.0.9000
 
+* New `number_auto()` automatically picks between `comma()` and `scientific()`
+  based on the range of the input. It should produce nice output over a 
+  very wide range of inputs (@paleolimbot, #208).
+
 * `trans` gets a method for `plot()`, and all numeric transformations get
   an example showing the transformation.
 
