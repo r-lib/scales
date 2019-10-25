@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `pvalue()` now reports values close to 1 (as determined by accuracy) as 
+  ">0.99". You can control the prefixes used with the new `prefix` argument (#213).
+
 * `sqrt_trans()` no longer returns an inverse for values outside of its domain (#214).
 
 * `dollar()` now correctly formats negative numbers as (e.g.) -$200 (#216).

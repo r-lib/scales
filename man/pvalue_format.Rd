@@ -5,15 +5,21 @@
 \alias{pvalue}
 \title{p-values formatter}
 \usage{
-pvalue_format(accuracy = 0.001, decimal.mark = ".", add_p = FALSE)
+pvalue_format(accuracy = 0.001, decimal.mark = ".", prefix = NULL,
+  add_p = FALSE)
 
-pvalue(x, accuracy = 0.001, decimal.mark = ".", add_p = FALSE)
+pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL,
+  add_p = FALSE)
 }
 \arguments{
 \item{accuracy}{Number to round to.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
+
+\item{prefix}{A character vector of length 3 giving the prefixes to
+put in front of numbers. The default values are \code{c("<", "", ">")}
+if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 
 \item{add_p}{Add "p=" before the value?}
 
@@ -27,10 +33,12 @@ decimal point.}
 Formatter for p-values, adding a symbol "<" for small p-values.
 }
 \examples{
-p <- c(.50, 0.12, .045, .011, .009, .00002, NA)
+p <- c(.995, .50, 0.12, .045, .011, .009, .00002, NA)
 pvalue(p)
 pvalue(p, accuracy = .01)
+pvalue(p, prefix = c("p < ", "p = ", "p > "))
 pvalue(p, add_p = TRUE)
+
 custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
 custom_function(p)
 }

@@ -247,24 +247,29 @@ test_that("decimal.mark could be modified", {
 
 # p-value formatter --------------------------------------------------------
 
-test_that("pvalue formatter works", {
+test_that("arguments passed onto number()", {
+  expect_equal(pvalue(c(.5, NA)), c("0.500", NA))
+  expect_equal(pvalue(c(.5, NA), 0.1), c("0.5", NA))
+  expect_equal(pvalue(c(.5, NA), decimal.mark = ","), c("0,500", NA))
+})
+
+test_that("values close to 0 and 1 get special treamtent", {
+  expect_equal(pvalue(0.001, 0.1), "<0.1")
+  expect_equal(pvalue(0.999, 0.1), ">0.9")
+})
+
+test_that("can control prefixes", {
+  x <- c(0.001, 0.5, 0.999)
   expect_equal(
-    pvalue(c(.5, .045, .0002, NA)),
-    c("0.500", "0.045", "<0.001", NA)
+    pvalue(x, 0.01, add_p = TRUE),
+    c("p<0.01", "p=0.50", "p>0.99")
   )
   expect_equal(
-    pvalue(c(.5, .045, .0002, NA), accuracy = .01),
-    c("0.50", "0.04", "<0.01", NA)
-  )
-  expect_equal(
-    pvalue(c(.5, .045, .0002, NA), decimal.mark = ","),
-    c("0,500", "0,045", "<0,001", NA)
-  )
-  expect_equal(
-    pvalue(c(.5, .045, .0002, NA), add_p = TRUE),
-    c("p=0.500", "p=0.045", "p<0.001", "p=NA")
+    pvalue(x, 0.01, prefix = c("a", "b", "c")),
+    c("a0.01", "b0.50", "c0.99")
   )
 })
+
 
 # Byte formatter -----------------------------------------------------
 
