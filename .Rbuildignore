@@ -12,3 +12,4 @@
 ^README-.*\.png$
 ^logo\.png$
 ^\.covrignore$
+^pkgdown$
