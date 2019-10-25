@@ -230,7 +230,7 @@ test_that("Single NA gives NA", {
 # Dollar formatter --------------------------------------------------------
 
 test_that("negative comes before prefix", {
-  expect_equal(dollar(-1), "$-1")
+  expect_equal(dollar(-1), "-$1")
 })
 
 test_that("prefix is inside parentheses", {

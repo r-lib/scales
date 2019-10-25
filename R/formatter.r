@@ -404,9 +404,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   }
 
   negative <- !is.na(x) & x < 0
-  if (negative_parens) {
-    x <- abs(x)
-  }
+  x <- abs(x)
 
   amount <- number(
     x,
@@ -422,6 +420,8 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
   if (negative_parens) {
     amount <- paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
+  } else {
+    amount <- paste0(ifelse(negative, "-", ""), amount)
   }
 
   # restore NAs from input vector

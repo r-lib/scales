@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* `dollar()` now correctly formats negative numbers as (e.g.) -$200 (#216).
+
 * `parse_format()` now returns a function which returns expression object that can be used to display formatted labels in ggplot2 (@agila5, #203)
 
 * `boxcox_trans()` no longer throws an error when given NA values (@sflippl, #181)
