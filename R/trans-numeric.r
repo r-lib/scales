@@ -190,7 +190,12 @@ reverse_trans <- function() {
 #'
 #' @export
 sqrt_trans <- function() {
-  trans_new("sqrt", "sqrt", function(x) x^2, domain = c(0, Inf))
+  trans_new(
+    "sqrt",
+    "sqrt",
+    function(x) ifelse(x < 0, NA_real_, x ^ 2),
+    domain = c(0, Inf)
+  )
 }
 
 #' Pseudo-log transformation

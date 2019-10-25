@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* `sqrt_trans()` no longer returns an inverse for values outside of its domain (#214).
+
 * `dollar()` now correctly formats negative numbers as (e.g.) -$200 (#216).
 
 * `parse_format()` now returns a function which returns expression object that can be used to display formatted labels in ggplot2 (@agila5, #203)
