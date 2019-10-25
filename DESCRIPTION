@@ -20,7 +20,6 @@ Imports:
     munsell (>= 0.5),
     R6,
     RColorBrewer,
-    Rcpp,
     viridisLite
 Suggests: 
     dichromat,
@@ -28,8 +27,6 @@ Suggests:
     covr,
     hms,
     testthat (>= 2.0)
-LinkingTo: 
-    Rcpp
 LazyLoad: yes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1

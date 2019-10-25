@@ -37,6 +37,10 @@ Interpolation is performed in the CIELAB colour space. Similar to
 times faster, and provides results in \code{"#RRGGBB"} (or
 \code{"#RRGGBBAA"}) character form instead of RGB colour matrices.
 }
+\examples{
+ramp <- colour_ramp(c("red", "green", "blue"))
+show_col(ramp(seq(0, 1, length = 12)))
+}
 \seealso{
 \code{\link[grDevices]{colorRamp}}
 }
