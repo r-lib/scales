@@ -39,6 +39,7 @@ atanh_trans <- function() {
 #' @param offset Constant offset. 0 for Box-Cox type 1,
 #'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
 #'   sets the default to 1.
+#' @seealso [yj_trans()]
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
@@ -87,6 +88,63 @@ modulus_trans <- function(p, offset = 1) {
   trans_new(
     paste0("mt-pow-", format(p)), trans, inv
   )
+}
+
+#' Yeo-Johnson transformation.
+#'
+#' The Yeo-Johnson transformation is a flexible transformation that is similiar
+#' to Box-Cox, [boxcox_trans()], but does not require input values to be greater
+#' than zero.
+#'
+#' The transformation takes one of four forms depending on the values of `y` and \eqn{\lambda}.
+#'
+#' * \eqn{y \ge 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
+#'   \eqn{y^{(\lambda)} = \frac{(y + 1)^\lambda - 1}{\lambda}}{y^(\lambda) = ((y + 1)^\lambda - 1)/\lambda}
+#' * \eqn{y \ge 0} and \eqn{\lambda = 0}:
+#'   \eqn{y^{(\lambda)} = \ln(y + 1)}{y^(\lambda) = ln(y + 1)}
+#' * \eqn{y < 0} and \eqn{\lambda \neq 2}{\lambda != 2}:
+#'   \eqn{y^{(\lambda)} = -\frac{(-y + 1)^{(2 - \lambda)} - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
+#' * \eqn{y < 0} and \eqn{\lambda = 2}:
+#'   \eqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
+#'
+#' @param p Transformation exponent, \eqn{\lambda}.
+#' @references Yeo, I., & Johnson, R. (2000).
+#' A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
+#' \url{http://www.jstor.org/stable/2673623}
+#' @export
+yj_trans <- function(p) {
+  eps <- 1e-7
+
+  if (abs(p) < eps) {
+    trans_pos <- function(x) log(x + 1)
+    inv_pos <- function(x) exp(x) - 1
+  } else {
+    trans_pos <- function(x) ((x + 1)^p - 1) / p
+    inv_pos <- function(x) (p*x + 1)^(1/p) - 1
+  }
+
+  if (abs(2 - p) < eps) {
+    trans_neg <- function(x) -log(-x + 1)
+    inv_neg <- function(x) 1 - exp(-x)
+  } else {
+    trans_neg <- function(x) -((-x + 1)^(2 - p) - 1)/(2 - p)
+    inv_neg <- function(x) 1 - (-(2 - p)*x + 1)^(1/(2 - p))
+  }
+
+  trans_new(
+    paste0("yeo-johnson-", format(p)),
+    function(x) trans_two_sided(x, trans_pos, trans_neg),
+    function(x) trans_two_sided(x, inv_pos, inv_neg)
+  )
+}
+
+trans_two_sided <- function(x, pos, neg) {
+  out <- rep(NA_real_, length(x))
+  present <- !is.na(x)
+  out[present & x > 0] <- pos(x[present & x > 0])
+  out[present & x < 0] <- neg(x[present & x < 0])
+  out[present & x == 0] <- 0
+  out
 }
 
 #' Exponential transformation (inverse of log transformation).
