@@ -60,7 +60,12 @@ log_breaks <- function(n = 5, base = 10) {
   force_all(n, base)
   n_default = n
   function(x, n = n_default) {
-    rng <- log(range(x, na.rm = TRUE), base = base)
+    raw_rng <- suppressWarnings(range(x, na.rm = TRUE))
+    if (any(!is.finite(raw_rng))) {
+      return(numeric())
+    }
+
+    rng <- log(raw_rng, base = base)
     min <- floor(rng[1])
     max <- ceiling(rng[2])
 

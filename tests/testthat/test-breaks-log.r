@@ -4,6 +4,15 @@ test_that("Five ticks over 10^4 range work", {
   expect_equal(log_breaks()(10^(1:5)), 10^(1:5))
 })
 
+test_that("behaves nicely when inputs are wacky", {
+  expect_equal(log_breaks()(c(0, NA)), 0)
+
+  expect_equal(log_breaks()(c(0, Inf)), numeric())
+  expect_equal(log_breaks()(c(NA, NA)), numeric())
+  expect_equal(log_breaks()(c(-Inf, Inf)), numeric())
+  expect_equal(log_breaks()(numeric(0)), numeric())
+})
+
 test_that("use integer base powers when at least 3 breaks are within range", {
   base <- 10
   expect_equal(

@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* `log_breaks()` has nicer behaviour when no finite inputs (#210)
+
 * `pvalue()` now reports values close to 1 (as determined by accuracy) as 
   ">0.99". You can control the prefixes used with the new `prefix` argument (#213).
 
