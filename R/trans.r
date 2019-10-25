@@ -57,9 +57,13 @@ plot.trans <- function(x, y, ..., xlim) {
     xgrid, y,
     xlab = "",
     ylab = "",
-    type = "l",
+    type = "n",
     main = paste0("Transformer: ", x$name),
   )
+
+  grid(lty = "solid")
+  abline(h = 0, v = 0, col = "grey90", lwd = 5)
+  lines(xgrid, y)
 }
 
 
