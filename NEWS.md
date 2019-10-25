@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* New `yj_trans()` implements the Yeo-Johnson transformation (@zamorarr, #196)
+
 * All text formatters should now preserve names (#202).
 
 * `number()` takes `scale` into account when computing `accuracy`, if not 
