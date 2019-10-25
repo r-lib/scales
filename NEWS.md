@@ -1,5 +1,9 @@
 # scales 1.0.0.9000
 
+* `number()` takes `scale` into account when computing `accuracy`, if not 
+  supplied. This means that `percent()` should have better default accuracy
+  in many cases (#192).
+
 * `log_breaks()` has nicer behaviour when no finite inputs (#210)
 
 * `pvalue()` now reports values close to 1 (as determined by accuracy) as 

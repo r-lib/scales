@@ -79,7 +79,7 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
                    trim = TRUE, ...) {
   if (length(x) == 0) return(character())
-  accuracy <- accuracy %||% precision(x)
+  accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
   nsmall <- min(max(nsmall, 0), 20)
