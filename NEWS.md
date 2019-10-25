@@ -61,6 +61,8 @@
   and a desired number of breaks, making it possible to overwrite the defaults
   number of desired breaks given in the constructor call (@thomasp85).
 
+* `alpha()` preserve element names (@wibeasley, #195)
+
 # scales 1.0.0
 
 ## New Features
