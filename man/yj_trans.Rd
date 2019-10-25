@@ -11,22 +11,21 @@ yj_trans(p)
 }
 \description{
 The Yeo-Johnson transformation is a flexible transformation that is similiar
-to Box-Cox but does not require input values to be strictly positive.
+to Box-Cox, \code{\link[=boxcox_trans]{boxcox_trans()}}, but does not require input values to be greater
+than zero.
 }
 \details{
 The transformation takes one of four forms depending on the values of \code{y} and \eqn{\lambda}.
-
-When \eqn{y \ge 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
-\deqn{y^{(\lambda)} = \frac{(y + 1)^\lambda - 1}{\lambda}}{y^(\lambda) = ((y + 1)^\lambda - 1)/\lambda}
-
-when \eqn{y \ge 0} and \eqn{\lambda = 0}:
-\deqn{y^{(\lambda)} = \ln(y + 1)}{y^(\lambda) = ln(y + 1)}
-
-when \eqn{y < 0} and \eqn{\lambda \neq 2}{\lambda != 2}:
-\deqn{y^{(\lambda)} = -\frac{(-y + 1)^{(2 - \lambda)} - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
-
-when \eqn{y < 0} and \eqn{\lambda = 2}:
-\deqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
+\itemize{
+\item \eqn{y \ge 0} and \eqn{\lambda \neq 0}{\lambda != 0} :
+\eqn{y^{(\lambda)} = \frac{(y + 1)^\lambda - 1}{\lambda}}{y^(\lambda) = ((y + 1)^\lambda - 1)/\lambda}
+\item \eqn{y \ge 0} and \eqn{\lambda = 0}:
+\eqn{y^{(\lambda)} = \ln(y + 1)}{y^(\lambda) = ln(y + 1)}
+\item \eqn{y < 0} and \eqn{\lambda \neq 2}{\lambda != 2}:
+\eqn{y^{(\lambda)} = -\frac{(-y + 1)^{(2 - \lambda)} - 1}{2 - \lambda}}{y^(\lambda) = -((-y + 1)^(2 - \lambda) - 1)/(2 - \lambda)}
+\item \eqn{y < 0} and \eqn{\lambda = 2}:
+\eqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
+}
 }
 \references{
 Yeo, I., & Johnson, R. (2000).
