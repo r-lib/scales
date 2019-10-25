@@ -34,6 +34,9 @@ number_auto <- function(x) {
       function(breaks) format(breaks, scientific = FALSE, trim = TRUE),
       function(breaks) format(breaks, scientific = TRUE, trim = TRUE)
     )
+  } else if (all(x > 0) && min_magnitude >= 1000 && max_magnitude <= 2200) {
+    # Probably a year so don't use commas
+    format(x, trim = TRUE)
   } else if (max_magnitude > 1e3) {
     comma(x)
   } else {

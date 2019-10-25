@@ -17,5 +17,9 @@ test_that("tricky breaks don't change unexpectedly", {
     number_auto(c(9999999, 10000000, 10000001))
     number_auto(c(99999999, 100000000, 100000001))
     number_auto(c(0.0000009, 0.0000010, 0.0000011))
+
+    "Years shouldn't get commas"
+    number_auto(c(2010, 2013, 2020))
+    number_auto(c(-2010, -2013, -2020))
   })
 })
