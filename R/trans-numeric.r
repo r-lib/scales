@@ -126,6 +126,11 @@ modulus_trans <- function(p, offset = 1) {
 #' A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
 #' \url{http://www.jstor.org/stable/2673623}
 #' @export
+#' @examples
+#' plot(yj_trans(-1), xlim = c(-10, 10))
+#' plot(yj_trans(0), xlim = c(-10, 10))
+#' plot(yj_trans(1), xlim = c(-10, 10))
+#' plot(yj_trans(2), xlim = c(-10, 10))
 yj_trans <- function(p) {
   eps <- 1e-7
 

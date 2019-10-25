@@ -27,6 +27,12 @@ The transformation takes one of four forms depending on the values of \code{y} a
 \eqn{y^{(\lambda)} = -\ln(-y + 1)}{y^(\lambda) = -ln(-y + 1)}
 }
 }
+\examples{
+plot(yj_trans(-1), xlim = c(-10, 10))
+plot(yj_trans(0), xlim = c(-10, 10))
+plot(yj_trans(1), xlim = c(-10, 10))
+plot(yj_trans(2), xlim = c(-10, 10))
+}
 \references{
 Yeo, I., & Johnson, R. (2000).
 A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
