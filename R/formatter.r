@@ -98,6 +98,7 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
 
   # restore NAs from input vector
   ret[is.na(x)] <- NA
+  names(ret) <- names(x)
 
   ret
 }
@@ -299,7 +300,12 @@ number_si <- function(x, prefix = "", suffix = "", ...) {
   # for handling Inf and 0-1 correctly
   scale[which(scale %in% c(Inf, NA))] <- 1
 
-  number(x, scale = scale, prefix = prefix, suffix = paste0(n_suffix, suffix), ...)
+  number(x,
+    scale = unname(scale),
+    prefix = prefix,
+    suffix = paste0(n_suffix, suffix),
+    ...
+  )
 }
 
 #' Currency formatter: round to nearest cent and display dollar sign.
@@ -426,6 +432,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
   # restore NAs from input vector
   amount[is.na(x)] <- NA
+  names(amount) <- names(x)
 
   amount
 }
@@ -482,6 +489,7 @@ scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
 
   # restore NAs from input vector
   ret[is.na(x)] <- NA
+  names(ret) <- names(x)
 
   ret
 }
@@ -553,6 +561,7 @@ ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
 
   # restore NAs from input vector
   ret[na_idx] <- NA
+  names(ret) <- names(x)
 
   ret
 }
@@ -642,6 +651,7 @@ math_format <- function(expr = 10^.x, format = force) {
 
     # restore NAs from input vector
     ret[is.na(x)] <- NA
+    names(ret) <- names(x)
 
     ret
   }
@@ -814,6 +824,7 @@ pvalue <- function(x,
   out[x < accuracy] <- paste0(prefix[[1]], below)
   out[x > 1 - accuracy] <- paste0(prefix[[3]], above)
   out[is.na(x)] <- NA
+  names(out) <- names(x)
 
   out
 }

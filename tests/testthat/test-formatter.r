@@ -12,7 +12,6 @@ test_that("date_format works correctly", {
   expect_equal(date_format()(na_date), NA_character_)
 })
 
-
 # Time formatter --------------------------------------------------------
 
 test_that("time_format works correctly", {
@@ -57,6 +56,10 @@ test_that("number_format works with Inf", {
   expect_equal(cust(c(Inf, -Inf)), c("Inf", "-Inf"))
 })
 
+test_that("number preserves names", {
+  expect_named(number(c(a = 1)), "a")
+})
+
 test_that("number_si works", {
   expect_equal(number_si(c(1e3, 1e6, 1e9)), c("1K", "1M", "1B"))
   expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1K", "1M", "1B"))
@@ -71,12 +74,21 @@ test_that("number_si works", {
   )
 })
 
+test_that("number_si preserves names", {
+  expect_named(number_si(c(a = 1)), "a")
+})
+
+
 # Comma formatter --------------------------------------------------------
 
 test_that("comma format always adds commas", {
   expect_equal(comma(1e3), "1,000")
   expect_equal(comma(1e6), "1,000,000")
   expect_equal(comma(1e9), "1,000,000,000")
+})
+
+test_that("comma preserves names", {
+  expect_named(comma(c(a = 1)), "a")
 })
 
 # Scientific formatter --------------------------------------------------------
@@ -108,6 +120,9 @@ test_that("scientific format respects NAs", {
   expect_equal(scientific(NA), NA_character_)
 })
 
+test_that("scientific preserves names", {
+  expect_named(scientific(c(a = 1)), "a")
+})
 
 # Wrap formatter --------------------------------------------------------
 
@@ -162,6 +177,11 @@ test_that("ordinal format maintains order", {
   expect_equal(ordinal(c(21, 1, NA, 11)), c("21st", "1st", NA, "11th"))
 })
 
+test_that("ordinal preserves names", {
+  expect_named(ordinal(c(a = 1)), "a")
+})
+
+
 # parse formatter ---------------------------------------------------------
 
 test_that("parse format returns an expression object", {
@@ -194,6 +214,9 @@ test_that("unit format", {
   )
 })
 
+test_that("unit_format preserves names", {
+  expect_named(unit_format()(c(a = 1)), "a")
+})
 
 # Degree formatter --------------------------------------------------------
 
@@ -207,6 +230,9 @@ test_that("Degree format can also add unit symbols", {
   expect_equal(celcius(c(-10, 0, 20)), c("-10°C", "0°C", "20°C"))
 })
 
+test_that("degree format preserves names", {
+  expect_named(degree_format()(c(a = 1)), "a")
+})
 
 # Percent formatter -------------------------------------------------------
 
@@ -218,14 +244,14 @@ test_that("Single 0 gives 0%", {
   expect_equal(percent(0), "0%")
 })
 
-test_that("NAs are preserved", {
+test_that("preserves NAs", {
   expect_equal(percent(c(NA, 1, 2, 3)), c(NA, "100%", "200%", "300%"))
-})
-
-test_that("Single NA gives NA", {
   expect_equal(percent(NA_real_), NA_character_)
 })
 
+test_that("preserves names", {
+  expect_named(percent(c(a = 1)), "a")
+})
 
 test_that("default accuracy works for range of inputs", {
   x <- c(0.1, 0.2, 0.5)
@@ -245,8 +271,12 @@ test_that("prefix is inside parentheses", {
   expect_equal(dollar(-1, negative_parens = TRUE), "($1)")
 })
 
-test_that("missing values preserved", {
+test_that("preserves NAs", {
   expect_equal(dollar(NA_real_), NA_character_)
+})
+
+test_that("preserves names", {
+  expect_named(dollar(c(a = 1)), "a")
 })
 
 test_that("decimal.mark could be modified", {
@@ -259,6 +289,10 @@ test_that("arguments passed onto number()", {
   expect_equal(pvalue(c(.5, NA)), c("0.500", NA))
   expect_equal(pvalue(c(.5, NA), 0.1), c("0.5", NA))
   expect_equal(pvalue(c(.5, NA), decimal.mark = ","), c("0,500", NA))
+})
+
+test_that("preserves names", {
+  expect_named(pvalue(c(a = 1)), "a")
 })
 
 test_that("values close to 0 and 1 get special treamtent", {
@@ -340,6 +374,9 @@ test_that("Byte formatter throws informative error for wrong length symbol", {
   expect_error(number_bytes(symbol = c("kB", "MB")), "not length 2")
 })
 
+test_that("preserves names", {
+  expect_named(number_bytes(c(a = 1)), "a")
+})
 
 # Common tests --------------------------------------------------------
 
