@@ -50,6 +50,7 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
 #' alpha("red", seq(0, 1, length.out = 10))
+#' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
   col <- grDevices::col2rgb(colour, TRUE) / 255
 
@@ -68,6 +69,7 @@ alpha <- function(colour, alpha = NA) {
 
   new_col <- grDevices::rgb(col[1, ], col[2, ], col[3, ], alpha)
   new_col[is.na(colour)] <- NA
+  names(new_col) <- names(colour)
   new_col
 }
 

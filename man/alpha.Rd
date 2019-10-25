@@ -21,4 +21,5 @@ Vectorised in both colour and alpha.
 alpha("red", 0.1)
 alpha(colours(), 0.5)
 alpha("red", seq(0, 1, length.out = 10))
+alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 }
