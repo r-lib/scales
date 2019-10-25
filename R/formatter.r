@@ -599,16 +599,15 @@ ordinal_spanish <- function() {
 #' parse_format()(c("alpha", "beta", "gamma"))
 #' parse_format()(1:5)
 parse_format <- function() {
+  # From ggplot2:::parse_safe
+  # See https://github.com/tidyverse/ggplot2/issues/2864 for discussion.
   function(text) {
     text <- as.character(text)
+
     out <- vector("expression", length(text))
     for (i in seq_along(text)) {
       expr <- parse(text = text[[i]])
-      out[[i]] <- if (length(expr) == 0) {
-        NA
-      } else {
-        expr[[1]]
-      }
+      out[[i]] <- if (length(expr) == 0) NA else expr[[1]]
     }
     out
   }
