@@ -48,6 +48,21 @@ is.trans <- function(x) inherits(x, "trans")
 #' @export
 print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 
+#' @export
+plot.trans <- function(x, y, ..., xlim) {
+  xgrid <- seq(xlim[1], xlim[2], length = 100)
+  y <- suppressWarnings(x$transform(xgrid))
+
+  plot(
+    xgrid, y,
+    xlab = "",
+    ylab = "",
+    type = "l",
+    main = paste0("Transformer: ", x$name),
+  )
+}
+
+
 #' Convert character string to transformer.
 #'
 #' @param x name of transformer

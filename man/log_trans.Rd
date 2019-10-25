@@ -7,10 +7,19 @@
 \title{Log transformation.}
 \usage{
 log_trans(base = exp(1))
+
+log10_trans()
+
+log2_trans()
 }
 \arguments{
 \item{base}{base of logarithm}
 }
 \description{
 Log transformation.
+}
+\examples{
+plot(log2_trans(), xlim = c(0, 5))
+plot(log_trans(), xlim = c(0, 5))
+plot(log10_trans(), xlim = c(0, 5))
 }

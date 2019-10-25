@@ -9,3 +9,6 @@ identity_trans()
 \description{
 Identity transformation (do nothing).
 }
+\examples{
+plot(identity_trans(), xlim = c(-1, 1))
+}

@@ -9,3 +9,6 @@ reverse_trans()
 \description{
 Reverse transformation.
 }
+\examples{
+plot(reverse_trans(), xlim = c(-1, 1))
+}

@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `trans` gets a method for `plot()`, and all numeric transformations get
+  an example showing the transformation.
+
 * New `yj_trans()` implements the Yeo-Johnson transformation (@zamorarr, #196)
 
 * All text formatters should now preserve names (#202).

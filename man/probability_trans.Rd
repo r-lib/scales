@@ -7,6 +7,10 @@
 \title{Probability transformation.}
 \usage{
 probability_trans(distribution, ...)
+
+logit_trans()
+
+probit_trans()
 }
 \arguments{
 \item{distribution}{probability distribution.  Should be standard R
@@ -17,4 +21,8 @@ function, and "q" + distribution is a valid quantile function.}
 }
 \description{
 Probability transformation.
+}
+\examples{
+plot(logit_trans(), xlim = c(0, 1))
+plot(probit_trans(), xlim = c(0, 1))
 }

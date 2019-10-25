@@ -3,6 +3,7 @@
 S3method(fullseq,Date)
 S3method(fullseq,POSIXt)
 S3method(fullseq,numeric)
+S3method(plot,trans)
 S3method(print,trans)
 S3method(rescale,"NULL")
 S3method(rescale,Date)

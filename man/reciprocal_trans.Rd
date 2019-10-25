@@ -9,3 +9,6 @@ reciprocal_trans()
 \description{
 Reciprocal transformation.
 }
+\examples{
+plot(reciprocal_trans(), xlim = c(0, 1))
+}

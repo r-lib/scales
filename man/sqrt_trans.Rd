@@ -9,3 +9,6 @@ sqrt_trans()
 \description{
 Square-root transformation.
 }
+\examples{
+plot(sqrt_trans(), xlim = c(0, 5))
+}

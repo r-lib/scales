@@ -1,6 +1,8 @@
 #' Arc-sin square root transformation.
 #'
 #' @export
+#' @examples
+#' plot(asn_trans(), xlim = c(0, 1))
 asn_trans <- function() {
   trans_new(
     "asn",
@@ -12,6 +14,8 @@ asn_trans <- function() {
 #' Arc-tangent transformation.
 #'
 #' @export
+#' @examples
+#' plot(atanh_trans(), xlim = c(-1, 1))
 atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
@@ -47,6 +51,16 @@ atanh_trans <- function() {
 #' An alternative family of transformations. Applied Statistics, 190-197.
 #' \url{http://www.jstor.org/stable/2986305}
 #' @export
+#' @examples
+#' plot(boxcox_trans(-1), xlim = c(0, 10))
+#' plot(boxcox_trans(0), xlim = c(0, 10))
+#' plot(boxcox_trans(1), xlim = c(0, 10))
+#' plot(boxcox_trans(2), xlim = c(0, 10))
+#'
+#' plot(modulus_trans(-1), xlim = c(-10, 10))
+#' plot(modulus_trans(0), xlim = c(-10, 10))
+#' plot(modulus_trans(1), xlim = c(-10, 10))
+#' plot(modulus_trans(2), xlim = c(-10, 10))
 boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
@@ -93,6 +107,11 @@ modulus_trans <- function(p, offset = 1) {
 #'
 #' @param base Base of logarithm
 #' @export
+#' @examples
+#' plot(exp_trans(0.5), xlim = c(-2, 2))
+#' plot(exp_trans(1), xlim = c(-2, 2))
+#' plot(exp_trans(2), xlim = c(-2, 2))
+#' plot(exp_trans(), xlim = c(-2, 2))
 exp_trans <- function(base = exp(1)) {
   force(base)
   trans_new(
@@ -105,6 +124,8 @@ exp_trans <- function(base = exp(1)) {
 #' Identity transformation (do nothing).
 #'
 #' @export
+#' @examples
+#' plot(identity_trans(), xlim = c(-1, 1))
 identity_trans <- function() {
   trans_new("identity", "force", "force")
 }
@@ -113,8 +134,11 @@ identity_trans <- function() {
 #' Log transformation.
 #'
 #' @param base base of logarithm
-#' @aliases log_trans log10_trans log2_trans
-#' @export log_trans log10_trans log2_trans
+#' @export
+#' @examples
+#' plot(log2_trans(), xlim = c(0, 5))
+#' plot(log_trans(), xlim = c(0, 5))
+#' plot(log10_trans(), xlim = c(0, 5))
 log_trans <- function(base = exp(1)) {
   force(base)
   trans <- function(x) log(x, base)
@@ -125,9 +149,13 @@ log_trans <- function(base = exp(1)) {
     domain = c(1e-100, Inf)
   )
 }
+#' @export
+#' @rdname log_trans
 log10_trans <- function() {
   log_trans(10)
 }
+#' @export
+#' @rdname log_trans
 log2_trans <- function() {
   log_trans(2)
 }
@@ -136,6 +164,10 @@ log2_trans <- function() {
 #'
 #' @export
 #' @examples
+#' plot(log1p_trans(), xlim = c(-1, 1))
+#' # Note the x-axis
+#' plot(log_trans(), xlim = c(0, 2))
+#'
 #' trans_range(log_trans(), 1:10)
 #' trans_range(log1p_trans(), 0:9)
 log1p_trans <- function() {
@@ -148,8 +180,10 @@ log1p_trans <- function() {
 #'   abbreviation so that "p" + distribution is a valid probability density
 #'   function, and "q" + distribution is a valid quantile function.
 #' @param ... other arguments passed on to distribution and quantile functions
-#' @aliases probability_trans logit_trans probit_trans
-#' @export probability_trans logit_trans probit_trans
+#' @export
+#' @examples
+#' plot(logit_trans(), xlim = c(0, 1))
+#' plot(probit_trans(), xlim = c(0, 1))
 probability_trans <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
@@ -160,12 +194,18 @@ probability_trans <- function(distribution, ...) {
     function(x) pfun(x, ...)
   )
 }
+#' @export
+#' @rdname probability_trans
 logit_trans <- function() probability_trans("logis")
+#' @export
+#' @rdname probability_trans
 probit_trans <- function() probability_trans("norm")
 
 #' Reciprocal transformation.
 #'
 #' @export
+#' @examples
+#' plot(reciprocal_trans(), xlim = c(0, 1))
 reciprocal_trans <- function() {
   trans_new(
     "reciprocal",
@@ -177,6 +217,8 @@ reciprocal_trans <- function() {
 #' Reverse transformation.
 #'
 #' @export
+#' @examples
+#' plot(reverse_trans(), xlim = c(-1, 1))
 reverse_trans <- function() {
   trans_new(
     "reverse",
@@ -189,6 +231,8 @@ reverse_trans <- function() {
 #' Square-root transformation.
 #'
 #' @export
+#' @examples
+#' plot(sqrt_trans(), xlim = c(0, 5))
 sqrt_trans <- function() {
   trans_new(
     "sqrt",
@@ -206,6 +250,9 @@ sqrt_trans <- function() {
 #' @param sigma scaling factor for the linear part
 #' @param base approximate logarithm base used
 #' @export
+#' @examples
+#' plot(pseudo_log_trans(base = 2), xlim = c(0, 1))
+#' plot(pseudo_log_trans(base = 2), xlim = c(0, 10))
 pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
   trans_new(
     "pseudo_log",

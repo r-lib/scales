@@ -9,3 +9,6 @@ asn_trans()
 \description{
 Arc-sin square root transformation.
 }
+\examples{
+plot(asn_trans(), xlim = c(0, 1))
+}

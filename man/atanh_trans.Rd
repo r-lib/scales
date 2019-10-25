@@ -9,3 +9,6 @@ atanh_trans()
 \description{
 Arc-tangent transformation.
 }
+\examples{
+plot(atanh_trans(), xlim = c(-1, 1))
+}

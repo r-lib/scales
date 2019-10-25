@@ -10,6 +10,10 @@ log1p_trans()
 Log plus one transformation.
 }
 \examples{
+plot(log1p_trans(), xlim = c(-1, 1))
+# Note the x-axis
+plot(log_trans(), xlim = c(0, 2))
+
 trans_range(log_trans(), 1:10)
 trans_range(log1p_trans(), 0:9)
 }

@@ -15,3 +15,7 @@ pseudo_log_trans(sigma = 1, base = exp(1))
 A transformation mapping numbers to a signed logarithmic scale
 with a smooth transition to linear scale around 0.
 }
+\examples{
+plot(pseudo_log_trans(base = 2), xlim = c(0, 1))
+plot(pseudo_log_trans(base = 2), xlim = c(0, 10))
+}
