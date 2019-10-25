@@ -1,5 +1,7 @@
 # scales 1.0.0.9000
 
+* `parse_format()` now returns a function which returns expression object that can be used to display formatted labels in ggplot2 (@agila5, #203)
+
 * `boxcox_trans()` no longer throws an error when given NA values (@sflippl, #181)
 
 * New `degree_format()` adds degree symbols to numbers (@mikmart, #159).

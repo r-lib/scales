@@ -588,17 +588,28 @@ ordinal_spanish <- function() {
   )
 }
 
-#' Parse a text label to produce expressions for plotmath.
+#' Parse a label to produce expressions for plotmath.
 #'
 #' @seealso [plotmath()]
-#' @return a function with single parameter x, a character vector, that
-#'    returns a list of expressions
+#' @return A function with a single parameter that returns an expression
+#' object.
+#'
 #' @export
 #' @examples
 #' parse_format()(c("alpha", "beta", "gamma"))
+#' parse_format()(1:5)
 parse_format <- function() {
-  function(x) {
-    lapply(as.character(x), function(x) parse(text = x, srcfile = NULL))
+  # From ggplot2:::parse_safe
+  # See https://github.com/tidyverse/ggplot2/issues/2864 for discussion.
+  function(text) {
+    text <- as.character(text)
+
+    out <- vector("expression", length(text))
+    for (i in seq_along(text)) {
+      expr <- parse(text = text[[i]])
+      out[[i]] <- if (length(expr) == 0) NA else expr[[1]]
+    }
+    out
   }
 }
 
