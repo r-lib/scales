@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* `math_format()` now returns an expression vector, and doesn't coerce
+  inputs to names.
+
 * New `date_short()` creates labels for a date axis that only shows the 
   components of the date that have changed since the previous label.
   For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, `date_short()`

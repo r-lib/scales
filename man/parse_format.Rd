@@ -2,21 +2,37 @@
 % Please edit documentation in R/format-expression.R
 \name{parse_format}
 \alias{parse_format}
-\title{Parse a label to produce expressions for plotmath.}
+\alias{math_format}
+\title{Label with mathematical expressions}
 \usage{
 parse_format()
+
+math_format(expr = 10^.x, format = force)
+}
+\arguments{
+\item{expr}{expression to use}
+
+\item{format}{another format function to apply prior to mathematical
+transformation - this makes it easier to use floating point numbers in
+mathematical expressions.}
 }
 \value{
-A function with a single parameter that returns an expression
-object.
+A function with a single parameter, \code{x}, that returns an
+expression object.
 }
 \description{
-Parse a label to produce expressions for plotmath.
+\code{parse_format()} produces expression from strings by parsing them;
+\code{math_format()} constructs expressions by replacing the pronoun \code{.x}
+with each string.
 }
 \examples{
 parse_format()(c("alpha", "beta", "gamma"))
 parse_format()(1:5)
+
+math_format()(1:10)
+math_format(frac(alpha, .x))(1:10)
+math_format(format = percent)(runif(10))
 }
 \seealso{
-\code{\link[=plotmath]{plotmath()}}
+\link{plotmath} for the details of mathematical formatting in R.
 }

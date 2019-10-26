@@ -1,14 +1,20 @@
-
-#' Parse a label to produce expressions for plotmath.
+#' Label with mathematical expressions
 #'
-#' @seealso [plotmath()]
-#' @return A function with a single parameter that returns an expression
-#' object.
+#' `parse_format()` produces expression from strings by parsing them;
+#' `math_format()` constructs expressions by replacing the pronoun `.x`
+#' with each string.
 #'
+#' @seealso [plotmath] for the details of mathematical formatting in R.
+#' @return A function with a single parameter, `x`, that returns an
+#'   expression object.
 #' @export
 #' @examples
 #' parse_format()(c("alpha", "beta", "gamma"))
 #' parse_format()(1:5)
+#'
+#' math_format()(1:10)
+#' math_format(frac(alpha, .x))(1:10)
+#' math_format(format = percent)(runif(10))
 parse_format <- function() {
   # From ggplot2:::parse_safe
   # See https://github.com/tidyverse/ggplot2/issues/2864 for discussion.
@@ -24,32 +30,23 @@ parse_format <- function() {
   }
 }
 
-#' Add arbitrary expression to a label.
-#' The symbol that will be replace by the label value is `.x`.
-#'
+#' @rdname parse_format
+#' @export
 #' @param expr expression to use
 #' @param format another format function to apply prior to mathematical
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
-#' @return a function with single parameter x, a numeric vector, that
-#'    returns a list of expressions
-#' @export
-#' @seealso [plotmath()]
-#' @examples
-#' math_format()(1:10)
-#' math_format(alpha + frac(1, .x))(1:10)
-#' math_format()(runif(10))
-#' math_format(format = percent)(runif(10))
 math_format <- function(expr = 10^.x, format = force) {
   quoted <- substitute(expr)
-  .x <- NULL
   subs <- function(x) {
-    do.call("substitute", list(quoted, list(.x = as.name(x))))
+    .x <- NULL
+    do.call("substitute", list(quoted, list(.x = x)))
   }
 
   function(x) {
     x <- format(x)
     ret <- lapply(x, subs)
+    ret <- as.expression(ret)
 
     # restore NAs from input vector
     ret[is.na(x)] <- NA
