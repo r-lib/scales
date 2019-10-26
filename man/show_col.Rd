@@ -18,3 +18,4 @@ show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
 \description{
 A quick and dirty way to show colours in a plot.
 }
+\keyword{internal}

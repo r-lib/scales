@@ -20,8 +20,8 @@
 #' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
-#' @export trans_new is.trans
-#' @aliases trans_new trans is.trans
+#' @export
+#' @keywords internal
 trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
                       minor_breaks = regular_minor_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {
@@ -42,6 +42,8 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
   )
 }
 
+#' @rdname trans_new
+#' @export
 is.trans <- function(x) inherits(x, "trans")
 
 #' @export
@@ -66,9 +68,7 @@ plot.trans <- function(x, y, ..., xlim) {
 }
 
 
-#' Convert character string to transformer
-#'
-#' @param x name of transformer
+#' @rdname trans_new
 #' @export
 as.trans <- function(x) {
   if (is.trans(x)) return(x)
@@ -85,6 +85,7 @@ as.trans <- function(x) {
 #'   given as a string.
 #' @param x a numeric vector to compute the range of
 #' @export
+#' @keywords internal
 trans_range <- function(trans, x) {
   trans <- as.trans(trans)
   range(trans$transform(range(squish(x, trans$domain), na.rm = TRUE)))

@@ -84,6 +84,7 @@ alpha <- function(colour, alpha = NA) {
 #' @param cex_label size of printed labels, works the same as \code{cex} parameter of \code{plot()}
 #' @export
 #' @importFrom graphics par plot rect text
+#' @keywords internal
 show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
   n <- length(colours)
   ncol <- ceiling(sqrt(n))
