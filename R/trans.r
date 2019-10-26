@@ -50,12 +50,13 @@ is.trans <- function(x) inherits(x, "trans")
 print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
 
 #' @export
-plot.trans <- function(x, y, ..., xlim) {
-  xgrid <- seq(xlim[1], xlim[2], length = 100)
-  y <- suppressWarnings(x$transform(xgrid))
+plot.trans <- function(x, y, ..., xlim, ylim = NULL) {
+  if (is.null(ylim)) {
+    ylim <- range(x$transform(seq(xlim[1], xlim[2], length = 100)), finite = TRUE)
+  }
 
   plot(
-    xgrid, y,
+    xlim, ylim,
     xlab = "",
     ylab = "",
     type = "n",
@@ -64,9 +65,16 @@ plot.trans <- function(x, y, ..., xlim) {
 
   graphics::grid(lty = "solid")
   graphics::abline(h = 0, v = 0, col = "grey90", lwd = 5)
-  graphics::lines(xgrid, y)
+  graphics::lines(x, xlim = xlim)
 }
 
+#' @export
+lines.trans <- function(x, ..., xlim) {
+  xgrid <- seq(xlim[1], xlim[2], length = 100)
+  y <- suppressWarnings(x$transform(xgrid))
+
+  graphics::lines(xgrid, y, ...)
+}
 
 #' @rdname trans_new
 #' @export

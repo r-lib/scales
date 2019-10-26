@@ -194,7 +194,11 @@ identity_trans <- function() {
 }
 
 
-#' Log transformation
+#' Log transformations
+#'
+#' * `log_trans()`: `log(x)`
+#' * `log1p()`: `log(x + 1)`
+#' * `pseudo_log_trans()`:  smoothly transition to linear scale around 0.
 #'
 #' @param base base of logarithm
 #' @export
@@ -202,6 +206,17 @@ identity_trans <- function() {
 #' plot(log2_trans(), xlim = c(0, 5))
 #' plot(log_trans(), xlim = c(0, 5))
 #' plot(log10_trans(), xlim = c(0, 5))
+#'
+#' plot(log_trans(), xlim = c(0, 2))
+#' plot(log1p_trans(), xlim = c(-1, 1))
+#'
+#' # The pseudo-log is defined for all real numbers
+#' plot(pseudo_log_trans(), xlim = c(-5, 5))
+#' lines(log_trans(), xlim = c(0, 5), col = "red")
+#'
+#' # For large positives nubmers it's very close to log
+#' plot(pseudo_log_trans(), xlim = c(1, 20))
+#' lines(log_trans(), xlim = c(1, 20), col = "red")
 log_trans <- function(base = exp(1)) {
   force(base)
   trans <- function(x) log(x, base)
@@ -217,24 +232,28 @@ log_trans <- function(base = exp(1)) {
 log10_trans <- function() {
   log_trans(10)
 }
+
 #' @export
 #' @rdname log_trans
 log2_trans <- function() {
   log_trans(2)
 }
 
-#' Log plus one transformation
-#'
+#' @rdname log_trans
 #' @export
-#' @examples
-#' plot(log1p_trans(), xlim = c(-1, 1))
-#' # Note the x-axis
-#' plot(log_trans(), xlim = c(0, 2))
-#'
-#' trans_range(log_trans(), 1:10)
-#' trans_range(log1p_trans(), 0:9)
 log1p_trans <- function() {
   trans_new("log1p", "log1p", "expm1")
+}
+
+#' @rdname log_trans
+#' @param sigma Scaling factor for the linear part of pseudo-log transformation.
+#' @export
+pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
+  trans_new(
+    "pseudo_log",
+    function(x) asinh(x / (2 * sigma)) / log(base),
+    function(x) 2 * sigma * sinh(x * log(base))
+  )
 }
 
 #' Probability transformation
@@ -305,21 +324,3 @@ sqrt_trans <- function() {
   )
 }
 
-#' Pseudo-log transformation
-#'
-#' A transformation mapping numbers to a signed logarithmic scale
-#' with a smooth transition to linear scale around 0.
-#'
-#' @param sigma scaling factor for the linear part
-#' @param base approximate logarithm base used
-#' @export
-#' @examples
-#' plot(pseudo_log_trans(base = 2), xlim = c(0, 1))
-#' plot(pseudo_log_trans(base = 2), xlim = c(0, 10))
-pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
-  trans_new(
-    "pseudo_log",
-    function(x) asinh(x / (2 * sigma)) / log(base),
-    function(x) 2 * sigma * sinh(x * log(base))
-  )
-}
