@@ -1,11 +1,10 @@
-#' Format with using any arguments to [format()]
+#' Format with any arguments to [format()]
 #'
 #' If the breaks have names, they will be used in preference to formatting
 #' the breaks.
 #'
 #' @param ... other arguments passed on to [format()].
-#' @seealso [format()], [format.Date()],
-#'   [format.POSIXct()]
+#' @seealso [format()], [format.Date()], [format.POSIXct()]
 #' @export
 format_format <- function(...) {
   force_all(...)
