@@ -1,5 +1,10 @@
 # scales 1.0.0.9000
 
+* New `date_short()` creates labels for a date axis that only shows the 
+  components of the date that have changed since the previous label.
+  For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, `date_short()`
+  will use labels Jan 10, 20, 30, Feb 1 (#209).
+  
 * New `number_auto()` automatically picks between `comma()` and `scientific()`
   based on the range of the input. It should produce nice output over a 
   very wide range of inputs (@paleolimbot, #208).

@@ -17,3 +17,22 @@ test_that("time_format works correctly", {
   expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = "UTC")), "11")
   expect_equal(time_format()(na_time), NA_character_)
 })
+
+test_that("date_short doesn't change unexpectedly", {
+  verify_output(test_path("test-format-date-short.txt"), {
+    dformat <- date_short()
+
+    "dates"
+    jan1 <- as.Date("2010-01-01")
+    dformat(seq(jan1, length = 8, by = "7 day"))
+    dformat(seq(jan1, length = 8, by = "3 month"))
+    dformat(seq(jan1, length = 8, by = "1 year"))
+
+    "date-times"
+    jan1 <- as.POSIXct("2010-01-01", tz = "UTC")
+    dformat(seq(jan1, length = 6, by = "3 hours"))
+    dformat(seq(jan1, length = 6, by = "7 day"))
+    dformat(seq(jan1, length = 6, by = "3 month"))
+    dformat(seq(jan1, length = 6, by = "1 year"))
+  })
+})

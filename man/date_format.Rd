@@ -2,22 +2,32 @@
 % Please edit documentation in R/format-date.R
 \name{date_format}
 \alias{date_format}
+\alias{date_short}
 \alias{time_format}
 \title{Formatted dates and times.}
 \usage{
 date_format(format = "\%Y-\%m-\%d", tz = "UTC")
 
+date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
+
 time_format(format = "\%H:\%M:\%S", tz = "UTC")
 }
 \arguments{
-\item{format}{Date/time format using standard POSIX specification.  See
-\code{\link[=strptime]{strptime()}} for possible formats.}
+\item{format}{For \code{date_format()} and \code{time_format()} a date/time format
+string using standard POSIX specification.  See \code{\link[=strptime]{strptime()}} for details.
+
+For \code{date_short()} a character vector of length 4 giving the format
+components to use for year, month, day, and hour respectively.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
 to UTC}
+
+\item{sep}{Separator to use when combining date formats into a single string.}
 }
 \description{
-Formatted dates and times.
+\code{date_short()} attempts to construct the shortest format string
+that will uniquely identify dates. It's inspired by matplotlib's
+[\code{ConciseDateFormatter``](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter), but uses a slightly different approach: }ConciseDateFormatter\code{formats "firsts" (e.g. first day of month, first day of day) specially;}date_short()` formats changes (e.g. new month, new year) specially.
 }
 \examples{
 a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
@@ -26,6 +36,11 @@ a_date <- as.Date(a_time)
 date_format()(a_date)
 date_format(format = "\%A")(a_date)
 
+x <- as.Date("2012-12-25") + (0:20) * 2
+date_short()(x)
+
+x <- as.POSIXct("2012-12-25") + (0:10) * 3600 * 10
+date_short()(x)
 time_format()(a_time)
 time_format(tz = "Europe/Berlin")(a_time)
 
