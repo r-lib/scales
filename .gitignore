@@ -4,3 +4,4 @@
 *.o
 *.so
 revdep/data.sqlite
+docs/
