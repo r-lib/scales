@@ -1,5 +1,8 @@
 #' Arc-sin square root transformation
 #'
+#' This is the variance stabilising transformation for the binomial
+#' distribution.
+#'
 #' @export
 #' @examples
 #' plot(asn_trans(), xlim = c(0, 1))
@@ -311,6 +314,9 @@ reverse_trans <- function() {
 }
 
 #' Square-root transformation
+#'
+#' This is the variance stabilising transformation for the Poisson
+#' distribution.
 #'
 #' @export
 #' @examples

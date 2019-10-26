@@ -7,7 +7,8 @@
 sqrt_trans()
 }
 \description{
-Square-root transformation
+This is the variance stabilising transformation for the Poisson
+distribution.
 }
 \examples{
 plot(sqrt_trans(), xlim = c(0, 5))

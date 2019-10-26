@@ -7,7 +7,8 @@
 asn_trans()
 }
 \description{
-Arc-sin square root transformation
+This is the variance stabilising transformation for the binomial
+distribution.
 }
 \examples{
 plot(asn_trans(), xlim = c(0, 1))
