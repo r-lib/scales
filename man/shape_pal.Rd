@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-shape.r
 \name{shape_pal}
 \alias{shape_pal}
-\title{Shape palette (discrete).}
+\title{Shape palette (discrete)}
 \usage{
 shape_pal(solid = TRUE)
 }
@@ -10,5 +10,5 @@ shape_pal(solid = TRUE)
 \item{solid}{should shapes be solid or not?}
 }
 \description{
-Shape palette (discrete).
+Shape palette (discrete)
 }

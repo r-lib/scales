@@ -1,4 +1,5 @@
-#' Pretty breaks.
+#' Pretty breaks
+#'
 #' Uses default R break algorithm as implemented in [pretty()].
 #'
 #' @param n desired number of breaks
@@ -19,7 +20,8 @@ pretty_breaks <- function(n = 5, ...) {
   }
 }
 
-#' Extended breaks.
+#' Extended breaks
+#'
 #' Uses Wilkinson's extended breaks algorithm as implemented in the
 #' \pkg{labeling} package.
 #'
@@ -45,7 +47,7 @@ extended_breaks <- function(n = 5, ...) {
   }
 }
 
-#' Log breaks (integer breaks on log-transformed scales).
+#' Log breaks (integer breaks on log-transformed scales)
 #'
 #' @param n desired number of breaks
 #' @param base base of logarithm to use
@@ -149,7 +151,7 @@ log_sub_breaks <- function(rng, n = 5, base = 10) {
   }
 }
 
-#' Pretty breaks on transformed scale.
+#' Pretty breaks on transformed scale
 #'
 #' These often do not produce very attractive breaks.
 #'
@@ -174,7 +176,7 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
   }
 }
 
-#' Compute breaks for continuous scale.
+#' Compute breaks for continuous scale
 #'
 #' This function wraps up the components needed to go from a continuous range
 #' to a set of breaks and labels suitable for display on axes or legends.
@@ -238,7 +240,8 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
   list(breaks = breaks, labels = labels)
 }
 
-#' Minor breaks.
+#' Minor breaks
+#'
 #' Places minor breaks between major breaks.
 #'
 #' @param reverse if TRUE, calculates the minor breaks for a reversed scale

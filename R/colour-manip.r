@@ -27,7 +27,7 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
   hcl_colours
 }
 
-#' Mute standard colour.
+#' Mute standard colour
 #'
 #' @param colour character vector of colours to modify
 #' @param l new luminance
@@ -39,7 +39,8 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
 #' show_col(c("red", "blue", muted("red"), muted("blue")))
 muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 
-#' Modify colour transparency.
+#' Modify colour transparency
+#'
 #' Vectorised in both colour and alpha.
 #'
 #' @param colour colour
@@ -73,7 +74,7 @@ alpha <- function(colour, alpha = NA) {
   new_col
 }
 
-#' Show colours.
+#' Show colours
 #'
 #' A quick and dirty way to show colours in a plot.
 #'

@@ -4,7 +4,7 @@
 \alias{log_trans}
 \alias{log10_trans}
 \alias{log2_trans}
-\title{Log transformation.}
+\title{Log transformation}
 \usage{
 log_trans(base = exp(1))
 
@@ -16,7 +16,7 @@ log2_trans()
 \item{base}{base of logarithm}
 }
 \description{
-Log transformation.
+Log transformation
 }
 \examples{
 plot(log2_trans(), xlim = c(0, 5))

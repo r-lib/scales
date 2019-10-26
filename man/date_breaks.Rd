@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans-date.r
 \name{date_breaks}
 \alias{date_breaks}
-\title{Regularly spaced dates.}
+\title{Regularly spaced dates}
 \usage{
 date_breaks(width = "1 month")
 }
@@ -12,5 +12,5 @@ date_breaks(width = "1 month")
 followed by "s". Fractional seconds are supported.}
 }
 \description{
-Regularly spaced dates.
+Regularly spaced dates
 }

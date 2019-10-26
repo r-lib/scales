@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{squish_infinite}
 \alias{squish_infinite}
-\title{Squish infinite values to range.}
+\title{Squish infinite values to range}
 \usage{
 squish_infinite(x, range = c(0, 1))
 }
@@ -12,7 +12,7 @@ squish_infinite(x, range = c(0, 1))
 \item{range}{numeric vector of length two giving desired output range.}
 }
 \description{
-Squish infinite values to range.
+Squish infinite values to range
 }
 \examples{
 squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{censor}
 \alias{censor}
-\title{Censor any values outside of range.}
+\title{Censor any values outside of range}
 \usage{
 censor(x, range = c(0, 1), only.finite = TRUE)
 }
@@ -15,7 +15,7 @@ censor(x, range = c(0, 1), only.finite = TRUE)
 finite values.}
 }
 \description{
-Censor any values outside of range.
+Censor any values outside of range
 }
 \examples{
 censor(c(-1, 0.5, 1, 2, NA))

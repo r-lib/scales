@@ -1,5 +1,4 @@
-
-#' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.
+#' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers
 #'
 #' `ordinal_english()`, `ordinal_french()` and `ordinal_spanish()` provide
 #' rules for computing ordinal indicators in English, French and Spanish

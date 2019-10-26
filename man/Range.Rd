@@ -5,10 +5,14 @@
 \alias{Range}
 \alias{DiscreteRange}
 \alias{ContinuousRange}
-\title{Mutable ranges.}
+\title{Mutable ranges}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
 Range
+
+DiscreteRange
+
+ContinuousRange
 }
 \description{
 Mutable ranges have a two methods (\code{train} and \code{reset}), and

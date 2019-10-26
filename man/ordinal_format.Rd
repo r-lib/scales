@@ -6,7 +6,7 @@
 \alias{ordinal_english}
 \alias{ordinal_french}
 \alias{ordinal_spanish}
-\title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.}
+\title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers}
 \usage{
 ordinal_format(prefix = "", suffix = "", big.mark = " ",
   rules = ordinal_english(), ...)

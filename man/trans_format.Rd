@@ -2,7 +2,7 @@
 % Please edit documentation in R/format-trans.R
 \name{trans_format}
 \alias{trans_format}
-\title{Format labels after transformation.}
+\title{Format labels after transformation}
 \usage{
 trans_format(trans, format = scientific_format())
 }
@@ -16,7 +16,7 @@ a function with single parameter x, a numeric vector, that
 returns a character vector of list of expressions
 }
 \description{
-Format labels after transformation.
+Format labels after transformation
 }
 \examples{
 tf <- trans_format("log10", scientific_format())

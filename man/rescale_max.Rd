@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{rescale_max}
 \alias{rescale_max}
-\title{Rescale numeric vector to have specified maximum.}
+\title{Rescale numeric vector to have specified maximum}
 \usage{
 rescale_max(x, to = c(0, 1), from = range(x, na.rm = TRUE))
 }
@@ -15,7 +15,7 @@ rescale_max(x, to = c(0, 1), from = range(x, na.rm = TRUE))
 calculated from the range of \code{x}}
 }
 \description{
-Rescale numeric vector to have specified maximum.
+Rescale numeric vector to have specified maximum
 }
 \examples{
 rescale_max(1:100)

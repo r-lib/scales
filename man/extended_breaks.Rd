@@ -2,9 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{extended_breaks}
 \alias{extended_breaks}
-\title{Extended breaks.
-Uses Wilkinson's extended breaks algorithm as implemented in the
-\pkg{labeling} package.}
+\title{Extended breaks}
 \usage{
 extended_breaks(n = 5, ...)
 }
@@ -14,7 +12,6 @@ extended_breaks(n = 5, ...)
 \item{...}{other arguments passed on to \code{\link[labeling:extended]{labeling::extended()}}}
 }
 \description{
-Extended breaks.
 Uses Wilkinson's extended breaks algorithm as implemented in the
 \pkg{labeling} package.
 }

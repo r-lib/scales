@@ -2,8 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{regular_minor_breaks}
 \alias{regular_minor_breaks}
-\title{Minor breaks.
-Places minor breaks between major breaks.}
+\title{Minor breaks}
 \usage{
 regular_minor_breaks(reverse = FALSE)
 }
@@ -11,7 +10,6 @@ regular_minor_breaks(reverse = FALSE)
 \item{reverse}{if TRUE, calculates the minor breaks for a reversed scale}
 }
 \description{
-Minor breaks.
 Places minor breaks between major breaks.
 }
 \examples{

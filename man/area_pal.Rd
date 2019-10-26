@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-area.r
 \name{area_pal}
 \alias{area_pal}
-\title{Point area palette (continuous).}
+\title{Point area palette (continuous)}
 \usage{
 area_pal(range = c(1, 6))
 }
@@ -11,5 +11,5 @@ area_pal(range = c(1, 6))
 Should be greater than 0.}
 }
 \description{
-Point area palette (continuous).
+Point area palette (continuous)
 }

@@ -1,4 +1,4 @@
-#' Currency formatter: round to nearest cent and display dollar sign.
+#' Currency formatter: round to nearest cent and display dollar sign
 #'
 #' The returned function will format a vector of values as currency.
 #' If `accuracy` is not specified, values are rounded to the nearest cent,

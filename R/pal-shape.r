@@ -1,4 +1,4 @@
-#' Shape palette (discrete).
+#' Shape palette (discrete)
 #'
 #' @param solid should shapes be solid or not?
 #' @export

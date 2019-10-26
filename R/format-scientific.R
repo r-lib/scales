@@ -1,5 +1,4 @@
-
-#' Scientific formatter.
+#' Scientific formatter
 #'
 #' @return A function with single parameter `x`, a numeric vector, that
 #'   returns a character vector.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans-numeric.r
 \name{yj_trans}
 \alias{yj_trans}
-\title{Yeo-Johnson transformation.}
+\title{Yeo-Johnson transformation}
 \usage{
 yj_trans(p)
 }

@@ -1,4 +1,4 @@
-#' Transformation for dates (class Date).
+#' Transformation for dates (class Date)
 #'
 #' @export
 #' @examples
@@ -21,7 +21,7 @@ from_date <- function(x) {
   structure(as.numeric(x), names = names(x))
 }
 
-#' Transformation for date-times (class POSIXt).
+#' Transformation for date-times (class POSIXt)
 #'
 #' @param tz Optionally supply the time zone.  If `NULL`, the default,
 #'   the time zone will be extracted from first input with a non-null tz.
@@ -54,7 +54,7 @@ time_trans <- function(tz = NULL) {
   trans_new("time", "from_time", "to_time", breaks = pretty_breaks())
 }
 
-#' Transformation for times (class hms).
+#' Transformation for times (class hms)
 #'
 #' @export
 #' @examples
@@ -103,7 +103,7 @@ time_breaks <- function(n = 5) {
 }
 
 
-#' Regularly spaced dates.
+#' Regularly spaced dates
 #'
 #' @param width an interval specification, one of "sec", "min", "hour",
 #'   "day", "week", "month", "year". Can be by an integer and a space, or

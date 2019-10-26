@@ -1,4 +1,4 @@
-#' Create a new transformation object.
+#' Create a new transformation object
 #'
 #' A transformation encapsulates a transformation and its inverse, as well
 #' as the information needed to create pleasing breaks and labels. The breaks
@@ -66,7 +66,7 @@ plot.trans <- function(x, y, ..., xlim) {
 }
 
 
-#' Convert character string to transformer.
+#' Convert character string to transformer
 #'
 #' @param x name of transformer
 #' @export
@@ -77,7 +77,7 @@ as.trans <- function(x) {
   match.fun(f)()
 }
 
-#' Compute range of transformed values.
+#' Compute range of transformed values
 #'
 #' Silently drops any ranges outside of the domain of `trans`.
 #'

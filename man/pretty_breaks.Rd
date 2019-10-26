@@ -2,8 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{pretty_breaks}
 \alias{pretty_breaks}
-\title{Pretty breaks.
-Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}.}
+\title{Pretty breaks}
 \usage{
 pretty_breaks(n = 5, ...)
 }
@@ -13,7 +12,6 @@ pretty_breaks(n = 5, ...)
 \item{...}{other arguments passed on to \code{\link[=pretty]{pretty()}}}
 }
 \description{
-Pretty breaks.
 Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}.
 }
 \examples{

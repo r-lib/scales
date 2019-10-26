@@ -3,7 +3,7 @@
 \name{dollar_format}
 \alias{dollar_format}
 \alias{dollar}
-\title{Currency formatter: round to nearest cent and display dollar sign.}
+\title{Currency formatter: round to nearest cent and display dollar sign}
 \usage{
 dollar_format(accuracy = NULL, scale = 1, prefix = "$",
   suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE,

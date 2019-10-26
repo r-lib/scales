@@ -1,4 +1,4 @@
-#' Rescale continuous vector to have specified minimum and maximum.
+#' Rescale continuous vector to have specified minimum and maximum
 #'
 #' @param x continuous vector of values to manipulate.
 #' @param to output range (numeric vector of length two)
@@ -59,7 +59,7 @@ rescale.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), ..
 }
 
 
-#' Rescale vector to have specified minimum, midpoint, and maximum.
+#' Rescale vector to have specified minimum, midpoint, and maximum
 #'
 #' @export
 #' @param x vector of values to manipulate.
@@ -129,7 +129,7 @@ rescale_mid.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)
 }
 
 
-#' Rescale numeric vector to have specified maximum.
+#' Rescale numeric vector to have specified maximum
 #'
 #' @export
 #' @param x numeric vector of values to manipulate.
@@ -155,7 +155,7 @@ rescale_none <- function(x, ...) {
   x
 }
 
-#' Censor any values outside of range.
+#' Censor any values outside of range
 #'
 #' @export
 #' @param x numeric vector of values to manipulate.
@@ -175,7 +175,7 @@ censor <- function(x, range = c(0, 1), only.finite = TRUE) {
   x
 }
 
-#' Discard any values outside of range.
+#' Discard any values outside of range
 #'
 #' @inheritParams censor
 #' @export
@@ -186,7 +186,7 @@ discard <- function(x, range = c(0, 1)) {
   x[x >= range[1] & x <= range[2]]
 }
 
-#' Squish values into range.
+#' Squish values into range
 #'
 #' @author Homer Strong <homer.strong@@gmail.com>
 #' @inheritParams censor
@@ -202,7 +202,7 @@ squish <- function(x, range = c(0, 1), only.finite = TRUE) {
   x
 }
 
-#' Squish infinite values to range.
+#' Squish infinite values to range
 #'
 #' @param x numeric vector of values to manipulate.
 #' @param range numeric vector of length two giving desired output range.
@@ -216,7 +216,7 @@ squish_infinite <- function(x, range = c(0, 1)) {
   x
 }
 
-#' Expand a range with a multiplicative or additive constant.
+#' Expand a range with a multiplicative or additive constant
 #'
 #' @param range range of data, numeric vector of length 2
 #' @param mul multiplicative constant

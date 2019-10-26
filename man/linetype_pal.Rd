@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-linetype.r
 \name{linetype_pal}
 \alias{linetype_pal}
-\title{Line type palette (discrete).}
+\title{Line type palette (discrete)}
 \usage{
 linetype_pal()
 }

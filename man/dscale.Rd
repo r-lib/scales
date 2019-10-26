@@ -2,7 +2,7 @@
 % Please edit documentation in R/scale-discrete.r
 \name{dscale}
 \alias{dscale}
-\title{Discrete scale.}
+\title{Discrete scale}
 \usage{
 dscale(x, palette, na.value = NA)
 }
@@ -14,7 +14,7 @@ dscale(x, palette, na.value = NA)
 \item{na.value}{aesthetic to use for missing values}
 }
 \description{
-Discrete scale.
+Discrete scale
 }
 \examples{
 with(mtcars, plot(disp, mpg, pch = 20, cex = 3,

@@ -4,7 +4,7 @@
 \alias{date_format}
 \alias{date_short}
 \alias{time_format}
-\title{Formatted dates and times.}
+\title{Formatted dates and times}
 \usage{
 date_format(format = "\%Y-\%m-\%d", tz = "UTC")
 

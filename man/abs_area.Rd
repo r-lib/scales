@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-area.r
 \name{abs_area}
 \alias{abs_area}
-\title{Point area palette (continuous), with area proportional to value.}
+\title{Point area palette (continuous), with area proportional to value}
 \usage{
 abs_area(max)
 }
@@ -10,5 +10,5 @@ abs_area(max)
 \item{max}{A number representing the maximum size.}
 }
 \description{
-Point area palette (continuous), with area proportional to value.
+Point area palette (continuous), with area proportional to value
 }

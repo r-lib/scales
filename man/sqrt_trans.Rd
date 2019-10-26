@@ -2,12 +2,12 @@
 % Please edit documentation in R/trans-numeric.r
 \name{sqrt_trans}
 \alias{sqrt_trans}
-\title{Square-root transformation.}
+\title{Square-root transformation}
 \usage{
 sqrt_trans()
 }
 \description{
-Square-root transformation.
+Square-root transformation
 }
 \examples{
 plot(sqrt_trans(), xlim = c(0, 5))

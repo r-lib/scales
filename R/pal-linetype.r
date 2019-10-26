@@ -1,4 +1,4 @@
-#' Line type palette (discrete).
+#' Line type palette (discrete)
 #'
 #' Based on a set supplied by Richard Pearson, University of Manchester
 #'

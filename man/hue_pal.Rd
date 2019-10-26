@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-hue.r
 \name{hue_pal}
 \alias{hue_pal}
-\title{Hue palette (discrete).}
+\title{Hue palette (discrete)}
 \usage{
 hue_pal(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0,
   direction = 1)
@@ -21,7 +21,7 @@ combination of hue and luminance.}
 1 = clockwise, -1 = counter-clockwise}
 }
 \description{
-Hue palette (discrete).
+Hue palette (discrete)
 }
 \examples{
 show_col(hue_pal()(4))

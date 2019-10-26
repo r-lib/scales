@@ -1,4 +1,4 @@
-#' Grey scale palette (discrete).
+#' Grey scale palette (discrete)
 #'
 #' @param start grey value at low end of palette
 #' @param end grey value at high end of palette

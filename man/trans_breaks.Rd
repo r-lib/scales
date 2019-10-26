@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{trans_breaks}
 \alias{trans_breaks}
-\title{Pretty breaks on transformed scale.}
+\title{Pretty breaks on transformed scale}
 \usage{
 trans_breaks(trans, inv, n = 5, ...)
 }

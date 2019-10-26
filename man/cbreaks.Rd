@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{cbreaks}
 \alias{cbreaks}
-\title{Compute breaks for continuous scale.}
+\title{Compute breaks for continuous scale}
 \usage{
 cbreaks(range, breaks = extended_breaks(),
   labels = scientific_format())

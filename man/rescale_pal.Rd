@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-rescale.r
 \name{rescale_pal}
 \alias{rescale_pal}
-\title{Rescale palette (continuous).}
+\title{Rescale palette (continuous)}
 \usage{
 rescale_pal(range = c(0.1, 1))
 }

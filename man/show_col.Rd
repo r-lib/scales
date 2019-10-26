@@ -2,7 +2,7 @@
 % Please edit documentation in R/colour-manip.r
 \name{show_col}
 \alias{show_col}
-\title{Show colours.}
+\title{Show colours}
 \usage{
 show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
 }

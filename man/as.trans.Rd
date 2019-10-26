@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans.r
 \name{as.trans}
 \alias{as.trans}
-\title{Convert character string to transformer.}
+\title{Convert character string to transformer}
 \usage{
 as.trans(x)
 }
@@ -10,5 +10,5 @@ as.trans(x)
 \item{x}{name of transformer}
 }
 \description{
-Convert character string to transformer.
+Convert character string to transformer
 }

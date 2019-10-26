@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-gradient.r
 \name{gradient_n_pal}
 \alias{gradient_n_pal}
-\title{Arbitrary colour gradient palette (continuous).}
+\title{Arbitrary colour gradient palette (continuous)}
 \usage{
 gradient_n_pal(colours, values = NULL, space = "Lab")
 }
@@ -18,5 +18,5 @@ to map an arbitrary range to between 0 and 1.}
 other values are deprecated.}
 }
 \description{
-Arbitrary colour gradient palette (continuous).
+Arbitrary colour gradient palette (continuous)
 }

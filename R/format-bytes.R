@@ -1,5 +1,4 @@
-
-#' Bytes formatter: convert to byte measurement and display symbol.
+#' Bytes formatter: convert to byte measurement and display symbol
 #'
 #' @return a function with three parameters, `x`, a numeric vector that returns
 #'   a character vector, `symbol` the byte symbol (e.g. "kB") desired and the

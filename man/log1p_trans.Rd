@@ -2,12 +2,12 @@
 % Please edit documentation in R/trans-numeric.r
 \name{log1p_trans}
 \alias{log1p_trans}
-\title{Log plus one transformation.}
+\title{Log plus one transformation}
 \usage{
 log1p_trans()
 }
 \description{
-Log plus one transformation.
+Log plus one transformation
 }
 \examples{
 plot(log1p_trans(), xlim = c(-1, 1))

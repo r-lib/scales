@@ -1,4 +1,4 @@
-#' Arc-sin square root transformation.
+#' Arc-sin square root transformation
 #'
 #' @export
 #' @examples
@@ -11,7 +11,7 @@ asn_trans <- function() {
   )
 }
 
-#' Arc-tangent transformation.
+#' Arc-tangent transformation
 #'
 #' @export
 #' @examples
@@ -20,7 +20,7 @@ atanh_trans <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
 
-#' Box-Cox & modulus transformations.
+#' Box-Cox & modulus transformations
 #'
 #' The Box-Cox transformation is a flexible transformation, often used to
 #' transform data towards normality. The modulus transformation generalises
@@ -104,7 +104,7 @@ modulus_trans <- function(p, offset = 1) {
   )
 }
 
-#' Yeo-Johnson transformation.
+#' Yeo-Johnson transformation
 #'
 #' The Yeo-Johnson transformation is a flexible transformation that is similiar
 #' to Box-Cox, [boxcox_trans()], but does not require input values to be greater
@@ -166,7 +166,7 @@ trans_two_sided <- function(x, pos, neg) {
   out
 }
 
-#' Exponential transformation (inverse of log transformation).
+#' Exponential transformation (inverse of log transformation)
 #'
 #' @param base Base of logarithm
 #' @export
@@ -184,7 +184,7 @@ exp_trans <- function(base = exp(1)) {
   )
 }
 
-#' Identity transformation (do nothing).
+#' Identity transformation (do nothing)
 #'
 #' @export
 #' @examples
@@ -194,7 +194,7 @@ identity_trans <- function() {
 }
 
 
-#' Log transformation.
+#' Log transformation
 #'
 #' @param base base of logarithm
 #' @export
@@ -223,7 +223,7 @@ log2_trans <- function() {
   log_trans(2)
 }
 
-#' Log plus one transformation.
+#' Log plus one transformation
 #'
 #' @export
 #' @examples
@@ -237,7 +237,7 @@ log1p_trans <- function() {
   trans_new("log1p", "log1p", "expm1")
 }
 
-#' Probability transformation.
+#' Probability transformation
 #'
 #' @param distribution probability distribution.  Should be standard R
 #'   abbreviation so that "p" + distribution is a valid probability density
@@ -264,7 +264,7 @@ logit_trans <- function() probability_trans("logis")
 #' @rdname probability_trans
 probit_trans <- function() probability_trans("norm")
 
-#' Reciprocal transformation.
+#' Reciprocal transformation
 #'
 #' @export
 #' @examples
@@ -277,7 +277,7 @@ reciprocal_trans <- function() {
   )
 }
 
-#' Reverse transformation.
+#' Reverse transformation
 #'
 #' @export
 #' @examples
@@ -291,7 +291,7 @@ reverse_trans <- function() {
   )
 }
 
-#' Square-root transformation.
+#' Square-root transformation
 #'
 #' @export
 #' @examples

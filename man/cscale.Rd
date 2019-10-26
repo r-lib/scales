@@ -2,7 +2,7 @@
 % Please edit documentation in R/scale-continuous.r
 \name{cscale}
 \alias{cscale}
-\title{Continuous scale.}
+\title{Continuous scale}
 \usage{
 cscale(x, palette, na.value = NA_real_, trans = identity_trans())
 }
@@ -24,7 +24,7 @@ Built in transformations:
 \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
 }
 \description{
-Continuous scale.
+Continuous scale
 }
 \examples{
 with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))

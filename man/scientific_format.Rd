@@ -3,7 +3,7 @@
 \name{scientific_format}
 \alias{scientific_format}
 \alias{scientific}
-\title{Scientific formatter.}
+\title{Scientific formatter}
 \usage{
 scientific_format(digits = 3, scale = 1, prefix = "", suffix = "",
   decimal.mark = ".", trim = TRUE, ...)
@@ -35,7 +35,7 @@ A function with single parameter \code{x}, a numeric vector, that
 returns a character vector.
 }
 \description{
-Scientific formatter.
+Scientific formatter
 }
 \examples{
 scientific_format()(1:10)

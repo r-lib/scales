@@ -2,12 +2,12 @@
 % Please edit documentation in R/trans-date.r
 \name{hms_trans}
 \alias{hms_trans}
-\title{Transformation for times (class hms).}
+\title{Transformation for times (class hms)}
 \usage{
 hms_trans()
 }
 \description{
-Transformation for times (class hms).
+Transformation for times (class hms)
 }
 \examples{
 if (require("hms")) {

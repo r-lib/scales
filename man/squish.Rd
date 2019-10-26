@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{squish}
 \alias{squish}
-\title{Squish values into range.}
+\title{Squish values into range}
 \usage{
 squish(x, range = c(0, 1), only.finite = TRUE)
 }
@@ -15,7 +15,7 @@ squish(x, range = c(0, 1), only.finite = TRUE)
 finite values.}
 }
 \description{
-Squish values into range.
+Squish values into range
 }
 \examples{
 squish(c(-1, 0.5, 1, 2, NA))

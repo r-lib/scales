@@ -1,5 +1,4 @@
-#' Wrap text to a specified width, adding newlines for spaces if text exceeds
-#' the width
+#' Wrap labels to fixed width
 #'
 #' @param width value above which to wrap
 #' @return Function with single parameter x, a character vector, that

@@ -1,4 +1,4 @@
-#' Formatted dates and times.
+#' Formatted dates and times
 #'
 #' `date_short()` attempts to construct the shortest format string
 #' that will uniquely identify dates. It's inspired by matplotlib's

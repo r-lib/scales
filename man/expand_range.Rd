@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{expand_range}
 \alias{expand_range}
-\title{Expand a range with a multiplicative or additive constant.}
+\title{Expand a range with a multiplicative or additive constant}
 \usage{
 expand_range(range, mul = 0, add = 0, zero_width = 1)
 }
@@ -16,5 +16,5 @@ expand_range(range, mul = 0, add = 0, zero_width = 1)
 \item{zero_width}{distance to use if range has zero width}
 }
 \description{
-Expand a range with a multiplicative or additive constant.
+Expand a range with a multiplicative or additive constant
 }

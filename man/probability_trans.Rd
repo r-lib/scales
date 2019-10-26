@@ -4,7 +4,7 @@
 \alias{probability_trans}
 \alias{logit_trans}
 \alias{probit_trans}
-\title{Probability transformation.}
+\title{Probability transformation}
 \usage{
 probability_trans(distribution, ...)
 
@@ -20,7 +20,7 @@ function, and "q" + distribution is a valid quantile function.}
 \item{...}{other arguments passed on to distribution and quantile functions}
 }
 \description{
-Probability transformation.
+Probability transformation
 }
 \examples{
 plot(logit_trans(), xlim = c(0, 1))

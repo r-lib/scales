@@ -2,7 +2,7 @@
 % Please edit documentation in R/format-format.R
 \name{format_format}
 \alias{format_format}
-\title{Format with using any arguments to \code{\link[=format]{format()}}.}
+\title{Format with using any arguments to \code{\link[=format]{format()}}}
 \usage{
 format_format(...)
 }

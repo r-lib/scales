@@ -1,4 +1,4 @@
-#' Format with using any arguments to [format()].
+#' Format with using any arguments to [format()]
 #'
 #' If the breaks have names, they will be used in preference to formatting
 #' the breaks.

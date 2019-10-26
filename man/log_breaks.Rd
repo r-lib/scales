@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{log_breaks}
 \alias{log_breaks}
-\title{Log breaks (integer breaks on log-transformed scales).}
+\title{Log breaks (integer breaks on log-transformed scales)}
 \usage{
 log_breaks(n = 5, base = 10)
 }
@@ -12,7 +12,7 @@ log_breaks(n = 5, base = 10)
 \item{base}{base of logarithm to use}
 }
 \description{
-Log breaks (integer breaks on log-transformed scales).
+Log breaks (integer breaks on log-transformed scales)
 }
 \examples{
 log_breaks()(c(1, 1e6))

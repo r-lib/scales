@@ -1,5 +1,4 @@
-
-#' Format labels after transformation.
+#' Format labels after transformation
 #'
 #' @param trans transformation to apply
 #' @param format additional formatter to apply after transformation

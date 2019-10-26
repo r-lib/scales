@@ -2,8 +2,7 @@
 % Please edit documentation in R/format-wrap.R
 \name{wrap_format}
 \alias{wrap_format}
-\title{Wrap text to a specified width, adding newlines for spaces if text exceeds
-the width}
+\title{Wrap labels to fixed width}
 \usage{
 wrap_format(width)
 }
@@ -15,8 +14,7 @@ Function with single parameter x, a character vector, that
 returns a wrapped character vector
 }
 \description{
-Wrap text to a specified width, adding newlines for spaces if text exceeds
-the width
+Wrap labels to fixed width
 }
 \examples{
 wrap_10 <- wrap_format(10)
