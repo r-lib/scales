@@ -253,7 +253,7 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
 <span class='co'># comma() and comma_format()</span>
 <span class='fu'>comma_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1"         "1,000"     "2,000"     "1,000,000"</div><div class='input'><span class='fu'>comma_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.01</span>)(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1.00"         "1,000.00"     "2,000.00"     "1,000,000.00"</div><div class='input'><span class='fu'>comma</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e3</span>, <span class='fl'>2000</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "1"         "1,000"     "2,000"     "1,000,000"</div><div class='input'>
 <span class='co'># percent() and percent_format()</span>
-<span class='fu'>percent_format</span>()(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "90%"  "20%"  "100%" "40%"  "70%"  "80%"  "10%"  "50%"  "80%"  "40%" </div><div class='input'><span class='fu'>percent</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "60%"  "20%"  "0%"   "100%" "20%"  "80%"  "90%"  "80%"  "60%"  "90%" </div><div class='input'>
+<span class='fu'>percent_format</span>()(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "40%"  "70%"  "60%"  "40%"  "100%" "30%"  "10%"  "60%"  "20%"  "10%" </div><div class='input'><span class='fu'>percent</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "90%" "80%" "80%" "50%" "50%" "10%" "40%" "20%" "70%" "70%"</div><div class='input'>
 <span class='no'>per_mille</span> <span class='kw'>&lt;-</span> <span class='fu'>percent_format</span>(
   <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
   <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u2030"</span>,
@@ -264,21 +264,22 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
   <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
   <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" %"</span>
 )
-<span class='fu'>french_percent</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "0 %"  "10 %" "10 %" "70 %" "40 %" "10 %" "10 %" "90 %" "20 %" "70 %"</div><div class='input'>
+<span class='fu'>french_percent</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "90 %"  "20 %"  "100 %" "40 %"  "70 %"  "80 %"  "10 %"  "50 %"  "80 %" 
+#&gt; [10] "40 %" </div><div class='input'>
 <span class='co'># unit_format()</span>
 <span class='co'># labels in kilometer when the raw data are in meter</span>
 <span class='no'>km</span> <span class='kw'>&lt;-</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"km"</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e-3</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'>km</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>1e3</span>)</div><div class='output co'>#&gt;  [1] "0 km" "1 km" "1 km" "0 km" "0 km" "0 km" "0 km" "1 km" "0 km" "1 km"</div><div class='input'>
+<span class='fu'>km</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>1e3</span>)</div><div class='output co'>#&gt;  [1] "1 km" "0 km" "0 km" "1 km" "0 km" "1 km" "1 km" "1 km" "1 km" "1 km"</div><div class='input'>
 <span class='co'># labels in hectares, raw data in square meters</span>
 <span class='no'>ha</span> <span class='kw'>&lt;-</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"ha"</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e-4</span>)
-<span class='fu'>km</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>1e5</span>)</div><div class='output co'>#&gt;  [1] "72 km" "52 km" "97 km" "36 km" "17 km" "78 km" "3 km"  "79 km" "17 km"
-#&gt; [10] "3 km" </div><div class='input'>
+<span class='fu'>km</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>1e5</span>)</div><div class='output co'>#&gt;  [1] "4 km"  "13 km" "9 km"  "70 km" "41 km" "7 km"  "13 km" "94 km" "22 km"
+#&gt; [10] "67 km"</div><div class='input'>
 <span class='co'># degree_format()</span>
 <span class='no'>celcius</span> <span class='kw'>&lt;-</span> <span class='fu'>degree_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"C"</span>)
-<span class='fu'>celcius</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>) * <span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "8°C"   "18°C"  "-9°C"  "9°C"   "6°C"   "-21°C" "5°C"   "-4°C"  "5°C"  
-#&gt; [10] "14°C" </div><div class='input'>
+<span class='fu'>celcius</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>10</span>) * <span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "-8°C"  "9°C"   "-6°C"  "-22°C" "-2°C"  "6°C"   "20°C"  "-10°C" "-19°C"
+#&gt; [10] "-10°C"</div><div class='input'>
 <span class='no'>west</span> <span class='kw'>&lt;-</span> <span class='fu'>degree_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"W"</span>)
-<span class='fu'>west</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>100</span>)</div><div class='output co'>#&gt;  [1] "60°W" "17°W" "57°W" "90°W" "59°W" "83°W" "59°W" "78°W" "40°W" "85°W"</div></pre>
+<span class='fu'>west</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>) * <span class='fl'>100</span>)</div><div class='output co'>#&gt;  [1] "79°W" "83°W" "97°W" "38°W" "17°W" "60°W" "81°W" "4°W"  "73°W" "22°W"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

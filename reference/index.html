@@ -129,81 +129,34 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-breaks-and-formatters" class="hasAnchor"><a href="#section-breaks-and-formatters" class="anchor"></a>Breaks and formatters</h2>
-          <p class="section-desc"><p>Functions for computing how tick marks/legend keys should be distributed across the data range, as well as how to convert those numeric positions into reader-friendly labels</p></p>
+          <h2 id="section-axis-labels" class="hasAnchor"><a href="#section-axis-labels" class="anchor"></a>Axis labels</h2>
+          <p class="section-desc"><p>Use these functions with the <code>labels</code> argument to ggplot2 scales to control the formatting of axis labels and legend keys.</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="date_breaks.html">date_breaks()</a></code> </p>
-        </td>
-        <td><p>Regularly spaced dates.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="extended_breaks.html">extended_breaks()</a></code> </p>
-        </td>
-        <td><p>Extended breaks.
-Uses Wilkinson's extended breaks algorithm as implemented in the
-<span class="pkg">labeling</span> package.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="log_breaks.html">log_breaks()</a></code> </p>
-        </td>
-        <td><p>Log breaks (integer breaks on log-transformed scales).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pretty_breaks.html">pretty_breaks()</a></code> </p>
-        </td>
-        <td><p>Pretty breaks.
-Uses default R break algorithm as implemented in <code><a href='https://rdrr.io/r/base/pretty.html'>pretty()</a></code>.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="regular_minor_breaks.html">regular_minor_breaks()</a></code> </p>
-        </td>
-        <td><p>Minor breaks.
-Places minor breaks between major breaks.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_breaks.html">trans_breaks()</a></code> </p>
-        </td>
-        <td><p>Pretty breaks on transformed scale.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="date_format.html">date_format()</a></code> <code><a href="date_format.html">date_short()</a></code> <code><a href="date_format.html">time_format()</a></code> </p>
         </td>
-        <td><p>Formatted dates and times.</p></td>
+        <td><p>Formatted dates and times</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="dollar_format.html">dollar_format()</a></code> <code><a href="dollar_format.html">dollar()</a></code> </p>
         </td>
-        <td><p>Currency formatter: round to nearest cent and display dollar sign.</p></td>
+        <td><p>Currency formatter: round to nearest cent and display dollar sign</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="format_format.html">format_format()</a></code> </p>
         </td>
-        <td><p>Format with using any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="math_format.html">math_format()</a></code> </p>
-        </td>
-        <td><p>Add arbitrary expression to a label.
-The symbol that will be replace by the label value is <code>.x</code>.</p></td>
+        <td><p>Format with using any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="number_bytes_format.html">number_bytes_format()</a></code> <code><a href="number_bytes_format.html">number_bytes()</a></code> </p>
         </td>
-        <td><p>Bytes formatter: convert to byte measurement and display symbol.</p></td>
+        <td><p>Bytes formatter: convert to byte measurement and display symbol</p></td>
       </tr><tr>
         
         <td>
@@ -215,13 +168,13 @@ The symbol that will be replace by the label value is <code>.x</code>.</p></td>
         <td>
           <p><code><a href="ordinal_format.html">ordinal_format()</a></code> <code><a href="ordinal_format.html">ordinal()</a></code> <code><a href="ordinal_format.html">ordinal_english()</a></code> <code><a href="ordinal_format.html">ordinal_french()</a></code> <code><a href="ordinal_format.html">ordinal_spanish()</a></code> </p>
         </td>
-        <td><p>Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers.</p></td>
+        <td><p>Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="parse_format.html">parse_format()</a></code> </p>
+          <p><code><a href="parse_format.html">parse_format()</a></code> <code><a href="parse_format.html">math_format()</a></code> </p>
         </td>
-        <td><p>Parse a label to produce expressions for plotmath.</p></td>
+        <td><p>Label with mathematical expressions</p></td>
       </tr><tr>
         
         <td>
@@ -233,20 +186,69 @@ The symbol that will be replace by the label value is <code>.x</code>.</p></td>
         <td>
           <p><code><a href="scientific_format.html">scientific_format()</a></code> <code><a href="scientific_format.html">scientific()</a></code> </p>
         </td>
-        <td><p>Scientific formatter.</p></td>
+        <td><p>Scientific formatter</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="trans_format.html">trans_format()</a></code> </p>
         </td>
-        <td><p>Format labels after transformation.</p></td>
+        <td><p>Format labels after transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="wrap_format.html">wrap_format()</a></code> </p>
         </td>
-        <td><p>Wrap text to a specified width, adding newlines for spaces if text exceeds
-the width</p></td>
+        <td><p>Wrap labels to fixed width</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="number_auto.html">number_auto()</a></code> </p>
+        </td>
+        <td><p>Automatic number formatter</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-axis-breaks" class="hasAnchor"><a href="#section-axis-breaks" class="anchor"></a>Axis breaks</h2>
+          <p class="section-desc"><p>Use these functions with the <code>breaks</code> argument to ggplot2 scales to control the position of the</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="date_breaks.html">date_breaks()</a></code> </p>
+        </td>
+        <td><p>Regularly spaced dates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="extended_breaks.html">extended_breaks()</a></code> </p>
+        </td>
+        <td><p>Extended breaks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="log_breaks.html">log_breaks()</a></code> </p>
+        </td>
+        <td><p>Log breaks (integer breaks on log-transformed scales)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pretty_breaks.html">pretty_breaks()</a></code> </p>
+        </td>
+        <td><p>Pretty breaks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="regular_minor_breaks.html">regular_minor_breaks()</a></code> </p>
+        </td>
+        <td><p>Minor breaks</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="trans_breaks.html">trans_breaks()</a></code> </p>
+        </td>
+        <td><p>Pretty breaks on transformed scale</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -260,19 +262,19 @@ the width</p></td>
         <td>
           <p><code><a href="rescale.html">rescale()</a></code> </p>
         </td>
-        <td><p>Rescale continuous vector to have specified minimum and maximum.</p></td>
+        <td><p>Rescale continuous vector to have specified minimum and maximum</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="rescale_max.html">rescale_max()</a></code> </p>
         </td>
-        <td><p>Rescale numeric vector to have specified maximum.</p></td>
+        <td><p>Rescale numeric vector to have specified maximum</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="rescale_mid.html">rescale_mid()</a></code> </p>
         </td>
-        <td><p>Rescale vector to have specified minimum, midpoint, and maximum.</p></td>
+        <td><p>Rescale vector to have specified minimum, midpoint, and maximum</p></td>
       </tr><tr>
         
         <td>
@@ -284,19 +286,13 @@ the width</p></td>
         <td>
           <p><code><a href="rescale_pal.html">rescale_pal()</a></code> </p>
         </td>
-        <td><p>Rescale palette (continuous).</p></td>
+        <td><p>Rescale palette (continuous)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="expand_range.html">expand_range()</a></code> </p>
         </td>
-        <td><p>Expand a range with a multiplicative or additive constant.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_range.html">trans_range()</a></code> </p>
-        </td>
-        <td><p>Compute range of transformed values.</p></td>
+        <td><p>Expand a range with a multiplicative or additive constant</p></td>
       </tr><tr>
         
         <td>
@@ -308,25 +304,25 @@ the width</p></td>
         <td>
           <p><code><a href="squish.html">squish()</a></code> </p>
         </td>
-        <td><p>Squish values into range.</p></td>
+        <td><p>Squish values into range</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="squish_infinite.html">squish_infinite()</a></code> </p>
         </td>
-        <td><p>Squish infinite values to range.</p></td>
+        <td><p>Squish infinite values to range</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="discard.html">discard()</a></code> </p>
         </td>
-        <td><p>Discard any values outside of range.</p></td>
+        <td><p>Discard any values outside of range</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="censor.html">censor()</a></code> </p>
         </td>
-        <td><p>Censor any values outside of range.</p></td>
+        <td><p>Censor any values outside of range</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -338,123 +334,93 @@ the width</p></td>
       <tr>
         
         <td>
-          <p><code><a href="as.trans.html">as.trans()</a></code> </p>
-        </td>
-        <td><p>Convert character string to transformer.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="asn_trans.html">asn_trans()</a></code> </p>
         </td>
-        <td><p>Arc-sin square root transformation.</p></td>
+        <td><p>Arc-sin square root transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="atanh_trans.html">atanh_trans()</a></code> </p>
         </td>
-        <td><p>Arc-tangent transformation.</p></td>
+        <td><p>Arc-tangent transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="boxcox_trans.html">boxcox_trans()</a></code> <code><a href="boxcox_trans.html">modulus_trans()</a></code> </p>
         </td>
-        <td><p>Box-Cox &amp; modulus transformations.</p></td>
+        <td><p>Box-Cox &amp; modulus transformations</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="date_trans.html">date_trans()</a></code> </p>
         </td>
-        <td><p>Transformation for dates (class Date).</p></td>
+        <td><p>Transformation for dates (class Date)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="exp_trans.html">exp_trans()</a></code> </p>
         </td>
-        <td><p>Exponential transformation (inverse of log transformation).</p></td>
+        <td><p>Exponential transformation (inverse of log transformation)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="hms_trans.html">hms_trans()</a></code> </p>
         </td>
-        <td><p>Transformation for times (class hms).</p></td>
+        <td><p>Transformation for times (class hms)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="identity_trans.html">identity_trans()</a></code> </p>
         </td>
-        <td><p>Identity transformation (do nothing).</p></td>
+        <td><p>Identity transformation (do nothing)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="log1p_trans.html">log1p_trans()</a></code> </p>
+          <p><code><a href="log_trans.html">log_trans()</a></code> <code><a href="log_trans.html">log10_trans()</a></code> <code><a href="log_trans.html">log2_trans()</a></code> <code><a href="log_trans.html">log1p_trans()</a></code> <code><a href="log_trans.html">pseudo_log_trans()</a></code> </p>
         </td>
-        <td><p>Log plus one transformation.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="log_trans.html">log_trans()</a></code> <code><a href="log_trans.html">log10_trans()</a></code> <code><a href="log_trans.html">log2_trans()</a></code> </p>
-        </td>
-        <td><p>Log transformation.</p></td>
+        <td><p>Log transformations</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="probability_trans.html">probability_trans()</a></code> <code><a href="probability_trans.html">logit_trans()</a></code> <code><a href="probability_trans.html">probit_trans()</a></code> </p>
         </td>
-        <td><p>Probability transformation.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pseudo_log_trans.html">pseudo_log_trans()</a></code> </p>
-        </td>
-        <td><p>Pseudo-log transformation</p></td>
+        <td><p>Probability transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="reciprocal_trans.html">reciprocal_trans()</a></code> </p>
         </td>
-        <td><p>Reciprocal transformation.</p></td>
+        <td><p>Reciprocal transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="reverse_trans.html">reverse_trans()</a></code> </p>
         </td>
-        <td><p>Reverse transformation.</p></td>
+        <td><p>Reverse transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="sqrt_trans.html">sqrt_trans()</a></code> </p>
         </td>
-        <td><p>Square-root transformation.</p></td>
+        <td><p>Square-root transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="time_trans.html">time_trans()</a></code> </p>
         </td>
-        <td><p>Transformation for date-times (class POSIXt).</p></td>
+        <td><p>Transformation for date-times (class POSIXt)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="trans_format.html">trans_format()</a></code> </p>
         </td>
-        <td><p>Format labels after transformation.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_new.html">trans_new()</a></code> </p>
-        </td>
-        <td><p>Create a new transformation object.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_range.html">trans_range()</a></code> </p>
-        </td>
-        <td><p>Compute range of transformed values.</p></td>
+        <td><p>Format labels after transformation</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="yj_trans.html">yj_trans()</a></code> </p>
         </td>
-        <td><p>Yeo-Johnson transformation.</p></td>
+        <td><p>Yeo-Johnson transformation</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -468,13 +434,13 @@ the width</p></td>
         <td>
           <p><code><a href="brewer_pal.html">brewer_pal()</a></code> </p>
         </td>
-        <td><p>Colour Brewer palette (discrete).</p></td>
+        <td><p>Colour Brewer palette (discrete)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="dichromat_pal.html">dichromat_pal()</a></code> </p>
         </td>
-        <td><p>Dichromat (colour-blind) palette (discrete).</p></td>
+        <td><p>Dichromat (colour-blind) palette (discrete)</p></td>
       </tr><tr>
         
         <td>
@@ -486,31 +452,31 @@ the width</p></td>
         <td>
           <p><code><a href="gradient_n_pal.html">gradient_n_pal()</a></code> </p>
         </td>
-        <td><p>Arbitrary colour gradient palette (continuous).</p></td>
+        <td><p>Arbitrary colour gradient palette (continuous)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="grey_pal.html">grey_pal()</a></code> </p>
         </td>
-        <td><p>Grey scale palette (discrete).</p></td>
+        <td><p>Grey scale palette (discrete)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="hue_pal.html">hue_pal()</a></code> </p>
         </td>
-        <td><p>Hue palette (discrete).</p></td>
+        <td><p>Hue palette (discrete)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="seq_gradient_pal.html">seq_gradient_pal()</a></code> </p>
         </td>
-        <td><p>Sequential colour gradient palette (continuous).</p></td>
+        <td><p>Sequential colour gradient palette (continuous)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="rescale_pal.html">rescale_pal()</a></code> </p>
         </td>
-        <td><p>Rescale palette (continuous).</p></td>
+        <td><p>Rescale palette (continuous)</p></td>
       </tr><tr>
         
         <td>
@@ -538,22 +504,15 @@ the width</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="show_col.html">show_col()</a></code> </p>
-        </td>
-        <td><p>Show colours.</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="muted.html">muted()</a></code> </p>
         </td>
-        <td><p>Mute standard colour.</p></td>
+        <td><p>Mute standard colour</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="alpha.html">alpha()</a></code> </p>
         </td>
-        <td><p>Modify colour transparency.
-Vectorised in both colour and alpha.</p></td>
+        <td><p>Modify colour transparency</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -565,45 +524,39 @@ Vectorised in both colour and alpha.</p></td>
       <tr>
         
         <td>
-          <p><code><a href="abs_area.html">abs_area()</a></code> </p>
+          <p><code><a href="area_pal.html">area_pal()</a></code> <code><a href="area_pal.html">abs_area()</a></code> </p>
         </td>
-        <td><p>Point area palette (continuous), with area proportional to value.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="area_pal.html">area_pal()</a></code> </p>
-        </td>
-        <td><p>Point area palette (continuous).</p></td>
+        <td><p>Area palettes (continuous)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="identity_pal.html">identity_pal()</a></code> </p>
         </td>
-        <td><p>Identity palette.</p></td>
+        <td><p>Identity palette</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="linetype_pal.html">linetype_pal()</a></code> </p>
         </td>
-        <td><p>Line type palette (discrete).</p></td>
+        <td><p>Line type palette (discrete)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="manual_pal.html">manual_pal()</a></code> </p>
         </td>
-        <td><p>Manual palette (manual).</p></td>
+        <td><p>Manual palette (discrete)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="rescale_pal.html">rescale_pal()</a></code> </p>
         </td>
-        <td><p>Rescale palette (continuous).</p></td>
+        <td><p>Rescale palette (continuous)</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="shape_pal.html">shape_pal()</a></code> </p>
         </td>
-        <td><p>Shape palette (discrete).</p></td>
+        <td><p>Shape palette (discrete)</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -617,19 +570,19 @@ Vectorised in both colour and alpha.</p></td>
         <td>
           <p><code><a href="cscale.html">cscale()</a></code> </p>
         </td>
-        <td><p>Continuous scale.</p></td>
+        <td><p>Continuous scale</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="cbreaks.html">cbreaks()</a></code> </p>
         </td>
-        <td><p>Compute breaks for continuous scale.</p></td>
+        <td><p>Compute breaks for continuous scale</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="dscale.html">dscale()</a></code> </p>
         </td>
-        <td><p>Discrete scale.</p></td>
+        <td><p>Discrete scale</p></td>
       </tr><tr>
         
         <td>
@@ -645,9 +598,9 @@ Vectorised in both colour and alpha.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="Range.html">Range</a></code> </p>
+          <p><code><a href="Range.html">Range</a></code> <code><a href="Range.html">DiscreteRange</a></code> <code><a href="Range.html">ContinuousRange</a></code> </p>
         </td>
-        <td><p>Mutable ranges.</p></td>
+        <td><p>Mutable ranges</p></td>
       </tr>
     </tbody>
     </table>
@@ -656,7 +609,8 @@ Vectorised in both colour and alpha.</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-breaks-and-formatters">Breaks and formatters</a></li>
+      <li><a href="#section-axis-labels">Axis labels</a></li>
+      <li><a href="#section-axis-breaks">Axis breaks</a></li>
       <li><a href="#section-bounds-ranges-rescaling">Bounds: ranges &amp; rescaling</a></li>
       <li><a href="#section-transformations">Transformations</a></li>
       <li><a href="#section-colour-palettes-colour-mapping">Colour palettes &amp; colour mapping</a></li>

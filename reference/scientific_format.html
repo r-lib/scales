@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Scientific formatter. — scientific_format • scales</title>
+<title>Scientific formatter — scientific_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Scientific formatter. — scientific_format" />
-<meta property="og:description" content="Scientific formatter." />
+<meta property="og:title" content="Scientific formatter — scientific_format" />
+<meta property="og:description" content="Scientific formatter" />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,13 +116,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Scientific formatter.</h1>
+    <h1>Scientific formatter</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-scientific.R'><code>R/format-scientific.R</code></a></small>
     <div class="hidden name"><code>scientific_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Scientific formatter.</p>
+    <p>Scientific formatter</p>
     </div>
 
     <pre class="usage"><span class='fu'>scientific_format</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -175,12 +175,12 @@ returns a character vector.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>scientific_format</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
-#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific_format</span>()(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "6.83e-02" "3.07e-01" "9.93e-01" "1.16e-01" "7.15e-01" "2.26e-01"
-#&gt;  [7] "1.33e-01" "9.27e-01" "8.94e-01" "2.04e-01"</div><div class='input'><span class='fu'>scientific_format</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2.6e-01" "6.1e-01" "4.4e-01" "3.2e-01" "1.0e-01" "2.7e-01" "6.5e-01"
-#&gt;  [8] "9.3e-01" "2.7e-02" "5.6e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
-#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "8.54e-01" "7.59e-02" "2.06e-01" "4.96e-01" "2.62e-01" "4.16e-01"
-#&gt;  [7] "4.39e-01" "1.82e-01" "7.83e-02" "1.78e-02"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt;  [1] "7.3e-01" "9.7e-01" "5.4e-01" "1.7e-01" "5.8e-02" "4.6e-01" "6.2e-01"
-#&gt;  [8] "5.9e-01" "7.4e-01" "5.2e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>12345</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" cells/mL"</span>)</div><div class='output co'>#&gt; [1] "1.23e+04 cells/mL"</div></pre>
+#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific_format</span>()(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "8.35e-01" "5.01e-01" "6.02e-01" "4.69e-01" "8.86e-01" "6.71e-01"
+#&gt;  [7] "3.94e-01" "5.51e-01" "2.42e-01" "2.03e-01"</div><div class='input'><span class='fu'>scientific_format</span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "6.8e-02" "3.1e-01" "9.9e-01" "1.2e-01" "7.2e-01" "2.3e-01" "1.3e-01"
+#&gt;  [8] "9.3e-01" "8.9e-01" "2.0e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt;  [1] "1e+00" "2e+00" "3e+00" "4e+00" "5e+00" "6e+00" "7e+00" "8e+00" "9e+00"
+#&gt; [10] "1e+01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2.57e-01" "6.14e-01" "4.41e-01" "3.16e-01" "1.01e-01" "2.73e-01"
+#&gt;  [7] "6.54e-01" "9.28e-01" "2.66e-02" "5.59e-01"</div><div class='input'><span class='fu'>scientific</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt;  [1] "8.5e-01" "7.6e-02" "2.1e-01" "5.0e-01" "2.6e-01" "4.2e-01" "4.4e-01"
+#&gt;  [8] "1.8e-01" "7.8e-02" "1.8e-02"</div><div class='input'><span class='fu'>scientific</span>(<span class='fl'>12345</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>" cells/mL"</span>)</div><div class='output co'>#&gt; [1] "1.23e+04 cells/mL"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse a label to produce expressions for plotmath. — parse_format • scales</title>
+<title>Label with mathematical expressions — parse_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,10 @@
 
 
 
-<meta property="og:title" content="Parse a label to produce expressions for plotmath. — parse_format" />
-<meta property="og:description" content="Parse a label to produce expressions for plotmath." />
+<meta property="og:title" content="Label with mathematical expressions — parse_format" />
+<meta property="og:description" content="parse_format() produces expression from strings by parsing them;
+math_format() constructs expressions by replacing the pronoun .x
+with each string." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,32 +118,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse a label to produce expressions for plotmath.</h1>
+    <h1>Label with mathematical expressions</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-expression.R'><code>R/format-expression.R</code></a></small>
     <div class="hidden name"><code>parse_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Parse a label to produce expressions for plotmath.</p>
+    <p><code>parse_format()</code> produces expression from strings by parsing them;
+<code>math_format()</code> constructs expressions by replacing the pronoun <code>.x</code>
+with each string.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>parse_format</span>()</pre>
+    <pre class="usage"><span class='fu'>parse_format</span>()
 
+<span class='fu'>math_format</span>(<span class='kw'>expr</span> <span class='kw'>=</span> <span class='fl'>10</span>^<span class='no'>.x</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='no'>force</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>expr</th>
+      <td><p>expression to use</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>another format function to apply prior to mathematical
+transformation - this makes it easier to use floating point numbers in
+mathematical expressions.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A function with a single parameter that returns an expression
-object.</p>
+    <p>A function with a single parameter, <code>x</code>, that returns an
+expression object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/grDevices/plotmath.html'>plotmath()</a></code></p></div>
+    <div class='dont-index'><p><a href='https://rdrr.io/r/grDevices/plotmath.html'>plotmath</a> for the details of mathematical formatting in R.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>parse_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>))</div><div class='output co'>#&gt; expression(alpha, beta, gamma)</div><div class='input'><span class='fu'>parse_format</span>()(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; expression(1, 2, 3, 4, 5)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>parse_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>))</div><div class='output co'>#&gt; expression(alpha, beta, gamma)</div><div class='input'><span class='fu'>parse_format</span>()(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; expression(1, 2, 3, 4, 5)</div><div class='input'>
+<span class='fu'>math_format</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; expression(10^1L, 10^2L, 10^3L, 10^4L, 10^5L, 10^6L, 10^7L, 10^8L, 
+#&gt;     10^9L, 10^10L)</div><div class='input'><span class='fu'>math_format</span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>frac</a></span>(<span class='no'>alpha</span>, <span class='no'>.x</span>))(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; expression(frac(alpha, 1L), frac(alpha, 2L), frac(alpha, 3L), 
+#&gt;     frac(alpha, 4L), frac(alpha, 5L), frac(alpha, 6L), frac(alpha, 
+#&gt;         7L), frac(alpha, 8L), frac(alpha, 9L), frac(alpha, 10L))</div><div class='input'><span class='fu'>math_format</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='no'>percent</span>)(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; expression(10^"0%", 10^"10%", 10^"70%", 10^"60%", 10^"30%", 10^"40%", 
+#&gt;     10^"70%", 10^"70%", 10^"90%", 10^"50%")</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>

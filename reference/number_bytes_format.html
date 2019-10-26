@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bytes formatter: convert to byte measurement and display symbol. — number_bytes_format • scales</title>
+<title>Bytes formatter: convert to byte measurement and display symbol — number_bytes_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Bytes formatter: convert to byte measurement and display symbol. — number_bytes_format" />
-<meta property="og:description" content="Bytes formatter: convert to byte measurement and display symbol." />
+<meta property="og:title" content="Bytes formatter: convert to byte measurement and display symbol — number_bytes_format" />
+<meta property="og:description" content="Bytes formatter: convert to byte measurement and display symbol" />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,13 +116,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bytes formatter: convert to byte measurement and display symbol.</h1>
+    <h1>Bytes formatter: convert to byte measurement and display symbol</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-bytes.R'><code>R/format-bytes.R</code></a></small>
     <div class="hidden name"><code>number_bytes_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Bytes formatter: convert to byte measurement and display symbol.</p>
+    <p>Bytes formatter: convert to byte measurement and display symbol</p>
     </div>
 
     <pre class="usage"><span class='fu'>number_bytes_format</span>(<span class='kw'>symbol</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"binary"</span>, <span class='no'>...</span>)
@@ -164,10 +164,10 @@ measurement <code>units</code> (traditional <code>binary</code> or <code>si</cod
 <a href='http://en.wikipedia.org/wiki/Units_of_information'>http://en.wikipedia.org/wiki/Units_of_information</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>number_bytes_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2 GiB"     "1 002 MiB" "290 MiB"   "707 MiB"   "2 GiB"     "1 GiB"    
-#&gt;  [7] "2 GiB"     "880 MiB"   "3 GiB"     "436 MiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "3 GiB"   "1 GiB"   "1 GiB"   "131 MiB" "873 MiB" "1 GiB"   "566 MiB"
-#&gt;  [8] "2 GiB"   "2 GiB"   "2 GiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>), <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "2.1 GiB"   "2.7 GiB"   "2.7 GiB"   "2.2 GiB"   "1.7 GiB"   "1.6 GiB"  
-#&gt;  [7] "205.6 MiB" "515.6 MiB" "392.9 MiB" "2.8 GiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>))</div><div class='output co'>#&gt; [1] "1 B"   "1 KiB" "1 MiB" "1 GiB" "1 TiB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>), <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.01</span>)</div><div class='output co'>#&gt; [1] "1.00 B"  "1.02 kB" "1.05 MB" "1.07 GB" "1.10 TB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1000</span>^(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='st'>"kB"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>)</div><div class='output co'>#&gt; [1] "1 kB"         "1 000 kB"     "1 000 000 kB"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>number_bytes_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2 GiB"   "797 MiB" "2 GiB"   "183 MiB" "971 MiB" "889 MiB" "2 GiB"  
+#&gt;  [8] "1 GiB"   "977 MiB" "2 GiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2 GiB"   "3 GiB"   "315 MiB" "2 GiB"   "670 MiB" "1 GiB"   "412 MiB"
+#&gt;  [8] "2 GiB"   "595 MiB" "861 MiB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>), <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "1 003.2 MiB" "2.4 GiB"     "331.2 MiB"   "2.6 GiB"     "895.2 MiB"  
+#&gt;  [6] "188.7 MiB"   "1.6 GiB"     "1.5 GiB"     "2.7 GiB"     "980.1 MiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>))</div><div class='output co'>#&gt; [1] "1 B"   "1 KiB" "1 MiB" "1 GiB" "1 TiB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>), <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.01</span>)</div><div class='output co'>#&gt; [1] "1.00 B"  "1.02 kB" "1.05 MB" "1.07 GB" "1.10 TB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1000</span>^(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='st'>"kB"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>)</div><div class='output co'>#&gt; [1] "1 kB"         "1 000 kB"     "1 000 000 kB"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

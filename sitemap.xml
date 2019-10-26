@@ -7,16 +7,10 @@
     <loc>https://scales.r-lib.org//reference/Range.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/abs_area.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/alpha.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/area_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/as.trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/asn_trans.html</loc>
@@ -109,9 +103,6 @@
     <loc>https://scales.r-lib.org//reference/linetype_pal.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/log1p_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/log_breaks.html</loc>
   </url>
   <url>
@@ -119,9 +110,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/manual_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/math_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/muted.html</loc>
@@ -139,9 +127,6 @@
     <loc>https://scales.r-lib.org//reference/ordinal_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/package-scales.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/parse_format.html</loc>
   </url>
   <url>
@@ -149,9 +134,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/probability_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/pseudo_log_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/pvalue_format.html</loc>
@@ -179,6 +161,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/reverse_trans.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/scales-package.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/scientific_format.html</loc>

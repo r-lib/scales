@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Point area palette (continuous). — area_pal • scales</title>
+<title>Area palettes (continuous) — area_pal • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,8 @@
 
 
 
-<meta property="og:title" content="Point area palette (continuous). — area_pal" />
-<meta property="og:description" content="Point area palette (continuous)." />
+<meta property="og:title" content="Area palettes (continuous) — area_pal" />
+<meta property="og:description" content="Area palettes (continuous)" />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,16 +116,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Point area palette (continuous).</h1>
+    <h1>Area palettes (continuous)</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/pal-area.r'><code>R/pal-area.r</code></a></small>
     <div class="hidden name"><code>area_pal.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Point area palette (continuous).</p>
+    <p>Area palettes (continuous)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>area_pal</span>(<span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>6</span>))</pre>
+    <pre class="usage"><span class='fu'>area_pal</span>(<span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>6</span>))
+
+<span class='fu'>abs_area</span>(<span class='no'>max</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +136,10 @@
       <th>range</th>
       <td><p>Numeric vector of length two, giving range of possible sizes.
 Should be greater than 0.</p></td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td><p>A number representing the maximum size.</p></td>
     </tr>
     </table>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compute breaks for continuous scale. — cbreaks • scales</title>
+<title>Compute breaks for continuous scale — cbreaks • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Compute breaks for continuous scale. — cbreaks" />
+<meta property="og:title" content="Compute breaks for continuous scale — cbreaks" />
 <meta property="og:description" content="This function wraps up the components needed to go from a continuous range
 to a set of breaks and labels suitable for display on axes or legends." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
@@ -117,7 +117,7 @@ to a set of breaks and labels suitable for display on axes or legends." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Compute breaks for continuous scale.</h1>
+    <h1>Compute breaks for continuous scale</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks.r'><code>R/breaks.r</code></a></small>
     <div class="hidden name"><code>cbreaks.Rd</code></div>
     </div>
@@ -182,25 +182,11 @@ what the breaks will be.</p></td>
 #&gt; $labels
 #&gt; [1] "1e+00" "1e+01" "1e+02" "1e+03" "1e+04"
 #&gt; </div><div class='input'>
-<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='math_format.html'>math_format</a></span>())</div><div class='output co'>#&gt; $breaks
+<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='parse_format.html'>math_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   0  25  50  75 100
 #&gt; 
 #&gt; $labels
-#&gt; $labels[[1]]
-#&gt; 10^`0`
-#&gt; 
-#&gt; $labels[[2]]
-#&gt; 10^`25`
-#&gt; 
-#&gt; $labels[[3]]
-#&gt; 10^`50`
-#&gt; 
-#&gt; $labels[[4]]
-#&gt; 10^`75`
-#&gt; 
-#&gt; $labels[[5]]
-#&gt; 10^`100`
-#&gt; 
+#&gt; expression(10^0, 10^25, 10^50, 10^75, 10^100)
 #&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='number_format.html'>percent_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 0.00 0.25 0.50 0.75 1.00
 #&gt; 
