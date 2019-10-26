@@ -154,7 +154,6 @@ test_that("formats work with 0 length input", {
   expect_identical(comma_format()(x), expected)
   expect_identical(date_format()(as.Date(character(0))), expected)
   expect_identical(dollar_format()(x), expected)
-  expect_identical(math_format()(x), list())
   expect_identical(parse_format()(x), expression())
   expect_identical(parse_format()(character()), expression())
   expect_identical(percent_format()(x), expected)

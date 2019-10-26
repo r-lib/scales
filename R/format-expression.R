@@ -37,9 +37,9 @@ parse_format <- function() {
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
 math_format <- function(expr = 10^.x, format = force) {
+  .x <- NULL
   quoted <- substitute(expr)
   subs <- function(x) {
-    .x <- NULL
     do.call("substitute", list(quoted, list(.x = x)))
   }
 
