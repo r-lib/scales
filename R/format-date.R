@@ -2,7 +2,7 @@
 #'
 #' `date_short()` attempts to construct the shortest format string
 #' that will uniquely identify dates. It's inspired by matplotlib's
-#' [`ConciseDateFormatter``](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter),
+#' [`ConciseDateFormatter`](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter),
 #' but uses a slightly different approach: `ConciseDateFormatter` formats
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.

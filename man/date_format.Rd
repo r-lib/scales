@@ -27,7 +27,10 @@ to UTC}
 \description{
 \code{date_short()} attempts to construct the shortest format string
 that will uniquely identify dates. It's inspired by matplotlib's
-[\code{ConciseDateFormatter``](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter), but uses a slightly different approach: }ConciseDateFormatter\code{formats "firsts" (e.g. first day of month, first day of day) specially;}date_short()` formats changes (e.g. new month, new year) specially.
+\href{https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter}{ConciseDateFormatter},
+but uses a slightly different approach: \code{ConciseDateFormatter} formats
+"firsts" (e.g. first day of month, first day of day) specially;
+\code{date_short()} formats changes (e.g. new month, new year) specially.
 }
 \examples{
 date_range <- function(start, days) {
