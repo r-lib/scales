@@ -26,12 +26,14 @@ expression object.
 with each string.
 }
 \examples{
-parse_format()(c("alpha", "beta", "gamma"))
-parse_format()(1:5)
+# Use parse_format() with discrete scales
+greek <- c("alpha", "beta", "gamma")
+demo_discrete(greek)
+demo_discrete(greek, labels = parse_format())
 
-math_format()(1:10)
-math_format(frac(alpha, .x))(1:10)
-math_format(format = percent)(runif(10))
+# Use math_format() with continuous scales
+demo_continuous(c(1, 5))
+demo_continuous(c(1, 5), labels = math_format(alpha[.x]))
 }
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.
