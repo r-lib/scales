@@ -8,7 +8,7 @@
 [![CRAN
 status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
 [![Travis build
-status](https://travis-ci.org/hadley/scales.svg?branch=master)](https://travis-ci.org/hadley/scales)
+status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
 [![Codecov test
 coverage](https://codecov.io/gh/hadley/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/hadley/scales?branch=master)
 <!-- badges: end -->
@@ -54,7 +54,7 @@ set.seed(1234)
 
 # percent() function takes a numeric and does your division and labelling for you
 percent(c(0.1, 1 / 3, 0.56))
-#> [1] "10.0%" "33.3%" "56.0%"
+#> [1] "10%" "33%" "56%"
 
 # comma() adds commas into large numbers for easier readability
 comma(10e6)
@@ -90,8 +90,8 @@ number(c(12.3, 4, 12345.789, 0.0002),
 # percent formatting in the French style
 french_percent <- percent_format(decimal.mark = ",", suffix = " %")
 french_percent(runif(10))
-#>  [1] "11,4 %" "62,2 %" "60,9 %" "62,3 %" "86,1 %" "64,0 %" "0,9 %" 
-#>  [8] "23,3 %" "66,6 %" "51,4 %"
+#>  [1] "11,37 %" "62,23 %" "60,93 %" "62,34 %" "86,09 %" "64,03 %" "0,95 %" 
+#>  [8] "23,26 %" "66,61 %" "51,43 %"
 
 # currency formatting Euros (and simple conversion!)
 usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)

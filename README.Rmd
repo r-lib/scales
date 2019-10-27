@@ -19,7 +19,7 @@ suppressWarnings(suppressPackageStartupMessages(library(dplyr)))
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
-[![Travis build status](https://travis-ci.org/hadley/scales.svg?branch=master)](https://travis-ci.org/hadley/scales)
+[![Travis build status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
 [![Codecov test coverage](https://codecov.io/gh/hadley/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/hadley/scales?branch=master)
 <!-- badges: end -->
 
