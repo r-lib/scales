@@ -54,6 +54,10 @@ demo_log10(c(1, 1e6), label = label_bytes())
 # (1024) ^ 2 bytes rather than (1000) ^ 2. You'll need to override
 # the default breaks to make this more informative.
 demo_continuous(c(1, 1e6), label = label_bytes(units = "binary"))
+demo_continuous(c(1, 1e6),
+  breaks = breaks_width(250 * 1024),
+  label = label_bytes(units = "binary")
+)
 }
 \references{
 Units of Information (Wikipedia) :

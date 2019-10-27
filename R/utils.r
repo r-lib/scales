@@ -1,6 +1,9 @@
 # Evaluates all arguments (see #81)
 force_all <- function(...) list(...)
 
+range_finite <- function(x) {
+  suppressWarnings(range(x, na.rm = TRUE, finite = TRUE))
+}
 
 demo_ggplot <- function(x, scale_name, ...) {
 

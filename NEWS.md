@@ -1,5 +1,8 @@
 # scales 1.0.0.9000
 
+* New `breaks_width()` which allows you to specify a fixed distance between
+  breaks (along with optional offset).
+
 * New `demo_continuous()`, `demo_discrete()`, and `demo_log10()` make it 
   easier to show how to use scales functions with ggplot2 in examples.
 
