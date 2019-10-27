@@ -43,7 +43,7 @@
 
 
 <meta property="og:title" content="Automatic number formatter — number_auto" />
-<meta property="og:description" content="Switches between comma() and scientific() format based on a set of
+<meta property="og:description" content="Switches between number_format() and scientific_format() based on a set of
 heuristics designed to automatically generate useful labels across a wide
 range of inputs" />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
@@ -124,7 +124,7 @@ range of inputs" />
     </div>
 
     <div class="ref-description">
-    <p>Switches between <code><a href='number_format.html'>comma()</a></code> and <code><a href='scientific_format.html'>scientific()</a></code> format based on a set of
+    <p>Switches between <code><a href='number_format.html'>number_format()</a></code> and <code><a href='scientific_format.html'>scientific_format()</a></code> based on a set of
 heuristics designed to automatically generate useful labels across a wide
 range of inputs</p>
     </div>
@@ -142,9 +142,22 @@ range of inputs</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>a</span>, <span class='no'>b</span>) <span class='fu'><a href='extended_breaks.html'>extended_breaks</a></span>(<span class='fl'>5</span>)(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>a</span>, <span class='no'>b</span>))
-
-<span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>))</div><div class='output co'>#&gt; [1] "0.0e+00" "2.5e-07" "5.0e-07" "7.5e-07" "1.0e-06"</div><div class='input'><span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1e-3</span>))</div><div class='output co'>#&gt; [1] "0.00000" "0.00025" "0.00050" "0.00075" "0.00100"</div><div class='input'><span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] "0.00" "0.25" "0.50" "0.75" "1.00"</div><div class='input'><span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1e3</span>))</div><div class='output co'>#&gt; [1] "0"    "250"  "500"  "750"  "1000"</div><div class='input'><span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; [1] "0"         "250,000"   "500,000"   "750,000"   "1,000,000"</div><div class='input'><span class='fu'>number_auto</span>(<span class='fu'>b</span>(<span class='fl'>0</span>, <span class='fl'>1e9</span>))</div><div class='output co'>#&gt; [1] "0.0e+00" "2.5e+08" "5.0e+08" "7.5e+08" "1.0e+09"</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Very small and very large numbers get scientific notation</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e9</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Other ranges get the numbers printed in full</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e3</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>number_auto</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = number_auto)</div><div class='img'><img src='number_auto-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

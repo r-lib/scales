@@ -158,24 +158,30 @@ to UTC</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>a_time</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ISOdatetime.html'>ISOdatetime</a></span>(<span class='fl'>2012</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>11</span>, <span class='fl'>30</span>, <span class='fl'>0</span>, <span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>"UTC"</span>)
-<span class='no'>a_date</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='no'>a_time</span>)
+    <pre class="examples"><div class='input'><span class='no'>date_range</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>start</span>, <span class='no'>days</span>) {
+  <span class='no'>start</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='no'>start</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>start</span>, <span class='no'>start</span> + <span class='no'>days</span> * <span class='fl'>24</span> * <span class='fl'>60</span> * <span class='fl'>60</span>)
+}
 
-<span class='fu'>date_format</span>()(<span class='no'>a_date</span>)</div><div class='output co'>#&gt; [1] "2012-01-01"</div><div class='input'><span class='fu'>date_format</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%A"</span>)(<span class='no'>a_date</span>)</div><div class='output co'>#&gt; [1] "Sunday"</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"2012-12-25"</span>) + (<span class='fl'>0</span>:<span class='fl'>20</span>) * <span class='fl'>2</span>
-<span class='fu'>date_short</span>()(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "25\nDec\n2012" "27"            "29"            "31"           
-#&gt;  [5] "02\nJan\n2013" "04"            "06"            "08"           
-#&gt;  [9] "10"            "12"            "14"            "16"           
-#&gt; [13] "18"            "20"            "22"            "24"           
-#&gt; [17] "26"            "28"            "30"            "01\nFeb"      
-#&gt; [21] "03"           </div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='st'>"2012-12-25"</span>) + (<span class='fl'>0</span>:<span class='fl'>10</span>) * <span class='fl'>3600</span> * <span class='fl'>10</span>
-<span class='fu'>date_short</span>()(<span class='no'>x</span>)</div><div class='output co'>#&gt;  [1] "00:00\n25\nDec\n2012" "10:00"                "20:00"               
-#&gt;  [4] "06:00\n26"            "16:00"                "02:00\n27"           
-#&gt;  [7] "12:00"                "22:00"                "08:00\n28"           
-#&gt; [10] "18:00"                "04:00\n29"           </div><div class='input'><span class='fu'>time_format</span>()(<span class='no'>a_time</span>)</div><div class='output co'>#&gt; [1] "11:30:00"</div><div class='input'><span class='fu'>time_format</span>(<span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>"Europe/Berlin"</span>)(<span class='no'>a_time</span>)</div><div class='output co'>#&gt; [1] "12:30:00"</div><div class='input'>
-<span class='no'>a_hms</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>hms</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/hms/man/Deprecated.html'>as.hms</a></span>(<span class='no'>a_time</span>, <span class='kw'>tz</span> <span class='kw'>=</span> <span class='st'>"UTC"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: as.hms() is deprecated, please use as_hms().</span>
-#&gt; <span class='warning'><span style='color: #555555;'>This warning is displayed once per session.</span><span></span></div><div class='input'><span class='fu'>time_format</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"%H:%M"</span>)(<span class='no'>a_hms</span>)</div><div class='output co'>#&gt; [1] "11:30"</div></span></pre>
+<span class='no'>two_months</span> <span class='kw'>&lt;-</span> <span class='fu'>date_range</span>(<span class='st'>"2020-05-01"</span>, <span class='fl'>60</span>)
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>two_months</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime()</div><div class='img'><img src='date_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>two_months</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>date_format</span>(<span class='st'>"%m/%d"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(labels = date_format("%m/%d"))</div><div class='img'><img src='date_format-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># ggplot2 provides a short-hand:</span>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>two_months</span>, <span class='kw'>date_labels</span> <span class='kw'>=</span> <span class='st'>"%m/%d"</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(date_labels = "%m/%d")</div><div class='img'><img src='date_format-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># An alternative labelling system is date_short()</span>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>two_months</span>, <span class='kw'>date_breaks</span> <span class='kw'>=</span> <span class='st'>"7 days"</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>date_short</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(date_breaks = "7 days", labels = date_short())</div><div class='img'><img src='date_format-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># This is particularly effective for dense labels</span>
+<span class='no'>one_year</span> <span class='kw'>&lt;-</span> <span class='fu'>date_range</span>(<span class='st'>"2020-05-01"</span>, <span class='fl'>365</span>)
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_year</span>, <span class='kw'>date_breaks</span> <span class='kw'>=</span> <span class='st'>"month"</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(date_breaks = "month")</div><div class='img'><img src='date_format-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_year</span>, <span class='kw'>date_breaks</span> <span class='kw'>=</span> <span class='st'>"month"</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>date_short</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(date_breaks = "month", labels = date_short())</div><div class='img'><img src='date_format-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

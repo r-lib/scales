@@ -52,6 +52,9 @@
     <loc>https://scales.r-lib.org//reference/date_trans.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/demo_continuous.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/dichromat_pal.html</loc>
   </url>
   <url>
@@ -122,6 +125,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/number_format.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/number_si.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/ordinal_format.html</loc>
@@ -206,6 +212,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/trans_range.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/unit_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/viridis_pal.html</loc>

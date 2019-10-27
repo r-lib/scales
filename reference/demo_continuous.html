@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generate sequence of fixed size intervals covering range. — fullseq • scales</title>
+<title>Demonstrate scales functions with ggplot2 code — demo_continuous • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Generate sequence of fixed size intervals covering range. — fullseq" />
-<meta property="og:description" content="Generate sequence of fixed size intervals covering range." />
+<meta property="og:title" content="Demonstrate scales functions with ggplot2 code — demo_continuous" />
+<meta property="og:description" content="These functions generate ggplot2 code needed to use scales functions for
+real code." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,44 +117,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Generate sequence of fixed size intervals covering range.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/full-seq.r'><code>R/full-seq.r</code></a></small>
-    <div class="hidden name"><code>fullseq.Rd</code></div>
+    <h1>Demonstrate scales functions with ggplot2 code</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/utils.r'><code>R/utils.r</code></a></small>
+    <div class="hidden name"><code>demo_continuous.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Generate sequence of fixed size intervals covering range.</p>
+    <p>These functions generate ggplot2 code needed to use scales functions for
+real code.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fullseq</span>(<span class='no'>range</span>, <span class='no'>size</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>demo_continuous</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>demo_log10</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>demo_discrete</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>demo_datetime</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>range</th>
-      <td><p>range</p></td>
-    </tr>
-    <tr>
-      <th>size</th>
-      <td><p>interval size</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed on to methods</p></td>
+      <th>x</th>
+      <td><p>A vector of data</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/plyr/man/round_any.html'>plyr::round_any()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>
