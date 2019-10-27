@@ -14,18 +14,39 @@
 #'   \url{http://en.wikipedia.org/wiki/Units_of_information}
 #' @export
 #' @examples
-#' number_bytes_format()(sample(3000000000, 10))
-#' number_bytes(sample(3000000000, 10))
-#' number_bytes(sample(3000000000, 10), accuracy = .1)
-#' number_bytes(1024^(0:4))
-#' number_bytes(1024^(0:4), units = "si", accuracy = .01)
-#' number_bytes(1000^(1:3), "kB", units = "si")
-number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
-  function(x) number_bytes(x, symbol, units, ...)
+#' demo_continuous(c(1, 1e6))
+#' demo_continuous(c(1, 1e6), label = label_bytes())
+#' # Force all to use same units
+#' demo_continuous(c(1, 1e6), label = label_bytes("kB"))
+#'
+#' # Auto units are particularly nice on log scales
+#' demo_log10(c(1, 1e6))
+#' demo_log10(c(1, 1e6), label = label_bytes())
+#'
+#' # You can also use binary units where a megabyte is defined as
+#' # (1024) ^ 2 bytes rather than (1000) ^ 2. You'll need to override
+#' # the default breaks to make this more informative.
+#' demo_continuous(c(1, 1e6), label = label_bytes(units = "binary"))
+label_bytes <- function(symbol = "auto", units = c("si", "binary"), ...) {
+  units <- match.arg(units)
+  force_all(symbol, ...)
+
+  function(x) {
+    number_bytes(x, symbol, units, ...)
+  }
 }
 
 #' @export
-#' @rdname number_bytes_format
+#' @rdname label_bytes
+number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
+  force_all(symbol, units, ...)
+  function(x) {
+    number_bytes(x, symbol, units, ...)
+  }
+}
+
+#' @export
+#' @rdname label_bytes
 number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy = 1, ...) {
   units <- match.arg(units, c("binary", "si"))
 
