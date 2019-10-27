@@ -12,6 +12,7 @@
 #'   demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
 #' }
 minor_breaks_width <- function(width, offset) {
+  # Check that has needed version of ggplot2
   f <- breaks_width(width, offset)
 
   function(range, breaks) {
@@ -23,6 +24,7 @@ minor_breaks_width <- function(width, offset) {
 #' @param n number of breaks
 #' @rdname minor_breaks_width
 minor_breaks_n <- function(n) {
+  # Check that has needed version of ggplot2
   force(n)
   f <- function(rng) seq(rng[1], rng[2], length = n)
 
