@@ -25,7 +25,8 @@ Imports:
     R6,
     RColorBrewer,
     Rcpp,
-    viridisLite
+    viridisLite,
+    lifecycle
 Suggests: 
     bit64,
     covr,
