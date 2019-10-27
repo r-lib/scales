@@ -1,4 +1,4 @@
-#' Bytes labels
+#' Label bytes
 #'
 #' Scale bytes into human friendly units. Can use either SI units (e.g.
 #' kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See

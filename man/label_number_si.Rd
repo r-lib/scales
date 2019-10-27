@@ -2,7 +2,7 @@
 % Please edit documentation in R/format-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Rescale numbers with SI prefixes}
+\title{Label numbers, rescaled automatically to use SI prefixes}
 \usage{
 label_number_si(accuracy = 1, prefix = "", suffix = "", ...)
 }

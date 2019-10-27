@@ -2,7 +2,7 @@
 % Please edit documentation in R/format-auto.R
 \name{label_number_auto}
 \alias{label_number_auto}
-\title{Automatic number formatter}
+\title{Label numbers, avoiding scientific notation where possible}
 \usage{
 label_number_auto()
 }

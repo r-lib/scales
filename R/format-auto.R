@@ -1,4 +1,4 @@
-#' Automatic number formatter
+#' Label numbers, avoiding scientific notation where possible
 #'
 #' Switches between [number_format()] and [scientific_format()] based on a set of
 #' heuristics designed to automatically generate useful labels across a wide

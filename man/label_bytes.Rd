@@ -2,7 +2,7 @@
 % Please edit documentation in R/format-bytes.R
 \name{label_bytes}
 \alias{label_bytes}
-\title{Bytes labels}
+\title{Label bytes}
 \usage{
 label_bytes(units = "auto_si", accuracy = 1, ...)
 }
