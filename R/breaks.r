@@ -263,6 +263,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
 #' Places minor breaks between major breaks.
 #'
 #' @param reverse if TRUE, calculates the minor breaks for a reversed scale
+#' @keywords internal
 #' @export
 #' @examples
 #' m <- extended_breaks()(c(1, 10))
