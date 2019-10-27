@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatic number formatter — label_number_auto • scales</title>
+<title>Label numbers, avoiding scientific notation where possible — label_number_auto • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Automatic number formatter — label_number_auto" />
+<meta property="og:title" content="Label numbers, avoiding scientific notation where possible — label_number_auto" />
 <meta property="og:description" content="Switches between number_format() and scientific_format() based on a set of
 heuristics designed to automatically generate useful labels across a wide
 range of inputs" />
@@ -118,7 +118,7 @@ range of inputs" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatic number formatter</h1>
+    <h1>Label numbers, avoiding scientific notation where possible</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-auto.R'><code>R/format-auto.R</code></a></small>
     <div class="hidden name"><code>label_number_auto.Rd</code></div>
     </div>
@@ -149,7 +149,12 @@ range of inputs</p>
 #&gt;   geom_blank() +
 #&gt;   scale_x_continuous(labels = label_number_auto())</div><div class='img'><img src='label_number_auto-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number_auto</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
 #&gt;   geom_blank() +
-#&gt;   scale_x_continuous(labels = label_number_auto())</div><div class='img'><img src='label_number_auto-6.png' alt='' width='700' height='433' /></div></pre>
+#&gt;   scale_x_continuous(labels = label_number_auto())</div><div class='img'><img src='label_number_auto-6.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Transformation is applied individually so you get as little</span>
+<span class='co'># scientific notation as possible</span>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e7</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number_auto</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_log10(labels = label_number_auto())</div><div class='img'><img src='label_number_auto-7.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
