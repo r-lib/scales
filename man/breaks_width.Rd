@@ -7,16 +7,27 @@
 breaks_width(width, offset = 0)
 }
 \arguments{
-\item{width}{Distance between each break}
+\item{width}{Distance between each break. Either a number, or for
+date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+"5 days". Unit can be of one "sec", "min", "hour", "day", "week",
+"month", "year".}
 
 \item{offset}{Use if you don't want breaks to start at zero}
 }
 \description{
-Produce breaks spaced by a fixed distance
+Useful for numeric, date, and date-time scales.
 }
 \examples{
 demo_continuous(c(0, 100))
 demo_continuous(c(0, 100), breaks = breaks_width(10))
 demo_continuous(c(0, 100), breaks = breaks_width(20, -4))
 demo_continuous(c(0, 100), breaks = breaks_width(20, 4))
+
+# This is also useful for dates
+one_months <- as.POSIXct(c("2020-05-01", "2020-06-01"))
+demo_datetime(two_months)
+demo_datetime(two_months, breaks = breaks_width("1 week"))
+demo_datetime(two_months, breaks = breaks_width("5 days"))
+# This is so useful that scale_x_datetime() has a shorthand:
+demo_datetime(two_months, date_breaks = "5 days")
 }

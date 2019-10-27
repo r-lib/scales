@@ -22,6 +22,20 @@ pretty_breaks <- function(n = 5, ...) {
   }
 }
 
+#' Regularly spaced dates
+#'
+#' \lifecycle{retired}
+#' Use `breaks_width()` instead.
+#'
+#' @param width an interval specification, one of "sec", "min", "hour",
+#'   "day", "week", "month", "year". Can be by an integer and a space, or
+#'   followed by "s". Fractional seconds are supported.
+#' @keywords internal
+#' @export
+date_breaks <- function(width = "1 month") {
+  force(width)
+  function(x) fullseq(x, width)
+}
 
 #' Pretty breaks on transformed scale
 #'

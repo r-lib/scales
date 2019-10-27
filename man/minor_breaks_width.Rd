@@ -10,7 +10,10 @@ minor_breaks_width(width, offset)
 minor_breaks_n(n)
 }
 \arguments{
-\item{width}{Distance between each break}
+\item{width}{Distance between each break. Either a number, or for
+date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+"5 days". Unit can be of one "sec", "min", "hour", "day", "week",
+"month", "year".}
 
 \item{offset}{Use if you don't want breaks to start at zero}
 
