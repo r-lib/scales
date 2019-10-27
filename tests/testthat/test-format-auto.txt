@@ -1,3 +1,4 @@
+> number_auto <- label_number_auto()
 > number_auto(c(0, 1e-06))
 [1] "0e+00" "1e-06"
 

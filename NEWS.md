@@ -16,7 +16,7 @@
   For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, `date_short()`
   will use labels Jan 10, 20, 30, Feb 1 (#209).
   
-* New `number_auto()` automatically picks between `number_format()` and 
+* New `label_number_auto()` automatically picks between `number_format()` and 
   `scientific_format()` based on the range of the input. It should produce nice 
   output over a very wide range of inputs (@paleolimbot, #208).
 
@@ -67,7 +67,7 @@
 * `dichromat_pal()` documentation now builds without requiring suggested `dichromat` 
    package to be installed (@dpseidel, #172).
 
-* New function `number_si()` formats numeric vectors with limited SI units.
+* New function `label_number_si()` formats numeric vectors with limited SI units.
   Individual values are scaled and labelled with abbreviations "K", "M", "B",
   or "T" dependent on magnitude (@dpseidel, #83).
   

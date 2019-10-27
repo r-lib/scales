@@ -1,4 +1,5 @@
 test_that("gracefully handles bad input works", {
+  number_auto <- label_number_auto()
   expect_equal(number_auto(NULL), character())
   expect_equal(number_auto(numeric()), character())
   expect_equal(number_auto(NA), "NA")
@@ -7,6 +8,7 @@ test_that("gracefully handles bad input works", {
 
 test_that("tricky breaks don't change unexpectedly", {
   verify_output(test_path("test-format-auto.txt"), {
+    number_auto <- label_number_auto()
     number_auto(c(0, 0.000001))
     number_auto(c(0.0009, 0.0010, 0.0011))
     number_auto(c(0.00009, 0.00010, 0.00011))
