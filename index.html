@@ -115,7 +115,7 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># percent() function takes a numeric and does your division and labelling for you</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/number_format.html">percent</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.1</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">0.56</span>))</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "10.0%" "33.3%" "56.0%"</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "10%" "33%" "56%"</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># comma() adds commas into large numbers for easier readability</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw"><a href="reference/number_format.html">comma</a></span>(<span class="fl">10e6</span>)</a>
@@ -145,8 +145,8 @@
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co"># percent formatting in the French style</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14">french_percent &lt;-<span class="st"> </span><span class="kw"><a href="reference/number_format.html">percent_format</a></span>(<span class="dt">decimal.mark =</span> <span class="st">","</span>, <span class="dt">suffix =</span> <span class="st">" %"</span>)</a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">french_percent</span>(<span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  [1] "11,4 %" "62,2 %" "60,9 %" "62,3 %" "86,1 %" "64,0 %" "0,9 %" </span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  [8] "23,3 %" "66,6 %" "51,4 %"</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  [1] "11,37 %" "62,23 %" "60,93 %" "62,34 %" "86,09 %" "64,03 %" "0,95 %" </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  [8] "23,26 %" "66,61 %" "51,43 %"</span></a>
 <a class="sourceLine" id="cb3-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># currency formatting Euros (and simple conversion!)</span></a>
 <a class="sourceLine" id="cb3-20" data-line-number="20">usd_to_euro &lt;-<span class="st"> </span><span class="kw"><a href="reference/dollar_format.html">dollar_format</a></span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"\u20ac"</span>, <span class="dt">scale =</span> <span class="fl">.85</span>)</a>
@@ -257,7 +257,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=scales"><img src="https://www.r-pkg.org/badges/version/scales" alt="CRAN status"></a></li>
-<li><a href="https://travis-ci.org/hadley/scales"><img src="https://travis-ci.org/hadley/scales.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://travis-ci.org/r-lib/scales"><img src="https://travis-ci.org/r-lib/scales.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://codecov.io/gh/hadley/scales?branch=master"><img src="https://codecov.io/gh/hadley/scales/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
