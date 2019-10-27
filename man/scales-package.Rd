@@ -8,9 +8,9 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-Graphical scales map data to aesthetics, and provide
-    methods for automatically determining breaks and labels
-    for axes and legends.
+Graphical scales map data to aesthetics, and
+    provide methods for automatically determining breaks and labels for
+    axes and legends.
 }
 \seealso{
 Useful links:

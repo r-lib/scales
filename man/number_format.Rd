@@ -12,16 +12,16 @@
 \alias{number_si}
 \title{Number formatters}
 \usage{
-number_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
+number_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
   big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
 
-number(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
+number(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
   big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
 
-comma_format(accuracy = 1, scale = 1, prefix = "", suffix = "",
+comma_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
 
-comma(x, accuracy = 1, scale = 1, prefix = "", suffix = "",
+comma(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
 
 percent_format(accuracy = NULL, scale = 100, prefix = "",
@@ -32,18 +32,23 @@ percent(x, accuracy = NULL, scale = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
   ...)
 
-unit_format(accuracy = 1, scale = 1, prefix = "", unit = "m",
+unit_format(accuracy = NULL, scale = 1, prefix = "", unit = "m",
   sep = " ", suffix = paste0(sep, unit), big.mark = " ",
   decimal.mark = ".", trim = TRUE, ...)
 
-degree_format(accuracy = 1, scale = 1, prefix = "", unit = "",
+degree_format(accuracy = NULL, scale = 1, prefix = "", unit = "",
   sep = "", suffix = paste0(sep, "°", unit), big.mark = " ",
   decimal.mark = ".", trim = TRUE, ...)
 
-number_si(x, prefix = "", suffix = "", ...)
+number_si(x, accuracy = 1, prefix = "", suffix = "", ...)
 }
 \arguments{
-\item{accuracy}{Number to round to, \code{NULL} for automatic guess.}
+\item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
+
+Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
 formating (useful if the underlying data is on another scale,
@@ -94,53 +99,44 @@ M" for \eqn{\ge} 10e6, "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
 It respects all arguments except \code{scale} which is set internally.
 }
 \examples{
-# number()
-v <- c(12.3, 4, 12345.789, 0.0002)
-number(v)
-number(v, big.mark = ",")
-number(v, accuracy = .001)
-number(v, accuracy = .001, decimal.mark = ",")
-number(v, accuracy = .5)
+demo_continuous(c(-1e6, 1e6))
+# Suppress scientific notation with number_format()
+demo_continuous(c(-1e6, 1e6), labels = number_format())
+# Or comma_format()
+demo_continuous(c(-1e6, 1e6), labels = comma_format())
 
-# number_format()
-my_format <- number_format(big.mark = "'", decimal.mark = ",")
-my_format(v)
+# Display currencies with dollar_format()
+demo_continuous(c(-1e6, 1e6), labels = dollar_format())
+demo_continuous(c(-1e6, 1e6), labels = dollar_format(prefix = "\\u20ac"))
+# Rescale using the scale parameter
+demo_continuous(c(-1e6, 1e6), labels = dollar_format(scale = 1 / 1000))
 
-# comma() and comma_format()
-comma_format()(c(1, 1e3, 2000, 1e6))
-comma_format(accuracy = .01)(c(1, 1e3, 2000, 1e6))
-comma(c(1, 1e3, 2000, 1e6))
-
-# percent() and percent_format()
-percent_format()(runif(10))
-percent(runif(10))
-
-per_mille <- percent_format(
-  scale = 1000,
-  suffix = "\\u2030",
-  accuracy = .1
-)
-per_mille(.1234)
-
-french_percent <- percent_format(
+# Show percentages with percent_format()
+demo_continuous(c(0, 1))
+# Or convert to percentage:
+demo_continuous(c(0, 1), labels = percent_format())
+# Or use prefix and suffix to create your own
+french_percent <- number_format(
+  accuracy = NULL,
+  scale = 100,
   decimal.mark = ",",
   suffix = " \%"
 )
-french_percent(runif(10))
+demo_continuous(c(0, .01), labels = french_percent)
 
-# unit_format()
-# labels in kilometer when the raw data are in meter
+# Label with units
+demo_continuous(c(0, 1), labels = unit_format(unit = "m"))
+# Labels in kg, but original data in g
 km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
-km(runif(10) * 1e3)
+demo_continuous(c(0, 2500), labels = km)
+# Or with degrees
+demo_continuous(c(32, 212), label = degree_format(unit = "F"))
+demo_continuous(c(0, 100), label = degree_format(unit = "C"))
 
-# labels in hectares, raw data in square meters
-ha <- unit_format(unit = "ha", scale = 1e-4)
-km(runif(10) * 1e5)
-
-# degree_format()
-celcius <- degree_format(unit = "C")
-celcius(rnorm(10) * 10)
-
-west <- degree_format(unit = "W")
-west(runif(10) * 100)
+# number_si() automatically scales and labels with the best SI prefix
+demo_continuous(c(1, 1e9), label = number_si)
+demo_log10(c(1, 1e9),
+  breaks = log_breaks(10),
+  labels = number_si
+)
 }

@@ -25,7 +25,7 @@ number_auto <- function(x) {
   if (max_magnitude > 1e6) {
     format_shortest(
       x,
-      comma,
+      function(breaks) comma(breaks, 1),
       function(breaks) format(breaks, scientific = TRUE, trim = TRUE)
     )
   } else if (min_magnitude < 1e-3) {
@@ -38,7 +38,7 @@ number_auto <- function(x) {
     # Probably a year so don't use commas
     format(x, trim = TRUE)
   } else if (max_magnitude > 1e3) {
-    comma(x)
+    comma(x, 1)
   } else {
     format(x, trim = TRUE)
   }

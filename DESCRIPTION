@@ -31,7 +31,8 @@ Suggests:
     covr,
     dichromat,
     hms,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    ggplot2
 LinkingTo: 
     Rcpp
 Encoding: UTF-8

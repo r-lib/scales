@@ -7,7 +7,8 @@
 \usage{
 number_bytes_format(symbol = "auto", units = "binary", ...)
 
-number_bytes(x, symbol = "auto", units = c("binary", "si"), ...)
+number_bytes(x, symbol = "auto", units = c("binary", "si"),
+  accuracy = 1, ...)
 }
 \arguments{
 \item{symbol}{byte symbol to use. If "auto" the symbol used will be

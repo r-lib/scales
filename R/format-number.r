@@ -22,7 +22,12 @@
 #' @return `*_format()` returns a function with single parameter
 #'   `x`, a numeric vector, that returns a character vector.
 #' @param x A numeric vector to format.
-#' @param accuracy Number to round to, `NULL` for automatic guess.
+#' @param accuracy Number to round to. Use (e.g.) `0.01` to show 2 decimal
+#'   places of precision. If `NULL`, the default, uses a heuristic that should
+#'   ensure breaks have the minimum number of digits needed to show the
+#'   difference between adjacent values.
+#'
+#'   Applied to rescaled data.
 #' @param scale A scaling factor: `x` will be multiply by `scale` before
 #'   formating (useful if the underlying data is on another scale,
 #'   e.g. for computing percentages or thousands).
@@ -35,19 +40,47 @@
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @examples
-#' # number()
-#' v <- c(12.3, 4, 12345.789, 0.0002)
-#' number(v)
-#' number(v, big.mark = ",")
-#' number(v, accuracy = .001)
-#' number(v, accuracy = .001, decimal.mark = ",")
-#' number(v, accuracy = .5)
+#' demo_continuous(c(-1e6, 1e6))
+#' # Suppress scientific notation with number_format()
+#' demo_continuous(c(-1e6, 1e6), labels = number_format())
+#' # Or comma_format()
+#' demo_continuous(c(-1e6, 1e6), labels = comma_format())
 #'
-#' # number_format()
-#' my_format <- number_format(big.mark = "'", decimal.mark = ",")
-#' my_format(v)
+#' # Display currencies with dollar_format()
+#' demo_continuous(c(-1e6, 1e6), labels = dollar_format())
+#' demo_continuous(c(-1e6, 1e6), labels = dollar_format(prefix = "\u20ac"))
+#' # Rescale using the scale parameter
+#' demo_continuous(c(-1e6, 1e6), labels = dollar_format(scale = 1 / 1000))
 #'
-number_format <- function(accuracy = 1, scale = 1, prefix = "",
+#' # Show percentages with percent_format()
+#' demo_continuous(c(0, 1))
+#' # Or convert to percentage:
+#' demo_continuous(c(0, 1), labels = percent_format())
+#' # Or use prefix and suffix to create your own
+#' french_percent <- number_format(
+#'   accuracy = NULL,
+#'   scale = 100,
+#'   decimal.mark = ",",
+#'   suffix = " %"
+#' )
+#' demo_continuous(c(0, .01), labels = french_percent)
+#'
+#' # Label with units
+#' demo_continuous(c(0, 1), labels = unit_format(unit = "m"))
+#' # Labels in kg, but original data in g
+#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
+#' demo_continuous(c(0, 2500), labels = km)
+#' # Or with degrees
+#' demo_continuous(c(32, 212), label = degree_format(unit = "F"))
+#' demo_continuous(c(0, 100), label = degree_format(unit = "C"))
+#'
+#' # number_si() automatically scales and labels with the best SI prefix
+#' demo_continuous(c(1, 1e9), label = number_si)
+#' demo_log10(c(1, 1e9),
+#'   breaks = log_breaks(10),
+#'   labels = number_si
+#' )
+number_format <- function(accuracy = NULL, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
   force_all(
@@ -75,7 +108,7 @@ number_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @export
 #' @rdname number_format
-number <- function(x, accuracy = 1, scale = 1, prefix = "",
+number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
                    trim = TRUE, ...) {
   if (length(x) == 0) return(character())
@@ -103,32 +136,11 @@ number <- function(x, accuracy = 1, scale = 1, prefix = "",
   ret
 }
 
-precision <- function(x) {
-  # cannot calculate a precision if all values are Inf or NA
-  if (all(is.infinite(x) | is.na(x))) {
-    return(1)
-  }
-
-  rng <- range(x, na.rm = TRUE, finite = TRUE)
-
-  span <- if (zero_range(rng)) abs(rng[1]) else diff(rng)
-  if (span == 0) {
-    return(1)
-  }
-
-  10^floor(log10(span))
-}
 
 #' @export
 #' @rdname number_format
 #' @param digits Deprecated, use `accuracy` instead.
-#' @examples
-#' # comma() and comma_format()
-#' comma_format()(c(1, 1e3, 2000, 1e6))
-#' comma_format(accuracy = .01)(c(1, 1e3, 2000, 1e6))
-#' comma(c(1, 1e3, 2000, 1e6))
-#'
-comma_format <- function(accuracy = 1, scale = 1, prefix = "",
+comma_format <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = ",", decimal.mark = ".",
                          trim = TRUE, digits, ...) {
   if (!missing(digits)) {
@@ -151,7 +163,7 @@ comma_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @export
 #' @rdname number_format
-comma <- function(x, accuracy = 1, scale = 1, prefix = "",
+comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
                   suffix = "", big.mark = ",", decimal.mark = ".",
                   trim = TRUE, digits, ...) {
   if (!missing(digits)) {
@@ -173,27 +185,8 @@ comma <- function(x, accuracy = 1, scale = 1, prefix = "",
   )
 }
 
-
 #' @export
 #' @rdname number_format
-#' @examples
-#' # percent() and percent_format()
-#' percent_format()(runif(10))
-#' percent(runif(10))
-#'
-#' per_mille <- percent_format(
-#'   scale = 1000,
-#'   suffix = "\u2030",
-#'   accuracy = .1
-#' )
-#' per_mille(.1234)
-#'
-#' french_percent <- percent_format(
-#'   decimal.mark = ",",
-#'   suffix = " %"
-#' )
-#' french_percent(runif(10))
-#'
 percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
                            suffix = "%", big.mark = " ", decimal.mark = ".",
                            trim = TRUE, ...) {
@@ -231,17 +224,7 @@ percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
 #' @rdname number_format
 #' @param unit The units to append.
 #' @param sep The separator between the number and the unit label.
-#' @examples
-#' # unit_format()
-#' # labels in kilometer when the raw data are in meter
-#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
-#' km(runif(10) * 1e3)
-#'
-#' # labels in hectares, raw data in square meters
-#' ha <- unit_format(unit = "ha", scale = 1e-4)
-#' km(runif(10) * 1e5)
-#'
-unit_format <- function(accuracy = 1, scale = 1, prefix = "",
+unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
                         unit = "m", sep = " ", suffix = paste0(sep, unit),
                         big.mark = " ", decimal.mark = ".",
                         trim = TRUE, ...) {
@@ -259,14 +242,7 @@ unit_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @rdname number_format
 #' @export
-#' @examples
-#' # degree_format()
-#' celcius <- degree_format(unit = "C")
-#' celcius(rnorm(10) * 10)
-#'
-#' west <- degree_format(unit = "W")
-#' west(runif(10) * 100)
-degree_format <- function(accuracy = 1, scale = 1, prefix = "",
+degree_format <- function(accuracy = NULL, scale = 1, prefix = "",
                           unit = "", sep = "",
                           suffix = paste0(sep, "\u00b0", unit),
                           big.mark = " ", decimal.mark = ".",
@@ -285,7 +261,7 @@ degree_format <- function(accuracy = 1, scale = 1, prefix = "",
 
 #' @rdname number_format
 #' @export
-number_si <- function(x, prefix = "", suffix = "", ...) {
+number_si <- function(x, accuracy = 1, prefix = "", suffix = "", ...) {
   breaks <- c(" " = 0, 10^c(K = 3, M = 6, B = 9, "T" = 12))
 
   n_suffix <- cut(abs(x),
@@ -301,6 +277,7 @@ number_si <- function(x, prefix = "", suffix = "", ...) {
   scale[which(scale %in% c(Inf, NA))] <- 1
 
   number(x,
+    accuracy = accuracy,
     scale = unname(scale),
     prefix = prefix,
     suffix = paste0(n_suffix, suffix),
@@ -308,3 +285,22 @@ number_si <- function(x, prefix = "", suffix = "", ...) {
   )
 }
 
+# Helpers -----------------------------------------------------------------
+
+precision <- function(x) {
+  # cannot calculate a precision if all values are Inf or NA
+  if (all(is.infinite(x) | is.na(x)) || length(x) == 1) {
+    return(1)
+  }
+
+  smallest_diff <- min(diff(sort(x)))
+
+  if (smallest_diff < sqrt(.Machine$double.eps)) {
+    1
+  } else if (smallest_diff > 1) {
+    # Don't automatically round large numbers
+    1
+  } else {
+    10^(floor(log10(smallest_diff)) - 1)
+  }
+}

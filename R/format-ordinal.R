@@ -53,6 +53,7 @@ ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
   out <- out[!duplicated(out$values), ] # only first result should be considered
   ret <- paste0(
     number(
+      accuracy = 1,
       x,
       prefix = prefix,
       suffix = "",

@@ -1,5 +1,13 @@
 # scales 1.0.0.9000
 
+* New `demo_continuous()`, `demo_discrete()`, and `demo_log10()` make it 
+  easier to show how to use scales functions with ggplot2 in examples.
+
+* `number_format()`, `unit_format()`, and `degree_format()` now pick the 
+  accuracy automatically by default. The underlying heuristic has been
+  improved to use the distance between adjacent breaks (rather than the
+  total range of the break).
+
 * `math_format()` now returns an expression vector, and doesn't coerce
   inputs to names.
 
