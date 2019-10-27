@@ -16,17 +16,23 @@
 #'  to UTC
 #' @export
 #' @examples
-#' a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
-#' a_date <- as.Date(a_time)
+#' date_range <- function(start, days) {
+#'   start <- as.POSIXct(start)
+#'   c(start, start + days * 24 * 60 * 60)
+#' }
 #'
-#' date_format()(a_date)
-#' date_format(format = "%A")(a_date)
+#' two_months <- date_range("2020-05-01", 60)
+#' demo_datetime(two_months)
+#' demo_datetime(two_months, labels = date_format("%m/%d"))
+#' # ggplot2 provides a short-hand:
+#' demo_datetime(two_months, date_labels = "%m/%d")
 #'
-#' x <- as.Date("2012-12-25") + (0:20) * 2
-#' date_short()(x)
-#'
-#' x <- as.POSIXct("2012-12-25") + (0:10) * 3600 * 10
-#' date_short()(x)
+#' # An alternative labelling system is date_short()
+#' demo_datetime(two_months, date_breaks = "7 days", labels = date_short())
+#' # This is particularly effective for dense labels
+#' one_year <- date_range("2020-05-01", 365)
+#' demo_datetime(one_year, date_breaks = "month")
+#' demo_datetime(one_year, date_breaks = "month", labels = date_short())
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
   function(x) format(x, format, tz = tz) # format handles NAs correctly when dealing with dates
@@ -52,13 +58,13 @@ date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") {
 
     # Trim out "firsts" from smallest to largest - only want to trim (e.g.)
     # January if all dates are the first of the month.
-    if (inherits(x, "Date") || all(dt$hour == 0 & dt$min == 0)) {
+    if (inherits(x, "Date") || all(dt$hour == 0 & dt$min == 0, na.rm = TRUE)) {
       format[[4]] <- NA
 
-      if (all(dt$mday == 1)) {
+      if (all(dt$mday == 1, na.rm = TRUE)) {
         format[[3]] <- NA
 
-        if (all(dt$mon == 0)) {
+        if (all(dt$mon == 0, na.rm = TRUE)) {
           format[[2]] <- NA
         }
       }
@@ -76,7 +82,7 @@ date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") {
   }
 }
 
-changed <- function(x) c(TRUE, x[-1] != x[-length(x)])
+changed <- function(x) c(TRUE, is.na(x[-length(x)]) | x[-1] != x[-length(x)])
 append_if <- function(x, cond, value) {
   x[cond] <- lapply(x[cond], c, value)
   x
@@ -85,12 +91,6 @@ append_if <- function(x, cond, value) {
 
 #' @export
 #' @rdname date_format
-#' @examples
-#' time_format()(a_time)
-#' time_format(tz = "Europe/Berlin")(a_time)
-#'
-#' a_hms <- hms::as.hms(a_time, tz = "UTC")
-#' time_format(format = "%H:%M")(a_hms)
 time_format <- function(format = "%H:%M:%S", tz = "UTC") {
   force_all(format, tz)
   function(x) {

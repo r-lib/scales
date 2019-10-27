@@ -51,3 +51,9 @@ demo_log10 <- function(x, ...) {
 demo_discrete <- function(x, ...) {
   demo_ggplot(x, "scale_x_discrete", ...)
 }
+
+#' @rdname demo_continuous
+#' @export
+demo_datetime <- function(x, ...) {
+  demo_ggplot(x, "scale_x_datetime", ...)
+}

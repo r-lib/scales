@@ -20,7 +20,14 @@ variants for binary units.}
 
 \item{...}{other arguments passed to \code{\link[=number]{number()}}}
 
-\item{x}{a numeric vector to format}
+\item{x}{A numeric vector to format.}
+
+\item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
+
+Applied to rescaled data.}
 }
 \value{
 a function with three parameters, \code{x}, a numeric vector that returns

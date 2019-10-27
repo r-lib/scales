@@ -30,20 +30,21 @@ that will uniquely identify dates. It's inspired by matplotlib's
 [\code{ConciseDateFormatter``](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter), but uses a slightly different approach: }ConciseDateFormatter\code{formats "firsts" (e.g. first day of month, first day of day) specially;}date_short()` formats changes (e.g. new month, new year) specially.
 }
 \examples{
-a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
-a_date <- as.Date(a_time)
+date_range <- function(start, days) {
+  start <- as.POSIXct(start)
+  c(start, start + days * 24 * 60 * 60)
+}
 
-date_format()(a_date)
-date_format(format = "\%A")(a_date)
+two_months <- date_range("2020-05-01", 60)
+demo_datetime(two_months)
+demo_datetime(two_months, labels = date_format("\%m/\%d"))
+# ggplot2 provides a short-hand:
+demo_datetime(two_months, date_labels = "\%m/\%d")
 
-x <- as.Date("2012-12-25") + (0:20) * 2
-date_short()(x)
-
-x <- as.POSIXct("2012-12-25") + (0:10) * 3600 * 10
-date_short()(x)
-time_format()(a_time)
-time_format(tz = "Europe/Berlin")(a_time)
-
-a_hms <- hms::as.hms(a_time, tz = "UTC")
-time_format(format = "\%H:\%M")(a_hms)
+# An alternative labelling system is date_short()
+demo_datetime(two_months, date_breaks = "7 days", labels = date_short())
+# This is particularly effective for dense labels
+one_year <- date_range("2020-05-01", 365)
+demo_datetime(one_year, date_breaks = "month")
+demo_datetime(one_year, date_breaks = "month", labels = date_short())
 }
