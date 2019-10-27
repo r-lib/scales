@@ -8,7 +8,6 @@
 #'   thousands.
 #' * `percent_format()` and `percent()` multiply values by one hundred and
 #'   display percent sign.
-#' * `unit_format()` adds units to the values.
 #' * `number_si()` scales and adds abbreviated SI units to the values.
 #'
 #' All formatters allow you to re-`scale` (multiplicatively), to round to
@@ -64,15 +63,6 @@
 #'   suffix = " %"
 #' )
 #' demo_continuous(c(0, .01), labels = french_percent)
-#'
-#' # Label with units
-#' demo_continuous(c(0, 1), labels = unit_format(unit = "m"))
-#' # Labels in kg, but original data in g
-#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
-#' demo_continuous(c(0, 2500), labels = km)
-#' # Or with degrees
-#' demo_continuous(c(32, 212), label = degree_format(unit = "F"))
-#' demo_continuous(c(0, 100), label = degree_format(unit = "C"))
 #'
 #' # number_si() automatically scales and labels with the best SI prefix
 #' demo_continuous(c(1, 1e9), label = number_si)
@@ -209,45 +199,6 @@ percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
                     trim = TRUE, ...) {
   number(
     x = x,
-    accuracy = accuracy,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )
-}
-
-#' @export
-#' @rdname number_format
-#' @param unit The units to append.
-#' @param sep The separator between the number and the unit label.
-unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
-                        unit = "m", sep = " ", suffix = paste0(sep, unit),
-                        big.mark = " ", decimal.mark = ".",
-                        trim = TRUE, ...) {
-  number_format(
-    accuracy = accuracy,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )
-}
-
-#' @rdname number_format
-#' @export
-degree_format <- function(accuracy = NULL, scale = 1, prefix = "",
-                          unit = "", sep = "",
-                          suffix = paste0(sep, "\u00b0", unit),
-                          big.mark = " ", decimal.mark = ".",
-                          trim = TRUE, ...) {
-  number_format(
     accuracy = accuracy,
     scale = scale,
     prefix = prefix,

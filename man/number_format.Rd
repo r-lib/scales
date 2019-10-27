@@ -7,8 +7,6 @@
 \alias{comma}
 \alias{percent_format}
 \alias{percent}
-\alias{unit_format}
-\alias{degree_format}
 \alias{number_si}
 \title{Number formatters}
 \usage{
@@ -31,14 +29,6 @@ percent_format(accuracy = NULL, scale = 100, prefix = "",
 percent(x, accuracy = NULL, scale = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
   ...)
-
-unit_format(accuracy = NULL, scale = 1, prefix = "", unit = "m",
-  sep = " ", suffix = paste0(sep, unit), big.mark = " ",
-  decimal.mark = ".", trim = TRUE, ...)
-
-degree_format(accuracy = NULL, scale = 1, prefix = "", unit = "",
-  sep = "", suffix = paste0(sep, "°", unit), big.mark = " ",
-  decimal.mark = ".", trim = TRUE, ...)
 
 number_si(x, accuracy = 1, prefix = "", suffix = "", ...)
 }
@@ -69,10 +59,6 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{x}{A numeric vector to format.}
 
 \item{digits}{Deprecated, use \code{accuracy} instead.}
-
-\item{unit}{The units to append.}
-
-\item{sep}{The separator between the number and the unit label.}
 }
 \value{
 \code{*_format()} returns a function with single parameter
@@ -86,7 +72,6 @@ A set of functions to format numeric values:
 thousands.
 \item \code{percent_format()} and \code{percent()} multiply values by one hundred and
 display percent sign.
-\item \code{unit_format()} adds units to the values.
 \item \code{number_si()} scales and adds abbreviated SI units to the values.
 }
 
@@ -123,15 +108,6 @@ french_percent <- number_format(
   suffix = " \%"
 )
 demo_continuous(c(0, .01), labels = french_percent)
-
-# Label with units
-demo_continuous(c(0, 1), labels = unit_format(unit = "m"))
-# Labels in kg, but original data in g
-km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
-demo_continuous(c(0, 2500), labels = km)
-# Or with degrees
-demo_continuous(c(32, 212), label = degree_format(unit = "F"))
-demo_continuous(c(0, 100), label = degree_format(unit = "C"))
 
 # number_si() automatically scales and labels with the best SI prefix
 demo_continuous(c(1, 1e9), label = number_si)
