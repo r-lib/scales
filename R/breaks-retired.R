@@ -1,27 +1,3 @@
-#' Pretty breaks
-#'
-#' \lifecycle{retired}
-#' Uses default R break algorithm as implemented in [pretty()].
-#'
-#' @param n desired number of breaks
-#' @param ... other arguments passed on to [pretty()]
-#' @keywords internal
-#' @export
-#' @examples
-#' pretty_breaks()(1:10)
-#' pretty_breaks()(1:100)
-#' pretty_breaks()(as.Date(c("2008-01-01", "2009-01-01")))
-#' pretty_breaks()(as.Date(c("2008-01-01", "2090-01-01")))
-pretty_breaks <- function(n = 5, ...) {
-  force_all(n, ...)
-  n_default <- n
-  function(x, n = n_default) {
-    breaks <- pretty(x, n, ...)
-    names(breaks) <- attr(breaks, "labels")
-    breaks
-  }
-}
-
 #' Regularly spaced dates
 #'
 #' \lifecycle{retired}

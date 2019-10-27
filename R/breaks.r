@@ -57,3 +57,27 @@ extended_breaks <- function(n = 5, ...) {
   }
 }
 
+#' Pretty breaks
+#'
+#' Uses default R break algorithm as implemented in [pretty()]. This is
+#' primarily useful for date/times, as [extended_breaks()] should do a slightly
+#' better job for numeric scales.
+#'
+#' @param n desired number of breaks
+#' @param ... other arguments passed on to [pretty()]
+#' @keywords internal
+#' @export
+#' @examples
+#' one_months <- as.POSIXct(c("2020-05-01", "2020-06-01"))
+#' demo_datetime(two_months)
+#' demo_datetime(two_months, breaks = pretty_breaks(10))
+pretty_breaks <- function(n = 5, ...) {
+  force_all(n, ...)
+  n_default <- n
+  function(x, n = n_default) {
+    breaks <- pretty(x, n, ...)
+    names(breaks) <- attr(breaks, "labels")
+    breaks
+  }
+}
+
