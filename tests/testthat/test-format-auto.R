@@ -23,5 +23,8 @@ test_that("tricky breaks don't change unexpectedly", {
     "Years shouldn't get commas"
     number_auto(c(2010, 2013, 2020))
     number_auto(c(-2010, -2013, -2020))
+
+    "Pick shortest individually"
+    number_auto(10^(1:7))
   })
 })

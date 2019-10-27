@@ -16,6 +16,10 @@
 #' demo_continuous(c(0, 1), labels = label_number_auto())
 #' demo_continuous(c(0, 1e3), labels = label_number_auto())
 #' demo_continuous(c(0, 1e6), labels = label_number_auto())
+#'
+#' # Transformation is applied individually so you get as little
+#' # scientific notation as possible
+#' demo_log10(c(1, 1e7), labels = label_number_auto())
 label_number_auto <- function() {
 
   function(x) {
@@ -48,7 +52,10 @@ label_number_auto <- function() {
 
 format_shortest <- function(breaks, ...) {
   options <- list(...)
-  labels <- lapply(options, function(labeller) labeller(breaks))
-  lengths <- vapply(labels, function(label) max(nchar(label)), integer(1))
-  labels[[which.min(lengths)]]
+  labels <- vapply(options, function(labeller) labeller(breaks), character(length(breaks)))
+  apply(labels, 1, shortest)
+}
+
+shortest <- function(x) {
+  x[which.min(nchar(x))]
 }
