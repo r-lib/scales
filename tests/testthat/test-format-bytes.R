@@ -1,3 +1,25 @@
+test_that("auto units always rounds down", {
+  expect_equal(label_bytes()(1000^(1:3)), c("1 kB", "1 MB", "1 GB"))
+})
+
+test_that("auto units handles 0 and other special values", {
+  expect_equal(label_bytes()(NA), NA_character_)
+  expect_equal(label_bytes()(0), "0 B")
+  expect_equal(label_bytes()(-1), "-1 B")
+  expect_equal(label_bytes()(Inf), "Inf")
+})
+
+test_that("can use either binary or si units", {
+  expect_equal(label_bytes("kB")(1000), "1 kB")
+  expect_equal(label_bytes("kiB")(1024), "1 kiB")
+})
+
+test_that("errors if unknown unit", {
+  expect_error(label_bytes("unit")(0), "valid unit")
+})
+
+# deprecated interface ----------------------------------------------------
+
 test_that("Byte formatter can take a symbol designator", {
   expect_equal(
     number_bytes(c(50, 400, 502, NA), symbol = "B"),

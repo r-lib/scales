@@ -2,28 +2,20 @@
 % Please edit documentation in R/format-bytes.R
 \name{label_bytes}
 \alias{label_bytes}
-\alias{number_bytes_format}
-\alias{number_bytes}
-\title{Bytes formatter: convert to byte measurement and display symbol}
+\title{Bytes labels}
 \usage{
-label_bytes(symbol = "auto", units = c("si", "binary"), ...)
-
-number_bytes_format(symbol = "auto", units = "binary", ...)
-
-number_bytes(x, symbol = "auto", units = c("binary", "si"),
-  accuracy = 1, ...)
+label_bytes(units = "auto_si", accuracy = 1, ...)
 }
 \arguments{
-\item{symbol}{byte symbol to use. If "auto" the symbol used will be
-determined separately for each value of \code{x}. Valid symbols are "B", "kB",
-"MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for SI units, and the "iB"
-variants for binary units.}
-
-\item{units}{which unit base to use, "binary" (1024 base) or "si" (1000 base)}
-
-\item{...}{other arguments passed to \code{\link[=number]{number()}}}
-
-\item{x}{A numeric vector to format.}
+\item{units}{Unit to use. Should either one of:
+\itemize{
+\item "kB", "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for
+SI units (base 1000).
+\item "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
+binary units (base 1024).
+\item \code{auto_si} or \code{auto_binary} to automatically pick the most approrpiate
+unit for each value.
+}}
 
 \item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
@@ -31,14 +23,18 @@ ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.
 
 Applied to rescaled data.}
+
+\item{...}{Other arguments passed on to \code{\link[=number]{number()}}}
 }
 \value{
-a function with three parameters, \code{x}, a numeric vector that returns
-a character vector, \code{symbol} the byte symbol (e.g. "kB") desired and the
-measurement \code{units} (traditional \code{binary} or \code{si} for SI metric units).
+A labeller function that takes a numeric vector of breaks and
+returns a character vector of labels.
 }
 \description{
-Bytes formatter: convert to byte measurement and display symbol
+Scale bytes into human friendly units. Can use either SI units (e.g.
+kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
+\href{http://en.wikipedia.org/wiki/Units_of_information}{Units of Information}
+on Wikipedia for more details.
 }
 \examples{
 demo_continuous(c(1, 1e6))
@@ -48,18 +44,14 @@ demo_continuous(c(1, 1e6), label = label_bytes("kB"))
 
 # Auto units are particularly nice on log scales
 demo_log10(c(1, 1e6))
-demo_log10(c(1, 1e6), label = label_bytes())
+demo_log10(c(1, 1e7), label = label_bytes())
 
 # You can also use binary units where a megabyte is defined as
 # (1024) ^ 2 bytes rather than (1000) ^ 2. You'll need to override
 # the default breaks to make this more informative.
-demo_continuous(c(1, 1e6), label = label_bytes(units = "binary"))
-demo_continuous(c(1, 1e6),
+demo_continuous(c(1, 1024^2), label = label_bytes("auto_binary"))
+demo_continuous(c(1, 1024^2),
   breaks = breaks_width(250 * 1024),
-  label = label_bytes(units = "binary")
+  label = label_bytes("auto_binary")
 )
-}
-\references{
-Units of Information (Wikipedia) :
-\url{http://en.wikipedia.org/wiki/Units_of_information}
 }

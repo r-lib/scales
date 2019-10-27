@@ -1,5 +1,10 @@
 # scales 1.0.0.9000
 
+* New `label_bytes()` which replaces `number_bytes_format()` with a more 
+  convenient interface. It takes a single `unit` argument which can either be
+  an SI unit (e.g. "kB"), a binary unit (e.g. "kIB"), or an automatic unit
+  (either "auto_si" or "auto_binary").
+
 * New `breaks_width()` which allows you to specify a fixed distance between
   breaks (along with optional offset).
 
