@@ -1,6 +1,6 @@
 #' Regularly spaced dates
 #'
-#' \lifecycle{retired}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
 #' Use `breaks_width()` instead.
 #'
 #' @param width an interval specification, one of "sec", "min", "hour",
@@ -15,7 +15,7 @@ date_breaks <- function(width = "1 month") {
 
 #' Pretty breaks on transformed scale
 #'
-#' \lifecycle{retired}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
 #' These often do not produce very attractive breaks.
 #'
 #' @param trans function of single variable, `x`, that given a numeric
@@ -42,7 +42,7 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 
 #' Compute breaks for continuous scale
 #'
-#' \lifecycle{retired}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
 #' This function wraps up the components needed to go from a continuous range
 #' to a set of breaks and labels suitable for display on axes or legends.
 #'

@@ -17,7 +17,7 @@ vector returns the transformed values}
 \item{...}{other arguments passed on to pretty}
 }
 \description{
-\lifecycle{retired}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
 These often do not produce very attractive breaks.
 }
 \examples{

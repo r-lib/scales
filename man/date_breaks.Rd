@@ -12,7 +12,7 @@ date_breaks(width = "1 month")
 followed by "s". Fractional seconds are supported.}
 }
 \description{
-\lifecycle{retired}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
 Use \code{breaks_width()} instead.
 }
 \keyword{internal}
