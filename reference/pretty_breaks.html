@@ -43,9 +43,9 @@
 
 
 <meta property="og:title" content="Pretty breaks — pretty_breaks" />
-<meta property="og:description" content="
-
-Uses default R break algorithm as implemented in pretty()." />
+<meta property="og:description" content="Uses default R break algorithm as implemented in pretty(). This is
+primarily useful for date/times, as extended_breaks() should do a slightly
+better job for numeric scales." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -119,14 +119,14 @@ Uses default R break algorithm as implemented in pretty()." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Pretty breaks</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks-retired.R'><code>R/breaks-retired.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks.r'><code>R/breaks.r</code></a></small>
     <div class="hidden name"><code>pretty_breaks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#retired'><img src='figures/lifecycle-retired.svg' alt='Retired lifecycle'></a>
-
-Uses default R break algorithm as implemented in <code><a href='https://rdrr.io/r/base/pretty.html'>pretty()</a></code>.</p>
+    <p>Uses default R break algorithm as implemented in <code><a href='https://rdrr.io/r/base/pretty.html'>pretty()</a></code>. This is
+primarily useful for date/times, as <code><a href='extended_breaks.html'>extended_breaks()</a></code> should do a slightly
+better job for numeric scales.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pretty_breaks</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='no'>...</span>)</pre>
@@ -146,9 +146,12 @@ Uses default R break algorithm as implemented in <code><a href='https://rdrr.io/
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>pretty_breaks</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1]  0  2  4  6  8 10</div><div class='input'><span class='fu'>pretty_breaks</span>()(<span class='fl'>1</span>:<span class='fl'>100</span>)</div><div class='output co'>#&gt; [1]   0  20  40  60  80 100</div><div class='input'><span class='fu'>pretty_breaks</span>()(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2008-01-01"</span>, <span class='st'>"2009-01-01"</span>)))</div><div class='output co'>#&gt;     Jan 2008     Apr 2008     Jul 2008     Oct 2008     Jan 2009 
-#&gt; "2008-01-01" "2008-04-01" "2008-07-01" "2008-10-01" "2009-01-01" </div><div class='input'><span class='fu'>pretty_breaks</span>()(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2008-01-01"</span>, <span class='st'>"2090-01-01"</span>)))</div><div class='output co'>#&gt;         2000         2020         2040         2060         2080         2100 
-#&gt; "2000-01-01" "2020-01-01" "2040-01-01" "2060-01-01" "2080-01-01" "2100-01-01" </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>one_month</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-05-01"</span>, <span class='st'>"2020-06-01"</span>))
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime()</div><div class='img'><img src='pretty_breaks-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>pretty_breaks</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_datetime(breaks = pretty_breaks(10))</div><div class='img'><img src='pretty_breaks-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
