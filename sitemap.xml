@@ -103,6 +103,12 @@
     <loc>https://scales.r-lib.org//reference/identity_trans.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/label_number_auto.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_number_si.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/linetype_pal.html</loc>
   </url>
   <url>
@@ -118,16 +124,10 @@
     <loc>https://scales.r-lib.org//reference/muted.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/number_auto.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/number_bytes_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/number_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/number_si.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/ordinal_format.html</loc>

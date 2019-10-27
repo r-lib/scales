@@ -157,12 +157,19 @@ expression object.</p>
     <div class='dont-index'><p><a href='https://rdrr.io/r/grDevices/plotmath.html'>plotmath</a> for the details of mathematical formatting in R.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>parse_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>))</div><div class='output co'>#&gt; expression(alpha, beta, gamma)</div><div class='input'><span class='fu'>parse_format</span>()(<span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; expression(1, 2, 3, 4, 5)</div><div class='input'>
-<span class='fu'>math_format</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; expression(10^1L, 10^2L, 10^3L, 10^4L, 10^5L, 10^6L, 10^7L, 10^8L, 
-#&gt;     10^9L, 10^10L)</div><div class='input'><span class='fu'>math_format</span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>frac</a></span>(<span class='no'>alpha</span>, <span class='no'>.x</span>))(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; expression(frac(alpha, 1L), frac(alpha, 2L), frac(alpha, 3L), 
-#&gt;     frac(alpha, 4L), frac(alpha, 5L), frac(alpha, 6L), frac(alpha, 
-#&gt;         7L), frac(alpha, 8L), frac(alpha, 9L), frac(alpha, 10L))</div><div class='input'><span class='fu'>math_format</span>(<span class='kw'>format</span> <span class='kw'>=</span> <span class='no'>percent</span>)(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; expression(10^"42%", 10^"73%", 10^"64%", 10^"40%", 10^"96%", 
-#&gt;     10^"30%", 10^"5%", 10^"58%", 10^"22%", 10^"13%")</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Use parse_format() with discrete scales</span>
+<span class='no'>greek</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>)
+<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='no'>greek</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_discrete()</div><div class='img'><img src='parse_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='no'>greek</span>, <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>parse_format</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_discrete(labels = parse_format())</div><div class='img'><img src='parse_format-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Use math_format() with continuous scales</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous()</div><div class='img'><img src='parse_format-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>math_format</span>(<span class='no'>alpha</span>[<span class='no'>.x</span>]))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
+#&gt;   geom_blank() +
+#&gt;   scale_x_continuous(labels = math_format(alpha[.x]))</div><div class='img'><img src='parse_format-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
