@@ -16,7 +16,6 @@
 #' @param ... Other arguments passed on to [number()]
 #' @return A labeller function that takes a numeric vector of breaks and
 #'   returns a character vector of labels.
-#' @references
 #' @export
 #' @examples
 #' demo_continuous(c(1, 1e6))
