@@ -17,8 +17,8 @@ primarily useful for date/times, as \code{\link[=extended_breaks]{extended_break
 better job for numeric scales.
 }
 \examples{
-one_months <- as.POSIXct(c("2020-05-01", "2020-06-01"))
-demo_datetime(two_months)
-demo_datetime(two_months, breaks = pretty_breaks(10))
+one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
+demo_datetime(one_month)
+demo_datetime(one_month, breaks = pretty_breaks(10))
 }
 \keyword{internal}
