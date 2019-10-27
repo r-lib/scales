@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{log_breaks}
 \alias{log_breaks}
-\title{Log breaks (integer breaks on log-transformed scales)}
+\title{Log breaks}
 \usage{
 log_breaks(n = 5, base = 10)
 }
@@ -12,12 +12,42 @@ log_breaks(n = 5, base = 10)
 \item{base}{base of logarithm to use}
 }
 \description{
-Log breaks (integer breaks on log-transformed scales)
+This algorithm starts by looking for integer powers of \code{base}. If that
+doesn't provide enough breaks, it then looks for additional intermediate
+breaks which are integer multiples of integer powers of base. If that fails
+(which it can for very small ranges), we fall back to \code{\link[=extended_breaks]{extended_breaks()}}
+}
+\details{
+The algorithm starts by looking for a set of integer powers of \code{base} that
+cover the range of the data. If that does not generate at least \code{n - 2}
+breaks, we look for an integer between 1 and \code{base} that splits the interval
+approximately in half. For example, in the case of \code{base = 10}, this integer
+is 3 because \code{log10(3) = 0.477}. This leaves 2 intervals: \code{c(1, 3)} and
+\code{c(3, 10)}. If we still need more breaks, we look for another integer
+that splits the largest remaining interval (on the log-scale) approximately
+in half. For \code{base = 10}, this is 5 because \code{log10(5) = 0.699}.
+
+The generic algorithm starts with a set of integers \code{steps} containing
+only 1 and a set of candidate integers containing all integers larger than 1
+and smaller than \code{base}. Then for each remaining candidate integer
+\code{x}, the smallest interval (on the log-scale) in the vector
+\code{sort(c(x, steps, base))} is calculated. The candidate \code{x} which
+yields the largest minimal interval is added to \code{steps} and removed from
+the candidate set. This is repeated until either a sufficient number of
+breaks, \code{>= n-2}, are returned or all candidates have been used.
 }
 \examples{
-log_breaks()(c(1, 1e6))
-log_breaks()(c(1, 1e5))
-log_breaks()(c(1664, 14008))
-log_breaks()(c(407, 3430))
-log_breaks()(c(1761, 8557))
+demo_log10(c(1, 1e5))
+demo_log10(c(1, 1e6))
+
+# Request more breaks by setting n
+demo_log10(c(1, 1e6), breaks = log_breaks(6))
+
+# Some tricky ranges
+demo_log10(c(2000, 9000))
+demo_log10(c(2000, 14000))
+demo_log10(c(2000, 85000), expand = c(0, 0))
+
+# An even smaller range that requires falling back to linear breaks
+demo_log10(c(1800, 2000))
 }
