@@ -5,7 +5,6 @@
 #' "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
 #'
 #' @inheritParams number_format
-#' @param suffix Suffix to add after SI label
 #' @export
 #' @examples
 #' demo_continuous(c(1, 1e9), label = label_number_si())

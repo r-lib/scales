@@ -16,7 +16,7 @@ Applied to rescaled data.}
 
 \item{prefix}{Symbols to display before and after value.}
 
-\item{suffix}{Suffix to add after SI label}
+\item{suffix}{Symbols to display before and after value.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
