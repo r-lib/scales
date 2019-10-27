@@ -6,8 +6,8 @@ reference:
     Use these functions with the `labels` argument to ggplot2 scales to
     control the formatting of axis labels and legend keys.
   contents:
+  - starts_with("label_")
   - matches("format")
-  - number_auto
 
 - title:  Axis breaks
   desc: >
@@ -15,7 +15,6 @@ reference:
     control the position of the
   contents:
   - matches("breaks")
-  - -cbreaks
 
 - title: "Bounds: ranges & rescaling"
   desc: >
@@ -77,7 +76,6 @@ reference:
     properties.
   contents:
   - cscale
-  - cbreaks
   - dscale
   - starts_with("train_")
   - Range
