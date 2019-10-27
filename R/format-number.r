@@ -8,15 +8,10 @@
 #'   thousands.
 #' * `percent_format()` and `percent()` multiply values by one hundred and
 #'   display percent sign.
-#' * `number_si()` scales and adds abbreviated SI units to the values.
 #'
 #' All formatters allow you to re-`scale` (multiplicatively), to round to
 #' specified `accuracy`, to add custom `suffix` and `prefix` and to specify
 #' `decimal.mark` and `big.mark`.
-#'
-#' `number_si()` gives limited SI unit labels: "K" for values \eqn{\ge} 10e3, "
-#' M" for \eqn{\ge} 10e6, "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
-#' It respects all arguments except `scale` which is set internally.
 #'
 #' @return `*_format()` returns a function with single parameter
 #'   `x`, a numeric vector, that returns a character vector.
@@ -63,13 +58,6 @@
 #'   suffix = " %"
 #' )
 #' demo_continuous(c(0, .01), labels = french_percent)
-#'
-#' # number_si() automatically scales and labels with the best SI prefix
-#' demo_continuous(c(1, 1e9), label = number_si)
-#' demo_log10(c(1, 1e9),
-#'   breaks = log_breaks(10),
-#'   labels = number_si
-#' )
 number_format <- function(accuracy = NULL, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
@@ -206,32 +194,6 @@ percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    ...
-  )
-}
-
-#' @rdname number_format
-#' @export
-number_si <- function(x, accuracy = 1, prefix = "", suffix = "", ...) {
-  breaks <- c(" " = 0, 10^c(K = 3, M = 6, B = 9, "T" = 12))
-
-  n_suffix <- cut(abs(x),
-    breaks = c(unname(breaks), Inf),
-    labels = c(names(breaks)),
-    right = FALSE
-  )
-
-  # for handling NA's correctly
-  n_suffix[is.na(n_suffix)] <- " "
-  scale <- 1 / breaks[n_suffix]
-  # for handling Inf and 0-1 correctly
-  scale[which(scale %in% c(Inf, NA))] <- 1
-
-  number(x,
-    accuracy = accuracy,
-    scale = unname(scale),
-    prefix = prefix,
-    suffix = paste0(n_suffix, suffix),
     ...
   )
 }

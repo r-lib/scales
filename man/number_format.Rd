@@ -7,7 +7,6 @@
 \alias{comma}
 \alias{percent_format}
 \alias{percent}
-\alias{number_si}
 \title{Number formatters}
 \usage{
 number_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
@@ -29,8 +28,6 @@ percent_format(accuracy = NULL, scale = 100, prefix = "",
 percent(x, accuracy = NULL, scale = 100, prefix = "",
   suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
   ...)
-
-number_si(x, accuracy = 1, prefix = "", suffix = "", ...)
 }
 \arguments{
 \item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -72,16 +69,11 @@ A set of functions to format numeric values:
 thousands.
 \item \code{percent_format()} and \code{percent()} multiply values by one hundred and
 display percent sign.
-\item \code{number_si()} scales and adds abbreviated SI units to the values.
 }
 
 All formatters allow you to re-\code{scale} (multiplicatively), to round to
 specified \code{accuracy}, to add custom \code{suffix} and \code{prefix} and to specify
 \code{decimal.mark} and \code{big.mark}.
-
-\code{number_si()} gives limited SI unit labels: "K" for values \eqn{\ge} 10e3, "
-M" for \eqn{\ge} 10e6, "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
-It respects all arguments except \code{scale} which is set internally.
 }
 \examples{
 demo_continuous(c(-1e6, 1e6))
@@ -108,11 +100,4 @@ french_percent <- number_format(
   suffix = " \%"
 )
 demo_continuous(c(0, .01), labels = french_percent)
-
-# number_si() automatically scales and labels with the best SI prefix
-demo_continuous(c(1, 1e9), label = number_si)
-demo_log10(c(1, 1e9),
-  breaks = log_breaks(10),
-  labels = number_si
-)
 }
