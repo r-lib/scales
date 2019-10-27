@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bytes formatter: convert to byte measurement and display symbol — number_bytes_format • scales</title>
+<title>Older interface to label_bytes() — number_bytes_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,9 @@
 
 
 
-<meta property="og:title" content="Bytes formatter: convert to byte measurement and display symbol — number_bytes_format" />
-<meta property="og:description" content="Bytes formatter: convert to byte measurement and display symbol" />
+<meta property="og:title" content="Older interface to label_bytes() — number_bytes_format" />
+<meta property="og:description" content="These functions are kept for backward compatibility, but you should switch
+to label_bytes() for new code." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,13 +117,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Bytes formatter: convert to byte measurement and display symbol</h1>
+    <h1>Older interface to label_bytes()</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-bytes.R'><code>R/format-bytes.R</code></a></small>
     <div class="hidden name"><code>number_bytes_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Bytes formatter: convert to byte measurement and display symbol</p>
+    <p>These functions are kept for backward compatibility, but you should switch
+to <code><a href='label_bytes.html'>label_bytes()</a></code> for new code.</p>
     </div>
 
     <pre class="usage"><span class='fu'>number_bytes_format</span>(<span class='kw'>symbol</span> <span class='kw'>=</span> <span class='st'>"auto"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"binary"</span>, <span class='no'>...</span>)
@@ -144,47 +146,14 @@ variants for binary units.</p></td>
       <th>units</th>
       <td><p>which unit base to use, "binary" (1024 base) or "si" (1000 base)</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed to <code><a href='number_format.html'>number()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>A numeric vector to format.</p></td>
-    </tr>
-    <tr>
-      <th>accuracy</th>
-      <td><p>Number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
-places of precision. If <code>NULL</code>, the default, uses a heuristic that should
-ensure breaks have the minimum number of digits needed to show the
-difference between adjacent values.</p>
-<p>Applied to rescaled data.</p></td>
-    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a function with three parameters, <code>x</code>, a numeric vector that returns
-a character vector, <code>symbol</code> the byte symbol (e.g. "kB") desired and the
-measurement <code>units</code> (traditional <code>binary</code> or <code>si</code> for SI metric units).</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Units of Information (Wikipedia) :
-<a href='http://en.wikipedia.org/wiki/Units_of_information'>http://en.wikipedia.org/wiki/Units_of_information</a></p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>number_bytes_format</span>()(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2 GiB"   "797 MiB" "2 GiB"   "183 MiB" "971 MiB" "889 MiB" "2 GiB"  
-#&gt;  [8] "1 GiB"   "977 MiB" "2 GiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "2 GiB"   "3 GiB"   "315 MiB" "2 GiB"   "670 MiB" "1 GiB"   "412 MiB"
-#&gt;  [8] "2 GiB"   "595 MiB" "861 MiB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='fl'>3000000000</span>, <span class='fl'>10</span>), <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.1</span>)</div><div class='output co'>#&gt;  [1] "1 003.2 MiB" "2.4 GiB"     "331.2 MiB"   "2.6 GiB"     "895.2 MiB"  
-#&gt;  [6] "188.7 MiB"   "1.6 GiB"     "1.5 GiB"     "2.7 GiB"     "980.1 MiB"  </div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>))</div><div class='output co'>#&gt; [1] "1 B"   "1 KiB" "1 MiB" "1 GiB" "1 TiB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1024</span>^(<span class='fl'>0</span>:<span class='fl'>4</span>), <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>.01</span>)</div><div class='output co'>#&gt; [1] "1.00 B"  "1.02 kB" "1.05 MB" "1.07 GB" "1.10 TB"</div><div class='input'><span class='fu'>number_bytes</span>(<span class='fl'>1000</span>^(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='st'>"kB"</span>, <span class='kw'>units</span> <span class='kw'>=</span> <span class='st'>"si"</span>)</div><div class='output co'>#&gt; [1] "1 kB"         "1 000 kB"     "1 000 000 kB"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#references">References</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

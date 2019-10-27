@@ -22,6 +22,9 @@
     <loc>https://scales.r-lib.org//reference/boxcox_trans.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/breaks_width.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/brewer_pal.html</loc>
   </url>
   <url>
@@ -103,6 +106,9 @@
     <loc>https://scales.r-lib.org//reference/identity_trans.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/label_bytes.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/label_number_auto.html</loc>
   </url>
   <url>
@@ -119,6 +125,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/manual_pal.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/minor_breaks_width.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/muted.html</loc>
