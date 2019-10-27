@@ -16,9 +16,9 @@
   For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, `date_short()`
   will use labels Jan 10, 20, 30, Feb 1 (#209).
   
-* New `number_auto()` automatically picks between `comma()` and `scientific()`
-  based on the range of the input. It should produce nice output over a 
-  very wide range of inputs (@paleolimbot, #208).
+* New `number_auto()` automatically picks between `number_format()` and 
+  `scientific_format()` based on the range of the input. It should produce nice 
+  output over a very wide range of inputs (@paleolimbot, #208).
 
 * `trans` gets a method for `plot()`, and all numeric transformations get
   an example showing the transformation.

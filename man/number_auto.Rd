@@ -10,17 +10,18 @@ number_auto(x)
 \item{x}{A numeric vector to format.}
 }
 \description{
-Switches between \code{\link[=comma]{comma()}} and \code{\link[=scientific]{scientific()}} format based on a set of
+Switches between \code{\link[=number_format]{number_format()}} and \code{\link[=scientific_format]{scientific_format()}} based on a set of
 heuristics designed to automatically generate useful labels across a wide
 range of inputs
 }
 \examples{
-b <- function(a, b) extended_breaks(5)(c(a, b))
+# Very small and very large numbers get scientific notation
+demo_continuous(c(0, 1e-6), labels = number_auto)
+demo_continuous(c(0, 1e9), labels = number_auto)
 
-number_auto(b(0, 1e-6))
-number_auto(b(0, 1e-3))
-number_auto(b(0, 1))
-number_auto(b(0, 1e3))
-number_auto(b(0, 1e6))
-number_auto(b(0, 1e9))
+# Other ranges get the numbers printed in full
+demo_continuous(c(0, 1e-3), labels = number_auto)
+demo_continuous(c(0, 1), labels = number_auto)
+demo_continuous(c(0, 1e3), labels = number_auto)
+demo_continuous(c(0, 1e6), labels = number_auto)
 }

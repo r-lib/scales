@@ -1,20 +1,21 @@
 #' Automatic number formatter
 #'
-#' Switches between [comma()] and [scientific()] format based on a set of
+#' Switches between [number_format()] and [scientific_format()] based on a set of
 #' heuristics designed to automatically generate useful labels across a wide
 #' range of inputs
 #'
 #' @inheritParams number_format
 #' @export
 #' @examples
-#' b <- function(a, b) extended_breaks(5)(c(a, b))
+#' # Very small and very large numbers get scientific notation
+#' demo_continuous(c(0, 1e-6), labels = number_auto)
+#' demo_continuous(c(0, 1e9), labels = number_auto)
 #'
-#' number_auto(b(0, 1e-6))
-#' number_auto(b(0, 1e-3))
-#' number_auto(b(0, 1))
-#' number_auto(b(0, 1e3))
-#' number_auto(b(0, 1e6))
-#' number_auto(b(0, 1e9))
+#' # Other ranges get the numbers printed in full
+#' demo_continuous(c(0, 1e-3), labels = number_auto)
+#' demo_continuous(c(0, 1), labels = number_auto)
+#' demo_continuous(c(0, 1e3), labels = number_auto)
+#' demo_continuous(c(0, 1e6), labels = number_auto)
 number_auto <- function(x) {
   if (length(x) == 0) return(character(0))
   if (sum(is.finite(x)) == 0) return(format(x, trim = TRUE))
@@ -23,22 +24,20 @@ number_auto <- function(x) {
   min_magnitude <- min(abs(x[x != 0 & is.finite(x)]))
 
   if (max_magnitude > 1e6) {
-    format_shortest(
-      x,
-      function(breaks) comma(breaks, 1),
-      function(breaks) format(breaks, scientific = TRUE, trim = TRUE)
+    format_shortest(x,
+      number_format(1),
+      format_format(scientific = TRUE)
     )
   } else if (min_magnitude < 1e-3) {
-    format_shortest(
-      x,
-      function(breaks) format(breaks, scientific = FALSE, trim = TRUE),
-      function(breaks) format(breaks, scientific = TRUE, trim = TRUE)
+    format_shortest(x,
+      format_format(scientific = FALSE),
+      format_format(scientific = TRUE)
     )
   } else if (all(x > 0) && min_magnitude >= 1000 && max_magnitude <= 2200) {
     # Probably a year so don't use commas
     format(x, trim = TRUE)
   } else if (max_magnitude > 1e3) {
-    comma(x, 1)
+    number(x, 1)
   } else {
     format(x, trim = TRUE)
   }
