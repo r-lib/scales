@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a new transformation object — trans_new • scales</title>
+<title>Extended breaks — breaks_extended • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,13 +42,9 @@
 
 
 
-<meta property="og:title" content="Create a new transformation object — trans_new" />
-<meta property="og:description" content="A transformation encapsulates a transformation and its inverse, as well
-as the information needed to create pleasing breaks and labels. The breaks
-function is applied on the transformed range of the range, and it's
-expected that the labels function will perform some kind of inverse
-transformation on these breaks to give them labels that are meaningful on
-the original scale." />
+<meta property="og:title" content="Extended breaks — breaks_extended" />
+<meta property="og:description" content="Uses Wilkinson's extended breaks algorithm as implemented in the
+labeling package." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -121,76 +117,46 @@ the original scale." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a new transformation object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/trans.r'><code>R/trans.r</code></a></small>
-    <div class="hidden name"><code>trans_new.Rd</code></div>
+    <h1>Extended breaks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks.r'><code>R/breaks.r</code></a></small>
+    <div class="hidden name"><code>breaks_extended.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A transformation encapsulates a transformation and its inverse, as well
-as the information needed to create pleasing breaks and labels. The breaks
-function is applied on the transformed range of the range, and it's
-expected that the labels function will perform some kind of inverse
-transformation on these breaks to give them labels that are meaningful on
-the original scale.</p>
+    <p>Uses Wilkinson's extended breaks algorithm as implemented in the
+<span class="pkg">labeling</span> package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>trans_new</span>(<span class='no'>name</span>, <span class='no'>transform</span>, <span class='no'>inverse</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span>(),
-  <span class='kw'>minor_breaks</span> <span class='kw'>=</span> <span class='fu'><a href='regular_minor_breaks.html'>regular_minor_breaks</a></span>(), <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='format_format.html'>format_format</a></span>(),
-  <span class='kw'>domain</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, <span class='fl'>Inf</span>))
-
-<span class='fu'>is.trans</span>(<span class='no'>x</span>)
-
-<span class='fu'>as.trans</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>breaks_extended</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>transformation name</p></td>
+      <th>n</th>
+      <td><p>desired number of breaks</p></td>
     </tr>
     <tr>
-      <th>transform</th>
-      <td><p>function, or name of function, that performs the
-transformation</p></td>
-    </tr>
-    <tr>
-      <th>inverse</th>
-      <td><p>function, or name of function, that performs the
-inverse of the transformation</p></td>
-    </tr>
-    <tr>
-      <th>breaks</th>
-      <td><p>default breaks function for this transformation. The breaks
-function is applied to the raw data.</p></td>
-    </tr>
-    <tr>
-      <th>minor_breaks</th>
-      <td><p>default minor breaks function for this transformation.</p></td>
-    </tr>
-    <tr>
-      <th>format</th>
-      <td><p>default format for this transformation. The format is applied
-to breaks generated to the raw data.</p></td>
-    </tr>
-    <tr>
-      <th>domain</th>
-      <td><p>domain, as numeric vector of length 2, over which
-transformation is valued</p></td>
+      <th>...</th>
+      <td><p>other arguments passed on to <code><a href='https://rdrr.io/pkg/labeling/man/extended.html'>labeling::extended()</a></code></p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <div class='dont-index'><p><code><a href='asn_trans.html'>asn_trans</a></code>, <code><a href='atanh_trans.html'>atanh_trans</a></code>, <code><a href='boxcox_trans.html'>boxcox_trans</a></code>, <code><a href='date_trans.html'>date_trans</a></code>, <code><a href='exp_trans.html'>exp_trans</a></code>, <code><a href='hms_trans.html'>hms_trans</a></code>, <code><a href='identity_trans.html'>identity_trans</a></code>, <code><a href='log_trans.html'>log_trans</a></code>, <code><a href='log_trans.html'>log10_trans</a></code>, <code><a href='log_trans.html'>log1p_trans</a></code>, <code><a href='log_trans.html'>log2_trans</a></code>, <code><a href='probability_trans.html'>logit_trans</a></code>, <code><a href='boxcox_trans.html'>modulus_trans</a></code>, <code><a href='probability_trans.html'>probability_trans</a></code>, <code><a href='probability_trans.html'>probit_trans</a></code>, <code><a href='log_trans.html'>pseudo_log_trans</a></code>, <code><a href='reciprocal_trans.html'>reciprocal_trans</a></code>, <code><a href='reverse_trans.html'>reverse_trans</a></code>, <code><a href='sqrt_trans.html'>sqrt_trans</a></code>, <code><a href='time_trans.html'>time_trans</a></code>, <code><a href='yj_trans.html'>yj_trans</a></code></p></div>
+    <p>Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
+Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
+2010.</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>breaks_extended</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1]  0.0  2.5  5.0  7.5 10.0</div><div class='input'><span class='fu'>breaks_extended</span>()(<span class='fl'>1</span>:<span class='fl'>100</span>)</div><div class='output co'>#&gt; [1]   0  25  50  75 100</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#references">References</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

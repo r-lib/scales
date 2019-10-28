@@ -194,7 +194,7 @@
 <a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="dt">name =</span> <span class="st">"logp"</span>,</a>
 <a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">trans =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(x <span class="op">+</span><span class="st"> </span><span class="dv">3</span>),</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="dt">inverse =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">breaks =</span> <span class="kw"><a href="reference/log_breaks.html">log_breaks</a></span>()</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">breaks =</span> <span class="kw"><a href="reference/breaks_log.html">log_breaks</a></span>()</a>
 <a class="sourceLine" id="cb7-7" data-line-number="7">)</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
@@ -207,10 +207,10 @@
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; [1]   300  1000  3000 10000 30000</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># scales has some breaks helper functions too</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw"><a href="reference/log_breaks.html">log_breaks</a></span>(<span class="dt">base =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="dv">1</span>))(dsamp<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw"><a href="reference/breaks_log.html">log_breaks</a></span>(<span class="dt">base =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="dv">1</span>))(dsamp<span class="op">$</span>price)</a>
 <a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; [1]   403.4288  1096.6332  2980.9580  8103.0839 22026.4658</span></a>
 <a class="sourceLine" id="cb8-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="kw"><a href="reference/pretty_breaks.html">pretty_breaks</a></span>()(dsamp<span class="op">$</span>price)</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="kw"><a href="reference/breaks_pretty.html">pretty_breaks</a></span>()(dsamp<span class="op">$</span>price)</a>
 <a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; [1]     0  5000 10000 15000 20000</span></a></code></pre></div>
 </div>
 </div>

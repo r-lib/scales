@@ -22,6 +22,15 @@
     <loc>https://scales.r-lib.org//reference/boxcox_trans.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/breaks_extended.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/breaks_log.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/breaks_pretty.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/breaks_width.html</loc>
   </url>
   <url>
@@ -79,9 +88,6 @@
     <loc>https://scales.r-lib.org//reference/expand_range.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/extended_breaks.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/format_format.html</loc>
   </url>
   <url>
@@ -118,9 +124,6 @@
     <loc>https://scales.r-lib.org//reference/linetype_pal.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/log_breaks.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/log_trans.html</loc>
   </url>
   <url>
@@ -143,9 +146,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/parse_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/pretty_breaks.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/probability_trans.html</loc>

@@ -135,7 +135,7 @@
 <li><p>New <code><a href="../reference/yj_trans.html">yj_trans()</a></code> implements the Yeo-Johnson transformation (<a href='https://github.com/zamorarr'>@zamorarr</a>, <a href='https://github.com/r-lib/scales/issues/196'>#196</a>)</p></li>
 <li><p>All text formatters should now preserve names (<a href='https://github.com/r-lib/scales/issues/202'>#202</a>).</p></li>
 <li><p><code><a href="../reference/number_format.html">number()</a></code> takes <code>scale</code> into account when computing <code>accuracy</code>, if not supplied. This means that <code><a href="../reference/number_format.html">percent()</a></code> should have better default accuracy in many cases (<a href='https://github.com/r-lib/scales/issues/192'>#192</a>).</p></li>
-<li><p><code><a href="../reference/log_breaks.html">log_breaks()</a></code> has nicer behaviour when no finite inputs (<a href='https://github.com/r-lib/scales/issues/210'>#210</a>)</p></li>
+<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> has nicer behaviour when no finite inputs (<a href='https://github.com/r-lib/scales/issues/210'>#210</a>)</p></li>
 <li><p><code><a href="../reference/pvalue_format.html">pvalue()</a></code> now reports values close to 1 (as determined by accuracy) as “&gt;0.99”. You can control the prefixes used with the new <code>prefix</code> argument (<a href='https://github.com/r-lib/scales/issues/213'>#213</a>).</p></li>
 <li><p><code><a href="../reference/sqrt_trans.html">sqrt_trans()</a></code> no longer returns an inverse for values outside of its domain (<a href='https://github.com/r-lib/scales/issues/214'>#214</a>).</p></li>
 <li><p><code><a href="../reference/dollar_format.html">dollar()</a></code> now correctly formats negative numbers as (e.g.) -$200 (<a href='https://github.com/r-lib/scales/issues/216'>#216</a>).</p></li>
@@ -158,7 +158,7 @@
 <li><p>New function <code><a href="../reference/label_number_si.html">label_number_si()</a></code> formats numeric vectors with limited SI units. Individual values are scaled and labelled with abbreviations “K”, “M”, “B”, or “T” dependent on magnitude (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/83'>#83</a>).</p></li>
 <li><p><code><a href="../reference/date_breaks.html">date_breaks()</a></code> now supports subsecond intervals (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/85'>#85</a>).</p></li>
 <li><p><code>ContinuousRange</code> and <code>DiscreteRange</code> methods now properly inherit and are fully mutable (<a href='https://github.com/dpseidel'>@dpseidel</a>).</p></li>
-<li><p><code><a href="../reference/log_breaks.html">log_breaks()</a></code> provides usable breaks even with very small ranges (<a href='https://github.com/billdenney'>@billdenney</a>, <a href='https://github.com/r-lib/scales/issues/168'>#168</a>)</p></li>
+<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> provides usable breaks even with very small ranges (<a href='https://github.com/billdenney'>@billdenney</a>, <a href='https://github.com/r-lib/scales/issues/168'>#168</a>)</p></li>
 <li><p><code><a href="../reference/train_continuous.html">train_continuous()</a></code> now maintains the class of inputs when they are not numeric (<a href='https://github.com/billdenney'>@billdenney</a>, <a href='https://github.com/r-lib/scales/issues/166'>#166</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now support viridis colors. Just pass a palette name (<code>"magma"</code>, <code>"inferno"</code>, <code>"plasma"</code>, or <code>"viridis"</code>) as the <code>palette</code> argument (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now have a <code>reverse</code> parameter, to apply color palettes in the opposite of their usual order (i.e. high-to-low instead of low-to-high) (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
@@ -194,7 +194,7 @@
 <a href="#transformations-breaks" class="anchor"></a>Transformations &amp; breaks</h3>
 <ul>
 <li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> is now invertible for <code>x &gt;= 0</code> and requires positive values. A new argument <code>offset</code> allows specification of both type-1 and type-2 Box-Cox transformations (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/103'>#103</a>).</p></li>
-<li><p><code><a href="../reference/log_breaks.html">log_breaks()</a></code> returns integer multiples of integer powers of base when finer breaks are needed (<a href='https://github.com/ThierryO'>@ThierryO</a>, <a href='https://github.com/r-lib/scales/issues/117'>#117</a>).</p></li>
+<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> returns integer multiples of integer powers of base when finer breaks are needed (<a href='https://github.com/ThierryO'>@ThierryO</a>, <a href='https://github.com/r-lib/scales/issues/117'>#117</a>).</p></li>
 <li><p>New function <code><a href="../reference/boxcox_trans.html">modulus_trans()</a></code> implements the modulus transformation for positive and negative values (<a href='https://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p>New <code><a href="../reference/log_trans.html">pseudo_log_trans()</a></code> for transforming numerics into a signed logarithmic scale with a smooth transition to a linear scale around 0 (<a href='https://github.com/lepennec'>@lepennec</a>, <a href='https://github.com/r-lib/scales/issues/106'>#106</a>).</p></li>
 </ul>
@@ -210,7 +210,7 @@
 <li><p>Removes <code>dichromat</code> and <code>plyr</code> dependencies. <code>dichromat</code> is now suggested (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/118'>#118</a>).</p></li>
 <li><p><code><a href="../reference/expand_range.html">expand_range()</a></code> arguments <code>mul</code> and <code>add</code> now affect scales with a range of 0<br>
 (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href="https://www.github.com/tidyverse/ggplot2/issues/2281">ggplot2-2281</a>).</p></li>
-<li><p><code><a href="../reference/extended_breaks.html">extended_breaks()</a></code> now allows user specification of the <code><a href="https://rdrr.io/pkg/labeling/man/extended.html">labeling::extended()</a></code> argument <code>only.loose</code> to permit more flexible breaks specification (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/99'>#99</a>).</p></li>
+<li><p><code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> now allows user specification of the <code><a href="https://rdrr.io/pkg/labeling/man/extended.html">labeling::extended()</a></code> argument <code>only.loose</code> to permit more flexible breaks specification (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/99'>#99</a>).</p></li>
 <li><p>New <code><a href="../reference/rescale.html">rescale()</a></code> and <code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> methods support <code>dist</code> objects (<a href='https://github.com/zeehio'>@zeehio</a>, <a href='https://github.com/r-lib/scales/issues/105'>#105</a>).</p></li>
 <li><p><code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> now properly handles NAs (<a href='https://github.com/foo-bar-baz-qux'>@foo-bar-baz-qux</a>, <a href='https://github.com/r-lib/scales/issues/104'>#104</a>).</p></li>
 </ul>
@@ -232,7 +232,7 @@
 <a href="#scales-0-4-1" class="anchor"></a>scales 0.4.1<small> 2016-11-09 </small>
 </h1>
 <ul>
-<li><p><code><a href="../reference/extended_breaks.html">extended_breaks()</a></code> no longer fails on pathological inputs.</p></li>
+<li><p><code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> no longer fails on pathological inputs.</p></li>
 <li><p>New <code><a href="../reference/hms_trans.html">hms_trans()</a></code> for transforming hms time vectors.</p></li>
 <li><p><code><a href="../reference/train_discrete.html">train_discrete()</a></code> gets a new <code>na.rm</code> argument which controls whether <code>NA</code>s are preserved or dropped.</p></li>
 </ul>
@@ -322,7 +322,7 @@
 <li><p><code><a href="../reference/shape_pal.html">shape_pal()</a></code> warns if asked for more than 6 values. (Fixes <a href='https://github.com/r-lib/scales/issues/16'>#16</a>, thanks to Jean-Olivier Irisson).</p></li>
 <li><p><code><a href="../reference/time_trans.html">time_trans()</a></code> gains an optional argument <code>tz</code> to specify the time zone to use for the times. If not specified, it will be guess from the first input with a non-null time zone.</p></li>
 <li><p><code><a href="../reference/date_trans.html">date_trans()</a></code> and <code><a href="../reference/time_trans.html">time_trans()</a></code> now check that their inputs are of the correct type. This prevents ggplot2 scales from silently giving incorrect outputs when given incorrect inputs.</p></li>
-<li><p>Change the default breaks algorithm for <code><a href="../reference/cbreaks.html">cbreaks()</a></code> and <code><a href="../reference/trans_new.html">trans_new()</a></code>. Previously it was <code><a href="../reference/pretty_breaks.html">pretty_breaks()</a></code>, and now it’s <code><a href="../reference/extended_breaks.html">extended_breaks()</a></code>, which uses the <code>extended()</code> algorithm from the labeling package.</p></li>
+<li><p>Change the default breaks algorithm for <code><a href="../reference/cbreaks.html">cbreaks()</a></code> and <code><a href="../reference/trans_new.html">trans_new()</a></code>. Previously it was <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>, and now it’s <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code>, which uses the <code>extended()</code> algorithm from the labeling package.</p></li>
 <li><p>fixed namespace problem with <code><a href="../reference/fullseq.html">fullseq()</a></code>.</p></li>
 </ul>
 </div>
@@ -333,9 +333,9 @@
 <ul>
 <li><p><code>suppressWarnings</code> from <code><a href="../reference/train_continuous.html">train_continuous()</a></code> so zero-row or all infinite data frames don’t potentially cause problems.</p></li>
 <li><p>check for zero-length colour in <code><a href="../reference/gradient_n_pal.html">gradient_n_pal()</a></code>.</p></li>
-<li><p>added <code><a href="../reference/extended_breaks.html">extended_breaks()</a></code> which implements an extension to Wilkinson’s labelling approach, as implemented in the <code>labeling</code> package. This should generally produce nicer breaks than <code><a href="../reference/pretty_breaks.html">pretty_breaks()</a></code>.</p></li>
+<li><p>added <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> which implements an extension to Wilkinson’s labelling approach, as implemented in the <code>labeling</code> package. This should generally produce nicer breaks than <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>.</p></li>
 <li><p><code><a href="../reference/alpha.html">alpha()</a></code> can now preserve existing alpha values if <code><a href="../reference/alpha.html">alpha()</a></code> is missing.</p></li>
-<li><p><code><a href="../reference/log_breaks.html">log_breaks()</a></code> always gives breaks evenly spaced on the log scale, never evenly spaced on the data scale. This will result in really bad breaks for some ranges (e.g 0.5-0.6), but you probably shouldn’t be using log scales in that situation anyway.</p></li>
+<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> always gives breaks evenly spaced on the log scale, never evenly spaced on the data scale. This will result in really bad breaks for some ranges (e.g 0.5-0.6), but you probably shouldn’t be using log scales in that situation anyway.</p></li>
 </ul>
 </div>
     <div id="scales-0-2-0" class="section level1">
