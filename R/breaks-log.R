@@ -31,7 +31,7 @@
 #' demo_log10(c(1, 1e6))
 #'
 #' # Request more breaks by setting n
-#' demo_log10(c(1, 1e6), breaks = log_breaks(6))
+#' demo_log10(c(1, 1e6), breaks = breaks_log(6))
 #'
 #' # Some tricky ranges
 #' demo_log10(c(2000, 9000))
@@ -40,7 +40,7 @@
 #'
 #' # An even smaller range that requires falling back to linear breaks
 #' demo_log10(c(1800, 2000))
-log_breaks <- function(n = 5, base = 10) {
+breaks_log <- function(n = 5, base = 10) {
   force_all(n, base)
   n_default = n
   function(x, n = n_default) {
@@ -70,6 +70,11 @@ log_breaks <- function(n = 5, base = 10) {
     log_sub_breaks(rng, n = n, base = base)
   }
 }
+
+#' @export
+#' @usage NULL
+#' @rdname breaks_log
+log_breaks <- breaks_log
 
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@inbo.be}
 #' @noRd

@@ -27,8 +27,8 @@ to a set of breaks and labels suitable for display on axes or legends.
 }
 \examples{
 cbreaks(c(0, 100))
-cbreaks(c(0, 100), pretty_breaks(3))
-cbreaks(c(0, 100), pretty_breaks(10))
+cbreaks(c(0, 100), breaks_pretty(3))
+cbreaks(c(0, 100), breaks_pretty(10))
 cbreaks(c(1, 100), log_breaks())
 cbreaks(c(1, 1e4), log_breaks())
 

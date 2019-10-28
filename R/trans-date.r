@@ -8,7 +8,7 @@
 #' t$inverse(t$transform(years))
 #' t$format(t$breaks(range(years)))
 date_trans <- function() {
-  trans_new("date", "from_date", "to_date", breaks = pretty_breaks())
+  trans_new("date", "from_date", "to_date", breaks = breaks_pretty())
 }
 
 to_date <- function(x) structure(x, class = "Date")
@@ -51,7 +51,7 @@ time_trans <- function(tz = NULL) {
     structure(as.numeric(x), names = names(x))
   }
 
-  trans_new("time", "from_time", "to_time", breaks = pretty_breaks())
+  trans_new("time", "from_time", "to_time", breaks = breaks_pretty())
 }
 
 #' Transformation for times (class hms)

@@ -12,9 +12,9 @@ reference:
 - title:  Axis breaks
   desc: >
     Use these functions with the `breaks` argument to ggplot2 scales to
-    control the position of the
+    control the position of axis breaks and values of legend keys.
   contents:
-  - matches("breaks")
+  - starts_with("breaks_")
 
 - title: "Bounds: ranges & rescaling"
   desc: >

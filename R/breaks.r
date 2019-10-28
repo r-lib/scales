@@ -1,4 +1,3 @@
-
 #' Produce breaks spaced by a fixed distance
 #'
 #' Useful for numeric, date, and date-time scales.
@@ -42,9 +41,9 @@ breaks_width <- function(width, offset = 0) {
 #'  2010.
 #' @export
 #' @examples
-#' extended_breaks()(1:10)
-#' extended_breaks()(1:100)
-extended_breaks <- function(n = 5, ...) {
+#' breaks_extended()(1:10)
+#' breaks_extended()(1:100)
+breaks_extended <- function(n = 5, ...) {
   n_default <- n
   function(x, n = n_default) {
     x <- x[is.finite(x)]
@@ -57,11 +56,18 @@ extended_breaks <- function(n = 5, ...) {
   }
 }
 
+#' @export
+#' @usage NULL
+#' @rdname breaks_extended
+extended_breaks <- breaks_extended
+
 #' Pretty breaks
 #'
 #' Uses default R break algorithm as implemented in [pretty()]. This is
 #' primarily useful for date/times, as [extended_breaks()] should do a slightly
 #' better job for numeric scales.
+#'
+#' `pretty_breaks()` is retired; use `breaks_pretty()` instead.
 #'
 #' @param n desired number of breaks
 #' @param ... other arguments passed on to [pretty()]
@@ -69,8 +75,8 @@ extended_breaks <- function(n = 5, ...) {
 #' @examples
 #' one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
 #' demo_datetime(one_month)
-#' demo_datetime(one_month, breaks = pretty_breaks(10))
-pretty_breaks <- function(n = 5, ...) {
+#' demo_datetime(one_month, breaks = breaks_pretty(10))
+breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n
   function(x, n = n_default) {
@@ -80,3 +86,7 @@ pretty_breaks <- function(n = 5, ...) {
   }
 }
 
+#' @export
+#' @usage NULL
+#' @rdname breaks_pretty
+pretty_breaks <- breaks_pretty
