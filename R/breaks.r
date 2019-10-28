@@ -65,7 +65,6 @@ extended_breaks <- function(n = 5, ...) {
 #'
 #' @param n desired number of breaks
 #' @param ... other arguments passed on to [pretty()]
-#' @keywords internal
 #' @export
 #' @examples
 #' one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
