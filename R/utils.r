@@ -14,16 +14,9 @@ seq2 <- function(from, to) {
 }
 
 demo_ggplot <- function(x, scale_name, ...) {
-
   call <- substitute(list(...))
   call[[1]] <- as.name(scale_name)
-
-  code <- c(
-    "ggplot(df, aes(x, 1)) +",
-    "  geom_blank() +",
-    paste0("  ", deparse(call))
-  )
-  cat(paste0(code, "\n", collapse = ""))
+  cat(paste0(deparse(call), "\n", collapse = ""))
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     message("Skipping; ggplot2 not installed")
