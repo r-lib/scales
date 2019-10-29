@@ -2,6 +2,7 @@
 % Please edit documentation in R/format-date.R
 \name{date_format}
 \alias{date_format}
+\alias{label_date}
 \alias{date_short}
 \alias{time_format}
 \title{Formatted dates and times}

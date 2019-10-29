@@ -33,6 +33,7 @@
 #' one_year <- date_range("2020-05-01", 365)
 #' demo_datetime(one_year, date_breaks = "month")
 #' demo_datetime(one_year, date_breaks = "month", labels = date_short())
+#' @aliases label_date
 date_format <- function(format = "%Y-%m-%d", tz = "UTC") {
   force_all(format, tz)
   function(x) format(x, format, tz = tz) # format handles NAs correctly when dealing with dates

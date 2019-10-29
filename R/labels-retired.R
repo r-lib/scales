@@ -120,3 +120,26 @@ unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
     ...
   )
 }
+
+#' Label using `format()`
+#'
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' This function is kept for backward compatiblity; you should either use
+#' [label_number()] or [label_date()] instead.
+#'
+#' @param ... Arguments passed on to [format()].
+#' @export
+#' @keywords internal
+format_format <- function(...) {
+  force_all(...)
+
+  function(x) {
+    if (!is.null(names(x))) return(names(x))
+    ret <- format(x, ..., trim = TRUE, justify = "left")
+
+    # format.character() renders NA as "NA"
+    ret[is.na(x)] <- NA
+
+    ret
+  }
+}
