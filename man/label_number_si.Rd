@@ -2,7 +2,7 @@
 % Please edit documentation in R/label-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Label numbers, rescaled automatically to use SI prefixes}
+\title{Label numbers with SI prefixes (2k, 1M, 5T etc)}
 \usage{
 label_number_si(accuracy = 1, prefix = "", suffix = "", ...)
 }

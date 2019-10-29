@@ -1,4 +1,4 @@
-#' Label numbers, rescaled automatically to use SI prefixes
+#' Label numbers with SI prefixes (2k, 1M, 5T etc)
 #'
 #' `number_si()` automatically scales and labels with the best SI prefix,
 #' "K" for values \eqn{\ge} 10e3, "M" for \eqn{\ge} 10e6,

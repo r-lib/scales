@@ -4,7 +4,7 @@
 \alias{label_dollar}
 \alias{dollar_format}
 \alias{dollar}
-\title{Currency formatter: round to nearest cent and display dollar sign}
+\title{Label currencies ($100, $2.50, etc)}
 \usage{
 label_dollar(accuracy = NULL, scale = 1, prefix = "$", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE,

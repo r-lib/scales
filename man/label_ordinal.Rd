@@ -7,7 +7,7 @@
 \alias{ordinal_spanish}
 \alias{ordinal_format}
 \alias{ordinal}
-\title{Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers}
+\title{Label ordinal numbers (1st, 2nd, 3rd, etc)}
 \usage{
 label_ordinal(prefix = "", suffix = "", big.mark = " ",
   rules = ordinal_english(), ...)

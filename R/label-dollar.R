@@ -1,4 +1,4 @@
-#' Currency formatter: round to nearest cent and display dollar sign
+#' Label currencies ($100, $2.50, etc)
 #'
 #' Format numbers as currency, rounding values to dollars or cents using
 #' a convenient heuristic.

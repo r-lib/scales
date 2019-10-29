@@ -4,7 +4,7 @@
 \alias{label_pvalue}
 \alias{pvalue_format}
 \alias{pvalue}
-\title{Label p-values}
+\title{Label p-values (e.g. <0.001, 0.25, p >= 0.99)}
 \usage{
 label_pvalue(accuracy = 0.001, decimal.mark = ".", prefix = NULL,
   add_p = FALSE)

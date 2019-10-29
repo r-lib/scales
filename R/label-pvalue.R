@@ -1,4 +1,4 @@
-#' Label p-values
+#' Label p-values (e.g. <0.001, 0.25, p >= 0.99)
 #'
 #' Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 #'

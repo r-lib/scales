@@ -1,4 +1,4 @@
-#' Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers
+#' Label ordinal numbers (1st, 2nd, 3rd, etc)
 #'
 #' Round values to integers and then display as ordinal values (e.g. 1st, 2nd,
 #' 3rd). Built-in rules are provided for English, French, and Spanish.
