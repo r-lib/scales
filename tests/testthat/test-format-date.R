@@ -20,7 +20,7 @@ test_that("time_format works correctly", {
 
 test_that("date_short doesn't change unexpectedly", {
   verify_output(test_path("test-format-date-short.txt"), {
-    dformat <- date_short()
+    dformat <- label_date_short()
 
     "dates"
     jan1 <- as.Date("2010-01-01")
