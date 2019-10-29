@@ -87,3 +87,36 @@ trans_format <- function(trans, format = scientific_format()) {
   }
 }
 
+
+#' Unit labels
+#'
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' This function is kept for backward compatiblity; you should either use
+#' [label_number()] or [label_number_si()] instead.
+#'
+#' @inheritParams number_format
+#' @keywords internal
+#' @param unit The units to append.
+#' @param sep The separator between the number and the unit label.
+#' @export
+#' @examples
+#' # Label with units
+#' demo_continuous(c(0, 1), labels = unit_format(unit = "m"))
+#' # Labels in kg, but original data in g
+#' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
+#' demo_continuous(c(0, 2500), labels = km)
+unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
+                        unit = "m", sep = " ", suffix = paste0(sep, unit),
+                        big.mark = " ", decimal.mark = ".",
+                        trim = TRUE, ...) {
+  number_format(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    trim = trim,
+    ...
+  )
+}

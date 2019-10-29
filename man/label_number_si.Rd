@@ -4,7 +4,7 @@
 \alias{label_number_si}
 \title{Label numbers with SI prefixes (2k, 1M, 5T etc)}
 \usage{
-label_number_si(accuracy = 1, prefix = "", suffix = "", ...)
+label_number_si(accuracy = 1, unit = NULL, sep = NULL, ...)
 }
 \arguments{
 \item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -14,11 +14,16 @@ difference between adjacent values.
 
 Applied to rescaled data.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{unit}{Optional units specifier.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{sep}{Separator between number and SI unit. Defaults to \code{" "} if
+\code{units} is supplied, and \code{""} if not.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+}
+\value{
+\code{*_format()} returns a function with single parameter
+\code{x}, a numeric vector, that returns a character vector.
 }
 \description{
 \code{number_si()} automatically scales and labels with the best SI prefix,
@@ -27,5 +32,8 @@ Applied to rescaled data.}
 }
 \examples{
 demo_continuous(c(1, 1e9), label = label_number_si())
+demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
+demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
+
 demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 }

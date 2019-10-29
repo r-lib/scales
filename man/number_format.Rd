@@ -2,6 +2,7 @@
 % Please edit documentation in R/format-number.r
 \name{number_format}
 \alias{number_format}
+\alias{label_number}
 \alias{number}
 \alias{comma_format}
 \alias{comma}
@@ -71,6 +72,10 @@ demo_continuous(c(-1e6, 1e6))
 demo_continuous(c(-1e6, 1e6), labels = number_format())
 # Or comma_format()
 demo_continuous(c(-1e6, 1e6), labels = comma_format())
+
+# Degrees
+demo_continuous(c(32, 212), label = number_format(suffix = "\\u00b0F"))
+demo_continuous(c(0, 100), label = number_format(suffix = "\\u00b0C"))
 
 # Display currencies with dollar_format()
 demo_continuous(c(-1e6, 1e6), labels = dollar_format())

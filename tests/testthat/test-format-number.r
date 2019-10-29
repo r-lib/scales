@@ -66,22 +66,6 @@ test_that("unit_format preserves names", {
   expect_named(unit_format()(c(a = 1)), "a")
 })
 
-# Degree formatter --------------------------------------------------------
-
-test_that("Degree format adds degree symbol", {
-  degree <- degree_format()
-  expect_equal(degree(c(-10, 0, 20, NA)), c("-10°", "0°", "20°", NA))
-})
-
-test_that("Degree format can also add unit symbols", {
-  celcius <- degree_format(unit = "C")
-  expect_equal(celcius(c(-10, 0, 20)), c("-10°C", "0°C", "20°C"))
-})
-
-test_that("degree format preserves names", {
-  expect_named(degree_format()(c(a = 1)), "a")
-})
-
 # Percent formatter -------------------------------------------------------
 
 test_that("negative percents work", {

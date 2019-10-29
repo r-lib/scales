@@ -40,11 +40,16 @@
 #' # Or comma_format()
 #' demo_continuous(c(-1e6, 1e6), labels = comma_format())
 #'
+#' # Degrees
+#' demo_continuous(c(32, 212), label = number_format(suffix = "\u00b0F"))
+#' demo_continuous(c(0, 100), label = number_format(suffix = "\u00b0C"))
+#'
 #' # Display currencies with dollar_format()
 #' demo_continuous(c(-1e6, 1e6), labels = dollar_format())
 #' demo_continuous(c(-1e6, 1e6), labels = dollar_format(prefix = "\u20ac"))
 #' # Rescale using the scale parameter
 #' demo_continuous(c(-1e6, 1e6), labels = dollar_format(scale = 1 / 1000))
+#' @aliases label_number
 number_format <- function(accuracy = NULL, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
