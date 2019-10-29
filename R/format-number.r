@@ -45,19 +45,6 @@
 #' demo_continuous(c(-1e6, 1e6), labels = dollar_format(prefix = "\u20ac"))
 #' # Rescale using the scale parameter
 #' demo_continuous(c(-1e6, 1e6), labels = dollar_format(scale = 1 / 1000))
-#'
-#' # Show percentages with percent_format()
-#' demo_continuous(c(0, 1))
-#' # Or convert to percentage:
-#' demo_continuous(c(0, 1), labels = percent_format())
-#' # Or use prefix and suffix to create your own
-#' french_percent <- number_format(
-#'   accuracy = NULL,
-#'   scale = 100,
-#'   decimal.mark = ",",
-#'   suffix = " %"
-#' )
-#' demo_continuous(c(0, .01), labels = french_percent)
 number_format <- function(accuracy = NULL, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
@@ -150,41 +137,6 @@ comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
       .call = FALSE
     )
   }
-  number(
-    x = x,
-    accuracy = accuracy,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )
-}
-
-#' @export
-#' @rdname number_format
-percent_format <- function(accuracy = NULL, scale = 100, prefix = "",
-                           suffix = "%", big.mark = " ", decimal.mark = ".",
-                           trim = TRUE, ...) {
-  number_format(
-    accuracy = accuracy,
-    scale = scale,
-    prefix = prefix,
-    suffix = suffix,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    ...
-  )
-}
-
-#' @export
-#' @rdname number_format
-percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
-                    suffix = "%", big.mark = " ", decimal.mark = ".",
-                    trim = TRUE, ...) {
   number(
     x = x,
     accuracy = accuracy,

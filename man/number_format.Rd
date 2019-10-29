@@ -5,8 +5,6 @@
 \alias{number}
 \alias{comma_format}
 \alias{comma}
-\alias{percent_format}
-\alias{percent}
 \title{Number formatters}
 \usage{
 number_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
@@ -20,14 +18,6 @@ comma_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
 
 comma(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
-
-percent_format(accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
-
-percent(x, accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
 }
 \arguments{
 \item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -87,17 +77,4 @@ demo_continuous(c(-1e6, 1e6), labels = dollar_format())
 demo_continuous(c(-1e6, 1e6), labels = dollar_format(prefix = "\\u20ac"))
 # Rescale using the scale parameter
 demo_continuous(c(-1e6, 1e6), labels = dollar_format(scale = 1 / 1000))
-
-# Show percentages with percent_format()
-demo_continuous(c(0, 1))
-# Or convert to percentage:
-demo_continuous(c(0, 1), labels = percent_format())
-# Or use prefix and suffix to create your own
-french_percent <- number_format(
-  accuracy = NULL,
-  scale = 100,
-  decimal.mark = ",",
-  suffix = " \%"
-)
-demo_continuous(c(0, .01), labels = french_percent)
 }
