@@ -1,28 +1,26 @@
-#' p-values formatter
+#' Label p-values
 #'
-#' Formatter for p-values, adding a symbol "<" for small p-values.
+#' Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 #'
-#' @return `pvalue_format` returns a function with single parameter
-#'   `x`, a numeric vector, that returns a character vector.
-#' @param accuracy Number to round to.
-#' @param decimal.mark The character to be used to indicate the numeric
-#'   decimal point.
+#' @section Old interface:
+#' `pvalue()` and `pvalue_dollar()` are retired; please use `label_pvalue()`
+#' instead.
+#' @inherit number_format return params
 #' @param prefix A character vector of length 3 giving the prefixes to
 #'   put in front of numbers. The default values are `c("<", "", ">")`
 #'   if `add_p` is `TRUE` and `c("p<", "p=", "p>")` if `FALSE`.
 #' @param add_p Add "p=" before the value?
-#' @param x A numeric vector of p-values.
 #' @export
 #' @examples
-#' p <- c(.995, .50, 0.12, .045, .011, .009, .00002, NA)
-#' pvalue(p)
-#' pvalue(p, accuracy = .01)
-#' pvalue(p, prefix = c("p < ", "p = ", "p > "))
-#' pvalue(p, add_p = TRUE)
+#' demo_continuous(c(0, 1))
+#' demo_continuous(c(0, 1), labels = label_pvalue())
+#' demo_continuous(c(0, 1), labels = label_pvalue(accuracy = 0.1))
+#' demo_continuous(c(0, 1), labels = label_pvalue(add_p = TRUE))
 #'
-#' custom_function <- pvalue_format(accuracy = .1, decimal.mark = ",")
-#' custom_function(p)
-pvalue_format <- function(accuracy = .001, decimal.mark = ".", prefix = NULL, add_p = FALSE) {
+#' # Or provide your own prefixes
+#' prefix <- c("p < ", "p = ", "p > ")
+#' demo_continuous(c(0, 1), labels = label_pvalue(prefix = prefix))
+label_pvalue <- function(accuracy = .001, decimal.mark = ".", prefix = NULL, add_p = FALSE) {
   force_all(accuracy, decimal.mark, add_p)
   function(x) pvalue(
       x,
@@ -33,7 +31,11 @@ pvalue_format <- function(accuracy = .001, decimal.mark = ".", prefix = NULL, ad
     )
 }
 
-#' @rdname pvalue_format
+#' @rdname label_pvalue
+#' @export
+pvalue_format <- label_pvalue
+
+#' @rdname label_pvalue
 #' @export
 pvalue <- function(x,
                    accuracy = .001,
