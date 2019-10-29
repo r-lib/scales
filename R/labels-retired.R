@@ -63,3 +63,27 @@ validate_byte_symbol <- function(symbol, symbols, default = "auto") {
 
   symbol
 }
+
+#' Format labels after transformation
+#'
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#'
+#' @param trans transformation to apply
+#' @param format additional formatter to apply after transformation
+#' @return a function with single parameter x, a numeric vector, that
+#'    returns a character vector of list of expressions
+#' @export
+#' @keywords internal
+#' @examples
+#' tf <- trans_format("log10", scientific_format())
+#' tf(10 ^ 1:6)
+trans_format <- function(trans, format = scientific_format()) {
+  if (is.character(trans)) trans <- match.fun(trans)
+  force(format)
+
+  function(x) {
+    x <- trans(x)
+    format(x)
+  }
+}
+
