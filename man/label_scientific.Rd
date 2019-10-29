@@ -4,7 +4,7 @@
 \alias{label_scientific}
 \alias{scientific_format}
 \alias{scientific}
-\title{Label numbers with scientific notation}
+\title{Label numbers with scientific notation (e.g. 1e05, 1.5e-02)}
 \usage{
 label_scientific(digits = 3, scale = 1, prefix = "", suffix = "",
   decimal.mark = ".", trim = TRUE, ...)
@@ -39,7 +39,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 \code{x}, a numeric vector, that returns a character vector.
 }
 \description{
-Label numbers with scientific notation
+Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 }
 \section{Old interface}{
 

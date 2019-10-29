@@ -3,7 +3,7 @@
 \name{label_wrap}
 \alias{label_wrap}
 \alias{wrap_format}
-\title{Wrap long strings across multiple lines}
+\title{Label strings by wrapping across multiple lines}
 \usage{
 label_wrap(width)
 

@@ -1,4 +1,4 @@
-#' Label numbers with scientific notation
+#' Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 #'
 #' @section Old interface:
 #' `scientific_format()` and `scientific()` are retired; please use

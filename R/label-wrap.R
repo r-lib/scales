@@ -1,4 +1,4 @@
-#' Wrap long strings across multiple lines
+#' Label strings by wrapping across multiple lines
 #'
 #' Uses [strwrap()] to split long labels across multiple lines.
 #'
