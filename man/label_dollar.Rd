@@ -24,9 +24,9 @@ values will be rounded to the nearest integer, unless any of the
 values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
 
-\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
-formating (useful if the underlying data is on another scale,
-e.g. for computing percentages or thousands).}
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formating. This is useful if the underlying data is very small or very
+large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
 
@@ -45,8 +45,14 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{x}{A numeric vector}
 }
 \value{
-\code{*_format()} returns a function with single parameter
-\code{x}, a numeric vector, that returns a character vector.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 Format numbers as currency, rounding values to dollars or cents using

@@ -19,16 +19,16 @@ percent(x, accuracy = NULL, scale = 100, prefix = "",
   ...)
 }
 \arguments{
-\item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+\item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.
 
 Applied to rescaled data.}
 
-\item{scale}{A scaling factor: \code{x} will be multiply by \code{scale} before
-formating (useful if the underlying data is on another scale,
-e.g. for computing percentages or thousands).}
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formating. This is useful if the underlying data is very small or very
+large.}
 
 \item{prefix}{Symbols to display before and after value.}
 
@@ -47,8 +47,14 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{x}{A numeric vector to format.}
 }
 \value{
-\code{*_format()} returns a function with single parameter
-\code{x}, a numeric vector, that returns a character vector.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 Label percentages (2.5\%, 50\%, etc)

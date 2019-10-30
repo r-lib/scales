@@ -17,7 +17,7 @@ binary units (base 1024).
 unit for each value.
 }}
 
-\item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+\item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.

@@ -16,7 +16,7 @@ pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL,
   add_p = FALSE)
 }
 \arguments{
-\item{accuracy}{Number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+\item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.
@@ -35,8 +35,14 @@ if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 \item{x}{A numeric vector to format.}
 }
 \value{
-\code{*_format()} returns a function with single parameter
-\code{x}, a numeric vector, that returns a character vector.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
