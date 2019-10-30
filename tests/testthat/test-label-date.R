@@ -19,7 +19,7 @@ test_that("time_format works correctly", {
 })
 
 test_that("date_short doesn't change unexpectedly", {
-  verify_output(test_path("test-format-date-short.txt"), {
+  verify_output(test_path("test-label-date-short.txt"), {
     dformat <- label_date_short()
 
     "dates"

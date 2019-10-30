@@ -1,12 +1,12 @@
 
 test_that("scientific format shows specific sig figs", {
-  expect_equal(scientific(123456, digits = 1), "1e+05")
-  expect_equal(scientific(123456, digits = 2), "1.2e+05")
-  expect_equal(scientific(123456, digits = 3), "1.23e+05")
+  expect_equal(label_scientific(digits = 1)(123456), "1e+05")
+  expect_equal(label_scientific(digits = 2)(123456), "1.2e+05")
+  expect_equal(label_scientific(digits = 3)(123456), "1.23e+05")
 
-  expect_equal(scientific(0.123456, digits = 1), "1e-01")
-  expect_equal(scientific(0.123456, digits = 2), "1.2e-01")
-  expect_equal(scientific(0.123456, digits = 3), "1.23e-01")
+  expect_equal(label_scientific(digits = 1)(0.123456), "1e-01")
+  expect_equal(label_scientific(digits = 2)(0.123456), "1.2e-01")
+  expect_equal(label_scientific(digits = 3)(0.123456), "1.23e-01")
 })
 
 test_that("prefix and suffix works with scientific format", {

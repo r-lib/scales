@@ -45,55 +45,6 @@ test_that("comma preserves names", {
   expect_named(comma(c(a = 1)), "a")
 })
 
-# Unit formatter --------------------------------------------------------
-
-test_that("unit format", {
-  expect_equal(
-    unit_format(unit = "km", scale = 1e-3)(c(1e3, NA, 2e3)),
-    c("1.0 km", NA, "2.0 km")
-  )
-  expect_equal(
-    unit_format(unit = "ha", scale = 1e-4, accuracy = .1)(c(1e3, 2e3)),
-    c("0.1 ha", "0.2 ha")
-  )
-  expect_equal(
-    unit_format()(c(1e2, 2e2)),
-    c("100 m", "200 m")
-  )
-})
-
-test_that("unit_format preserves names", {
-  expect_named(unit_format()(c(a = 1)), "a")
-})
-
-# Percent formatter -------------------------------------------------------
-
-test_that("negative percents work", {
-  expect_equal(percent(-0.6, accuracy = 1), "-60%")
-})
-
-test_that("Single 0 gives 0%", {
-  expect_equal(percent(0), "0%")
-})
-
-test_that("preserves NAs", {
-  expect_equal(percent(c(NA, 1, 2, 3)), c(NA, "100%", "200%", "300%"))
-  expect_equal(percent(NA_real_), NA_character_)
-})
-
-test_that("preserves names", {
-  expect_named(percent(c(a = 1)), "a")
-})
-
-test_that("default accuracy works for range of inputs", {
-  x <- c(0.1, 0.2, 0.5)
-  expect_equal(percent(x / 100), c("0.10%", "0.20%", "0.50%"))
-  expect_equal(percent(x / 10), c("1.0%", "2.0%", "5.0%"))
-  expect_equal(percent(x), c("10%", "20%", "50%"))
-  expect_equal(percent(x * 10), c("100%", "200%", "500%"))
-})
-
-
 # Common tests --------------------------------------------------------
 
 test_that("formatters don't add extra spaces", {
