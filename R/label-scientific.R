@@ -7,11 +7,15 @@
 #' @param digits Number of digits to show before exponent.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param ... Other arguments passed on to [base::format()].
+#' @family labels for continuous scales
+#' @family labels for log scales
 #' @export
 #' @examples
 #' demo_continuous(c(1, 10))
 #' demo_continuous(c(1, 10), labels = label_scientific())
 #' demo_continuous(c(1, 10), labels = label_scientific(digits = 3))
+#'
+#' demo_log10(c(1, 1e9))
 label_scientific <- function(digits = 3, scale = 1, prefix = "", suffix = "",
                              decimal.mark = ".", trim = TRUE, ...) {
   force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)

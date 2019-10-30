@@ -16,6 +16,7 @@
 #' @param negative_parens Display negative using parentheses?
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
+#' @family labels for continuous scales
 #' @examples
 #' demo_continuous(c(0, 1), labels = label_dollar())
 #' demo_continuous(c(1, 100), labels = label_dollar())

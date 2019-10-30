@@ -40,3 +40,7 @@ demo_discrete(x)
 demo_discrete(x, labels = label_wrap(10))
 demo_discrete(x, labels = label_wrap(20))
 }
+\seealso{
+Other labels for discrete scales: \code{\link{label_parse}}
+}
+\concept{labels for discrete scales}

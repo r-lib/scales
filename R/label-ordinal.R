@@ -12,6 +12,7 @@
 #'   Name gives suffix, and value specifies which numbers to match.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
+#' @family labels for continuous scales
 #' @examples
 #' demo_continuous(c(1, 5))
 #' demo_continuous(c(1, 5), labels = label_ordinal())

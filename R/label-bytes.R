@@ -17,6 +17,8 @@
 #' @return A labeller function that takes a numeric vector of breaks and
 #'   returns a character vector of labels.
 #' @export
+#' @family labels for continuous scales
+#' @family labels for log scales
 #' @examples
 #' demo_continuous(c(1, 1e6))
 #' demo_continuous(c(1, 1e6), label = label_bytes())

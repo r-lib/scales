@@ -81,3 +81,12 @@ demo_continuous(c(1000, 1100), labels = euro)
 # Use negative_parens = TRUE for finance style display
 demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
 }
+\seealso{
+Other labels for continuous scales: \code{\link{label_bytes}},
+  \code{\link{label_number_auto}},
+  \code{\link{label_number_si}},
+  \code{\link{label_ordinal}}, \code{\link{label_parse}},
+  \code{\link{label_percent}}, \code{\link{label_pvalue}},
+  \code{\link{label_scientific}}
+}
+\concept{labels for continuous scales}

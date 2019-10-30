@@ -10,6 +10,8 @@
 #' @inherit number_format return params
 #' @seealso [plotmath] for the details of mathematical formatting in R.
 #' @export
+#' @family labels for continuous scales
+#' @family labels for discrete scales
 #' @examples
 #' # Use label_parse() with discrete scales
 #' greek <- c("alpha", "beta", "gamma")

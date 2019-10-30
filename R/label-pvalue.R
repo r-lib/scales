@@ -11,6 +11,7 @@
 #'   if `add_p` is `TRUE` and `c("p<", "p=", "p>")` if `FALSE`.
 #' @param add_p Add "p=" before the value?
 #' @export
+#' @family labels for continuous scales
 #' @examples
 #' demo_continuous(c(0, 1))
 #' demo_continuous(c(0, 1), labels = label_pvalue())

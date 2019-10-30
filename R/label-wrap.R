@@ -7,6 +7,7 @@
 #' @inherit number_format return params
 #' @param width Number of characters per line.
 #' @export
+#' @family labels for discrete scales
 #' @examples
 #' x <- c(
 #'   "this is a long label",

@@ -5,6 +5,7 @@
 #' instead.
 #' @inherit number_format return params
 #' @export
+#' @family labels for continuous scales
 #' @examples
 #' demo_continuous(c(0, 1))
 #' demo_continuous(c(0, 1), labels = label_percent())

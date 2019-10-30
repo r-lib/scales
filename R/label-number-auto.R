@@ -6,6 +6,7 @@
 #'
 #' @inheritParams number_format
 #' @export
+#' @family labels for continuous scales
 #' @examples
 #' # Very small and very large numbers get scientific notation
 #' demo_continuous(c(0, 1e-6), labels = label_number_auto())

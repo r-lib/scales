@@ -9,6 +9,8 @@
 #' @param sep Separator between number and SI unit. Defaults to `" "` if
 #'   `units` is supplied, and `""` if not.
 #' @export
+#' @family labels for continuous scales
+#' @family labels for log scales
 #' @examples
 #' demo_continuous(c(1, 1e9), label = label_number_si())
 #' demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
