@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-gradient.r
 \name{seq_gradient_pal}
 \alias{seq_gradient_pal}
-\title{Sequential colour gradient palette (continuous).}
+\title{Sequential colour gradient palette (continuous)}
 \usage{
 seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"),
   space = "Lab")
@@ -16,7 +16,7 @@ seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"),
 other values are deprecated.}
 }
 \description{
-Sequential colour gradient palette (continuous).
+Sequential colour gradient palette (continuous)
 }
 \examples{
 x <- seq(0, 1, length.out = 25)

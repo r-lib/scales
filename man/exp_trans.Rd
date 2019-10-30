@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans-numeric.r
 \name{exp_trans}
 \alias{exp_trans}
-\title{Exponential transformation (inverse of log transformation).}
+\title{Exponential transformation (inverse of log transformation)}
 \usage{
 exp_trans(base = exp(1))
 }
@@ -10,5 +10,11 @@ exp_trans(base = exp(1))
 \item{base}{Base of logarithm}
 }
 \description{
-Exponential transformation (inverse of log transformation).
+Exponential transformation (inverse of log transformation)
+}
+\examples{
+plot(exp_trans(0.5), xlim = c(-2, 2))
+plot(exp_trans(1), xlim = c(-2, 2))
+plot(exp_trans(2), xlim = c(-2, 2))
+plot(exp_trans(), xlim = c(-2, 2))
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/colour-manip.r
 \name{muted}
 \alias{muted}
-\title{Mute standard colour.}
+\title{Mute standard colour}
 \usage{
 muted(colour, l = 30, c = 70)
 }
@@ -14,7 +14,7 @@ muted(colour, l = 30, c = 70)
 \item{c}{new chroma}
 }
 \description{
-Mute standard colour.
+Mute standard colour
 }
 \examples{
 muted("red")

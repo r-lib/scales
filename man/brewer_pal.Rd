@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-brewer.r
 \name{brewer_pal}
 \alias{brewer_pal}
-\title{Colour Brewer palette (discrete).}
+\title{Colour Brewer palette (discrete)}
 \usage{
 brewer_pal(type = "seq", palette = 1, direction = 1)
 }
@@ -17,7 +17,7 @@ colours are as output by \code{\link[RColorBrewer:brewer.pal]{RColorBrewer::brew
 order of colours is reversed.}
 }
 \description{
-Colour Brewer palette (discrete).
+Colour Brewer palette (discrete)
 }
 \examples{
 show_col(brewer_pal()(10))

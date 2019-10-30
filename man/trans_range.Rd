@@ -2,7 +2,7 @@
 % Please edit documentation in R/trans.r
 \name{trans_range}
 \alias{trans_range}
-\title{Compute range of transformed values.}
+\title{Compute range of transformed values}
 \usage{
 trans_range(trans, x)
 }
@@ -15,3 +15,4 @@ given as a string.}
 \description{
 Silently drops any ranges outside of the domain of \code{trans}.
 }
+\keyword{internal}

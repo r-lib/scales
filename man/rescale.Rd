@@ -8,7 +8,7 @@
 \alias{rescale.POSIXt}
 \alias{rescale.Date}
 \alias{rescale.integer64}
-\title{Rescale continuous vector to have specified minimum and maximum.}
+\title{Rescale continuous vector to have specified minimum and maximum}
 \usage{
 rescale(x, to, from, ...)
 
@@ -41,7 +41,7 @@ calculated from the range of \code{x}}
 \item{...}{other arguments passed on to methods}
 }
 \description{
-Rescale continuous vector to have specified minimum and maximum.
+Rescale continuous vector to have specified minimum and maximum
 }
 \examples{
 rescale(1:100)

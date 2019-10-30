@@ -1,4 +1,4 @@
-#' Rescale palette (continuous).
+#' Rescale palette (continuous)
 #'
 #' Just rescales the input to the specific output range.  Useful for
 #' alpha, size, and continuous position.

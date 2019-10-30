@@ -1,0 +1,70 @@
+#' Label p-values (e.g. <0.001, 0.25, p >= 0.99)
+#'
+#' Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
+#'
+#' @section Old interface:
+#' `pvalue()` and `pvalue_dollar()` are retired; please use `label_pvalue()`
+#' instead.
+#' @inherit number_format return params
+#' @param prefix A character vector of length 3 giving the prefixes to
+#'   put in front of numbers. The default values are `c("<", "", ">")`
+#'   if `add_p` is `TRUE` and `c("p<", "p=", "p>")` if `FALSE`.
+#' @param add_p Add "p=" before the value?
+#' @export
+#' @family labels for continuous scales
+#' @examples
+#' demo_continuous(c(0, 1))
+#' demo_continuous(c(0, 1), labels = label_pvalue())
+#' demo_continuous(c(0, 1), labels = label_pvalue(accuracy = 0.1))
+#' demo_continuous(c(0, 1), labels = label_pvalue(add_p = TRUE))
+#'
+#' # Or provide your own prefixes
+#' prefix <- c("p < ", "p = ", "p > ")
+#' demo_continuous(c(0, 1), labels = label_pvalue(prefix = prefix))
+label_pvalue <- function(accuracy = .001, decimal.mark = ".", prefix = NULL, add_p = FALSE) {
+  force_all(accuracy, decimal.mark, add_p)
+  function(x) pvalue(
+      x,
+      accuracy = accuracy,
+      decimal.mark = decimal.mark,
+      prefix = prefix,
+      add_p = add_p
+    )
+}
+
+#' @rdname label_pvalue
+#' @export
+pvalue_format <- label_pvalue
+
+#' @rdname label_pvalue
+#' @export
+pvalue <- function(x,
+                   accuracy = .001,
+                   decimal.mark = ".",
+                   prefix = NULL,
+                   add_p = FALSE) {
+
+  out <- number(x, accuracy, decimal.mark = decimal.mark)
+  below <- number(accuracy, accuracy, decimal.mark = decimal.mark)
+  above <- number(1 - accuracy, accuracy, decimal.mark = decimal.mark)
+
+  if (is.null(prefix)) {
+    if (add_p) {
+      prefix <- c("p<", "p=", "p>")
+    } else {
+      prefix <- c("<", "", ">")
+    }
+  } else {
+    if (!is.character(prefix) || length(prefix) != 3) {
+      stop("`prefix` must be a length 3 character vector", call. = FALSE)
+    }
+  }
+
+  out <- paste0(prefix[[2]], out)
+  out[x < accuracy] <- paste0(prefix[[1]], below)
+  out[x > 1 - accuracy] <- paste0(prefix[[3]], above)
+  out[is.na(x)] <- NA
+  names(out) <- names(x)
+
+  out
+}

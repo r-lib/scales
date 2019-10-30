@@ -2,14 +2,19 @@
 % Please edit documentation in R/pal-area.r
 \name{area_pal}
 \alias{area_pal}
-\title{Point area palette (continuous).}
+\alias{abs_area}
+\title{Area palettes (continuous)}
 \usage{
 area_pal(range = c(1, 6))
+
+abs_area(max)
 }
 \arguments{
 \item{range}{Numeric vector of length two, giving range of possible sizes.
 Should be greater than 0.}
+
+\item{max}{A number representing the maximum size.}
 }
 \description{
-Point area palette (continuous).
+Area palettes (continuous)
 }

@@ -1,13 +1,20 @@
+url: https://scales.r-lib.org/
+
 reference:
-- title:  Breaks and formatters
+- title: Axis labels
   desc: >
-    Functions for computing how tick marks/legend keys should be
-    distributed across the data range, as well as how to convert those numeric
-    positions into reader-friendly labels
+    Use these functions with the `labels` argument to ggplot2 scales to
+    control the formatting of axis labels and legend keys.
   contents:
-  - matches("breaks")
-  - -cbreaks
+  - starts_with("label_")
   - matches("format")
+
+- title:  Axis breaks
+  desc: >
+    Use these functions with the `breaks` argument to ggplot2 scales to
+    control the position of axis breaks and values of legend keys.
+  contents:
+  - starts_with("breaks_")
 
 - title: "Bounds: ranges & rescaling"
   desc: >
@@ -69,7 +76,6 @@ reference:
     properties.
   contents:
   - cscale
-  - cbreaks
   - dscale
   - starts_with("train_")
   - Range

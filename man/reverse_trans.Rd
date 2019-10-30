@@ -2,10 +2,13 @@
 % Please edit documentation in R/trans-numeric.r
 \name{reverse_trans}
 \alias{reverse_trans}
-\title{Reverse transformation.}
+\title{Reverse transformation}
 \usage{
 reverse_trans()
 }
 \description{
-Reverse transformation.
+Reverse transformation
+}
+\examples{
+plot(reverse_trans(), xlim = c(-1, 1))
 }

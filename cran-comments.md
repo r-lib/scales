@@ -1,7 +1,9 @@
 ## Test environments
-* OS X install: R 3.5
-* ubuntu 14.04 travis-ci: R 3.1, R 3.2, R 3.3, R 3.4, 3.5, R-devel
-* win-builder: R-devel
+
+* local: darwin15.6.0-3.6.0
+* travis: 3.1, 3.2, 3.3, oldrel, release, devel
+* r-hub: windows-x86_64-devel, ubuntu-gcc-release, fedora-clang-devel
+* win-builder: windows-x86_64-devel
 
 ## R CMD check results
 0 errors | 0 warnings | 0 notes

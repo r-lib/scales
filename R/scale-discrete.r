@@ -1,4 +1,4 @@
-#' Discrete scale.
+#' Discrete scale
 #'
 #' @param x vector of discrete values to scale
 #' @param palette aesthetic palette to use

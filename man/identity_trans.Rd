@@ -2,10 +2,13 @@
 % Please edit documentation in R/trans-numeric.r
 \name{identity_trans}
 \alias{identity_trans}
-\title{Identity transformation (do nothing).}
+\title{Identity transformation (do nothing)}
 \usage{
 identity_trans()
 }
 \description{
-Identity transformation (do nothing).
+Identity transformation (do nothing)
+}
+\examples{
+plot(identity_trans(), xlim = c(-1, 1))
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-manual.r
 \name{manual_pal}
 \alias{manual_pal}
-\title{Manual palette (manual).}
+\title{Manual palette (discrete)}
 \usage{
 manual_pal(values)
 }
@@ -10,5 +10,5 @@ manual_pal(values)
 \item{values}{vector of values to be used as a palette.}
 }
 \description{
-Manual palette (manual).
+Manual palette (discrete)
 }

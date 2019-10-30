@@ -2,10 +2,14 @@
 % Please edit documentation in R/trans-numeric.r
 \name{asn_trans}
 \alias{asn_trans}
-\title{Arc-sin square root transformation.}
+\title{Arc-sin square root transformation}
 \usage{
 asn_trans()
 }
 \description{
-Arc-sin square root transformation.
+This is the variance stabilising transformation for the binomial
+distribution.
+}
+\examples{
+plot(asn_trans(), xlim = c(0, 1))
 }

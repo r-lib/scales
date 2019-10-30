@@ -2,10 +2,13 @@
 % Please edit documentation in R/trans-numeric.r
 \name{atanh_trans}
 \alias{atanh_trans}
-\title{Arc-tangent transformation.}
+\title{Arc-tangent transformation}
 \usage{
 atanh_trans()
 }
 \description{
-Arc-tangent transformation.
+Arc-tangent transformation
+}
+\examples{
+plot(atanh_trans(), xlim = c(-1, 1))
 }

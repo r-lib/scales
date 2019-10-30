@@ -27,7 +27,7 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
   hcl_colours
 }
 
-#' Mute standard colour.
+#' Mute standard colour
 #'
 #' @param colour character vector of colours to modify
 #' @param l new luminance
@@ -39,7 +39,8 @@ col2hcl <- function(colour, h, c, l, alpha = 1) {
 #' show_col(c("red", "blue", muted("red"), muted("blue")))
 muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 
-#' Modify colour transparency.
+#' Modify colour transparency
+#'
 #' Vectorised in both colour and alpha.
 #'
 #' @param colour colour
@@ -50,6 +51,7 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
 #' alpha("red", seq(0, 1, length.out = 10))
+#' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
   col <- grDevices::col2rgb(colour, TRUE) / 255
 
@@ -68,10 +70,11 @@ alpha <- function(colour, alpha = NA) {
 
   new_col <- grDevices::rgb(col[1, ], col[2, ], col[3, ], alpha)
   new_col[is.na(colour)] <- NA
+  names(new_col) <- names(colour)
   new_col
 }
 
-#' Show colours.
+#' Show colours
 #'
 #' A quick and dirty way to show colours in a plot.
 #'
@@ -81,6 +84,7 @@ alpha <- function(colour, alpha = NA) {
 #' @param cex_label size of printed labels, works the same as \code{cex} parameter of \code{plot()}
 #' @export
 #' @importFrom graphics par plot rect text
+#' @keywords internal
 show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
   n <- length(colours)
   ncol <- ceiling(sqrt(n))

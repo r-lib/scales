@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-grey.r
 \name{grey_pal}
 \alias{grey_pal}
-\title{Grey scale palette (discrete).}
+\title{Grey scale palette (discrete)}
 \usage{
 grey_pal(start = 0.2, end = 0.8)
 }
@@ -12,7 +12,7 @@ grey_pal(start = 0.2, end = 0.8)
 \item{end}{grey value at high end of palette}
 }
 \description{
-Grey scale palette (discrete).
+Grey scale palette (discrete)
 }
 \examples{
 show_col(grey_pal()(25))

@@ -2,10 +2,13 @@
 % Please edit documentation in R/trans-numeric.r
 \name{reciprocal_trans}
 \alias{reciprocal_trans}
-\title{Reciprocal transformation.}
+\title{Reciprocal transformation}
 \usage{
 reciprocal_trans()
 }
 \description{
-Reciprocal transformation.
+Reciprocal transformation
+}
+\examples{
+plot(reciprocal_trans(), xlim = c(0, 1))
 }

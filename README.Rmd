@@ -8,31 +8,21 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-"
+  fig.path = "man/figures/README-",
+  fig.width = 5,
+  fig.height = 3
 )
-
-# just to keep the code clean below
-suppressWarnings(suppressPackageStartupMessages(library(dplyr)))
 ```
 
-# Scales <img src="man/figures/logo.png" align="right" />
+# scales <a href='https://scales.r-lib.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+ 
+<!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
+[![Travis build status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
+[![Codecov test coverage](https://codecov.io/gh/r-lib/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=master)
+<!-- badges: end -->
 
-[![Build Status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
-[![Coverage Status](https://img.shields.io/codecov/c/github/r-lib/scales/master.svg)](https://codecov.io/github/r-lib/scales?branch=master)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/scales)](https://cran.r-project.org/package=scales)
-
-# Overview
-
-One of the most difficult parts of any graphics package is scaling, 
-converting from data values to perceptual properties. The inverse of scaling,
-making guides (legends and axes) that can be used to read the graph, is often 
-even harder! The scales packages provides the internal scaling infrastructure to
-[ggplot2](github.com/tidyverse/ggplot2) and its functions allow users to 
-customize the transformations, breaks, guides and palettes used in visualizations.
-
-The idea of the scales package is to implement scales in a way 
-that is graphics system agnostic, so that everyone can benefit by pooling 
-knowledge and resources about this tricky topic.
+One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The scales packages provides the internal scaling infrastructure used by [ggplot2](http://ggplot2.tidyverse.org/), and gives you tools to override the default breaks, labels, transformations and palettes.
 
 # Installation
 
@@ -47,87 +37,61 @@ devtools::install_github("r-lib/scales")
 ```
   
 # Usage
-### Formatters 
 
-Outside of ggplot2 where it powers all the aesthetic scales, axes formatting, 
-and data transformations internally, the scales package also provides useful helper 
-functions for formatting numeric data for all types of presentation. 
+## Breaks and labels
 
-```{r, formatters}
-library(scales)
-set.seed(1234)
+The most common use of the scales package is to customise to control the appearance of axis and legend labels. Use a `break_` function to control how breaks are generated from the limits, and a `label_` function to control how breaks are turned in to labels.
 
-# percent() function takes a numeric and does your division and labelling for you
-percent(c(0.1, 1 / 3, 0.56))
+```{r labels}
+library(ggplot2)
+library(dplyr, warn.conflicts = FALSE)
+library(lubridate, warn.conflicts = FALSE)
 
-# comma() adds commas into large numbers for easier readability
-comma(10e6)
+txhousing %>% 
+  mutate(date = make_date(year, month, 1)) %>% 
+  group_by(city) %>% 
+  filter(min(sales) > 5e2) %>% 
+  ggplot(aes(date, sales, group = city)) + 
+  geom_line(na.rm = TRUE) + 
+  scale_x_date(
+    NULL,
+    breaks = scales::breaks_width("2 years"), 
+    labels = scales::label_date("'%y")
+  ) + 
+  scale_y_log10(
+    "Total sales",
+    labels = scales::label_number_si()
+  )
 
-# dollar() adds currency symbols
-dollar(c(100, 125, 3000))
-
-# unit_format() adds unique units
-# the scale argument can do simple conversion on the fly
-unit_format(unit = "ha", scale = 1e-4)(c(10e6, 10e4, 8e3))
+economics %>% 
+  filter(date < ymd("1970-01-01")) %>% 
+  ggplot(aes(date, pce)) + 
+  geom_line() + 
+  scale_x_date(NULL,
+    breaks = scales::breaks_width("3 months"), 
+    labels = scales::label_date_short()
+  ) + 
+  scale_y_continuous("Personal consumption expenditures",
+    breaks = scales::breaks_extended(8),
+    labels = scales::label_dollar()  
+  )
 ```
 
-All of these formatters are based on the underlying `number()` formatter which has additional arguments that allow further customisation. This can be especially 
-useful for meeting diverse international standards. 
+Generally, I don't recommend running `library(scales)` because when you type (e.g.) `scales::label_` autocomplete will provide you with a list of labelling functions to job your memory.
 
-```{r, euro_style}
-# for instance, European number formatting is easily set:
-number(c(12.3, 4, 12345.789, 0.0002), big.mark = ".", decimal.mark = ",")
+## Advanced features
 
-# these functions round by default, but you can set the accuracy
-number(c(12.3, 4, 12345.789, 0.0002),
-  big.mark = ".",
-  decimal.mark = ",",
-  accuracy = .01
-)
-
-# percent formatting in the French style
-french_percent <- percent_format(decimal.mark = ",", suffix = " %")
-french_percent(runif(10))
-
-# currency formatting Euros (and simple conversion!)
-usd_to_euro <- dollar_format(prefix = "", suffix = "\u20ac", scale = .85)
-usd_to_euro(100)
-```
-
-### Colour palettes
-
-These are used to power the scales in ggplot2, but you can use them in any plotting 
-system. The following example shows how you might apply them to a base plot.
+Scales colour palettes are used to power the scales in ggplot2, but you can use them in any plotting system. The following example shows how you might apply them to a base plot.
 
 ```{r, palettes}
+library(scales)
 # pull a list of colours from any palette
 viridis_pal()(4)
 
 # use in combination with baseR `palette()` to set new defaults
 palette(brewer_pal(palette = "Set2")(4))
+par(mar = c(5, 5, 1, 1))
 plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
-```
-
-### Bounds, breaks, & transformations
-
-scales provides a handful of functions for rescaling data to fit new ranges.
-
-```{r squish}
-# squish() will squish your values into a specified range
-squish(c(-1, 0.5, 1, 2, NA), range = c(0, 1))
-
-# Useful for setting the `oob` argument for a colour scale with reduced limits
-library(ggplot2)
-ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Petal.Length)) +
-  geom_point() +
-  scale_color_continuous(limit = c(2, 4), oob = scales::squish)
-```
-```{r rescale}
-# the rescale functions can rescale continuous vectors to new min, mid, or max values
-x <- runif(5, 0, 1)
-rescale(x, to = c(0, 50))
-rescale_mid(x, mid = .25)
-rescale_max(x, to = c(0, 50))
 ```
 
 scales also gives users the ability to define and apply their own custom 
@@ -142,15 +106,8 @@ logp3_trans <- trans_new(
   breaks = log_breaks()
 )
 
-library(dplyr)
 dsamp <- sample_n(diamonds, 100)
-ggplot(dsamp, aes(x = carat, y = price, colour = color)) +
-  geom_point() + scale_y_continuous(trans = logp3_trans)
-# You can always call the functions from the trans object separately
-logp3_trans$breaks(dsamp$price)
-
-# scales has some breaks helper functions too
-log_breaks(base = exp(1))(dsamp$price)
-
-pretty_breaks()(dsamp$price)
+ggplot(dsamp, aes(carat, price, colour = color)) +
+  geom_point() + 
+  scale_y_continuous(trans = logp3_trans)
 ```

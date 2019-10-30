@@ -2,7 +2,7 @@
 % Please edit documentation in R/colour-manip.r
 \name{show_col}
 \alias{show_col}
-\title{Show colours.}
+\title{Show colours}
 \usage{
 show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
 }
@@ -18,3 +18,4 @@ show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
 \description{
 A quick and dirty way to show colours in a plot.
 }
+\keyword{internal}

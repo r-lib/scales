@@ -1,4 +1,4 @@
-#' Arbitrary colour gradient palette (continuous).
+#' Arbitrary colour gradient palette (continuous)
 #'
 #' @param colours vector of colours
 #' @param values if colours should not be evenly positioned along the gradient
@@ -51,7 +51,7 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
   gradient_n_pal(c(low, mid, high), space = space)
 }
 
-#' Sequential colour gradient palette (continuous).
+#' Sequential colour gradient palette (continuous)
 #'
 #' @param low colour for low end of gradient.
 #' @param high colour for high end of gradient.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bounds.r
 \name{discard}
 \alias{discard}
-\title{Discard any values outside of range.}
+\title{Discard any values outside of range}
 \usage{
 discard(x, range = c(0, 1))
 }
@@ -12,7 +12,7 @@ discard(x, range = c(0, 1))
 \item{range}{numeric vector of length two giving desired output range.}
 }
 \description{
-Discard any values outside of range.
+Discard any values outside of range
 }
 \examples{
 discard(c(-1, 0.5, 1, 2, NA))

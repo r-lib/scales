@@ -1,4 +1,4 @@
-#' Continuous scale.
+#' Continuous scale
 #'
 #' @param x vector of continuous values to scale
 #' @param palette palette to use.

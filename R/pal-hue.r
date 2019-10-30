@@ -1,4 +1,4 @@
-#' Hue palette (discrete).
+#' Hue palette (discrete)
 #'
 #' @param h range of hues to use, in \[0, 360]
 #' @param l luminance (lightness), in \[0, 100]

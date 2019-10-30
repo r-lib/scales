@@ -2,8 +2,7 @@
 % Please edit documentation in R/colour-manip.r
 \name{alpha}
 \alias{alpha}
-\title{Modify colour transparency.
-Vectorised in both colour and alpha.}
+\title{Modify colour transparency}
 \usage{
 alpha(colour, alpha = NA)
 }
@@ -14,11 +13,11 @@ alpha(colour, alpha = NA)
 existing alpha values are preserved.}
 }
 \description{
-Modify colour transparency.
 Vectorised in both colour and alpha.
 }
 \examples{
 alpha("red", 0.1)
 alpha(colours(), 0.5)
 alpha("red", seq(0, 1, length.out = 10))
+alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 }

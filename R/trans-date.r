@@ -1,4 +1,4 @@
-#' Transformation for dates (class Date).
+#' Transformation for dates (class Date)
 #'
 #' @export
 #' @examples
@@ -8,7 +8,7 @@
 #' t$inverse(t$transform(years))
 #' t$format(t$breaks(range(years)))
 date_trans <- function() {
-  trans_new("date", "from_date", "to_date", breaks = pretty_breaks())
+  trans_new("date", "from_date", "to_date", breaks = breaks_pretty())
 }
 
 to_date <- function(x) structure(x, class = "Date")
@@ -21,7 +21,7 @@ from_date <- function(x) {
   structure(as.numeric(x), names = names(x))
 }
 
-#' Transformation for date-times (class POSIXt).
+#' Transformation for date-times (class POSIXt)
 #'
 #' @param tz Optionally supply the time zone.  If `NULL`, the default,
 #'   the time zone will be extracted from first input with a non-null tz.
@@ -51,10 +51,10 @@ time_trans <- function(tz = NULL) {
     structure(as.numeric(x), names = names(x))
   }
 
-  trans_new("time", "from_time", "to_time", breaks = pretty_breaks())
+  trans_new("time", "from_time", "to_time", breaks = breaks_pretty())
 }
 
-#' Transformation for times (class hms).
+#' Transformation for times (class hms)
 #'
 #' @export
 #' @examples
@@ -101,16 +101,3 @@ time_breaks <- function(n = 5) {
     hms::as.hms(breaks * scale)
   }
 }
-
-
-#' Regularly spaced dates.
-#'
-#' @param width an interval specification, one of "sec", "min", "hour",
-#'   "day", "week", "month", "year". Can be by an integer and a space, or
-#'   followed by "s". Fractional seconds are supported.
-#' @export
-date_breaks <- function(width = "1 month") {
-  force(width)
-  function(x) fullseq(x, width)
-}
-

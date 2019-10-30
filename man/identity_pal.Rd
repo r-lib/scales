@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-identity.r
 \name{identity_pal}
 \alias{identity_pal}
-\title{Identity palette.}
+\title{Identity palette}
 \usage{
 identity_pal()
 }

@@ -3,7 +3,7 @@
 \name{boxcox_trans}
 \alias{boxcox_trans}
 \alias{modulus_trans}
-\title{Box-Cox & modulus transformations.}
+\title{Box-Cox & modulus transformations}
 \usage{
 boxcox_trans(p, offset = 0)
 
@@ -35,6 +35,17 @@ y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
 and when \code{y = 0}: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
 y^(\lambda) = sign(y) * ln(|y| + 1)}
 }
+\examples{
+plot(boxcox_trans(-1), xlim = c(0, 10))
+plot(boxcox_trans(0), xlim = c(0, 10))
+plot(boxcox_trans(1), xlim = c(0, 10))
+plot(boxcox_trans(2), xlim = c(0, 10))
+
+plot(modulus_trans(-1), xlim = c(-10, 10))
+plot(modulus_trans(0), xlim = c(-10, 10))
+plot(modulus_trans(1), xlim = c(-10, 10))
+plot(modulus_trans(2), xlim = c(-10, 10))
+}
 \references{
 Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
@@ -43,4 +54,7 @@ Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 John, J. A., & Draper, N. R. (1980).
 An alternative family of transformations. Applied Statistics, 190-197.
 \url{http://www.jstor.org/stable/2986305}
+}
+\seealso{
+\code{\link[=yj_trans]{yj_trans()}}
 }

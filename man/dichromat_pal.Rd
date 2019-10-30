@@ -2,7 +2,7 @@
 % Please edit documentation in R/pal-dichromat.r
 \name{dichromat_pal}
 \alias{dichromat_pal}
-\title{Dichromat (colour-blind) palette (discrete).}
+\title{Dichromat (colour-blind) palette (discrete)}
 \usage{
 dichromat_pal(name)
 }
@@ -11,7 +11,7 @@ dichromat_pal(name)
 \Sexpr[results=rd,stage=build]{scales:::dichromat_schemes()}}
 }
 \description{
-Dichromat (colour-blind) palette (discrete).
+Dichromat (colour-blind) palette (discrete)
 }
 \examples{
 if (requireNamespace("dichromat", quietly = TRUE)) {

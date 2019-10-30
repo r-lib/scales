@@ -8,7 +8,7 @@
 \alias{rescale_mid.POSIXt}
 \alias{rescale_mid.Date}
 \alias{rescale_mid.integer64}
-\title{Rescale vector to have specified minimum, midpoint, and maximum.}
+\title{Rescale vector to have specified minimum, midpoint, and maximum}
 \usage{
 rescale_mid(x, to, from, mid, ...)
 
@@ -43,7 +43,7 @@ calculated from the range of \code{x}}
 \item{...}{other arguments passed on to methods}
 }
 \description{
-Rescale vector to have specified minimum, midpoint, and maximum.
+Rescale vector to have specified minimum, midpoint, and maximum
 }
 \examples{
 rescale_mid(1:100, mid = 50.5)
