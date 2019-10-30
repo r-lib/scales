@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extended breaks — breaks_extended • scales</title>
+<title>Automatic breaks for numeric axes — breaks_extended • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Extended breaks — breaks_extended" />
+<meta property="og:title" content="Automatic breaks for numeric axes — breaks_extended" />
 <meta property="og:description" content="Uses Wilkinson's extended breaks algorithm as implemented in the
 labeling package." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
@@ -117,7 +117,7 @@ labeling package." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extended breaks</h1>
+    <h1>Automatic breaks for numeric axes</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks.r'><code>R/breaks.r</code></a></small>
     <div class="hidden name"><code>breaks_extended.Rd</code></div>
     </div>
@@ -134,7 +134,8 @@ labeling package." />
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>desired number of breaks</p></td>
+      <td><p>Desired number of breaks. You may get slightly more or fewer
+breaks that requested.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -146,10 +147,10 @@ labeling package." />
 
     <p>Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
-2010.</p>
+2010 <a href='http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf'>http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>breaks_extended</span>()(<span class='fl'>1</span>:<span class='fl'>10</span>)</div><div class='output co'>#&gt; [1]  0.0  2.5  5.0  7.5 10.0</div><div class='input'><span class='fu'>breaks_extended</span>()(<span class='fl'>1</span>:<span class='fl'>100</span>)</div><div class='output co'>#&gt; [1]   0  25  50  75 100</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='breaks_extended-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_extended</span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_extended(3))</div><div class='img'><img src='breaks_extended-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>10</span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_extended</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_extended(10))</div><div class='img'><img src='breaks_extended-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

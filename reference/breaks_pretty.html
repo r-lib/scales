@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pretty breaks — breaks_pretty • scales</title>
+<title>Pretty breaks for date/times — breaks_pretty • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Pretty breaks — breaks_pretty" />
+<meta property="og:title" content="Pretty breaks for date/times — breaks_pretty" />
 <meta property="og:description" content="Uses default R break algorithm as implemented in pretty(). This is
 primarily useful for date/times, as extended_breaks() should do a slightly
 better job for numeric scales." />
@@ -118,7 +118,7 @@ better job for numeric scales." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pretty breaks</h1>
+    <h1>Pretty breaks for date/times</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks.r'><code>R/breaks.r</code></a></small>
     <div class="hidden name"><code>breaks_pretty.Rd</code></div>
     </div>
@@ -136,7 +136,8 @@ better job for numeric scales.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>n</th>
-      <td><p>desired number of breaks</p></td>
+      <td><p>Desired number of breaks. You may get slightly more or fewer
+breaks that requested.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -150,11 +151,12 @@ better job for numeric scales.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>one_month</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-05-01"</span>, <span class='st'>"2020-06-01"</span>))
-<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_datetime()</div><div class='img'><img src='breaks_pretty-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_pretty</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_datetime(breaks = breaks_pretty(10))</div><div class='img'><img src='breaks_pretty-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>)</div><div class='output co'>#&gt; scale_x_datetime()</div><div class='img'><img src='breaks_pretty-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_pretty</span>(<span class='fl'>2</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(2))</div><div class='img'><img src='breaks_pretty-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_pretty</span>(<span class='fl'>4</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(4))</div><div class='img'><img src='breaks_pretty-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Tightly spaced date breaks often need custom labels too</span>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_pretty</span>(<span class='fl'>12</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(12))</div><div class='img'><img src='breaks_pretty-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='no'>one_month</span>,
+  <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_pretty</span>(<span class='fl'>12</span>),
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_date.html'>label_date_short</a></span>()
+)</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(12), labels = label_date_short())</div><div class='img'><img src='breaks_pretty-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

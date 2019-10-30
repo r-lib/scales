@@ -138,7 +138,25 @@
         <td>
           <p><code><a href="label_bytes.html">label_bytes()</a></code> </p>
         </td>
-        <td><p>Label bytes</p></td>
+        <td><p>Label bytes (1 kb, 2 MB, etc)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="label_date.html">label_date()</a></code> <code><a href="label_date.html">label_date_short()</a></code> <code><a href="label_date.html">label_time()</a></code> <code><a href="label_date.html">date_format()</a></code> <code><a href="label_date.html">time_format()</a></code> </p>
+        </td>
+        <td><p>Label date/times</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="label_dollar.html">label_dollar()</a></code> <code><a href="label_dollar.html">dollar_format()</a></code> <code><a href="label_dollar.html">dollar()</a></code> </p>
+        </td>
+        <td><p>Label currencies ($100, $2.50, etc)</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="label_number.html">label_number()</a></code> <code><a href="label_number.html">label_comma()</a></code> <code><a href="label_number.html">comma()</a></code> <code><a href="label_number.html">number_format()</a></code> <code><a href="label_number.html">comma_format()</a></code> </p>
+        </td>
+        <td><p>Label numbers in decimal format (e.g. 0.12, 1,234)</p></td>
       </tr><tr>
         
         <td>
@@ -150,73 +168,43 @@
         <td>
           <p><code><a href="label_number_si.html">label_number_si()</a></code> </p>
         </td>
-        <td><p>Label numbers, rescaled automatically to use SI prefixes</p></td>
+        <td><p>Label numbers with SI prefixes (2k, 1M, 5T etc)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="date_format.html">date_format()</a></code> <code><a href="date_format.html">date_short()</a></code> <code><a href="date_format.html">time_format()</a></code> </p>
+          <p><code><a href="label_ordinal.html">label_ordinal()</a></code> <code><a href="label_ordinal.html">ordinal_english()</a></code> <code><a href="label_ordinal.html">ordinal_french()</a></code> <code><a href="label_ordinal.html">ordinal_spanish()</a></code> <code><a href="label_ordinal.html">ordinal_format()</a></code> <code><a href="label_ordinal.html">ordinal()</a></code> </p>
         </td>
-        <td><p>Formatted dates and times</p></td>
+        <td><p>Label ordinal numbers (1st, 2nd, 3rd, etc)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="dollar_format.html">dollar_format()</a></code> <code><a href="dollar_format.html">dollar()</a></code> </p>
+          <p><code><a href="label_parse.html">label_parse()</a></code> <code><a href="label_parse.html">label_math()</a></code> <code><a href="label_parse.html">parse_format()</a></code> <code><a href="label_parse.html">math_format()</a></code> </p>
         </td>
-        <td><p>Currency formatter: round to nearest cent and display dollar sign</p></td>
+        <td><p>Label with mathematical annotations</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="format_format.html">format_format()</a></code> </p>
+          <p><code><a href="label_percent.html">label_percent()</a></code> <code><a href="label_percent.html">percent_format()</a></code> <code><a href="label_percent.html">percent()</a></code> </p>
         </td>
-        <td><p>Format with any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></p></td>
+        <td><p>Label percentages (2.5%, 50%, etc)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="number_format.html">number_format()</a></code> <code><a href="number_format.html">number()</a></code> <code><a href="number_format.html">comma_format()</a></code> <code><a href="number_format.html">comma()</a></code> <code><a href="number_format.html">percent_format()</a></code> <code><a href="number_format.html">percent()</a></code> </p>
+          <p><code><a href="label_pvalue.html">label_pvalue()</a></code> <code><a href="label_pvalue.html">pvalue_format()</a></code> <code><a href="label_pvalue.html">pvalue()</a></code> </p>
         </td>
-        <td><p>Number formatters</p></td>
+        <td><p>Label p-values (e.g. &lt;0.001, 0.25, p &gt;= 0.99)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="ordinal_format.html">ordinal_format()</a></code> <code><a href="ordinal_format.html">ordinal()</a></code> <code><a href="ordinal_format.html">ordinal_english()</a></code> <code><a href="ordinal_format.html">ordinal_french()</a></code> <code><a href="ordinal_format.html">ordinal_spanish()</a></code> </p>
+          <p><code><a href="label_scientific.html">label_scientific()</a></code> <code><a href="label_scientific.html">scientific_format()</a></code> <code><a href="label_scientific.html">scientific()</a></code> </p>
         </td>
-        <td><p>Ordinal formatter: add ordinal suffixes (-st, -nd, -rd, -th) to numbers</p></td>
+        <td><p>Label numbers with scientific notation (e.g. 1e05, 1.5e-02)</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="parse_format.html">parse_format()</a></code> <code><a href="parse_format.html">math_format()</a></code> </p>
+          <p><code><a href="label_wrap.html">label_wrap()</a></code> <code><a href="label_wrap.html">wrap_format()</a></code> </p>
         </td>
-        <td><p>Label with mathematical expressions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pvalue_format.html">pvalue_format()</a></code> <code><a href="pvalue_format.html">pvalue()</a></code> </p>
-        </td>
-        <td><p>p-values formatter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scientific_format.html">scientific_format()</a></code> <code><a href="scientific_format.html">scientific()</a></code> </p>
-        </td>
-        <td><p>Scientific formatter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_format.html">trans_format()</a></code> </p>
-        </td>
-        <td><p>Format labels after transformation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="unit_format.html">unit_format()</a></code> <code><a href="unit_format.html">degree_format()</a></code> </p>
-        </td>
-        <td><p>Unit and degree labels</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="wrap_format.html">wrap_format()</a></code> </p>
-        </td>
-        <td><p>Wrap labels to fixed width</p></td>
+        <td><p>Label strings by wrapping across multiple lines</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -230,25 +218,25 @@
         <td>
           <p><code><a href="breaks_extended.html">breaks_extended()</a></code> </p>
         </td>
-        <td><p>Extended breaks</p></td>
+        <td><p>Automatic breaks for numeric axes</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="breaks_log.html">breaks_log()</a></code> </p>
         </td>
-        <td><p>Log breaks</p></td>
+        <td><p>Breaks for log axes</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="breaks_pretty.html">breaks_pretty()</a></code> </p>
         </td>
-        <td><p>Pretty breaks</p></td>
+        <td><p>Pretty breaks for date/times</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="breaks_width.html">breaks_width()</a></code> </p>
         </td>
-        <td><p>Produce breaks spaced by a fixed distance</p></td>
+        <td><p>Equally spaced breaks</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -409,12 +397,6 @@
           <p><code><a href="time_trans.html">time_trans()</a></code> </p>
         </td>
         <td><p>Transformation for date-times (class POSIXt)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trans_format.html">trans_format()</a></code> </p>
-        </td>
-        <td><p>Format labels after transformation</p></td>
       </tr><tr>
         
         <td>

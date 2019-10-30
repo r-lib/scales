@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Unit and degree labels — unit_format • scales</title>
+<title>Unit labels — unit_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,8 +42,11 @@
 
 
 
-<meta property="og:title" content="Unit and degree labels — unit_format" />
-<meta property="og:description" content="These are thin wrappers around number_format()" />
+<meta property="og:title" content="Unit labels — unit_format" />
+<meta property="og:description" content="
+
+This function is kept for backward compatiblity; you should either use
+label_number() or label_number_si() instead." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -116,21 +119,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Unit and degree labels</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-units.R'><code>R/format-units.R</code></a></small>
+    <h1>Unit labels</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/labels-retired.R'><code>R/labels-retired.R</code></a></small>
     <div class="hidden name"><code>unit_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are thin wrappers around <code><a href='number_format.html'>number_format()</a></code></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#retired'><img src='figures/lifecycle-retired.svg' alt='Retired lifecycle'></a>
+
+This function is kept for backward compatiblity; you should either use
+<code><a href='label_number.html'>label_number()</a></code> or <code><a href='label_number_si.html'>label_number_si()</a></code> instead.</p>
     </div>
 
     <pre class="usage"><span class='fu'>unit_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"m"</span>,
   <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>sep</span>, <span class='no'>unit</span>), <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
-
-<span class='fu'>degree_format</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>sep</span>, <span class='st'>"°"</span>, <span class='no'>unit</span>), <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
   <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -138,7 +140,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>accuracy</th>
-      <td><p>Number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
+      <td><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
 places of precision. If <code>NULL</code>, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.</p>
@@ -146,9 +148,9 @@ difference between adjacent values.</p>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>A scaling factor: <code>x</code> will be multiply by <code>scale</code> before
-formating (useful if the underlying data is on another scale,
-e.g. for computing percentages or thousands).</p></td>
+      <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
+formating. This is useful if the underlying data is very small or very
+large.</p></td>
     </tr>
     <tr>
       <th>prefix</th>
@@ -189,18 +191,9 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Label with units</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"m"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(labels = unit_format(unit = "m"))</div><div class='img'><img src='unit_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Labels in kg, but original data in g</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = unit_format(unit = "m"))</div><div class='img'><img src='unit_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Labels in kg, but original data in g</span>
 <span class='no'>km</span> <span class='kw'>&lt;-</span> <span class='fu'>unit_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"km"</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e-3</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>2500</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>km</span>)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(labels = km)</div><div class='img'><img src='unit_format-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Or with degrees</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>212</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>degree_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"F"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(label = degree_format(unit = "F"))</div><div class='img'><img src='unit_format-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>degree_format</span>(<span class='kw'>unit</span> <span class='kw'>=</span> <span class='st'>"C"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(label = degree_format(unit = "C"))</div><div class='img'><img src='unit_format-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>2500</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='no'>km</span>)</div><div class='output co'>#&gt; scale_x_continuous(labels = km)</div><div class='img'><img src='unit_format-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

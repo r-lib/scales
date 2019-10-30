@@ -132,7 +132,7 @@ to a set of breaks and labels suitable for display on axes or legends.</p>
     </div>
 
     <pre class="usage"><span class='fu'>cbreaks</span>(<span class='no'>range</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span>(),
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='scientific_format.html'>scientific_format</a></span>())</pre>
+  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_scientific.html'>scientific_format</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,27 +186,27 @@ what the breaks will be.</p></td>
 #&gt; $labels
 #&gt; [1] "1e+00" "1e+01" "1e+02" "1e+03" "1e+04"
 #&gt; </div><div class='input'>
-<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='parse_format.html'>math_format</a></span>())</div><div class='output co'>#&gt; $breaks
+<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_parse.html'>math_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   0  25  50  75 100
 #&gt; 
 #&gt; $labels
 #&gt; expression(10^0, 10^25, 10^50, 10^75, 10^100)
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='number_format.html'>percent_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_percent.html'>percent_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 0.00 0.25 0.50 0.75 1.00
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0%"   "25%"  "50%"  "75%"  "100%"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='number_format.html'>comma_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_number.html'>comma_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1]       0  250000  500000  750000 1000000
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0"         "250,000"   "500,000"   "750,000"   "1,000,000"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='dollar_format.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_dollar.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1]       0  250000  500000  750000 1000000
 #&gt; 
 #&gt; $labels
 #&gt; [1] "$0"         "$250,000"   "$500,000"   "$750,000"   "$1,000,000"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>30</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='dollar_format.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>30</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'><a href='label_dollar.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
 #&gt; [1]  0 10 20 30
 #&gt; 
 #&gt; $labels

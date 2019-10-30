@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Log breaks — breaks_log • scales</title>
+<title>Breaks for log axes — breaks_log • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Log breaks — breaks_log" />
+<meta property="og:title" content="Breaks for log axes — breaks_log" />
 <meta property="og:description" content="This algorithm starts by looking for integer powers of base. If that
 doesn't provide enough breaks, it then looks for additional intermediate
 breaks which are integer multiples of integer powers of base. If that fails
@@ -119,7 +119,7 @@ breaks which are integer multiples of integer powers of base. If that fails
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Log breaks</h1>
+    <h1>Breaks for log axes</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/breaks-log.R'><code>R/breaks-log.R</code></a></small>
     <div class="hidden name"><code>breaks_log.Rd</code></div>
     </div>
@@ -166,27 +166,13 @@ the candidate set. This is repeated until either a sufficient number of
 breaks, <code>&gt;= n-2</code>, are returned or all candidates have been used.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e5</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='breaks_log-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='breaks_log-2.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e5</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='breaks_log-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='breaks_log-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Request more breaks by setting n</span>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_log</span>(<span class='fl'>6</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10(breaks = breaks_log(6))</div><div class='img'><img src='breaks_log-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>breaks_log</span>(<span class='fl'>6</span>))</div><div class='output co'>#&gt; scale_x_log10(breaks = breaks_log(6))</div><div class='img'><img src='breaks_log-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Some tricky ranges</span>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>9000</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='breaks_log-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>14000</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='breaks_log-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>85000</span>), <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10(expand = c(0, 0))</div><div class='img'><img src='breaks_log-6.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>9000</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='breaks_log-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>14000</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='breaks_log-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2000</span>, <span class='fl'>85000</span>), <span class='kw'>expand</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>))</div><div class='output co'>#&gt; scale_x_log10(expand = c(0, 0))</div><div class='img'><img src='breaks_log-6.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># An even smaller range that requires falling back to linear breaks</span>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1800</span>, <span class='fl'>2000</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='breaks_log-7.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1800</span>, <span class='fl'>2000</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='breaks_log-7.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

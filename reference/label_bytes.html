@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Label bytes — label_bytes • scales</title>
+<title>Label bytes (1 kb, 2 MB, etc) — label_bytes • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Label bytes — label_bytes" />
+<meta property="og:title" content="Label bytes (1 kb, 2 MB, etc) — label_bytes" />
 <meta property="og:description" content="Scale bytes into human friendly units. Can use either SI units (e.g.
 kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
 Units of Information
@@ -119,8 +119,8 @@ on Wikipedia for more details." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Label bytes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-bytes.R'><code>R/format-bytes.R</code></a></small>
+    <h1>Label bytes (1 kb, 2 MB, etc)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/label-bytes.R'><code>R/label-bytes.R</code></a></small>
     <div class="hidden name"><code>label_bytes.Rd</code></div>
     </div>
 
@@ -149,7 +149,7 @@ unit for each value.</p></li>
     </tr>
     <tr>
       <th>accuracy</th>
-      <td><p>Number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
+      <td><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
 places of precision. If <code>NULL</code>, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.</p>
@@ -157,7 +157,7 @@ difference between adjacent values.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments passed on to <code><a href='number_format.html'>number()</a></code></p></td>
+      <td><p>Other arguments passed on to <code><a href='number.html'>number()</a></code></p></td>
     </tr>
     </table>
 
@@ -165,39 +165,36 @@ difference between adjacent values.</p>
 
     <p>A labeller function that takes a numeric vector of breaks and
 returns a character vector of labels.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other labels for continuous scales: <code><a href='label_dollar.html'>label_dollar</a></code>,
+  <code><a href='label_number_auto.html'>label_number_auto</a></code>,
+  <code><a href='label_number_si.html'>label_number_si</a></code>,
+  <code><a href='label_ordinal.html'>label_ordinal</a></code>, <code><a href='label_parse.html'>label_parse</a></code>,
+  <code><a href='label_percent.html'>label_percent</a></code>, <code><a href='label_pvalue.html'>label_pvalue</a></code>,
+  <code><a href='label_scientific.html'>label_scientific</a></code></p>
+<p>Other labels for log scales: <code><a href='label_number_si.html'>label_number_si</a></code>,
+  <code><a href='label_scientific.html'>label_scientific</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous()</div><div class='img'><img src='label_bytes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(label = label_bytes())</div><div class='img'><img src='label_bytes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Force all to use same units</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>(<span class='st'>"kB"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(label = label_bytes("kB"))</div><div class='img'><img src='label_bytes-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_bytes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes())</div><div class='img'><img src='label_bytes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Force all to use same units</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>(<span class='st'>"kB"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("kB"))</div><div class='img'><img src='label_bytes-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Auto units are particularly nice on log scales</span>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10()</div><div class='img'><img src='label_bytes-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e7</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_log10(label = label_bytes())</div><div class='img'><img src='label_bytes-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='label_bytes-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e7</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; scale_x_log10(label = label_bytes())</div><div class='img'><img src='label_bytes-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># You can also use binary units where a megabyte is defined as</span>
 <span class='co'># (1024) ^ 2 bytes rather than (1000) ^ 2. You'll need to override</span>
 <span class='co'># the default breaks to make this more informative.</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span>^<span class='fl'>2</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>(<span class='st'>"auto_binary"</span>))</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span>^<span class='fl'>2</span>),
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span>^<span class='fl'>2</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>(<span class='st'>"auto_binary"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span>^<span class='fl'>2</span>),
   <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='breaks_width.html'>breaks_width</a></span>(<span class='fl'>250</span> * <span class='fl'>1024</span>),
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_bytes</span>(<span class='st'>"auto_binary"</span>)
-)</div><div class='output co'>#&gt; ggplot(df, aes(x, 1)) +
-#&gt;   geom_blank() +
-#&gt;   scale_x_continuous(breaks = breaks_width(250 * 1024), label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-7.png' alt='' width='700' height='433' /></div></pre>
+)</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(250 * 1024), label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-7.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Format with any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> — format_format • scales</title>
+<title>Label using <code>format()</code> — format_format • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,9 +42,11 @@
 
 
 
-<meta property="og:title" content="Format with any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code> — format_format" />
-<meta property="og:description" content="If the breaks have names, they will be used in preference to formatting
-the breaks." />
+<meta property="og:title" content="Label using <code>format()</code> — format_format" />
+<meta property="og:description" content="
+
+This function is kept for backward compatiblity; you should either use
+label_number() or label_date() instead." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -117,14 +119,16 @@ the breaks." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Format with any arguments to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code></h1>
-    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/format-format.R'><code>R/format-format.R</code></a></small>
+    <h1>Label using <code>format()</code></h1>
+    <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/labels-retired.R'><code>R/labels-retired.R</code></a></small>
     <div class="hidden name"><code>format_format.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>If the breaks have names, they will be used in preference to formatting
-the breaks.</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#retired'><img src='figures/lifecycle-retired.svg' alt='Retired lifecycle'></a>
+
+This function is kept for backward compatiblity; you should either use
+<code><a href='label_number.html'>label_number()</a></code> or <code><a href='label_date.html'>label_date()</a></code> instead.</p>
     </div>
 
     <pre class="usage"><span class='fu'>format_format</span>(<span class='no'>...</span>)</pre>
@@ -134,20 +138,16 @@ the breaks.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>other arguments passed on to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>.</p></td>
+      <td><p>Arguments passed on to <code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='https://rdrr.io/r/base/format.html'>format()</a></code>, <code><a href='https://rdrr.io/r/base/as.Date.html'>format.Date()</a></code>, <code><a href='https://rdrr.io/r/base/strptime.html'>format.POSIXct()</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#see-also">See also</a></li>
     </ul>
 
   </div>

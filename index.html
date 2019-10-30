@@ -114,28 +114,28 @@
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1234</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># percent() function takes a numeric and does your division and labelling for you</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/number_format.html">percent</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.1</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">0.56</span>))</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/label_percent.html">percent</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.1</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">0.56</span>))</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "10%" "33%" "56%"</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># comma() adds commas into large numbers for easier readability</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw"><a href="reference/number_format.html">comma</a></span>(<span class="fl">10e6</span>)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw"><a href="reference/label_number.html">comma</a></span>(<span class="fl">10e6</span>)</a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [1] "10,000,000"</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co"># dollar() adds currency symbols</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="reference/dollar_format.html">dollar</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">3000</span>))</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="reference/label_dollar.html">dollar</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">3000</span>))</a>
 <a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; [1] "$100"   "$125"   "$3,000"</span></a>
 <a class="sourceLine" id="cb2-15" data-line-number="15"></a>
 <a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co"># unit_format() adds unique units</span></a>
 <a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co"># the scale argument can do simple conversion on the fly</span></a>
 <a class="sourceLine" id="cb2-18" data-line-number="18"><span class="kw"><a href="reference/unit_format.html">unit_format</a></span>(<span class="dt">unit =</span> <span class="st">"ha"</span>, <span class="dt">scale =</span> <span class="fl">1e-4</span>)(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10e6</span>, <span class="fl">10e4</span>, <span class="fl">8e3</span>))</a>
 <a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; [1] "1 000 ha" "10 ha"    "1 ha"</span></a></code></pre></div>
-<p>All of these formatters are based on the underlying <code><a href="reference/number_format.html">number()</a></code> formatter which has additional arguments that allow further customisation. This can be especially useful for meeting diverse international standards.</p>
+<p>All of these formatters are based on the underlying <code><a href="reference/number.html">number()</a></code> formatter which has additional arguments that allow further customisation. This can be especially useful for meeting diverse international standards.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># for instance, European number formatting is easily set:</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/number_format.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>), <span class="dt">big.mark =</span> <span class="st">"."</span>, <span class="dt">decimal.mark =</span> <span class="st">","</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/number.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>), <span class="dt">big.mark =</span> <span class="st">"."</span>, <span class="dt">decimal.mark =</span> <span class="st">","</span>)</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] "12"     "4"      "12.346" "0"</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># these functions round by default, but you can set the accuracy</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/number_format.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>),</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/number.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>),</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">big.mark =</span> <span class="st">"."</span>,</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">decimal.mark =</span> <span class="st">","</span>,</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="dt">accuracy =</span> <span class="fl">.01</span></a>
@@ -143,13 +143,13 @@
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; [1] "12,30"     "4,00"      "12.345,79" "0,00"</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co"># percent formatting in the French style</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">french_percent &lt;-<span class="st"> </span><span class="kw"><a href="reference/number_format.html">percent_format</a></span>(<span class="dt">decimal.mark =</span> <span class="st">","</span>, <span class="dt">suffix =</span> <span class="st">" %"</span>)</a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">french_percent &lt;-<span class="st"> </span><span class="kw"><a href="reference/label_percent.html">percent_format</a></span>(<span class="dt">decimal.mark =</span> <span class="st">","</span>, <span class="dt">suffix =</span> <span class="st">" %"</span>)</a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">french_percent</span>(<span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">10</span>))</a>
 <a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  [1] "11,37 %" "62,23 %" "60,93 %" "62,34 %" "86,09 %" "64,03 %" "0,95 %" </span></a>
 <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  [8] "23,26 %" "66,61 %" "51,43 %"</span></a>
 <a class="sourceLine" id="cb3-18" data-line-number="18"></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># currency formatting Euros (and simple conversion!)</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">usd_to_euro &lt;-<span class="st"> </span><span class="kw"><a href="reference/dollar_format.html">dollar_format</a></span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"\u20ac"</span>, <span class="dt">scale =</span> <span class="fl">.85</span>)</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">usd_to_euro &lt;-<span class="st"> </span><span class="kw"><a href="reference/label_dollar.html">dollar_format</a></span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"\u20ac"</span>, <span class="dt">scale =</span> <span class="fl">.85</span>)</a>
 <a class="sourceLine" id="cb3-21" data-line-number="21"><span class="kw">usd_to_euro</span>(<span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; [1] "85€"</span></a></code></pre></div>
 </div>

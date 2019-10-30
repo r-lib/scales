@@ -58,9 +58,6 @@
     <loc>https://scales.r-lib.org//reference/date_breaks.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/date_format.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/date_trans.html</loc>
   </url>
   <url>
@@ -74,9 +71,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/div_gradient_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/dollar_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/dscale.html</loc>
@@ -115,10 +109,37 @@
     <loc>https://scales.r-lib.org//reference/label_bytes.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/label_date.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_dollar.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_number.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/label_number_auto.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/label_number_si.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_ordinal.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_parse.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_percent.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_pvalue.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_scientific.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/label_wrap.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/linetype_pal.html</loc>
@@ -136,22 +157,13 @@
     <loc>https://scales.r-lib.org//reference/muted.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/number.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/number_bytes_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/number_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/ordinal_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/parse_format.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/probability_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/pvalue_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/reciprocal_trans.html</loc>
@@ -179,9 +191,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/scales-package.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/scientific_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/seq_gradient_pal.html</loc>
@@ -227,9 +236,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/viridis_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/wrap_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/yj_trans.html</loc>
