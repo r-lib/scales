@@ -1,23 +1,25 @@
-#' Label with mathematical expressions
+#' Label with mathematical annotations
 #'
-#' `parse_format()` produces expression from strings by parsing them;
-#' `math_format()` constructs expressions by replacing the pronoun `.x`
+#' `label_parse()` produces expression from strings by parsing them;
+#' `label_math()` constructs expressions by replacing the pronoun `.x`
 #' with each string.
 #'
+#' @section Old interface:
+#' `parse_format()` and `math_format()` was retired; please use
+#' `label_parse()` and `label_math()` instead.
+#' @inherit number_format return params
 #' @seealso [plotmath] for the details of mathematical formatting in R.
-#' @return A function with a single parameter, `x`, that returns an
-#'   expression object.
 #' @export
 #' @examples
-#' # Use parse_format() with discrete scales
+#' # Use label_parse() with discrete scales
 #' greek <- c("alpha", "beta", "gamma")
 #' demo_discrete(greek)
-#' demo_discrete(greek, labels = parse_format())
+#' demo_discrete(greek, labels = label_parse())
 #'
-#' # Use math_format() with continuous scales
+#' # Use label_math() with continuous scales
 #' demo_continuous(c(1, 5))
-#' demo_continuous(c(1, 5), labels = math_format(alpha[.x]))
-parse_format <- function() {
+#' demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
+label_parse <- function() {
   # From ggplot2:::parse_safe
   # See https://github.com/tidyverse/ggplot2/issues/2864 for discussion.
   function(text) {
@@ -32,13 +34,13 @@ parse_format <- function() {
   }
 }
 
-#' @rdname parse_format
+#' @rdname label_parse
 #' @export
 #' @param expr expression to use
 #' @param format another format function to apply prior to mathematical
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
-math_format <- function(expr = 10^.x, format = force) {
+label_math <- function(expr = 10^.x, format = force) {
   .x <- NULL
   quoted <- substitute(expr)
   subs <- function(x) {
@@ -57,3 +59,10 @@ math_format <- function(expr = 10^.x, format = force) {
     ret
   }
 }
+
+#' @rdname label_parse
+#' @export
+parse_format <- label_parse
+#' @rdname label_parse
+#' @export
+math_format <- label_math
