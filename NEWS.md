@@ -1,5 +1,9 @@
 # scales 1.0.0.9000
 
+* Axis breaks and labels have a new naming scheme: functions that generate
+  breaks from limits are called `breaks_`; functions that generate labels
+  from breaks are called `labels_` (#226).
+
 * New `label_bytes()` which replaces `number_bytes_format()` with a more 
   convenient interface. It takes a single `unit` argument which can either be
   an SI unit (e.g. "kB"), a binary unit (e.g. "kIB"), or an automatic unit
