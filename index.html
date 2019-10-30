@@ -85,12 +85,7 @@
 </h1></div>
 <!-- badges: start -->
 
-</div>
-<div id="overview" class="section level1">
-<h1 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h1>
-<p>One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The scales packages provides the internal scaling infrastructure to <a href="github.com/tidyverse/ggplot2">ggplot2</a> and its functions allow users to customize the transformations, breaks, guides and palettes used in visualizations.</p>
-<p>The idea of the scales package is to implement scales in a way that is graphics system agnostic, so that everyone can benefit by pooling knowledge and resources about this tricky topic.</p>
+<p>One of the most difficult parts of any graphics package is scaling, converting from data values to perceptual properties. The inverse of scaling, making guides (legends and axes) that can be used to read the graph, is often even harder! The scales packages provides the internal scaling infrastructure used by <a href="http://ggplot2.tidyverse.org/">ggplot2</a>, and gives you tools to override the default breaks, labels, transformations and palettes.</p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -106,112 +101,74 @@
 <div id="usage" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h1>
-<div id="formatters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#formatters" class="anchor"></a>Formatters</h3>
-<p>Outside of ggplot2 where it powers all the aesthetic scales, axes formatting, and data transformations internally, the scales package also provides useful helper functions for formatting numeric data for all types of presentation.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># percent() function takes a numeric and does your division and labelling for you</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/label_percent.html">percent</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.1</span>, <span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="dv">3</span>, <span class="fl">0.56</span>))</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "10%" "33%" "56%"</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co"># comma() adds commas into large numbers for easier readability</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw"><a href="reference/label_number.html">comma</a></span>(<span class="fl">10e6</span>)</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; [1] "10,000,000"</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co"># dollar() adds currency symbols</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="kw"><a href="reference/label_dollar.html">dollar</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">3000</span>))</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; [1] "$100"   "$125"   "$3,000"</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co"># unit_format() adds unique units</span></a>
-<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co"># the scale argument can do simple conversion on the fly</span></a>
-<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="kw"><a href="reference/unit_format.html">unit_format</a></span>(<span class="dt">unit =</span> <span class="st">"ha"</span>, <span class="dt">scale =</span> <span class="fl">1e-4</span>)(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">10e6</span>, <span class="fl">10e4</span>, <span class="fl">8e3</span>))</a>
-<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; [1] "1 000 ha" "10 ha"    "1 ha"</span></a></code></pre></div>
-<p>All of these formatters are based on the underlying <code><a href="reference/number.html">number()</a></code> formatter which has additional arguments that allow further customisation. This can be especially useful for meeting diverse international standards.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># for instance, European number formatting is easily set:</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/number.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>), <span class="dt">big.mark =</span> <span class="st">"."</span>, <span class="dt">decimal.mark =</span> <span class="st">","</span>)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; [1] "12"     "4"      "12.346" "0"</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co"># these functions round by default, but you can set the accuracy</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="reference/number.html">number</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">12.3</span>, <span class="dv">4</span>, <span class="fl">12345.789</span>, <span class="fl">0.0002</span>),</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">  <span class="dt">big.mark =</span> <span class="st">"."</span>,</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">  <span class="dt">decimal.mark =</span> <span class="st">","</span>,</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="dt">accuracy =</span> <span class="fl">.01</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">)</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; [1] "12,30"     "4,00"      "12.345,79" "0,00"</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co"># percent formatting in the French style</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">french_percent &lt;-<span class="st"> </span><span class="kw"><a href="reference/label_percent.html">percent_format</a></span>(<span class="dt">decimal.mark =</span> <span class="st">","</span>, <span class="dt">suffix =</span> <span class="st">" %"</span>)</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw">french_percent</span>(<span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt;  [1] "11,37 %" "62,23 %" "60,93 %" "62,34 %" "86,09 %" "64,03 %" "0,95 %" </span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt;  [8] "23,26 %" "66,61 %" "51,43 %"</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="co"># currency formatting Euros (and simple conversion!)</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">usd_to_euro &lt;-<span class="st"> </span><span class="kw"><a href="reference/label_dollar.html">dollar_format</a></span>(<span class="dt">prefix =</span> <span class="st">""</span>, <span class="dt">suffix =</span> <span class="st">"\u20ac"</span>, <span class="dt">scale =</span> <span class="fl">.85</span>)</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="kw">usd_to_euro</span>(<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co">#&gt; [1] "85€"</span></a></code></pre></div>
+<div id="breaks-and-labels" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaks-and-labels" class="anchor"></a>Breaks and labels</h2>
+<p>The most common use of the scales package is to customise to control the appearance of axis and legend labels. Use a <code>break_</code> function to control how breaks are generated from the limits, and a <code>label_</code> function to control how breaks are turned in to labels.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(lubridate, <span class="dt">warn.conflicts =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">txhousing <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">make_date</span>(year, month, <span class="dv">1</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(city) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span>(sales) <span class="op">&gt;</span><span class="st"> </span><span class="fl">5e2</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(date, sales, <span class="dt">group =</span> city)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    <span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/breaks_width.html">breaks_width</a></span>(<span class="st">"2 years"</span>), </a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">    <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_date.html">label_date</a></span>(<span class="st">"'%y"</span>)</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">  ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>(</a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">    <span class="st">"Total sales"</span>,</a>
+<a class="sourceLine" id="cb2-18" data-line-number="18">    <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_number_si.html">label_number_si</a></span>()</a>
+<a class="sourceLine" id="cb2-19" data-line-number="19">  )</a></code></pre></div>
+<p><img src="reference/figures/README-labels-1.png"><!-- --></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">economics <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(date <span class="op">&lt;</span><span class="st"> </span><span class="kw">ymd</span>(<span class="st">"1970-01-01"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(date, pce)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html">scale_x_date</a></span>(<span class="ot">NULL</span>,</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/breaks_width.html">breaks_width</a></span>(<span class="st">"3 months"</span>), </a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">    <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_date.html">label_date_short</a></span>()</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">  ) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="st">"Personal consumption expenditures"</span>,</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">    <span class="dt">breaks =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/breaks_extended.html">breaks_extended</a></span>(<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_dollar.html">label_dollar</a></span>()  </a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">  )</a></code></pre></div>
+<p><img src="reference/figures/README-labels-2.png"><!-- --></p>
+<p>Generally, I don’t recommend running <code><a href="https://rdrr.io/r/base/library.html">library(scales)</a></code> because when you type (e.g.) <code>scales::label_</code> autocomplete will provide you with a list of labelling functions to job your memory.</p>
 </div>
-<div id="colour-palettes" class="section level3">
-<h3 class="hasAnchor">
-<a href="#colour-palettes" class="anchor"></a>Colour palettes</h3>
-<p>These are used to power the scales in ggplot2, but you can use them in any plotting system. The following example shows how you might apply them to a base plot.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># pull a list of colours from any palette</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/viridis_pal.html">viridis_pal</a></span>()(<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># use in combination with baseR `palette()` to set new defaults</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span>(<span class="kw"><a href="reference/brewer_pal.html">brewer_pal</a></span>(<span class="dt">palette =</span> <span class="st">"Set2"</span>)(<span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width, <span class="dt">data =</span> iris, <span class="dt">col =</span> Species, <span class="dt">pch =</span> <span class="dv">20</span>)</a></code></pre></div>
+<div id="advanced-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#advanced-features" class="anchor"></a>Advanced features</h2>
+<p>Scales colour palettes are used to power the scales in ggplot2, but you can use them in any plotting system. The following example shows how you might apply them to a base plot.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co"># pull a list of colours from any palette</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/viridis_pal.html">viridis_pal</a></span>()(<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co"># use in combination with baseR `palette()` to set new defaults</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/r/grDevices/palette.html">palette</a></span>(<span class="kw"><a href="reference/brewer_pal.html">brewer_pal</a></span>(<span class="dt">palette =</span> <span class="st">"Set2"</span>)(<span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/graphics/par.html">par</a></span>(<span class="dt">mar =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(Sepal.Length <span class="op">~</span><span class="st"> </span>Sepal.Width, <span class="dt">data =</span> iris, <span class="dt">col =</span> Species, <span class="dt">pch =</span> <span class="dv">20</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-palettes-1.png"><!-- --></p>
-</div>
-<div id="bounds-breaks-transformations" class="section level3">
-<h3 class="hasAnchor">
-<a href="#bounds-breaks-transformations" class="anchor"></a>Bounds, breaks, &amp; transformations</h3>
-<p>scales provides a handful of functions for rescaling data to fit new ranges.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># squish() will squish your values into a specified range</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/squish.html">squish</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="ot">NA</span>), <span class="dt">range =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; [1] 0.0 0.5 1.0 1.0  NA</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># Useful for setting the `oob` argument for a colour scale with reduced limits</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(iris, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width, <span class="dt">colour =</span> Petal.Length)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_color_continuous</a></span>(<span class="dt">limit =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="dt">oob =</span> scales<span class="op">::</span>squish)</a></code></pre></div>
-<p><img src="reference/figures/README-squish-1.png"><!-- --></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># the rescale functions can rescale continuous vectors to new min, mid, or max values</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="reference/rescale.html">rescale</a></span>(x, <span class="dt">to =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">50</span>))</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] 32.063194 20.465217  0.000000 50.000000  0.747796</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw"><a href="reference/rescale_mid.html">rescale_mid</a></span>(x, <span class="dt">mid =</span> <span class="fl">.25</span>)</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; [1] 0.8293505 0.7190081 0.5243035 1.0000000 0.5314180</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw"><a href="reference/rescale_max.html">rescale_max</a></span>(x, <span class="dt">to =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">50</span>))</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; [1] 37.55502 29.50807 15.30882 50.00000 15.82766</span></a></code></pre></div>
 <p>scales also gives users the ability to define and apply their own custom transformation functions for repeated use.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># use trans_new to build a new transformation</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">logp3_trans &lt;-<span class="st"> </span><span class="kw"><a href="reference/trans_new.html">trans_new</a></span>(</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="dt">name =</span> <span class="st">"logp"</span>,</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="dt">trans =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(x <span class="op">+</span><span class="st"> </span><span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="dt">inverse =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">breaks =</span> <span class="kw"><a href="reference/breaks_log.html">log_breaks</a></span>()</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">dsamp &lt;-<span class="st"> </span><span class="kw">sample_n</span>(diamonds, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(dsamp, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> carat, <span class="dt">y =</span> price, <span class="dt">colour =</span> color)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">trans =</span> logp3_trans)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># use trans_new to build a new transformation</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">logp3_trans &lt;-<span class="st"> </span><span class="kw"><a href="reference/trans_new.html">trans_new</a></span>(</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="dt">name =</span> <span class="st">"logp"</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="dt">trans =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(x <span class="op">+</span><span class="st"> </span><span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="dt">inverse =</span> <span class="cf">function</span>(x) <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(x) <span class="op">-</span><span class="st"> </span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">  <span class="dt">breaks =</span> <span class="kw"><a href="reference/breaks_log.html">log_breaks</a></span>()</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">dsamp &lt;-<span class="st"> </span><span class="kw">sample_n</span>(diamonds, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(dsamp, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(carat, price, <span class="dt">colour =</span> color)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">trans =</span> logp3_trans)</a></code></pre></div>
 <p><img src="reference/figures/README-transforms-1.png"><!-- --></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># You can always call the functions from the trans object separately</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">logp3_trans<span class="op">$</span><span class="kw">breaks</span>(dsamp<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; [1]   300  1000  3000 10000 30000</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># scales has some breaks helper functions too</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw"><a href="reference/breaks_log.html">log_breaks</a></span>(<span class="dt">base =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">exp</a></span>(<span class="dv">1</span>))(dsamp<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; [1]   403.4288  1096.6332  2980.9580  8103.0839 22026.4658</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="kw"><a href="reference/breaks_pretty.html">pretty_breaks</a></span>()(dsamp<span class="op">$</span>price)</a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; [1]     0  5000 10000 15000 20000</span></a></code></pre></div>
 </div>
 </div>
 
@@ -258,7 +215,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=scales"><img src="https://www.r-pkg.org/badges/version/scales" alt="CRAN status"></a></li>
 <li><a href="https://travis-ci.org/r-lib/scales"><img src="https://travis-ci.org/r-lib/scales.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://codecov.io/gh/hadley/scales?branch=master"><img src="https://codecov.io/gh/hadley/scales/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://codecov.io/gh/r-lib/scales?branch=master"><img src="https://codecov.io/gh/r-lib/scales/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 </div>
