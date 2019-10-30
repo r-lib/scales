@@ -2,7 +2,7 @@
 % Please edit documentation in R/breaks.r
 \name{breaks_width}
 \alias{breaks_width}
-\title{Produce breaks spaced by a fixed distance}
+\title{Equally spaced breaks}
 \usage{
 breaks_width(width, offset = 0)
 }

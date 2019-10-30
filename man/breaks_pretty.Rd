@@ -3,12 +3,13 @@
 \name{breaks_pretty}
 \alias{breaks_pretty}
 \alias{pretty_breaks}
-\title{Pretty breaks}
+\title{Pretty breaks for date/times}
 \usage{
 breaks_pretty(n = 5, ...)
 }
 \arguments{
-\item{n}{desired number of breaks}
+\item{n}{Desired number of breaks. You may get slightly more or fewer
+breaks that requested.}
 
 \item{...}{other arguments passed on to \code{\link[=pretty]{pretty()}}}
 }
@@ -23,5 +24,13 @@ better job for numeric scales.
 \examples{
 one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
 demo_datetime(one_month)
-demo_datetime(one_month, breaks = breaks_pretty(10))
+demo_datetime(one_month, breaks = breaks_pretty(2))
+demo_datetime(one_month, breaks = breaks_pretty(4))
+
+# Tightly spaced date breaks often need custom labels too
+demo_datetime(one_month, breaks = breaks_pretty(12))
+demo_datetime(one_month,
+  breaks = breaks_pretty(12),
+  labels = label_date_short()
+)
 }

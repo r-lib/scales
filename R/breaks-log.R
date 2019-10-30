@@ -1,4 +1,4 @@
-#' Log breaks
+#' Breaks for log axes
 #'
 #' This algorithm starts by looking for integer powers of `base`. If that
 #' doesn't provide enough breaks, it then looks for additional intermediate

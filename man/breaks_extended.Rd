@@ -3,12 +3,13 @@
 \name{breaks_extended}
 \alias{breaks_extended}
 \alias{extended_breaks}
-\title{Extended breaks}
+\title{Automatic breaks for numeric axes}
 \usage{
 breaks_extended(n = 5, ...)
 }
 \arguments{
-\item{n}{desired number of breaks}
+\item{n}{Desired number of breaks. You may get slightly more or fewer
+breaks that requested.}
 
 \item{...}{other arguments passed on to \code{\link[labeling:extended]{labeling::extended()}}}
 }
@@ -17,11 +18,12 @@ Uses Wilkinson's extended breaks algorithm as implemented in the
 \pkg{labeling} package.
 }
 \examples{
-breaks_extended()(1:10)
-breaks_extended()(1:100)
+demo_continuous(c(0, 10))
+demo_continuous(c(0, 10), breaks = breaks_extended(3))
+demo_continuous(c(0, 10), breaks = breaks_extended(10))
 }
 \references{
 Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
-2010.
+2010 \url{http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf}.
 }

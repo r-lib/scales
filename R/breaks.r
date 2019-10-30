@@ -1,4 +1,4 @@
-#' Produce breaks spaced by a fixed distance
+#' Equally spaced breaks
 #'
 #' Useful for numeric, date, and date-time scales.
 #'
@@ -29,20 +29,22 @@ breaks_width <- function(width, offset = 0) {
   }
 }
 
-#' Extended breaks
+#' Automatic breaks for numeric axes
 #'
 #' Uses Wilkinson's extended breaks algorithm as implemented in the
 #' \pkg{labeling} package.
 #'
-#' @param n desired number of breaks
+#' @param n Desired number of breaks. You may get slightly more or fewer
+#'   breaks that requested.
 #' @param ... other arguments passed on to [labeling::extended()]
 #' @references Talbot, J., Lin, S., Hanrahan, P. (2010) An Extension of
 #'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
-#'  2010.
+#'  2010 <http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf>.
 #' @export
 #' @examples
-#' breaks_extended()(1:10)
-#' breaks_extended()(1:100)
+#' demo_continuous(c(0, 10))
+#' demo_continuous(c(0, 10), breaks = breaks_extended(3))
+#' demo_continuous(c(0, 10), breaks = breaks_extended(10))
 breaks_extended <- function(n = 5, ...) {
   n_default <- n
   function(x, n = n_default) {
@@ -61,7 +63,7 @@ breaks_extended <- function(n = 5, ...) {
 #' @rdname breaks_extended
 extended_breaks <- breaks_extended
 
-#' Pretty breaks
+#' Pretty breaks for date/times
 #'
 #' Uses default R break algorithm as implemented in [pretty()]. This is
 #' primarily useful for date/times, as [extended_breaks()] should do a slightly
@@ -69,13 +71,21 @@ extended_breaks <- breaks_extended
 #'
 #' `pretty_breaks()` is retired; use `breaks_pretty()` instead.
 #'
-#' @param n desired number of breaks
+#' @inheritParams breaks_extended
 #' @param ... other arguments passed on to [pretty()]
 #' @export
 #' @examples
 #' one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
 #' demo_datetime(one_month)
-#' demo_datetime(one_month, breaks = breaks_pretty(10))
+#' demo_datetime(one_month, breaks = breaks_pretty(2))
+#' demo_datetime(one_month, breaks = breaks_pretty(4))
+#'
+#' # Tightly spaced date breaks often need custom labels too
+#' demo_datetime(one_month, breaks = breaks_pretty(12))
+#' demo_datetime(one_month,
+#'   breaks = breaks_pretty(12),
+#'   labels = label_date_short()
+#')
 breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n

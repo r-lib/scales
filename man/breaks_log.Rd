@@ -3,7 +3,7 @@
 \name{breaks_log}
 \alias{breaks_log}
 \alias{log_breaks}
-\title{Log breaks}
+\title{Breaks for log axes}
 \usage{
 breaks_log(n = 5, base = 10)
 }
