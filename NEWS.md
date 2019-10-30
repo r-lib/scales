@@ -4,92 +4,92 @@
   breaks from limits are called `breaks_`; functions that generate labels
   from breaks are called `labels_` (#226).
 
-* New `label_bytes()` which replaces `number_bytes_format()` with a more 
+* All breaks and labels examples have been overhauled to use new 
+  `demo_continuous()`, `demo_discrete()`, and `demo_log10()`, so you
+  can see how to use scales functions with ggplot2.
+
+## Labels
+
+* All label functions preserve names (#202), keep `NA`s as `NA`s instead of 
+  trying to convert to `"NA"` (@clauswilke, #187).
+.
+* New `label_bytes()` replaces `number_bytes_format()` with a more 
   convenient interface. It takes a single `unit` argument which can either be
   an SI unit (e.g. "kB"), a binary unit (e.g. "kIB"), or an automatic unit
   (either "auto_si" or "auto_binary").
+  
+    It always uses "B" as the symbol for bytes (#174), and checks that `units` are valid. 
+    Additionally, auto units are now used to determine the symbol separately for each value (@mikmart):
+    
+    ```R
+    label_bytes("auto_binary")(1024^(1:3))
+    #> [1] "1 kiB" "1 MiB" "1 GiB"
+    ```
+  
 
-* New `breaks_width()` which allows you to specify a fixed distance between
-  breaks (along with optional offset).
+* New `label_date_short()` creates labels for a date axis that only shows the 
+  components of the date that have changed since the previous label.
+  For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, 
+  `label_date_short()` will use labels Jan 10, 20, 30, Feb 1 (#209).
 
-* New `demo_continuous()`, `demo_discrete()`, and `demo_log10()` make it 
-  easier to show how to use scales functions with ggplot2 in examples.
+* `label_dollar()` now correctly formats negative numbers as (e.g.) -$200 
+  (#216).
 
-* `number_format()` now picks the accuracy automatically by default. The 
+* `label_math()` now returns an expression vector, and doesn't coerce
+  inputs to names.
+
+* `label_number()` takes `scale` into account when computing `accuracy`, if not 
+  supplied. This means that `label_percent()` should have better default 
+  accuracy in many cases (#192).
+
+* `label_number()` now picks the accuracy automatically by default. The 
   underlying heuristic has been improved to use the distance between adjacent 
   breaks (rather than the total range of the break).
 
-* `math_format()` now returns an expression vector, and doesn't coerce
-  inputs to names.
-
-* New `date_short()` creates labels for a date axis that only shows the 
-  components of the date that have changed since the previous label.
-  For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, `date_short()`
-  will use labels Jan 10, 20, 30, Feb 1 (#209).
-  
 * New `label_number_auto()` automatically picks between `number_format()` and 
   `scientific_format()` based on the range of the input. It should produce nice 
   output over a very wide range of inputs (@paleolimbot, #208).
 
-* `trans` gets a method for `plot()`, and all numeric transformations get
-  an example showing the transformation.
-
-* New `yj_trans()` implements the Yeo-Johnson transformation (@zamorarr, #196)
-
-* All text formatters should now preserve names (#202).
-
-* `number()` takes `scale` into account when computing `accuracy`, if not 
-  supplied. This means that `percent()` should have better default accuracy
-  in many cases (#192).
-
-* `log_breaks()` has nicer behaviour when no finite inputs (#210)
-
-* `pvalue()` now reports values close to 1 (as determined by accuracy) as 
-  ">0.99". You can control the prefixes used with the new `prefix` argument (#213).
-
-* `sqrt_trans()` no longer returns an inverse for values outside of its domain (#214).
-
-* `dollar()` now correctly formats negative numbers as (e.g.) -$200 (#216).
-
-* `parse_format()` now returns a function which returns expression object that can be used to display formatted labels in ggplot2 (@agila5, #203)
-
-* `boxcox_trans()` no longer throws an error when given NA values (@sflippl, #181)
-
-* Formatting functions now consistently keep `NA`s as `NA`s instead of trying
-  to format them (@clauswilke, #187).
-
-* `number_bytes()` now:
-
-    1. Always uses "B" as the symbol for bytes (#174).
-    2. Enforces given `units` for symbols, i.e. SI symbols with a binary base
-       (or vice versa) are not allowed.
-    3. Formats zero and negative values.
-  
-    Additionally, `symbol = "auto"` is now used to determine the symbol
-    separately for each value (@mikmart):
-    
-    ```R
-    number_bytes(1024^(0:3), symbol = "auto")
-    #> [1] "1 B"   "1 KiB" "1 MiB" "1 GiB"
-    ```
-  
-* `dichromat_pal()` documentation now builds without requiring suggested `dichromat` 
-   package to be installed (@dpseidel, #172).
-
-* New function `label_number_si()` formats numeric vectors with limited SI units.
+* New `label_number_si()` formats numeric vectors with limited SI units.
   Individual values are scaled and labelled with abbreviations "K", "M", "B",
   or "T" dependent on magnitude (@dpseidel, #83).
   
-* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+* `label_parse()` now generates an expression object that can be used to 
+  display formatted labels in ggplot2 (@agila5, #203)
+
+* `label_pvalue()` now reports values close to 1 (as determined by accuracy) as 
+  ">0.99". You can control the prefixes used with the new `prefix` argument 
+  (#213).
+
+## Breaks
+
+* The built in breaks functions now return a function that takes both a range 
+  and a desired number of breaks, making it possible to overwrite the defaults
+  number of desired breaks given in the constructor call (@thomasp85).
+
+* `breaks_log()` has nicer behaviour when no finite inputs (#210).
+  It provides usable breaks even with very small ranges (@billdenney, #168)
+
+* New `breaks_width()` which allows you to specify a fixed distance between
+  breaks (along with optional offset).
+
+## Transformations
+
+* New `yj_trans()` implements the Yeo-Johnson transformation (@zamorarr, #196)
+
+* `trans` objects gets methods for `plot()` and `lines()`, and all numeric 
+  transformations get an example showing the transformation.
+
+* `boxcox_trans()` no longer throws an error when given NA values (@sflippl, #181)
+
+* `sqrt_trans()` no longer returns an inverse for values outside of its domain (#214).
+
+## Other bug fixes and minor improvements
+
+* `alpha()` preserve element names (@wibeasley, #195)
 
 * `ContinuousRange` and `DiscreteRange` methods now properly inherit and are fully
   mutable (@dpseidel).
-  
-* `log_breaks()` provides usable breaks even with very small ranges
-  (@billdenney, #168)
-
-* `train_continuous()` now maintains the class of inputs when they are not
-  numeric (@billdenney, #166).
 
 * `col_numeric()`, `col_bin()`, `col_quantile()`, and `col_factor()` now support
   viridis colors. Just pass a palette name (`"magma"`, `"inferno"`, `"plasma"`,
@@ -107,12 +107,14 @@
   palettes. Instead, it attempts to assign a palette color to each factor level.
   Interpolation will still be used if there are more factor levels than
   available colors, and a warning will be emitted in that case (@jcheng5, #191).
-  
-* The build in breaks functions now return a function that takes both a range 
-  and a desired number of breaks, making it possible to overwrite the defaults
-  number of desired breaks given in the constructor call (@thomasp85).
 
-* `alpha()` preserve element names (@wibeasley, #195)
+* `dichromat_pal()` documentation now builds without requiring suggested `dichromat` 
+   package to be installed (@dpseidel, #172).
+
+* `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
+
+* `train_continuous()` now maintains the class of inputs when they are not
+  numeric (@billdenney, #166).
 
 # scales 1.0.0
 
