@@ -33,9 +33,6 @@
 #' ramp <- colour_ramp(c("red", "green", "blue"))
 #' show_col(ramp(seq(0, 1, length = 12)))
 colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
-  if (testthat::is_testing())
-    testthat::skip("Skipping colour ramp tests")
-
   if (length(colors) == 0) {
     stop("Must provide at least one colour to create a colour ramp")
   }
@@ -48,7 +45,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   u_interp <- stats::approxfun(x_in, lab_in[, 2])
   v_interp <- stats::approxfun(x_in, lab_in[, 3])
 
-  if (alpha) {
+  if (!alpha || all(rgb_in[, 4] == 255)) {
     alpha_interp <- function(x) NULL
   } else {
     alpha_interp <- stats::approxfun(x_in, rgb_in[, 4])
@@ -57,9 +54,9 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   structure(
     function(x) {
       lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
-      rgb_out <- farver::convert_colour(lab_out, "lab", "rgb")
+      rgb_out <- round(farver::convert_colour(lab_out, "lab", "rgb"))
 
-      rgb_out[] <- pmax(0, rgb_out)
+      rgb_out[] <- pmin(pmax(0, rgb_out), 255)
       out <- rep(NA_character_, length(x))
       na <- !stats::complete.cases(rgb_out)
       out[!na] <- grDevices::rgb(
