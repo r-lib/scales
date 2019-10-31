@@ -4,27 +4,31 @@
 #' to rgb.
 #'
 #' @param colour character vector of colours to be modified
-#' @param h new hue
-#' @param l new luminance
-#' @param c new chroma
-#' @param alpha alpha value.  Defaults to 1.
+#' @param h Hue, `[0, 360]
+#' @param l Luminance, `[0, 100]`
+#' @param c Chroma, `[0, 100]`
+#' @param alpha Alpha, `[0, 1]`.
 #' @export
 #' @examples
-#' col2hcl(colors())
-col2hcl <- function(colour, h, c, l, alpha = 1) {
-  rgb <- t(grDevices::col2rgb(colour)) / 255
-  coords <- grDevices::convertColor(rgb, "sRGB", "Luv")
+#' reds <- rep("red", 6)
+#' show_col(col2hcl(reds, h = seq(0, 180, length = 6)))
+#' show_col(col2hcl(reds, c = seq(0, 80, length = 6)))
+#' show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
+#' show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
+col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
+  rgb_in <- col2rgb(colour)
+  hcl <- farver::convert_colour(rgb_in, "rgb", "lch")
 
-  # Check for correctness
-  # colorspace::coords(as(RGB(rgb), "polarLUV"))
+  if (!is.null(h)) hcl[, "h"] <- h
+  if (!is.null(c)) hcl[, "c"] <- c
+  if (!is.null(l)) hcl[, "l"] <- l
 
-  if (missing(h)) h <- atan2(coords[, "v"], coords[, "u"]) * 180 / pi
-  if (missing(c)) c <- sqrt(coords[, "u"]^2 + coords[, "v"]^2)
-  if (missing(l)) l <- coords[, "L"]
+  rgb_out <- farver::convert_colour(hcl, "lch", "rgb")
+  if (!is.null(alpha)) {
+    rgb_out <- cbind(rgb_out, alpha * 255)
+  }
 
-  hcl_colours <- grDevices::hcl(h, c, l, alpha = alpha)
-  names(hcl_colours) <- names(colour)
-  hcl_colours
+  rgb2col(rgb_out)
 }
 
 #' Mute standard colour

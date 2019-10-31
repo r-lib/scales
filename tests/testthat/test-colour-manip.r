@@ -1,4 +1,13 @@
-context("Alpha")
+# hcl ---------------------------------------------------------------------
+
+test_that("can modify each hcl component", {
+  expect_equal(col2hcl("red", h = 180), "#00A17D")
+  expect_equal(col2hcl("red", l = 50), "#F40000")
+  expect_equal(col2hcl("red", c = 50), "#C7624A")
+  expect_equal(col2hcl("red", alpha = 0.5), "#FF000080")
+})
+
+# alpha -------------------------------------------------------------------
 
 test_that("missing alpha preserves existing", {
   cols <- col2rgb(rep("red", 5), TRUE)
