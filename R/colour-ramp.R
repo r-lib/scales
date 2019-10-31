@@ -59,9 +59,15 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
       rgb_out[] <- pmin(pmax(0, rgb_out), 255)
       out <- rep(NA_character_, length(x))
       na <- !stats::complete.cases(rgb_out)
+
+      alpha <- alpha_interp(x[!na])
+      if (!is.null(alpha)) {
+        alpha <- round(alpha)
+      }
+
       out[!na] <- grDevices::rgb(
         rgb_out[!na, , drop = FALSE],
-        alpha = alpha_interp(x[!na]),
+        alpha = alpha,
         maxColorValue = 255
       )
       out[na] <- na.color
