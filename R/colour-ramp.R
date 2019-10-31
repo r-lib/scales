@@ -37,7 +37,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
     stop("Must provide at least one colour to create a colour ramp")
   }
 
-  rgb_in <- t(grDevices::col2rgb(colors, alpha = TRUE))
+  rgb_in <- col2rgb(colors, alpha = TRUE)
   lab_in <- farver::convert_colour(rgb_in[, 1:3], "rgb", "lab")
 
   x_in <- seq(0, 1, length = length(colors))
@@ -55,23 +55,9 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
     function(x) {
       lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
       rgb_out <- round(farver::convert_colour(lab_out, "lab", "rgb"))
+      rgb_out <- cbind(rgb_out, alpha_interp(x))
 
-      rgb_out[] <- pmin(pmax(0, rgb_out), 255)
-      out <- rep(NA_character_, length(x))
-      na <- !stats::complete.cases(rgb_out)
-
-      alpha <- alpha_interp(x[!na])
-      if (!is.null(alpha)) {
-        alpha <- round(alpha)
-      }
-
-      out[!na] <- grDevices::rgb(
-        rgb_out[!na, , drop = FALSE],
-        alpha = alpha,
-        maxColorValue = 255
-      )
-      out[na] <- na.color
-      out
+      rgb2col(rgb_out, na.color)
     },
     safe_palette_func = TRUE
   )

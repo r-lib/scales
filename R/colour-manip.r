@@ -53,7 +53,6 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
-  col <- grDevices::col2rgb(colour, TRUE) / 255
 
   if (length(colour) != length(alpha)) {
     if (length(colour) > 1 && length(alpha) > 1) {
@@ -62,16 +61,14 @@ alpha <- function(colour, alpha = NA) {
 
     if (length(colour) > 1) {
       alpha <- rep(alpha, length.out = length(colour))
-    } else if (length(alpha) > 1) {
-      col <- col[, rep(1, length(alpha)), drop = FALSE]
+    } else {
+      colour <- rep(colour, length.out = length(alpha))
     }
   }
-  alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
 
-  new_col <- grDevices::rgb(col[1, ], col[2, ], col[3, ], alpha)
-  new_col[is.na(colour)] <- NA
-  names(new_col) <- names(colour)
-  new_col
+  col <- col2rgb(colour, alpha = TRUE)
+  col[!is.na(alpha), 4] <- alpha[!is.na(alpha)] * 255
+  rgb2col(col)
 }
 
 #' Show colours
