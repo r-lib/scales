@@ -9,7 +9,7 @@ col2hcl(colour, h = NULL, c = NULL, l = NULL, alpha = NULL)
 \arguments{
 \item{colour}{character vector of colours to be modified}
 
-\item{h}{Hue, `\link{0, 360}}
+\item{h}{Hue, \code{[0, 360]}}
 
 \item{c}{Chroma, \code{[0, 100]}}
 

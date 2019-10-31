@@ -4,7 +4,7 @@
 #' to rgb.
 #'
 #' @param colour character vector of colours to be modified
-#' @param h Hue, `[0, 360]
+#' @param h Hue, `[0, 360]`
 #' @param l Luminance, `[0, 100]`
 #' @param c Chroma, `[0, 100]`
 #' @param alpha Alpha, `[0, 1]`.
