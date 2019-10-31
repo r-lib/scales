@@ -318,7 +318,7 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
 
 # Accept colorRamp style matrix
 toPaletteFunc.matrix <- function(pal, alpha, nlevels) {
-  toPaletteFunc(grDevices::rgb(pal, maxColorValue = 255), alpha = alpha)
+  toPaletteFunc(col2rgb(pal), alpha = alpha)
 }
 
 # If a function, just assume it's already a function over [0-1]
@@ -359,7 +359,7 @@ filterRGB <- function(f) {
     if (is.character(results)) {
       results
     } else if (is.matrix(results)) {
-      grDevices::rgb(results, maxColorValue = 255)
+      rgb2col(results)
     } else {
       stop("Unexpected result type ", class(x)[[1]])
     }
