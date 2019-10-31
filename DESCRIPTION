@@ -25,7 +25,6 @@ Imports:
     munsell (>= 0.5),
     R6,
     RColorBrewer,
-    Rcpp,
     viridisLite,
     lifecycle
 Suggests: 
@@ -35,8 +34,6 @@ Suggests:
     hms,
     testthat (>= 2.1.0),
     ggplot2
-LinkingTo: 
-    Rcpp
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE)
