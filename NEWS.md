@@ -86,6 +86,9 @@
 
 ## Other bug fixes and minor improvements
 
+* scales now uses the farver package for colour manipulation instead of a 
+  combination of grDevices and hand-rolled C++ code (#223).
+
 * `alpha()` preserve element names (@wibeasley, #195)
 
 * `ContinuousRange` and `DiscreteRange` methods now properly inherit and are fully

@@ -29,7 +29,7 @@ test_that("Outside of domain returns na.color", {
 })
 
 test_that("Basic color accuracy", {
-  expect_identical(c("#000000", "#7F7F7F", "#FFFFFF"), col_numeric(colorRamp(bw), NULL)(c(0, 0.5, 1)))
+  expect_identical(c("#000000", "#808080", "#FFFFFF"), col_numeric(colorRamp(bw), NULL)(c(0, 0.5, 1)))
 
   expect_identical(c("#000000", "#FFFFFF"), col_bin(bw, NULL)(c(1, 2)))
   expect_identical(c("#000000", "#FFFFFF"), col_bin(bw, c(1, 2))(c(1, 2)))
@@ -56,7 +56,7 @@ test_that("Basic color accuracy", {
 })
 
 test_that("CIELab overflow", {
-  expect_identical(c("#FFFFFF", "#CFB1FF", "#9165FF", "#0000FF"), scales::colour_ramp(c("white", "blue"))(0:3 / 3))
+  expect_identical(c("#FFFFFF", "#CFB1FF", "#9265FF", "#0000FF"), scales::colour_ramp(c("white", "blue"))(0:3 / 3))
 })
 
 test_that("factors match by name, not position", {

@@ -4,27 +4,31 @@
 #' to rgb.
 #'
 #' @param colour character vector of colours to be modified
-#' @param h new hue
-#' @param l new luminance
-#' @param c new chroma
-#' @param alpha alpha value.  Defaults to 1.
+#' @param h Hue, `[0, 360]`
+#' @param l Luminance, `[0, 100]`
+#' @param c Chroma, `[0, 100]`
+#' @param alpha Alpha, `[0, 1]`.
 #' @export
 #' @examples
-#' col2hcl(colors())
-col2hcl <- function(colour, h, c, l, alpha = 1) {
-  rgb <- t(grDevices::col2rgb(colour)) / 255
-  coords <- grDevices::convertColor(rgb, "sRGB", "Luv")
+#' reds <- rep("red", 6)
+#' show_col(col2hcl(reds, h = seq(0, 180, length = 6)))
+#' show_col(col2hcl(reds, c = seq(0, 80, length = 6)))
+#' show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
+#' show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
+col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
+  rgb_in <- col2rgb(colour)
+  hcl <- farver::convert_colour(rgb_in, "rgb", "lch")
 
-  # Check for correctness
-  # colorspace::coords(as(RGB(rgb), "polarLUV"))
+  if (!is.null(h)) hcl[, "h"] <- h
+  if (!is.null(c)) hcl[, "c"] <- c
+  if (!is.null(l)) hcl[, "l"] <- l
 
-  if (missing(h)) h <- atan2(coords[, "v"], coords[, "u"]) * 180 / pi
-  if (missing(c)) c <- sqrt(coords[, "u"]^2 + coords[, "v"]^2)
-  if (missing(l)) l <- coords[, "L"]
+  rgb_out <- farver::convert_colour(hcl, "lch", "rgb")
+  if (!is.null(alpha)) {
+    rgb_out <- cbind(rgb_out, alpha * 255)
+  }
 
-  hcl_colours <- grDevices::hcl(h, c, l, alpha = alpha)
-  names(hcl_colours) <- names(colour)
-  hcl_colours
+  rgb2col(rgb_out)
 }
 
 #' Mute standard colour
@@ -53,7 +57,6 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
-  col <- grDevices::col2rgb(colour, TRUE) / 255
 
   if (length(colour) != length(alpha)) {
     if (length(colour) > 1 && length(alpha) > 1) {
@@ -62,16 +65,14 @@ alpha <- function(colour, alpha = NA) {
 
     if (length(colour) > 1) {
       alpha <- rep(alpha, length.out = length(colour))
-    } else if (length(alpha) > 1) {
-      col <- col[, rep(1, length(alpha)), drop = FALSE]
+    } else {
+      colour <- rep(colour, length.out = length(alpha))
     }
   }
-  alpha[is.na(alpha)] <- col[4, ][is.na(alpha)]
 
-  new_col <- grDevices::rgb(col[1, ], col[2, ], col[3, ], alpha)
-  new_col[is.na(colour)] <- NA
-  names(new_col) <- names(colour)
-  new_col
+  col <- col2rgb(colour, alpha = TRUE)
+  col[!is.na(alpha), 4] <- alpha[!is.na(alpha)] * 255
+  rgb2col(col)
 }
 
 #' Show colours
@@ -102,6 +103,10 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
        col = colours, border = borders
   )
   if (labels) {
-    text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label)
+    rgb <- col2rgb(colours)
+    hcl <- farver::convert_colour(rgb, "rgb", "lch")
+    label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
+
+    text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
   }
 }

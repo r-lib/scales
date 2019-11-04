@@ -29,15 +29,35 @@
 #' @seealso \code{\link[grDevices]{colorRamp}}
 #'
 #' @export
+#' @examples
+#' ramp <- colour_ramp(c("red", "green", "blue"))
+#' show_col(ramp(seq(0, 1, length = 12)))
 colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (length(colors) == 0) {
     stop("Must provide at least one colour to create a colour ramp")
   }
 
-  colorMatrix <- grDevices::col2rgb(colors, alpha = alpha)
+  rgb_in <- col2rgb(colors, alpha = TRUE)
+  lab_in <- farver::convert_colour(rgb_in[, 1:3], "rgb", "lab")
+
+  x_in <- seq(0, 1, length = length(colors))
+  l_interp <- stats::approxfun(x_in, lab_in[, 1])
+  u_interp <- stats::approxfun(x_in, lab_in[, 2])
+  v_interp <- stats::approxfun(x_in, lab_in[, 3])
+
+  if (!alpha || all(rgb_in[, 4] == 255)) {
+    alpha_interp <- function(x) NULL
+  } else {
+    alpha_interp <- stats::approxfun(x_in, rgb_in[, 4])
+  }
+
   structure(
     function(x) {
-      doColorRamp(colorMatrix, x, alpha, ifelse(is.na(na.color), "", na.color))
+      lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
+      rgb_out <- round(farver::convert_colour(lab_out, "lab", "rgb"))
+      rgb_out <- cbind(rgb_out, alpha_interp(x))
+
+      rgb2col(rgb_out, na.color)
     },
     safe_palette_func = TRUE
   )

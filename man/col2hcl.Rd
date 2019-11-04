@@ -4,23 +4,27 @@
 \alias{col2hcl}
 \title{Modify standard R colour in hcl colour space.}
 \usage{
-col2hcl(colour, h, c, l, alpha = 1)
+col2hcl(colour, h = NULL, c = NULL, l = NULL, alpha = NULL)
 }
 \arguments{
 \item{colour}{character vector of colours to be modified}
 
-\item{h}{new hue}
+\item{h}{Hue, \code{[0, 360]}}
 
-\item{c}{new chroma}
+\item{c}{Chroma, \code{[0, 100]}}
 
-\item{l}{new luminance}
+\item{l}{Luminance, \code{[0, 100]}}
 
-\item{alpha}{alpha value.  Defaults to 1.}
+\item{alpha}{Alpha, \code{[0, 1]}.}
 }
 \description{
 Transforms rgb to hcl, sets non-missing arguments and then backtransforms
 to rgb.
 }
 \examples{
-col2hcl(colors())
+reds <- rep("red", 6)
+show_col(col2hcl(reds, h = seq(0, 180, length = 6)))
+show_col(col2hcl(reds, c = seq(0, 80, length = 6)))
+show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
+show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 }
