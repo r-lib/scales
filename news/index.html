@@ -172,6 +172,7 @@
 <h2 class="hasAnchor">
 <a href="#other-bug-fixes-and-minor-improvements" class="anchor"></a>Other bug fixes and minor improvements</h2>
 <ul>
+<li><p>scales now uses the farver package for colour manipulation instead of a combination of grDevices and hand-rolled C++ code (<a href='https://github.com/r-lib/scales/issues/223'>#223</a>).</p></li>
 <li><p><code><a href="../reference/alpha.html">alpha()</a></code> preserve element names (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-lib/scales/issues/195'>#195</a>)</p></li>
 <li><p><code>ContinuousRange</code> and <code>DiscreteRange</code> methods now properly inherit and are fully mutable (<a href='https://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now support viridis colors. Just pass a palette name (<code>"magma"</code>, <code>"inferno"</code>, <code>"plasma"</code>, or <code>"viridis"</code>) as the <code>palette</code> argument (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
