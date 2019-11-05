@@ -325,7 +325,7 @@ sqrt_trans <- function() {
   trans_new(
     "sqrt",
     "sqrt",
-    function(x) ifelse(x < 0, NA_real_, x ^ 2),
+    function(x) x ^ 2,
     domain = c(0, Inf)
   )
 }

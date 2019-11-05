@@ -84,9 +84,6 @@
 * `boxcox_trans()` no longer throws an error when given NA values 
   (@sflippl, #181).
 
-* `sqrt_trans()` no longer returns an inverse for values outside of its 
-  domain (#214).
-
 ## Other bug fixes and minor improvements
 
 * scales now uses the farver package for colour manipulation instead of a 
