@@ -29,7 +29,7 @@ Run `revdep_details(,"animint2")` for more info
       [1] "selectors"
       [1] "stat_summary"
       [1] "compiler unlink previous"
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════
       [ OK: 750 | SKIPPED: 7 | WARNINGS: 11 | FAILED: 1 ]
       1. Failure: can use US spelling of colour (@test-compiler-geom-boxplot.R#8) 
       
@@ -76,7 +76,7 @@ Run `revdep_details(,"ggasym")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_c[39m
+      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale[39m
       g3_build$data[[3]]$fill_diag not equal to `diag_cols`.
       2/6 mismatches
       x[1]: "#E40081"
@@ -85,48 +85,9 @@ Run `revdep_details(,"ggasym")` for more info
       x[3]: "#E40081"
       y[3]: "#E30081"
       
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════
       [ OK: 266 | SKIPPED: 0 | WARNINGS: 14 | FAILED: 1 ]
       1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R#185) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-# ggfortify
-
-<details>
-
-* Version: 0.4.7
-* Source code: https://github.com/cran/ggfortify
-* URL: https://github.com/sinhrks/ggfortify
-* BugReports: https://github.com/sinhrks/ggfortify/issues
-* Date/Publication: 2019-05-26 05:20:05 UTC
-* Number of recursive dependencies: 122
-
-Run `revdep_details(,"ggfortify")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/test-all.R’ failed.
-    Last 13 lines of output:
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
-      [ OK: 720 | SKIPPED: 47 | WARNINGS: 0 | FAILED: 17 ]
-      1. Failure: test autoplot.SpatialPoints (@test-spatial.R#269) 
-      2. Failure: test autoplot.Line, Lines (@test-spatial.R#331) 
-      3. Failure: test autoplot.Line, Lines (@test-spatial.R#358) 
-      4. Failure: test autoplot.Line, Lines (@test-spatial.R#372) 
-      5. Failure: test autoplot.Line, Lines (@test-spatial.R#382) 
-      6. Failure: test autoplot.Polygon, Polygons (@test-spatial.R#442) 
-      7. Failure: test autoplot.Polygon, Polygons (@test-spatial.R#466) 
-      8. Failure: autoplot ts works for multivariate timeseries (@test-ts.R#140) 
-      9. Failure: autoplot ts works for multivariate timeseries (@test-ts.R#141) 
-      1. ...
       
       Error: testthat unit tests failed
       Execution halted
@@ -154,18 +115,18 @@ Run `revdep_details(,"ggplot2")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+      layer_data(p)$fill not equivalent to `correct_fill`.
+      2/3 mismatches
+      x[1]: "#C3654F"
+      y[1]: "#B26D65"
+      
+      x[2]: "#E7B1A3"
       y[2]: "#DCB4AF"
       
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
-      [ OK: 1086 | SKIPPED: 106 | WARNINGS: 0 | FAILED: 8 ]
+      ══ testthat results  ═══════════════════════════════════════════════════════════════
+      [ OK: 1092 | SKIPPED: 106 | WARNINGS: 0 | FAILED: 2 ]
       1. Failure: can use US spelling of colour (@test-geom-boxplot.R#38) 
-      2. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#36) 
-      3. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#37) 
-      4. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#38) 
-      5. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#44) 
-      6. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#45) 
-      7. Failure: NAs are translated/preserved for non-position scales (@test-scale-discrete.R#46) 
-      8. Failure: points outside the limits are plotted as NA (@test-scale-gradient.R#12) 
+      2. Failure: points outside the limits are plotted as NA (@test-scale-gradient.R#12) 
       
       Error: testthat unit tests failed
       Execution halted
@@ -177,7 +138,7 @@ Run `revdep_details(,"ggplot2")` for more info
     ```
       installed size is  7.6Mb
       sub-directories of 1Mb or more:
-        R     2.0Mb
+        R     2.1Mb
         doc   3.8Mb
     ```
 
@@ -287,7 +248,7 @@ Run `revdep_details(,"plotly")` for more info
       x[3]: "rgba(255,127,0,1)"
       y[3]: "rgba(77,175,74,1)"
       
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════
       [ OK: 1373 | SKIPPED: 45 | WARNINGS: 73 | FAILED: 1 ]
       1. Failure: Custom RColorBrewer pallette works for factor variable (@test-plotly-color.R#32) 
       
@@ -354,7 +315,7 @@ Run `revdep_details(,"signs")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ═════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════
       [ OK: 27 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 28 ]
       1. Failure: the basics work (@test-signs-format.R#7) 
       2. Failure: the basics work (@test-signs-format.R#15) 

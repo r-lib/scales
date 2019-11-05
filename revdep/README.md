@@ -55,13 +55,12 @@
 |TCGAbiolinks      |2.12.6  |1     |6       |5    |
 |variancePartition |1.14.1  |1     |        |1    |
 
-## New problems (9)
+## New problems (8)
 
 |package                                |version  |error  |warning |note |
 |:--------------------------------------|:--------|:------|:-------|:----|
 |[animint2](problems.md#animint2)       |2019.7.3 |__+1__ |        |2    |
 |[ggasym](problems.md#ggasym)           |0.1.1    |__+1__ |        |     |
-|[ggfortify](problems.md#ggfortify)     |0.4.7    |__+1__ |        |     |
 |[ggplot2](problems.md#ggplot2)         |3.2.1    |__+1__ |        |2    |
 |[iheatmapr](problems.md#iheatmapr)     |0.4.8    |__+1__ |        |     |
 |[leaflet](problems.md#leaflet)         |2.0.2    |__+1__ |        |     |
