@@ -5,12 +5,12 @@
 |version  |R version 3.6.0 (2019-04-26) |
 |os       |macOS Mojave 10.14.6         |
 |system   |x86_64, darwin15.6.0         |
-|ui       |X11                          |
+|ui       |RStudio                      |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2019-11-04                   |
+|date     |2019-11-05                   |
 
 # Dependencies
 
@@ -26,7 +26,7 @@
 |R6           |2.4.0 |2.4.0      |   |
 |RColorBrewer |1.1-2 |1.1-2      |   |
 |Rcpp         |1.0.2 |1.0.2      |   |
-|rlang        |NA    |0.4.0      |*  |
+|rlang        |NA    |0.4.1      |*  |
 |viridisLite  |0.3.0 |0.3.0      |   |
 
 # Revdeps
@@ -55,24 +55,17 @@
 |TCGAbiolinks      |2.12.6  |1     |6       |5    |
 |variancePartition |1.14.1  |1     |        |1    |
 
-## New problems (16)
+## New problems (9)
 
-|package                                          |version  |error    |warning |note   |
-|:------------------------------------------------|:--------|:--------|:-------|:------|
-|[animint2](problems.md#animint2)                 |2019.7.3 |__+2__   |        |2      |
-|[ggasym](problems.md#ggasym)                     |0.1.1    |__+1__   |        |       |
-|[ggforce](problems.md#ggforce)                   |0.3.1    |__+1__   |        |1      |
-|[ggfortify](problems.md#ggfortify)               |0.4.7    |__+1__   |        |       |
-|[ggplot2](problems.md#ggplot2)                   |3.2.1    |__+2__   |        |2      |
-|[heatmaply](problems.md#heatmaply)               |0.16.0   |__+1__   |        |2      |
-|[hierarchicalSets](problems.md#hierarchicalsets) |1.0.2    |         |__+1__  |1      |
-|[iheatmapr](problems.md#iheatmapr)               |0.4.8    |__+1__   |        |       |
-|[leaflet](problems.md#leaflet)                   |2.0.2    |__+1__   |        |       |
-|[mapview](problems.md#mapview)                   |2.7.0    |__+2__   |        |2      |
-|[plotly](problems.md#plotly)                     |4.9.0    |__+1__   |        |1      |
-|[randomcoloR](problems.md#randomcolor)           |1.1.0    |         |        |__+1__ |
-|[sbpiper](problems.md#sbpiper)                   |1.9.0    |__+1__   |        |       |
-|[signs](problems.md#signs)                       |0.1.0    |__+1__   |        |       |
-|[surveillance](problems.md#surveillance)         |1.17.1   |         |__+1__  |2 -1   |
-|[TFEA.ChIP](problems.md#tfeachip)                |1.4.2    |1 __+1__ |        |       |
+|package                                |version  |error  |warning |note |
+|:--------------------------------------|:--------|:------|:-------|:----|
+|[animint2](problems.md#animint2)       |2019.7.3 |__+1__ |        |2    |
+|[ggasym](problems.md#ggasym)           |0.1.1    |__+1__ |        |     |
+|[ggfortify](problems.md#ggfortify)     |0.4.7    |__+1__ |        |     |
+|[ggplot2](problems.md#ggplot2)         |3.2.1    |__+1__ |        |2    |
+|[iheatmapr](problems.md#iheatmapr)     |0.4.8    |__+1__ |        |     |
+|[leaflet](problems.md#leaflet)         |2.0.2    |__+1__ |        |     |
+|[plotly](problems.md#plotly)           |4.9.0    |__+1__ |        |1    |
+|[randomcoloR](problems.md#randomcolor) |1.1.0    |__+1__ |        |     |
+|[signs](problems.md#signs)             |0.1.0    |__+1__ |        |     |
 
