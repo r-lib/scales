@@ -55,6 +55,13 @@ test_that("Basic color accuracy", {
   expect_identical(rev(c("#000000", "#777777", "#FFFFFF")), col_factor(bw, rev(LETTERS[1:3]), ordered = TRUE)(LETTERS[1:3]))
 })
 
+test_that("col_numeric respects alpha", {
+  expect_equal(
+    col_numeric(c("#FF000000", "#FF0000FF"), c(0, 1), alpha = TRUE)(0.5),
+    "#FF000080"
+  )
+})
+
 test_that("CIELab overflow", {
   expect_identical(c("#FFFFFF", "#CFB1FF", "#9265FF", "#0000FF"), scales::colour_ramp(c("white", "blue"))(0:3 / 3))
 })
