@@ -37,8 +37,17 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
     stop("Must provide at least one colour to create a colour ramp")
   }
 
+  if (length(colors) == 1) {
+    return(structure(
+      function(x) {
+        ifelse(is.na(x), na.color, colors)
+      },
+      safe_palette_func = TRUE
+    ))
+  }
+
   rgb_in <- col2rgb(colors, alpha = TRUE)
-  lab_in <- farver::convert_colour(rgb_in[, 1:3], "rgb", "lab")
+  lab_in <- farver::convert_colour(rgb_in[, 1:3, drop = FALSE], "rgb", "lab")
 
   x_in <- seq(0, 1, length = length(colors))
   l_interp <- stats::approxfun(x_in, lab_in[, 1])

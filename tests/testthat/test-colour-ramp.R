@@ -9,6 +9,11 @@ test_that("Special values yield NAs", {
   expect_equal(pal(-Inf), NA_character_)
 })
 
+test_that("can make ramp with single color", {
+  expect_equal(colour_ramp("black")(0.5), "black")
+  expect_equal(colour_ramp("black", na.color = "red")(NA), "red")
+})
+
 test_that("Fully opaque colors are returned without alpha", {
   expect_equal(
     colour_ramp(c("#1234AB", "#BA4321"))(0:1),
