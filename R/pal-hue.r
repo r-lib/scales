@@ -23,6 +23,9 @@
 #' show_col(hue_pal(h = c(180, 270))(9))
 #' show_col(hue_pal(h = c(270, 360))(9))
 hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
+  stopifnot(length(h) == 2)
+  stopifnot(length(c) == 1)
+  stopifnot(length(l) == 1)
   force_all(h, c, l, h.start, direction)
   function(n) {
     if (n == 0) {
