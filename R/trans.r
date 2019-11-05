@@ -22,6 +22,7 @@
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export
 #' @keywords internal
+#' @aliases trans
 trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
                       minor_breaks = regular_minor_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {

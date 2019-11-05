@@ -2,6 +2,7 @@
 % Please edit documentation in R/trans.r
 \name{trans_new}
 \alias{trans_new}
+\alias{trans}
 \alias{is.trans}
 \alias{as.trans}
 \title{Create a new transformation object}
