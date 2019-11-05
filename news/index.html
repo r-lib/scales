@@ -165,7 +165,6 @@
 <li><p>New <code><a href="../reference/yj_trans.html">yj_trans()</a></code> implements the Yeo-Johnson transformation (<a href='https://github.com/zamorarr'>@zamorarr</a>, <a href='https://github.com/r-lib/scales/issues/196'>#196</a>)</p></li>
 <li><p><code>trans</code> objects gets methods for <code><a href="https://rdrr.io/r/graphics/plot.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, and all numeric transformations get an example showing the transformation.</p></li>
 <li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> no longer throws an error when given NA values (<a href='https://github.com/sflippl'>@sflippl</a>, <a href='https://github.com/r-lib/scales/issues/181'>#181</a>).</p></li>
-<li><p><code><a href="../reference/sqrt_trans.html">sqrt_trans()</a></code> no longer returns an inverse for values outside of its domain (<a href='https://github.com/r-lib/scales/issues/214'>#214</a>).</p></li>
 </ul>
 </div>
 <div id="other-bug-fixes-and-minor-improvements" class="section level2">
@@ -181,7 +180,6 @@
 <li><p><code><a href="../reference/col_numeric.html">col_factor()</a></code> now tries to avoid interpolating qualitative RColorBrewer palettes. Instead, it attempts to assign a palette color to each factor level. Interpolation will still be used if there are more factor levels than available colors, and a warning will be emitted in that case (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/dichromat_pal.html">dichromat_pal()</a></code> documentation now builds without requiring suggested <code>dichromat</code> package to be installed (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/172'>#172</a>).</p></li>
 <li><p><code><a href="../reference/date_breaks.html">date_breaks()</a></code> now supports subsecond intervals (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/85'>#85</a>).</p></li>
-<li><p><code><a href="../reference/train_continuous.html">train_continuous()</a></code> now maintains the class of inputs when they are not numeric (<a href='https://github.com/billdenney'>@billdenney</a>, <a href='https://github.com/r-lib/scales/issues/166'>#166</a>).</p></li>
 </ul>
 </div>
 </div>
