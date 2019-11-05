@@ -70,9 +70,7 @@ ordinal_french <- function() {
 #' @export
 #' @rdname label_ordinal
 ordinal_spanish <- function() {
-  list(
-    ".\u00ba" = "."
-  )
+  setNames(list("."), ".\u00ba")
 }
 
 #' @export

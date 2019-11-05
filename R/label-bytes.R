@@ -76,27 +76,9 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
 
 # Helpers -----------------------------------------------------------------
 
-si_powers <- sort(c(
-  "Y"      =  24L,
-  "Z"      =  21L,
-  "E"      =  18L,
-  "P"      =  15L,
-  "T"      =  12L,
-  "G"      =   9L,
-  "M"      =   6L,
-  "k"      =   3L,
-  "h"      =   2L,
-  "da"     =   1L,
-               0L,
-  "d"      =  -1L,
-  "c"      =  -2L,
-  "m"      =  -3L,
-  "\u00b5" =  -6L,
-  "n"      =  -9L,
-  "p"      = -12L,
-  "f"      = -15L,
-  "a"      = -18L,
-  "z"      = -21L,
-  "y"      = -24L
-))
-
+si_powers <- (-8:8) * 3
+names(si_powers) <- c(
+  rev(c("m", "\u00b5", "n", "p", "f", "a", "z", "y")), "",
+        "k", "M",      "G", "T", "P", "E", "Z", "Y"
+)
+si_powers
