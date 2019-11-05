@@ -12,5 +12,5 @@ train_continuous(new, existing = NULL)
 \item{existing}{Optional existing scale to update}
 }
 \description{
-Train (update) a continuous scale
+Strips attributes and always returns a numeric vector
 }

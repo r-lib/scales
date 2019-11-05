@@ -116,9 +116,6 @@
 
 * `date_breaks()` now supports subsecond intervals (@dpseidel, #85).
 
-* `train_continuous()` now maintains the class of inputs when they are not
-  numeric (@billdenney, #166).
-
 # scales 1.0.0
 
 ## New Features

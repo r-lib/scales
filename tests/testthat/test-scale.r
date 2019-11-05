@@ -26,16 +26,11 @@ test_that("train_continuous stops on discrete values", {
   )
 })
 
-test_that("train_continuous maintains class with `existing=NULL`.", {
-  expect_equal(
-    train_continuous(1:5),
-    c(1, 5)
-  )
-  my_date <- as.POSIXct("2018-01-01")
-  expect_equal(
-    train_continuous(my_date),
-    c(my_date, my_date)
-  )
+test_that("train_continuous strips attributes", {
+  expect_equal(train_continuous(1:5), c(1, 5))
+
+  x <- as.Date("1970-01-01") + c(1, 5)
+  expect_equal(train_continuous(x), c(1, 5))
 })
 
 test_that("train_continuous changes class to the class of `existing` when not NULL.", {

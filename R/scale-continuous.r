@@ -30,6 +30,8 @@ cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
 
 #' Train (update) a continuous scale
 #'
+#' Strips attributes and always returns a numeric vector
+#'
 #' @inheritParams train_discrete
 #' @export
 train_continuous <- function(new, existing = NULL) {
@@ -38,12 +40,8 @@ train_continuous <- function(new, existing = NULL) {
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     stop("Discrete value supplied to continuous scale", call. = FALSE)
   }
-  # range(NULL, x) strips attributes
-  if (is.null(existing)) {
-    suppressWarnings(range(new, na.rm = TRUE, finite = TRUE))
-  } else {
-    suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
-  }
+
+  suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
 }
 
 # Map values for a continuous palette.
