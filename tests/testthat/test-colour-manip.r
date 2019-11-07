@@ -10,17 +10,16 @@ test_that("can modify each hcl component", {
 # alpha -------------------------------------------------------------------
 
 test_that("missing alpha preserves existing", {
-  cols <- col2rgb(rep("red", 5), TRUE)
-  cols[, 4] <- seq(0, 255, length.out = nrow(cols))
-
-  reds <- rgb2col(cols)
+  rgb <- col2rgb(rep("red", 5), TRUE)
+  alpha <- seq(0, 255, length.out = nrow(rgb))
+  reds <- farver::encode_colour(rgb, alpha)
 
   expect_equal(reds, alpha(reds, NA))
   expect_equal(reds, alpha(reds, rep(NA, 5)))
 })
 
 test_that("alpha values recycled to match colour", {
-  cols <- rgb2col(col2rgb(c("red", "green", "blue", "pink")))
+  cols <- farver::encode_colour(col2rgb(c("red", "green", "blue", "pink")), from = "rgb")
 
   expect_equal(cols, alpha(cols, NA))
   expect_equal(cols, alpha(cols, 1))

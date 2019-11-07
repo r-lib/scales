@@ -17,18 +17,13 @@
 #' show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
   rgb_in <- col2rgb(colour)
-  hcl <- farver::convert_colour(rgb_in, "rgb", "lch")
+  hcl <- farver::convert_colour(rgb_in, "rgb", "hcl")
 
   if (!is.null(h)) hcl[, "h"] <- h
   if (!is.null(c)) hcl[, "c"] <- c
   if (!is.null(l)) hcl[, "l"] <- l
 
-  rgb_out <- farver::convert_colour(hcl, "lch", "rgb")
-  if (!is.null(alpha)) {
-    rgb_out <- cbind(rgb_out, alpha * 255)
-  }
-
-  rgb2col(rgb_out)
+  farver::encode_colour(hcl, alpha, from = "hcl")
 }
 
 #' Mute standard colour
@@ -70,9 +65,10 @@ alpha <- function(colour, alpha = NA) {
     }
   }
 
-  col <- col2rgb(colour, alpha = TRUE)
-  col[!is.na(alpha), 4] <- alpha[!is.na(alpha)] * 255
-  rgb2col(col)
+  rgb <- col2rgb(colour, alpha = TRUE)
+  rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
+
+  farver::encode_colour(rgb, rgb[, 4], from = "rgb")
 }
 
 #' Show colours

@@ -57,16 +57,16 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (!alpha || all(rgb_in[, 4] == 255)) {
     alpha_interp <- function(x) NULL
   } else {
-    alpha_interp <- stats::approxfun(x_in, rgb_in[, 4])
+    alpha_interp <- stats::approxfun(x_in, rgb_in[, 4] / 255)
   }
 
   structure(
     function(x) {
       lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
-      rgb_out <- round(farver::convert_colour(lab_out, "lab", "rgb"))
-      rgb_out <- cbind(rgb_out, alpha_interp(x))
-
-      rgb2col(rgb_out, na.color)
+      out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab")
+      out[!is.finite(x)] <- NA
+      out[is.na(out)] <- na.color
+      out
     },
     safe_palette_func = TRUE
   )

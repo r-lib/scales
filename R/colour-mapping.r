@@ -359,7 +359,7 @@ filterRGB <- function(f) {
     if (is.character(results)) {
       results
     } else if (is.matrix(results)) {
-      rgb2col(results)
+      farver::encode_colour(results, from = "rgb")
     } else {
       stop("Unexpected result type ", class(x)[[1]])
     }
