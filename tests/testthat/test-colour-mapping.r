@@ -63,7 +63,7 @@ test_that("col_numeric respects alpha", {
 })
 
 test_that("CIELab overflow", {
-  expect_identical(c("#FFFFFF", "#CFB1FF", "#9265FF", "#0000FF"), scales::colour_ramp(c("white", "blue"))(0:3 / 3))
+  expect_identical(c("#FFFFFF", "#CFB1FF", "#9265FF", "#0000FF"), colour_ramp(c("white", "blue"))(0:3 / 3))
 })
 
 test_that("factors match by name, not position", {

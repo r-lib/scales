@@ -16,8 +16,7 @@
 #' show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
 #' show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
-  rgb_in <- col2rgb(colour)
-  hcl <- farver::convert_colour(rgb_in, "rgb", "hcl")
+  hcl <- farver::decode_colour(colour, to = "hcl")
 
   if (!is.null(h)) hcl[, "h"] <- h
   if (!is.null(c)) hcl[, "c"] <- c
@@ -65,10 +64,10 @@ alpha <- function(colour, alpha = NA) {
     }
   }
 
-  rgb <- col2rgb(colour, alpha = TRUE)
+  rgb <- farver::decode_colour(colour, alpha = TRUE)
   rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
 
-  farver::encode_colour(rgb, rgb[, 4], from = "rgb")
+  farver::encode_colour(rgb, rgb[, 4])
 }
 
 #' Show colours

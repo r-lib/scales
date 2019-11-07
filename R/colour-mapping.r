@@ -318,7 +318,7 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
 
 # Accept colorRamp style matrix
 toPaletteFunc.matrix <- function(pal, alpha, nlevels) {
-  toPaletteFunc(col2rgb(pal), alpha = alpha)
+  toPaletteFunc(farver::decode_colour(pal), alpha = alpha)
 }
 
 # If a function, just assume it's already a function over [0-1]
