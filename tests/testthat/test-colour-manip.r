@@ -26,8 +26,8 @@ test_that("alpha values recycled to match colour", {
 })
 
 test_that("col values recycled to match alpha", {
-  alphas <- round(seq(0, 255, length.out = 3))
-  reds <- alpha("red", alphas / 255)
+  alphas <- round(seq(0, 1, length.out = 3))
+  reds <- alpha("red", alphas)
   reds_alpha <- farver::decode_colour(reds, TRUE)[, 4]
 
   expect_equal(alphas, reds_alpha)
