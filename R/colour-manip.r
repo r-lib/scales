@@ -98,8 +98,7 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
        col = colours, border = borders
   )
   if (labels) {
-    rgb <- col2rgb(colours)
-    hcl <- farver::convert_colour(rgb, "rgb", "lch")
+    hcl <- farver::decode_colour(colours, "rgb", "hcl")
     label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
 
     text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
