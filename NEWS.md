@@ -94,9 +94,6 @@
 * `ContinuousRange` and `DiscreteRange` methods now properly inherit and are 
   fully mutable (@dpseidel).
 
-* `col2hcl()` now uses hcl(ab) for consistency with other hcl functions in R.
-  Previously it used hcl(uv)
-
 * `col_numeric()`, `col_bin()`, `col_quantile()`, and `col_factor()` now support
   viridis colors. Just pass a palette name (`"magma"`, `"inferno"`, `"plasma"`,
   or `"viridis"`) as the `palette` argument (@jcheng5, #191).
