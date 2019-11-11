@@ -33,16 +33,10 @@ test_that("col values recycled to match alpha", {
   expect_equal(alphas, reds_alpha)
 })
 
-test_that("preserves element names", {
-  expect_equal(
-    c("first", "second", "third"),
-    names(alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5))
-  )
-})
+test_that("preserves names", {
+  x <- c("deeppink", "hotpink", "lightpink")
+  expect_named(alpha(x, 0.5), NULL)
 
-
-test_that("doesn't add element names", {
-  pinks <- c("deeppink", "hotpink", "lightpink")
-
-  expect_null(names(alpha(pinks, NA)))
+  names(x) <- x
+  expect_named(alpha(x, 0.5), names(x))
 })
