@@ -258,7 +258,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #' }
 #' @examples
 #' pal <- col_bin("Greens", domain = 0:100)
-#' show_col(pal(sort(runif(10, 60, 100))))
+#' show_col(pal(seq(0, 100, length.out = 12)))
 #'
 #' # Exponential distribution, mapped continuously
 #' show_col(col_numeric("Blues", domain = NULL)(sort(rexp(16))))
