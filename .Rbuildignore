@@ -13,3 +13,5 @@
 ^logo\.png$
 ^\.covrignore$
 ^pkgdown$
+^\.github/workflows/R\.yaml$
+^\.github/workflows/pr-commands\.yaml$
