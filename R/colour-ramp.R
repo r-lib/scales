@@ -49,7 +49,7 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   rgb_in <- col2rgb(colors, alpha = TRUE)
   lab_in <- farver::convert_colour(rgb_in[, 1:3, drop = FALSE], "rgb", "lab")
 
-  x_in <- seq(0, 1, length = length(colors))
+  x_in <- seq(0, 1, length.out = length(colors))
   l_interp <- stats::approxfun(x_in, lab_in[, 1])
   u_interp <- stats::approxfun(x_in, lab_in[, 2])
   v_interp <- stats::approxfun(x_in, lab_in[, 3])
