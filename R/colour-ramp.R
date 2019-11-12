@@ -46,27 +46,25 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
     ))
   }
 
-  rgb_in <- col2rgb(colors, alpha = TRUE)
-  lab_in <- farver::convert_colour(rgb_in[, 1:3, drop = FALSE], "rgb", "lab")
+  lab_in <- farver::decode_colour(colors, alpha = TRUE, to = "lab")
 
   x_in <- seq(0, 1, length.out = length(colors))
   l_interp <- stats::approxfun(x_in, lab_in[, 1])
   u_interp <- stats::approxfun(x_in, lab_in[, 2])
   v_interp <- stats::approxfun(x_in, lab_in[, 3])
 
-  if (!alpha || all(rgb_in[, 4] == 255)) {
+  if (!alpha || all(lab_in[, 4] == 1)) {
     alpha_interp <- function(x) NULL
   } else {
-    alpha_interp <- stats::approxfun(x_in, rgb_in[, 4])
+    alpha_interp <- stats::approxfun(x_in, lab_in[, 4])
   }
 
   structure(
     function(x) {
       lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
-      rgb_out <- round(farver::convert_colour(lab_out, "lab", "rgb"))
-      rgb_out <- cbind(rgb_out, alpha_interp(x))
-
-      rgb2col(rgb_out, na.color)
+      out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab")
+      out[is.na(out)] <- na.color
+      out
     },
     safe_palette_func = TRUE
   )

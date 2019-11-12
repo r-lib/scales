@@ -16,19 +16,13 @@
 #' show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
 #' show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
-  rgb_in <- col2rgb(colour)
-  hcl <- farver::convert_colour(rgb_in, "rgb", "lch")
+  hcl <- farver::decode_colour(colour, to = "hcl")
 
   if (!is.null(h)) hcl[, "h"] <- h
   if (!is.null(c)) hcl[, "c"] <- c
   if (!is.null(l)) hcl[, "l"] <- l
 
-  rgb_out <- farver::convert_colour(hcl, "lch", "rgb")
-  if (!is.null(alpha)) {
-    rgb_out <- cbind(rgb_out, alpha * 255)
-  }
-
-  rgb2col(rgb_out)
+  farver::encode_colour(hcl, alpha, from = "hcl")
 }
 
 #' Mute standard colour
@@ -70,9 +64,10 @@ alpha <- function(colour, alpha = NA) {
     }
   }
 
-  col <- col2rgb(colour, alpha = TRUE)
-  col[!is.na(alpha), 4] <- alpha[!is.na(alpha)] * 255
-  rgb2col(col)
+  rgb <- farver::decode_colour(colour, alpha = TRUE)
+  rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
+
+  farver::encode_colour(rgb, rgb[, 4])
 }
 
 #' Show colours
@@ -103,8 +98,7 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
        col = colours, border = borders
   )
   if (labels) {
-    rgb <- col2rgb(colours)
-    hcl <- farver::convert_colour(rgb, "rgb", "lch")
+    hcl <- farver::decode_colour(colours, "rgb", "hcl")
     label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
 
     text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
