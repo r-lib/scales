@@ -120,7 +120,7 @@ ERROR: compilation failed for package ‘cellWise’
 * Source code: https://github.com/cran/clusterExperiment
 * BugReports: https://github.com/epurdom/clusterExperiment/issues
 * Date/Publication: 2019-06-07
-* Number of recursive dependencies: 173
+* Number of recursive dependencies: 182
 
 Run `revdep_details(,"clusterExperiment")` for more info
 
@@ -191,7 +191,7 @@ Run `revdep_details(,"clusterExperiment")` for more info
 * URL: https://github.com/scristia/CNPBayes
 * BugReports: https://github.com/scristia/CNPBayes/issues
 * Date/Publication: 2019-01-05
-* Number of recursive dependencies: 158
+* Number of recursive dependencies: 162
 
 Run `revdep_details(,"CNPBayes")` for more info
 
@@ -362,7 +362,7 @@ Run `revdep_details(,"CNPBayes")` for more info
 * Version: 2.8.3
 * Source code: https://github.com/cran/ELMER
 * Date/Publication: 2019-09-06
-* Number of recursive dependencies: 205
+* Number of recursive dependencies: 209
 
 Run `revdep_details(,"ELMER")` for more info
 
@@ -663,7 +663,7 @@ ERROR: compilation failed for package ‘fingerPro’
 * Source code: https://github.com/cran/idefix
 * URL: https://github.com/traets/idefix
 * Date/Publication: 2019-08-01 16:40:12 UTC
-* Number of recursive dependencies: 61
+* Number of recursive dependencies: 70
 
 Run `revdep_details(,"idefix")` for more info
 
@@ -716,7 +716,7 @@ ERROR: compilation failed for package ‘idefix’
 * URL: http://igraph.org
 * BugReports: https://github.com/igraph/igraph/issues
 * Date/Publication: 2019-04-22 06:57:32 UTC
-* Number of recursive dependencies: 71
+* Number of recursive dependencies: 77
 
 Run `revdep_details(,"igraph")` for more info
 
@@ -916,7 +916,7 @@ Run `revdep_details(,"MSnbase")` for more info
 * Source code: https://github.com/cran/OUTRIDER
 * URL: https://github.com/gagneurlab/OUTRIDER
 * Date/Publication: 2019-10-13
-* Number of recursive dependencies: 165
+* Number of recursive dependencies: 169
 
 Run `revdep_details(,"OUTRIDER")` for more info
 

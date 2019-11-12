@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2019-11-05                   |
+|date     |2019-11-12                   |
 
 # Dependencies
 
@@ -18,14 +18,14 @@
 |:------------|:-----|:----------|:--|
 |scales       |1.0.0 |1.0.0.9000 |*  |
 |colorspace   |1.4-1 |1.4-1      |   |
-|farver       |NA    |1.1.0      |*  |
+|farver       |NA    |1.1.0.9999 |*  |
 |glue         |NA    |1.3.1      |*  |
 |labeling     |0.3   |0.3        |   |
 |lifecycle    |NA    |0.1.0      |*  |
 |munsell      |0.5.0 |0.5.0      |   |
 |R6           |2.4.0 |2.4.0      |   |
 |RColorBrewer |1.1-2 |1.1-2      |   |
-|Rcpp         |1.0.2 |1.0.2      |   |
+|Rcpp         |1.0.2 |1.0.3      |*  |
 |rlang        |NA    |0.4.1      |*  |
 |viridisLite  |0.3.0 |0.3.0      |   |
 
@@ -55,16 +55,12 @@
 |TCGAbiolinks      |2.12.6  |1     |6       |5    |
 |variancePartition |1.14.1  |1     |        |1    |
 
-## New problems (8)
+## New problems (4)
 
-|package                                |version  |error  |warning |note |
-|:--------------------------------------|:--------|:------|:-------|:----|
-|[animint2](problems.md#animint2)       |2019.7.3 |__+1__ |        |2    |
-|[ggasym](problems.md#ggasym)           |0.1.1    |__+1__ |        |     |
-|[ggplot2](problems.md#ggplot2)         |3.2.1    |__+1__ |        |2    |
-|[iheatmapr](problems.md#iheatmapr)     |0.4.8    |__+1__ |        |     |
-|[leaflet](problems.md#leaflet)         |2.0.2    |__+1__ |        |     |
-|[plotly](problems.md#plotly)           |4.9.0    |__+1__ |        |1    |
-|[randomcoloR](problems.md#randomcolor) |1.1.0    |__+1__ |        |     |
-|[signs](problems.md#signs)             |0.1.0    |__+1__ |        |     |
+|package                                |version |error  |warning |note |
+|:--------------------------------------|:-------|:------|:-------|:----|
+|[ggasym](problems.md#ggasym)           |0.1.1   |__+1__ |        |     |
+|[iheatmapr](problems.md#iheatmapr)     |0.4.8   |__+1__ |        |     |
+|[randomcoloR](problems.md#randomcolor) |1.1.0   |__+1__ |        |     |
+|[signs](problems.md#signs)             |0.1.0   |__+1__ |        |     |
 

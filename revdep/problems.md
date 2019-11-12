@@ -1,59 +1,3 @@
-# animint2
-
-<details>
-
-* Version: 2019.7.3
-* Source code: https://github.com/cran/animint2
-* URL: https://github.com/tdhock/animint2
-* BugReports: https://github.com/tdhock/animint2/issues
-* Date/Publication: 2019-07-18 06:36:12 UTC
-* Number of recursive dependencies: 130
-
-Run `revdep_details(,"animint2")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      [1] "geom line"
-      [1] "plot named timexxx"
-      [1] "plot names"
-      [1] "geom_point(aes(fill=numeric))"
-      [1] "compiler print"
-      [1] "save separate chunks"
-      [1] "selectors"
-      [1] "stat_summary"
-      [1] "compiler unlink previous"
-      ══ testthat results  ═══════════════════════════════════════════════════════════════
-      [ OK: 750 | SKIPPED: 7 | WARNINGS: 11 | FAILED: 1 ]
-      1. Failure: can use US spelling of colour (@test-compiler-geom-boxplot.R#8) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.8Mb
-      sub-directories of 1Mb or more:
-        R      2.1Mb
-        data   3.5Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespaces in Imports field not imported from:
-      ‘lazyeval’ ‘tibble’
-      All declared Imports should be used.
-    ```
-
 # ggasym
 
 <details>
@@ -63,7 +7,7 @@ Run `revdep_details(,"animint2")` for more info
 * URL: https://github.com/jhrcook/ggasym https://jhrcook.github.io/ggasym/
 * BugReports: https://github.com/jhrcook/ggasym/issues
 * Date/Publication: 2019-03-23 16:50:03 UTC
-* Number of recursive dependencies: 71
+* Number of recursive dependencies: 80
 
 Run `revdep_details(,"ggasym")` for more info
 
@@ -76,7 +20,7 @@ Run `revdep_details(,"ggasym")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale[39m
+      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R[39m
       g3_build$data[[3]]$fill_diag not equal to `diag_cols`.
       2/6 mismatches
       x[1]: "#E40081"
@@ -85,68 +29,12 @@ Run `revdep_details(,"ggasym")` for more info
       x[3]: "#E40081"
       y[3]: "#E30081"
       
-      ══ testthat results  ═══════════════════════════════════════════════════════════════
+      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════
       [ OK: 266 | SKIPPED: 0 | WARNINGS: 14 | FAILED: 1 ]
       1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R#185) 
       
       Error: testthat unit tests failed
       Execution halted
-    ```
-
-# ggplot2
-
-<details>
-
-* Version: 3.2.1
-* Source code: https://github.com/cran/ggplot2
-* URL: http://ggplot2.tidyverse.org, https://github.com/tidyverse/ggplot2
-* BugReports: https://github.com/tidyverse/ggplot2/issues
-* Date/Publication: 2019-08-10 22:30:13 UTC
-* Number of recursive dependencies: 147
-
-Run `revdep_details(,"ggplot2")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      layer_data(p)$fill not equivalent to `correct_fill`.
-      2/3 mismatches
-      x[1]: "#C3654F"
-      y[1]: "#B26D65"
-      
-      x[2]: "#E7B1A3"
-      y[2]: "#DCB4AF"
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════════
-      [ OK: 1092 | SKIPPED: 106 | WARNINGS: 0 | FAILED: 2 ]
-      1. Failure: can use US spelling of colour (@test-geom-boxplot.R#38) 
-      2. Failure: points outside the limits are plotted as NA (@test-scale-gradient.R#12) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  7.6Mb
-      sub-directories of 1Mb or more:
-        R     2.1Mb
-        doc   3.8Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Namespaces in Imports field not imported from:
-      ‘mgcv’ ‘reshape2’ ‘viridisLite’
-      All declared Imports should be used.
     ```
 
 # iheatmapr
@@ -188,84 +76,6 @@ Run `revdep_details(,"iheatmapr")` for more info
       Execution halted
     ```
 
-# leaflet
-
-<details>
-
-* Version: 2.0.2
-* Source code: https://github.com/cran/leaflet
-* URL: http://rstudio.github.io/leaflet/
-* BugReports: https://github.com/rstudio/leaflet/issues
-* Date/Publication: 2018-08-27 14:12:16 UTC
-* Number of recursive dependencies: 77
-
-Run `revdep_details(,"leaflet")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/test-all.R’ failed.
-    Complete output:
-      > library(testit)
-      > test_pkg("leaflet")
-      Error from assert(identical(c("#000000", "#7F7F7F", "#FFFFFF"), colorNumeric(colorRamp(bw),  ...  at test-colors.R#34 
-      Error: identical(c("#000000", "#777777", "#FFFFFF", "#FFFFFF00", "blue"), colorNumeric(c(bw, "#FFFFFF00"), NULL,  ....  is not TRUE
-      Execution halted
-    ```
-
-# plotly
-
-<details>
-
-* Version: 4.9.0
-* Source code: https://github.com/cran/plotly
-* URL: https://plotly-r.com, https://github.com/ropensci/plotly#readme, https://plot.ly/r
-* BugReports: https://github.com/ropensci/plotly/issues
-* Date/Publication: 2019-04-10 19:33:05 UTC
-* Number of recursive dependencies: 151
-
-Run `revdep_details(,"plotly")` for more info
-
-</details>
-
-## Newly broken
-
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      x[1]: "rgba(153,153,153,1)"
-      y[1]: "rgba(228,26,28,1)"
-      
-      x[2]: "rgba(228,26,28,1)"
-      y[2]: "rgba(55,126,184,1)"
-      
-      x[3]: "rgba(255,127,0,1)"
-      y[3]: "rgba(77,175,74,1)"
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════════
-      [ OK: 1373 | SKIPPED: 45 | WARNINGS: 73 | FAILED: 1 ]
-      1. Failure: Custom RColorBrewer pallette works for factor variable (@test-plotly-color.R#32) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.5Mb
-      sub-directories of 1Mb or more:
-        R             1.2Mb
-        htmlwidgets   3.4Mb
-    ```
-
 # randomcoloR
 
 <details>
@@ -302,7 +112,7 @@ Run `revdep_details(,"randomcoloR")` for more info
 * URL: https://benjaminwolfe.github.io/signs
 * BugReports: https://github.com/BenjaminWolfe/signs/issues
 * Date/Publication: 2019-10-01 12:40:02 UTC
-* Number of recursive dependencies: 64
+* Number of recursive dependencies: 73
 
 Run `revdep_details(,"signs")` for more info
 
@@ -315,7 +125,7 @@ Run `revdep_details(,"signs")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ═══════════════════════════════════════════════════════════════
+      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════
       [ OK: 27 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 28 ]
       1. Failure: the basics work (@test-signs-format.R#7) 
       2. Failure: the basics work (@test-signs-format.R#15) 
