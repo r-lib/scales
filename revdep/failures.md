@@ -707,61 +707,6 @@ ERROR: compilation failed for package ‘idefix’
 * removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/idefix/old/idefix.Rcheck/idefix’
 
 ```
-# igraph
-
-<details>
-
-* Version: 1.2.4.1
-* Source code: https://github.com/cran/igraph
-* URL: http://igraph.org
-* BugReports: https://github.com/igraph/igraph/issues
-* Date/Publication: 2019-04-22 06:57:32 UTC
-* Number of recursive dependencies: 77
-
-Run `revdep_details(,"igraph")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘igraph’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/igraph/new/igraph.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘igraph’ ...
-** package ‘igraph’ successfully unpacked and MD5 sums checked
-** using staged installation
-checking for gcc... ccache /usr/local/opt/llvm/bin/clang -fopenmp -Qunused-arguments
-checking whether the C compiler works... no
-configure: error: in `/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/igraph/new/igraph.Rcheck/00_pkg_src/igraph':
-configure: error: C compiler cannot create executables
-See `config.log' for more details
-ERROR: configuration failed for package ‘igraph’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/igraph/new/igraph.Rcheck/igraph’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘igraph’ ...
-** package ‘igraph’ successfully unpacked and MD5 sums checked
-** using staged installation
-checking for gcc... ccache /usr/local/opt/llvm/bin/clang -fopenmp -Qunused-arguments
-checking whether the C compiler works... no
-configure: error: in `/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/igraph/old/igraph.Rcheck/00_pkg_src/igraph':
-configure: error: C compiler cannot create executables
-See `config.log' for more details
-ERROR: configuration failed for package ‘igraph’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/igraph/old/igraph.Rcheck/igraph’
-
-```
 # likeLTD
 
 <details>
@@ -831,28 +776,6 @@ Run `revdep_details(,"MSnbase")` for more info
 
 ## In both
 
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘MSnbase-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: FeatComp-class
-    > ### Title: Class '"FeatComp"'
-    > ### Aliases: FeatComp-class compfnames-methods
-    > ###   compfnames,MSnSet,MSnSet-method compfnames,list,missing-method
-    > ###   compfnames show,FeatComp-method names,FeatComp-method
-    > ###   common,FeatComp-method common,methods common unique1,FeatComp-method
-    > ###   unique1,methods unique1 unique2,FeatComp-method unique2,methods
-    > ###   unique2
-    > ### Keywords: classes
-    > 
-    > ### ** Examples
-    > 
-    > library("pRolocdata")
-    Error in library("pRolocdata") : there is no package called ‘pRolocdata’
-    Execution halted
-    ```
-
 *   R CMD check timed out
     
 
@@ -862,11 +785,6 @@ Run `revdep_details(,"MSnbase")` for more info
       Warning: package ‘mzR’ was built under R version 3.6.1
       Warning: package ‘S4Vectors’ was built under R version 3.6.1
     See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/MSnbase/new/MSnbase.Rcheck/00install.out’ for details.
-    ```
-
-*   checking package dependencies ... NOTE
-    ```
-    Package suggested but not available for checking: ‘pRolocdata’
     ```
 
 *   checking installed package size ... NOTE
@@ -958,6 +876,101 @@ ERROR: compilation failed for package ‘OUTRIDER’
 * removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/OUTRIDER/old/OUTRIDER.Rcheck/OUTRIDER’
 
 ```
+# pcaExplorer
+
+<details>
+
+* Version: 2.10.1
+* Source code: https://github.com/cran/pcaExplorer
+* URL: https://github.com/federicomarini/pcaExplorer, https://federicomarini.github.io/pcaExplorer/
+* BugReports: https://github.com/federicomarini/pcaExplorer/issues
+* Date/Publication: 2019-08-16
+* Number of recursive dependencies: 169
+
+Run `revdep_details(,"pcaExplorer")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 21.4Mb
+      sub-directories of 1Mb or more:
+        doc  20.1Mb
+    ```
+
+*   checking R code for possible problems ... NOTE
+    ```
+    pcaExplorer: no visible binding for '<<-' assignment to
+      ‘pcaexplorer_env’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:64)
+    pcaExplorer : <anonymous>: no visible binding for global variable
+      ‘airway’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:1269)
+    pcaExplorer : <anonymous>: no visible binding for global variable
+      ‘airway’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:1270)
+    pcaExplorer : <anonymous>: no visible binding for global variable
+      ‘pcaexplorer_env’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:2452)
+    pcaExplorer : <anonymous>: no visible binding for global variable
+      ‘pcaexplorer_env’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:2453)
+    Undefined global functions or variables:
+      airway pcaexplorer_env
+    ```
+
+# perturbatr
+
+<details>
+
+* Version: 1.4.0
+* Source code: https://github.com/cran/perturbatr
+* URL: https://github.com/cbg-ethz/perturbatr
+* BugReports: https://github.com/cbg-ethz/perturbatr/issues
+* Date/Publication: 2019-05-02
+* Number of recursive dependencies: 95
+
+Run `revdep_details(,"perturbatr")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+# Pi
+
+<details>
+
+* Version: 1.12.0
+* Source code: https://github.com/cran/Pi
+* URL: http://pi314.r-forge.r-project.org
+* BugReports: https://github.com/hfang-bristol/Pi/issues
+* Date/Publication: 2019-05-02
+* Number of recursive dependencies: 189
+
+Run `revdep_details(,"Pi")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  6.5Mb
+      sub-directories of 1Mb or more:
+        doc   5.0Mb
+    ```
+
 # pimeta
 
 <details>
@@ -1044,9 +1057,9 @@ Run `revdep_details(,"pRoloc")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 15.6Mb
+      installed size is 15.5Mb
       sub-directories of 1Mb or more:
-        R     2.1Mb
+        R     2.0Mb
         doc  12.1Mb
     ```
 
@@ -1088,11 +1101,9 @@ Run `revdep_details(,"")` for more info
 
   There are binary versions available but the source versions are later:
          binary source needs_compilation
-digest   0.6.21 0.6.22              TRUE
+fields      9.9   10.0              TRUE
 gsl    1.9-10.3  2.1-6              TRUE
-mgcv     1.8-29 1.8-30              TRUE
-rlang     0.4.0  0.4.1              TRUE
-spam      2.3-0  2.4-0              TRUE
+hexbin   1.27.3 1.28.0              TRUE
 
   Binaries will be installed
   These will not be installed
@@ -1101,7 +1112,7 @@ spam      2.3-0  2.4-0              TRUE
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Mm.eg.db’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
+installing the source packages ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
 
 
 
@@ -1112,11 +1123,9 @@ installing the source packages ‘IlluminaHumanMethylation450kanno.ilmn12.hg19�
 
   There are binary versions available but the source versions are later:
          binary source needs_compilation
-digest   0.6.21 0.6.22              TRUE
+fields      9.9   10.0              TRUE
 gsl    1.9-10.3  2.1-6              TRUE
-mgcv     1.8-29 1.8-30              TRUE
-rlang     0.4.0  0.4.1              TRUE
-spam      2.3-0  2.4-0              TRUE
+hexbin   1.27.3 1.28.0              TRUE
 
   Binaries will be installed
   These will not be installed
@@ -1125,71 +1134,161 @@ spam      2.3-0  2.4-0              TRUE
 Packages which are only available in source form, and may need
   compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
   ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘IlluminaHumanMethylation450kanno.ilmn12.hg19’, ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Mm.eg.db’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
+installing the source packages ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
 
 
 
 ```
-# RxODE
+# scPipe
 
 <details>
 
-* Version: 0.9.1-7
-* Source code: https://github.com/cran/RxODE
-* URL: https://nlmixrdevelopment.github.io/RxODE/
-* BugReports: https://github.com/nlmixrdevelopment/RxODE/issues
-* Date/Publication: 2019-10-27 08:50:06 UTC
-* Number of recursive dependencies: 121
+* Version: 1.6.0
+* Source code: https://github.com/cran/scPipe
+* URL: https://github.com/LuyiTian/scPipe
+* BugReports: https://github.com/LuyiTian/scPipe
+* Date/Publication: 2019-05-02
+* Number of recursive dependencies: 116
 
-Run `revdep_details(,"RxODE")` for more info
+Run `revdep_details(,"scPipe")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘RxODE’ can be installed ... ERROR
+*   R CMD check timed out
+    
+
+*   checking whether package ‘scPipe’ can be installed ... WARNING
     ```
-    Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/00install.out’ for details.
+    Found the following significant warnings:
+      Warning: package ‘SummarizedExperiment’ was built under R version 3.6.1
+      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
+      Warning: package ‘S4Vectors’ was built under R version 3.6.1
+      Warning: package ‘IRanges’ was built under R version 3.6.1
+      Warning: package ‘BiocParallel’ was built under R version 3.6.1
+    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00install.out’ for details.
     ```
 
-*   checking package dependencies ... NOTE
+*   checking whether the namespace can be loaded with stated dependencies ... WARNING
     ```
-    Package suggested but not available for checking: ‘installr’
+    Error in dyn.load(file, DLLpath = DLLpath, ...) : 
+      unable to load shared object '/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so':
+      dlopen(/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so, 6): Symbol not found: _lzma_easy_buffer_encode
+      Referenced from: /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so
+      Expected in: flat namespace
+     in /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so
+    Calls: <Anonymous> ... namespaceImport -> loadNamespace -> library.dynam -> dyn.load
+    Execution halted
+    
+    A namespace must be able to be loaded with just the base namespace
+    loaded: otherwise if the namespace gets loaded by a saved object, the
+    session will be unable to start.
+    
+    Probably some imports need to be declared in the NAMESPACE file.
     ```
 
-## Installation
+*   checking for hidden files and directories ... NOTE
+    ```
+    Found the following hidden files and directories:
+      .BBSoptions
+    These were most likely included in error. See section ‘Package
+    structure’ in the ‘Writing R Extensions’ manual.
+    ```
 
-### Devel
+*   checking R code for possible problems ... NOTE
+    ```
+    ...
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
+    infer_gene_id_from_parent: no visible binding for global variable
+      ‘Parent’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
+    infer_gene_id_from_parent: no visible binding for global variable
+      ‘gene_id’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
+    plot_demultiplex: no visible binding for global variable ‘status’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
+    plot_demultiplex: no visible binding for global variable ‘count’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
+    plot_demultiplex: no visible binding for global variable ‘label_y’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
+    plot_demultiplex: no visible binding for global variable ‘label_tx’
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
+    Undefined global functions or variables:
+      GeneID Parent count end gene_id label_tx label_y seqnames start
+      status strand transcript_id type
+    Consider adding
+      importFrom("stats", "end", "start")
+    to your NAMESPACE file.
+    ```
 
-```
-* installing *source* package ‘RxODE’ ...
-** package ‘RxODE’ successfully unpacked and MD5 sums checked
-** using staged installation
-checking for gcc... ccache /usr/local/opt/llvm/bin/clang -fopenmp -Qunused-arguments
-checking whether the C compiler works... no
-configure: error: in `/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/00_pkg_src/RxODE':
-configure: error: C compiler cannot create executables
-See `config.log' for more details
-ERROR: configuration failed for package ‘RxODE’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/RxODE’
+# scruff
 
-```
-### CRAN
+<details>
 
-```
-* installing *source* package ‘RxODE’ ...
-** package ‘RxODE’ successfully unpacked and MD5 sums checked
-** using staged installation
-checking for gcc... ccache /usr/local/opt/llvm/bin/clang -fopenmp -Qunused-arguments
-checking whether the C compiler works... no
-configure: error: in `/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/RxODE/old/RxODE.Rcheck/00_pkg_src/RxODE':
-configure: error: C compiler cannot create executables
-See `config.log' for more details
-ERROR: configuration failed for package ‘RxODE’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/RxODE/old/RxODE.Rcheck/RxODE’
+* Version: 1.2.5
+* Source code: https://github.com/cran/scruff
+* BugReports: https://github.com/campbio/scruff/issues
+* Date/Publication: 2019-10-05
+* Number of recursive dependencies: 142
 
-```
+Run `revdep_details(,"scruff")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking for hidden files and directories ... NOTE
+    ```
+    Found the following hidden files and directories:
+      .BBSoptions
+    These were most likely included in error. See section ‘Package
+    structure’ in the ‘Writing R Extensions’ manual.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Unexported object imported by a ':::' call: 'ShortRead:::.set_omp_threads'
+      See the note in ?`:::` about the use of this operator.
+    ```
+
+*   checking foreign function calls ... NOTE
+    ```
+    Foreign function call to a different package:
+      .Call(ShortRead:::.set_omp_threads, ...)
+    See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+    Extensions’ manual.
+    ```
+
+*   checking R code for possible problems ... NOTE
+    ```
+    ...
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:163)
+    tenxBamqc: no visible binding for global variable 'number_of_cells'
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:168)
+    tenxBamqc: no visible binding for global variable 'cell_barcode'
+      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:182-185)
+    Undefined global functions or variables:
+      . .x CB GX MM NH avg_reads_per_corrected_umi avg_reads_per_umi
+      barcode bc_correct capture.output cb cbtop10000 cell_barcode
+      cell_index complete.cases exon_number experiment fastq_path filename
+      gene_biotype gene_id gene_name geneid inferred_umi lane length1 level
+      median median_reads_per_corrected_umi median_reads_per_umi min.phred1
+      mt_counts number_of_cells percent_assigned project
+      protein_coding_counts protein_coding_genes qtring1 qtring2 read1
+      read1_path read2 read2_path readname reads reads_mapped_to_genes
+      reads_mapped_to_genome rname1 rname2 total_counts transcript_id
+      transcript_name type umi v1chemistry v2chemistry v3chemistry x x1 x2
+      y y1 y2
+    Consider adding
+      importFrom("stats", "complete.cases", "median")
+      importFrom("utils", "capture.output")
+    to your NAMESPACE file.
+    ```
+
 # sesame
 
 <details>
@@ -1210,13 +1309,6 @@ Run `revdep_details(,"")` for more info
 
 ```
 
-  There are binary versions available but the source versions are later:
-       binary source needs_compilation
-digest 0.6.21 0.6.22              TRUE
-mgcv   1.8-29 1.8-30              TRUE
-rlang   0.4.0  0.4.1              TRUE
-
-  Binaries will be installed
 
 
 installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBloodNorway.450k’
@@ -1228,16 +1320,75 @@ installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBl
 
 ```
 
-  There are binary versions available but the source versions are later:
-       binary source needs_compilation
-digest 0.6.21 0.6.22              TRUE
-mgcv   1.8-29 1.8-30              TRUE
-rlang   0.4.0  0.4.1              TRUE
-
-  Binaries will be installed
 
 
 installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBloodNorway.450k’
+
+
+
+```
+# simts
+
+<details>
+
+* Version: 0.1.1
+* Source code: https://github.com/cran/simts
+* URL: https://github.com/SMAC-Group/simts, https://arxiv.org/pdf/1607.04543.pdf
+* BugReports: https://github.com/SMAC-Group/simts/issues
+* Date/Publication: 2019-07-21 22:20:02 UTC
+* Number of recursive dependencies: 53
+
+Run `revdep_details(,"simts")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  5.2Mb
+      sub-directories of 1Mb or more:
+        doc    2.1Mb
+        libs   1.8Mb
+    ```
+
+# SMITE
+
+<details>
+
+* Version: 
+* Source code: ???
+* URL: https://scales.r-lib.org, https://github.com/r-lib/scales
+* BugReports: https://github.com/r-lib/scales/issues
+* Number of recursive dependencies: 0
+
+Run `revdep_details(,"")` for more info
+
+</details>
+
+## Error before installation
+
+### Devel
+
+```
+
+
+
+installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome.db’
+
+
+
+```
+### CRAN
+
+```
+
+
+
+installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome.db’
 
 
 
@@ -1274,9 +1425,9 @@ Run `revdep_details(,"SNPhood")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 12.1Mb
+      installed size is 11.8Mb
       sub-directories of 1Mb or more:
-        data   4.7Mb
+        data   4.4Mb
         doc    6.4Mb
     ```
 
@@ -1292,6 +1443,63 @@ Run `revdep_details(,"SNPhood")` for more info
       (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/SNPhood/new/SNPhood.Rcheck/00_pkg_src/SNPhood/R/misc.R:22-26)
     Undefined global functions or variables:
       pp
+    ```
+
+# spikeSlabGAM
+
+<details>
+
+* Version: 1.1-14
+* Source code: https://github.com/cran/spikeSlabGAM
+* URL: https://github.com/fabian-s/spikeSlabGAM
+* Date/Publication: 2018-09-17 11:20:03 UTC
+* Number of recursive dependencies: 62
+
+Run `revdep_details(,"spikeSlabGAM")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+# splatter
+
+<details>
+
+* Version: 1.8.0
+* Source code: https://github.com/cran/splatter
+* URL: https://github.com/Oshlack/splatter
+* BugReports: https://github.com/Oshlack/splatter/issues
+* Date/Publication: 2019-05-02
+* Number of recursive dependencies: 226
+
+Run `revdep_details(,"splatter")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking whether package ‘splatter’ can be installed ... WARNING
+    ```
+    Found the following significant warnings:
+      Warning: package ‘SummarizedExperiment’ was built under R version 3.6.1
+      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
+      Warning: package ‘S4Vectors’ was built under R version 3.6.1
+      Warning: package ‘IRanges’ was built under R version 3.6.1
+      Warning: package ‘BiocParallel’ was built under R version 3.6.1
+    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/splatter/new/splatter.Rcheck/00install.out’ for details.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  6.9Mb
+      sub-directories of 1Mb or more:
+        doc   6.1Mb
     ```
 
 # TCGAbiolinks
@@ -1425,11 +1633,11 @@ Run `revdep_details(,"TCGAbiolinks")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 100.5Mb
+      installed size is 97.2Mb
       sub-directories of 1Mb or more:
         R      2.7Mb
-        data   4.3Mb
-        doc   93.3Mb
+        data   4.2Mb
+        doc   90.1Mb
     ```
 
 *   checking dependencies in R code ... NOTE
@@ -1518,6 +1726,40 @@ Run `revdep_details(,"TCGAbiolinks")` for more info
     Extensions’ manual.
     ```
 
+# trackViewer
+
+<details>
+
+* Version: 1.20.5
+* Source code: https://github.com/cran/trackViewer
+* Date/Publication: 2019-08-07
+* Number of recursive dependencies: 129
+
+Run `revdep_details(,"trackViewer")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking whether package ‘trackViewer’ can be installed ... WARNING
+    ```
+    Found the following significant warnings:
+      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
+      Warning: package ‘S4Vectors’ was built under R version 3.6.1
+      Warning: package ‘IRanges’ was built under R version 3.6.1
+    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/trackViewer/new/trackViewer.Rcheck/00install.out’ for details.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  8.7Mb
+      sub-directories of 1Mb or more:
+        doc   6.7Mb
+    ```
+
 # variancePartition
 
 <details>
@@ -1542,5 +1784,33 @@ Run `revdep_details(,"variancePartition")` for more info
       [.MArrayLM2
     See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
     manual.
+    ```
+
+# vidger
+
+<details>
+
+* Version: 1.4.4
+* Source code: https://github.com/cran/vidger
+* URL: https://github.com/btmonier/vidger, https://bioconductor.org/packages/release/bioc/html/vidger.html
+* BugReports: https://github.com/btmonier/vidger/issues
+* Date/Publication: 2019-07-15
+* Number of recursive dependencies: 127
+
+Run `revdep_details(,"vidger")` for more info
+
+</details>
+
+## In both
+
+*   R CMD check timed out
+    
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 10.6Mb
+      sub-directories of 1Mb or more:
+        data   4.0Mb
+        doc    6.1Mb
     ```
 

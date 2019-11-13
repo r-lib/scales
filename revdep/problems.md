@@ -20,7 +20,7 @@ Run `revdep_details(,"ggasym")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R[39m
+      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_[39m
       g3_build$data[[3]]$fill_diag not equal to `diag_cols`.
       2/6 mismatches
       x[1]: "#E40081"
@@ -29,7 +29,7 @@ Run `revdep_details(,"ggasym")` for more info
       x[3]: "#E40081"
       y[3]: "#E30081"
       
-      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════
       [ OK: 266 | SKIPPED: 0 | WARNINGS: 14 | FAILED: 1 ]
       1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R#185) 
       
@@ -103,6 +103,102 @@ Run `revdep_details(,"randomcoloR")` for more info
     Execution halted
     ```
 
+# rexposome
+
+<details>
+
+* Version: 1.6.0
+* Source code: https://github.com/cran/rexposome
+* Date/Publication: 2019-05-02
+* Number of recursive dependencies: 158
+
+Run `revdep_details(,"rexposome")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking examples ... ERROR
+    ```
+    Running examples in ‘rexposome-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: plotLOD
+    > ### Title: It draws a chart with the percentage of under-LOD values in an
+    > ###   ExposomeSet
+    > ### Aliases: plotLOD
+    > 
+    > ### ** Examples
+    > 
+    > data("exposome")
+    > # The included has no missing data
+    > plotLOD(expo)
+    Error in stats::approxfun(x_in, lab_in[, 1]) : 
+      need at least two non-NA values to interpolate
+    Calls: plotLOD ... seq_gradient_pal -> gradient_n_pal -> colour_ramp -> <Anonymous>
+    Execution halted
+    ```
+
+## In both
+
+*   checking whether the namespace can be loaded with stated dependencies ... WARNING
+    ```
+    Error in setLoadActions(function(ns) { : 
+      could not find function "setLoadActions"
+    Error: unable to load R code in package ‘circlize’
+    Execution halted
+    
+    A namespace must be able to be loaded with just the base namespace
+    loaded: otherwise if the namespace gets loaded by a saved object, the
+    session will be unable to start.
+    
+    Probably some imports need to be declared in the NAMESPACE file.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 11.1Mb
+      sub-directories of 1Mb or more:
+        data      2.8Mb
+        doc       5.0Mb
+        extdata   2.2Mb
+    ```
+
+*   checking R code for possible problems ... NOTE
+    ```
+    Error in setLoadActions(function(ns) { : 
+      could not find function "setLoadActions"
+    Error: unable to load R code in package ‘circlize’
+    Execution halted
+    ```
+
+# RSDA
+
+<details>
+
+* Version: 3.0
+* Source code: https://github.com/cran/RSDA
+* URL: http://www.oldemarrodriguez.com
+* Date/Publication: 2019-10-22 05:30:02 UTC
+* Number of recursive dependencies: 124
+
+Run `revdep_details(,"RSDA")` for more info
+
+</details>
+
+## Newly broken
+
+*   checking whether the package can be loaded ... ERROR
+    ```
+    Loading this package had a fatal error status code 1
+    Loading log:
+    Error: package or namespace load failed for ‘RSDA’:
+     .onLoad failed in loadNamespace() for 'randomcoloR', details:
+      call: hue_pal(l = 60:100)
+      error: length(l) == 1 is not TRUE
+    Execution halted
+    ```
+
 # signs
 
 <details>
@@ -125,7 +221,7 @@ Run `revdep_details(,"signs")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═══════════════════════════════════════════════════════════════════════════
       [ OK: 27 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 28 ]
       1. Failure: the basics work (@test-signs-format.R#7) 
       2. Failure: the basics work (@test-signs-format.R#15) 
