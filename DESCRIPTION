@@ -20,7 +20,7 @@ BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.2)
 Imports: 
-    farver (>= 1.1.0.9999),
+    farver (>= 2.0.0),
     labeling,
     munsell (>= 0.5),
     R6,
@@ -38,5 +38,3 @@ Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Remotes:  
-    thomasp85/farver
