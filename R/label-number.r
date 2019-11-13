@@ -183,10 +183,8 @@ precision <- function(x) {
 
   if (smallest_diff < sqrt(.Machine$double.eps)) {
     1
-  } else if (smallest_diff > 1) {
-    # Don't automatically round large numbers
-    1
   } else {
-    10^(floor(log10(smallest_diff)) - 1)
+    # Never return precision bigger than 1
+    pmin(10^(floor(log10(smallest_diff)) - 1), 1)
   }
 }

@@ -75,3 +75,14 @@ test_that("formats work with 0 length input", {
   expect_identical(scientific_format()(x), expected)
   expect_identical(trans_format(identity)(x), expected)
 })
+
+# precision ---------------------------------------------------------------
+
+test_that("precision rounds large numbers appropriately", {
+  x <- c(0, 0.025)
+  expect_equal(precision(x), 0.001)
+  expect_equal(precision(x * 10), 0.01)
+  expect_equal(precision(x * 100), 0.1)
+  expect_equal(precision(x * 1000), 1)
+  expect_equal(precision(x * 10000), 1)
+})
