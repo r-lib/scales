@@ -64,14 +64,13 @@
 |variancePartition |1.14.1  |1     |        |1    |
 |vidger            |1.4.4   |1     |        |1    |
 
-## New problems (6)
+## New problems (5)
 
 |package                                |version |error  |warning |note |
 |:--------------------------------------|:-------|:------|:-------|:----|
 |[ggasym](problems.md#ggasym)           |0.1.1   |__+1__ |        |     |
 |[iheatmapr](problems.md#iheatmapr)     |0.4.8   |__+1__ |        |     |
 |[randomcoloR](problems.md#randomcolor) |1.1.0   |__+1__ |        |     |
-|[rexposome](problems.md#rexposome)     |1.6.0   |__+1__ |1       |2    |
 |[RSDA](problems.md#rsda)               |3.0     |__+1__ |        |     |
 |[signs](problems.md#signs)             |0.1.0   |__+1__ |        |     |
 
