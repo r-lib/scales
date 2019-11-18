@@ -16,51 +16,46 @@ comparing R CMD check results across CRAN and dev versions of this package.
  * We saw 5 new problems
  * We failed to check 25 packages
 
+## revdepcheck results
+
+We checked 530 reverse dependencies (438 from CRAN + 92 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+
+ * We saw 5 new problems
+ * We failed to check 7 packages
+
+Issues with CRAN packages are summarised below.
+
 ### New problems
 (This reports the first line of each new failure)
 
-These were all deliberate changes to the API (which by and large revealed packages using the functions incorrectly). Detailed Github issues were filed on 2018-07-28.
-
-* choroplethr
-  checking examples ... ERROR
-
-* leaflet
+* ggasym
   checking tests ...
+  Author has fix in development version; planning to submit soon.
 
-* roahd
-  checking examples ... ERROR
-  checking re-building of vignette outputs ... WARNING
-
-* useful
+* iheatmapr
   checking tests ...
+  Author has fix in development version; has submitted to CRAN
 
-* voteogram
-  checking re-building of vignette outputs ... WARNING
+* randomcoloR
+  checking whether the package can be loaded ... ERROR
+  Fix revealed bug in this package. 
+  Notified 2019-11-05; no response
+
+* RSDA
+  checking whether the package can be loaded ... ERROR
+  Fails because of randomcoloR dependencies.
+
+* signs
+  checking tests ...
+  Minor change in formatting causes test to fail. 
+  Notified 2019-11-05; no response
 
 ### Failed to check
 
-* cellWise       (failed to install)
-* ctmm           (check timed out)
-* Deducer        (failed to install)
-* DeducerSpatial (failed to install)
-* dendroTools    (failed to install)
-* dtwSat         (failed to install)
-* EMMIXgene      (failed to install)
-* fingerPro      (failed to install)
-* GERGM          (failed to install)
-* hrbrthemes     (check timed out)
-* igraph         (failed to install)
-* imager         (failed to install)
-* likeLTD        (failed to install)
-* loon           (failed to install)
-* mbgraphic      (failed to install)
-* qdap           (failed to install)
-* quadrupen      (failed to install)
-* rENA           (failed to install)
-* RSSL           (failed to install)
-* RxODE          (failed to install)
-* segclust2d     (failed to install)
-* SeqFeatR       (failed to install)
-* spikeSlabGAM   (failed to install)
-* starma         (failed to install)
-* VarSelLCM      (failed to install)
+* cellWise     (NA)
+* fingerPro    (NA)
+* idefix       (NA)
+* likeLTD      (NA)
+* pimeta       (NA)
+* simts        (NA)
+* spikeSlabGAM (NA)

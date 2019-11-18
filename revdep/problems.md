@@ -20,7 +20,7 @@ Run `revdep_details(,"ggasym")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_a[39m
+      [31m──[39m [31m1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R#185[39m
       g3_build$data[[3]]$fill_diag not equal to `diag_cols`.
       2/6 mismatches
       x[1]: "#E40081"
@@ -29,7 +29,7 @@ Run `revdep_details(,"ggasym")` for more info
       x[3]: "#E40081"
       y[3]: "#E30081"
       
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════════
       [ OK: 266 | SKIPPED: 0 | WARNINGS: 14 | FAILED: 1 ]
       1. Failure: scale_fill_tl/br/diag_gradient2 values populate properly (@test-scale_continuous_asym.R#185) 
       
@@ -152,7 +152,7 @@ Run `revdep_details(,"signs")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      ══ testthat results  ════════════════════════════════════════════════════════════════════════════
+      ══ testthat results  ═════════════════════════════════════════════════════════════════════════════════════
       [ OK: 27 | SKIPPED: 0 | WARNINGS: 0 | FAILED: 28 ]
       1. Failure: the basics work (@test-signs-format.R#7) 
       2. Failure: the basics work (@test-signs-format.R#15) 

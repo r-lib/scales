@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Chicago              |
-|date     |2019-11-13                   |
+|date     |2019-11-18                   |
 
 # Dependencies
 
@@ -18,7 +18,7 @@
 |:------------|:-----|:----------|:--|
 |scales       |1.0.0 |1.0.0.9000 |*  |
 |colorspace   |1.4-1 |1.4-1      |   |
-|farver       |NA    |1.1.0.9999 |*  |
+|farver       |NA    |2.0.1.9000 |*  |
 |glue         |NA    |1.3.1      |*  |
 |labeling     |0.3   |0.3        |   |
 |lifecycle    |NA    |0.1.0      |*  |
