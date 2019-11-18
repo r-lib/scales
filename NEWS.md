@@ -1,3 +1,5 @@
+# scales (development version)
+
 # scales 1.1.0
 
 * Axis breaks and labels have a new naming scheme: functions that generate
