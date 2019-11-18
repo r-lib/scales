@@ -1,3 +1,5 @@
+# scales 1.1.0
+
 # scales 1.0.0.9000
 
 * Axis breaks and labels have a new naming scheme: functions that generate
