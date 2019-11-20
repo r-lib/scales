@@ -2,8 +2,7 @@
 #'
 #' `number_si()` automatically scales and labels with the best
 #' [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix),
-#' e.g. "k" for values \eqn{\ge} 1e3, "M" for \eqn{\ge} 1e6,
-#' "m" for \eqn{\ge} 1e-3, and "μ" for \eqn{\ge} 1e-6.
+#' e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
 #'
 #' @inherit number_format return params
 #' @param unit Optional units specifier.

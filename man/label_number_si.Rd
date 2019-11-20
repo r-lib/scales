@@ -34,8 +34,7 @@ rather than axes.
 \description{
 \code{number_si()} automatically scales and labels with the best
 \href{https://en.wikipedia.org/wiki/Metric_prefix}{SI prefix},
-e.g. "k" for values \eqn{\ge} 1e3, "M" for \eqn{\ge} 1e6,
-"m" for \eqn{\ge} 1e-3, and "μ" for \eqn{\ge} 1e-6.
+e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
 }
 \examples{
 demo_continuous(c(1, 1e9), label = label_number_si())
