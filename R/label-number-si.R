@@ -1,8 +1,9 @@
-#' Label numbers with SI prefixes (2k, 1M, 5T etc)
+#' Label numbers with SI prefixes (2k, 1M, 5m etc)
 #'
-#' `number_si()` automatically scales and labels with the best SI prefix,
-#' "K" for values \eqn{\ge} 10e3, "M" for \eqn{\ge} 10e6,
-#' "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
+#' `number_si()` automatically scales and labels with the best
+#' [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix),
+#' e.g. "k" for values \eqn{\ge} 1e3, "M" for \eqn{\ge} 1e6,
+#' "m" for \eqn{\ge} 1e-3, and "μ" for \eqn{\ge} 1e-6.
 #'
 #' @inherit number_format return params
 #' @param unit Optional units specifier.
@@ -17,19 +18,38 @@
 #' demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
 #'
 #' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
+#' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
 label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
   sep <- if (is.null(unit)) "" else " "
   force_all(accuracy, ...)
 
   function(x) {
-    breaks <- c(0, 10^c(K = 3, M = 6, B = 9, T = 12))
+    breaks <- 10^c(
+      y = -24,
+      z = -21,
+      a = -18,
+      f = -15,
+      p = -12,
+      n = -9,
+      μ = -6,
+      m = -3,
+      0,
+      k = 3,
+      M = 6,
+      G = 9,
+      T = 12,
+      P = 15,
+      E = 18,
+      Z = 21,
+      Y = 24
+    )
 
     n_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
       labels = c(names(breaks)),
       right = FALSE
     )
-    n_suffix[is.na(n_suffix)] <- ""
+    n_suffix[is.na(n_suffix)] <- names(which.min(breaks))
     suffix <- paste0(sep, n_suffix, unit)
 
     scale <- 1 / breaks[n_suffix]

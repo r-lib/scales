@@ -2,7 +2,7 @@
 % Please edit documentation in R/label-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Label numbers with SI prefixes (2k, 1M, 5T etc)}
+\title{Label numbers with SI prefixes (2k, 1M, 5m etc)}
 \usage{
 label_number_si(accuracy = 1, unit = NULL, sep = NULL, ...)
 }
@@ -32,9 +32,10 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{number_si()} automatically scales and labels with the best SI prefix,
-"K" for values \eqn{\ge} 10e3, "M" for \eqn{\ge} 10e6,
-"B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
+\code{number_si()} automatically scales and labels with the best
+\href{https://en.wikipedia.org/wiki/Metric_prefix}{SI prefix},
+e.g. "k" for values \eqn{\ge} 1e3, "M" for \eqn{\ge} 1e6,
+"m" for \eqn{\ge} 1e-3, and "μ" for \eqn{\ge} 1e-6.
 }
 \examples{
 demo_continuous(c(1, 1e9), label = label_number_si())
@@ -42,6 +43,7 @@ demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
 demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
 
 demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
 }
 \seealso{
 Other labels for continuous scales: \code{\link{label_bytes}},
