@@ -24,8 +24,8 @@ test_that("handles bad inputs gracefully", {
 })
 
 test_that("arguments passed on to number()", {
-  number_si <- label_number_si(accuracy = .1, unit = "m")
-  expect_equal(number_si(c(.50, 1e3, 1e-3)), c("500.0 mm", "1.0 km", "1.0 mm"))
+  number_si <- label_number_si(accuracy = .1, big.mark = ",")
+  expect_equal(number_si(1e27), "1,000.0Y")
 })
 
 test_that("number_si preserves names", {
