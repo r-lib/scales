@@ -31,7 +31,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
       f = -15,
       p = -12,
       n = -9,
-      μ = -6,
+      "\u03bc" = -6,
       m = -3,
       0,
       k = 3,
