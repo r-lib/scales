@@ -55,7 +55,9 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   u_interp <- stats::approxfun(x_in, lab_in[, 2])
   v_interp <- stats::approxfun(x_in, lab_in[, 3])
 
-  if (!alpha || all(lab_in[, 4] == 1)) {
+  # need to excludes all NAs inside all(), because all(NA) == NA,
+  # but all(numeric(0)) == TRUE (which is appropriate here)
+  if (!isTRUE(alpha) || all(lab_in[, 4][!is.na(lab_in[, 4])] == 1)) {
     alpha_interp <- function(x) NULL
   } else {
     alpha_interp <- stats::approxfun(x_in, lab_in[, 4])
