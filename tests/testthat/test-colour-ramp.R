@@ -41,3 +41,11 @@ test_that("Interpolation works from color without to color with alpha channel", 
     "#1234AB80"
   )
 })
+
+test_that("NAs are ignored in color interpolation", {
+  x <- seq(0, 1, length = 5)
+  expect_identical(
+    colour_ramp(c("red", "blue"))(x),
+    colour_ramp(c("red", NA, "blue"))(x)
+  )
+})
