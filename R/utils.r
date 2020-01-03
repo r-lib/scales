@@ -61,3 +61,9 @@ demo_discrete <- function(x, ...) {
 demo_datetime <- function(x, ...) {
   demo_ggplot(x, "scale_x_datetime", ...)
 }
+
+#' @rdname demo_continuous
+#' @export
+demo_time <- function(x, ...) {
+  demo_ggplot(x, "scale_x_time", ...)
+}
