@@ -43,3 +43,7 @@ fullseq.POSIXt <- function(range, size, ...) {
     seq(floor_time(range[1], size), ceiling_time(range[2], size), by = size)
   }
 }
+#' @export
+fullseq.hms <- function(range, size, ...) {
+  fullseq.numeric(as.numeric(range), size, ...)
+}
