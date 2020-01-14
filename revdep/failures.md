@@ -5,7 +5,7 @@
 * Version: 1.10.0
 * Source code: https://github.com/cran/BaalChIP
 * Date/Publication: 2019-05-02
-* Number of recursive dependencies: 99
+* Number of recursive dependencies: 100
 
 Run `revdep_details(,"BaalChIP")` for more info
 
@@ -16,19 +16,9 @@ Run `revdep_details(,"BaalChIP")` for more info
 *   R CMD check timed out
     
 
-*   checking whether package ‘BaalChIP’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘Rsamtools’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00install.out’ for details.
-    ```
-
 *   checking installed package size ... NOTE
     ```
-      installed size is 200.1Mb
+      installed size is 200.0Mb
       sub-directories of 1Mb or more:
         data   96.0Mb
         doc     1.6Mb
@@ -37,81 +27,23 @@ Run `revdep_details(,"BaalChIP")` for more info
 
 *   checking R code for possible problems ... NOTE
     ```
-    ...
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:23-27)
+    applyBayes: no visible binding for global variable ‘SNP_id’
+    plot.filt.barplot: no visible binding for global variable ‘cellname’
+    plot.filt.barplot: no visible binding for global variable ‘value’
+    plot.filt.barplot: no visible binding for global variable ‘variable’
     plot.filt.boxplot: no visible binding for global variable ‘variable’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:52-56)
     plot.filt.boxplot: no visible binding for global variable ‘value’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:52-56)
     plot.filt.boxplot: no visible binding for global variable ‘coltype’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:52-56)
     plot.filt.pie: no visible binding for global variable ‘variable’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:85-87)
     plot.filt.pie: no visible binding for global variable ‘value.mean’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:85-87)
     plot.simul: no visible binding for global variable ‘readslen’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:7-9)
     plot.simul: no visible binding for global variable ‘perc_right’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:7-9)
     plotadjustment: no visible binding for global variable ‘value’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:135-140)
     plotadjustment: no visible binding for global variable ‘variable’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/BaalChIP/new/BaalChIP.Rcheck/00_pkg_src/BaalChIP/R/allplots.R:135-140)
     Undefined global functions or variables:
       SNP_id cellname coltype perc_right readslen value value.mean variable
     ```
 
-# cellWise
-
-<details>
-
-* Version: 2.1.0
-* Source code: https://github.com/cran/cellWise
-* Date/Publication: 2019-02-25 17:40:03 UTC
-* Number of recursive dependencies: 57
-
-Run `revdep_details(,"cellWise")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘cellWise’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/cellWise/new/cellWise.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘cellWise’ ...
-** package ‘cellWise’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/new/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/cellWise/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp  -fPIC  -Wall -g -O2  -c ANN.cpp -o ANN.o
-clang: error: unsupported option '-fopenmp'
-make: *** [ANN.o] Error 1
-ERROR: compilation failed for package ‘cellWise’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/cellWise/new/cellWise.Rcheck/cellWise’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘cellWise’ ...
-** package ‘cellWise’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/old/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/cellWise/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp  -fPIC  -Wall -g -O2  -c ANN.cpp -o ANN.o
-clang: error: unsupported option '-fopenmp'
-make: *** [ANN.o] Error 1
-ERROR: compilation failed for package ‘cellWise’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/cellWise/old/cellWise.Rcheck/cellWise’
-
-```
 # clusterExperiment
 
 <details>
@@ -120,7 +52,7 @@ ERROR: compilation failed for package ‘cellWise’
 * Source code: https://github.com/cran/clusterExperiment
 * BugReports: https://github.com/epurdom/clusterExperiment/issues
 * Date/Publication: 2019-06-07
-* Number of recursive dependencies: 182
+* Number of recursive dependencies: 183
 
 Run `revdep_details(,"clusterExperiment")` for more info
 
@@ -130,17 +62,6 @@ Run `revdep_details(,"clusterExperiment")` for more info
 
 *   R CMD check timed out
     
-
-*   checking whether package ‘clusterExperiment’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘SummarizedExperiment’ was built under R version 3.6.1
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘BiocParallel’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/clusterExperiment/new/clusterExperiment.Rcheck/00install.out’ for details.
-    ```
 
 *   checking for missing documentation entries ... WARNING
     ```
@@ -191,7 +112,7 @@ Run `revdep_details(,"clusterExperiment")` for more info
 * URL: https://github.com/scristia/CNPBayes
 * BugReports: https://github.com/scristia/CNPBayes/issues
 * Date/Publication: 2019-01-05
-* Number of recursive dependencies: 162
+* Number of recursive dependencies: 163
 
 Run `revdep_details(,"CNPBayes")` for more info
 
@@ -227,15 +148,6 @@ Run `revdep_details(,"CNPBayes")` for more info
 
 *   R CMD check timed out
     
-
-*   checking whether package ‘CNPBayes’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00install.out’ for details.
-    ```
 
 *   checking for missing documentation entries ... WARNING
     ```
@@ -317,9 +229,9 @@ Run `revdep_details(,"CNPBayes")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  8.1Mb
+      installed size is  7.1Mb
       sub-directories of 1Mb or more:
-        R     3.1Mb
+        R     2.0Mb
         doc   3.0Mb
     ```
 
@@ -332,19 +244,19 @@ Run `revdep_details(,"CNPBayes")` for more info
 *   checking R code for possible problems ... NOTE
     ```
     ...
+    batch<-,MultiBatch-numeric: no visible global function definition for
+      ‘spec’
+    batch<-,MultiBatch-numeric: no visible global function definition for
+      ‘spec<-’
+    coerce,McmcChains-list: no visible binding for global variable ‘s’
+    computePrec,MultiBatch: no visible binding for global variable ‘prec’
     findSurrogates,MultiBatch: no visible binding for global variable ‘id’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00_pkg_src/CNPBayes/R/methods-SummarizedExperiment.R:127-133)
     findSurrogates,MultiBatch: no visible binding for global variable
       ‘provisional_batch’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00_pkg_src/CNPBayes/R/methods-SummarizedExperiment.R:127-133)
     findSurrogates,MultiBatch: no visible binding for global variable
       ‘batch_labels’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00_pkg_src/CNPBayes/R/methods-SummarizedExperiment.R:127-133)
-    findSurrogates,MultiBatch: no visible binding for global variable ‘id’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00_pkg_src/CNPBayes/R/methods-SummarizedExperiment.R:138-142)
     sigma,MultiBatchCopyNumberPooled: no visible binding for global
       variable ‘s2’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/CNPBayes/new/CNPBayes.Rcheck/00_pkg_src/CNPBayes/R/methods-MultiBatchPooled.R:161)
     Undefined global functions or variables:
       . .gibbs_trios_mcmc2 .gibbs_trios_mcmc3 := batch_index batch_labels
       batches bk copy_number father id log_ratio maplabel medians model
@@ -355,6 +267,147 @@ Run `revdep_details(,"CNPBayes")` for more info
     to your NAMESPACE file.
     ```
 
+# Deducer
+
+<details>
+
+* Version: 0.7-9
+* Source code: https://github.com/cran/Deducer
+* URL: http://www.deducer.org/manual.html http://www.fellstat.com
+* Date/Publication: 2015-12-29 22:16:31
+* Number of recursive dependencies: 123
+
+Run `revdep_details(,"Deducer")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘Deducer’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/Deducer/new/Deducer.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘Deducer’ ...
+** package ‘Deducer’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘rJava’:
+ .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so
+  Reason: image not found
+Error: package ‘rJava’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘Deducer’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/Deducer/new/Deducer.Rcheck/Deducer’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘Deducer’ ...
+** package ‘Deducer’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘rJava’:
+ .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/Deducer/rJava/libs/rJava.so
+  Reason: image not found
+Error: package ‘rJava’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘Deducer’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/Deducer/old/Deducer.Rcheck/Deducer’
+
+```
+# DeducerSpatial
+
+<details>
+
+* Version: 0.7
+* Source code: https://github.com/cran/DeducerSpatial
+* URL: http://www.deducer.org/pmwiki/pmwiki.php?n=Main.DeducerSpatial http://www.fellstat.com http://research.cens.ucla.edu/
+* Date/Publication: 2013-04-13 20:38:11
+* Number of recursive dependencies: 120
+
+Run `revdep_details(,"DeducerSpatial")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘DeducerSpatial’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/DeducerSpatial/new/DeducerSpatial.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Depends: includes the non-default packages:
+      'JavaGD', 'Deducer', 'sp', 'maptools', 'OpenStreetMap', 'scales',
+      'rgdal'
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘DeducerSpatial’ ...
+** package ‘DeducerSpatial’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘JavaGD’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so
+  Reason: image not found
+Error: package ‘JavaGD’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘DeducerSpatial’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/DeducerSpatial/new/DeducerSpatial.Rcheck/DeducerSpatial’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘DeducerSpatial’ ...
+** package ‘DeducerSpatial’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘JavaGD’ in dyn.load(file, DLLpath = DLLpath, ...):
+ unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/DeducerSpatial/JavaGD/libs/JavaGD.so
+  Reason: image not found
+Error: package ‘JavaGD’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘DeducerSpatial’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/DeducerSpatial/old/DeducerSpatial.Rcheck/DeducerSpatial’
+
+```
 # ELMER
 
 <details>
@@ -362,7 +415,7 @@ Run `revdep_details(,"CNPBayes")` for more info
 * Version: 2.8.3
 * Source code: https://github.com/cran/ELMER
 * Date/Publication: 2019-09-06
-* Number of recursive dependencies: 209
+* Number of recursive dependencies: 211
 
 Run `revdep_details(,"ELMER")` for more info
 
@@ -370,227 +423,41 @@ Run `revdep_details(,"ELMER")` for more info
 
 ## In both
 
-*   checking examples ... ERROR
-    ```
-    ...
-    Identifying gene position for each probe
-    
-      |                                                                            
-      |                                                                      |   0%
-      |                                                                            
-      |======================================================================| 100%Saving as: .//cg19403323.schematic.byProbe
-    
-    > schematic.plot(data,
-    +                group.col = "definition",
-    +                group1 = "Primary solid Tumor",
-    +                group2 = "Solid Tissue Normal",
-    +                pair = pair,
-    +                byGeneID = "ENSG00000009790")
-    
-      |                                                                            
-      |                                                                      |   0%
-      |                                                                            
-      |======================================================================| 100%Error in if (chromosome != "" & !(chromosome %in% seqlevels(x))) { : 
-      the condition has length > 1
-    Calls: schematic.plot
-    Execution halted
-    ```
-
 *   R CMD check timed out
     
 
-*   checking whether the package can be unloaded cleanly ... WARNING
-    ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: package or namespace load failed for ‘ELMER’:
-     unable to load R code in package ‘circlize’
-    Execution halted
-    ```
-
-*   checking whether the namespace can be loaded with stated dependencies ... WARNING
-    ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: unable to load R code in package ‘circlize’
-    Execution halted
-    
-    A namespace must be able to be loaded with just the base namespace
-    loaded: otherwise if the namespace gets loaded by a saved object, the
-    session will be unable to start.
-    
-    Probably some imports need to be declared in the NAMESPACE file.
-    ```
-
-*   checking S3 generic/method consistency ... WARNING
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    See section ‘Generic functions and methods’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking replacement functions ... WARNING
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    The argument of a replacement function which corresponds to the right
-    hand side must be named ‘value’.
-    ```
-
-*   checking for code/documentation mismatches ... WARNING
-    ```
-    ...
-    Call sequence:
-    6: stop(msg, call. = FALSE, domain = NA)
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    ```
-
 *   checking Rd \usage sections ... WARNING
     ```
-    ...
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    The \usage entries for S3 methods should use the \method markup and not
-    their full name.
+    Undocumented arguments in documentation object 'heatmapGene'
+      ‘correlation.method’ ‘scatter.plot.width’ ‘scatter.plot.height’
+    
+    Functions with \usage entries need to have the appropriate \alias
+    entries, and all their arguments documented.
+    The \usage entries must correspond to syntactically valid R code.
     See chapter ‘Writing R documentation files’ in the ‘Writing R
     Extensions’ manual.
     ```
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 75.8Mb
+      installed size is 75.6Mb
       sub-directories of 1Mb or more:
         doc  75.1Mb
     ```
 
-*   checking dependencies in R code ... NOTE
-    ```
-    ...
-    Call sequence:
-    6: stop(msg, call. = FALSE, domain = NA)
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    ```
-
-*   checking foreign function calls ... NOTE
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    See chapter ‘System and foreign language interfaces’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
 *   checking R code for possible problems ... NOTE
     ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: unable to load R code in package ‘circlize’
-    Execution halted
+    addMutCol: no visible binding for global variable 'Hugo_Symbol'
+    calcDistNearestTSS: no visible binding for global variable
+      'DistanceTSS'
+    getRegionNearGenes : f: no visible binding for global variable 'Side'
+    getRegionNearGenes: no visible binding for global variable 'ID'
+    getTFtargets: no visible binding for global variable 'TF'
+    heatmapGene: no visible global function definition for 'melt'
+    heatmapGene: no visible binding for global variable 'mae'
+    heatmapGene: no visible global function definition for 'stat_cor'
+    Undefined global functions or variables:
+      DistanceTSS Hugo_Symbol ID Side TF mae melt stat_cor
     ```
 
 # fingerPro
@@ -601,7 +468,7 @@ Run `revdep_details(,"ELMER")` for more info
 * Source code: https://github.com/cran/fingerPro
 * URL: https://github.com/eead-csic-eesa
 * Date/Publication: 2018-08-28 10:04:54 UTC
-* Number of recursive dependencies: 139
+* Number of recursive dependencies: 142
 
 Run `revdep_details(,"fingerPro")` for more info
 
@@ -612,7 +479,7 @@ Run `revdep_details(,"fingerPro")` for more info
 *   checking whether package ‘fingerPro’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/fingerPro/new/fingerPro.Rcheck/00install.out’ for details.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/fingerPro/new/fingerPro.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -624,16 +491,25 @@ Run `revdep_details(,"fingerPro")` for more info
 ** package ‘fingerPro’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/new/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/Rcpp/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/Rcpp/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c fingerprinting.cpp -o fingerprinting.o
 In file included from RcppExports.cpp:4:
-In file included from /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
-/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
+/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [RcppExports.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from fingerprinting.cpp:5:
+In file included from /Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
+/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+#include <gsl/gsl_vector.h> 
+         ^~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [fingerprinting.o] Error 1
 ERROR: compilation failed for package ‘fingerPro’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/fingerPro/new/fingerPro.Rcheck/fingerPro’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/fingerPro/new/fingerPro.Rcheck/fingerPro’
 
 ```
 ### CRAN
@@ -643,38 +519,48 @@ ERROR: compilation failed for package ‘fingerPro’
 ** package ‘fingerPro’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/old/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/Rcpp/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/Rcpp/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include" -I"/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppProgress/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c fingerprinting.cpp -o fingerprinting.o
 In file included from RcppExports.cpp:4:
-In file included from /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
-/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+In file included from /Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
+/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
 #include <gsl/gsl_vector.h> 
          ^~~~~~~~~~~~~~~~~~
 1 error generated.
 make: *** [RcppExports.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from fingerprinting.cpp:5:
+In file included from /Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSL.h:25:
+/Users/max/github/forks/scales/revdep/library.noindex/fingerPro/RcppGSL/include/RcppGSLForward.h:26:10: fatal error: 'gsl/gsl_vector.h' file not found
+#include <gsl/gsl_vector.h> 
+         ^~~~~~~~~~~~~~~~~~
+1 error generated.
+make: *** [fingerprinting.o] Error 1
 ERROR: compilation failed for package ‘fingerPro’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/fingerPro/old/fingerPro.Rcheck/fingerPro’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/fingerPro/old/fingerPro.Rcheck/fingerPro’
 
 ```
-# idefix
+# loon
 
 <details>
 
-* Version: 0.4.0
-* Source code: https://github.com/cran/idefix
-* URL: https://github.com/traets/idefix
-* Date/Publication: 2019-08-01 16:40:12 UTC
-* Number of recursive dependencies: 70
+* Version: 1.2.3
+* Source code: https://github.com/cran/loon
+* URL: http://great-northern-diver.github.io/loon/
+* BugReports: https://github.com/great-northern-diver/loon/issues
+* Date/Publication: 2019-10-16 04:30:02 UTC
+* Number of recursive dependencies: 102
 
-Run `revdep_details(,"idefix")` for more info
+Run `revdep_details(,"loon")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘idefix’ can be installed ... ERROR
+*   checking whether package ‘loon’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/idefix/new/idefix.Rcheck/00install.out’ for details.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/loon/new/loon.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -682,51 +568,86 @@ Run `revdep_details(,"idefix")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘idefix’ ...
-** package ‘idefix’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘loon’ ...
+** package ‘loon’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/new/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/idefix/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp  -fPIC  -Wall -g -O2  -c InfoDes_cpp.cpp -o InfoDes_cpp.o
-clang: error: unsupported option '-fopenmp'
-make: *** [InfoDes_cpp.o] Error 1
-ERROR: compilation failed for package ‘idefix’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/idefix/new/idefix.Rcheck/idefix’
+** R
+** data
+*** moving datasets to lazyload DB
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ""
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+Warning in fun(libname, pkgname) : couldn't connect to display ""
+Error: package or namespace load failed for ‘loon’:
+ .onLoad failed in loadNamespace() for 'loon', details:
+  call: structure(.External(.C_dotTcl, ...), class = "tclObj")
+  error: [tcl] couldn't connect to display "".
+
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/loon/new/loon.Rcheck/loon’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘idefix’ ...
-** package ‘idefix’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘loon’ ...
+** package ‘loon’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/old/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/idefix/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp  -fPIC  -Wall -g -O2  -c InfoDes_cpp.cpp -o InfoDes_cpp.o
-clang: error: unsupported option '-fopenmp'
-make: *** [InfoDes_cpp.o] Error 1
-ERROR: compilation failed for package ‘idefix’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/idefix/old/idefix.Rcheck/idefix’
+** R
+** data
+*** moving datasets to lazyload DB
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ""
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+Warning in fun(libname, pkgname) : couldn't connect to display ""
+Error: package or namespace load failed for ‘loon’:
+ .onLoad failed in loadNamespace() for 'loon', details:
+  call: structure(.External(.C_dotTcl, ...), class = "tclObj")
+  error: [tcl] couldn't connect to display "".
+
+Error: loading failed
+Execution halted
+ERROR: loading failed
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/loon/old/loon.Rcheck/loon’
 
 ```
-# likeLTD
+# mbgraphic
 
 <details>
 
-* Version: 6.3.0
-* Source code: https://github.com/cran/likeLTD
-* URL: https://sites.google.com/site/baldingstatisticalgenetics/
-* Date/Publication: 2018-02-09 17:20:58 UTC
-* Number of recursive dependencies: 44
+* Version: 1.0.1
+* Source code: https://github.com/cran/mbgraphic
+* Date/Publication: 2019-04-28 19:20:03 UTC
+* Number of recursive dependencies: 93
 
-Run `revdep_details(,"likeLTD")` for more info
+Run `revdep_details(,"mbgraphic")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘likeLTD’ can be installed ... ERROR
+*   checking whether package ‘mbgraphic’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/likeLTD/new/likeLTD.Rcheck/00install.out’ for details.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/mbgraphic/new/mbgraphic.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -734,29 +655,59 @@ Run `revdep_details(,"likeLTD")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘likeLTD’ ...
-** package ‘likeLTD’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘mbgraphic’ ...
+** package ‘mbgraphic’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c gammaDist.cpp -o gammaDist.o
-clang: error: unsupported option '-fopenmp'
-make: *** [gammaDist.o] Error 1
-ERROR: compilation failed for package ‘likeLTD’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/likeLTD/new/likeLTD.Rcheck/likeLTD’
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c cmasum.cpp -o cmasum.o
+/usr/local/clang8/bin/clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c mbgraphic_init.c -o mbgraphic_init.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c variableflip.cpp -o variableflip.o
+/usr/local/clang8/bin/clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/clang8/lib -o mbgraphic.so RcppExports.o cmasum.o mbgraphic_init.o variableflip.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/max/github/forks/scales/revdep/checks.noindex/mbgraphic/new/mbgraphic.Rcheck/00LOCK-mbgraphic/00new/mbgraphic/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘mbgraphic’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/mbgraphic/new/mbgraphic.Rcheck/mbgraphic’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘likeLTD’ ...
-** package ‘likeLTD’ successfully unpacked and MD5 sums checked
+* installing *source* package ‘mbgraphic’ ...
+** package ‘mbgraphic’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c gammaDist.cpp -o gammaDist.o
-clang: error: unsupported option '-fopenmp'
-make: *** [gammaDist.o] Error 1
-ERROR: compilation failed for package ‘likeLTD’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/likeLTD/old/likeLTD.Rcheck/likeLTD’
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c cmasum.cpp -o cmasum.o
+/usr/local/clang8/bin/clang -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c mbgraphic_init.c -o mbgraphic_init.o
+/usr/local/clang8/bin/clang++ -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/Rcpp/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include  -fPIC  -Wall -g -O2  -c variableflip.cpp -o variableflip.o
+/usr/local/clang8/bin/clang++ -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/clang8/lib -o mbgraphic.so RcppExports.o cmasum.o mbgraphic_init.o variableflip.o -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Users/max/github/forks/scales/revdep/checks.noindex/mbgraphic/old/mbgraphic.Rcheck/00LOCK-mbgraphic/00new/mbgraphic/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/mbgraphic/rJava/libs/rJava.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘mbgraphic’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/mbgraphic/old/mbgraphic.Rcheck/mbgraphic’
 
 ```
 # MSnbase
@@ -768,7 +719,7 @@ ERROR: compilation failed for package ‘likeLTD’
 * URL: https://github.com/lgatto/MSnbase
 * BugReports: https://github.com/lgatto/MSnbase/issues
 * Date/Publication: 2019-05-31
-* Number of recursive dependencies: 219
+* Number of recursive dependencies: 221
 
 Run `revdep_details(,"MSnbase")` for more info
 
@@ -779,19 +730,11 @@ Run `revdep_details(,"MSnbase")` for more info
 *   R CMD check timed out
     
 
-*   checking whether package ‘MSnbase’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘mzR’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/MSnbase/new/MSnbase.Rcheck/00install.out’ for details.
-    ```
-
 *   checking installed package size ... NOTE
     ```
-      installed size is 14.1Mb
+      installed size is 13.1Mb
       sub-directories of 1Mb or more:
-        R      3.0Mb
+        R      2.1Mb
         data   1.9Mb
         doc    7.7Mb
     ```
@@ -826,26 +769,27 @@ Run `revdep_details(,"MSnbase")` for more info
     manual.
     ```
 
-# OUTRIDER
+# qdap
 
 <details>
 
-* Version: 1.2.4
-* Source code: https://github.com/cran/OUTRIDER
-* URL: https://github.com/gagneurlab/OUTRIDER
-* Date/Publication: 2019-10-13
-* Number of recursive dependencies: 169
+* Version: 2.3.6
+* Source code: https://github.com/cran/qdap
+* URL: http://trinker.github.com/qdap/
+* BugReports: http://github.com/trinker/qdap/issues
+* Date/Publication: 2020-01-09 18:30:06 UTC
+* Number of recursive dependencies: 101
 
-Run `revdep_details(,"OUTRIDER")` for more info
+Run `revdep_details(,"qdap")` for more info
 
 </details>
 
 ## In both
 
-*   checking whether package ‘OUTRIDER’ can be installed ... ERROR
+*   checking whether package ‘qdap’ can be installed ... ERROR
     ```
     Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/OUTRIDER/new/OUTRIDER.Rcheck/00install.out’ for details.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/qdap/new/qdap.Rcheck/00install.out’ for details.
     ```
 
 ## Installation
@@ -853,508 +797,320 @@ Run `revdep_details(,"OUTRIDER")` for more info
 ### Devel
 
 ```
-* installing *source* package ‘OUTRIDER’ ...
+* installing *source* package ‘qdap’ ...
+** package ‘qdap’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/new/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/OUTRIDER/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang: error: unsupported option '-fopenmp'
-make: *** [RcppExports.o] Error 1
-ERROR: compilation failed for package ‘OUTRIDER’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/OUTRIDER/new/OUTRIDER.Rcheck/OUTRIDER’
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘qdap’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/qdap/new/qdap.Rcheck/qdap’
 
 ```
 ### CRAN
 
 ```
-* installing *source* package ‘OUTRIDER’ ...
+* installing *source* package ‘qdap’ ...
+** package ‘qdap’ successfully unpacked and MD5 sums checked
 ** using staged installation
-** libs
-clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/old/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/OUTRIDER/RcppArmadillo/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang: error: unsupported option '-fopenmp'
-make: *** [RcppExports.o] Error 1
-ERROR: compilation failed for package ‘OUTRIDER’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/OUTRIDER/old/OUTRIDER.Rcheck/OUTRIDER’
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+Error: .onLoad failed in loadNamespace() for 'rJava', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so, 6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server/libjvm.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/qdap/rJava/libs/rJava.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘qdap’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/qdap/old/qdap.Rcheck/qdap’
 
 ```
-# pcaExplorer
-
-<details>
-
-* Version: 2.10.1
-* Source code: https://github.com/cran/pcaExplorer
-* URL: https://github.com/federicomarini/pcaExplorer, https://federicomarini.github.io/pcaExplorer/
-* BugReports: https://github.com/federicomarini/pcaExplorer/issues
-* Date/Publication: 2019-08-16
-* Number of recursive dependencies: 169
-
-Run `revdep_details(,"pcaExplorer")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 21.4Mb
-      sub-directories of 1Mb or more:
-        doc  20.1Mb
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    pcaExplorer: no visible binding for '<<-' assignment to
-      ‘pcaexplorer_env’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:64)
-    pcaExplorer : <anonymous>: no visible binding for global variable
-      ‘airway’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:1269)
-    pcaExplorer : <anonymous>: no visible binding for global variable
-      ‘airway’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:1270)
-    pcaExplorer : <anonymous>: no visible binding for global variable
-      ‘pcaexplorer_env’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:2452)
-    pcaExplorer : <anonymous>: no visible binding for global variable
-      ‘pcaexplorer_env’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pcaExplorer/new/pcaExplorer.Rcheck/00_pkg_src/pcaExplorer/R/pcaExplorer.R:2453)
-    Undefined global functions or variables:
-      airway pcaexplorer_env
-    ```
-
-# perturbatr
-
-<details>
-
-* Version: 1.4.0
-* Source code: https://github.com/cran/perturbatr
-* URL: https://github.com/cbg-ethz/perturbatr
-* BugReports: https://github.com/cbg-ethz/perturbatr/issues
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 95
-
-Run `revdep_details(,"perturbatr")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-# Pi
-
-<details>
-
-* Version: 1.12.0
-* Source code: https://github.com/cran/Pi
-* URL: http://pi314.r-forge.r-project.org
-* BugReports: https://github.com/hfang-bristol/Pi/issues
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 189
-
-Run `revdep_details(,"Pi")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.5Mb
-      sub-directories of 1Mb or more:
-        doc   5.0Mb
-    ```
-
-# pimeta
-
-<details>
-
-* Version: 1.1.3
-* Source code: https://github.com/cran/pimeta
-* Date/Publication: 2019-09-17 10:10:02 UTC
-* Number of recursive dependencies: 50
-
-Run `revdep_details(,"pimeta")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘pimeta’ can be installed ... ERROR
-    ```
-    Installation failed.
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pimeta/new/pimeta.Rcheck/00install.out’ for details.
-    ```
-
-## Installation
-
-### Devel
-
-```
-* installing *source* package ‘pimeta’ ...
-** package ‘pimeta’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/new/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/pimeta/RcppEigen/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang: error: unsupported option '-fopenmp'
-make: *** [RcppExports.o] Error 1
-ERROR: compilation failed for package ‘pimeta’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pimeta/new/pimeta.Rcheck/pimeta’
-
-```
-### CRAN
-
-```
-* installing *source* package ‘pimeta’ ...
-** package ‘pimeta’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-ccache clang++ -Qunused-arguments  -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG  -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scales/old/Rcpp/include" -I"/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/pimeta/RcppEigen/include" -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -fopenmp -fPIC  -Wall -g -O2  -c RcppExports.cpp -o RcppExports.o
-clang: error: unsupported option '-fopenmp'
-make: *** [RcppExports.o] Error 1
-ERROR: compilation failed for package ‘pimeta’
-* removing ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pimeta/old/pimeta.Rcheck/pimeta’
-
-```
-# pRoloc
-
-<details>
-
-* Version: 1.24.1
-* Source code: https://github.com/cran/pRoloc
-* URL: https://github.com/lgatto/pRoloc
-* BugReports: https://github.com/lgatto/pRoloc/issues
-* Date/Publication: 2019-08-09
-* Number of recursive dependencies: 206
-
-Run `revdep_details(,"pRoloc")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking whether package ‘pRoloc’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘mzR’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘MLInterfaces’ was built under R version 3.6.1
-      Warning: package ‘AnnotationDbi’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘BiocParallel’ was built under R version 3.6.1
-      Warning: replacing previous import ‘mclust::dmvnorm’ by ‘mvtnorm::dmvnorm’ when loading ‘pRoloc’
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/pRoloc/new/pRoloc.Rcheck/00install.out’ for details.
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 15.5Mb
-      sub-directories of 1Mb or more:
-        R     2.0Mb
-        doc  12.1Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Unexported objects imported by ':::' calls:
-      ‘MLInterfaces:::.macroF1’ ‘MLInterfaces:::.precision’
-      ‘MLInterfaces:::.recall’ ‘MLInterfaces:::es2df’
-      ‘caret:::predict.plsda’
-      See the note in ?`:::` about the use of this operator.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    Found the following possibly unsafe calls:
-    File ‘pRoloc/R/annotation.R’:
-      unlockBinding("params", .pRolocEnv)
-    ```
-
 # RnBeads
 
 <details>
 
-* Version: 
-* Source code: ???
-* URL: https://scales.r-lib.org, https://github.com/r-lib/scales
-* BugReports: https://github.com/r-lib/scales/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
-
-### Devel
-
-```
-
-  There are binary versions available but the source versions are later:
-         binary source needs_compilation
-fields      9.9   10.0              TRUE
-gsl    1.9-10.3  2.1-6              TRUE
-hexbin   1.27.3 1.28.0              TRUE
-
-  Binaries will be installed
-  These will not be installed
-
-
-Packages which are only available in source form, and may need
-  compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
-  ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
-
-
-
-```
-### CRAN
-
-```
-
-  There are binary versions available but the source versions are later:
-         binary source needs_compilation
-fields      9.9   10.0              TRUE
-gsl    1.9-10.3  2.1-6              TRUE
-hexbin   1.27.3 1.28.0              TRUE
-
-  Binaries will be installed
-  These will not be installed
-
-
-Packages which are only available in source form, and may need
-  compilation of C/C++/Fortran: ‘FDb.InfiniumMethylation.hg19’
-  ‘IlluminaHumanMethylation450kmanifest’
-installing the source packages ‘IlluminaHumanMethylationEPICanno.ilm10b4.hg19’, ‘IlluminaHumanMethylationEPICmanifest’, ‘org.Rn.eg.db’, ‘RnBeads.hg19’
-
-
-
-```
-# scPipe
-
-<details>
-
-* Version: 1.6.0
-* Source code: https://github.com/cran/scPipe
-* URL: https://github.com/LuyiTian/scPipe
-* BugReports: https://github.com/LuyiTian/scPipe
+* Version: 2.2.0
+* Source code: https://github.com/cran/RnBeads
 * Date/Publication: 2019-05-02
-* Number of recursive dependencies: 116
+* Number of recursive dependencies: 230
 
-Run `revdep_details(,"scPipe")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking whether package ‘scPipe’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘SummarizedExperiment’ was built under R version 3.6.1
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘BiocParallel’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00install.out’ for details.
-    ```
-
-*   checking whether the namespace can be loaded with stated dependencies ... WARNING
-    ```
-    Error in dyn.load(file, DLLpath = DLLpath, ...) : 
-      unable to load shared object '/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so':
-      dlopen(/Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so, 6): Symbol not found: _lzma_easy_buffer_encode
-      Referenced from: /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so
-      Expected in: flat namespace
-     in /Users/hadley/Documents/r-lib/scales/revdep/library.noindex/scPipe/Rhtslib/libs/Rhtslib.so
-    Calls: <Anonymous> ... namespaceImport -> loadNamespace -> library.dynam -> dyn.load
-    Execution halted
-    
-    A namespace must be able to be loaded with just the base namespace
-    loaded: otherwise if the namespace gets loaded by a saved object, the
-    session will be unable to start.
-    
-    Probably some imports need to be declared in the NAMESPACE file.
-    ```
-
-*   checking for hidden files and directories ... NOTE
-    ```
-    Found the following hidden files and directories:
-      .BBSoptions
-    These were most likely included in error. See section ‘Package
-    structure’ in the ‘Writing R Extensions’ manual.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    ...
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
-    infer_gene_id_from_parent: no visible binding for global variable
-      ‘Parent’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
-    infer_gene_id_from_parent: no visible binding for global variable
-      ‘gene_id’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/anno_import.R:180-185)
-    plot_demultiplex: no visible binding for global variable ‘status’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
-    plot_demultiplex: no visible binding for global variable ‘count’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
-    plot_demultiplex: no visible binding for global variable ‘label_y’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
-    plot_demultiplex: no visible binding for global variable ‘label_tx’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scPipe/new/scPipe.Rcheck/00_pkg_src/scPipe/R/qc.R:478-485)
-    Undefined global functions or variables:
-      GeneID Parent count end gene_id label_tx label_y seqnames start
-      status strand transcript_id type
-    Consider adding
-      importFrom("stats", "end", "start")
-    to your NAMESPACE file.
-    ```
-
-# scruff
-
-<details>
-
-* Version: 1.2.5
-* Source code: https://github.com/cran/scruff
-* BugReports: https://github.com/campbio/scruff/issues
-* Date/Publication: 2019-10-05
-* Number of recursive dependencies: 142
-
-Run `revdep_details(,"scruff")` for more info
+Run `revdep_details(,"RnBeads")` for more info
 
 </details>
 
 ## In both
 
-*   R CMD check timed out
+*   checking whether package ‘RnBeads’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/RnBeads/new/RnBeads.Rcheck/00install.out’ for details.
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘IlluminaHumanMethylation450kmanifest’
     
+    Depends: includes the non-default packages:
+      'BiocGenerics', 'S4Vectors', 'GenomicRanges', 'MASS', 'cluster',
+      'ff', 'fields', 'ggplot2', 'gplots', 'gridExtra', 'limma',
+      'matrixStats', 'illuminaio', 'methylumi', 'plyr'
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
 
 *   checking for hidden files and directories ... NOTE
     ```
     Found the following hidden files and directories:
-      .BBSoptions
+      .travis.yml
     These were most likely included in error. See section ‘Package
     structure’ in the ‘Writing R Extensions’ manual.
     ```
 
-*   checking dependencies in R code ... NOTE
-    ```
-    Unexported object imported by a ':::' call: 'ShortRead:::.set_omp_threads'
-      See the note in ?`:::` about the use of this operator.
-    ```
-
-*   checking foreign function calls ... NOTE
-    ```
-    Foreign function call to a different package:
-      .Call(ShortRead:::.set_omp_threads, ...)
-    See chapter ‘System and foreign language interfaces’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking R code for possible problems ... NOTE
-    ```
-    ...
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:163)
-    tenxBamqc: no visible binding for global variable 'number_of_cells'
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:168)
-    tenxBamqc: no visible binding for global variable 'cell_barcode'
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/scruff/new/scruff.Rcheck/00_pkg_src/scruff/R/tenxBamqc.R:182-185)
-    Undefined global functions or variables:
-      . .x CB GX MM NH avg_reads_per_corrected_umi avg_reads_per_umi
-      barcode bc_correct capture.output cb cbtop10000 cell_barcode
-      cell_index complete.cases exon_number experiment fastq_path filename
-      gene_biotype gene_id gene_name geneid inferred_umi lane length1 level
-      median median_reads_per_corrected_umi median_reads_per_umi min.phred1
-      mt_counts number_of_cells percent_assigned project
-      protein_coding_counts protein_coding_genes qtring1 qtring2 read1
-      read1_path read2 read2_path readname reads reads_mapped_to_genes
-      reads_mapped_to_genome rname1 rname2 total_counts transcript_id
-      transcript_name type umi v1chemistry v2chemistry v3chemistry x x1 x2
-      y y1 y2
-    Consider adding
-      importFrom("stats", "complete.cases", "median")
-      importFrom("utils", "capture.output")
-    to your NAMESPACE file.
-    ```
-
-# sesame
-
-<details>
-
-* Version: 
-* Source code: ???
-* URL: https://scales.r-lib.org, https://github.com/r-lib/scales
-* BugReports: https://github.com/r-lib/scales/issues
-* Number of recursive dependencies: 0
-
-Run `revdep_details(,"")` for more info
-
-</details>
-
-## Error before installation
+## Installation
 
 ### Devel
 
 ```
-
-
-
-installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBloodNorway.450k’
-
-
+* installing *source* package ‘RnBeads’ ...
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package ‘FDb.InfiniumMethylation.hg19’ required by ‘methylumi’ could not be found
+Execution halted
+ERROR: lazy loading failed for package ‘RnBeads’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/RnBeads/new/RnBeads.Rcheck/RnBeads’
 
 ```
 ### CRAN
 
 ```
-
-
-
-installing the source packages ‘FlowSorted.Blood.450k’, ‘FlowSorted.CordBloodNorway.450k’
-
-
+* installing *source* package ‘RnBeads’ ...
+** using staged installation
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package ‘FDb.InfiniumMethylation.hg19’ required by ‘methylumi’ could not be found
+Execution halted
+ERROR: lazy loading failed for package ‘RnBeads’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/RnBeads/old/RnBeads.Rcheck/RnBeads’
 
 ```
-# simts
+# RxODE
 
 <details>
 
-* Version: 0.1.1
-* Source code: https://github.com/cran/simts
-* URL: https://github.com/SMAC-Group/simts, https://arxiv.org/pdf/1607.04543.pdf
-* BugReports: https://github.com/SMAC-Group/simts/issues
-* Date/Publication: 2019-07-21 22:20:02 UTC
-* Number of recursive dependencies: 53
+* Version: 0.9.1-9
+* Source code: https://github.com/cran/RxODE
+* URL: https://nlmixrdevelopment.github.io/RxODE/
+* BugReports: https://github.com/nlmixrdevelopment/RxODE/issues
+* Date/Publication: 2020-01-10 23:20:06 UTC
+* Number of recursive dependencies: 122
 
-Run `revdep_details(,"simts")` for more info
+Run `revdep_details(,"RxODE")` for more info
 
 </details>
 
 ## In both
 
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
+*   checking whether package ‘RxODE’ can be installed ... ERROR
     ```
-      installed size is  5.2Mb
-      sub-directories of 1Mb or more:
-        doc    2.1Mb
-        libs   1.8Mb
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/00install.out’ for details.
     ```
 
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘installr’
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘RxODE’ ...
+** package ‘RxODE’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking for gcc... /usr/local/clang8/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... configure: error: in `/Users/max/github/forks/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/00_pkg_src/RxODE':
+configure: error: cannot run C compiled programs.
+If you meant to cross compile, use `--host'.
+See `config.log' for more details
+ERROR: configuration failed for package ‘RxODE’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/RxODE/new/RxODE.Rcheck/RxODE’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘RxODE’ ...
+** package ‘RxODE’ successfully unpacked and MD5 sums checked
+** using staged installation
+checking for gcc... /usr/local/clang8/bin/clang
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... configure: error: in `/Users/max/github/forks/scales/revdep/checks.noindex/RxODE/old/RxODE.Rcheck/00_pkg_src/RxODE':
+configure: error: cannot run C compiled programs.
+If you meant to cross compile, use `--host'.
+See `config.log' for more details
+ERROR: configuration failed for package ‘RxODE’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/RxODE/old/RxODE.Rcheck/RxODE’
+
+```
+# SeqFeatR
+
+<details>
+
+* Version: 0.3.1
+* Source code: https://github.com/cran/SeqFeatR
+* Date/Publication: 2019-04-12 12:02:37 UTC
+* Number of recursive dependencies: 62
+
+Run `revdep_details(,"SeqFeatR")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘SeqFeatR’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/SeqFeatR/new/SeqFeatR.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘SeqFeatR’ ...
+** package ‘SeqFeatR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ""
+Error: .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘SeqFeatR’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/SeqFeatR/new/SeqFeatR.Rcheck/SeqFeatR’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘SeqFeatR’ ...
+** package ‘SeqFeatR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Warning message:
+In fun(libname, pkgname) : couldn't connect to display ""
+Error: .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/SeqFeatR/rjags/libs/rjags.so
+  Reason: image not found
+Execution halted
+ERROR: lazy loading failed for package ‘SeqFeatR’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/SeqFeatR/old/SeqFeatR.Rcheck/SeqFeatR’
+
+```
+# smartR
+
+<details>
+
+* Version: 0.62.0
+* Source code: https://github.com/cran/smartR
+* Date/Publication: 2018-11-30 23:40:03 UTC
+* Number of recursive dependencies: 137
+
+Run `revdep_details(,"smartR")` for more info
+
+</details>
+
+## In both
+
+*   checking whether package ‘smartR’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Users/max/github/forks/scales/revdep/checks.noindex/smartR/new/smartR.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
+
+```
+* installing *source* package ‘smartR’ ...
+** package ‘smartR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘rjags’:
+ .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so
+  Reason: image not found
+Error: package ‘rjags’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘smartR’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/smartR/new/smartR.Rcheck/smartR’
+
+```
+### CRAN
+
+```
+* installing *source* package ‘smartR’ ...
+** package ‘smartR’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+Error: package or namespace load failed for ‘rjags’:
+ .onLoad failed in loadNamespace() for 'rjags', details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object '/Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so':
+  dlopen(/Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+  Referenced from: /Users/max/github/forks/scales/revdep/library.noindex/smartR/rjags/libs/rjags.so
+  Reason: image not found
+Error: package ‘rjags’ could not be loaded
+Execution halted
+ERROR: lazy loading failed for package ‘smartR’
+* removing ‘/Users/max/github/forks/scales/revdep/checks.noindex/smartR/old/smartR.Rcheck/smartR’
+
+```
 # SMITE
 
 <details>
@@ -1375,9 +1131,14 @@ Run `revdep_details(,"")` for more info
 
 ```
 
+  There is a binary version available but the source version is later:
+    binary source needs_compilation
+bit 1.1-14 1.1-15              TRUE
+
+  Binaries will be installed
 
 
-installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome.db’
+installing the source package ‘reactome.db’
 
 
 
@@ -1386,9 +1147,14 @@ installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome
 
 ```
 
+  There is a binary version available but the source version is later:
+    binary source needs_compilation
+bit 1.1-14 1.1-15              TRUE
+
+  Binaries will be installed
 
 
-installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome.db’
+installing the source package ‘reactome.db’
 
 
 
@@ -1402,7 +1168,7 @@ installing the source packages ‘geneLenDataBase’, ‘KEGG.db’, ‘reactome
 * URL: https://bioconductor.org/packages/SNPhood
 * BugReports: christian.arnold@embl.de
 * Date/Publication: 2019-05-02
-* Number of recursive dependencies: 126
+* Number of recursive dependencies: 130
 
 Run `revdep_details(,"SNPhood")` for more info
 
@@ -1413,21 +1179,11 @@ Run `revdep_details(,"SNPhood")` for more info
 *   R CMD check timed out
     
 
-*   checking whether package ‘SNPhood’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘Rsamtools’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/SNPhood/new/SNPhood.Rcheck/00install.out’ for details.
-    ```
-
 *   checking installed package size ... NOTE
     ```
-      installed size is 11.8Mb
+      installed size is 10.9Mb
       sub-directories of 1Mb or more:
-        data   4.4Mb
+        data   3.8Mb
         doc    6.4Mb
     ```
 
@@ -1440,66 +1196,8 @@ Run `revdep_details(,"SNPhood")` for more info
 *   checking R code for possible problems ... NOTE
     ```
     .calcBinomTestVector: no visible binding for global variable ‘pp’
-      (/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/SNPhood/new/SNPhood.Rcheck/00_pkg_src/SNPhood/R/misc.R:22-26)
     Undefined global functions or variables:
       pp
-    ```
-
-# spikeSlabGAM
-
-<details>
-
-* Version: 1.1-14
-* Source code: https://github.com/cran/spikeSlabGAM
-* URL: https://github.com/fabian-s/spikeSlabGAM
-* Date/Publication: 2018-09-17 11:20:03 UTC
-* Number of recursive dependencies: 62
-
-Run `revdep_details(,"spikeSlabGAM")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-# splatter
-
-<details>
-
-* Version: 1.8.0
-* Source code: https://github.com/cran/splatter
-* URL: https://github.com/Oshlack/splatter
-* BugReports: https://github.com/Oshlack/splatter/issues
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 226
-
-Run `revdep_details(,"splatter")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking whether package ‘splatter’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘SummarizedExperiment’ was built under R version 3.6.1
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-      Warning: package ‘BiocParallel’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/splatter/new/splatter.Rcheck/00install.out’ for details.
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  6.9Mb
-      sub-directories of 1Mb or more:
-        doc   6.1Mb
     ```
 
 # TCGAbiolinks
@@ -1522,295 +1220,45 @@ Run `revdep_details(,"TCGAbiolinks")` for more info
 *   R CMD check timed out
     
 
-*   checking whether the package can be unloaded cleanly ... WARNING
-    ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: package or namespace load failed for ‘TCGAbiolinks’:
-     unable to load R code in package ‘circlize’
-    Execution halted
-    ```
-
-*   checking whether the namespace can be loaded with stated dependencies ... WARNING
-    ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: unable to load R code in package ‘circlize’
-    Execution halted
-    
-    A namespace must be able to be loaded with just the base namespace
-    loaded: otherwise if the namespace gets loaded by a saved object, the
-    session will be unable to start.
-    
-    Probably some imports need to be declared in the NAMESPACE file.
-    ```
-
-*   checking S3 generic/method consistency ... WARNING
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    See section ‘Generic functions and methods’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking replacement functions ... WARNING
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    The argument of a replacement function which corresponds to the right
-    hand side must be named ‘value’.
-    ```
-
-*   checking for missing documentation entries ... WARNING
-    ```
-    Warning: package ‘maftools’ was built under R version 3.6.1
-    All user-level objects in a package should have documentation entries.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking for code/documentation mismatches ... WARNING
-    ```
-    ...
-    Call sequence:
-    6: stop(msg, call. = FALSE, domain = NA)
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    ```
-
 *   checking installed package size ... NOTE
     ```
-      installed size is 97.2Mb
+      installed size is 97.1Mb
       sub-directories of 1Mb or more:
-        R      2.7Mb
-        data   4.2Mb
+        R      2.5Mb
+        data   4.3Mb
         doc   90.1Mb
     ```
 
 *   checking dependencies in R code ... NOTE
     ```
-    ...
-    Call sequence:
-    6: stop(msg, call. = FALSE, domain = NA)
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    ```
-
-*   checking foreign function calls ... NOTE
-    ```
-    ...
-    5: value[[3L]](cond)
-    4: tryCatchOne(expr, names, parentenv, handlers[[1L]])
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    See chapter ‘System and foreign language interfaces’ in the ‘Writing R
-    Extensions’ manual.
+    There are ::: calls to the package's namespace in its code. A package
+      almost never needs to use ::: for its own objects:
+      ‘move’
     ```
 
 *   checking R code for possible problems ... NOTE
     ```
-    Error in setLoadActions(function(ns) { : 
-      could not find function "setLoadActions"
-    Error: unable to load R code in package ‘circlize’
-    Execution halted
-    ```
-
-*   checking Rd \usage sections ... NOTE
-    ```
     ...
-    3: tryCatchList(expr, classes, parentenv, handlers)
-    2: tryCatch({
-           attr(package, "LibPath") <- which.lib.loc
-           ns <- loadNamespace(package, lib.loc)
-           env <- attachNamespace(ns, pos = pos, deps, exclude, include.only)
-       }, error = function(e) {
-           P <- if (!is.null(cc <- conditionCall(e))) 
-               paste(" in", deparse(cc)[1L])
-           else ""
-           msg <- gettextf("package or namespace load failed for %s%s:\n %s", 
-               sQuote(package), P, conditionMessage(e))
-           if (logical.return) 
-               message(paste("Error:", msg), domain = NA)
-           else stop(msg, call. = FALSE, domain = NA)
-       })
-    1: library(package, lib.loc = lib.loc, character.only = TRUE, verbose = FALSE)
-    Execution halted
-    The \usage entries for S3 methods should use the \method markup and not
-    their full name.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-# trackViewer
-
-<details>
-
-* Version: 1.20.5
-* Source code: https://github.com/cran/trackViewer
-* Date/Publication: 2019-08-07
-* Number of recursive dependencies: 129
-
-Run `revdep_details(,"trackViewer")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking whether package ‘trackViewer’ can be installed ... WARNING
-    ```
-    Found the following significant warnings:
-      Warning: package ‘GenomicRanges’ was built under R version 3.6.1
-      Warning: package ‘S4Vectors’ was built under R version 3.6.1
-      Warning: package ‘IRanges’ was built under R version 3.6.1
-    See ‘/Users/hadley/Documents/r-lib/scales/revdep/checks.noindex/trackViewer/new/trackViewer.Rcheck/00install.out’ for details.
-    ```
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  8.7Mb
-      sub-directories of 1Mb or more:
-        doc   6.7Mb
-    ```
-
-# variancePartition
-
-<details>
-
-* Version: 1.14.1
-* Source code: https://github.com/cran/variancePartition
-* Date/Publication: 2019-10-01
-* Number of recursive dependencies: 164
-
-Run `revdep_details(,"variancePartition")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking S3 generic/method consistency ... NOTE
-    ```
-    Found the following apparent S3 methods exported but not registered:
-      [.MArrayLM2
-    See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
-    manual.
-    ```
-
-# vidger
-
-<details>
-
-* Version: 1.4.4
-* Source code: https://github.com/cran/vidger
-* URL: https://github.com/btmonier/vidger, https://bioconductor.org/packages/release/bioc/html/vidger.html
-* BugReports: https://github.com/btmonier/vidger/issues
-* Date/Publication: 2019-07-15
-* Number of recursive dependencies: 127
-
-Run `revdep_details(,"vidger")` for more info
-
-</details>
-
-## In both
-
-*   R CMD check timed out
-    
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is 10.6Mb
-      sub-directories of 1Mb or more:
-        data   4.0Mb
-        doc    6.1Mb
+      ‘minet’
+    TCGAquery_recount2: no visible binding for global variable ‘rse_gene’
+    TCGAtumor_purity: no visible binding for global variable ‘Tumor.purity’
+    TCGAvisualize_SurvivalCoxNET: no visible global function definition for
+      ‘dNetInduce’
+    TCGAvisualize_SurvivalCoxNET: no visible global function definition for
+      ‘dNetPipeline’
+    TCGAvisualize_SurvivalCoxNET: no visible global function definition for
+      ‘dCommSignif’
+    TCGAvisualize_SurvivalCoxNET: no visible global function definition for
+      ‘visNet’
+    TCGAvisualize_oncoprint: no visible binding for global variable ‘value’
+    readExonQuantification: no visible binding for global variable ‘exon’
+    readExonQuantification: no visible binding for global variable
+      ‘coordinates’
+    readIDATDNAmethylation: no visible global function definition for
+      ‘openSesame’
+    Undefined global functions or variables:
+      Tumor.purity barcode c3net clinical coordinates dCommSignif
+      dNetInduce dNetPipeline exon knnmi.cross limmacontrasts.fit
+      limmamakeContrasts minet openSesame portions rse_gene value visNet
     ```
 
