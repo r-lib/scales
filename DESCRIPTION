@@ -20,7 +20,7 @@ BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.2)
 Imports: 
-    farver (>= 2.0.0),
+    farver (>= 2.0.3),
     labeling,
     munsell (>= 0.5),
     R6,
