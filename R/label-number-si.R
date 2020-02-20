@@ -24,6 +24,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
 
   function(x) {
     breaks <- 10^si_powers
+
     n_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
       labels = c(names(breaks)),
