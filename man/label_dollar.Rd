@@ -4,19 +4,28 @@
 \alias{label_dollar}
 \alias{dollar_format}
 \alias{dollar}
+\alias{billion_short}
+\alias{billion_long}
 \title{Label currencies ($100, $2.50, etc)}
 \usage{
 label_dollar(accuracy = NULL, scale = 1, prefix = "$", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
+  largest_with_cents = 1e+05, negative_parens = FALSE,
+  billion_scale = NULL, ...)
 
 dollar_format(accuracy = NULL, scale = 1, prefix = "$",
   suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
+  largest_with_cents = 1e+05, negative_parens = FALSE,
+  billion_scale = NULL, ...)
 
 dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
   big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE, ...)
+  largest_with_cents = 1e+05, negative_parens = FALSE,
+  billion_scale = NULL, ...)
+
+billion_short()
+
+billion_long()
 }
 \arguments{
 \item{accuracy, largest_with_cents}{Number to round to. If \code{NULL}, the default,
@@ -39,6 +48,12 @@ decimal point.}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{negative_parens}{Display negative using parentheses?}
+
+\item{billion_scale}{Named list indicating suffixes given to large values
+(e.g. thousands, millions, billions, trillions). Name gives suffix, and
+value specifies the power-of-ten. The two most common scales are provided
+(\code{billion_short()} and \code{billion_long()}). If \code{NULL}, the default, these
+suffixes aren't used.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
@@ -80,6 +95,18 @@ demo_continuous(c(1000, 1100), labels = euro)
 
 # Use negative_parens = TRUE for finance style display
 demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+
+# In English-speaking world, short scale is most prevalent
+dollar <- label_dollar(billion_scale = billion_short())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
+
+# Elsewhere, long scale is often used
+euro <- label_dollar(prefix = "", suffix = "EUR", billion_scale = billion_long())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = euro)
+
+# You can also define a custom billion scale
+custom_dollar <- label_dollar(billion_scale = c(k = 3, mn = 6, bn = 9, tn = 12))
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
 }
 \seealso{
 Other labels for continuous scales: \code{\link{label_bytes}},
