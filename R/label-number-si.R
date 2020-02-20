@@ -30,7 +30,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
       f = -15,
       p = -12,
       n = -9,
-      "\u03bc" = -6,
+      mu = -6,
       m = -3,
       0,
       k = 3,
@@ -42,6 +42,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
       Z = 21,
       Y = 24
     )
+    names(breaks)[7] <- enc2utf8("\u03bc")
 
     n_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
