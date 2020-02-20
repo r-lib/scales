@@ -73,12 +73,3 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
     )
   }
 }
-
-# Helpers -----------------------------------------------------------------
-
-si_powers <- (-8:8) * 3
-names(si_powers) <- c(
-  rev(c("m", "\u00b5", "n", "p", "f", "a", "z", "y")), "",
-        "k", "M",      "G", "T", "P", "E", "Z", "Y"
-)
-si_powers

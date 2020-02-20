@@ -23,27 +23,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
   force_all(accuracy, ...)
 
   function(x) {
-    breaks <- 10^c(
-      y = -24,
-      z = -21,
-      a = -18,
-      f = -15,
-      p = -12,
-      n = -9,
-      mu = -6,
-      m = -3,
-      0,
-      k = 3,
-      M = 6,
-      G = 9,
-      T = 12,
-      P = 15,
-      E = 18,
-      Z = 21,
-      Y = 24
-    )
-    names(breaks)[7] <- enc2utf8("\u03bc")
-
+    breaks <- 10^si_powers
     n_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
       labels = c(names(breaks)),
