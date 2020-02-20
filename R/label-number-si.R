@@ -1,7 +1,6 @@
 #' Label numbers with SI prefixes (2k, 1M, 5m etc)
 #'
-#' `number_si()` automatically scales and labels with the best
-#' [SI prefix](https://en.wikipedia.org/wiki/Metric_prefix),
+#' `number_si()` automatically scales and labels with the best SI prefix,
 #' e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
 #'
 #' @inherit number_format return params

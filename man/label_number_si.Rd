@@ -32,8 +32,7 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{number_si()} automatically scales and labels with the best
-\href{https://en.wikipedia.org/wiki/Metric_prefix}{SI prefix},
+\code{number_si()} automatically scales and labels with the best SI prefix,
 e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
 }
 \examples{
