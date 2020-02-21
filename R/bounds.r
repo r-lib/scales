@@ -216,6 +216,17 @@ squish_infinite <- function(x, range = c(0, 1)) {
   x
 }
 
+#' Keep values outside range
+#'
+#' @param x numeric vector to keep.
+#' @param ... unused arguments.
+#' @export
+#' @examples
+#' keep_all(c(-Inf, -1, 0, 1, 2, Inf))
+keep_all <- function(x, ...) {
+  x
+}
+
 #' Expand a range with a multiplicative or additive constant
 #'
 #' @param range range of data, numeric vector of length 2

@@ -86,3 +86,6 @@ test_that("expand_range respects mul and add values", {
   expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
 })
 
+test_that("keep_all keeps all", {
+  expect_equal(keep_all(c(-Inf, -1, 0, 1, 2, Inf)), c(-Inf, -1, 0, 1, 2, Inf))
+})
