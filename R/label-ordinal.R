@@ -60,9 +60,8 @@ ordinal_english <- function() {
 
 #' @export
 #' @rdname label_ordinal
-ordinal_french <- function(gender = "masculin") {
-
-  switch(
+ordinal_french <- function(gender = "masculin", plural = FALSE) {
+  label <- switch(
     gender,
     masculin = list(
       er = "^1$",
@@ -73,6 +72,7 @@ ordinal_french <- function(gender = "masculin") {
       e = "."
     )
   )
+  label <- ifelse(plural, stats::setNames(label, paste0(names(label), "s")), label)
 }
 
 #' @export
