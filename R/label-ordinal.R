@@ -69,7 +69,7 @@ ordinal_french <- function(gender = "masculin") {
       e = "."
     ),
     feminin = list(
-      "re" = "^1$",
+      re = "^1$",
       e = "."
     )
   )
