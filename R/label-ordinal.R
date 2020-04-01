@@ -11,6 +11,7 @@
 #' @param rules Named list of regular expressions, matched in order.
 #'   Name gives suffix, and value specifies which numbers to match.
 #' @param gender Masculin or feminin gender for French ordinal.
+#' @param plural Plural or singular for French ordinal.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @family labels for continuous scales
