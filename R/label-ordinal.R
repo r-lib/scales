@@ -72,7 +72,8 @@ ordinal_french <- function(gender = "masculin", plural = FALSE) {
       e = "."
     )
   )
-  label <- ifelse(plural, stats::setNames(label, paste0(names(label), "s")), label)
+  if (plural) label <- stats::setNames(label, paste0(names(label), "s"))
+  label
 }
 
 #' @export
