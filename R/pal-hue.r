@@ -42,9 +42,9 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
     pal <- farver::encode_colour(hcl, from = "hcl")
 
     if (direction == -1) {
-      pal <- rev(pal)
+      rev(pal)
+    } else {
+      pal
     }
-
-    return(pal)
   }
 }

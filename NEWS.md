@@ -1,6 +1,7 @@
 # scales (development version)
 
-* `hue_pal` now correctly inverts color palettes when `direction = -1` (@dpseidel, #252). 
+* `hue_pal()` now correctly inverts color palettes when `direction = -1` 
+  (@dpseidel, #252). 
 
 # scales 1.1.0
 
