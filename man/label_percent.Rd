@@ -6,17 +6,39 @@
 \alias{percent}
 \title{Label percentages (2.5\%, 50\%, etc)}
 \usage{
-label_percent(accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+label_percent(
+  accuracy = NULL,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-percent_format(accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+percent_format(
+  accuracy = NULL,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-percent(x, accuracy = NULL, scale = 100, prefix = "",
-  suffix = "\%", big.mark = " ", decimal.mark = ".", trim = TRUE,
-  ...)
+percent(
+  x,
+  accuracy = NULL,
+  scale = 100,
+  prefix = "",
+  suffix = "\%",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -77,12 +99,14 @@ french_percent <- label_percent(
 demo_continuous(c(0, .01), labels = french_percent)
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}

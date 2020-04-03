@@ -9,13 +9,13 @@ col2hcl(colour, h = NULL, c = NULL, l = NULL, alpha = NULL)
 \arguments{
 \item{colour}{character vector of colours to be modified}
 
-\item{h}{Hue, \code{[0, 360]}}
+\item{h}{Hue, \verb{[0, 360]}}
 
-\item{c}{Chroma, \code{[0, 100]}}
+\item{c}{Chroma, \verb{[0, 100]}}
 
-\item{l}{Luminance, \code{[0, 100]}}
+\item{l}{Luminance, \verb{[0, 100]}}
 
-\item{alpha}{Alpha, \code{[0, 1]}.}
+\item{alpha}{Alpha, \verb{[0, 1]}.}
 }
 \description{
 Transforms rgb to hcl, sets non-missing arguments and then backtransforms

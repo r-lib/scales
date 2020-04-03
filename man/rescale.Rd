@@ -12,23 +12,17 @@
 \usage{
 rescale(x, to, from, ...)
 
-\method{rescale}{numeric}(x, to = c(0, 1), from = range(x, na.rm =
-  TRUE, finite = TRUE), ...)
+\method{rescale}{numeric}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
-\method{rescale}{dist}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
-  finite = TRUE), ...)
+\method{rescale}{dist}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
-\method{rescale}{logical}(x, to = c(0, 1), from = range(x, na.rm =
-  TRUE, finite = TRUE), ...)
+\method{rescale}{logical}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
-\method{rescale}{POSIXt}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
-  finite = TRUE), ...)
+\method{rescale}{POSIXt}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
-\method{rescale}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE,
-  finite = TRUE), ...)
+\method{rescale}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
-\method{rescale}{integer64}(x, to = c(0, 1), from = range(x, na.rm =
-  TRUE), ...)
+\method{rescale}{integer64}(x, to = c(0, 1), from = range(x, na.rm = TRUE), ...)
 }
 \arguments{
 \item{x}{continuous vector of values to manipulate.}

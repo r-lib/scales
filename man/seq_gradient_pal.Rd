@@ -4,8 +4,7 @@
 \alias{seq_gradient_pal}
 \title{Sequential colour gradient palette (continuous)}
 \usage{
-seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"),
-  space = "Lab")
+seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab")
 }
 \arguments{
 \item{low}{colour for low end of gradient.}

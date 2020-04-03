@@ -10,8 +10,7 @@
 \usage{
 label_date(format = "\%Y-\%m-\%d", tz = "UTC")
 
-label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"),
-  sep = "\\n")
+label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC")
 
@@ -45,7 +44,7 @@ rather than axes.
 \code{label_date()} and \code{label_time()} label date/times using date/time format
 strings. \code{label_date_short()} automatically constructs a short format string
 suffiicient to uniquely identify labels. It's inspired by matplotlib's
-\href{https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter}{ConciseDateFormatter},
+\href{https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter}{\code{ConciseDateFormatter}},
 but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
