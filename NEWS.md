@@ -1,5 +1,8 @@
 # scales (development version)
 
+* Internal `precision()`, used when `accuracy = NULL` now does a better
+  job when duplicate values are present (@teunbrand, #251).
+
 * `hue_pal()` now correctly inverts color palettes when `direction = -1` 
   (@dpseidel, #252). 
 
