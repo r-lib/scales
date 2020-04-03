@@ -1,5 +1,7 @@
 # scales (development version)
 
+* `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
+
 * `hue_pal()` now correctly inverts color palettes when `direction = -1` 
   (@dpseidel, #252). 
 
