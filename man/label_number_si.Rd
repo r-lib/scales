@@ -44,15 +44,19 @@ demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
 demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 
-Other labels for log scales: \code{\link{label_bytes}},
-  \code{\link{label_scientific}}
+Other labels for log scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}

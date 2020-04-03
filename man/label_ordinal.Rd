@@ -9,8 +9,13 @@
 \alias{ordinal}
 \title{Label ordinal numbers (1st, 2nd, 3rd, etc)}
 \usage{
-label_ordinal(prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+label_ordinal(
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 
 ordinal_english()
 
@@ -18,11 +23,22 @@ ordinal_french()
 
 ordinal_spanish()
 
-ordinal_format(prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+ordinal_format(
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 
-ordinal(x, prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+ordinal(
+  x,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 }
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after value.}
@@ -74,11 +90,14 @@ demo_continuous(c(1, 10),
 )
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}

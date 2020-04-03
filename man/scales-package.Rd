@@ -6,7 +6,7 @@
 \alias{scales-package}
 \title{scales: Scale Functions for Visualization}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Graphical scales map data to aesthetics, and
     provide methods for automatically determining breaks and labels for
