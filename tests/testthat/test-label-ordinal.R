@@ -1,18 +1,11 @@
 
 test_that("ordinal format in English", {
-  expect_equal(
-    ordinal_format()(1:4),
-    c("1st", "2nd", "3rd", "4th")
-  )
-  expect_equal(ordinal(1), "1st")
-  expect_equal(ordinal(2), "2nd")
-  expect_equal(ordinal(3), "3rd")
-  expect_equal(ordinal(4), "4th")
-  expect_equal(ordinal(11), "11th")
-  expect_equal(ordinal(12), "12th")
-  expect_equal(ordinal(21), "21st")
-  expect_equal(ordinal(101), "101st")
-  expect_equal(ordinal(NA), NA_character_)
+  verify_output(test_path("test-label-ordinal.txt"), {
+    ordinal(c(1:4, 11:21, 101, NA))
+
+    ordinal(c(1, 2, 10, 11, NA), rules = ordinal_french())
+    ordinal(c(1, 2, 10, 11, NA), rules = ordinal_french("f", TRUE))
+  })
 })
 
 test_that("ordinal match rules in order", {

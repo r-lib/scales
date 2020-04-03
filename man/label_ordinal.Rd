@@ -19,7 +19,7 @@ label_ordinal(
 
 ordinal_english()
 
-ordinal_french()
+ordinal_french(gender = "masculin", plural = FALSE)
 
 ordinal_spanish()
 
@@ -49,6 +49,10 @@ ordinal(
 Name gives suffix, and value specifies which numbers to match.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{gender}{Masculin or feminin gender for French ordinal.}
+
+\item{plural}{Plural or singular for French ordinal.}
 
 \item{x}{A numeric vector to format.}
 }

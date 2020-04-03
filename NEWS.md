@@ -1,5 +1,7 @@
 # scales (development version)
 
+* `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
+
 * Internal `precision()`, used when `accuracy = NULL` now does a better
   job when duplicate values are present (@teunbrand, #251).
 
