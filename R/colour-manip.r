@@ -78,12 +78,13 @@ alpha <- function(colour, alpha = NA) {
 #' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
 #' @param borders colour of the borders of the tiles; matches the `border` argument of [graphics::rect()]. The default means `par("fg")`. Use `border = NA` to omit borders.
 #' @param cex_label size of printed labels, works the same as \code{cex} parameter of \code{plot()}
+#' @param ncol number of columns to use in colour display. Defaults to \code{ceiling(sqrt(length(colours)))}
 #' @export
 #' @importFrom graphics par plot rect text
 #' @keywords internal
-show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
+show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
+                     ncol=ceiling(sqrt(length(colours)))) {
   n <- length(colours)
-  ncol <- ceiling(sqrt(n))
   nrow <- ceiling(n / ncol)
 
   colours <- c(colours, rep(NA, nrow * ncol - length(colours)))
