@@ -161,7 +161,7 @@
 
 <span class='fu'>ordinal_english</span>()
 
-<span class='fu'>ordinal_french</span>()
+<span class='fu'>ordinal_french</span>(<span class='kw'>gender</span> <span class='kw'>=</span> <span class='st'>"masculin"</span>, <span class='kw'>plural</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>ordinal_spanish</span>()
 
@@ -203,6 +203,14 @@ Name gives suffix, and value specifies which numbers to match.</p></td>
       <td><p>Other arguments passed on to <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a></code>.</p></td>
     </tr>
     <tr>
+      <th>gender</th>
+      <td><p>Masculin or feminin gender for French ordinal.</p></td>
+    </tr>
+    <tr>
+      <th>plural</th>
+      <td><p>Plural or singular for French ordinal.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
       <td><p>A numeric vector to format.</p></td>
     </tr>
@@ -240,9 +248,6 @@ instead.</p>
 <span class='co'># The rules are just a set of regular expressions that are applied in turn</span>
 <span class='fu'>ordinal_french</span>()</div><div class='output co'>#&gt; $er
 #&gt; [1] "^1$"
-#&gt; 
-#&gt; $nd
-#&gt; [1] "^2$"
 #&gt; 
 #&gt; $e
 #&gt; [1] "."
