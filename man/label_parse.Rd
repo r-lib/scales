@@ -56,15 +56,18 @@ demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.
 
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_percent}},
-  \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 
-Other labels for discrete scales: \code{\link{label_wrap}}
+Other labels for discrete scales: 
+\code{\link{label_wrap}()}
 }
 \concept{labels for continuous scales}
 \concept{labels for discrete scales}

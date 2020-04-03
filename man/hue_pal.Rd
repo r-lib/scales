@@ -4,8 +4,7 @@
 \alias{hue_pal}
 \title{Hue palette (discrete)}
 \usage{
-hue_pal(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0,
-  direction = 1)
+hue_pal(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1)
 }
 \arguments{
 \item{h}{range of hues to use, in [0, 360]}

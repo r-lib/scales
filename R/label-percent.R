@@ -1,4 +1,4 @@
-#' Label percentages (2.5\%, 50\%, etc)
+#' Label percentages (2.5%, 50%, etc)
 #'
 #' @section Old interface:
 #' `percent()` and `percent_format()` are retired; please use `label_percent()`

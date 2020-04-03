@@ -6,14 +6,21 @@
 \alias{pvalue}
 \title{Label p-values (e.g. <0.001, 0.25, p >= 0.99)}
 \usage{
-label_pvalue(accuracy = 0.001, decimal.mark = ".", prefix = NULL,
-  add_p = FALSE)
+label_pvalue(
+  accuracy = 0.001,
+  decimal.mark = ".",
+  prefix = NULL,
+  add_p = FALSE
+)
 
-pvalue_format(accuracy = 0.001, decimal.mark = ".", prefix = NULL,
-  add_p = FALSE)
+pvalue_format(
+  accuracy = 0.001,
+  decimal.mark = ".",
+  prefix = NULL,
+  add_p = FALSE
+)
 
-pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL,
-  add_p = FALSE)
+pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL, add_p = FALSE)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -64,12 +71,14 @@ prefix <- c("p < ", "p = ", "p > ")
 demo_continuous(c(0, 1), labels = label_pvalue(prefix = prefix))
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_percent}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}
