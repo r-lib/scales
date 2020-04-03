@@ -61,12 +61,14 @@ ordinal_english <- function() {
 
 #' @export
 #' @rdname label_ordinal
-ordinal_french <- function(gender = "masculin", plural = FALSE) {
-  label <- stats::setNames(
-    list("^1$", "."),
-    c(switch(gender, masculin = "er", feminin = "re"), "e")
-  )
-  if (plural) label <- stats::setNames(label, paste0(names(label), "s"))
+ordinal_french <- function(gender = c("masculin", "feminin"), plural = FALSE) {
+  suffix <- switch(match.arg(gender), masculin = "er", feminin = "re")
+
+  label <- list("^1$", ".")
+  names(label) <- c(suffix, "e")
+  if (plural) {
+    names(label) <- paste0(names(label), "s")
+  }
   label
 }
 
