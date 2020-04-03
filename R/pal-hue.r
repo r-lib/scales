@@ -36,10 +36,15 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
       h[2] <- h[2] - 360 / n
     }
 
-    rotate <- function(x) (x + h.start) %% 360 * direction
-    hues <- rotate(seq(h[1], h[2], length.out = n))
-
+    hues <- seq(h[1], h[2], length.out = n)
     hcl <- cbind(hues, c, l)
-    farver::encode_colour(hcl, from = "hcl")
+
+    pal <- farver::encode_colour(hcl, from = "hcl")
+
+    if (direction == -1) {
+      rev(pal)
+    } else {
+      pal
+    }
   }
 }
