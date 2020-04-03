@@ -8,6 +8,3 @@
 > ordinal(c(1, 2, 10, 11, NA), rules = ordinal_french("f", TRUE))
 [1] "1res" "2es"  "10es" "11es" NA    
 
-> ordinal(c(1, 2, NA), rules = ordinal_spanish())
-[1] "1.º" "2.º" NA   
-
