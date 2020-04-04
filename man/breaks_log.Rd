@@ -35,7 +35,7 @@ and smaller than \code{base}. Then for each remaining candidate integer
 \code{sort(c(x, steps, base))} is calculated. The candidate \code{x} which
 yields the largest minimal interval is added to \code{steps} and removed from
 the candidate set. This is repeated until either a sufficient number of
-breaks, \code{>= n-2}, are returned or all candidates have been used.
+breaks, \verb{>= n-2}, are returned or all candidates have been used.
 }
 \examples{
 demo_log10(c(1, 1e5))

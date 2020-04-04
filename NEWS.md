@@ -1,5 +1,13 @@
 # scales (development version)
 
+* `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
+
+* Internal `precision()`, used when `accuracy = NULL` now does a better
+  job when duplicate values are present (@teunbrand, #251).
+
+* `hue_pal()` now correctly inverts color palettes when `direction = -1` 
+  (@dpseidel, #252). 
+
 # scales 1.1.0
 
 * Axis breaks and labels have a new naming scheme: functions that generate

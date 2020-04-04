@@ -4,7 +4,7 @@
 #'
 #' @section Old interface:
 #' `wrap_format()` is retired; please use `label_format()` instead.
-#' @inherit number_format return params
+#' @inherit number_format return
 #' @param width Number of characters per line.
 #' @export
 #' @family labels for discrete scales

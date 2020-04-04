@@ -10,6 +10,8 @@
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param rules Named list of regular expressions, matched in order.
 #'   Name gives suffix, and value specifies which numbers to match.
+#' @param gender Masculin or feminin gender for French ordinal.
+#' @param plural Plural or singular for French ordinal.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @family labels for continuous scales
@@ -59,12 +61,15 @@ ordinal_english <- function() {
 
 #' @export
 #' @rdname label_ordinal
-ordinal_french <- function() {
-  list(
-    er = "^1$",
-    nd = "^2$",
-    e = "."
-  )
+ordinal_french <- function(gender = c("masculin", "feminin"), plural = FALSE) {
+  suffix <- switch(match.arg(gender), masculin = "er", feminin = "re")
+
+  label <- list("^1$", ".")
+  names(label) <- c(suffix, "e")
+  if (plural) {
+    names(label) <- paste0(names(label), "s")
+  }
+  label
 }
 
 #' @export

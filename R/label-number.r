@@ -174,6 +174,7 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
 # Helpers -----------------------------------------------------------------
 
 precision <- function(x) {
+  x <- unique(x)
   # cannot calculate a precision if all values are Inf or NA
   if (all(is.infinite(x) | is.na(x)) || length(x) == 1) {
     return(1)
