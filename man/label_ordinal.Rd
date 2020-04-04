@@ -19,7 +19,7 @@ label_ordinal(
 
 ordinal_english()
 
-ordinal_french(gender = "masculin", plural = FALSE)
+ordinal_french(gender = c("masculin", "feminin"), plural = FALSE)
 
 ordinal_spanish()
 
