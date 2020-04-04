@@ -164,8 +164,8 @@ rescale_none <- function(x, ...) {
 #'   finite values.
 #' @export
 #' @examples
-#' censor(c(-1, 0.5, 1, 2, NA))
-censor <- function(x, range = c(0, 1), only.finite = TRUE) {
+#' oob_censor(c(-1, 0.5, 1, 2, NA))
+oob_censor <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
   # Assign NA - this makes sure that, even if all elements are
@@ -175,16 +175,24 @@ censor <- function(x, range = c(0, 1), only.finite = TRUE) {
   x
 }
 
+#' @rdname oob_censor
+#' @export
+censor <- oob_censor
+
 #' Discard any values outside of range
 #'
 #' @inheritParams censor
 #' @export
 #' @examples
-#' discard(c(-1, 0.5, 1, 2, NA))
-discard <- function(x, range = c(0, 1)) {
+#' oob_discard(c(-1, 0.5, 1, 2, NA))
+oob_discard <- function(x, range = c(0, 1)) {
   force(range)
   x[x >= range[1] & x <= range[2]]
 }
+
+#' @rdname oob_discard
+#' @export
+discard <- oob_discard
 
 #' Squish values into range
 #'
@@ -192,9 +200,9 @@ discard <- function(x, range = c(0, 1)) {
 #' @inheritParams censor
 #' @export
 #' @examples
-#' squish(c(-1, 0.5, 1, 2, NA))
-#' squish(c(-1, 0, 0.5, 1, 2))
-squish <- function(x, range = c(0, 1), only.finite = TRUE) {
+#' oob_squish(c(-1, 0.5, 1, 2, NA))
+#' oob_squish(c(-1, 0, 0.5, 1, 2))
+oob_squish <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
   x[finite & x < range[1]] <- range[1]
@@ -202,19 +210,28 @@ squish <- function(x, range = c(0, 1), only.finite = TRUE) {
   x
 }
 
+#' @rdname oob_squish
+#' @export
+squish <- oob_squish
+
+
 #' Squish infinite values to range
 #'
 #' @param x numeric vector of values to manipulate.
 #' @param range numeric vector of length two giving desired output range.
 #' @export
 #' @examples
-#' squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
-squish_infinite <- function(x, range = c(0, 1)) {
+#' oob_squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
+oob_squish_infinite <- function(x, range = c(0, 1)) {
   force(range)
   x[x == -Inf] <- range[1]
   x[x == Inf] <- range[2]
   x
 }
+
+#' @rdname oob_squish_infinite
+#' @export
+squish_infinite <- oob_squish_infinite
 
 #' Keep values outside range
 #'
@@ -222,8 +239,8 @@ squish_infinite <- function(x, range = c(0, 1)) {
 #' @param ... unused arguments.
 #' @export
 #' @examples
-#' keep_all(c(-Inf, -1, 0, 1, 2, Inf))
-keep_all <- function(x, ...) {
+#' oob_keep(c(-Inf, -1, 0, 1, 2, Inf))
+oob_keep <- function(x, ...) {
   x
 }
 
