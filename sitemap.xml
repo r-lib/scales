@@ -40,9 +40,6 @@
     <loc>https://scales.r-lib.org//reference/cbreaks.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org//reference/censor.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org//reference/col2hcl.html</loc>
   </url>
   <url>
@@ -65,9 +62,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/dichromat_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/discard.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/div_gradient_pal.html</loc>
@@ -163,6 +157,21 @@
     <loc>https://scales.r-lib.org//reference/number_bytes_format.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org//reference/oob_censor.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/oob_discard.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/oob_keep.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/oob_squish.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org//reference/oob_squish_infinite.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org//reference/probability_trans.html</loc>
   </url>
   <url>
@@ -203,12 +212,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/sqrt_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/squish.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org//reference/squish_infinite.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org//reference/time_trans.html</loc>
