@@ -15,7 +15,13 @@ date/times, a single string of the form "{n} {unit}", e.g. "1 month",
 "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 "month", "year".}
 
-\item{offset}{Use if you don't want breaks to start at zero}
+\item{offset}{Use if you don't want breaks to start at zero, or on a
+conventional date or time boundary such as the 1st of January or midnight.
+Either a number, or for date/times, a single string of the form "{n}
+{unit}", e.g.  "1 month", "5 days". Unit can be of one "sec", "min",
+"hour", "day", "week", "month", "year".  This can be a vector, which will
+accumulate in the order given.  For example, \code{c("3 months", "5 days")} will
+offset by three months and five days, which is useful for the UK tax year.}
 
 \item{n}{number of breaks}
 }

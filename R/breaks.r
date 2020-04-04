@@ -6,7 +6,13 @@
 #'   date/times, a single string of the form "{n} {unit}", e.g. "1 month",
 #'   "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 #'   "month", "year".
-#' @param offset Use if you don't want breaks to start at zero
+#' @param offset Use if you don't want breaks to start at zero, or on a
+#'   conventional date or time boundary such as the 1st of January or midnight.
+#'   Either a number, or for date/times, a single string of the form "{n}
+#'   {unit}", e.g.  "1 month", "5 days". Unit can be of one "sec", "min",
+#'   "hour", "day", "week", "month", "year".  This can be a vector, which will
+#'   accumulate in the order given.  For example, `c("3 months", "5 days")` will
+#'   offset by three months and five days, which is useful for the UK tax year.
 #' @export
 #' @examples
 #' demo_continuous(c(0, 100))
@@ -21,11 +27,41 @@
 #' demo_datetime(one_month, breaks = breaks_width("5 days"))
 #' # This is so useful that scale_x_datetime() has a shorthand:
 #' demo_datetime(one_month, date_breaks = "5 days")
+#'
+#' # Offets are useful for years that begin on dates other than the 1st of
+#' # January, such as the UK financial year, which begins on the 1st of April.
+#' three_years <- as.POSIXct(c("2020-01-01", "2021-01-01", "2022-01-01"))
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = "3 months")
+#' )
+#'
+#' # The offset can be a vector, to create offsets that have compound units,
+#' such as the UK fiscal (tax) year, which begins on the 6th of April.
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = c("3 months", "5 days"))
+#' )
+#'
+#' # Offsets given in a different order can have different results, especially
+#' around the ends of months.
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = c("2 months", "-1 days"))
+#' )
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = c("-1 days", "2 months"))
+#' )
 breaks_width <- function(width, offset = 0) {
   force_all(width, offset)
 
   function(x) {
-    fullseq(x, width) + offset
+    x <- fullseq(x, width)
+    for (i in offset) {
+      x <- offset_by(x, i)
+    }
+    x
   }
 }
 
