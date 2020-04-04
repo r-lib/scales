@@ -20,3 +20,11 @@ Discard any values outside of range
 \examples{
 oob_discard(c(-1, 0.5, 1, 2, NA))
 }
+\seealso{
+Other out of bounds handlers: 
+\code{\link{oob_censor}()},
+\code{\link{oob_keep}()},
+\code{\link{oob_squish_infinite}()},
+\code{\link{oob_squish}()}
+}
+\concept{out of bounds handlers}

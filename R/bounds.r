@@ -163,6 +163,7 @@ rescale_none <- function(x, ...) {
 #' @param only.finite if `TRUE` (the default), will only modify
 #'   finite values.
 #' @export
+#' @family out of bounds handlers
 #' @examples
 #' oob_censor(c(-1, 0.5, 1, 2, NA))
 oob_censor <- function(x, range = c(0, 1), only.finite = TRUE) {
@@ -183,6 +184,7 @@ censor <- oob_censor
 #'
 #' @inheritParams censor
 #' @export
+#' @family out of bounds handlers
 #' @examples
 #' oob_discard(c(-1, 0.5, 1, 2, NA))
 oob_discard <- function(x, range = c(0, 1)) {
@@ -199,6 +201,7 @@ discard <- oob_discard
 #' @author Homer Strong <homer.strong@@gmail.com>
 #' @inheritParams censor
 #' @export
+#' @family out of bounds handlers
 #' @examples
 #' oob_squish(c(-1, 0.5, 1, 2, NA))
 #' oob_squish(c(-1, 0, 0.5, 1, 2))
@@ -220,6 +223,7 @@ squish <- oob_squish
 #' @param x numeric vector of values to manipulate.
 #' @param range numeric vector of length two giving desired output range.
 #' @export
+#' @family out of bounds handlers
 #' @examples
 #' oob_squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
 oob_squish_infinite <- function(x, range = c(0, 1)) {
@@ -238,6 +242,7 @@ squish_infinite <- oob_squish_infinite
 #' @param x numeric vector to keep.
 #' @param ... unused arguments.
 #' @export
+#' @family out of bounds handlers
 #' @examples
 #' oob_keep(c(-Inf, -1, 0, 1, 2, Inf))
 oob_keep <- function(x, ...) {

@@ -17,3 +17,11 @@ Keep values outside range
 \examples{
 oob_keep(c(-Inf, -1, 0, 1, 2, Inf))
 }
+\seealso{
+Other out of bounds handlers: 
+\code{\link{oob_censor}()},
+\code{\link{oob_discard}()},
+\code{\link{oob_squish_infinite}()},
+\code{\link{oob_squish}()}
+}
+\concept{out of bounds handlers}

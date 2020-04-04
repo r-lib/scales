@@ -20,3 +20,11 @@ Squish infinite values to range
 \examples{
 oob_squish_infinite(c(-Inf, -1, 0, 1, 2, Inf))
 }
+\seealso{
+Other out of bounds handlers: 
+\code{\link{oob_censor}()},
+\code{\link{oob_discard}()},
+\code{\link{oob_keep}()},
+\code{\link{oob_squish}()}
+}
+\concept{out of bounds handlers}

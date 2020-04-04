@@ -24,6 +24,14 @@ Squish values into range
 oob_squish(c(-1, 0.5, 1, 2, NA))
 oob_squish(c(-1, 0, 0.5, 1, 2))
 }
+\seealso{
+Other out of bounds handlers: 
+\code{\link{oob_censor}()},
+\code{\link{oob_discard}()},
+\code{\link{oob_keep}()},
+\code{\link{oob_squish_infinite}()}
+}
 \author{
 Homer Strong \href{mailto:homer.strong@gmail.com}{homer.strong@gmail.com}
 }
+\concept{out of bounds handlers}
