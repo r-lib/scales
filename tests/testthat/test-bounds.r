@@ -42,8 +42,8 @@ test_that("zero range inputs return mid range", {
 
 
 test_that("censor and squish ignore infinite values", {
-  expect_equal(squish(c(1, Inf)), c(1, Inf))
-  expect_equal(censor(c(1, Inf)), c(1, Inf))
+  expect_equal(oob_squish(c(1, Inf)), c(1, Inf))
+  expect_equal(oob_censor(c(1, Inf)), c(1, Inf))
 })
 
 test_that("scaling is possible with dates and times", {
@@ -86,6 +86,6 @@ test_that("expand_range respects mul and add values", {
   expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
 })
 
-test_that("keep_all keeps all", {
-  expect_equal(keep_all(c(-Inf, -1, 0, 1, 2, Inf)), c(-Inf, -1, 0, 1, 2, Inf))
+test_that("oob_keep keeps all", {
+  expect_equal(oob_keep(c(-Inf, -1, 0, 1, 2, Inf)), c(-Inf, -1, 0, 1, 2, Inf))
 })
