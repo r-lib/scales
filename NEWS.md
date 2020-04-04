@@ -7,6 +7,11 @@
 
 * `hue_pal()` now correctly inverts color palettes when `direction = -1` 
   (@dpseidel, #252). 
+  
+* New `oob_keep()` to keep data outside range, allowing for zoom-limits when 
+  `oob_keep` is used as `oob` argument in scales. Existing out of bounds 
+  functions have been renamed with the `oob_`-prefix to indicate their role 
+  (@teunbrand, #255).
 
 # scales 1.1.0
 
