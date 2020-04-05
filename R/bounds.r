@@ -205,17 +205,27 @@ discard <- oob_discard
 #' @examples
 #' oob_squish(c(-1, 0.5, 1, 2, NA))
 #' oob_squish(c(-1, 0, 0.5, 1, 2))
-oob_squish <- function(x, range = c(0, 1), only.finite = TRUE) {
+oob_squish_finite <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
+  # The only.finite argument is for backward compatibility with squish(), but
+  # ideally users should choose oob_squish_any if the argument is FALSE
   x[finite & x < range[1]] <- range[1]
   x[finite & x > range[2]] <- range[2]
   x
 }
 
+#' @export
+oob_squish_any <- function(x, range = c(0, 1)) {
+  force(range)
+  x[x < range[1]] <- range[1]
+  x[x > range[2]] <- range[2]
+  x
+}
+
 #' @rdname oob_squish
 #' @export
-squish <- oob_squish
+squish <- oob_squish_finite
 
 
 #' Squish infinite values to range
