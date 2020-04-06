@@ -7,6 +7,8 @@
 offset_by(x, size, ...)
 }
 \arguments{
+\item{x}{numeric, date or datetime vector}
+
 \item{size}{interval size}
 
 \item{...}{other arguments passed on to methods}

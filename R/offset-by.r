@@ -1,6 +1,6 @@
 #' Add a fixed amount to numbers and dates
 #'
-#' @param x
+#' @param x numeric, date or datetime vector
 #' @param size interval size
 #' @param ... other arguments passed on to methods
 #' @keywords internal
