@@ -84,14 +84,13 @@ test_that("out of bounds functions return correct values", {
   x <- c(-Inf, -1, 0.5, 1, 2, NA, Inf)
 
   expect_equal(oob_censor(x), c(-Inf, NA, 0.5, 1, NA, NA, Inf))
-  expect_equal(oob_censor(x, only.finite = FALSE),
-               c(NA, NA, 0.5, 1, NA, NA, NA))
+  expect_equal(oob_censor_any(x), c(NA, NA, 0.5, 1, NA, NA, NA))
   expect_equal(oob_censor(x), censor(x))
 
+  expect_equal(oob_squish(x), c(-Inf, 0, 0.5, 1, 1, NA, Inf))
   expect_equal(oob_squish_any(x), c(0, 0, 0.5, 1, 1, NA, 1))
-  expect_equal(oob_squish_finite(x), c(-Inf, 0, 0.5, 1, 1, NA, Inf))
   expect_equal(oob_squish_infinite(x), c(0, -1, 0.5, 1, 2, NA, 1))
-  expect_equal(oob_squish_finite(x), squish(x))
+  expect_equal(oob_squish(x), squish(x))
 
   expect_equal(oob_discard(x), c(0.5, 1, NA))
   expect_equal(oob_discard(x), discard(x))

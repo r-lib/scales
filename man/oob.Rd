@@ -3,8 +3,9 @@
 \name{oob}
 \alias{oob}
 \alias{oob_censor}
+\alias{oob_censor_any}
 \alias{censor}
-\alias{oob_squish_finite}
+\alias{oob_squish}
 \alias{oob_squish_any}
 \alias{squish}
 \alias{oob_squish_infinite}
@@ -16,13 +17,15 @@
 \usage{
 oob_censor(x, range = c(0, 1), only.finite = TRUE)
 
+oob_censor_any(x, range = c(0, 1))
+
 censor(x, range = c(0, 1), only.finite = TRUE)
 
 oob_discard(x, range = c(0, 1))
 
 discard(x, range = c(0, 1))
 
-oob_squish_finite(x, range = c(0, 1), only.finite = TRUE)
+oob_squish(x, range = c(0, 1), only.finite = TRUE)
 
 oob_squish_any(x, range = c(0, 1))
 
@@ -40,14 +43,14 @@ oob_keep(x, range = c(0, 1))
 \item{range}{A numeric vector of length two giving the minimum and maximum of
 the desired output range respectively.}
 
-\item{only.finite}{A logical of length one, which when \code{TRUE} will only alter
-finite values. When \code{FALSE}, will also alter infinite values.}
+\item{only.finite}{A logical of length one. When \code{TRUE}, only finite values
+are altered. When \code{FALSE}, also infinite values are altered.}
 }
 \value{
 Most \code{oob_()} functions return a vector of numerical values parallel
-to the '\code{x}' argument, wherein out of bounds values have been modified.
-Only \code{oob_discard()} returns a vector of less than or of equal length to
-the '\code{x}' argument.
+to the \code{x} argument, wherein out of bounds values have been modified. Only
+\code{oob_discard()} returns a vector of less than or of equal length to the \code{x}
+argument.
 }
 \description{
 This set of functions modify data values outside a given range.
@@ -55,20 +58,29 @@ This set of functions modify data values outside a given range.
 \details{
 The \verb{oob_*()} functions are designed to be passed as \code{oob} argument
 of ggplot2 continuous and binned scales, with \code{oob_discard()} being an
-exception. The default \code{oob_censor()} will lead to removal of out of bounds
-values. The \verb{oob_squish_*()} functions sets out of bounds values to their
-nearest limit. The \code{oob_keep()} function will result in 'zooming' limits
-without data removal.
+exception. The default, \code{oob_censor()}, will lead to removal of out of
+bounds values. The \code{oob_squish()} function sets out of bounds values to
+their nearest limit. The \code{oob_keep()} function will result in 'zooming'
+limits without data removal.
+
+The \code{oob_censor_any()} and \code{oob_squish_any()} functions are convenience
+wrappers for \code{oob_censor()} and \code{oob_squish()} with the \code{only.finite}
+argument set to \code{FALSE}. These variants also censor or squish infinite
+values.
 }
 \section{Functions}{
 \itemize{
 \item \code{oob_censor}: replaces out of bounds values with \code{NA}s.
 
+\item \code{oob_censor_any}: replaces out of bounds values and infinite values with
+\code{NA}s.
+
 \item \code{oob_discard}: excludes out of bounds values.
 
-\item \code{oob_squish_finite}: replaces finite out of bounds values by the nearest limit.
+\item \code{oob_squish}: replaces out of bounds values with the nearest limit.
 
-\item \code{oob_squish_any}: replaces any out of bounds values by the nearest limit.
+\item \code{oob_squish_any}: replaces out of bounds and infinite values with the nearest
+limit.
 
 \item \code{oob_squish_infinite}: replaces infinite values by the nearest limit.
 
@@ -78,16 +90,17 @@ without data removal.
 \section{Old interface}{
  \code{censor()}, \code{squish()}, \code{squish_infinite()} and
 \code{discard()} are no longer recommended; please use \code{oob_censor()},
-\code{oob_squish_finite()}, \code{oob_squish_infinite()} and \code{oob_discard()} instead.
+\code{oob_squish()}, \code{oob_squish_infinite()} and \code{oob_discard()} instead.
 }
 
 \examples{
 # Censoring replaces out of bounds values with NAs
-oob_censor(c(-1, 0.5, 1, 2, NA))
+oob_censor(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
+oob_censor_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 
 # Squishing replaces out of bounds values with the nearest range limit
+oob_squish(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 oob_squish_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
-oob_squish_finite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 oob_squish_infinite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 
 # Keeping does not alter values
@@ -97,5 +110,5 @@ oob_keep(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 oob_discard(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 }
 \author{
-\code{squish()}: Homer Strong \href{mailto:homer.strong@gmail.com}{homer.strong@gmail.com}
+\code{oob_squish()}: Homer Strong \href{mailto:homer.strong@gmail.com}{homer.strong@gmail.com}
 }

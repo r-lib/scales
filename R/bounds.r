@@ -156,7 +156,7 @@ rescale_none <- function(x, ...) {
 }
 
 #' @name oob
-#' @aliases oob_censor censor oob_squish_finite oob_squish_any squish
+#' @aliases oob_censor oob_censor_any censor oob_squish oob_squish_any squish
 #'   oob_squish_infinite squish_infinite oob_discard discard oob_keep
 #' @title Out of bounds handling
 #' @description This set of functions modify data values outside a given range.
@@ -164,32 +164,38 @@ rescale_none <- function(x, ...) {
 #' @param x A numeric vector of values to modify.
 #' @param range A numeric vector of length two giving the minimum and maximum of
 #'   the desired output range respectively.
-#' @param only.finite A logical of length one, which when `TRUE` will only alter
-#'   finite values. When `FALSE`, will also alter infinite values.
+#' @param only.finite A logical of length one. When `TRUE`, only finite values
+#'   are altered. When `FALSE`, also infinite values are altered.
 #'
 #' @return Most `oob_()` functions return a vector of numerical values parallel
-#'   to the '`x`' argument, wherein out of bounds values have been modified.
-#'   Only `oob_discard()` returns a vector of less than or of equal length to
-#'   the '`x`' argument.
+#'   to the `x` argument, wherein out of bounds values have been modified. Only
+#'   `oob_discard()` returns a vector of less than or of equal length to the `x`
+#'   argument.
 #'
 #' @details The `oob_*()` functions are designed to be passed as `oob` argument
 #'   of ggplot2 continuous and binned scales, with `oob_discard()` being an
-#'   exception. The default `oob_censor()` will lead to removal of out of bounds
-#'   values. The `oob_squish_*()` functions sets out of bounds values to their
-#'   nearest limit. The `oob_keep()` function will result in 'zooming' limits
-#'   without data removal.
+#'   exception. The default, `oob_censor()`, will lead to removal of out of
+#'   bounds values. The `oob_squish()` function sets out of bounds values to
+#'   their nearest limit. The `oob_keep()` function will result in 'zooming'
+#'   limits without data removal.
+#'
+#'   The `oob_censor_any()` and `oob_squish_any()` functions are convenience
+#'   wrappers for `oob_censor()` and `oob_squish()` with the `only.finite`
+#'   argument set to `FALSE`. These variants also censor or squish infinite
+#'   values.
 #'
 #' @section Old interface: `censor()`, `squish()`, `squish_infinite()` and
 #'   `discard()` are no longer recommended; please use `oob_censor()`,
-#'   `oob_squish_finite()`, `oob_squish_infinite()` and `oob_discard()` instead.
+#'   `oob_squish()`, `oob_squish_infinite()` and `oob_discard()` instead.
 #'
 #' @examples
 #' # Censoring replaces out of bounds values with NAs
-#' oob_censor(c(-1, 0.5, 1, 2, NA))
+#' oob_censor(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
+#' oob_censor_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #'
 #' # Squishing replaces out of bounds values with the nearest range limit
+#' oob_squish(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #' oob_squish_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
-#' oob_squish_finite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #' oob_squish_infinite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #'
 #' # Keeping does not alter values
@@ -204,11 +210,16 @@ NULL
 oob_censor <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
-  # Assign NA - this makes sure that, even if all elements are
-  # replaced with NA, it stays numeric (and isn't changed to logical)
   x[finite & x < range[1]] <- NA_real_
   x[finite & x > range[2]] <- NA_real_
   x
+}
+
+#' @export
+#' @describeIn oob replaces out of bounds values and infinite values with
+#'   \code{NA}s.
+oob_censor_any <- function(x, range = c(0, 1)) {
+  oob_censor(x, range = range, only.finite = FALSE)
 }
 
 #' @rdname oob
@@ -226,31 +237,27 @@ oob_discard <- function(x, range = c(0, 1)) {
 #' @export
 discard <- oob_discard
 
-#' @describeIn oob replaces finite out of bounds values by the nearest limit.
-#' @author `squish()`: Homer Strong <homer.strong@@gmail.com>
+#' @describeIn oob replaces out of bounds values with the nearest limit.
+#' @author `oob_squish()`: Homer Strong <homer.strong@@gmail.com>
 #' @export
-oob_squish_finite <- function(x, range = c(0, 1), only.finite = TRUE) {
+oob_squish <- function(x, range = c(0, 1), only.finite = TRUE) {
   force(range)
   finite <- if (only.finite) is.finite(x) else TRUE
-  # The only.finite argument is for backward compatibility with squish(), but
-  # ideally users should choose oob_squish_any if the argument is FALSE
   x[finite & x < range[1]] <- range[1]
   x[finite & x > range[2]] <- range[2]
   x
 }
 
-#' @describeIn oob replaces any out of bounds values by the nearest limit.
+#' @describeIn oob replaces out of bounds and infinite values with the nearest
+#'   limit.
 #' @export
 oob_squish_any <- function(x, range = c(0, 1)) {
-  force(range)
-  x[x < range[1]] <- range[1]
-  x[x > range[2]] <- range[2]
-  x
+  oob_squish(x, range, only.finite = FALSE)
 }
 
 #' @rdname oob
 #' @export
-squish <- oob_squish_finite
+squish <- oob_squish
 
 
 #' @describeIn oob replaces infinite values by the nearest limit.
