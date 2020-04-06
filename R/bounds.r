@@ -268,7 +268,7 @@ squish_infinite <- oob_squish_infinite
 
 #' @describeIn oob does not adjust out of bounds values at all.
 #' @export
-oob_keep <- function(x, ...) {
+oob_keep <- function(x, range = c(0, 1)) {
   x
 }
 

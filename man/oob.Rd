@@ -32,7 +32,7 @@ oob_squish_infinite(x, range = c(0, 1))
 
 squish_infinite(x, range = c(0, 1))
 
-oob_keep(x, ...)
+oob_keep(x, range = c(0, 1))
 }
 \arguments{
 \item{x}{A numeric vector of values to modify.}
