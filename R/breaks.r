@@ -37,14 +37,14 @@
 #' )
 #'
 #' # The offset can be a vector, to create offsets that have compound units,
-#' such as the UK fiscal (tax) year, which begins on the 6th of April.
+#' # such as the UK fiscal (tax) year, which begins on the 6th of April.
 #' demo_datetime(
 #'   three_years,
 #'   breaks = breaks_width("1 year", offset = c("3 months", "5 days"))
 #' )
 #'
 #' # Offsets given in a different order can have different results, especially
-#' around the ends of months.
+#' # around the ends of months.
 #' demo_datetime(
 #'   three_years,
 #'   breaks = breaks_width("1 year", offset = c("2 months", "-1 days"))
