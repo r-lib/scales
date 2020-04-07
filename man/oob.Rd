@@ -5,13 +5,13 @@
 \alias{oob_censor}
 \alias{oob_censor_any}
 \alias{censor}
+\alias{oob_discard}
+\alias{discard}
 \alias{oob_squish}
 \alias{oob_squish_any}
 \alias{squish}
 \alias{oob_squish_infinite}
 \alias{squish_infinite}
-\alias{oob_discard}
-\alias{discard}
 \alias{oob_keep}
 \title{Out of bounds handling}
 \usage{
@@ -40,53 +40,51 @@ oob_keep(x, range = c(0, 1))
 \arguments{
 \item{x}{A numeric vector of values to modify.}
 
-\item{range}{A numeric vector of length two giving the minimum and maximum of
-the desired output range respectively.}
+\item{range}{A numeric vector of length two giving the minimum and maximum
+limit of the desired output range respectively.}
 
 \item{only.finite}{A logical of length one. When \code{TRUE}, only finite values
 are altered. When \code{FALSE}, also infinite values are altered.}
 }
 \value{
-Most \code{oob_()} functions return a vector of numerical values parallel
-to the \code{x} argument, wherein out of bounds values have been modified. Only
-\code{oob_discard()} returns a vector of less than or of equal length to the \code{x}
-argument.
+Most \code{oob_()} functions return a vector of numerical values of the
+same length as the \code{x} argument, wherein out of bounds values have been
+modified. Only \code{oob_discard()} returns a vector of less than or of equal
+length to the \code{x} argument.
 }
 \description{
 This set of functions modify data values outside a given range.
+The \verb{oob_*()} functions are designed to be passed as \code{oob} argument of
+ggplot2 continuous and binned scales, with \code{oob_discard} being an exception.
+
+These functions affect out of bounds values in the following ways:
+\itemize{
+\item \code{oob_censor()} replaces out of bounds values with \code{NA}s. This is the
+default \code{oob} argument for continuous scales.
+\item \code{oob_censor_any()} acts like \code{oob_censor()}, but also replaces infinite
+values with \code{NA}s.
+\item \code{oob_squish()} replaces out of bounds values with the nearest limit. This
+is the default \code{oob} argument for binned scales.
+\item \code{oob_squish_any()} acts like \code{oob_squish()}, but also replaces infinite
+values with the nearest limit.
+\item \code{oob_squish_infinite()} only replaces infinite values by the nearest limit.
+\item \code{oob_keep()} does not adjust out of bounds values. In position scales,
+behaves as zooming limits without data removal.
+\item \code{oob_discard()} removes out of bounds values from the input. Not suitable
+for ggplot2 scales.
+}
 }
 \details{
-The \verb{oob_*()} functions are designed to be passed as \code{oob} argument
-of ggplot2 continuous and binned scales, with \code{oob_discard()} being an
-exception. The default, \code{oob_censor()}, will lead to removal of out of
-bounds values. The \code{oob_squish()} function sets out of bounds values to
-their nearest limit. The \code{oob_keep()} function will result in 'zooming'
-limits without data removal.
+The \code{oob_censor_any()} and \code{oob_squish_any()} functions are the same
+as \code{oob_censor()} and \code{oob_squish()} with the \code{only.finite} argument set to
+\code{FALSE}.
 
-The \code{oob_censor_any()} and \code{oob_squish_any()} functions are convenience
-wrappers for \code{oob_censor()} and \code{oob_squish()} with the \code{only.finite}
-argument set to \code{FALSE}. These variants also censor or squish infinite
-values.
+Replacing position values with \code{NA}s, as \code{oob_censor()} does, will typically
+lead to removal of those datapoints in ggplot.
+
+Setting ggplot coordinate limits is equivalent to using \code{oob_keep()} in
+position scales.
 }
-\section{Functions}{
-\itemize{
-\item \code{oob_censor}: replaces out of bounds values with \code{NA}s.
-
-\item \code{oob_censor_any}: replaces out of bounds values and infinite values with
-\code{NA}s.
-
-\item \code{oob_discard}: excludes out of bounds values.
-
-\item \code{oob_squish}: replaces out of bounds values with the nearest limit.
-
-\item \code{oob_squish_any}: replaces out of bounds and infinite values with the nearest
-limit.
-
-\item \code{oob_squish_infinite}: replaces infinite values by the nearest limit.
-
-\item \code{oob_keep}: does not adjust out of bounds values at all.
-}}
-
 \section{Old interface}{
  \code{censor()}, \code{squish()}, \code{squish_infinite()} and
 \code{discard()} are no longer recommended; please use \code{oob_censor()},
