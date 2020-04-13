@@ -6,14 +6,36 @@
 \alias{scientific}
 \title{Label numbers with scientific notation (e.g. 1e05, 1.5e-02)}
 \usage{
-label_scientific(digits = 3, scale = 1, prefix = "", suffix = "",
-  decimal.mark = ".", trim = TRUE, ...)
+label_scientific(
+  digits = 3,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-scientific_format(digits = 3, scale = 1, prefix = "", suffix = "",
-  decimal.mark = ".", trim = TRUE, ...)
+scientific_format(
+  digits = 3,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-scientific(x, digits = 3, scale = 1, prefix = "", suffix = "",
-  decimal.mark = ".", trim = TRUE, ...)
+scientific(
+  x,
+  digits = 3,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{digits}{Number of digits to show before exponent.}
@@ -61,15 +83,19 @@ demo_continuous(c(1, 10), labels = label_scientific(digits = 3))
 demo_log10(c(1, 1e9))
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()}
 
-Other labels for log scales: \code{\link{label_bytes}},
-  \code{\link{label_number_si}}
+Other labels for log scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_number_si}()}
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}

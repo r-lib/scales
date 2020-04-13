@@ -1,5 +1,9 @@
 url: https://scales.r-lib.org/
 
+template:
+  params:
+    ganalytics: UA-115082821-1
+
 reference:
 - title: Axis labels
   desc: >

@@ -4,8 +4,7 @@
 \alias{viridis_pal}
 \title{Viridis palette}
 \usage{
-viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1,
-  option = "D")
+viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1, option = "D")
 }
 \arguments{
 \item{alpha}{The alpha transparency, a number in [0,1], see argument alpha in
@@ -18,9 +17,10 @@ viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1,
 \item{direction}{Sets the order of colors in the scale. If 1, the default, colors
 are ordered from darkest to lightest. If -1, the order of colors is reversed.}
 
-\item{option}{A character string indicating the colormap option to use. Four
+\item{option}{A character string indicating the colormap option to use. Seven
 options are available: "magma" (or "A"), "inferno" (or "B"), "plasma" (or "C"),
-"viridis" (or "D", the default option) and "cividis" (or "E").}
+"viridis" (or "D", the default option), "cividis" (or "E"), "rocket" (or "F") and
+"mako" (or "G").}
 }
 \description{
 Viridis palette

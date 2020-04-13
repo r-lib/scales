@@ -20,21 +20,21 @@ BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.2)
 Imports: 
-    farver (>= 2.0.0),
+    farver (>= 2.0.3),
     labeling,
+    lifecycle,
     munsell (>= 0.5),
     R6,
     RColorBrewer,
-    viridisLite,
-    lifecycle
+    viridisLite
 Suggests: 
     bit64,
     covr,
     dichromat,
+    ggplot2,
     hms,
-    testthat (>= 2.1.0),
-    ggplot2
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyLoad: yes
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+Roxygen: list(markdown = TRUE, r6 = FALSE)
+RoxygenNote: 7.1.0

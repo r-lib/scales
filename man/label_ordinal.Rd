@@ -9,20 +9,36 @@
 \alias{ordinal}
 \title{Label ordinal numbers (1st, 2nd, 3rd, etc)}
 \usage{
-label_ordinal(prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+label_ordinal(
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 
 ordinal_english()
 
-ordinal_french()
+ordinal_french(gender = c("masculin", "feminin"), plural = FALSE)
 
 ordinal_spanish()
 
-ordinal_format(prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+ordinal_format(
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 
-ordinal(x, prefix = "", suffix = "", big.mark = " ",
-  rules = ordinal_english(), ...)
+ordinal(
+  x,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  rules = ordinal_english(),
+  ...
+)
 }
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after value.}
@@ -33,6 +49,10 @@ ordinal(x, prefix = "", suffix = "", big.mark = " ",
 Name gives suffix, and value specifies which numbers to match.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{gender}{Masculin or feminin gender for French ordinal.}
+
+\item{plural}{Plural or singular for French ordinal.}
 
 \item{x}{A numeric vector to format.}
 }
@@ -74,11 +94,14 @@ demo_continuous(c(1, 10),
 )
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}

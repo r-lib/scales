@@ -8,20 +8,64 @@
 \alias{comma_format}
 \title{Label numbers in decimal format (e.g. 0.12, 1,234)}
 \usage{
-label_number(accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+label_number(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-label_comma(accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
+label_comma(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  digits,
+  ...
+)
 
-comma(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
+comma(
+  x,
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  digits,
+  ...
+)
 
-number_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+number_format(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 
-comma_format(accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE, digits, ...)
+comma_format(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  digits,
+  ...
+)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -85,6 +129,6 @@ demo_continuous(c(0, 1e-6), labels = label_number())
 demo_continuous(c(0, 1e-6), labels = label_number(scale = 1e6))
 
 # You can use prefix and suffix for other types of display
-demo_continuous(c(32, 212), label = label_number(suffix = "\\u00b0F"))
-demo_continuous(c(0, 100), label = label_number(suffix = "\\u00b0C"))
+demo_continuous(c(32, 212), label = label_number(suffix = "\u00b0F"))
+demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
 }
