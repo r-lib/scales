@@ -46,3 +46,23 @@ test_that("breaks_width() works with Date", {
   )
 })
 
+test_that("breaks_width() works with numeric", {
+  numbers <- c(0, 100)
+  expect_equal(
+    breaks_width(50)(numbers),
+    c(0, 50, 100)
+  )
+})
+
+test_that("breaks_width() works with hms", {
+  hours <- hms::hms(hours = 0:1)
+  expect_equal(
+    breaks_width(1800)(hours),
+    hms::hms(minutes = c(0, 30, 60))
+  )
+
+  expect_equal(
+    breaks_width("30 min")(hours),
+    hms::hms(minutes = c(0, 30, 60))
+  )
+})
