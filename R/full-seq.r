@@ -44,6 +44,11 @@ fullseq.POSIXt <- function(range, size, ...) {
   }
 }
 #' @export
-fullseq.hms <- function(range, size, ...) {
-  fullseq.numeric(as.numeric(range), size, ...)
+fullseq.difftime <- function(range, size, ...) {
+  if (is.numeric(size)) {
+    fullseq.numeric(range, size, ...)
+  } else {
+    fullseq.POSIXt(range, size)
+  }
+
 }
