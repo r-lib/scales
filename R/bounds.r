@@ -155,13 +155,13 @@ rescale_none <- function(x, ...) {
   x
 }
 
-#' @title Out of bounds handling
-#' @description This set of functions modify data values outside a given range.
+#' Out of bounds handling
+#'
+#' This set of functions modify data values outside a given range.
 #' The `oob_*()` functions are designed to be passed as `oob` argument of
 #' ggplot2 continuous and binned scales, with `oob_discard` being an exception.
-#'
-#' These functions affect out of bounds values in the following ways:
-#'
+#' \cr\cr These functions affect out of bounds values in the following ways:
+#' \cr
 #' * `oob_censor()` replaces out of bounds values with `NA`s. This is the
 #' default `oob` argument for continuous scales.
 #' * `oob_censor_any()` acts like `oob_censor()`, but also replaces infinite

@@ -56,8 +56,8 @@ length to the \code{x} argument.
 This set of functions modify data values outside a given range.
 The \verb{oob_*()} functions are designed to be passed as \code{oob} argument of
 ggplot2 continuous and binned scales, with \code{oob_discard} being an exception.
-
-These functions affect out of bounds values in the following ways:
+\cr\cr These functions affect out of bounds values in the following ways:
+\cr
 \itemize{
 \item \code{oob_censor()} replaces out of bounds values with \code{NA}s. This is the
 default \code{oob} argument for continuous scales.
