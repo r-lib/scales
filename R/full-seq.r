@@ -44,23 +44,22 @@ fullseq.POSIXt <- function(range, size, ...) {
   }
 }
 #' @export
-fullseq.hms <- function(range, size, ...) {
-  if (!requireNamespace("hms", quietly = TRUE)) {
-    stop("Package hms must be installed for this function to work. Please install it.",
-         call. = FALSE
-    )
-  }
-
+fullseq.difftime <- function(range, size, ...) {
   if (is.numeric(size)) {
     size_seconds <- size
   } else {
     size_seconds <- unit_seconds(size)
   }
 
+  input_units <- units(range)
+
   x <- seq(
-    round_any(as.numeric(range[1]), size_seconds, floor),
-    round_any(as.numeric(range[2]), size_seconds, ceiling),
+    round_any(as.numeric(range[1], units = "secs"), size_seconds, floor),
+    round_any(as.numeric(range[2], units = "secs"), size_seconds, ceiling),
     by = size_seconds
   )
-  hms::as_hms(x)
+
+  x <- as.difftime(x, units = "secs")
+  units(x) <- input_units
+  x
 }

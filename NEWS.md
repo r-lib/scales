@@ -12,6 +12,8 @@
   `oob_keep` is used as `oob` argument in scales. Existing out of bounds 
   functions have been renamed with the `oob_`-prefix to indicate their role 
   (@teunbrand, #255).
+  
+* `breaks_width()` now handles `hms` objects (@bhogan-mitre, #244).
 
 # scales 1.1.0
 

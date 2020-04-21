@@ -58,11 +58,11 @@ test_that("breaks_width() works with hms", {
   hours <- hms::hms(hours = 0:1)
   expect_equal(
     breaks_width(1800)(hours),
-    hms::hms(minutes = c(0, 30, 60))
+    as.difftime(c(0, 1800, 3600), units = "secs")
   )
 
   expect_equal(
     breaks_width("30 min")(hours),
-    hms::hms(minutes = c(0, 30, 60))
+    as.difftime(c(0, 1800, 3600), units = "secs")
   )
 })

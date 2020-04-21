@@ -2,7 +2,7 @@
 
 S3method(fullseq,Date)
 S3method(fullseq,POSIXt)
-S3method(fullseq,hms)
+S3method(fullseq,difftime)
 S3method(fullseq,numeric)
 S3method(lines,trans)
 S3method(plot,trans)
