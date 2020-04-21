@@ -66,3 +66,17 @@ test_that("breaks_width() works with hms", {
     as.difftime(c(0, 1800, 3600), units = "secs")
   )
 })
+
+test_that("breaks_width() works with difftime and preserves units", {
+  hours <- as.difftime(c(0, 1), units = "hours")
+
+  expect_equal(
+    breaks_width(1800)(hours),
+    as.difftime(c(0, 0.5, 1), units = "hours")
+  )
+
+  expect_equal(
+    breaks_width("30 min")(hours),
+    as.difftime(c(0, 0.5, 1), units = "hours")
+  )
+})
