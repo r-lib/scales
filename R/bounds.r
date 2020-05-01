@@ -157,25 +157,26 @@ rescale_none <- function(x, ...) {
 
 #' Out of bounds handling
 #'
+#' @description
 #' This set of functions modify data values outside a given range.
-#' The `oob_*()` functions are designed to be passed as `oob` argument of
+#' The `oob_*()` functions are designed to be passed as the `oob` argument of
 #' ggplot2 continuous and binned scales, with `oob_discard` being an exception.
-#' \cr\cr These functions affect out of bounds values in the following ways:
-#' \cr
+#'
+#' These functions affect out of bounds values in the following ways:
+#'
 #' * `oob_censor()` replaces out of bounds values with `NA`s. This is the
-#' default `oob` argument for continuous scales.
+#'   default `oob` argument for continuous scales.
 #' * `oob_censor_any()` acts like `oob_censor()`, but also replaces infinite
-#' values with `NA`s.
+#'   values with `NA`s.
 #' * `oob_squish()` replaces out of bounds values with the nearest limit. This
-#' is the default `oob` argument for binned scales.
+#'   is the default `oob` argument for binned scales.
 #' * `oob_squish_any()` acts like `oob_squish()`, but also replaces infinite
-#' values with the nearest limit.
+#'   values with the nearest limit.
 #' * `oob_squish_infinite()` only replaces infinite values by the nearest limit.
 #' * `oob_keep()` does not adjust out of bounds values. In position scales,
-#' behaves as zooming limits without data removal.
+#'    behaves as zooming limits without data removal.
 #' * `oob_discard()` removes out of bounds values from the input. Not suitable
-#' for ggplot2 scales.
-#'
+#'    for ggplot2 scales.
 #'
 #' @param x A numeric vector of values to modify.
 #' @param range A numeric vector of length two giving the minimum and maximum
@@ -239,18 +240,10 @@ oob_censor_any <- function(x, range = c(0, 1)) {
 
 #' @rdname oob
 #' @export
-censor <- oob_censor
-
-#' @rdname oob
-#' @export
 oob_discard <- function(x, range = c(0, 1)) {
   force(range)
   x[x >= range[1] & x <= range[2]]
 }
-
-#' @rdname oob
-#' @export
-discard <- oob_discard
 
 #' @rdname oob
 #' @author `oob_squish()`: Homer Strong <homer.strong@@gmail.com>
@@ -271,11 +264,6 @@ oob_squish_any <- function(x, range = c(0, 1)) {
 
 #' @rdname oob
 #' @export
-squish <- oob_squish
-
-
-#' @rdname oob
-#' @export
 oob_squish_infinite <- function(x, range = c(0, 1)) {
   force(range)
   x[x == -Inf] <- range[1]
@@ -285,13 +273,26 @@ oob_squish_infinite <- function(x, range = c(0, 1)) {
 
 #' @rdname oob
 #' @export
-squish_infinite <- oob_squish_infinite
-
-#' @rdname oob
-#' @export
 oob_keep <- function(x, range = c(0, 1)) {
   x
 }
+
+#' @rdname oob
+#' @export
+censor <- oob_censor
+
+#' @rdname oob
+#' @export
+discard <- oob_discard
+
+#' @rdname oob
+#' @export
+squish <- oob_squish
+
+#' @rdname oob
+#' @export
+squish_infinite <- oob_squish_infinite
+
 
 #' Expand a range with a multiplicative or additive constant
 #'

@@ -4,38 +4,38 @@
 \alias{oob}
 \alias{oob_censor}
 \alias{oob_censor_any}
-\alias{censor}
 \alias{oob_discard}
-\alias{discard}
 \alias{oob_squish}
 \alias{oob_squish_any}
-\alias{squish}
 \alias{oob_squish_infinite}
-\alias{squish_infinite}
 \alias{oob_keep}
+\alias{censor}
+\alias{discard}
+\alias{squish}
+\alias{squish_infinite}
 \title{Out of bounds handling}
 \usage{
 oob_censor(x, range = c(0, 1), only.finite = TRUE)
 
 oob_censor_any(x, range = c(0, 1))
 
-censor(x, range = c(0, 1), only.finite = TRUE)
-
 oob_discard(x, range = c(0, 1))
-
-discard(x, range = c(0, 1))
 
 oob_squish(x, range = c(0, 1), only.finite = TRUE)
 
 oob_squish_any(x, range = c(0, 1))
 
-squish(x, range = c(0, 1), only.finite = TRUE)
-
 oob_squish_infinite(x, range = c(0, 1))
 
-squish_infinite(x, range = c(0, 1))
-
 oob_keep(x, range = c(0, 1))
+
+censor(x, range = c(0, 1), only.finite = TRUE)
+
+discard(x, range = c(0, 1))
+
+squish(x, range = c(0, 1), only.finite = TRUE)
+
+squish_infinite(x, range = c(0, 1))
 }
 \arguments{
 \item{x}{A numeric vector of values to modify.}
@@ -54,10 +54,10 @@ length to the \code{x} argument.
 }
 \description{
 This set of functions modify data values outside a given range.
-The \verb{oob_*()} functions are designed to be passed as \code{oob} argument of
+The \verb{oob_*()} functions are designed to be passed as the \code{oob} argument of
 ggplot2 continuous and binned scales, with \code{oob_discard} being an exception.
-\cr\cr These functions affect out of bounds values in the following ways:
-\cr
+
+These functions affect out of bounds values in the following ways:
 \itemize{
 \item \code{oob_censor()} replaces out of bounds values with \code{NA}s. This is the
 default \code{oob} argument for continuous scales.
