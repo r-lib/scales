@@ -151,7 +151,7 @@
 <li><p><code><a href="../reference/label_ordinal.html">ordinal_french()</a></code> gains <code>plural</code> and <code>gender</code> arguments (<a href='https://github.com/stephLH'>@stephLH</a>, <a href='https://github.com/r-lib/scales/issues/256'>#256</a>).</p></li>
 <li><p>Internal <code>precision()</code>, used when <code>accuracy = NULL</code> now does a better job when duplicate values are present (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/251'>#251</a>).</p></li>
 <li><p><code><a href="../reference/hue_pal.html">hue_pal()</a></code> now correctly inverts color palettes when <code>direction = -1</code> (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/252'>#252</a>).</p></li>
-<li><p>New <code><a href="../reference/oob_keep.html">oob_keep()</a></code> to keep data outside range, allowing for zoom-limits when <code>oob_keep</code> is used as <code>oob</code> argument in scales. Existing out of bounds functions have been renamed with the <code>oob_</code>-prefix to indicate their role (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/255'>#255</a>).</p></li>
+<li><p>New <code><a href="../reference/oob.html">oob_keep()</a></code> to keep data outside range, allowing for zoom-limits when <code>oob_keep</code> is used as <code>oob</code> argument in scales. Existing out of bounds functions have been renamed with the <code>oob_</code>-prefix to indicate their role (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/255'>#255</a>).</p></li>
 </ul>
 </div>
     <div id="scales-110" class="section level1">
@@ -168,20 +168,20 @@
 <ul>
 <li><p>All label functions preserve names (<a href='https://github.com/r-lib/scales/issues/202'>#202</a>) and keep <code>NA</code>s as <code>NA</code>s instead of trying to convert to <code>"NA"</code> (<a href='https://github.com/clauswilke'>@clauswilke</a>, <a href='https://github.com/r-lib/scales/issues/187'>#187</a>).</p></li>
 <li>
-<p>New <code><a href="../reference/label_bytes.html">label_bytes()</a></code> replaces <code><a href="../reference/number_bytes_format.html">number_bytes_format()</a></code> with a more convenient interface. It takes a single <code>unit</code> argument which can either be an SI unit (e.g.Â âkBâ), a binary unit (e.g.Â âkIBâ), or an automatic unit (either âauto_siâ or âauto_binaryâ).</p>
-<p>It always uses âBâ as the symbol for bytes (<a href='https://github.com/r-lib/scales/issues/174'>#174</a>), and checks that <code>units</code> are valid. Additionally, auto units are now used to determine the symbol separately for each value (<a href='https://github.com/mikmart'>@mikmart</a>):</p>
+<p>New <code><a href="../reference/label_bytes.html">label_bytes()</a></code> replaces <code><a href="../reference/number_bytes_format.html">number_bytes_format()</a></code> with a more convenient interface. It takes a single <code>unit</code> argument which can either be an SI unit (e.g. “kB”), a binary unit (e.g. “kIB”), or an automatic unit (either “auto_si” or “auto_binary”).</p>
+<p>It always uses “B” as the symbol for bytes (<a href='https://github.com/r-lib/scales/issues/174'>#174</a>), and checks that <code>units</code> are valid. Additionally, auto units are now used to determine the symbol separately for each value (<a href='https://github.com/mikmart'>@mikmart</a>):</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="../reference/label_bytes.html">label_bytes</a></span>(<span class="st">"auto_binary"</span>)(<span class="fl">1024</span>^(<span class="fl">1</span>:<span class="fl">3</span>))
 <span class="co">#&gt; [1] "1 kiB" "1 MiB" "1 GiB"</span></pre></div>
 </li>
 <li><p>New <code><a href="../reference/label_date.html">label_date_short()</a></code> creates labels for a date axis that only show the components of the date that have changed since the previous label. For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, <code><a href="../reference/label_date.html">label_date_short()</a></code> will use labels Jan 10, 20, 30, Feb 1 (<a href='https://github.com/r-lib/scales/issues/209'>#209</a>).</p></li>
 <li><p><code><a href="../reference/label_dollar.html">label_dollar()</a></code> now correctly formats negative numbers as (e.g.) -$200 (<a href='https://github.com/r-lib/scales/issues/216'>#216</a>).</p></li>
-<li><p><code><a href="../reference/label_parse.html">label_math()</a></code> now returns an expression vector, and doesnât coerce inputs to names.</p></li>
+<li><p><code><a href="../reference/label_parse.html">label_math()</a></code> now returns an expression vector, and doesn’t coerce inputs to names.</p></li>
 <li><p><code><a href="../reference/label_number.html">label_number()</a></code> takes <code>scale</code> into account when computing <code>accuracy</code>, if not supplied. This means that <code><a href="../reference/label_percent.html">label_percent()</a></code> should have better default accuracy in many cases (<a href='https://github.com/r-lib/scales/issues/192'>#192</a>).</p></li>
 <li><p><code><a href="../reference/label_number.html">label_number()</a></code> now picks the accuracy automatically by default. The underlying heuristic has been improved to use the distance between adjacent breaks (rather than the total range of the break).</p></li>
 <li><p>New <code><a href="../reference/label_number_auto.html">label_number_auto()</a></code> automatically picks between <code><a href="../reference/label_number.html">number_format()</a></code> and <code><a href="../reference/label_scientific.html">scientific_format()</a></code> based on the range of the input. It should produce nice output over a very wide range of inputs (<a href='https://github.com/paleolimbot'>@paleolimbot</a>, <a href='https://github.com/r-lib/scales/issues/208'>#208</a>).</p></li>
-<li><p>New <code><a href="../reference/label_number_si.html">label_number_si()</a></code> formats numeric vectors with limited SI units. Individual values are scaled and labelled with abbreviations âKâ, âMâ, âBâ, or âTâ dependent on magnitude (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/83'>#83</a>).</p></li>
+<li><p>New <code><a href="../reference/label_number_si.html">label_number_si()</a></code> formats numeric vectors with limited SI units. Individual values are scaled and labelled with abbreviations “K”, “M”, “B”, or “T” dependent on magnitude (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/83'>#83</a>).</p></li>
 <li><p><code><a href="../reference/label_parse.html">label_parse()</a></code> now generates an expression object that can be used to display formatted labels in ggplot2 (<a href='https://github.com/agila5'>@agila5</a>, <a href='https://github.com/r-lib/scales/issues/203'>#203</a>).</p></li>
-<li><p><code><a href="../reference/label_pvalue.html">label_pvalue()</a></code> now reports values close to 1 (as determined by <code>accuracy</code>) as (e.g.) â&gt;0.99â. You can control the prefixes used with the new <code>prefix</code> argument (<a href='https://github.com/r-lib/scales/issues/213'>#213</a>).</p></li>
+<li><p><code><a href="../reference/label_pvalue.html">label_pvalue()</a></code> now reports values close to 1 (as determined by <code>accuracy</code>) as (e.g.) “&gt;0.99”. You can control the prefixes used with the new <code>prefix</code> argument (<a href='https://github.com/r-lib/scales/issues/213'>#213</a>).</p></li>
 </ul>
 </div>
 <div id="breaks" class="section level2">
@@ -198,7 +198,7 @@
 <a href="#transformations" class="anchor"></a>Transformations</h2>
 <ul>
 <li><p>New <code><a href="../reference/yj_trans.html">yj_trans()</a></code> implements the Yeo-Johnson transformation (<a href='https://github.com/zamorarr'>@zamorarr</a>, <a href='https://github.com/r-lib/scales/issues/196'>#196</a>)</p></li>
-<li><p><code>trans</code> objects gets methods for <code><a href="https://rdrr.io/r/graphics/plot.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, and all numeric transformations get an example showing the transformation.</p></li>
+<li><p><code>trans</code> objects gets methods for <code><a href="https://rdrr.io/r/base/plot.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, and all numeric transformations get an example showing the transformation.</p></li>
 <li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> no longer throws an error when given NA values (<a href='https://github.com/sflippl'>@sflippl</a>, <a href='https://github.com/r-lib/scales/issues/181'>#181</a>).</p></li>
 </ul>
 </div>
@@ -210,7 +210,7 @@
 <li><p><code><a href="../reference/alpha.html">alpha()</a></code> now preserves element names (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-lib/scales/issues/195'>#195</a>)</p></li>
 <li><p><code>ContinuousRange</code> and <code>DiscreteRange</code> methods now properly inherit and are fully mutable (<a href='https://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now support viridis colors. Just pass a palette name (<code>"magma"</code>, <code>"inferno"</code>, <code>"plasma"</code>, or <code>"viridis"</code>) as the <code>palette</code> argument (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
-<li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now have a <code>reverse</code> parameter, to apply color palettes in the opposite of their usual order (i.e.Â high-to-low instead of low-to-high) (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
+<li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now have a <code>reverse</code> parameter, to apply color palettes in the opposite of their usual order (i.e. high-to-low instead of low-to-high) (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_bin()</a></code> and <code><a href="../reference/col_numeric.html">col_quantile()</a></code> now take a <code>right</code> argument, which is passed to <code><a href="https://rdrr.io/r/base/cut.html">base::cut()</a></code>; it indicates whether the bin/quantile intervals should be closed on the right (and open on the left), or vice versa (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_factor()</a></code> now tries to avoid interpolating qualitative RColorBrewer palettes. Instead, it attempts to assign a palette color to each factor level. Interpolation will still be used if there are more factor levels than available colors, and a warning will be emitted in that case (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/dichromat_pal.html">dichromat_pal()</a></code> documentation now builds without requiring suggested <code>dichromat</code> package to be installed (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/172'>#172</a>).</p></li>
@@ -372,7 +372,7 @@
 <li><p><code><a href="../reference/shape_pal.html">shape_pal()</a></code> warns if asked for more than 6 values. (Fixes <a href='https://github.com/r-lib/scales/issues/16'>#16</a>, thanks to Jean-Olivier Irisson).</p></li>
 <li><p><code><a href="../reference/time_trans.html">time_trans()</a></code> gains an optional argument <code>tz</code> to specify the time zone to use for the times. If not specified, it will be guess from the first input with a non-null time zone.</p></li>
 <li><p><code><a href="../reference/date_trans.html">date_trans()</a></code> and <code><a href="../reference/time_trans.html">time_trans()</a></code> now check that their inputs are of the correct type. This prevents ggplot2 scales from silently giving incorrect outputs when given incorrect inputs.</p></li>
-<li><p>Change the default breaks algorithm for <code><a href="../reference/cbreaks.html">cbreaks()</a></code> and <code><a href="../reference/trans_new.html">trans_new()</a></code>. Previously it was <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>, and now itâs <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code>, which uses the <code>extended()</code> algorithm from the labeling package.</p></li>
+<li><p>Change the default breaks algorithm for <code><a href="../reference/cbreaks.html">cbreaks()</a></code> and <code><a href="../reference/trans_new.html">trans_new()</a></code>. Previously it was <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>, and now it’s <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code>, which uses the <code>extended()</code> algorithm from the labeling package.</p></li>
 <li><p>fixed namespace problem with <code><a href="../reference/fullseq.html">fullseq()</a></code>.</p></li>
 </ul>
 </div>
@@ -381,11 +381,11 @@
 <a href="#scales-021" class="anchor"></a>scales 0.2.1<small> 2012-05-08 </small>
 </h1>
 <ul>
-<li><p><code>suppressWarnings</code> from <code><a href="../reference/train_continuous.html">train_continuous()</a></code> so zero-row or all infinite data frames donât potentially cause problems.</p></li>
+<li><p><code>suppressWarnings</code> from <code><a href="../reference/train_continuous.html">train_continuous()</a></code> so zero-row or all infinite data frames don’t potentially cause problems.</p></li>
 <li><p>check for zero-length colour in <code><a href="../reference/gradient_n_pal.html">gradient_n_pal()</a></code>.</p></li>
-<li><p>added <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> which implements an extension to Wilkinsonâs labelling approach, as implemented in the <code>labeling</code> package. This should generally produce nicer breaks than <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>.</p></li>
+<li><p>added <code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> which implements an extension to Wilkinson’s labelling approach, as implemented in the <code>labeling</code> package. This should generally produce nicer breaks than <code><a href="../reference/breaks_pretty.html">pretty_breaks()</a></code>.</p></li>
 <li><p><code><a href="../reference/alpha.html">alpha()</a></code> can now preserve existing alpha values if <code><a href="../reference/alpha.html">alpha()</a></code> is missing.</p></li>
-<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> always gives breaks evenly spaced on the log scale, never evenly spaced on the data scale. This will result in really bad breaks for some ranges (e.g 0.5-0.6), but you probably shouldnât be using log scales in that situation anyway.</p></li>
+<li><p><code><a href="../reference/breaks_log.html">log_breaks()</a></code> always gives breaks evenly spaced on the log scale, never evenly spaced on the data scale. This will result in really bad breaks for some ranges (e.g 0.5-0.6), but you probably shouldn’t be using log scales in that situation anyway.</p></li>
 </ul>
 </div>
     <div id="scales-020" class="section level1">
@@ -393,8 +393,8 @@
 <a href="#scales-020" class="anchor"></a>scales 0.2.0<small> 2012-02-27 </small>
 </h1>
 <ul>
-<li><p><code><a href="../reference/oob_censor.html">censor()</a></code> and <code><a href="../reference/oob_squish.html">squish()</a></code> gain <code>only.finite</code> argument and default to operating only on finite values. This is needed for ggplot2, and reflects the use of Inf and -Inf as special values.</p></li>
-<li><p><code>bounds</code> functions now <code>force</code> evaluation of range to avoid bug with S3 method dispatch inside primitive functions (e.g.Â <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code>).</p></li>
+<li><p><code><a href="../reference/oob.html">censor()</a></code> and <code><a href="../reference/oob.html">squish()</a></code> gain <code>only.finite</code> argument and default to operating only on finite values. This is needed for ggplot2, and reflects the use of Inf and -Inf as special values.</p></li>
+<li><p><code>bounds</code> functions now <code>force</code> evaluation of range to avoid bug with S3 method dispatch inside primitive functions (e.g. <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code>).</p></li>
 <li><p>Simplified algorithm for <code>discrete_range()</code> that is robust to <code>stringsAsFactors</code> global option. Now, the order of a factor will only be preserved if the full factor is the first object seen, and all subsequent inputs are subsets of the levels of the original factor.</p></li>
 <li><p><code><a href="../reference/label_scientific.html">scientific()</a></code> ensures output is always in scientific format and off the specified number of significant digits. <code><a href="../reference/label_number.html">comma()</a></code> ensures output is never in scientific format (Fixes <a href='https://github.com/r-lib/scales/issues/7'>#7</a>).</p></li>
 <li><p>Another tweak to <code><a href="../reference/zero_range.html">zero_range()</a></code> to better detect when a range has zero length (Fixes <a href='https://github.com/r-lib/scales/issues/6'>#6</a>).</p></li>
@@ -417,7 +417,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
