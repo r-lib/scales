@@ -7,8 +7,8 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
-[![Travis build
-status](https://travis-ci.org/r-lib/scales.svg?branch=master)](https://travis-ci.org/r-lib/scales)
+[![R build
+status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=master)
 <!-- badges: end -->
