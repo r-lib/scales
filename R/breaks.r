@@ -21,6 +21,12 @@
 #' demo_datetime(one_month, breaks = breaks_width("5 days"))
 #' # This is so useful that scale_x_datetime() has a shorthand:
 #' demo_datetime(one_month, date_breaks = "5 days")
+#'
+#' # hms times also work
+#' one_hour <- hms::hms(hours = 0:1)
+#' demo_time(one_hour)
+#' demo_time(one_hour, breaks = breaks_width("15 min"))
+#' demo_time(one_hour, breaks = breaks_width("600 sec"))
 breaks_width <- function(width, offset = 0) {
   force_all(width, offset)
 
