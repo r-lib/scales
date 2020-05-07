@@ -3,16 +3,19 @@
 #' Useful for numeric, date, and date-time scales.
 #'
 #' @param width Distance between each break. Either a number, or for
-#'   date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+#'   date/times, a single string of the form `"{n} {unit}"`, e.g. "1 month",
 #'   "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 #'   "month", "year".
 #' @param offset Use if you don't want breaks to start at zero, or on a
 #'   conventional date or time boundary such as the 1st of January or midnight.
-#'   Either a number, or for date/times, a single string of the form "{n}
-#'   {unit}", e.g.  "1 month", "5 days". Unit can be of one "sec", "min",
-#'   "hour", "day", "week", "month", "year".  This can be a vector, which will
-#'   accumulate in the order given.  For example, `c("3 months", "5 days")` will
+#'   Either a number, or for date/times, a single string of the form
+#'   `"{n} {unit}"`, as for `width`.
+#'
+#'   `offset` can be a vector, which will accumulate in the order given. This
+#'   is mostly useful for dates, where e.g. `c("3 months", "5 days")` will
 #'   offset by three months and five days, which is useful for the UK tax year.
+#'   Note that due to way that dates are rounded, there's no guarantee that
+#'   `offset = c(x, y)` will give the same result as `offset = c(y, x)`.
 #' @export
 #' @examples
 #' demo_continuous(c(0, 100))
@@ -41,17 +44,6 @@
 #' demo_datetime(
 #'   three_years,
 #'   breaks = breaks_width("1 year", offset = c("3 months", "5 days"))
-#' )
-#'
-#' # Offsets given in a different order can have different results, especially
-#' # around the ends of months.
-#' demo_datetime(
-#'   three_years,
-#'   breaks = breaks_width("1 year", offset = c("2 months", "-1 days"))
-#' )
-#' demo_datetime(
-#'   three_years,
-#'   breaks = breaks_width("1 year", offset = c("-1 days", "2 months"))
 #' )
 breaks_width <- function(width, offset = 0) {
   force_all(width, offset)
