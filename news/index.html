@@ -149,7 +149,7 @@
 </h1>
 <ul>
 <li><p><code><a href="../reference/label_ordinal.html">ordinal_french()</a></code> gains <code>plural</code> and <code>gender</code> arguments (<a href='https://github.com/stephLH'>@stephLH</a>, <a href='https://github.com/r-lib/scales/issues/256'>#256</a>).</p></li>
-<li><p>Internal <code>precision()</code>, used when <code>accuracy = NULL</code> now does a better job when duplicate values are present (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/251'>#251</a>).</p></li>
+<li><p>Internal <code>precision()</code>, used when <code>accuracy = NULL</code> now does a better job when duplicate values are present (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/251'>#251</a>). It also does a better job when there’s a mix of finite and non-finite values (<a href='https://github.com/r-lib/scales/issues/257'>#257</a>).</p></li>
 <li><p><code><a href="../reference/hue_pal.html">hue_pal()</a></code> now correctly inverts color palettes when <code>direction = -1</code> (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/252'>#252</a>).</p></li>
 <li><p>New <code><a href="../reference/oob.html">oob_keep()</a></code> to keep data outside range, allowing for zoom-limits when <code>oob_keep</code> is used as <code>oob</code> argument in scales. Existing out of bounds functions have been renamed with the <code>oob_</code>-prefix to indicate their role (<a href='https://github.com/teunbrand'>@teunbrand</a>, <a href='https://github.com/r-lib/scales/issues/255'>#255</a>).</p></li>
 </ul>
