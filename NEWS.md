@@ -3,7 +3,8 @@
 * `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
 
 * Internal `precision()`, used when `accuracy = NULL` now does a better
-  job when duplicate values are present (@teunbrand, #251).
+  job when duplicate values are present (@teunbrand, #251). It also does a 
+  better job when there's a mix of finite and non-finite values (#257).
 
 * `hue_pal()` now correctly inverts color palettes when `direction = -1`
   (@dpseidel, #252).

@@ -13,8 +13,8 @@ test_that("time_format works correctly", {
   na_time <- ISOdatetime(NA, 1, 1, 1, 1, 0) # time of value NA
 
   expect_equal(time_format()(a_time), "11:30:00")
-  expect_equal(time_format()(hms::as.hms(a_time, tz = "UTC")), "11:30:00")
-  expect_equal(time_format(format = "%H")(hms::as.hms(a_time, tz = "UTC")), "11")
+  expect_equal(time_format()(hms::as_hms(a_time)), "11:30:00")
+  expect_equal(time_format(format = "%H")(hms::as_hms(a_time)), "11")
   expect_equal(time_format()(na_time), NA_character_)
 })
 
