@@ -21,18 +21,6 @@ test_that("train_continuous strips attributes", {
   expect_equal(train_continuous(x), c(1, 5))
 })
 
-test_that("train_continuous changes class to the class of `existing` when not NULL.", {
-  my_date <- as.POSIXct("2018-01-01")
-  expect_equal(
-    train_continuous(my_date, existing = 1),
-    c(1, my_date)
-  )
-  expect_equal(
-    train_continuous(1, existing = my_date),
-    c(as.POSIXct(1, origin = "1970-01-01"), my_date)
-  )
-})
-
 test_that("train_continuous with new=NULL maintains existing range.", {
   expect_equal(
     train_continuous(NULL, existing = c(1, 5)),
