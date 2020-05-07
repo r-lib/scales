@@ -74,16 +74,26 @@ alpha <- function(colour, alpha = NA) {
 #'
 #' A quick and dirty way to show colours in a plot.
 #'
-#' @param colours a character vector of colours
-#' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
-#' @param borders colour of the borders of the tiles; matches the `border` argument of [graphics::rect()]. The default means `par("fg")`. Use `border = NA` to omit borders.
-#' @param cex_label size of printed labels, works the same as \code{cex} parameter of \code{plot()}
+#' @param colours A character vector of colours
+#' @param labels Label each colour with its hex name?
+#' @param borders Border colour for each tile. Default uses `par("fg")`.
+#'    Use `border = NA` to omit borders.
+#' @param cex_label Size of printed labels, as multiplier of default size.
+#' @param ncol Number of columns. If not supplied, tries to be as square as
+#'   possible.
 #' @export
 #' @importFrom graphics par plot rect text
 #' @keywords internal
-show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1) {
+#' @examples
+#' show_col(hue_pal()(9))
+#' show_col(hue_pal()(9), borders = NA)
+#'
+#' show_col(viridis_pal()(16))
+#' show_col(viridis_pal()(16), labels = FALSE)
+show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
+                     ncol = NULL) {
   n <- length(colours)
-  ncol <- ceiling(sqrt(n))
+  ncol <- ncol %||% ceiling(sqrt(length(colours)))
   nrow <- ceiling(n / ncol)
 
   colours <- c(colours, rep(NA, nrow * ncol - length(colours)))
