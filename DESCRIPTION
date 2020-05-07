@@ -32,7 +32,7 @@ Suggests:
     covr,
     dichromat,
     ggplot2,
-    hms,
+    hms (>= 0.5.0),
     testthat (>= 2.1.0)
 Encoding: UTF-8
 LazyLoad: yes

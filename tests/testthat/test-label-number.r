@@ -91,3 +91,8 @@ test_that("precision handles duplicate values", {
   expect_equal(precision(c(0, 0, 0.025)), 0.001)
   expect_equal(precision(c(Inf, 0.1, 0.2, Inf)), 0.01)
 })
+
+test_that("precision ignores Inf and NA", {
+  expect_equal(precision(c(NA, Inf, -Inf)), 1)
+  expect_equal(precision(c(1, NA)), 1)
+})

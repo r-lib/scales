@@ -71,7 +71,7 @@ hms_trans <- function() {
     transform = function(x) {
       structure(as.numeric(x), names = names(x))
     },
-    inverse = hms::as.hms,
+    inverse = hms::as_hms,
     breaks = time_breaks()
   )
 }
@@ -98,6 +98,6 @@ time_breaks <- function(n = 5) {
       Q = c(1, 2, 1.5, 4, 3),
       only.loose = FALSE
     )
-    hms::as.hms(breaks * scale)
+    hms::as_hms(breaks * scale)
   }
 }
