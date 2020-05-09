@@ -3,10 +3,8 @@ offset_by <- function(x, size) {
 }
 
 #' @export
-  fun <- function(x)  seq(x, length.out = 2, by = size)[2]
-  out <- lapply(x, fun)
-  do.call(c, out)
 offset_by.numeric <- function(x, size) {
+  x + size
 }
 
 #' @export
