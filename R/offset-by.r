@@ -26,3 +26,22 @@ offset_by.POSIXt <- function(x, size) {
   out <- lapply(x, fun)
   do.call(c, out)
 }
+
+#' @export
+offset_by.difftime <- function(x, size) {
+  if (is.numeric(size)) {
+    size_seconds <- size
+  } else {
+    size_seconds <- unit_seconds(size)
+  }
+
+  input_units <- units(x)
+  x <- as.numeric(x, units = "secs")
+
+  x <- x + size_seconds
+
+  x <- as.difftime(x, units = "secs")
+  units(x) <- input_units
+
+  x
+}
