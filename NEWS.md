@@ -1,21 +1,23 @@
 # scales (development version)
 
-* `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
+* `breaks_width()` now supports units like `"3 months"` in the `offset`
+  argument.
 
-* Internal `precision()`, used when `accuracy = NULL` now does a better
-  job when duplicate values are present (@teunbrand, #251). It also does a 
-  better job when there's a mix of finite and non-finite values (#257).
+* `breaks_width()` now handles `difftime`/`hms` objects (@bhogan-mitre, #244).
 
 * `hue_pal()` now correctly inverts color palettes when `direction = -1` 
   (@dpseidel, #252). 
-  
+
+* Internal `precision()`, used when `accuracy = NULL`, now does a better
+  job when duplicate values are present (@teunbrand, #251). It also does a 
+  better job when there's a mix of finite and non-finite values (#257).
+
 * New `oob_keep()` to keep data outside range, allowing for zoom-limits when 
   `oob_keep` is used as `oob` argument in scales. Existing out of bounds 
   functions have been renamed with the `oob_`-prefix to indicate their role 
   (@teunbrand, #255).
 
-* `breaks_width()` now supports units like `"3 months"` in the `offset`
-  argument.
+* `ordinal_french()` gains `plural` and `gender` arguments (@stephLH, #256).
 
 # scales 1.1.0
 

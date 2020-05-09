@@ -31,6 +31,12 @@
 #' # This is so useful that scale_x_datetime() has a shorthand:
 #' demo_datetime(one_month, date_breaks = "5 days")
 #'
+#' # hms times also work
+#' one_hour <- hms::hms(hours = 0:1)
+#' demo_time(one_hour)
+#' demo_time(one_hour, breaks = breaks_width("15 min"))
+#' demo_time(one_hour, breaks = breaks_width("600 sec"))
+#'
 #' # Offets are useful for years that begin on dates other than the 1st of
 #' # January, such as the UK financial year, which begins on the 1st of April.
 #' three_years <- as.POSIXct(c("2020-01-01", "2021-01-01", "2022-01-01"))

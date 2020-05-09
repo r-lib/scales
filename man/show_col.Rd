@@ -4,18 +4,29 @@
 \alias{show_col}
 \title{Show colours}
 \usage{
-show_col(colours, labels = TRUE, borders = NULL, cex_label = 1)
+show_col(colours, labels = TRUE, borders = NULL, cex_label = 1, ncol = NULL)
 }
 \arguments{
-\item{colours}{a character vector of colours}
+\item{colours}{A character vector of colours}
 
-\item{labels}{boolean, whether to show the hexadecimal representation of the colours in each tile}
+\item{labels}{Label each colour with its hex name?}
 
-\item{borders}{colour of the borders of the tiles; matches the \code{border} argument of \code{\link[graphics:rect]{graphics::rect()}}. The default means \code{par("fg")}. Use \code{border = NA} to omit borders.}
+\item{borders}{Border colour for each tile. Default uses \code{par("fg")}.
+Use \code{border = NA} to omit borders.}
 
-\item{cex_label}{size of printed labels, works the same as \code{cex} parameter of \code{plot()}}
+\item{cex_label}{Size of printed labels, as multiplier of default size.}
+
+\item{ncol}{Number of columns. If not supplied, tries to be as square as
+possible.}
 }
 \description{
 A quick and dirty way to show colours in a plot.
+}
+\examples{
+show_col(hue_pal()(9))
+show_col(hue_pal()(9), borders = NA)
+
+show_col(viridis_pal()(16))
+show_col(viridis_pal()(16), labels = FALSE)
 }
 \keyword{internal}

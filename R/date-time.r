@@ -46,15 +46,19 @@ ceiling_date <- function(date, time) {
 }
 
 ceiling_time <- function(date, time) {
-  prec <- parse_unit_spec(time)
+  date <- date + unit_seconds(time)
 
-  up <- c(
+  floor_time(date, time)
+}
+
+unit_seconds <- function(unitspec) {
+  prec <- parse_unit_spec(unitspec)
+
+  unit_in_seconds <- c(
     "sec" = 1, "min" = 60, "hour" = 3600,
     c("day" = 1, "week" = 7, "month" = 31, "year" = 365) * 3600 * 24
   )
-  date <- date + prec$mult * up[prec$unit]
-
-  floor_time(date, time)
+  prec$mult * unit_in_seconds[prec$unit]
 }
 
 parse_unit_spec <- function(unitspec) {
