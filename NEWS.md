@@ -1,4 +1,4 @@
-# scales (development version)
+# scales 1.1.1
 
 * `breaks_width()` now handles `difftime`/`hms` objects (@bhogan-mitre, #244).
 
