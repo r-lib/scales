@@ -22,7 +22,7 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
   force_all(accuracy, ...)
 
   function(x) {
-    breaks <- c(0, 10^c(K = 3, M = 6, B = 9, T = 12))
+    breaks <- c(0, 10^c(k = 3, M = 6, G = 9, T = 12, P = 15, E = 18, Z = 21, Y = 24))
 
     n_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
