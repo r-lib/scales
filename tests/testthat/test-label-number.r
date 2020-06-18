@@ -22,6 +22,14 @@ test_that("number format works correctly", {
   )
   expect_equal(number(c(1, 23)), c("1", "23"))
   expect_equal(number(c(1, 23), trim = FALSE), c(" 1", "23"))
+  expect_equal(
+    number(c(-1, 1), accuracy = 1, prefix = function(.) if (. > 0) "+" else ""),
+    c("-1", "+1")
+  )
+  expect_equal(
+    number(c(-1, 1), accuracy = 1, suffix = function(.) if (. > 0) "^" else "_"),
+    c("-1_", "1^")
+  )
 })
 
 test_that("number_format works with Inf", {

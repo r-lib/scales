@@ -14,6 +14,7 @@ label_percent(
   big.mark = " ",
   decimal.mark = ".",
   trim = TRUE,
+  plus = FALSE,
   ...
 )
 
@@ -25,6 +26,7 @@ percent_format(
   big.mark = " ",
   decimal.mark = ".",
   trim = TRUE,
+  plus = FALSE,
   ...
 )
 
@@ -37,6 +39,7 @@ percent(
   big.mark = " ",
   decimal.mark = ".",
   trim = TRUE,
+  plus = FALSE,
   ...
 )
 }
@@ -52,31 +55,35 @@ Applied to rescaled data.}
 formating. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{prefix}{Symbols to display before and after value or a function
+returning symbols.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{suffix}{Symbols to display before and after value or a function
+returning symbols.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
-\item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+\item{decimal.mark}{The character to be used to indicate the numeric decimal
+point.}
 
-\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
-width (see \code{\link[base:format]{base::format()}}).}
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common width
+(see \code{\link[base:format]{base::format()}}).}
+
+\item{plus}{logical; if \link{TRUE}, a plus symbol is prefixed to the percentage}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{A numeric vector to format.}
 }
 \value{
-All \code{label_()} functions return a "labelling" function, i.e. a function that
-takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
-label for each input value.
+All \code{label_()} functions return a "labelling" function, i.e. a
+function that takes a vector \code{x} and returns a character vector of
+\code{length(x)} giving a label for each input value.
 
 Labelling functions are designed to be used with the \code{labels} argument of
-ggplot2 scales. The examples demonstrate their use with x scales, but
-they work similarly for all scales, including those that generate legends
-rather than axes.
+ggplot2 scales. The examples demonstrate their use with x scales, but they
+work similarly for all scales, including those that generate legends rather
+than axes.
 }
 \description{
 Label percentages (2.5\%, 50\%, etc)
@@ -97,6 +104,10 @@ french_percent <- label_percent(
   suffix = " \%"
 )
 demo_continuous(c(0, .01), labels = french_percent)
+
+# Put plus signs on positive values
+demo_continuous(c(-.50, .50), labels = label_percent())
+demo_continuous(c(-.50, .50), labels = label_percent(plus = TRUE))
 }
 \seealso{
 Other labels for continuous scales: 

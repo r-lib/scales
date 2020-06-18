@@ -2,6 +2,9 @@
 
 # scales 1.1.1
 
+* `number()` and reliant label functions now allow functions for the prefix and 
+  suffix arguments (@dkahle, #262).
+
 * `breaks_width()` now handles `difftime`/`hms` objects (@bhogan-mitre, #244).
 
 * `hue_pal()` now correctly inverts color palettes when `direction = -1` 

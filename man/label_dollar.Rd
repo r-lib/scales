@@ -60,11 +60,11 @@ large.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
-\item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+\item{decimal.mark}{The character to be used to indicate the numeric decimal
+point.}
 
-\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
-width (see \code{\link[base:format]{base::format()}}).}
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common width
+(see \code{\link[base:format]{base::format()}}).}
 
 \item{negative_parens}{Display negative using parentheses?}
 
@@ -73,14 +73,14 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{x}{A numeric vector}
 }
 \value{
-All \code{label_()} functions return a "labelling" function, i.e. a function that
-takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
-label for each input value.
+All \code{label_()} functions return a "labelling" function, i.e. a
+function that takes a vector \code{x} and returns a character vector of
+\code{length(x)} giving a label for each input value.
 
 Labelling functions are designed to be used with the \code{labels} argument of
-ggplot2 scales. The examples demonstrate their use with x scales, but
-they work similarly for all scales, including those that generate legends
-rather than axes.
+ggplot2 scales. The examples demonstrate their use with x scales, but they
+work similarly for all scales, including those that generate legends rather
+than axes.
 }
 \description{
 Format numbers as currency, rounding values to dollars or cents using

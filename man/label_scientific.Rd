@@ -46,25 +46,25 @@ large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+\item{decimal.mark}{The character to be used to indicate the numeric decimal
+point.}
 
-\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
-width (see \code{\link[base:format]{base::format()}}).}
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common width
+(see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{A numeric vector to format.}
 }
 \value{
-All \code{label_()} functions return a "labelling" function, i.e. a function that
-takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
-label for each input value.
+All \code{label_()} functions return a "labelling" function, i.e. a
+function that takes a vector \code{x} and returns a character vector of
+\code{length(x)} giving a label for each input value.
 
 Labelling functions are designed to be used with the \code{labels} argument of
-ggplot2 scales. The examples demonstrate their use with x scales, but
-they work similarly for all scales, including those that generate legends
-rather than axes.
+ggplot2 scales. The examples demonstrate their use with x scales, but they
+work similarly for all scales, including those that generate legends rather
+than axes.
 }
 \description{
 Label numbers with scientific notation (e.g. 1e05, 1.5e-02)

@@ -23,3 +23,28 @@ test_that("default accuracy works for range of inputs", {
   expect_equal(percent(x), c("10%", "20%", "50%"))
   expect_equal(percent(x * 10), c("100%", "200%", "500%"))
 })
+
+test_that("plus works - percent()", {
+  expect_equal(
+    percent(c(-.25, .25), plus = TRUE),
+    c("-25%", "+25%")
+  )
+
+  expect_warning(
+    percent(c(-.25, .25), plus = TRUE, prefix = "$"),
+    "`prefix` and `plus = TRUE` both specified; `plus` takes precedence"
+  )
+})
+
+
+test_that("plus works - label_percent()", {
+  expect_equal(
+    label_percent(plus = TRUE)(c(-.25, .25)),
+    c("-25%", "+25%")
+  )
+
+  expect_warning(
+    label_percent(plus = TRUE, prefix = "$")(c(-.25, .25)),
+    "`prefix` and `plus = TRUE` both specified; `plus` takes precedence"
+  )
+})

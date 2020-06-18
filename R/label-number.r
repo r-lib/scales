@@ -4,18 +4,16 @@
 #' [scientific][label_scientific] notation). `label_comma()` is a special case
 #' that inserts a comma every three digits.
 #'
-#' @return
-#' All `label_()` functions return a "labelling" function, i.e. a function that
-#' takes a vector `x` and returns a character vector of `length(x)` giving a
-#' label for each input value.
+#' @return All `label_()` functions return a "labelling" function, i.e. a
+#' function that takes a vector `x` and returns a character vector of
+#' `length(x)` giving a label for each input value.
 #'
 #' Labelling functions are designed to be used with the `labels` argument of
-#' ggplot2 scales. The examples demonstrate their use with x scales, but
-#' they work similarly for all scales, including those that generate legends
-#' rather than axes.
-#' @section Old interface:
-#' `number_format()`, `comma_format()`, and `comma()` are retired; please use
-#' `label_number()` and `label_comma()` instead.
+#' ggplot2 scales. The examples demonstrate their use with x scales, but they
+#' work similarly for all scales, including those that generate legends rather
+#' than axes.
+#' @section Old interface: `number_format()`, `comma_format()`, and `comma()`
+#'   are retired; please use `label_number()` and `label_comma()` instead.
 #' @param x A numeric vector to format.
 #' @param accuracy A number to round to. Use (e.g.) `0.01` to show 2 decimal
 #'   places of precision. If `NULL`, the default, uses a heuristic that should
@@ -26,12 +24,13 @@
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
 #'   formating. This is useful if the underlying data is very small or very
 #'   large.
-#' @param prefix,suffix Symbols to display before and after value.
+#' @param prefix,suffix Symbols to display before and after value or a function
+#'   returning symbols.
 #' @param big.mark Character used between every 3 digits to separate thousands.
-#' @param decimal.mark The character to be used to indicate the numeric
-#'   decimal point.
-#' @param trim Logical, if `FALSE`, values are right-justified to a common
-#'   width (see [base::format()]).
+#' @param decimal.mark The character to be used to indicate the numeric decimal
+#'   point.
+#' @param trim Logical, if `FALSE`, values are right-justified to a common width
+#'   (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @examples
@@ -49,6 +48,8 @@
 #' # You can use prefix and suffix for other types of display
 #' demo_continuous(c(32, 212), label = label_number(suffix = "\u00b0F"))
 #' demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
+#' plus_prefix <- function(.) if (. > 0) "+" else ""
+#' demo_continuous(c(-10, 10), label = label_number(prefix = plus_prefix))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                           suffix = "", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
@@ -150,6 +151,9 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
   nsmall <- min(max(nsmall, 0), 20)
+
+  if (is.function(prefix)) prefix <- vapply(x, prefix, character(1))
+  if (is.function(suffix)) suffix <- vapply(x, suffix, character(1))
 
   ret <- format(
     scale * x,

@@ -30,8 +30,8 @@ difference between adjacent values.
 
 Applied to rescaled data.}
 
-\item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+\item{decimal.mark}{The character to be used to indicate the numeric decimal
+point.}
 
 \item{prefix}{A character vector of length 3 giving the prefixes to
 put in front of numbers. The default values are \code{c("<", "", ">")}
@@ -42,14 +42,14 @@ if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 \item{x}{A numeric vector to format.}
 }
 \value{
-All \code{label_()} functions return a "labelling" function, i.e. a function that
-takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
-label for each input value.
+All \code{label_()} functions return a "labelling" function, i.e. a
+function that takes a vector \code{x} and returns a character vector of
+\code{length(x)} giving a label for each input value.
 
 Labelling functions are designed to be used with the \code{labels} argument of
-ggplot2 scales. The examples demonstrate their use with x scales, but
-they work similarly for all scales, including those that generate legends
-rather than axes.
+ggplot2 scales. The examples demonstrate their use with x scales, but they
+work similarly for all scales, including those that generate legends rather
+than axes.
 }
 \description{
 Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.

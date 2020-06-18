@@ -29,21 +29,23 @@ Applied to rescaled data.}
 formating. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{prefix}{Symbols to display before and after value or a function
+returning symbols.}
 
 \item{unit}{The units to append.}
 
 \item{sep}{The separator between the number and the unit label.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{suffix}{Symbols to display before and after value or a function
+returning symbols.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
-\item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+\item{decimal.mark}{The character to be used to indicate the numeric decimal
+point.}
 
-\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
-width (see \code{\link[base:format]{base::format()}}).}
+\item{trim}{Logical, if \code{FALSE}, values are right-justified to a common width
+(see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
