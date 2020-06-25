@@ -174,44 +174,44 @@ for ggplot2 scales.
 The <code>oob_*()</code> functions are designed to be passed as the <code>oob</code> argument of
 ggplot2 continuous and binned scales, with <code>oob_discard</code> being an exception.</p>
 <p>These functions affect out of bounds values in the following ways:</p><ul>
-<li><p><code>oob_censor()</code> replaces out of bounds values with <code>NA</code>s. This is the
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor()</a></code> replaces out of bounds values with <code>NA</code>s. This is the
 default <code>oob</code> argument for continuous scales.</p></li>
-<li><p><code>oob_censor_any()</code> acts like <code>oob_censor()</code>, but also replaces infinite
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor_any()</a></code> acts like <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor()</a></code>, but also replaces infinite
 values with <code>NA</code>s.</p></li>
-<li><p><code>oob_squish()</code> replaces out of bounds values with the nearest limit. This
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish()</a></code> replaces out of bounds values with the nearest limit. This
 is the default <code>oob</code> argument for binned scales.</p></li>
-<li><p><code>oob_squish_any()</code> acts like <code>oob_squish()</code>, but also replaces infinite
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_any()</a></code> acts like <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish()</a></code>, but also replaces infinite
 values with the nearest limit.</p></li>
-<li><p><code>oob_squish_infinite()</code> only replaces infinite values by the nearest limit.</p></li>
-<li><p><code>oob_keep()</code> does not adjust out of bounds values. In position scales,
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_infinite()</a></code> only replaces infinite values by the nearest limit.</p></li>
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_keep()</a></code> does not adjust out of bounds values. In position scales,
 behaves as zooming limits without data removal.</p></li>
-<li><p><code>oob_discard()</code> removes out of bounds values from the input. Not suitable
+<li><p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_discard()</a></code> removes out of bounds values from the input. Not suitable
 for ggplot2 scales.</p></li>
 </ul>
 
     </div>
 
-    <pre class="usage"><span class='fu'>oob_censor</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>only.finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), only.finite = <span class='fl'>TRUE</span>)
 
-<span class='fu'>oob_censor_any</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor_any</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>oob_discard</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_discard</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>oob_squish</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>only.finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), only.finite = <span class='fl'>TRUE</span>)
 
-<span class='fu'>oob_squish_any</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_any</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>oob_squish_infinite</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_infinite</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>oob_keep</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_keep</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>censor</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>only.finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>censor</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), only.finite = <span class='fl'>TRUE</span>)
 
-<span class='fu'>discard</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>discard</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))
 
-<span class='fu'>squish</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>only.finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>squish</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), only.finite = <span class='fl'>TRUE</span>)
 
-<span class='fu'>squish_infinite</span>(<span class='no'>x</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))</pre>
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>squish_infinite</a></span>(<span class='kw'>x</span>, range = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -236,32 +236,35 @@ are altered. When <code>FALSE</code>, also infinite values are altered.</p></td>
 
     <p>Most <code>oob_()</code> functions return a vector of numerical values of the
 same length as the <code>x</code> argument, wherein out of bounds values have been
-modified. Only <code>oob_discard()</code> returns a vector of less than or of equal
+modified. Only <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_discard()</a></code> returns a vector of less than or of equal
 length to the <code>x</code> argument.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>oob_censor_any()</code> and <code>oob_squish_any()</code> functions are the same
-as <code>oob_censor()</code> and <code>oob_squish()</code> with the <code>only.finite</code> argument set to
+    <p>The <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor_any()</a></code> and <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_any()</a></code> functions are the same
+as <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor()</a></code> and <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish()</a></code> with the <code>only.finite</code> argument set to
 <code>FALSE</code>.</p>
-<p>Replacing position values with <code>NA</code>s, as <code>oob_censor()</code> does, will typically
+<p>Replacing position values with <code>NA</code>s, as <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor()</a></code> does, will typically
 lead to removal of those datapoints in ggplot.</p>
-<p>Setting ggplot coordinate limits is equivalent to using <code>oob_keep()</code> in
+<p>Setting ggplot coordinate limits is equivalent to using <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_keep()</a></code> in
 position scales.</p>
     <h2 class="hasAnchor" id="old-interface"><a class="anchor" href="#old-interface"></a>Old interface</h2>
 
-    <p><code>censor()</code>, <code>squish()</code>, <code>squish_infinite()</code> and
-<code>discard()</code> are no longer recommended; please use <code>oob_censor()</code>,
-<code>oob_squish()</code>, <code>oob_squish_infinite()</code> and <code>oob_discard()</code> instead.</p>
+    <p><code><a href='https://scales.r-lib.org//reference/oob.html'>censor()</a></code>, <code><a href='https://scales.r-lib.org//reference/oob.html'>squish()</a></code>, <code><a href='https://scales.r-lib.org//reference/oob.html'>squish_infinite()</a></code> and
+<code><a href='https://scales.r-lib.org//reference/oob.html'>discard()</a></code> are no longer recommended; please use <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor()</a></code>,
+<code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish()</a></code>, <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_infinite()</a></code> and <code><a href='https://scales.r-lib.org//reference/oob.html'>oob_discard()</a></code> instead.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p><code><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish()</a></code>: Homer Strong <a href='mailto:homer.strong@gmail.com'>homer.strong@gmail.com</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Censoring replaces out of bounds values with NAs</span>
-<span class='fu'>oob_censor</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf   NA  0.5  1.0   NA   NA  Inf</div><div class='input'><span class='fu'>oob_censor_any</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1]  NA  NA 0.5 1.0  NA  NA  NA</div><div class='input'>
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf   NA  0.5  1.0   NA   NA  Inf</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_censor_any</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1]  NA  NA 0.5 1.0  NA  NA  NA</div><div class='input'>
 <span class='co'># Squishing replaces out of bounds values with the nearest range limit</span>
-<span class='fu'>oob_squish</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf  0.0  0.5  1.0  1.0   NA  Inf</div><div class='input'><span class='fu'>oob_squish_any</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] 0.0 0.0 0.5 1.0 1.0  NA 1.0</div><div class='input'><span class='fu'>oob_squish_infinite</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1]  0.0 -1.0  0.5  1.0  2.0   NA  1.0</div><div class='input'>
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf  0.0  0.5  1.0  1.0   NA  Inf</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_any</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] 0.0 0.0 0.5 1.0 1.0  NA 1.0</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_squish_infinite</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1]  0.0 -1.0  0.5  1.0  2.0   NA  1.0</div><div class='input'>
 <span class='co'># Keeping does not alter values</span>
-<span class='fu'>oob_keep</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf -1.0  0.5  1.0  2.0   NA  Inf</div><div class='input'>
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_keep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] -Inf -1.0  0.5  1.0  2.0   NA  Inf</div><div class='input'>
 <span class='co'># Discarding will remove out of bounds values</span>
-<span class='fu'>oob_discard</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>Inf</span>, -<span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] 0.5 1.0  NA</div></pre>
+<span class='fu'><a href='https://scales.r-lib.org//reference/oob.html'>oob_discard</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>0.5</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>, <span class='fl'>Inf</span>))</div><div class='output co'>#&gt; [1] 0.5 1.0  NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

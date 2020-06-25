@@ -154,68 +154,68 @@ that inserts a comma every three digits." />
     </div>
 
     <div class="ref-description">
-    <p>Use <code>label_number()</code> force decimal display of numbers (i.e. don't use
-<a href='label_scientific.html'>scientific</a> notation). <code>label_comma()</code> is a special case
+    <p>Use <code><a href='https://scales.r-lib.org//reference/label_number.html'>label_number()</a></code> force decimal display of numbers (i.e. don't use
+<a href='https://scales.r-lib.org//reference/label_scientific.html'>scientific</a> notation). <code><a href='https://scales.r-lib.org//reference/label_number.html'>label_comma()</a></code> is a special case
 that inserts a comma every three digits.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_number</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>(
+  accuracy = <span class='kw'>NULL</span>,
+  scale = <span class='fl'>1</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>" "</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  trim = <span class='fl'>TRUE</span>,
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>label_comma</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>digits</span>,
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_comma</a></span>(
+  accuracy = <span class='kw'>NULL</span>,
+  scale = <span class='fl'>1</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>","</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  trim = <span class='fl'>TRUE</span>,
+  <span class='kw'>digits</span>,
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>comma</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>digits</span>,
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>comma</a></span>(
+  <span class='kw'>x</span>,
+  accuracy = <span class='kw'>NULL</span>,
+  scale = <span class='fl'>1</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>","</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  trim = <span class='fl'>TRUE</span>,
+  <span class='kw'>digits</span>,
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>number_format</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>number_format</a></span>(
+  accuracy = <span class='kw'>NULL</span>,
+  scale = <span class='fl'>1</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>" "</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  trim = <span class='fl'>TRUE</span>,
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>comma_format</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>","</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>trim</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>digits</span>,
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>comma_format</a></span>(
+  accuracy = <span class='kw'>NULL</span>,
+  scale = <span class='fl'>1</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>","</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  trim = <span class='fl'>TRUE</span>,
+  <span class='kw'>digits</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -280,16 +280,16 @@ rather than axes.</p>
 
     
 
-<p><code>number_format()</code>, <code>comma_format()</code>, and <code>comma()</code> are retired; please use
-<code>label_number()</code> and <code>label_comma()</code> instead.</p>
+<p><code><a href='https://scales.r-lib.org//reference/label_number.html'>number_format()</a></code>, <code><a href='https://scales.r-lib.org//reference/label_number.html'>comma_format()</a></code>, and <code><a href='https://scales.r-lib.org//reference/label_number.html'>comma()</a></code> are retired; please use
+<code><a href='https://scales.r-lib.org//reference/label_number.html'>label_number()</a></code> and <code><a href='https://scales.r-lib.org//reference/label_number.html'>label_comma()</a></code> instead.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>1e6</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_number-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>1e6</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>1e6</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_comma</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_comma())</div><div class='img'><img src='label_number-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_number-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_comma</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_comma())</div><div class='img'><img src='label_number-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Use scale to rescale very small or large numbers to generate</span>
 <span class='co'># more readable labels</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number</span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span> / <span class='fl'>1e3</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1/1000))</div><div class='img'><img src='label_number-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_number</span>(<span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1e+06))</div><div class='img'><img src='label_number-7.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>(scale = <span class='fl'>1</span> <span class='op'>/</span> <span class='fl'>1e3</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1/1000))</div><div class='img'><img src='label_number-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>(scale = <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1e+06))</div><div class='img'><img src='label_number-7.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># You can use prefix and suffix for other types of display</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>212</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_number</span>(<span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u00b0F"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°F"))</div><div class='img'><img src='label_number-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>label_number</span>(<span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>"\u00b0C"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°C"))</div><div class='img'><img src='label_number-9.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>212</span>), label = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>(suffix = <span class='st'>"\u00b0F"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°F"))</div><div class='img'><img src='label_number-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), label = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number.html'>label_number</a></span>(suffix = <span class='st'>"\u00b0C"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°C"))</div><div class='img'><img src='label_number-9.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

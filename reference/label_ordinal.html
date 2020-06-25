@@ -157,35 +157,35 @@
 3rd). Built-in rules are provided for English, French, and Spanish.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_ordinal</span>(
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>rules</span> <span class='kw'>=</span> <span class='fu'>ordinal_english</span>(),
-  <span class='no'>...</span>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a></span>(
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>" "</span>,
+  rules = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_english</a></span>(),
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>ordinal_english</span>()
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_english</a></span>()
 
-<span class='fu'>ordinal_french</span>(<span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"masculin"</span>, <span class='st'>"feminin"</span>), <span class='kw'>plural</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_french</a></span>(gender = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"masculin"</span>, <span class='st'>"feminin"</span>), plural = <span class='fl'>FALSE</span>)
 
-<span class='fu'>ordinal_spanish</span>()
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_spanish</a></span>()
 
-<span class='fu'>ordinal_format</span>(
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>rules</span> <span class='kw'>=</span> <span class='fu'>ordinal_english</span>(),
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_format</a></span>(
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>" "</span>,
+  rules = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_english</a></span>(),
+  <span class='kw'>...</span>
 )
 
-<span class='fu'>ordinal</span>(
-  <span class='no'>x</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>""</span>,
-  <span class='kw'>big.mark</span> <span class='kw'>=</span> <span class='st'>" "</span>,
-  <span class='kw'>rules</span> <span class='kw'>=</span> <span class='fu'>ordinal_english</span>(),
-  <span class='no'>...</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal</a></span>(
+  <span class='kw'>x</span>,
+  prefix = <span class='st'>""</span>,
+  suffix = <span class='st'>""</span>,
+  big.mark = <span class='st'>" "</span>,
+  rules = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_english</a></span>(),
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -235,29 +235,29 @@ rather than axes.</p>
 
     
 
-<p><code>ordinal()</code> and <code>format_ordinal()</code> are retired; please use <code>label_ordinal()</code>
+<p><code><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal()</a></code> and <code>format_ordinal()</code> are retired; please use <code><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal()</a></code>
 instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other labels for continuous scales: 
-<code><a href='label_bytes.html'>label_bytes</a>()</code>,
-<code><a href='label_dollar.html'>label_dollar</a>()</code>,
-<code><a href='label_number_auto.html'>label_number_auto</a>()</code>,
-<code><a href='label_number_si.html'>label_number_si</a>()</code>,
-<code><a href='label_parse.html'>label_parse</a>()</code>,
-<code><a href='label_percent.html'>label_percent</a>()</code>,
-<code><a href='label_pvalue.html'>label_pvalue</a>()</code>,
-<code><a href='label_scientific.html'>label_scientific</a>()</code></p></div>
+<code><a href='https://scales.r-lib.org//reference/label_bytes.html'>label_bytes</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_dollar.html'>label_dollar</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_number_auto.html'>label_number_auto</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_scientific.html'>label_scientific</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_ordinal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_ordinal</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal())</div><div class='img'><img src='label_ordinal-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_ordinal</span>(<span class='kw'>rules</span> <span class='kw'>=</span> <span class='fu'>ordinal_french</span>()))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal(rules = ordinal_french()))</div><div class='img'><img src='label_ordinal-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_ordinal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal())</div><div class='img'><img src='label_ordinal-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a></span>(rules = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_french</a></span>()))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal(rules = ordinal_french()))</div><div class='img'><img src='label_ordinal-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># The rules are just a set of regular expressions that are applied in turn</span>
-<span class='fu'>ordinal_french</span>()</div><div class='output co'>#&gt; $er
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_french</a></span>()</div><div class='output co'>#&gt; $er
 #&gt; [1] "^1$"
 #&gt; 
 #&gt; $e
 #&gt; [1] "."
-#&gt; </div><div class='input'><span class='fu'>ordinal_english</span>()</div><div class='output co'>#&gt; $st
+#&gt; </div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>ordinal_english</a></span>()</div><div class='output co'>#&gt; $st
 #&gt; [1] "(?&lt;!1)1$"
 #&gt; 
 #&gt; $nd
@@ -276,9 +276,9 @@ instead.</p>
 #&gt; [1] "."
 #&gt; </div><div class='input'>
 <span class='co'># Note that ordinal rounds values, so you may need to adjust the breaks too</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_ordinal-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_ordinal</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal())</div><div class='img'><img src='label_ordinal-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>),
-  <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_ordinal</span>(),
-  <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'><a href='breaks_width.html'>breaks_width</a></span>(<span class='fl'>2</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_ordinal-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal())</div><div class='img'><img src='label_ordinal-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>),
+  labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a></span>(),
+  breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_width.html'>breaks_width</a></span>(<span class='fl'>2</span>)
 )</div><div class='output co'>#&gt; scale_x_continuous(labels = label_ordinal(), breaks = breaks_width(2))</div><div class='img'><img src='label_ordinal-6.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

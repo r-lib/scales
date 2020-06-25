@@ -155,14 +155,14 @@
     <p>Transformation for dates (class Date)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>date_trans</span>()</pre>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/date_trans.html'>date_trans</a></span>()</pre>
 
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>years</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"1910/1/1"</span>), <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"1999/1/1"</span>), <span class='st'>"years"</span>)
-<span class='no'>t</span> <span class='kw'>&lt;-</span> <span class='fu'>date_trans</span>()
-<span class='no'>t</span>$<span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span>(<span class='no'>years</span>)</div><div class='output co'>#&gt;  [1] -21915 -21550 -21185 -20819 -20454 -20089 -19724 -19358 -18993 -18628
+    <pre class="examples"><div class='input'><span class='kw'>years</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"1910/1/1"</span>), <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='st'>"1999/1/1"</span>), <span class='st'>"years"</span>)
+<span class='kw'>t</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/date_trans.html'>date_trans</a></span>()
+<span class='kw'>t</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span>(<span class='kw'>years</span>)</div><div class='output co'>#&gt;  [1] -21915 -21550 -21185 -20819 -20454 -20089 -19724 -19358 -18993 -18628
 #&gt; [11] -18263 -17897 -17532 -17167 -16802 -16436 -16071 -15706 -15341 -14975
 #&gt; [21] -14610 -14245 -13880 -13514 -13149 -12784 -12419 -12053 -11688 -11323
 #&gt; [31] -10958 -10592 -10227  -9862  -9497  -9131  -8766  -8401  -8036  -7670
@@ -170,7 +170,7 @@
 #&gt; [51]  -3653  -3287  -2922  -2557  -2192  -1826  -1461  -1096   -731   -365
 #&gt; [61]      0    365    730   1096   1461   1826   2191   2557   2922   3287
 #&gt; [71]   3652   4018   4383   4748   5113   5479   5844   6209   6574   6940
-#&gt; [81]   7305   7670   8035   8401   8766   9131   9496   9862  10227  10592</div><div class='input'><span class='no'>t</span>$<span class='fu'>inverse</span>(<span class='no'>t</span>$<span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span>(<span class='no'>years</span>))</div><div class='output co'>#&gt;  [1] "1910-01-01" "1911-01-01" "1912-01-01" "1913-01-01" "1914-01-01"
+#&gt; [81]   7305   7670   8035   8401   8766   9131   9496   9862  10227  10592</div><div class='input'><span class='kw'>t</span><span class='op'>$</span><span class='fu'>inverse</span>(<span class='kw'>t</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/transform.html'>transform</a></span>(<span class='kw'>years</span>))</div><div class='output co'>#&gt;  [1] "1910-01-01" "1911-01-01" "1912-01-01" "1913-01-01" "1914-01-01"
 #&gt;  [6] "1915-01-01" "1916-01-01" "1917-01-01" "1918-01-01" "1919-01-01"
 #&gt; [11] "1920-01-01" "1921-01-01" "1922-01-01" "1923-01-01" "1924-01-01"
 #&gt; [16] "1925-01-01" "1926-01-01" "1927-01-01" "1928-01-01" "1929-01-01"
@@ -187,7 +187,7 @@
 #&gt; [71] "1980-01-01" "1981-01-01" "1982-01-01" "1983-01-01" "1984-01-01"
 #&gt; [76] "1985-01-01" "1986-01-01" "1987-01-01" "1988-01-01" "1989-01-01"
 #&gt; [81] "1990-01-01" "1991-01-01" "1992-01-01" "1993-01-01" "1994-01-01"
-#&gt; [86] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</div><div class='input'><span class='no'>t</span>$<span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='no'>t</span>$<span class='fu'>breaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>years</span>)))</div><div class='output co'>#&gt; [1] "1900" "1920" "1940" "1960" "1980" "2000"</div></pre>
+#&gt; [86] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</div><div class='input'><span class='kw'>t</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='kw'>t</span><span class='op'>$</span><span class='fu'>breaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>years</span>)))</div><div class='output co'>#&gt; [1] "1900" "1920" "1940" "1960" "1980" "2000"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

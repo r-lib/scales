@@ -155,21 +155,21 @@
     <p>Formatter for p-values, using "&lt;" and "&gt;" for p-values close to 0 and 1.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_pvalue</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>add_p</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a></span>(
+  accuracy = <span class='fl'>0.001</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  prefix = <span class='kw'>NULL</span>,
+  add_p = <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>pvalue_format</span>(
-  <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>0.001</span>,
-  <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>,
-  <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>add_p</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>pvalue_format</a></span>(
+  accuracy = <span class='fl'>0.001</span>,
+  decimal.mark = <span class='st'>"."</span>,
+  prefix = <span class='kw'>NULL</span>,
+  add_p = <span class='fl'>FALSE</span>
 )
 
-<span class='fu'>pvalue</span>(<span class='no'>x</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>0.001</span>, <span class='kw'>decimal.mark</span> <span class='kw'>=</span> <span class='st'>"."</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>add_p</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>pvalue</a></span>(<span class='kw'>x</span>, accuracy = <span class='fl'>0.001</span>, decimal.mark = <span class='st'>"."</span>, prefix = <span class='kw'>NULL</span>, add_p = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -216,25 +216,25 @@ rather than axes.</p>
 
     
 
-<p><code>pvalue()</code> and <code>pvalue_dollar()</code> are retired; please use <code>label_pvalue()</code>
+<p><code><a href='https://scales.r-lib.org//reference/label_pvalue.html'>pvalue()</a></code> and <code>pvalue_dollar()</code> are retired; please use <code><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue()</a></code>
 instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other labels for continuous scales: 
-<code><a href='label_bytes.html'>label_bytes</a>()</code>,
-<code><a href='label_dollar.html'>label_dollar</a>()</code>,
-<code><a href='label_number_auto.html'>label_number_auto</a>()</code>,
-<code><a href='label_number_si.html'>label_number_si</a>()</code>,
-<code><a href='label_ordinal.html'>label_ordinal</a>()</code>,
-<code><a href='label_parse.html'>label_parse</a>()</code>,
-<code><a href='label_percent.html'>label_percent</a>()</code>,
-<code><a href='label_scientific.html'>label_scientific</a>()</code></p></div>
+<code><a href='https://scales.r-lib.org//reference/label_bytes.html'>label_bytes</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_dollar.html'>label_dollar</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_number_auto.html'>label_number_auto</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a>()</code>,
+<code><a href='https://scales.r-lib.org//reference/label_scientific.html'>label_scientific</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_pvalue-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_pvalue</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue())</div><div class='img'><img src='label_pvalue-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_pvalue</span>(<span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>0.1</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(accuracy = 0.1))</div><div class='img'><img src='label_pvalue-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_pvalue</span>(<span class='kw'>add_p</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(add_p = TRUE))</div><div class='img'><img src='label_pvalue-4.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_pvalue-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue())</div><div class='img'><img src='label_pvalue-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a></span>(accuracy = <span class='fl'>0.1</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(accuracy = 0.1))</div><div class='img'><img src='label_pvalue-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a></span>(add_p = <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(add_p = TRUE))</div><div class='img'><img src='label_pvalue-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Or provide your own prefixes</span>
-<span class='no'>prefix</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"p &lt; "</span>, <span class='st'>"p = "</span>, <span class='st'>"p &gt; "</span>)
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>labels</span> <span class='kw'>=</span> <span class='fu'>label_pvalue</span>(<span class='kw'>prefix</span> <span class='kw'>=</span> <span class='no'>prefix</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(prefix = prefix))</div><div class='img'><img src='label_pvalue-5.png' alt='' width='700' height='433' /></div></pre>
+<span class='kw'>prefix</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"p &lt; "</span>, <span class='st'>"p = "</span>, <span class='st'>"p &gt; "</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a></span>(prefix = <span class='kw'>prefix</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_pvalue(prefix = prefix))</div><div class='img'><img src='label_pvalue-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

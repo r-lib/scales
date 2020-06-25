@@ -155,25 +155,25 @@
     <p>Rescale continuous vector to have specified minimum and maximum</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='no'>to</span>, <span class='no'>from</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, <span class='kw'>to</span>, <span class='kw'>from</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for numeric</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>, finite = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)
 
 <span class='co'># S3 method for dist</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>, finite = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)
 
 <span class='co'># S3 method for logical</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>, finite = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)
 
 <span class='co'># S3 method for POSIXt</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>, finite = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)
 
 <span class='co'># S3 method for Date</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>, finite = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)
 
 <span class='co'># S3 method for integer64</span>
-<span class='fu'>rescale</span>(<span class='no'>x</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='kw'>x</span>, to = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), from = <span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span>(<span class='kw'>x</span>, na.rm = <span class='fl'>TRUE</span>), <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,7 +199,7 @@ calculated from the range of <code>x</code></p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>rescale</span>(<span class='fl'>1</span>:<span class='fl'>100</span>)</div><div class='output co'>#&gt;   [1] 0.00000000 0.01010101 0.02020202 0.03030303 0.04040404 0.05050505
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>)</div><div class='output co'>#&gt;   [1] 0.00000000 0.01010101 0.02020202 0.03030303 0.04040404 0.05050505
 #&gt;   [7] 0.06060606 0.07070707 0.08080808 0.09090909 0.10101010 0.11111111
 #&gt;  [13] 0.12121212 0.13131313 0.14141414 0.15151515 0.16161616 0.17171717
 #&gt;  [19] 0.18181818 0.19191919 0.20202020 0.21212121 0.22222222 0.23232323
@@ -215,7 +215,7 @@ calculated from the range of <code>x</code></p></td>
 #&gt;  [79] 0.78787879 0.79797980 0.80808081 0.81818182 0.82828283 0.83838384
 #&gt;  [85] 0.84848485 0.85858586 0.86868687 0.87878788 0.88888889 0.89898990
 #&gt;  [91] 0.90909091 0.91919192 0.92929293 0.93939394 0.94949495 0.95959596
-#&gt;  [97] 0.96969697 0.97979798 0.98989899 1.00000000</div><div class='input'><span class='fu'>rescale</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>50</span>))</div><div class='output co'>#&gt;  [1] 0.886765331 0.999432425 0.482302370 0.335107724 0.768637559 0.570149159
+#&gt;  [97] 0.96969697 0.97979798 0.98989899 1.00000000</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>50</span>))</div><div class='output co'>#&gt;  [1] 0.886765331 0.999432425 0.482302370 0.335107724 0.768637559 0.570149159
 #&gt;  [7] 0.621742906 0.855931299 0.551825026 0.224657908 0.918610613 0.864982461
 #&gt; [13] 0.220011113 0.380878354 0.763131384 0.085502149 0.163891170 0.132491913
 #&gt; [19] 0.652208804 0.853751747 0.926681186 0.536694596 0.562426369 0.677474747
@@ -223,7 +223,7 @@ calculated from the range of <code>x</code></p></td>
 #&gt; [31] 0.140819265 0.908852580 0.000000000 0.579611488 0.207961232 0.905575984
 #&gt; [37] 0.814455899 0.690379783 0.190266305 0.719731876 0.187227172 0.436482633
 #&gt; [43] 0.307834254 0.553345005 0.223833162 0.444595038 0.917419598 0.974936163
-#&gt; [49] 0.814674216 0.902059905</div><div class='input'><span class='fu'>rescale</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 0.5</div></pre>
+#&gt; [49] 0.814674216 0.902059905</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/rescale.html'>rescale</a></span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 0.5</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

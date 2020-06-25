@@ -155,7 +155,7 @@
     <p>Dichromat (colour-blind) palette (discrete)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dichromat_pal</span>(<span class='no'>name</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/dichromat_pal.html'>dichromat_pal</a></span>(<span class='kw'>name</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,13 +169,13 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"dichromat"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>dichromat_pal</span>(<span class='st'>"BluetoOrange.10"</span>)(<span class='fl'>10</span>))
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>dichromat_pal</span>(<span class='st'>"BluetoOrange.10"</span>)(<span class='fl'>5</span>))
+    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"dichromat"</span>, quietly = <span class='fl'>TRUE</span>)) {
+<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/dichromat_pal.html'>dichromat_pal</a></span>(<span class='st'>"BluetoOrange.10"</span>)(<span class='fl'>10</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/dichromat_pal.html'>dichromat_pal</a></span>(<span class='st'>"BluetoOrange.10"</span>)(<span class='fl'>5</span>))
 
 <span class='co'># Can use with gradient_n to create a continous gradient</span>
-<span class='no'>cols</span> <span class='kw'>&lt;-</span> <span class='fu'>dichromat_pal</span>(<span class='st'>"DarkRedtoBlue.12"</span>)(<span class='fl'>12</span>)
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'><a href='gradient_n_pal.html'>gradient_n_pal</a></span>(<span class='no'>cols</span>)(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>30</span>)))
+<span class='kw'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/dichromat_pal.html'>dichromat_pal</a></span>(<span class='st'>"DarkRedtoBlue.12"</span>)(<span class='fl'>12</span>)
+<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/gradient_n_pal.html'>gradient_n_pal</a></span>(<span class='kw'>cols</span>)(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length.out = <span class='fl'>30</span>)))
 }</div><div class='img'><img src='dichromat_pal-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='dichromat_pal-2.png' alt='' width='700' height='433' /></div><div class='img'><img src='dichromat_pal-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

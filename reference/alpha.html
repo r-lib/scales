@@ -155,7 +155,7 @@
     <p>Vectorised in both colour and alpha.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>alpha</span>(<span class='no'>colour</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/alpha.html'>alpha</a></span>(<span class='kw'>colour</span>, alpha = <span class='fl'>NA</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,7 +173,7 @@ existing alpha values are preserved.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>alpha</span>(<span class='st'>"red"</span>, <span class='fl'>0.1</span>)</div><div class='output co'>#&gt; [1] "#FF00001A"</div><div class='input'><span class='fu'>alpha</span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/colors.html'>colours</a></span>(), <span class='fl'>0.5</span>)</div><div class='output co'>#&gt;   [1] "#FFFFFF80" "#F0F8FF80" "#FAEBD780" "#FFEFDB80" "#EEDFCC80" "#CDC0B080"
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/alpha.html'>alpha</a></span>(<span class='st'>"red"</span>, <span class='fl'>0.1</span>)</div><div class='output co'>#&gt; [1] "#FF00001A"</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/alpha.html'>alpha</a></span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/colors.html'>colours</a></span>(), <span class='fl'>0.5</span>)</div><div class='output co'>#&gt;   [1] "#FFFFFF80" "#F0F8FF80" "#FAEBD780" "#FFEFDB80" "#EEDFCC80" "#CDC0B080"
 #&gt;   [7] "#8B837880" "#7FFFD480" "#7FFFD480" "#76EEC680" "#66CDAA80" "#458B7480"
 #&gt;  [13] "#F0FFFF80" "#F0FFFF80" "#E0EEEE80" "#C1CDCD80" "#838B8B80" "#F5F5DC80"
 #&gt;  [19] "#FFE4C480" "#FFE4C480" "#EED5B780" "#CDB79E80" "#8B7D6B80" "#00000080"
@@ -282,8 +282,8 @@ existing alpha values are preserved.</p></td>
 #&gt; [637] "#00E5EE80" "#00C5CD80" "#00868B80" "#EE82EE80" "#D0209080" "#FF3E9680"
 #&gt; [643] "#EE3A8C80" "#CD327880" "#8B225280" "#F5DEB380" "#FFE7BA80" "#EED8AE80"
 #&gt; [649] "#CDBA9680" "#8B7E6680" "#F5F5F580" "#FFFF0080" "#FFFF0080" "#EEEE0080"
-#&gt; [655] "#CDCD0080" "#8B8B0080" "#9ACD3280"</div><div class='input'><span class='fu'>alpha</span>(<span class='st'>"red"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length.out</span> <span class='kw'>=</span> <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "#FF000000" "#FF00001C" "#FF000039" "#FF000055" "#FF000071" "#FF00008E"
-#&gt;  [7] "#FF0000AA" "#FF0000C6" "#FF0000E3" "#FF0000"  </div><div class='input'><span class='fu'>alpha</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"first"</span> <span class='kw'>=</span> <span class='st'>"gold"</span>, <span class='st'>"second"</span> <span class='kw'>=</span> <span class='st'>"lightgray"</span>, <span class='st'>"third"</span> <span class='kw'>=</span> <span class='st'>"#cd7f32"</span>), <span class='fl'>.5</span>)</div><div class='output co'>#&gt;       first      second       third 
+#&gt; [655] "#CDCD0080" "#8B8B0080" "#9ACD3280"</div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/alpha.html'>alpha</a></span>(<span class='st'>"red"</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length.out = <span class='fl'>10</span>))</div><div class='output co'>#&gt;  [1] "#FF000000" "#FF00001C" "#FF000039" "#FF000055" "#FF000071" "#FF00008E"
+#&gt;  [7] "#FF0000AA" "#FF0000C6" "#FF0000E3" "#FF0000"  </div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/alpha.html'>alpha</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"first"</span> = <span class='st'>"gold"</span>, <span class='st'>"second"</span> = <span class='st'>"lightgray"</span>, <span class='st'>"third"</span> = <span class='st'>"#cd7f32"</span>), <span class='fl'>.5</span>)</div><div class='output co'>#&gt;       first      second       third 
 #&gt; "#FFD70080" "#D3D3D380" "#CD7F3280" </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

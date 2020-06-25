@@ -155,7 +155,7 @@
     <p>Places minor breaks between major breaks.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>regular_minor_breaks</span>(<span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/regular_minor_breaks.html'>regular_minor_breaks</a></span>(reverse = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,10 +168,10 @@
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>m</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>))
-<span class='fu'>regular_minor_breaks</span>()(<span class='no'>m</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1]  0.00  1.25  2.50  3.75  5.00  6.25  7.50  8.75 10.00</div><div class='input'>
-<span class='no'>n</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, -<span class='fl'>9</span>))
-<span class='fu'>regular_minor_breaks</span>(<span class='kw'>reverse</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)(<span class='no'>n</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, -<span class='fl'>9</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] -10.00  -8.75  -7.50  -6.25  -5.00  -3.75  -2.50  -1.25   0.00</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_extended.html'>extended_breaks</a></span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/regular_minor_breaks.html'>regular_minor_breaks</a></span>()(<span class='kw'>m</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>), n = <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1]  0.00  1.25  2.50  3.75  5.00  6.25  7.50  8.75 10.00</div><div class='input'>
+<span class='kw'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_extended.html'>extended_breaks</a></span>()(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='op'>-</span><span class='fl'>9</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/regular_minor_breaks.html'>regular_minor_breaks</a></span>(reverse = <span class='fl'>TRUE</span>)(<span class='kw'>n</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='op'>-</span><span class='fl'>9</span>), n = <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] -10.00  -8.75  -7.50  -6.25  -5.00  -3.75  -2.50  -1.25   0.00</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

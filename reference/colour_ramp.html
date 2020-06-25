@@ -163,7 +163,7 @@ times faster, and provides results in <code>"#RRGGBB"</code> (or
 <code>"#RRGGBBAA"</code>) character form instead of RGB colour matrices.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>colour_ramp</span>(<span class='no'>colors</span>, <span class='kw'>na.color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/colour_ramp.html'>colour_ramp</a></span>(<span class='kw'>colors</span>, na.color = <span class='fl'>NA</span>, alpha = <span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,8 +204,8 @@ of the same length with RGB or RGBA hex colours.</p>
     <div class='dont-index'><p><code><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRamp</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ramp</span> <span class='kw'>&lt;-</span> <span class='fu'>colour_ramp</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>, <span class='st'>"blue"</span>))
-<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>ramp</span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>12</span>)))</div><div class='img'><img src='colour_ramp-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>ramp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/colour_ramp.html'>colour_ramp</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"red"</span>, <span class='st'>"green"</span>, <span class='st'>"blue"</span>))
+<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'>ramp</span>(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length = <span class='fl'>12</span>)))</div><div class='img'><img src='colour_ramp-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
