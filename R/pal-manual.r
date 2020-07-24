@@ -12,6 +12,6 @@ manual_pal <- function(values) {
         call. = FALSE
       )
     }
-    values[seq_len(n)]
+    unname(values[seq_len(n)])
   }
 }
