@@ -154,18 +154,18 @@ with each string." />
     </div>
 
     <div class="ref-description">
-    <p><code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse()</a></code> produces expression from strings by parsing them;
-<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_math()</a></code> constructs expressions by replacing the pronoun <code>.x</code>
+    <p><code>label_parse()</code> produces expression from strings by parsing them;
+<code>label_math()</code> constructs expressions by replacing the pronoun <code>.x</code>
 with each string.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a></span>()
+    <pre class="usage"><span class='fu'>label_parse</span>()
 
-<span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>label_math</a></span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)
+<span class='fu'>label_math</span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)
 
-<span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>parse_format</a></span>()
+<span class='fu'>parse_format</span>()
 
-<span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>math_format</a></span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)</pre>
+<span class='fu'>math_format</span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,29 +195,29 @@ rather than axes.</p>
 
     
 
-<p><code><a href='https://scales.r-lib.org//reference/label_parse.html'>parse_format()</a></code> and <code><a href='https://scales.r-lib.org//reference/label_parse.html'>math_format()</a></code> was retired; please use
-<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse()</a></code> and <code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_math()</a></code> instead.</p>
+<p><code>parse_format()</code> and <code>math_format()</code> was retired; please use
+<code>label_parse()</code> and <code>label_math()</code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://rdrr.io/r/grDevices/plotmath.html'>plotmath</a> for the details of mathematical formatting in R.</p>
 <p>Other labels for continuous scales: 
-<code><a href='https://scales.r-lib.org//reference/label_bytes.html'>label_bytes</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_dollar.html'>label_dollar</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_number_auto.html'>label_number_auto</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_scientific.html'>label_scientific</a>()</code></p>
+<code><a href='label_bytes.html'>label_bytes</a>()</code>,
+<code><a href='label_dollar.html'>label_dollar</a>()</code>,
+<code><a href='label_number_auto.html'>label_number_auto</a>()</code>,
+<code><a href='label_number_si.html'>label_number_si</a>()</code>,
+<code><a href='label_ordinal.html'>label_ordinal</a>()</code>,
+<code><a href='label_percent.html'>label_percent</a>()</code>,
+<code><a href='label_pvalue.html'>label_pvalue</a>()</code>,
+<code><a href='label_scientific.html'>label_scientific</a>()</code></p>
 <p>Other labels for discrete scales: 
-<code><a href='https://scales.r-lib.org//reference/label_wrap.html'>label_wrap</a>()</code></p></div>
+<code><a href='label_wrap.html'>label_wrap</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use label_parse() with discrete scales</span>
 <span class='kw'>greek</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>)
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_parse-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>, labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a></span>())</div><div class='output co'>#&gt; scale_x_discrete(labels = label_parse())</div><div class='img'><img src='label_parse-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_parse-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>, labels = <span class='fu'>label_parse</span>())</div><div class='output co'>#&gt; scale_x_discrete(labels = label_parse())</div><div class='img'><img src='label_parse-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Use label_math() with continuous scales</span>
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_parse-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_parse.html'>label_math</a></span>(<span class='kw'>alpha</span>[<span class='kw'>.x</span>]))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_math(alpha[.x]))</div><div class='img'><img src='label_parse-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_parse-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), labels = <span class='fu'>label_math</span>(<span class='kw'>alpha</span>[<span class='kw'>.x</span>]))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_math(alpha[.x]))</div><div class='img'><img src='label_parse-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

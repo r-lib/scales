@@ -155,9 +155,9 @@
     <p>Uses <code><a href='https://rdrr.io/r/base/strwrap.html'>strwrap()</a></code> to split long labels across multiple lines.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_wrap.html'>label_wrap</a></span>(<span class='kw'>width</span>)
+    <pre class="usage"><span class='fu'>label_wrap</span>(<span class='kw'>width</span>)
 
-<span class='fu'><a href='https://scales.r-lib.org//reference/label_wrap.html'>wrap_format</a></span>(<span class='kw'>width</span>)</pre>
+<span class='fu'>wrap_format</span>(<span class='kw'>width</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,11 +181,11 @@ rather than axes.</p>
 
     
 
-<p><code><a href='https://scales.r-lib.org//reference/label_wrap.html'>wrap_format()</a></code> is retired; please use <code>label_format()</code> instead.</p>
+<p><code>wrap_format()</code> is retired; please use <code>label_format()</code> instead.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other labels for discrete scales: 
-<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a>()</code></p></div>
+<code><a href='label_parse.html'>label_parse</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
@@ -193,7 +193,7 @@ rather than axes.</p>
   <span class='st'>"this is another long label"</span>,
   <span class='st'>"this a label this is even longer"</span>
 )
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_wrap-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_wrap.html'>label_wrap</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(10))</div><div class='img'><img src='label_wrap-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_wrap.html'>label_wrap</a></span>(<span class='fl'>20</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(20))</div><div class='img'><img src='label_wrap-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_wrap-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'>label_wrap</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(10))</div><div class='img'><img src='label_wrap-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'>label_wrap</span>(<span class='fl'>20</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(20))</div><div class='img'><img src='label_wrap-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

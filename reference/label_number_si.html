@@ -159,7 +159,7 @@
 "B" for \(\ge\) 10e9, and "T" for \(\ge\) 10e12.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a></span>(accuracy = <span class='fl'>1</span>, unit = <span class='kw'>NULL</span>, sep = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>label_number_si</span>(accuracy = <span class='fl'>1</span>, unit = <span class='kw'>NULL</span>, sep = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,21 +199,21 @@ rather than axes.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other labels for continuous scales: 
-<code><a href='https://scales.r-lib.org//reference/label_bytes.html'>label_bytes</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_dollar.html'>label_dollar</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_number_auto.html'>label_number_auto</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_ordinal.html'>label_ordinal</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_parse.html'>label_parse</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_percent.html'>label_percent</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_pvalue.html'>label_pvalue</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_scientific.html'>label_scientific</a>()</code></p>
+<code><a href='label_bytes.html'>label_bytes</a>()</code>,
+<code><a href='label_dollar.html'>label_dollar</a>()</code>,
+<code><a href='label_number_auto.html'>label_number_auto</a>()</code>,
+<code><a href='label_ordinal.html'>label_ordinal</a>()</code>,
+<code><a href='label_parse.html'>label_parse</a>()</code>,
+<code><a href='label_percent.html'>label_percent</a>()</code>,
+<code><a href='label_pvalue.html'>label_pvalue</a>()</code>,
+<code><a href='label_scientific.html'>label_scientific</a>()</code></p>
 <p>Other labels for log scales: 
-<code><a href='https://scales.r-lib.org//reference/label_bytes.html'>label_bytes</a>()</code>,
-<code><a href='https://scales.r-lib.org//reference/label_scientific.html'>label_scientific</a>()</code></p></div>
+<code><a href='label_bytes.html'>label_bytes</a>()</code>,
+<code><a href='label_scientific.html'>label_scientific</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), label = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a></span>())</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si())</div><div class='img'><img src='label_number_si-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5000</span>), label = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a></span>(unit = <span class='st'>"g"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "g"))</div><div class='img'><img src='label_number_si-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1000</span>), label = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a></span>(unit = <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "m"))</div><div class='img'><img src='label_number_si-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_log.html'>log_breaks</a></span>(<span class='fl'>10</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si</a></span>())</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = label_number_si())</div><div class='img'><img src='label_number_si-4.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), label = <span class='fu'>label_number_si</span>())</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si())</div><div class='img'><img src='label_number_si-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5000</span>), label = <span class='fu'>label_number_si</span>(unit = <span class='st'>"g"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "g"))</div><div class='img'><img src='label_number_si-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1000</span>), label = <span class='fu'>label_number_si</span>(unit = <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "m"))</div><div class='img'><img src='label_number_si-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), breaks = <span class='fu'><a href='breaks_log.html'>log_breaks</a></span>(<span class='fl'>10</span>), labels = <span class='fu'>label_number_si</span>())</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = label_number_si())</div><div class='img'><img src='label_number_si-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

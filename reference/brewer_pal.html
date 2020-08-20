@@ -155,7 +155,7 @@
     <p>Colour Brewer palette (discrete)</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/brewer_pal.html'>brewer_pal</a></span>(type = <span class='st'>"seq"</span>, palette = <span class='fl'>1</span>, direction = <span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>brewer_pal</span>(type = <span class='st'>"seq"</span>, palette = <span class='fl'>1</span>, direction = <span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,11 +182,11 @@ order of colours is reversed.</p></td>
     <p><a href='http://colorbrewer2.org'>http://colorbrewer2.org</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/brewer_pal.html'>brewer_pal</a></span>()(<span class='fl'>10</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: n too large, allowed maximum for palette Blues is 9</span>
-#&gt; <span class='warning'>Returning the palette you asked for with that many colors</span></div><div class='img'><img src='brewer_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/brewer_pal.html'>brewer_pal</a></span>(<span class='st'>"div"</span>)(<span class='fl'>5</span>))</div><div class='img'><img src='brewer_pal-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/brewer_pal.html'>brewer_pal</a></span>(palette = <span class='st'>"Greens"</span>)(<span class='fl'>5</span>))</div><div class='img'><img src='brewer_pal-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>brewer_pal</span>()(<span class='fl'>10</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: n too large, allowed maximum for palette Blues is 9</span>
+#&gt; <span class='warning'>Returning the palette you asked for with that many colors</span></div><div class='img'><img src='brewer_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>brewer_pal</span>(<span class='st'>"div"</span>)(<span class='fl'>5</span>))</div><div class='img'><img src='brewer_pal-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>brewer_pal</span>(palette = <span class='st'>"Greens"</span>)(<span class='fl'>5</span>))</div><div class='img'><img src='brewer_pal-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Can use with gradient_n to create a continous gradient</span>
-<span class='kw'>cols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/brewer_pal.html'>brewer_pal</a></span>(<span class='st'>"div"</span>)(<span class='fl'>5</span>)
-<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/gradient_n_pal.html'>gradient_n_pal</a></span>(<span class='kw'>cols</span>)(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length.out = <span class='fl'>30</span>)))</div><div class='img'><img src='brewer_pal-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='kw'>cols</span> <span class='op'>&lt;-</span> <span class='fu'>brewer_pal</span>(<span class='st'>"div"</span>)(<span class='fl'>5</span>)
+<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'><a href='gradient_n_pal.html'>gradient_n_pal</a></span>(<span class='kw'>cols</span>)(<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length.out = <span class='fl'>30</span>)))</div><div class='img'><img src='brewer_pal-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

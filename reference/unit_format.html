@@ -158,10 +158,10 @@ label_number() or label_number_si() instead." />
     <p><a href='https://www.tidyverse.org/lifecycle/#retired'><img src='figures/lifecycle-retired.svg' alt='Retired lifecycle'></a>
 
 This function is kept for backward compatiblity; you should either use
-<code><a href='https://scales.r-lib.org//reference/label_number.html'>label_number()</a></code> or <code><a href='https://scales.r-lib.org//reference/label_number_si.html'>label_number_si()</a></code> instead.</p>
+<code><a href='label_number.html'>label_number()</a></code> or <code><a href='label_number_si.html'>label_number_si()</a></code> instead.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/unit_format.html'>unit_format</a></span>(
+    <pre class="usage"><span class='fu'>unit_format</span>(
   accuracy = <span class='kw'>NULL</span>,
   scale = <span class='fl'>1</span>,
   prefix = <span class='st'>""</span>,
@@ -230,9 +230,9 @@ width (see <code><a href='https://rdrr.io/r/base/format.html'>base::format()</a>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Label with units</span>
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='https://scales.r-lib.org//reference/unit_format.html'>unit_format</a></span>(unit = <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = unit_format(unit = "m"))</div><div class='img'><img src='unit_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Labels in kg, but original data in g</span>
-<span class='kw'>km</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://scales.r-lib.org//reference/unit_format.html'>unit_format</a></span>(unit = <span class='st'>"km"</span>, scale = <span class='fl'>1e-3</span>, digits = <span class='fl'>2</span>)
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>2500</span>), labels = <span class='kw'>km</span>)</div><div class='output co'>#&gt; scale_x_continuous(labels = km)</div><div class='img'><img src='unit_format-2.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'>unit_format</span>(unit = <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = unit_format(unit = "m"))</div><div class='img'><img src='unit_format-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Labels in kg, but original data in g</span>
+<span class='kw'>km</span> <span class='op'>&lt;-</span> <span class='fu'>unit_format</span>(unit = <span class='st'>"km"</span>, scale = <span class='fl'>1e-3</span>, digits = <span class='fl'>2</span>)
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>2500</span>), labels = <span class='kw'>km</span>)</div><div class='output co'>#&gt; scale_x_continuous(labels = km)</div><div class='img'><img src='unit_format-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -155,7 +155,7 @@
     <p>Sequential colour gradient palette (continuous)</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/seq_gradient_pal.html'>seq_gradient_pal</a></span>(low = <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10B 4/6"</span>), high = <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10R 4/6"</span>), space = <span class='st'>"Lab"</span>)</pre>
+    <pre class="usage"><span class='fu'>seq_gradient_pal</span>(low = <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10B 4/6"</span>), high = <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10R 4/6"</span>), space = <span class='st'>"Lab"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,9 +178,9 @@ other values are deprecated.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>, length.out = <span class='fl'>25</span>)
-<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/seq_gradient_pal.html'>seq_gradient_pal</a></span>()(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/seq_gradient_pal.html'>seq_gradient_pal</a></span>(<span class='st'>"white"</span>, <span class='st'>"black"</span>)(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>()(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>(<span class='st'>"white"</span>, <span class='st'>"black"</span>)(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://cran.r-project.org/package=munsell'>munsell</a></span>)
-<span class='fu'><a href='https://scales.r-lib.org//reference/show_col.html'>show_col</a></span>(<span class='fu'><a href='https://scales.r-lib.org//reference/seq_gradient_pal.html'>seq_gradient_pal</a></span>(<span class='st'>"white"</span>, <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10R 4/6"</span>))(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='show_col.html'>show_col</a></span>(<span class='fu'>seq_gradient_pal</span>(<span class='st'>"white"</span>, <span class='fu'><a href='https://rdrr.io/pkg/munsell/man/mnsl.html'>mnsl</a></span>(<span class='st'>"10R 4/6"</span>))(<span class='kw'>x</span>))</div><div class='img'><img src='seq_gradient_pal-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

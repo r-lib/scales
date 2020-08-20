@@ -155,11 +155,11 @@ better job for numeric scales." />
 
     <div class="ref-description">
     <p>Uses default R break algorithm as implemented in <code><a href='https://rdrr.io/r/base/pretty.html'>pretty()</a></code>. This is
-primarily useful for date/times, as <code><a href='https://scales.r-lib.org//reference/breaks_extended.html'>extended_breaks()</a></code> should do a slightly
+primarily useful for date/times, as <code><a href='breaks_extended.html'>extended_breaks()</a></code> should do a slightly
 better job for numeric scales.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty</a></span>(n = <span class='fl'>5</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>breaks_pretty</span>(n = <span class='fl'>5</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,15 +177,15 @@ breaks that requested.</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>pretty_breaks()</a></code> is retired; use <code><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty()</a></code> instead.</p>
+    <p><code>pretty_breaks()</code> is retired; use <code>breaks_pretty()</code> instead.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>one_month</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-05-01"</span>, <span class='st'>"2020-06-01"</span>))
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>)</div><div class='output co'>#&gt; scale_x_datetime()</div><div class='img'><img src='breaks_pretty-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>2</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(2))</div><div class='img'><img src='breaks_pretty-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>4</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(4))</div><div class='img'><img src='breaks_pretty-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>)</div><div class='output co'>#&gt; scale_x_datetime()</div><div class='img'><img src='breaks_pretty-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'>breaks_pretty</span>(<span class='fl'>2</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(2))</div><div class='img'><img src='breaks_pretty-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'>breaks_pretty</span>(<span class='fl'>4</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(4))</div><div class='img'><img src='breaks_pretty-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Tightly spaced date breaks often need custom labels too</span>
-<span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>12</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(12))</div><div class='img'><img src='breaks_pretty-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://scales.r-lib.org//reference/demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>,
-  breaks = <span class='fu'><a href='https://scales.r-lib.org//reference/breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>12</span>),
-  labels = <span class='fu'><a href='https://scales.r-lib.org//reference/label_date.html'>label_date_short</a></span>()
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'>breaks_pretty</span>(<span class='fl'>12</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(12))</div><div class='img'><img src='breaks_pretty-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>,
+  breaks = <span class='fu'>breaks_pretty</span>(<span class='fl'>12</span>),
+  labels = <span class='fu'><a href='label_date.html'>label_date_short</a></span>()
 )</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_pretty(12), labels = label_date_short())</div><div class='img'><img src='breaks_pretty-5.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
