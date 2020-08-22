@@ -1,5 +1,9 @@
 url: https://scales.r-lib.org/
 
+template:
+  params:
+    ganalytics: UA-115082821-1
+
 reference:
 - title: Axis labels
   desc: >
@@ -15,6 +19,7 @@ reference:
     control the position of axis breaks and values of legend keys.
   contents:
   - starts_with("breaks_")
+  - minor_breaks_width
 
 - title: "Bounds: ranges & rescaling"
   desc: >
@@ -81,18 +86,9 @@ reference:
   - Range
 
 
-navbar:
-  components:
-    home: ~
-    news:
-      text: News
-      menu:
-      - text: "Release notes"
-      - text: "Version 1.1.0"
-        href: https://www.tidyverse.org/blog/2019/11/scales-1-1-0/
-      - text: "Version 1.0.0"
-        href: https://www.tidyverse.org/blog/2018/08/scales-1-0-0/
-      - text: "------------------"
-      - text: "Change log"
-        href: news/index.html
-
+news:
+  releases:
+  - text: "Version 1.1.0"
+    href: https://www.tidyverse.org/blog/2019/11/scales-1-1-0/
+  - text: "Version 1.0.0"
+    href: https://www.tidyverse.org/blog/2018/08/scales-1-0-0/

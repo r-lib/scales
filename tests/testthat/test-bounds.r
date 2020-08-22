@@ -40,12 +40,6 @@ test_that("zero range inputs return mid range", {
   expect_that(rescale(c(0, 0)), equals(c(0.5, 0.5)))
 })
 
-
-test_that("censor and squish ignore infinite values", {
-  expect_equal(squish(c(1, Inf)), c(1, Inf))
-  expect_equal(censor(c(1, Inf)), c(1, Inf))
-})
-
 test_that("scaling is possible with dates and times", {
   dates <- as.Date(c("2010-01-01", "2010-01-03", "2010-01-05", "2010-01-07"))
   expect_equal(rescale(dates, from = c(dates[1], dates[4])), seq(0, 1, 1 / 3))
@@ -86,3 +80,20 @@ test_that("expand_range respects mul and add values", {
   expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
 })
 
+test_that("out of bounds functions return correct values", {
+  x <- c(-Inf, -1, 0.5, 1, 2, NA, Inf)
+
+  expect_equal(oob_censor(x), c(-Inf, NA, 0.5, 1, NA, NA, Inf))
+  expect_equal(oob_censor_any(x), c(NA, NA, 0.5, 1, NA, NA, NA))
+  expect_equal(oob_censor(x), censor(x))
+
+  expect_equal(oob_squish(x), c(-Inf, 0, 0.5, 1, 1, NA, Inf))
+  expect_equal(oob_squish_any(x), c(0, 0, 0.5, 1, 1, NA, 1))
+  expect_equal(oob_squish_infinite(x), c(0, -1, 0.5, 1, 2, NA, 1))
+  expect_equal(oob_squish(x), squish(x))
+
+  expect_equal(oob_discard(x), c(0.5, 1, NA))
+  expect_equal(oob_discard(x), discard(x))
+
+  expect_equal(oob_keep(x), x)
+})

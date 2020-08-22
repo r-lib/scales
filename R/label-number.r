@@ -174,13 +174,15 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
 # Helpers -----------------------------------------------------------------
 
 precision <- function(x) {
-  # cannot calculate a precision if all values are Inf or NA
-  if (all(is.infinite(x) | is.na(x)) || length(x) == 1) {
+  x <- unique(x)
+  # ignore NA and Inf/-Inf
+  x <- x[is.finite(x)]
+
+  if (length(x) <= 1) {
     return(1)
   }
 
   smallest_diff <- min(diff(sort(x)))
-
   if (smallest_diff < sqrt(.Machine$double.eps)) {
     1
   } else {

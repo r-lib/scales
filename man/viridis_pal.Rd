@@ -4,8 +4,7 @@
 \alias{viridis_pal}
 \title{Viridis palette}
 \usage{
-viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1,
-  option = "D")
+viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1, option = "D")
 }
 \arguments{
 \item{alpha}{The alpha transparency, a number in [0,1], see argument alpha in

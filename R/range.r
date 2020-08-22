@@ -17,8 +17,8 @@ DiscreteRange <- R6::R6Class(
   "DiscreteRange",
   inherit = Range,
   list(
-    train = function(x, drop = FALSE) {
-      self$range <- train_discrete(x, self$range, drop)
+    train = function(x, drop = FALSE, na.rm = FALSE) {
+      self$range <- train_discrete(x, self$range, drop, na.rm)
     },
     reset = function() self$range <- NULL
   )

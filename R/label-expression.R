@@ -7,7 +7,7 @@
 #' @section Old interface:
 #' `parse_format()` and `math_format()` was retired; please use
 #' `label_parse()` and `label_math()` instead.
-#' @inherit number_format return params
+#' @inherit number_format return
 #' @seealso [plotmath] for the details of mathematical formatting in R.
 #' @export
 #' @family labels for continuous scales

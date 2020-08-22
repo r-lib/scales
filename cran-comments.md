@@ -8,54 +8,46 @@
 ## R CMD check results
 0 errors | 0 warnings | 0 notes
 
-## Reverse dependencies
-
-We checked 375 reverse dependencies (303 from CRAN + 72 from BioConductor),
-comparing R CMD check results across CRAN and dev versions of this package.
-
- * We saw 5 new problems
- * We failed to check 25 packages
-
 ## revdepcheck results
 
-We checked 530 reverse dependencies (438 from CRAN + 92 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 464 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 5 new problems
- * We failed to check 7 packages
+ * We saw 2 new problems
+ * We failed to check 21 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* ggasym
-  checking tests ...
-  Author has fix in development version; planning to submit soon.
+* BIGL
+  checking whether package ‘BIGL’ can be installed ... WARNING
+  False positive because RGL does not work on our check machine.
 
-* iheatmapr
-  checking tests ...
-  Author has fix in development version; has submitted to CRAN
-
-* randomcoloR
-  checking whether the package can be loaded ... ERROR
-  Fix revealed bug in this package. 
-  Notified 2019-11-05; no response
-
-* RSDA
-  checking whether the package can be loaded ... ERROR
-  Fails because of randomcoloR dependencies.
-
-* signs
-  checking tests ...
-  Minor change in formatting causes test to fail. 
-  Notified 2019-11-05; no response
+* gt
+  checking tests ... ERROR
+  I provided a fix to the authors on May 7
 
 ### Failed to check
 
-* cellWise     (NA)
-* fingerPro    (NA)
-* idefix       (NA)
-* likeLTD      (NA)
-* pimeta       (NA)
-* simts        (NA)
-* spikeSlabGAM (NA)
+* anglr            (NA)
+* DeducerSpatial   (NA)
+* dimRed           (NA)
+* dtwSat           (NA)
+* eechidna         (NA)
+* fingertipscharts (NA)
+* geneNetBP        (NA)
+* geomerge         (NA)
+* ggalt            (NA)
+* GGEBiplots       (NA)
+* inlmisc          (NA)
+* loon             (NA)
+* MarketMatching   (NA)
+* plotKML          (NA)
+* ppcSpatial       (NA)
+* quadmesh         (NA)
+* rAvis            (NA)
+* simplevis        (NA)
+* smartR           (NA)
+* surveillance     (NA)
+* SWMPrExtension   (NA)

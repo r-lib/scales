@@ -27,11 +27,14 @@ demo_continuous(c(0, 1e6), labels = label_number_auto())
 demo_log10(c(1, 1e7), labels = label_number_auto())
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_dollar}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_dollar}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}

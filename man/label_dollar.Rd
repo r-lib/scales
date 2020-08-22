@@ -8,20 +8,48 @@
 \alias{billion_long}
 \title{Label currencies ($100, $2.50, etc)}
 \usage{
-label_dollar(accuracy = NULL, scale = 1, prefix = "$", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE,
-  billion_scale = NULL, ...)
+label_dollar(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "$",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  largest_with_cents = 1e+05,
+  negative_parens = FALSE,
+  billion_scale = NULL,
+  ...
+)
 
-dollar_format(accuracy = NULL, scale = 1, prefix = "$",
-  suffix = "", big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE,
-  billion_scale = NULL, ...)
+dollar_format(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "$",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  largest_with_cents = 1e+05,
+  negative_parens = FALSE,
+  billion_scale = NULL,
+  ...
+)
 
-dollar(x, accuracy = NULL, scale = 1, prefix = "$", suffix = "",
-  big.mark = ",", decimal.mark = ".", trim = TRUE,
-  largest_with_cents = 1e+05, negative_parens = FALSE,
-  billion_scale = NULL, ...)
+dollar(
+  x,
+  accuracy = NULL,
+  scale = 1,
+  prefix = "$",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  largest_with_cents = 1e+05,
+  negative_parens = FALSE,
+  billion_scale = NULL,
+  ...
+)
 
 billion_short()
 
@@ -87,7 +115,7 @@ demo_continuous(c(1, 100), labels = label_dollar())
 demo_continuous(c(1, 100), labels = label_dollar(prefix = "USD "))
 euro <- dollar_format(
   prefix = "",
-  suffix = "\\u20ac",
+  suffix = "\u20ac",
   big.mark = ".",
   decimal.mark = ","
 )
@@ -109,11 +137,14 @@ custom_dollar <- label_dollar(billion_scale = c(k = 3, mn = 6, bn = 9, tn = 12))
 demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
 }
 \seealso{
-Other labels for continuous scales: \code{\link{label_bytes}},
-  \code{\link{label_number_auto}},
-  \code{\link{label_number_si}},
-  \code{\link{label_ordinal}}, \code{\link{label_parse}},
-  \code{\link{label_percent}}, \code{\link{label_pvalue}},
-  \code{\link{label_scientific}}
+Other labels for continuous scales: 
+\code{\link{label_bytes}()},
+\code{\link{label_number_auto}()},
+\code{\link{label_number_si}()},
+\code{\link{label_ordinal}()},
+\code{\link{label_parse}()},
+\code{\link{label_percent}()},
+\code{\link{label_pvalue}()},
+\code{\link{label_scientific}()}
 }
 \concept{labels for continuous scales}

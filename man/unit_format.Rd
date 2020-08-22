@@ -4,9 +4,18 @@
 \alias{unit_format}
 \title{Unit labels}
 \usage{
-unit_format(accuracy = NULL, scale = 1, prefix = "", unit = "m",
-  sep = " ", suffix = paste0(sep, unit), big.mark = " ",
-  decimal.mark = ".", trim = TRUE, ...)
+unit_format(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  unit = "m",
+  sep = " ",
+  suffix = paste0(sep, unit),
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal

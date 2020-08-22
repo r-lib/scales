@@ -13,4 +13,10 @@ test_that("hue_pal arguments are forcely evaluated on each call #81", {
   expect_equal(col2(1), colours[[2]](1))
 })
 
+test_that("hue_pal respects direction argument #252", {
+  col1 <- hue_pal()
+  col2 <- hue_pal(direction = -1)
 
+  expect_equal(col1(3), rev(col2(3)))
+  expect_equal(col1(9), rev(col2(9)))
+})

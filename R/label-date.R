@@ -11,7 +11,7 @@
 #' @section Old interface:
 #' `date_format()` and `time_format()` are retired; please use `label_date()`
 #' and `label_time()` instead.
-#' @inherit number_format return params
+#' @inherit number_format return
 #' @param format For `date_format()` and `time_format()` a date/time format
 #'   string using standard POSIX specification.  See [strptime()] for details.
 #'

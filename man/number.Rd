@@ -4,8 +4,17 @@
 \alias{number}
 \title{A low-level numeric formatter}
 \usage{
-number(x, accuracy = NULL, scale = 1, prefix = "", suffix = "",
-  big.mark = " ", decimal.mark = ".", trim = TRUE, ...)
+number(
+  x,
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  big.mark = " ",
+  decimal.mark = ".",
+  trim = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{A numeric vector to format.}
