@@ -20,3 +20,17 @@ test_that("hue_pal respects direction argument #252", {
   expect_equal(col1(3), rev(col2(3)))
   expect_equal(col1(9), rev(col2(9)))
 })
+
+
+test_that("hue_pal respect h.start argument #288", {
+  col1 <- hue_pal(
+    h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1
+    )(9)
+  col2 <- hue_pal(
+    h = c(0, 360) + 15, c = 100, l = 65, h.start = 15, direction = 1
+  )(9)
+
+  expect_true(
+    all(col1 != col2)
+  )
+})

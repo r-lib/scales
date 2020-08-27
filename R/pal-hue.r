@@ -36,7 +36,9 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
       h[2] <- h[2] - 360 / n
     }
 
-    hues <- seq(h[1], h[2], length.out = n)
+    do_shift <- function(x) (x + h.start)
+    hues <- do_shift(seq(h[1], h[2], length.out = n))
+
     hcl <- cbind(hues, c, l)
 
     pal <- farver::encode_colour(hcl, from = "hcl")

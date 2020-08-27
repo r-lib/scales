@@ -2,6 +2,8 @@
 
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
+  
+ * `hue_pal()` now uses argument `h_start` (@aalucaci, #288).
 
 # scales 1.1.1
 
