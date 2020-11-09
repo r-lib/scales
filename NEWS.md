@@ -2,6 +2,10 @@
 
 * `breaks_width()` now supports units like `"3 months"` in the `offset`
   argument.
+* `manual_pal()` now always returns an unnamed colour vector, which is easy to
+  use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
+
+# scales 1.1.1
 
 * `breaks_width()` now handles `difftime`/`hms` objects (@bhogan-mitre, #244).
 

@@ -26,6 +26,7 @@ Issues with CRAN packages are summarised below.
 
 * gt
   checking tests ... ERROR
+  I provided a fix to the authors on May 7
 
 ### Failed to check
 
