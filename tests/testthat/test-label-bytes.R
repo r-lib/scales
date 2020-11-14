@@ -9,9 +9,17 @@ test_that("auto units handles 0 and other special values", {
   expect_equal(label_bytes()(Inf), "Inf")
 })
 
+test_that("auto binary units use B for bytes", {
+  expect_equal(label_bytes("auto_binary")(1), "1 B")
+})
+
 test_that("can use either binary or si units", {
   expect_equal(label_bytes("kB")(1000), "1 kB")
-  expect_equal(label_bytes("kiB")(1024), "1 kiB")
+  expect_equal(label_bytes("KiB")(1024), "1 KiB")
+})
+
+test_that("can use plain bytes as units", {
+  expect_equal(label_bytes("B")(1000), "1 000 B")
 })
 
 test_that("errors if unknown unit", {
