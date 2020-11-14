@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `label_bytes()` now accepts "B" as `units` and always uses "KiB" for kibibytes
+  (#299) and "B" for bytes (@mikmart).
+
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
@@ -37,7 +40,7 @@
   trying to convert to `"NA"` (@clauswilke, #187).
 
 * New `label_bytes()` replaces `number_bytes_format()` with a more 
-  convenient interface. It takes a single `unit` argument which can either be
+  convenient interface. It takes a single `units` argument which can either be
   an SI unit (e.g. "kB"), a binary unit (e.g. "KiB"), or an automatic unit
   (either "auto_si" or "auto_binary").
   
