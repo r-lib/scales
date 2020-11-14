@@ -54,7 +54,10 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
       power <- findInterval(abs(x), c(0, base^powers)) - 1L
       units <- c("B", units)[power + 1L]
     } else {
-      if (units %in% si_units) {
+      if (units == "B") {
+        base <- 1000
+        power <- 0
+      } else if (units %in% si_units) {
         base <- 1000
         power <- powers[[match(units, si_units)]]
       } else if (units %in% bin_units) {
