@@ -11,7 +11,7 @@ label_bytes(units = "auto_si", accuracy = 1, ...)
 \itemize{
 \item "kB", "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for
 SI units (base 1000).
-\item "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
+\item "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 binary units (base 1024).
 \item \code{auto_si} or \code{auto_binary} to automatically pick the most approrpiate
 unit for each value.
@@ -32,7 +32,7 @@ returns a character vector of labels.
 }
 \description{
 Scale bytes into human friendly units. Can use either SI units (e.g.
-kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
+kB = 1000 bytes) or binary units (e.g. KiB = 1024 bytes). See
 \href{http://en.wikipedia.org/wiki/Units_of_information}{Units of Information}
 on Wikipedia for more details.
 }

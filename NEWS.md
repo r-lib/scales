@@ -38,7 +38,7 @@
 
 * New `label_bytes()` replaces `number_bytes_format()` with a more 
   convenient interface. It takes a single `unit` argument which can either be
-  an SI unit (e.g. "kB"), a binary unit (e.g. "kIB"), or an automatic unit
+  an SI unit (e.g. "kB"), a binary unit (e.g. "KiB"), or an automatic unit
   (either "auto_si" or "auto_binary").
   
     It always uses "B" as the symbol for bytes (#174), and checks that `units` 
@@ -47,7 +47,7 @@
     
     ```R
     label_bytes("auto_binary")(1024^(1:3))
-    #> [1] "1 kiB" "1 MiB" "1 GiB"
+    #> [1] "1 KiB" "1 MiB" "1 GiB"
     ```
   
 

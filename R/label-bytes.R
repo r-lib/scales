@@ -1,14 +1,14 @@
 #' Label bytes (1 kb, 2 MB, etc)
 #'
 #' Scale bytes into human friendly units. Can use either SI units (e.g.
-#' kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
+#' kB = 1000 bytes) or binary units (e.g. KiB = 1024 bytes). See
 #' [Units of Information](http://en.wikipedia.org/wiki/Units_of_information)
 #' on Wikipedia for more details.
 #'
 #' @param units Unit to use. Should either one of:
 #'   * "kB", "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for
 #'     SI units (base 1000).
-#'   * "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
+#'   * "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 #'     binary units (base 1024).
 #'   * `auto_si` or `auto_binary` to automatically pick the most approrpiate
 #'     unit for each value.
@@ -44,16 +44,16 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
   function(x) {
     powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
 
+    si_units <- paste0(names(powers), "B")
+    bin_units <- paste0(toupper(names(powers)), "iB")
+
     if (units %in% c("auto_si", "auto_binary")) {
       base <- switch(units, auto_binary = 1024, auto_si = 1000)
-      suffix <- switch(units, auto_binary = "iB", auto_si = "B")
+      units <- switch(units, auto_si = si_units, auto_binary = bin_units)
 
       power <- findInterval(abs(x), c(0, base^powers)) - 1L
-      units <- paste0(c("", names(powers))[power + 1L], suffix)
+      units <- c("B", units)[power + 1L]
     } else {
-      si_units <- paste0(names(powers), "B")
-      bin_units <- paste0(names(powers), "iB")
-
       if (units %in% si_units) {
         base <- 1000
         power <- powers[[match(units, si_units)]]
