@@ -59,6 +59,7 @@ reference:
   - contains("col")
   - muted
   - alpha
+  - contains("show_")
 
 - title: Non-colour palette functions
   desc: >
