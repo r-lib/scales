@@ -124,15 +124,15 @@ demo_continuous(c(1000, 1100), labels = euro)
 # Use negative_parens = TRUE for finance style display
 demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
 
-# In English-speaking world, short scale is most prevalent
+# In finance the short scale is most prevalent
 dollar <- label_dollar(rescale_large = short_scale())
 demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
 
-# Elsewhere, long scale is often used
-euro <- label_dollar(prefix = "", suffix = "EUR", rescale_large = long_scale())
-demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = euro)
+# In other contexts the long scale might be used
+long <- label_dollar(prefix = "", rescale_large = long_scale())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
 
-# You can also define a custom numeral system
+# You can also define a custom naming system
 custom_dollar <- label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))
 demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
 }

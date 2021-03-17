@@ -37,10 +37,6 @@ test_that("rescale_large works", {
   x <- c(1, 2, 10, 100)
 
   expect_equal(
-    label_dollar(scale = 2, rescale_large = short_scale())(x),
-    c("$2.0", "$4.0", "$20.0", "$200.0")
-  )
-  expect_equal(
     label_dollar(scale = 2, rescale_large = short_scale())(x * 1e3),
     c("$2.0K", "$4.0K", "$20.0K", "$200.0K")
   )
