@@ -109,7 +109,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    negative_parens = FALSE, rescale_large = NULL,
                    ...) {
   if (length(x) == 0) return(character())
-  if (is.null(accuracy)) {
+  if (is.null(accuracy) && is.null(rescale_large)) {
     if (needs_cents(x * scale, largest_with_cents)) {
       accuracy <- .01
     } else {
@@ -126,7 +126,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   if (!is.null(rescale_large)) {
     breaks <- c(0, 10^rescale_large)
 
-    rescale_suffix <- cut(abs(x),
+    rescale_suffix <- cut(abs(x * scale),
       breaks = c(unname(breaks), Inf),
       labels = c(names(breaks)),
       right = FALSE
@@ -136,9 +136,10 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     sep <- if (suffix == "") "" else " "
     suffix <- paste0(rescale_suffix, sep, suffix)
 
-    scale <- unname(1 / breaks[rescale_suffix])
+    rescale <- unname(1 / breaks[rescale_suffix])
     # for handling Inf and 0-1 correctly
-    scale[which(scale %in% c(Inf, NA))] <- 1
+    rescale[which(rescale %in% c(Inf, NA))] <- 1
+    scale <- rescale * scale
   }
 
   amount <- number(

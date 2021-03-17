@@ -33,4 +33,19 @@ test_that("rescale_large works", {
     label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))(x),
     c("$1", "$1k", "$1m", "$1bn", "$1tn", "$1,000tn", "$1,000,000tn")
   )
+
+  x <- c(1, 2, 10, 100)
+
+  expect_equal(
+    label_dollar(scale = 2, rescale_large = short_scale())(x),
+    c("$2.0", "$4.0", "$20.0", "$200.0")
+  )
+  expect_equal(
+    label_dollar(scale = 2, rescale_large = short_scale())(x * 1e3),
+    c("$2.0K", "$4.0K", "$20.0K", "$200.0K")
+  )
+  expect_equal(
+    label_dollar(scale = 2, rescale_large = short_scale())(x * 1e4),
+    c("$20K", "$40K", "$200K", "$2M")
+  )
 })
