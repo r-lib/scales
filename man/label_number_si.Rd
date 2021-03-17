@@ -2,7 +2,7 @@
 % Please edit documentation in R/label-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Label numbers with SI prefixes (2k, 1M, 5m etc)}
+\title{Label numbers with SI prefixes (2 kg, 5 mm etc)}
 \usage{
 label_number_si(accuracy = 1, unit = NULL, sep = NULL, ...)
 }

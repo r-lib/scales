@@ -14,10 +14,10 @@
 #'   value is less than `largest_with_cents` which by default is 100,000.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param negative_parens Display negative using parentheses?
-#' @param billion_scale Named list indicating suffixes given to large values
+#' @param rescale_large Named list indicating suffixes given to large values
 #'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
 #'   value specifies the power-of-ten. The two most common scales are provided
-#'   (`billion_short()` and `billion_long()`). If `NULL`, the default, these
+#'   (`short_scale()` and `long_scale()`). If `NULL`, the default, these
 #'   suffixes aren't used.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
@@ -40,20 +40,20 @@
 #' demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
 #'
 #' # In English-speaking world, short scale is most prevalent
-#' dollar <- label_dollar(billion_scale = billion_short())
+#' dollar <- label_dollar(rescale_large = short_scale())
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
 #'
 #' # Elsewhere, long scale is often used
-#' euro <- label_dollar(prefix = "", suffix = "EUR", billion_scale = billion_long())
+#' euro <- label_dollar(prefix = "", suffix = "EUR", rescale_large = long_scale())
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = euro)
 #'
-#' # You can also define a custom billion scale
-#' custom_dollar <- label_dollar(billion_scale = c(k = 3, mn = 6, bn = 9, tn = 12))
+#' # You can also define a custom numeral system
+#' custom_dollar <- label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
                           suffix = "", big.mark = ",", decimal.mark = ".",
                           trim = TRUE, largest_with_cents = 100000,
-                          negative_parens = FALSE, billion_scale = NULL,
+                          negative_parens = FALSE, rescale_large = NULL,
                           ...) {
   force_all(
     accuracy,
@@ -65,7 +65,7 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
     trim,
     largest_with_cents,
     negative_parens,
-    billion_scale,
+    rescale_large,
     ...
   )
   function(x) dollar(
@@ -79,7 +79,7 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
       trim = trim,
       largest_with_cents = largest_with_cents,
       negative_parens,
-      billion_scale = billion_scale,
+      rescale_large = rescale_large,
       ...
     )
 }
@@ -106,7 +106,7 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = FALSE, billion_scale = NULL,
+                   negative_parens = FALSE, rescale_large = NULL,
                    ...) {
   if (length(x) == 0) return(character())
   if (is.null(accuracy)) {
@@ -123,20 +123,20 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   negative <- !is.na(x) & x < 0
   x <- abs(x)
 
-  if (!is.null(billion_scale)) {
-    breaks <- c(0, 10^billion_scale)
+  if (!is.null(rescale_large)) {
+    breaks <- c(0, 10^rescale_large)
 
-    bn_suffix <- cut(abs(x),
+    rescale_suffix <- cut(abs(x),
       breaks = c(unname(breaks), Inf),
       labels = c(names(breaks)),
       right = FALSE
     )
-    bn_suffix[is.na(bn_suffix)] <- ""
+    rescale_suffix[is.na(rescale_suffix)] <- ""
 
     sep <- if (suffix == "") "" else " "
-    suffix <- paste0(bn_suffix, sep, suffix)
+    suffix <- paste0(rescale_suffix, sep, suffix)
 
-    scale <- unname(1 / breaks[bn_suffix])
+    scale <- unname(1 / breaks[rescale_suffix])
     # for handling Inf and 0-1 correctly
     scale[which(scale %in% c(Inf, NA))] <- 1
   }
@@ -168,12 +168,12 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
 #' @export
 #' @rdname label_dollar
-billion_short <- function() {
+short_scale <- function() {
   c(K = 3, M = 6, B = 9, T = 12)
 }
 
 #' @export
 #' @rdname label_dollar
-billion_long <- function() {
+long_scale <- function() {
   c(K = 3, M = 6, B = 12, T = 18)
 }

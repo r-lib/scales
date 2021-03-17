@@ -18,19 +18,19 @@ test_that("decimal.mark could be modified", {
   expect_equal(label_dollar(decimal.mark = ",")(123.45), "$123,45")
 })
 
-test_that("billion_scale works", {
+test_that("rescale_large works", {
   x <- 10^(seq(0, 18, 3))
 
   expect_equal(
-    label_dollar(billion_scale = billion_short())(x),
+    label_dollar(rescale_large = short_scale())(x),
     c("$1", "$1K", "$1M", "$1B", "$1T", "$1,000T", "$1,000,000T")
   )
   expect_equal(
-    label_dollar(billion_scale = billion_long())(x),
+    label_dollar(rescale_large = long_scale())(x),
     c("$1", "$1K", "$1M", "$1,000M", "$1B", "$1,000B", "$1T")
   )
   expect_equal(
-    label_dollar(billion_scale = c(k = 3, mn = 6, bn = 9, tn = 12))(x),
-    c("$1", "$1k", "$1mn", "$1bn", "$1tn", "$1,000tn", "$1,000,000tn")
+    label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))(x),
+    c("$1", "$1k", "$1m", "$1bn", "$1tn", "$1,000tn", "$1,000,000tn")
   )
 })
