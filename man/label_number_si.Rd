@@ -4,7 +4,7 @@
 \alias{label_number_si}
 \title{Label numbers with SI prefixes (2 kg, 5 mm etc)}
 \usage{
-label_number_si(accuracy = 1, unit = NULL, sep = NULL, ...)
+label_number_si(accuracy = NULL, unit = NULL, sep = NULL, ...)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
