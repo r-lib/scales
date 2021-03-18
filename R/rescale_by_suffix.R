@@ -1,12 +1,12 @@
 # each value of x is assigned a suffix and associated scaling factor
 rescale_by_suffix <- function(x, breaks) {
-  min_suffix <- names(which.min(breaks))
   suffix <- as.character(cut(
     abs(x),
-    breaks = c(-Inf, unname(breaks), Inf),
-    labels = c(min_suffix, names(breaks)),
+    breaks = c(unname(breaks), Inf),
+    labels = names(breaks),
     right = FALSE
   ))
+  suffix[is.na(suffix)] <- names(which.min(breaks))
 
   scale <- unname(1 / breaks[suffix])
   scale[which(scale %in% c(Inf, NA))] <- 1
