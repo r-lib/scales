@@ -11,9 +11,9 @@
 #' @family labels for continuous scales
 #' @family labels for log scales
 #' @examples
-#' demo_continuous(c(1, 1e9), label = label_number_si())
-#' demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
-#' demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
+#' demo_continuous(c(1, 1e9), labels = label_number_si())
+#' demo_continuous(c(1, 5000), labels = label_number_si(unit = "g"))
+#' demo_continuous(c(1, 1000), labels = label_number_si(unit = "m"))
 #'
 #' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 #' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
@@ -22,23 +22,14 @@ label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
   force_all(accuracy, ...)
 
   function(x) {
-    breaks <- 10^si_powers
+    rescale <- rescale_by_suffix(x, breaks = 10^si_powers)
 
-    n_suffix <- cut(abs(x),
-      breaks = c(unname(breaks), Inf),
-      labels = c(names(breaks)),
-      right = FALSE
-    )
-    n_suffix[is.na(n_suffix)] <- names(which.min(breaks))
-    suffix <- paste0(sep, n_suffix, unit)
-
-    scale <- 1 / breaks[n_suffix]
-    # for handling Inf and 0-1 correctly
-    scale[which(scale %in% c(Inf, NA))] <- 1
+    suffix <- paste0(sep, rescale$suffix, unit)
+    scale <- rescale$scale
 
     number(x,
       accuracy = accuracy,
-      scale = unname(scale),
+      scale = scale,
       suffix = suffix,
       ...
     )

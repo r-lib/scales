@@ -113,7 +113,7 @@ demo_continuous(c(1, 100), labels = label_dollar())
 
 # Customise currency display with prefix and suffix
 demo_continuous(c(1, 100), labels = label_dollar(prefix = "USD "))
-euro <- dollar_format(
+euro <- label_dollar(
   prefix = "",
   suffix = "\u20ac",
   big.mark = ".",
@@ -132,9 +132,12 @@ demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
 long <- label_dollar(prefix = "", rescale_large = long_scale())
 demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
 
-# You can also define a custom naming system
-custom_dollar <- label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))
-demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
+# You can also define a custom naming scheme
+gbp <- label_dollar(
+  prefix = "\u00a3",
+  rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+)
+demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 }
 \seealso{
 Other labels for continuous scales: 

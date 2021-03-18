@@ -36,9 +36,9 @@ rather than axes.
 e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
 }
 \examples{
-demo_continuous(c(1, 1e9), label = label_number_si())
-demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
-demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
+demo_continuous(c(1, 1e9), labels = label_number_si())
+demo_continuous(c(1, 5000), labels = label_number_si(unit = "g"))
+demo_continuous(c(1, 1000), labels = label_number_si(unit = "m"))
 
 demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))

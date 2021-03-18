@@ -4,7 +4,7 @@ test_that("rescales values independently", {
     number_si(10^c(-24, -21, -18, -15, -12, -9, -6, -3, 0, 3, 6, 9, 12, 15, 18, 21, 24)),
     c("1y", "1z", "1a", "1f", "1p", "1n", "1\u00b5", "1m", "1", "1k", "1M", "1G", "1T", "1P", "1E", "1Z", "1Y")
   )
-  expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1k", "1M", "1G"))
+  expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1.0k", "1.0M", "1.0G"))
 })
 
 test_that("handles units correctly", {
@@ -14,7 +14,7 @@ test_that("handles units correctly", {
 
 test_that("handles out-of-range inputs correctly", {
   number_si <- label_number_si(accuracy = 0.1)
-  expect_equal(number_si(c(1e-27, 1e-25, 1e25, 1e27)), c("0.0y", "0.1y", "10.0Y", "1 000.0Y"))
+  expect_equal(number_si(c(0, 1e-27, 1e-25, 1e25, 1e27)), c("0.0", "0.0y", "0.1y", "10.0Y", "1 000.0Y"))
 })
 
 test_that("handles bad inputs gracefully", {

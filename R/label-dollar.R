@@ -28,7 +28,7 @@
 #'
 #' # Customise currency display with prefix and suffix
 #' demo_continuous(c(1, 100), labels = label_dollar(prefix = "USD "))
-#' euro <- dollar_format(
+#' euro <- label_dollar(
 #'   prefix = "",
 #'   suffix = "\u20ac",
 #'   big.mark = ".",
@@ -47,9 +47,12 @@
 #' long <- label_dollar(prefix = "", rescale_large = long_scale())
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
 #'
-#' # You can also define a custom naming system
-#' custom_dollar <- label_dollar(rescale_large = c(k = 3, m = 6, bn = 9, tn = 12))
-#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = custom_dollar)
+#' # You can also define a custom naming scheme
+#' gbp <- label_dollar(
+#'   prefix = "\u00a3",
+#'   rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+#' )
+#' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
                           suffix = "", big.mark = ",", decimal.mark = ".",
                           trim = TRUE, largest_with_cents = 100000,
@@ -124,22 +127,15 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   x <- abs(x)
 
   if (!is.null(rescale_large)) {
-    breaks <- c(0, 10^rescale_large)
+    if (!(is.integer(rescale_large) && all(rescale_large > 0))) {
+      stop("`rescale_large` must be positive integers.", call. = FALSE)
+    }
 
-    rescale_suffix <- cut(abs(x * scale),
-      breaks = c(unname(breaks), Inf),
-      labels = c(names(breaks)),
-      right = FALSE
-    )
-    rescale_suffix[is.na(rescale_suffix)] <- ""
+    rescale <- rescale_by_suffix(x * scale, breaks = c(0, 10^rescale_large))
 
     sep <- if (suffix == "") "" else " "
-    suffix <- paste0(rescale_suffix, sep, suffix)
-
-    rescale <- unname(1 / breaks[rescale_suffix])
-    # for handling Inf and 0-1 correctly
-    rescale[which(rescale %in% c(Inf, NA))] <- 1
-    scale <- rescale * scale
+    suffix <- paste0(rescale$suffix, sep, suffix)
+    scale <- rescale$scale * scale
   }
 
   amount <- number(
@@ -170,11 +166,11 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 #' @export
 #' @rdname label_dollar
 short_scale <- function() {
-  c(K = 3, M = 6, B = 9, T = 12)
+  c(K = 3L, M = 6L, B = 9L, T = 12L)
 }
 
 #' @export
 #' @rdname label_dollar
 long_scale <- function() {
-  c(K = 3, M = 6, B = 12, T = 18)
+  c(K = 3L, M = 6L, B = 12L, T = 18L)
 }
