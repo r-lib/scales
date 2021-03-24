@@ -10,7 +10,7 @@
 #'     SI units (base 1000).
 #'   * "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 #'     binary units (base 1024).
-#'   * `auto_si` or `auto_binary` to automatically pick the most approrpiate
+#'   * `auto_si` or `auto_binary` to automatically pick the most appropriate
 #'     unit for each value.
 #' @inheritParams number_format
 #' @param ... Other arguments passed on to [number()]

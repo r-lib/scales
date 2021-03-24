@@ -2,12 +2,12 @@
 % Please edit documentation in R/label-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Label numbers with SI prefixes (2 kg, 5 mm etc)}
+\title{Label numbers with SI prefixes (2 kg, 5 mm, etc)}
 \usage{
-label_number_si(unit = NULL, accuracy = NULL, scale = 1, ...)
+label_number_si(unit, accuracy = NULL, scale = 1, ...)
 }
 \arguments{
-\item{unit}{Optional units specifier.}
+\item{unit}{Unit of measurement (e.g. \code{"m"} for meter, the SI unit of length).}
 
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
@@ -33,16 +33,17 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{number_si()} automatically scales and labels with the best SI prefix,
-e.g. "k" for values \eqn{\ge} 1e3 and "m" for \eqn{\ge} 1e-3.
+\code{label_number_si()} automatically adds the most suitable SI prefix and scales
+the values appropriately. For example, values greater than 1000 gain a "k"
+prefix (abbreviated from "kilo-") and are scaled by 1/1000.
+See \href{https://en.wikipedia.org/wiki/Metric_prefix}{Metric Prefix} on Wikipedia
+for more details.
 }
 \examples{
-demo_continuous(c(1, 1e9), labels = label_number_si())
-demo_continuous(c(1, 5000), labels = label_number_si(unit = "g"))
-demo_continuous(c(1, 1000), labels = label_number_si(unit = "m"))
+demo_continuous(c(1, 1000), labels = label_number_si("m"))
 
-demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
-demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
+demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si("m"))
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("m"))
 }
 \seealso{
 Other labels for continuous scales: 

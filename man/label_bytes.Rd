@@ -13,7 +13,7 @@ label_bytes(units = "auto_si", accuracy = 1, scale = 1, ...)
 SI units (base 1000).
 \item "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 binary units (base 1024).
-\item \code{auto_si} or \code{auto_binary} to automatically pick the most approrpiate
+\item \code{auto_si} or \code{auto_binary} to automatically pick the most appropriate
 unit for each value.
 }}
 
