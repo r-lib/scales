@@ -2,9 +2,9 @@
 % Please edit documentation in R/label-bytes.R
 \name{label_bytes}
 \alias{label_bytes}
-\title{Label bytes (1 kb, 2 MB, etc)}
+\title{Label bytes (1 kB, 2 MB, etc)}
 \usage{
-label_bytes(units = "auto_si", accuracy = 1, ...)
+label_bytes(units = "auto_si", accuracy = 1, scale = 1, ...)
 }
 \arguments{
 \item{units}{Unit to use. Should either one of:
@@ -23,6 +23,10 @@ ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.
 
 Applied to rescaled data.}
+
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formating. This is useful if the underlying data is very small or very
+large.}
 
 \item{...}{Other arguments passed on to \code{\link[=number]{number()}}}
 }

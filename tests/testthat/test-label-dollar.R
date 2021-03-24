@@ -33,7 +33,9 @@ test_that("rescale_large works", {
     label_dollar(rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L))(x),
     c("$1", "$1k", "$1m", "$1bn", "$1tn", "$1,000tn", "$1,000,000tn")
   )
+})
 
+test_that("rescale_large compatible with scale argument", {
   x <- c(1, 2, 10, 100)
 
   expect_equal(

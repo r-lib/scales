@@ -135,7 +135,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
     sep <- if (suffix == "") "" else " "
     suffix <- paste0(rescale$suffix, sep, suffix)
-    scale <- rescale$scale * scale
+    scale <- scale * rescale$scale
   }
 
   amount <- number(
