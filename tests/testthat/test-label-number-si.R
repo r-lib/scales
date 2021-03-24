@@ -28,6 +28,11 @@ test_that("arguments passed on to number()", {
   expect_equal(number_si(1e27), "1,000.0Y")
 })
 
+test_that("compatible with scale argument", {
+  number_si <- label_number_si(scale = 2)
+  expect_equal(number_si(500), "1k")
+})
+
 test_that("number_si preserves names", {
   number_si <- label_number_si()
   expect_named(number_si(c(a = 1)), "a")

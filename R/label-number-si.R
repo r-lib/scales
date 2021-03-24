@@ -17,15 +17,15 @@
 #'
 #' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 #' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
-label_number_si <- function(accuracy = NULL, unit = NULL, sep = NULL, ...) {
+label_number_si <- function(accuracy = NULL, unit = NULL, sep = NULL, scale = 1, ...) {
   sep <- if (is.null(unit)) "" else " "
   force_all(accuracy, ...)
 
   function(x) {
-    rescale <- rescale_by_suffix(x, breaks = 10^si_powers)
+    rescale <- rescale_by_suffix(x * scale, breaks = 10^si_powers)
 
     suffix <- paste0(sep, rescale$suffix, unit)
-    scale <- rescale$scale
+    scale <- scale * rescale$scale
 
     number(x,
       accuracy = accuracy,
