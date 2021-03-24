@@ -4,17 +4,17 @@
 \alias{label_number_si}
 \title{Label numbers with SI prefixes (2 kg, 5 mm etc)}
 \usage{
-label_number_si(accuracy = NULL, unit = NULL, scale = 1, ...)
+label_number_si(unit = NULL, accuracy = NULL, scale = 1, ...)
 }
 \arguments{
+\item{unit}{Optional units specifier.}
+
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.
 
 Applied to rescaled data.}
-
-\item{unit}{Optional units specifier.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
 formating. This is useful if the underlying data is very small or very

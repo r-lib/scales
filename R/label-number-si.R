@@ -15,7 +15,7 @@
 #'
 #' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 #' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
-label_number_si <- function(accuracy = NULL, unit = NULL, scale = 1, ...) {
+label_number_si <- function(unit = NULL, accuracy = NULL, scale = 1, ...) {
   sep <- if (is.null(unit)) "" else " "
   force_all(accuracy, ...)
 
