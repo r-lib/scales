@@ -5,8 +5,6 @@
 #'
 #' @inherit number_format return params
 #' @param unit Optional units specifier.
-#' @param sep Separator between number and SI unit. Defaults to `" "` if
-#'   `units` is supplied, and `""` if not.
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
@@ -17,7 +15,7 @@
 #'
 #' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
 #' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si(unit = "m"))
-label_number_si <- function(accuracy = NULL, unit = NULL, sep = NULL, scale = 1, ...) {
+label_number_si <- function(accuracy = NULL, unit = NULL, scale = 1, ...) {
   sep <- if (is.null(unit)) "" else " "
   force_all(accuracy, ...)
 
