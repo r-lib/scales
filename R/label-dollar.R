@@ -17,8 +17,8 @@
 #' @param rescale_large Named list indicating suffixes given to large values
 #'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
 #'   value specifies the power-of-ten. The two most common scales are provided
-#'   (`short_scale()` and `long_scale()`). If `NULL`, the default, these
-#'   suffixes aren't used.
+#'   (`rescale_short_scale()` and `rescale_long_scale()`).
+#'   If `NULL`, the default, these suffixes aren't used.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @family labels for continuous scales
@@ -40,11 +40,11 @@
 #' demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
 #'
 #' # In finance the short scale is most prevalent
-#' dollar <- label_dollar(rescale_large = short_scale())
+#' dollar <- label_dollar(rescale_large = rescale_short_scale())
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
 #'
 #' # In other contexts the long scale might be used
-#' long <- label_dollar(prefix = "", rescale_large = long_scale())
+#' long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
 #' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
 #'
 #' # You can also define a custom naming scheme
@@ -165,12 +165,12 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
 #' @export
 #' @rdname label_dollar
-short_scale <- function() {
+rescale_short_scale <- function() {
   c(K = 3L, M = 6L, B = 9L, T = 12L)
 }
 
 #' @export
 #' @rdname label_dollar
-long_scale <- function() {
+rescale_long_scale <- function() {
   c(K = 3L, M = 6L, B = 12L, T = 18L)
 }
