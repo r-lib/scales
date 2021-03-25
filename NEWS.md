@@ -9,8 +9,9 @@
   in finance, so it is now supported via the new `rescale_large` argument of
   `label_dollar()` (@davidchall, #235).
 
-* `label_number_si()` now requires the `unit` argument is specified. The `sep`
-  argument is removed, which had no purpose (@davidchall, #235).
+* `label_number_si()` now requires the `unit` argument is specified. The default
+  value of the `accuracy` argument is now `NULL`, which automatically chooses
+  the precision. The `sep` argument is removed, which had no purpose (@davidchall, #235).
 
 ## New features
 
