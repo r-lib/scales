@@ -1,6 +1,7 @@
 # scales (development version)
 
-## Breaking changes
+* `manual_pal()` now always returns an unnamed colour vector, which is easy to
+  use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
 * `label_number_si()` now correctly uses [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix)
   (e.g. abbreviations "k" for "kilo-" and "m" for "milli-"). It previously used
@@ -12,11 +13,6 @@
 * `label_number_si()` now requires the `unit` argument is specified. The default
   value of the `accuracy` argument is now `NULL`, which automatically chooses
   the precision. The `sep` argument is removed, which had no purpose (@davidchall, #235).
-
-## New features
-
-* `manual_pal()` now always returns an unnamed colour vector, which is easy to
-  use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
 * `label_dollar()` gains a `rescale_large` argument to support scaling of large
   numbers by suffix (e.g. "M" for million, "B" for billion). In finance, the
