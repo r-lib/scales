@@ -17,8 +17,8 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
-large.}
+formatting. This is useful if the underlying data is already using an SI
+prefix.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
@@ -43,7 +43,11 @@ for more details.
 demo_continuous(c(1, 1000), labels = label_number_si("m"))
 
 demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si("m"))
-demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("m"))
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("g"))
+
+# use scale when data already uses SI prefix (e.g. stored in kg)
+kg <- label_number_si("g", scale = 1e3)
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = kg)
 }
 \seealso{
 Other labels for continuous scales: 
