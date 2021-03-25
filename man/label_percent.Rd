@@ -49,7 +49,7 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{prefix}{Symbols to display before and after value.}

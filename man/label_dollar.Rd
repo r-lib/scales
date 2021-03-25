@@ -62,7 +62,7 @@ values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}

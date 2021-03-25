@@ -24,7 +24,7 @@
 #'
 #'   Applied to rescaled data.
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
-#'   formating. This is useful if the underlying data is very small or very
+#'   formatting. This is useful if the underlying data is very small or very
 #'   large.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param big.mark Character used between every 3 digits to separate thousands.
