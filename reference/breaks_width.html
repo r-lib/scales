@@ -53,6 +53,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -74,9 +76,18 @@
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -97,12 +108,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -129,7 +134,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,7 +160,7 @@
     <p>Useful for numeric, date, and date-time scales.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>breaks_width</span>(<span class='kw'>width</span>, offset = <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>breaks_width</span><span class='op'>(</span><span class='va'>width</span>, offset <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,14 +180,25 @@ date/times, a single string of the form "n unit", e.g. "1 month",
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='breaks_width-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'>breaks_width</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(10))</div><div class='img'><img src='breaks_width-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'>breaks_width</span>(<span class='fl'>20</span>, <span class='op'>-</span><span class='fl'>4</span>))</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(20, -4))</div><div class='img'><img src='breaks_width-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'>breaks_width</span>(<span class='fl'>20</span>, <span class='fl'>4</span>))</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(20, 4))</div><div class='img'><img src='breaks_width-4.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='breaks_width-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(10))</div><div class='img'><img src='breaks_width-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='fl'>20</span>, <span class='op'>-</span><span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(20, -4))</div><div class='img'><img src='breaks_width-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='fl'>20</span>, <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(20, 4))</div><div class='img'><img src='breaks_width-4.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># This is also useful for dates</span>
-<span class='kw'>one_month</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"2020-05-01"</span>, <span class='st'>"2020-06-01"</span>))
-<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>)</div><div class='output co'>#&gt; scale_x_datetime()</div><div class='img'><img src='breaks_width-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'>breaks_width</span>(<span class='st'>"1 week"</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_width("1 week"))</div><div class='img'><img src='breaks_width-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, breaks = <span class='fu'>breaks_width</span>(<span class='st'>"5 days"</span>))</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_width("5 days"))</div><div class='img'><img src='breaks_width-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># This is so useful that scale_x_datetime() has a shorthand:</span>
-<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span>(<span class='kw'>one_month</span>, date_breaks = <span class='st'>"5 days"</span>)</div><div class='output co'>#&gt; scale_x_datetime(date_breaks = "5 days")</div><div class='img'><img src='breaks_width-8.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>one_month</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"2020-05-01"</span>, <span class='st'>"2020-06-01"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span><span class='op'>(</span><span class='va'>one_month</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_datetime()</div><div class='img'><img src='breaks_width-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span><span class='op'>(</span><span class='va'>one_month</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='st'>"1 week"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_width("1 week"))</div><div class='img'><img src='breaks_width-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span><span class='op'>(</span><span class='va'>one_month</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='st'>"5 days"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_datetime(breaks = breaks_width("5 days"))</div><div class='img'><img src='breaks_width-7.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># This is so useful that scale_x_datetime() has a shorthand:</span>
+<span class='fu'><a href='demo_continuous.html'>demo_datetime</a></span><span class='op'>(</span><span class='va'>one_month</span>, date_breaks <span class='op'>=</span> <span class='st'>"5 days"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_datetime(date_breaks = "5 days")</div><div class='img'><img src='breaks_width-8.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># hms times also work</span>
-<span class='kw'>one_hour</span> <span class='op'>&lt;-</span> <span class='kw'>hms</span>::<span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>hms</a></span>(hours = <span class='fl'>0</span><span class='op'>:</span><span class='fl'>1</span>)
-<span class='fu'><a href='demo_continuous.html'>demo_time</a></span>(<span class='kw'>one_hour</span>)</div><div class='output co'>#&gt; scale_x_time()</div><div class='img'><img src='breaks_width-9.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_time</a></span>(<span class='kw'>one_hour</span>, breaks = <span class='fu'>breaks_width</span>(<span class='st'>"15 min"</span>))</div><div class='output co'>#&gt; scale_x_time(breaks = breaks_width("15 min"))</div><div class='img'><img src='breaks_width-10.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_time</a></span>(<span class='kw'>one_hour</span>, breaks = <span class='fu'>breaks_width</span>(<span class='st'>"600 sec"</span>))</div><div class='output co'>#&gt; scale_x_time(breaks = breaks_width("600 sec"))</div><div class='img'><img src='breaks_width-11.png' alt='' width='700' height='433' /></div></pre>
+<span class='va'>one_hour</span> <span class='op'>&lt;-</span> <span class='fu'>hms</span><span class='fu'>::</span><span class='fu'><a href='https://hms.tidyverse.org/reference/hms.html'>hms</a></span><span class='op'>(</span>hours <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'><a href='demo_continuous.html'>demo_time</a></span><span class='op'>(</span><span class='va'>one_hour</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_time()</div><div class='img'><img src='breaks_width-9.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_time</a></span><span class='op'>(</span><span class='va'>one_hour</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='st'>"15 min"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_time(breaks = breaks_width("15 min"))</div><div class='img'><img src='breaks_width-10.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_time</a></span><span class='op'>(</span><span class='va'>one_hour</span>, breaks <span class='op'>=</span> <span class='fu'>breaks_width</span><span class='op'>(</span><span class='st'>"600 sec"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_time(breaks = breaks_width("600 sec"))</div><div class='img'><img src='breaks_width-11.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -194,11 +210,11 @@ date/times, a single string of the form "n unit", e.g. "1 month",
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -206,6 +222,8 @@ date/times, a single string of the form "n unit", e.g. "1 month",
 
   
 
+
+  
 
   </body>
 </html>

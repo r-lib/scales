@@ -55,6 +55,8 @@ with each string." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -76,9 +78,18 @@ with each string." />
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -99,12 +110,6 @@ with each string." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -131,7 +136,7 @@ with each string." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -159,13 +164,13 @@ with each string." />
 with each string.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_parse</span>()
+    <pre class="usage"><span class='fu'>label_parse</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>label_math</span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)
+<span class='fu'>label_math</span><span class='op'>(</span>expr <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='va'>.x</span>, format <span class='op'>=</span> <span class='va'>force</span><span class='op'>)</span>
 
-<span class='fu'>parse_format</span>()
+<span class='fu'>parse_format</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>math_format</span>(expr = <span class='fl'>10</span><span class='op'>^</span><span class='kw'>.x</span>, format = <span class='kw'>force</span>)</pre>
+<span class='fu'>math_format</span><span class='op'>(</span>expr <span class='op'>=</span> <span class='fl'>10</span><span class='op'>^</span><span class='va'>.x</span>, format <span class='op'>=</span> <span class='va'>force</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -214,10 +219,14 @@ rather than axes.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use label_parse() with discrete scales</span>
-<span class='kw'>greek</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span>)
-<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_parse-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>greek</span>, labels = <span class='fu'>label_parse</span>())</div><div class='output co'>#&gt; scale_x_discrete(labels = label_parse())</div><div class='img'><img src='label_parse-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='va'>greek</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"alpha"</span>, <span class='st'>"beta"</span>, <span class='st'>"gamma"</span><span class='op'>)</span>
+<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span><span class='op'>(</span><span class='va'>greek</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_parse-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span><span class='op'>(</span><span class='va'>greek</span>, labels <span class='op'>=</span> <span class='fu'>label_parse</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_discrete(labels = label_parse())</div><div class='img'><img src='label_parse-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Use label_math() with continuous scales</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_parse-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5</span>), labels = <span class='fu'>label_math</span>(<span class='kw'>alpha</span>[<span class='kw'>.x</span>]))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_math(alpha[.x]))</div><div class='img'><img src='label_parse-4.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_parse-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_math</span><span class='op'>(</span><span class='va'>alpha</span><span class='op'>[</span><span class='va'>.x</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_math(alpha[.x]))</div><div class='img'><img src='label_parse-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -229,11 +238,11 @@ rather than axes.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -241,6 +250,8 @@ rather than axes.</p>
 
   
 
+
+  
 
   </body>
 </html>

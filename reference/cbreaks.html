@@ -56,6 +56,8 @@ to a set of breaks and labels suitable for display on axes or legends." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -77,9 +79,18 @@ to a set of breaks and labels suitable for display on axes or legends." />
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -100,12 +111,6 @@ to a set of breaks and labels suitable for display on axes or legends." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -132,7 +137,7 @@ to a set of breaks and labels suitable for display on axes or legends." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,13 +160,13 @@ to a set of breaks and labels suitable for display on axes or legends." />
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#retired'><img src='figures/lifecycle-retired.svg' alt='Retired lifecycle'></a>
+    <p><a href='https://lifecycle.r-lib.org/articles/stages.html#retired'><img src='figures/lifecycle-retired.svg' alt='[Retired]' /></a>
 
 This function wraps up the components needed to go from a continuous range
 to a set of breaks and labels suitable for display on axes or legends.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cbreaks</span>(<span class='kw'>range</span>, breaks = <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span>(), labels = <span class='fu'><a href='label_scientific.html'>scientific_format</a></span>())</pre>
+    <pre class="usage"><span class='fu'>cbreaks</span><span class='op'>(</span><span class='va'>range</span>, breaks <span class='op'>=</span> <span class='fu'><a href='breaks_extended.html'>extended_breaks</a></span><span class='op'>(</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_scientific.html'>scientific_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,72 +193,85 @@ what the breaks will be.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>))</div><div class='output co'>#&gt; $breaks
+    <pre class="examples"><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   0  25  50  75 100
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0.0e+00" "2.5e+01" "5.0e+01" "7.5e+01" "1.0e+02"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='fu'><a href='breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, <span class='fu'><a href='breaks_pretty.html'>breaks_pretty</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   0  50 100
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0e+00" "5e+01" "1e+02"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), <span class='fu'><a href='breaks_pretty.html'>breaks_pretty</a></span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, <span class='fu'><a href='breaks_pretty.html'>breaks_pretty</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt;  [1]   0  10  20  30  40  50  60  70  80  90 100
 #&gt; 
 #&gt; $labels
 #&gt;  [1] "0e+00" "1e+01" "2e+01" "3e+01" "4e+01" "5e+01" "6e+01" "7e+01" "8e+01"
 #&gt; [10] "9e+01" "1e+02"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>100</span>), <span class='fu'><a href='breaks_log.html'>log_breaks</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>100</span><span class='op'>)</span>, <span class='fu'><a href='breaks_log.html'>log_breaks</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   1  10 100
 #&gt; 
 #&gt; $labels
 #&gt; [1] "1e+00" "1e+01" "1e+02"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e4</span>), <span class='fu'><a href='breaks_log.html'>log_breaks</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e4</span><span class='op'>)</span>, <span class='fu'><a href='breaks_log.html'>log_breaks</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]     1    10   100  1000 10000
 #&gt; 
 #&gt; $labels
 #&gt; [1] "1e+00" "1e+01" "1e+02" "1e+03" "1e+04"
 #&gt; </div><div class='input'>
-<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), labels = <span class='fu'><a href='label_parse.html'>math_format</a></span>())</div><div class='output co'>#&gt; $breaks
+<span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_parse.html'>math_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]   0  25  50  75 100
 #&gt; 
 #&gt; $labels
 #&gt; expression(10^0, 10^25, 10^50, 10^75, 10^100)
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1</span>), labels = <span class='fu'><a href='label_percent.html'>percent_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_percent.html'>percent_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 0.00 0.25 0.50 0.75 1.00
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0%"   "25%"  "50%"  "75%"  "100%"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='label_number.html'>comma_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_number.html'>comma_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]       0  250000  500000  750000 1000000
 #&gt; 
 #&gt; $labels
 #&gt; [1] "0"         "250,000"   "500,000"   "750,000"   "1,000,000"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'><a href='label_dollar.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_dollar.html'>dollar_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]       0  250000  500000  750000 1000000
 #&gt; 
 #&gt; $labels
 #&gt; [1] "$0"         "$250,000"   "$500,000"   "$750,000"   "$1,000,000"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>30</span>), labels = <span class='fu'><a href='label_dollar.html'>dollar_format</a></span>())</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>30</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='label_dollar.html'>dollar_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1]  0 10 20 30
 #&gt; 
 #&gt; $labels
 #&gt; [1] "$0"  "$10" "$20" "$30"
 #&gt; </div><div class='input'>
 <span class='co'># You can also specify them manually:</span>
-<span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span>))</div><div class='output co'>#&gt; $breaks
+<span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 15 20 80
 #&gt; 
 #&gt; $labels
 #&gt; [1] "1.5e+01" "2.0e+01" "8.0e+01"
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span>), labels = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1.5</span>, <span class='fl'>2.0</span>, <span class='fl'>8.0</span>))</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.5</span>, <span class='fl'>2.0</span>, <span class='fl'>8.0</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 15 20 80
 #&gt; 
 #&gt; $labels
 #&gt; [1] "1.5" "2"   "8"  
-#&gt; </div><div class='input'><span class='fu'>cbreaks</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), breaks = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span>),
-  labels = <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='kw'>alpha</span>, <span class='kw'>beta</span>, <span class='kw'>gamma</span>))</div><div class='output co'>#&gt; $breaks
+#&gt; </div><div class='input'><span class='fu'>cbreaks</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>20</span>, <span class='fl'>80</span><span class='op'>)</span>,
+  labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>alpha</span>, <span class='va'>beta</span>, <span class='va'>gamma</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $breaks
 #&gt; [1] 15 20 80
 #&gt; 
 #&gt; $labels
@@ -278,11 +296,11 @@ what the breaks will be.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -290,6 +308,8 @@ what the breaks will be.</p></td>
 
   
 
+
+  
 
   </body>
 </html>

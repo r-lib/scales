@@ -53,6 +53,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -74,9 +76,18 @@
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -97,12 +108,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -129,7 +134,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -155,9 +160,9 @@
     <p>Uses <code><a href='https://rdrr.io/r/base/strwrap.html'>strwrap()</a></code> to split long labels across multiple lines.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_wrap</span>(<span class='kw'>width</span>)
+    <pre class="usage"><span class='fu'>label_wrap</span><span class='op'>(</span><span class='va'>width</span><span class='op'>)</span>
 
-<span class='fu'>wrap_format</span>(<span class='kw'>width</span>)</pre>
+<span class='fu'>wrap_format</span><span class='op'>(</span><span class='va'>width</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -188,12 +193,15 @@ rather than axes.</p>
 <code><a href='label_parse.html'>label_parse</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
   <span class='st'>"this is a long label"</span>,
   <span class='st'>"this is another long label"</span>,
   <span class='st'>"this a label this is even longer"</span>
-)
-<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>)</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_wrap-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'>label_wrap</span>(<span class='fl'>10</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(10))</div><div class='img'><img src='label_wrap-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span>(<span class='kw'>x</span>, labels = <span class='fu'>label_wrap</span>(<span class='fl'>20</span>))</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(20))</div><div class='img'><img src='label_wrap-3.png' alt='' width='700' height='433' /></div></pre>
+<span class='op'>)</span>
+<span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_discrete()</div><div class='img'><img src='label_wrap-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'>label_wrap</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(10))</div><div class='img'><img src='label_wrap-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_discrete</a></span><span class='op'>(</span><span class='va'>x</span>, labels <span class='op'>=</span> <span class='fu'>label_wrap</span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_discrete(labels = label_wrap(20))</div><div class='img'><img src='label_wrap-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -205,11 +213,11 @@ rather than axes.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -217,6 +225,8 @@ rather than axes.</p>
 
   
 
+
+  
 
   </body>
 </html>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Label numbers with SI prefixes (2k, 1M, 5T etc) — label_number_si • scales</title>
+<title>Label numbers with SI prefixes (2 kg, 5 mm, etc) — label_number_si • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,15 @@
 
 
 
-<meta property="og:title" content="Label numbers with SI prefixes (2k, 1M, 5T etc) — label_number_si" />
-<meta property="og:description" content="number_si() automatically scales and labels with the best SI prefix,
-&quot;K&quot; for values \(\ge\) 10e3, &quot;M&quot; for \(\ge\) 10e6,
-&quot;B&quot; for \(\ge\) 10e9, and &quot;T&quot; for \(\ge\) 10e12." />
+<meta property="og:title" content="Label numbers with SI prefixes (2 kg, 5 mm, etc) — label_number_si" />
+<meta property="og:description" content="label_number_si() automatically adds the most suitable SI prefix and scales
+the values appropriately. For example, values greater than 1000 gain a &quot;k&quot;
+prefix (abbreviated from &quot;kilo-&quot;) and are scaled by 1/1000.
+See Metric Prefix on Wikipedia
+for more details." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
+
+
 
 
 
@@ -76,9 +80,18 @@
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -99,12 +112,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -131,7 +138,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -148,22 +155,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Label numbers with SI prefixes (2k, 1M, 5T etc)</h1>
+    <h1>Label numbers with SI prefixes (2 kg, 5 mm, etc)</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/label-number-si.R'><code>R/label-number-si.R</code></a></small>
     <div class="hidden name"><code>label_number_si.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>number_si()</code> automatically scales and labels with the best SI prefix,
-"K" for values \(\ge\) 10e3, "M" for \(\ge\) 10e6,
-"B" for \(\ge\) 10e9, and "T" for \(\ge\) 10e12.</p>
+    <p><code>label_number_si()</code> automatically adds the most suitable SI prefix and scales
+the values appropriately. For example, values greater than 1000 gain a "k"
+prefix (abbreviated from "kilo-") and are scaled by 1/1000.
+See <a href='https://en.wikipedia.org/wiki/Metric_prefix'>Metric Prefix</a> on Wikipedia
+for more details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_number_si</span>(accuracy = <span class='fl'>1</span>, unit = <span class='kw'>NULL</span>, sep = <span class='kw'>NULL</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>label_number_si</span><span class='op'>(</span><span class='va'>unit</span>, accuracy <span class='op'>=</span> <span class='cn'>NULL</span>, scale <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>unit</th>
+      <td><p>Unit of measurement (e.g. <code>"m"</code> for meter, the SI unit of length).</p></td>
+    </tr>
     <tr>
       <th>accuracy</th>
       <td><p>A number to round to. Use (e.g.) <code>0.01</code> to show 2 decimal
@@ -173,13 +186,10 @@ difference between adjacent values.</p>
 <p>Applied to rescaled data.</p></td>
     </tr>
     <tr>
-      <th>unit</th>
-      <td><p>Optional units specifier.</p></td>
-    </tr>
-    <tr>
-      <th>sep</th>
-      <td><p>Separator between number and SI unit. Defaults to <code>" "</code> if
-<code>units</code> is supplied, and <code>""</code> if not.</p></td>
+      <th>scale</th>
+      <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
+formatting. This is useful if the underlying data is already using an SI
+prefix.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -212,8 +222,15 @@ rather than axes.</p>
 <code><a href='label_scientific.html'>label_scientific</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), label = <span class='fu'>label_number_si</span>())</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si())</div><div class='img'><img src='label_number_si-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>5000</span>), label = <span class='fu'>label_number_si</span>(unit = <span class='st'>"g"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "g"))</div><div class='img'><img src='label_number_si-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1000</span>), label = <span class='fu'>label_number_si</span>(unit = <span class='st'>"m"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number_si(unit = "m"))</div><div class='img'><img src='label_number_si-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e9</span>), breaks = <span class='fu'><a href='breaks_log.html'>log_breaks</a></span>(<span class='fl'>10</span>), labels = <span class='fu'>label_number_si</span>())</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = label_number_si())</div><div class='img'><img src='label_number_si-4.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1000</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number_si</span><span class='op'>(</span><span class='st'>"m"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number_si("m"))</div><div class='img'><img src='label_number_si-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e9</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='breaks_log.html'>log_breaks</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number_si</span><span class='op'>(</span><span class='st'>"m"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = label_number_si("m"))</div><div class='img'><img src='label_number_si-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e-9</span>, <span class='fl'>1</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='breaks_log.html'>log_breaks</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number_si</span><span class='op'>(</span><span class='st'>"g"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = label_number_si("g"))</div><div class='img'><img src='label_number_si-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># use scale when data already uses SI prefix (e.g. stored in kg)</span>
+<span class='va'>kg</span> <span class='op'>&lt;-</span> <span class='fu'>label_number_si</span><span class='op'>(</span><span class='st'>"g"</span>, scale <span class='op'>=</span> <span class='fl'>1e3</span><span class='op'>)</span>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1e-9</span>, <span class='fl'>1</span><span class='op'>)</span>, breaks <span class='op'>=</span> <span class='fu'><a href='breaks_log.html'>log_breaks</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='va'>kg</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_log10(breaks = log_breaks(10), labels = kg)</div><div class='img'><img src='label_number_si-4.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -225,11 +242,11 @@ rather than axes.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -237,6 +254,8 @@ rather than axes.</p>
 
   
 
+
+  
 
   </body>
 </html>

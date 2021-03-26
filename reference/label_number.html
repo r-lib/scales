@@ -55,6 +55,8 @@ that inserts a comma every three digits." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -76,9 +78,18 @@ that inserts a comma every three digits." />
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -99,12 +110,6 @@ that inserts a comma every three digits." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -131,7 +136,7 @@ that inserts a comma every three digits." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -159,64 +164,64 @@ that inserts a comma every three digits." />
 that inserts a comma every three digits.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_number</span>(
-  accuracy = <span class='kw'>NULL</span>,
-  scale = <span class='fl'>1</span>,
-  prefix = <span class='st'>""</span>,
-  suffix = <span class='st'>""</span>,
-  big.mark = <span class='st'>" "</span>,
-  decimal.mark = <span class='st'>"."</span>,
-  trim = <span class='fl'>TRUE</span>,
-  <span class='kw'>...</span>
-)
+    <pre class="usage"><span class='fu'>label_number</span><span class='op'>(</span>
+  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='fl'>1</span>,
+  prefix <span class='op'>=</span> <span class='st'>""</span>,
+  suffix <span class='op'>=</span> <span class='st'>""</span>,
+  big.mark <span class='op'>=</span> <span class='st'>" "</span>,
+  decimal.mark <span class='op'>=</span> <span class='st'>"."</span>,
+  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>label_comma</span>(
-  accuracy = <span class='kw'>NULL</span>,
-  scale = <span class='fl'>1</span>,
-  prefix = <span class='st'>""</span>,
-  suffix = <span class='st'>""</span>,
-  big.mark = <span class='st'>","</span>,
-  decimal.mark = <span class='st'>"."</span>,
-  trim = <span class='fl'>TRUE</span>,
-  <span class='kw'>digits</span>,
-  <span class='kw'>...</span>
-)
+<span class='fu'>label_comma</span><span class='op'>(</span>
+  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='fl'>1</span>,
+  prefix <span class='op'>=</span> <span class='st'>""</span>,
+  suffix <span class='op'>=</span> <span class='st'>""</span>,
+  big.mark <span class='op'>=</span> <span class='st'>","</span>,
+  decimal.mark <span class='op'>=</span> <span class='st'>"."</span>,
+  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>digits</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>comma</span>(
-  <span class='kw'>x</span>,
-  accuracy = <span class='kw'>NULL</span>,
-  scale = <span class='fl'>1</span>,
-  prefix = <span class='st'>""</span>,
-  suffix = <span class='st'>""</span>,
-  big.mark = <span class='st'>","</span>,
-  decimal.mark = <span class='st'>"."</span>,
-  trim = <span class='fl'>TRUE</span>,
-  <span class='kw'>digits</span>,
-  <span class='kw'>...</span>
-)
+<span class='fu'>comma</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='fl'>1</span>,
+  prefix <span class='op'>=</span> <span class='st'>""</span>,
+  suffix <span class='op'>=</span> <span class='st'>""</span>,
+  big.mark <span class='op'>=</span> <span class='st'>","</span>,
+  decimal.mark <span class='op'>=</span> <span class='st'>"."</span>,
+  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>digits</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>number_format</span>(
-  accuracy = <span class='kw'>NULL</span>,
-  scale = <span class='fl'>1</span>,
-  prefix = <span class='st'>""</span>,
-  suffix = <span class='st'>""</span>,
-  big.mark = <span class='st'>" "</span>,
-  decimal.mark = <span class='st'>"."</span>,
-  trim = <span class='fl'>TRUE</span>,
-  <span class='kw'>...</span>
-)
+<span class='fu'>number_format</span><span class='op'>(</span>
+  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='fl'>1</span>,
+  prefix <span class='op'>=</span> <span class='st'>""</span>,
+  suffix <span class='op'>=</span> <span class='st'>""</span>,
+  big.mark <span class='op'>=</span> <span class='st'>" "</span>,
+  decimal.mark <span class='op'>=</span> <span class='st'>"."</span>,
+  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>comma_format</span>(
-  accuracy = <span class='kw'>NULL</span>,
-  scale = <span class='fl'>1</span>,
-  prefix = <span class='st'>""</span>,
-  suffix = <span class='st'>""</span>,
-  big.mark = <span class='st'>","</span>,
-  decimal.mark = <span class='st'>"."</span>,
-  trim = <span class='fl'>TRUE</span>,
-  <span class='kw'>digits</span>,
-  <span class='kw'>...</span>
-)</pre>
+<span class='fu'>comma_format</span><span class='op'>(</span>
+  accuracy <span class='op'>=</span> <span class='cn'>NULL</span>,
+  scale <span class='op'>=</span> <span class='fl'>1</span>,
+  prefix <span class='op'>=</span> <span class='st'>""</span>,
+  suffix <span class='op'>=</span> <span class='st'>""</span>,
+  big.mark <span class='op'>=</span> <span class='st'>","</span>,
+  decimal.mark <span class='op'>=</span> <span class='st'>"."</span>,
+  trim <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>digits</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -232,7 +237,7 @@ difference between adjacent values.</p>
     <tr>
       <th>scale</th>
       <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.</p></td>
     </tr>
     <tr>
@@ -284,12 +289,21 @@ rather than axes.</p>
 <code>label_number()</code> and <code>label_comma()</code> instead.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_number-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>), labels = <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span>), labels = <span class='fu'>label_comma</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_comma())</div><div class='img'><img src='label_number-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_number-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1e6</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_comma</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_comma())</div><div class='img'><img src='label_number-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Use scale to rescale very small or large numbers to generate</span>
 <span class='co'># more readable labels</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e6</span>), labels = <span class='fu'>label_number</span>(scale = <span class='fl'>1</span> <span class='op'>/</span> <span class='fl'>1e3</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1/1000))</div><div class='img'><img src='label_number-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), labels = <span class='fu'>label_number</span>())</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>1e-6</span>), labels = <span class='fu'>label_number</span>(scale = <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1e+06))</div><div class='img'><img src='label_number-7.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span>scale <span class='op'>=</span> <span class='fl'>1</span> <span class='op'>/</span> <span class='fl'>1e3</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1/1000))</div><div class='img'><img src='label_number-5.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e-6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number())</div><div class='img'><img src='label_number-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1e-6</span><span class='op'>)</span>, labels <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span>scale <span class='op'>=</span> <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(labels = label_number(scale = 1e+06))</div><div class='img'><img src='label_number-7.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># You can use prefix and suffix for other types of display</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>212</span>), label = <span class='fu'>label_number</span>(suffix = <span class='st'>"\u00b0F"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°F"))</div><div class='img'><img src='label_number-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>100</span>), label = <span class='fu'>label_number</span>(suffix = <span class='st'>"\u00b0C"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°C"))</div><div class='img'><img src='label_number-9.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>32</span>, <span class='fl'>212</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span>suffix <span class='op'>=</span> <span class='st'>"\u00b0F"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°F"))</div><div class='img'><img src='label_number-8.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>100</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_number</span><span class='op'>(</span>suffix <span class='op'>=</span> <span class='st'>"\u00b0C"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(label = label_number(suffix = "°C"))</div><div class='img'><img src='label_number-9.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -301,11 +315,11 @@ rather than axes.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -313,6 +327,8 @@ rather than axes.</p>
 
   
 
+
+  
 
   </body>
 </html>

@@ -52,6 +52,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -73,9 +75,16 @@
 </script>
 
 
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -96,12 +105,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -128,7 +131,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -154,8 +157,11 @@
 <a href="#scales-development-version" class="anchor"></a>scales (development version)<small> Unreleased </small>
 </h1>
 <ul>
-<li>
-<code><a href="../reference/manual_pal.html">manual_pal()</a></code> now always returns an unnamed colour vector, which is easy to use with <code><a href="https://ggplot2.tidyverse.org/reference/discrete_scale.html">ggplot2::discrete_scale()</a></code> (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/scales/issues/284'>#284</a>).</li>
+<li><p><code><a href="../reference/manual_pal.html">manual_pal()</a></code> now always returns an unnamed colour vector, which is easy to use with <code><a href="https://ggplot2.tidyverse.org/reference/discrete_scale.html" class="external-link">ggplot2::discrete_scale()</a></code> (<a href='https://github.com/yutannihilation'>@yutannihilation</a>, <a href='https://github.com/r-lib/scales/issues/284'>#284</a>).</p></li>
+<li><p><code><a href="../reference/label_number_si.html">label_number_si()</a></code> now correctly uses <a href="https://en.wikipedia.org/wiki/Metric_prefix" class="external-link">SI prefixes</a> (e.g. abbreviations “k” for “kilo-” and “m” for “milli-”). It previously used <a href="https://en.wikipedia.org/wiki/Long_and_short_scales" class="external-link">short scale abbreviations</a> (e.g. “M” for million, “B” for billion). The short scale is most commonly used in finance, so it is now supported via the new <code>rescale_large</code> argument of <code><a href="../reference/label_dollar.html">label_dollar()</a></code> (<a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/scales/issues/235'>#235</a>).</p></li>
+<li><p><code><a href="../reference/label_number_si.html">label_number_si()</a></code> now requires the <code>unit</code> argument is specified. The default value of the <code>accuracy</code> argument is now <code>NULL</code>, which automatically chooses the precision. The <code>sep</code> argument is removed, which had no purpose (<a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/scales/issues/235'>#235</a>).</p></li>
+<li><p><code><a href="../reference/label_dollar.html">label_dollar()</a></code> gains a <code>rescale_large</code> argument to support scaling of large numbers by suffix (e.g. “M” for million, “B” for billion). In finance, the short scale is most prevalent (i.e. 1 billion = 1 thousand million). In other contexts, the long scale might be desired (i.e. 1 billion = 1 million million). These two common scales are supported by setting <code>rescale_large = rescale_short_scale()</code> or <code>rescale_large = rescale_long_scale()</code>, but custom scaling-by-suffix is also supported (<a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/scales/issues/235'>#235</a>).</p></li>
+<li><p><code><a href="../reference/label_bytes.html">label_bytes()</a></code> now correctly accounts for the <code>scale</code> argument when choosing auto units (<a href='https://github.com/davidchall'>@davidchall</a>, <a href='https://github.com/r-lib/scales/issues/235'>#235</a>).</p></li>
 </ul>
 </div>
     <div id="scales-111" class="section level1">
@@ -186,10 +192,10 @@
 <li>
 <p>New <code><a href="../reference/label_bytes.html">label_bytes()</a></code> replaces <code><a href="../reference/number_bytes_format.html">number_bytes_format()</a></code> with a more convenient interface. It takes a single <code>unit</code> argument which can either be an SI unit (e.g. “kB”), a binary unit (e.g. “kIB”), or an automatic unit (either “auto_si” or “auto_binary”).</p>
 <p>It always uses “B” as the symbol for bytes (<a href='https://github.com/r-lib/scales/issues/174'>#174</a>), and checks that <code>units</code> are valid. Additionally, auto units are now used to determine the symbol separately for each value (<a href='https://github.com/mikmart'>@mikmart</a>):</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/label_bytes.html">label_bytes</a></span>(<span class="st">"auto_binary"</span>)(<span class="fl">1024</span><span class="op">^</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">3</span>))
-<span class="co">#&gt; [1] "1 kiB" "1 MiB" "1 GiB"</span>
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/label_bytes.html">label_bytes</a></span><span class="op">(</span><span class="st">"auto_binary"</span><span class="op">)</span><span class="op">(</span><span class="fl">1024</span><span class="op">^</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "1 kiB" "1 MiB" "1 GiB"</span></code></pre></div>
 </li>
 <li><p>New <code><a href="../reference/label_date.html">label_date_short()</a></code> creates labels for a date axis that only show the components of the date that have changed since the previous label. For example, if you have Jan 10, Jan 20, Jan 30, and Feb 1, <code><a href="../reference/label_date.html">label_date_short()</a></code> will use labels Jan 10, 20, 30, Feb 1 (<a href='https://github.com/r-lib/scales/issues/209'>#209</a>).</p></li>
 <li><p><code><a href="../reference/label_dollar.html">label_dollar()</a></code> now correctly formats negative numbers as (e.g.) -$200 (<a href='https://github.com/r-lib/scales/issues/216'>#216</a>).</p></li>
@@ -216,7 +222,7 @@
 <a href="#transformations" class="anchor"></a>Transformations</h2>
 <ul>
 <li><p>New <code><a href="../reference/yj_trans.html">yj_trans()</a></code> implements the Yeo-Johnson transformation (<a href='https://github.com/zamorarr'>@zamorarr</a>, <a href='https://github.com/r-lib/scales/issues/196'>#196</a>)</p></li>
-<li><p><code>trans</code> objects gets methods for <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/lines.html">lines()</a></code>, and all numeric transformations get an example showing the transformation.</p></li>
+<li><p><code>trans</code> objects gets methods for <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> and <code><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines()</a></code>, and all numeric transformations get an example showing the transformation.</p></li>
 <li><p><code><a href="../reference/boxcox_trans.html">boxcox_trans()</a></code> no longer throws an error when given NA values (<a href='https://github.com/sflippl'>@sflippl</a>, <a href='https://github.com/r-lib/scales/issues/181'>#181</a>).</p></li>
 </ul>
 </div>
@@ -229,7 +235,7 @@
 <li><p><code>ContinuousRange</code> and <code>DiscreteRange</code> methods now properly inherit and are fully mutable (<a href='https://github.com/dpseidel'>@dpseidel</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now support viridis colors. Just pass a palette name (<code>"magma"</code>, <code>"inferno"</code>, <code>"plasma"</code>, or <code>"viridis"</code>) as the <code>palette</code> argument (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code> now have a <code>reverse</code> parameter, to apply color palettes in the opposite of their usual order (i.e. high-to-low instead of low-to-high) (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
-<li><p><code><a href="../reference/col_numeric.html">col_bin()</a></code> and <code><a href="../reference/col_numeric.html">col_quantile()</a></code> now take a <code>right</code> argument, which is passed to <code><a href="https://rdrr.io/r/base/cut.html">base::cut()</a></code>; it indicates whether the bin/quantile intervals should be closed on the right (and open on the left), or vice versa (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
+<li><p><code><a href="../reference/col_numeric.html">col_bin()</a></code> and <code><a href="../reference/col_numeric.html">col_quantile()</a></code> now take a <code>right</code> argument, which is passed to <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">base::cut()</a></code>; it indicates whether the bin/quantile intervals should be closed on the right (and open on the left), or vice versa (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_factor()</a></code> now tries to avoid interpolating qualitative RColorBrewer palettes. Instead, it attempts to assign a palette color to each factor level. Interpolation will still be used if there are more factor levels than available colors, and a warning will be emitted in that case (<a href='https://github.com/jcheng5'>@jcheng5</a>, <a href='https://github.com/r-lib/scales/issues/191'>#191</a>).</p></li>
 <li><p><code><a href="../reference/dichromat_pal.html">dichromat_pal()</a></code> documentation now builds without requiring suggested <code>dichromat</code> package to be installed (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/172'>#172</a>).</p></li>
 <li><p><code><a href="../reference/date_breaks.html">date_breaks()</a></code> now supports subsecond intervals (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/85'>#85</a>).</p></li>
@@ -277,8 +283,8 @@
 <li><p><code><a href="../reference/date_breaks.html">date_breaks()</a></code> now supports subsecond intervals (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/85'>#85</a>).</p></li>
 <li><p>Removes <code>dichromat</code> and <code>plyr</code> dependencies. <code>dichromat</code> is now suggested (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/118'>#118</a>).</p></li>
 <li><p><code><a href="../reference/expand_range.html">expand_range()</a></code> arguments <code>mul</code> and <code>add</code> now affect scales with a range of 0<br>
-(<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href="https://www.github.com/tidyverse/ggplot2/issues/2281">ggplot2-2281</a>).</p></li>
-<li><p><code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> now allows user specification of the <code><a href="https://rdrr.io/pkg/labeling/man/extended.html">labeling::extended()</a></code> argument <code>only.loose</code> to permit more flexible breaks specification (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/99'>#99</a>).</p></li>
+(<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href="https://www.github.com/tidyverse/ggplot2/issues/2281" class="external-link">ggplot2-2281</a>).</p></li>
+<li><p><code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> now allows user specification of the <code><a href="https://rdrr.io/pkg/labeling/man/extended.html" class="external-link">labeling::extended()</a></code> argument <code>only.loose</code> to permit more flexible breaks specification (<a href='https://github.com/dpseidel'>@dpseidel</a>, <a href='https://github.com/r-lib/scales/issues/99'>#99</a>).</p></li>
 <li><p>New <code><a href="../reference/rescale.html">rescale()</a></code> and <code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> methods support <code>dist</code> objects (<a href='https://github.com/zeehio'>@zeehio</a>, <a href='https://github.com/r-lib/scales/issues/105'>#105</a>).</p></li>
 <li><p><code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> now properly handles NAs (<a href='https://github.com/foo-bar-baz-qux'>@foo-bar-baz-qux</a>, <a href='https://github.com/r-lib/scales/issues/104'>#104</a>).</p></li>
 </ul>
@@ -292,7 +298,7 @@
 <li><p>New function <code><a href="../reference/regular_minor_breaks.html">regular_minor_breaks()</a></code> calculates minor breaks as a property of the transformation (<a href='https://github.com/karawoo'>@karawoo</a>).</p></li>
 <li><p>Adds <code><a href="../reference/viridis_pal.html">viridis_pal()</a></code> for creating palettes with color maps from the viridisLite package (<a href='https://github.com/karawoo'>@karawoo</a>).</p></li>
 <li><p>Switched from reference classes to R6 (<a href='https://github.com/r-lib/scales/issues/96'>#96</a>).</p></li>
-<li><p><code><a href="../reference/rescale.html">rescale()</a></code> and <code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> are now S3 generics, and work with <code>numeric</code>, <code>Date</code>, <code>POSIXct</code>, <code>POSIXlt</code> and <code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html">bit64::integer64</a></code> objects (<a href='https://github.com/zeehio'>@zeehio</a>, <a href='https://github.com/r-lib/scales/issues/74'>#74</a>).</p></li>
+<li><p><code><a href="../reference/rescale.html">rescale()</a></code> and <code><a href="../reference/rescale_mid.html">rescale_mid()</a></code> are now S3 generics, and work with <code>numeric</code>, <code>Date</code>, <code>POSIXct</code>, <code>POSIXlt</code> and <code><a href="https://rdrr.io/pkg/bit64/man/bit64-package.html" class="external-link">bit64::integer64</a></code> objects (<a href='https://github.com/zeehio'>@zeehio</a>, <a href='https://github.com/r-lib/scales/issues/74'>#74</a>).</p></li>
 </ul>
 </div>
     <div id="scales-041" class="section level1">
@@ -314,7 +320,7 @@
 <li><p><code><a href="../reference/manual_pal.html">manual_pal()</a></code> produces a warning if n is greater than the number of values in the palette (<a href='https://github.com/jrnold'>@jrnold</a>, <a href='https://github.com/r-lib/scales/issues/68'>#68</a>).</p></li>
 <li><p><code>precision(0)</code> now returns 1, which means <code><a href="../reference/label_percent.html">percent(0)</a></code> now returns 0% (<a href='https://github.com/r-lib/scales/issues/50'>#50</a>).</p></li>
 <li><p><code>scale_continuous()</code> uses a more correct check for numeric values.</p></li>
-<li><p>NaN is correctly recognised as a missing value by the gradient palettes (<a href="https://www.github.com/tidyverse/ggplot2/issues/1482">ggplot2-1482</a>).</p></li>
+<li><p>NaN is correctly recognised as a missing value by the gradient palettes (<a href="https://www.github.com/tidyverse/ggplot2/issues/1482" class="external-link">ggplot2-1482</a>).</p></li>
 </ul>
 </div>
     <div id="scales-030" class="section level1">
@@ -322,8 +328,8 @@
 <a href="#scales-030" class="anchor"></a>scales 0.3.0<small> 2015-08-25 </small>
 </h1>
 <ul>
-<li><p><code><a href="../reference/rescale.html">rescale()</a></code> preserves missing values in input when the range of <code>x</code> is (effectively) 0 (<a href="https://www.github.com/tidyverse/ggplot2/issues/985">ggplot2-985</a>).</p></li>
-<li><p>Continuous colour palettes now use <code><a href="../reference/colour_ramp.html">colour_ramp()</a></code> instead of <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRamp()</a></code>. This only supports interpolation in Lab colour space, but is hundreds of times faster.</p></li>
+<li><p><code><a href="../reference/rescale.html">rescale()</a></code> preserves missing values in input when the range of <code>x</code> is (effectively) 0 (<a href="https://www.github.com/tidyverse/ggplot2/issues/985" class="external-link">ggplot2-985</a>).</p></li>
+<li><p>Continuous colour palettes now use <code><a href="../reference/colour_ramp.html">colour_ramp()</a></code> instead of <code><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">colorRamp()</a></code>. This only supports interpolation in Lab colour space, but is hundreds of times faster.</p></li>
 </ul>
 </div>
     <div id="scales-025" class="section level1">
@@ -346,7 +352,7 @@
 <a href="#new-colour-scaling-functions" class="anchor"></a>New colour scaling functions</h2>
 <ul>
 <li><p>New color scaling functions <code><a href="../reference/col_numeric.html">col_numeric()</a></code>, <code><a href="../reference/col_numeric.html">col_bin()</a></code>, <code><a href="../reference/col_numeric.html">col_quantile()</a></code>, and <code><a href="../reference/col_numeric.html">col_factor()</a></code>. These functions provide concise ways to map continuous or categorical values to color spectra.</p></li>
-<li><p>New <code><a href="../reference/colour_ramp.html">colour_ramp()</a></code> function for performing color interpolation in the CIELAB color space (like <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">grDevices::colorRamp(space = 'Lab')</a></code>, but much faster).</p></li>
+<li><p>New <code><a href="../reference/colour_ramp.html">colour_ramp()</a></code> function for performing color interpolation in the CIELAB color space (like <code><a href="https://rdrr.io/r/grDevices/colorRamp.html" class="external-link">grDevices::colorRamp(space = 'Lab')</a></code>, but much faster).</p></li>
 </ul>
 </div>
 <div id="other-bug-fixes-and-minor-improvements-1" class="section level2">
@@ -377,7 +383,7 @@
 <ul>
 <li><p><code>floor_time()</code> calls <code>to_time()</code>, but that function was moved into a function so it was no longer available in the scales namespace. Now <code>floor_time()</code> has its own copy of that function (Thanks to Stefan Novak).</p></li>
 <li><p>Color palettes generated by <code><a href="../reference/brewer_pal.html">brewer_pal()</a></code> no longer give warnings when fewer than 3 colors are requested (<a href='https://github.com/wch'>@wch</a>).</p></li>
-<li><p><code><a href="../reference/area_pal.html">abs_area()</a></code> and <code><a href="../reference/rescale_max.html">rescale_max()</a></code> functions have been added, for scaling the area of points to be proportional to their value. These are used by <code><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_area()</a></code> in ggplot2.</p></li>
+<li><p><code><a href="../reference/area_pal.html">abs_area()</a></code> and <code><a href="../reference/rescale_max.html">rescale_max()</a></code> functions have been added, for scaling the area of points to be proportional to their value. These are used by <code><a href="https://ggplot2.tidyverse.org/reference/scale_size.html" class="external-link">scale_size_area()</a></code> in ggplot2.</p></li>
 </ul>
 </div>
     <div id="scales-022" class="section level1">
@@ -412,7 +418,7 @@
 </h1>
 <ul>
 <li><p><code><a href="../reference/oob.html">censor()</a></code> and <code><a href="../reference/oob.html">squish()</a></code> gain <code>only.finite</code> argument and default to operating only on finite values. This is needed for ggplot2, and reflects the use of Inf and -Inf as special values.</p></li>
-<li><p><code>bounds</code> functions now <code>force</code> evaluation of range to avoid bug with S3 method dispatch inside primitive functions (e.g. <code><a href="https://rdrr.io/r/base/Extract.html">[</a></code>).</p></li>
+<li><p><code>bounds</code> functions now <code>force</code> evaluation of range to avoid bug with S3 method dispatch inside primitive functions (e.g. <code><a href="https://rdrr.io/r/base/Extract.html" class="external-link">[</a></code>).</p></li>
 <li><p>Simplified algorithm for <code>discrete_range()</code> that is robust to <code>stringsAsFactors</code> global option. Now, the order of a factor will only be preserved if the full factor is the first object seen, and all subsequent inputs are subsets of the levels of the original factor.</p></li>
 <li><p><code><a href="../reference/label_scientific.html">scientific()</a></code> ensures output is always in scientific format and off the specified number of significant digits. <code><a href="../reference/label_number.html">comma()</a></code> ensures output is never in scientific format (Fixes <a href='https://github.com/r-lib/scales/issues/7'>#7</a>).</p></li>
 <li><p>Another tweak to <code><a href="../reference/zero_range.html">zero_range()</a></code> to better detect when a range has zero length (Fixes <a href='https://github.com/r-lib/scales/issues/6'>#6</a>).</p></li>
@@ -431,11 +437,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -443,6 +449,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -57,6 +57,8 @@ them is larger than the tolerance." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -78,9 +80,18 @@ them is larger than the tolerance." />
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -101,12 +112,6 @@ them is larger than the tolerance." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -133,7 +138,7 @@ them is larger than the tolerance." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -163,7 +168,7 @@ they have a mean of 1, and then it checks if the difference between
 them is larger than the tolerance.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>zero_range</span>(<span class='kw'>x</span>, tol = <span class='fl'>1000</span> <span class='op'>*</span> <span class='kw'>.Machine</span><span class='op'>$</span><span class='kw'>double.eps</span>)</pre>
+    <pre class="usage"><span class='fu'>zero_range</span><span class='op'>(</span><span class='va'>x</span>, tol <span class='op'>=</span> <span class='fl'>1000</span> <span class='op'>*</span> <span class='va'>.Machine</span><span class='op'>$</span><span class='va'>double.eps</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,15 +189,29 @@ them is larger than the tolerance.</p>
 the range are not distinguishable from 0.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>eps</span> <span class='op'>&lt;-</span> <span class='kw'>.Machine</span><span class='op'>$</span><span class='kw'>double.eps</span>
-<span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='kw'>eps</span>))       <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>99</span> <span class='op'>*</span> <span class='kw'>eps</span>))  <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='kw'>eps</span>)) <span class='co'># FALSE - Crossed the tol threshold</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='kw'>eps</span>), tol = <span class='kw'>eps</span>) <span class='co'># FALSE - Changed tol</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='va'>eps</span> <span class='op'>&lt;-</span> <span class='va'>.Machine</span><span class='op'>$</span><span class='va'>double.eps</span>
+<span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>       <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>99</span> <span class='op'>*</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># FALSE - Crossed the tol threshold</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>eps</span><span class='op'>)</span>, tol <span class='op'>=</span> <span class='va'>eps</span><span class='op'>)</span> <span class='co'># FALSE - Changed tol</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># Scaling up or down all the values has no effect since the values</span>
 <span class='co'># are rescaled to 1 before checking against tol</span>
-<span class='fu'>zero_range</span>(<span class='fl'>100000</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='kw'>eps</span>))        <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fl'>100000</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='kw'>eps</span>))  <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fl'>.00001</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='kw'>eps</span>))        <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fl'>.00001</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='kw'>eps</span>))  <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>zero_range</span><span class='op'>(</span><span class='fl'>100000</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>        <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fl'>100000</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fl'>.00001</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>        <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fl'>.00001</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>1001</span> <span class='op'>*</span> <span class='va'>eps</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># NA values</span>
-<span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>NA</span>))   <span class='co'># NA</span></div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>NaN</span>))  <span class='co'># NA</span></div><div class='output co'>#&gt; [1] NA</div><div class='input'>
+<span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>   <span class='co'># NA</span>
+</div><div class='output co'>#&gt; [1] NA</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>NaN</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># NA</span>
+</div><div class='output co'>#&gt; [1] NA</div><div class='input'>
 <span class='co'># Infinite values</span>
-<span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>Inf</span>))     <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='op'>-</span><span class='fl'>Inf</span>, <span class='fl'>Inf</span>))  <span class='co'># FALSE</span></div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>Inf</span>, <span class='fl'>Inf</span>))   <span class='co'># TRUE</span></div><div class='output co'>#&gt; [1] TRUE</div><div class='input'></div></pre>
+<span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>     <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='cn'>Inf</span>, <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># FALSE</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>zero_range</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>Inf</span>, <span class='cn'>Inf</span><span class='op'>)</span><span class='op'>)</span>   <span class='co'># TRUE</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -204,11 +223,11 @@ the range are not distinguishable from 0.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -216,6 +235,8 @@ the range are not distinguishable from 0.</p>
 
   
 
+
+  
 
   </body>
 </html>

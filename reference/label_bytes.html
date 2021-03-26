@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Label bytes (1 kb, 2 MB, etc) — label_bytes • scales</title>
+<title>Label bytes (1 kB, 2 MB, etc) — label_bytes • scales</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,12 +46,14 @@
 
 
 
-<meta property="og:title" content="Label bytes (1 kb, 2 MB, etc) — label_bytes" />
+<meta property="og:title" content="Label bytes (1 kB, 2 MB, etc) — label_bytes" />
 <meta property="og:description" content="Scale bytes into human friendly units. Can use either SI units (e.g.
 kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
 Units of Information
 on Wikipedia for more details." />
 <meta property="og:image" content="https://scales.r-lib.org/logo.png" />
+
+
 
 
 
@@ -77,9 +79,18 @@ on Wikipedia for more details." />
 </script>
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -100,12 +111,6 @@ on Wikipedia for more details." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -132,7 +137,7 @@ on Wikipedia for more details." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/r-lib/scales/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -149,7 +154,7 @@ on Wikipedia for more details." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Label bytes (1 kb, 2 MB, etc)</h1>
+    <h1>Label bytes (1 kB, 2 MB, etc)</h1>
     <small class="dont-index">Source: <a href='https://github.com/r-lib/scales/blob/master/R/label-bytes.R'><code>R/label-bytes.R</code></a></small>
     <div class="hidden name"><code>label_bytes.Rd</code></div>
     </div>
@@ -161,7 +166,7 @@ kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
 on Wikipedia for more details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>label_bytes</span>(units = <span class='st'>"auto_si"</span>, accuracy = <span class='fl'>1</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>label_bytes</span><span class='op'>(</span>units <span class='op'>=</span> <span class='st'>"auto_si"</span>, accuracy <span class='op'>=</span> <span class='fl'>1</span>, scale <span class='op'>=</span> <span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,7 +178,7 @@ on Wikipedia for more details.</p>
 SI units (base 1000).</p></li>
 <li><p>"kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 binary units (base 1024).</p></li>
-<li><p><code>auto_si</code> or <code>auto_binary</code> to automatically pick the most approrpiate
+<li><p><code>auto_si</code> or <code>auto_binary</code> to automatically pick the most appropriate
 unit for each value.</p></li>
 </ul></td>
     </tr>
@@ -184,6 +189,12 @@ places of precision. If <code>NULL</code>, the default, uses a heuristic that sh
 ensure breaks have the minimum number of digits needed to show the
 difference between adjacent values.</p>
 <p>Applied to rescaled data.</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>A scaling factor: <code>x</code> will be multiplied by <code>scale</code> before
+formatting. This is useful if the underlying data is very small or very
+large.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -211,17 +222,24 @@ returns a character vector of labels.</p>
 <code><a href='label_scientific.html'>label_scientific</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_bytes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), label = <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes())</div><div class='img'><img src='label_bytes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Force all to use same units</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>), label = <span class='fu'>label_bytes</span>(<span class='st'>"kB"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("kB"))</div><div class='img'><img src='label_bytes-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous()</div><div class='img'><img src='label_bytes-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e6</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_bytes</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes())</div><div class='img'><img src='label_bytes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># Force all to use same units</span>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e6</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_bytes</span><span class='op'>(</span><span class='st'>"kB"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("kB"))</div><div class='img'><img src='label_bytes-3.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Auto units are particularly nice on log scales</span>
-<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e6</span>))</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='label_bytes-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1e7</span>), label = <span class='fu'>label_bytes</span>())</div><div class='output co'>#&gt; scale_x_log10(label = label_bytes())</div><div class='img'><img src='label_bytes-5.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='fu'><a href='demo_continuous.html'>demo_log10</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e6</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_log10()</div><div class='img'><img src='label_bytes-4.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_log10</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1e7</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_bytes</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_log10(label = label_bytes())</div><div class='img'><img src='label_bytes-5.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># You can also use binary units where a megabyte is defined as</span>
 <span class='co'># (1024) ^ 2 bytes rather than (1000) ^ 2. You'll need to override</span>
 <span class='co'># the default breaks to make this more informative.</span>
-<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span><span class='op'>^</span><span class='fl'>2</span>), label = <span class='fu'>label_bytes</span>(<span class='st'>"auto_binary"</span>))</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1024</span><span class='op'>^</span><span class='fl'>2</span>),
-  breaks = <span class='fu'><a href='breaks_width.html'>breaks_width</a></span>(<span class='fl'>250</span> <span class='op'>*</span> <span class='fl'>1024</span>),
-  label = <span class='fu'>label_bytes</span>(<span class='st'>"auto_binary"</span>)
-)</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(250 * 1024), label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-7.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1024</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>, label <span class='op'>=</span> <span class='fu'>label_bytes</span><span class='op'>(</span><span class='st'>"auto_binary"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-6.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='demo_continuous.html'>demo_continuous</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>1024</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>,
+  breaks <span class='op'>=</span> <span class='fu'><a href='breaks_width.html'>breaks_width</a></span><span class='op'>(</span><span class='fl'>250</span> <span class='op'>*</span> <span class='fl'>1024</span><span class='op'>)</span>,
+  label <span class='op'>=</span> <span class='fu'>label_bytes</span><span class='op'>(</span><span class='st'>"auto_binary"</span><span class='op'>)</span>
+<span class='op'>)</span>
+</div><div class='output co'>#&gt; scale_x_continuous(breaks = breaks_width(250 * 1024), label = label_bytes("auto_binary"))</div><div class='img'><img src='label_bytes-7.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -233,11 +251,11 @@ returns a character vector of labels.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://hadley.nz'>Hadley Wickham</a>, Dana Seidel.</p>
+  <p><p>Developed by <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, Dana Seidel.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -245,6 +263,8 @@ returns a character vector of labels.</p>
 
   
 
+
+  
 
   </body>
 </html>
