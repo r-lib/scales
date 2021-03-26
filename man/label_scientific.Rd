@@ -41,7 +41,7 @@ scientific(
 \item{digits}{Number of digits to show before exponent.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}

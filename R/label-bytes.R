@@ -1,4 +1,4 @@
-#' Label bytes (1 kb, 2 MB, etc)
+#' Label bytes (1 kB, 2 MB, etc)
 #'
 #' Scale bytes into human friendly units. Can use either SI units (e.g.
 #' kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
@@ -10,7 +10,7 @@
 #'     SI units (base 1000).
 #'   * "kiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", and "YiB" for
 #'     binary units (base 1024).
-#'   * `auto_si` or `auto_binary` to automatically pick the most approrpiate
+#'   * `auto_si` or `auto_binary` to automatically pick the most appropriate
 #'     unit for each value.
 #' @inheritParams number_format
 #' @param ... Other arguments passed on to [number()]
@@ -37,7 +37,7 @@
 #'   breaks = breaks_width(250 * 1024),
 #'   label = label_bytes("auto_binary")
 #' )
-label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
+label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
   stopifnot(is.character(units), length(units) == 1)
   force_all(accuracy, ...)
 
@@ -48,8 +48,10 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
       base <- switch(units, auto_binary = 1024, auto_si = 1000)
       suffix <- switch(units, auto_binary = "iB", auto_si = "B")
 
-      power <- findInterval(abs(x), c(0, base^powers)) - 1L
-      units <- paste0(c("", names(powers))[power + 1L], suffix)
+      rescale <- rescale_by_suffix(x * scale, breaks = c(0, base^powers))
+
+      suffix <- paste0(" ", rescale$suffix, suffix)
+      scale <- scale * rescale$scale
     } else {
       si_units <- paste0(names(powers), "B")
       bin_units <- paste0(names(powers), "iB")
@@ -63,22 +65,17 @@ label_bytes <- function(units = "auto_si", accuracy = 1, ...) {
       } else {
         stop("'", units, "' is not a valid unit", call. = FALSE)
       }
+
+      suffix <- paste0(" ", units)
+      scale <- scale / base^power
     }
 
     number(
-      x / base^power,
+      x,
       accuracy = accuracy,
-      suffix = paste0(" ", units),
+      scale = scale,
+      suffix = suffix,
       ...
     )
   }
 }
-
-# Helpers -----------------------------------------------------------------
-
-si_powers <- (-8:8) * 3
-names(si_powers) <- c(
-  rev(c("m", "\u00b5", "n", "p", "f", "a", "z", "y")), "",
-        "k", "M",      "G", "T", "P", "E", "Z", "Y"
-)
-si_powers
