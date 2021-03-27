@@ -24,6 +24,9 @@
   
 * `label_bytes()` now correctly accounts for the `scale` argument when choosing
   auto units (@davidchall, #235).
+  
+* Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
+  unnecessary digits (@davidchall, #304).
 
 # scales 1.1.1
 

@@ -188,7 +188,7 @@ precision <- function(x) {
   } else {
     precision <- 10^(floor(log10(smallest_diff)) - 1)
 
-    # reduce precision when 2nd sig fig always 0
+    # reduce precision when final digit always 0
     reduce_precision <- all(round(x / precision) %% 10 == 0)
     if (reduce_precision) {
       precision <- precision * 10
