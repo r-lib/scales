@@ -87,9 +87,18 @@ test_that("precision rounds large numbers appropriately", {
   expect_equal(precision(x * 10000), 1)
 })
 
+test_that("precision is reduced when possible", {
+  expect_equal(precision(c(0, 0.01)), 0.01)
+  expect_equal(precision(c(0, 0.011)), 0.001)
+  expect_equal(precision(c(0, 0.0101)), 0.01)
+  expect_equal(precision(c(0, 0.0109)), 0.001)
+
+  expect_equal(precision(c(0.251, 0.351)), 0.01)
+})
+
 test_that("precision handles duplicate values", {
   expect_equal(precision(c(0, 0, 0.025)), 0.001)
-  expect_equal(precision(c(Inf, 0.1, 0.2, Inf)), 0.01)
+  expect_equal(precision(c(Inf, 0.1, 0.2, Inf)), 0.1)
 })
 
 test_that("precision ignores Inf and NA", {

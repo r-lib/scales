@@ -186,7 +186,15 @@ precision <- function(x) {
   if (smallest_diff < sqrt(.Machine$double.eps)) {
     1
   } else {
+    precision <- 10^(floor(log10(smallest_diff)) - 1)
+
+    # reduce precision when 2nd sig fig always 0
+    reduce_precision <- all(round(x / precision) %% 10 == 0)
+    if (reduce_precision) {
+      precision <- precision * 10
+    }
+
     # Never return precision bigger than 1
-    pmin(10^(floor(log10(smallest_diff)) - 1), 1)
+    pmin(precision, 1)
   }
 }
