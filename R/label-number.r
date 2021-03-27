@@ -189,8 +189,7 @@ precision <- function(x) {
     precision <- 10^(floor(log10(smallest_diff)) - 1)
 
     # reduce precision when final digit always 0
-    reduce_precision <- all(round(x / precision) %% 10 == 0)
-    if (reduce_precision) {
+    if (all(round(x / precision) %% 10 == 0)) {
       precision <- precision * 10
     }
 
