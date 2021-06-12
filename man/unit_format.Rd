@@ -48,7 +48,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 This function is kept for backward compatiblity; you should either use
 \code{\link[=label_number]{label_number()}} or \code{\link[=label_number_si]{label_number_si()}} instead.
 }

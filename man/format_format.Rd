@@ -10,7 +10,7 @@ format_format(...)
 \item{...}{Arguments passed on to \code{\link[=format]{format()}}.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 This function is kept for backward compatiblity; you should either use
 \code{\link[=label_number]{label_number()}} or \code{\link[=label_date]{label_date()}} instead.
 }

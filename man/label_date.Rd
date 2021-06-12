@@ -51,7 +51,7 @@ but uses a slightly different approach: \code{ConciseDateFormatter} formats
 }
 \section{Old interface}{
 
-\code{date_format()} and \code{time_format()} are retired; please use \code{label_date()}
+\code{date_format()} and \code{time_format()} are superseded; please use \code{label_date()}
 and \code{label_time()} instead.
 }
 

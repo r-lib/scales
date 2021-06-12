@@ -1,6 +1,6 @@
 #' Older interface to `label_bytes()`
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 #' These functions are kept for backward compatibility, but you should switch
 #' to [label_bytes()] for new code.
 #'
@@ -66,7 +66,7 @@ validate_byte_symbol <- function(symbol, symbols, default = "auto") {
 
 #' Format labels after transformation
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 #'
 #' @param trans transformation to apply
 #' @param format additional formatter to apply after transformation
@@ -90,7 +90,7 @@ trans_format <- function(trans, format = scientific_format()) {
 
 #' Unit labels
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_number_si()] instead.
 #'
@@ -123,7 +123,7 @@ unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' Label using `format()`
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' \Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_date()] instead.
 #'

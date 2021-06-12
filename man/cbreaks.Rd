@@ -20,7 +20,7 @@ breaks are - it is extremely dangerous to supply labels if you don't know
 what the breaks will be.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 This function wraps up the components needed to go from a continuous range
 to a set of breaks and labels suitable for display on axes or legends.
 }

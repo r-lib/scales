@@ -16,7 +16,7 @@ a function with single parameter x, a numeric vector, that
 returns a character vector of list of expressions
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
 }
 \examples{
 tf <- trans_format("log10", scientific_format())
