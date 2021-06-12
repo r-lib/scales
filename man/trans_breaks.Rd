@@ -17,7 +17,7 @@ vector returns the transformed values}
 \item{...}{other arguments passed on to pretty}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("superseded")}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 These often do not produce very attractive breaks.
 }
 \examples{
