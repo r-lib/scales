@@ -25,10 +25,10 @@
 * `label_bytes()` now correctly accounts for the `scale` argument when choosing
   auto units (@davidchall, #235).
 
-* `label_math()` now requires the `expr` argument is specified.
+* `label_math()` now requires the `expr` argument is specified (@davidchall, #312).
 
 * New `label_log()` displays the base and a superscript exponent, for use with
-  logarithmic axes.
+  logarithmic axes (@davidchall, #312).
 
 # scales 1.1.1
 
