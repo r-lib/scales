@@ -9,12 +9,12 @@ test_that("parse_format() returns an expression object", {
     expression(1, 2, 3, 4, 5)
   )
 
-  expect_identical(label_math()(character()), expression())
+  expect_identical(label_math(10^.x)(character()), expression())
   expect_identical(label_parse()(character()), expression())
 })
 
 test_that("math_format() returns expression", {
-  expect_equal(label_math()(1), expression(10 ^ 1))
+  expect_equal(label_math(10^.x)(1), expression(10 ^ 1))
 })
 
 
