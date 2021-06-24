@@ -31,7 +31,7 @@ cbreaks(c(0, 100), breaks_pretty(10))
 cbreaks(c(1, 100), log_breaks())
 cbreaks(c(1, 1e4), log_breaks())
 
-cbreaks(c(0, 100), labels = math_format())
+cbreaks(c(0, 100), labels = math_format(10^.x))
 cbreaks(c(0, 1), labels = percent_format())
 cbreaks(c(0, 1e6), labels = comma_format())
 cbreaks(c(0, 1e6), labels = dollar_format())

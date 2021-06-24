@@ -65,9 +65,6 @@ math_format <- label_math
 # From ggplot2:::parse_safe
 # See https://github.com/tidyverse/ggplot2/issues/2864 for discussion.
 parse_safe <- function(text) {
-  if (!is.character(text)) {
-    abort("`text` must be a character vector")
-  }
   out <- vector("expression", length(text))
   for (i in seq_along(text)) {
     expr <- parse(text = text[[i]])
