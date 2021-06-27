@@ -12,7 +12,9 @@
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
 label_log <- function(base = 10) {
   function(x) {
-    text <- paste0(base, "^", log(x, base = base), recycle0 = TRUE)
+    if (length(x) == 0) return(expression())
+
+    text <- paste0(base, "^", log(x, base = base))
     ret <- parse_safe(text)
 
     # restore NAs from input vector
