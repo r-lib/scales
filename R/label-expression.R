@@ -21,7 +21,7 @@
 #' # Use label_math() with continuous scales
 #' demo_continuous(c(1, 5))
 #' demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
-#' demo_continuous(c(1, 5), labels = label_math(10^.x))
+#' demo_continuous(c(1, 5), labels = label_math())
 label_parse <- function() {
   function(text) {
     parse_safe(as.character(text))
@@ -34,7 +34,7 @@ label_parse <- function() {
 #' @param format another format function to apply prior to mathematical
 #'   transformation - this makes it easier to use floating point numbers in
 #'   mathematical expressions.
-label_math <- function(expr, format = force) {
+label_math <- function(expr = 10^.x, format = force) {
   .x <- NULL
   quoted <- substitute(expr)
   subs <- function(x) {

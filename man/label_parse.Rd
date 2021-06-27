@@ -9,11 +9,11 @@
 \usage{
 label_parse()
 
-label_math(expr, format = force)
+label_math(expr = 10^.x, format = force)
 
 parse_format()
 
-math_format(expr, format = force)
+math_format(expr = 10^.x, format = force)
 }
 \arguments{
 \item{expr}{expression to use}
@@ -52,7 +52,7 @@ demo_discrete(greek, labels = label_parse())
 # Use label_math() with continuous scales
 demo_continuous(c(1, 5))
 demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
-demo_continuous(c(1, 5), labels = label_math(10^.x))
+demo_continuous(c(1, 5), labels = label_math())
 }
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.
