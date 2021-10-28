@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org
 [![R build
 status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=master)
+coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
 
 One of the most difficult parts of any graphics package is scaling,
