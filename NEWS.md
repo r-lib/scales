@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `label_number_auto()` correctly formats single numbers that are greater than
+  1e+06 without an error (@karawoo, #321)
+
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
