@@ -53,7 +53,7 @@ label_number_auto <- function() {
 format_shortest <- function(breaks, ...) {
   options <- list(...)
   labels <- vapply(options, function(labeller) labeller(breaks), character(length(breaks)))
-  apply(labels, 1, shortest)
+  apply(matrix(labels, nrow = length(breaks)), 1, shortest)
 }
 
 shortest <- function(x) {
