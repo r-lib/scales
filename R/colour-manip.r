@@ -107,10 +107,18 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
   rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
        col = colours, border = borders
   )
-  if (labels) {
+  if (isTRUE(labels)) {
     hcl <- farver::decode_colour(colours, "rgb", "hcl")
     label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
-
+    
     text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
+  } else if (is.character(labels)) {
+    if (length(labels) != length(colours)) {
+      stop("labels should be the same length than colours.")
+    }
+    hcl <- farver::decode_colour(colours, "rgb", "hcl")
+    label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
+    
+    text(col(colours) - 0.5, -row(colours) + 0.5, labels, cex = cex_label, col = label_col)
   }
 }
