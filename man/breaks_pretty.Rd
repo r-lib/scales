@@ -19,7 +19,7 @@ primarily useful for date/times, as \code{\link[=extended_breaks]{extended_break
 better job for numeric scales.
 }
 \details{
-\code{pretty_breaks()} is retired; use \code{breaks_pretty()} instead.
+\code{pretty_breaks()} is superseded; use \code{breaks_pretty()} instead.
 }
 \examples{
 one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))

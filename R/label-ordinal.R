@@ -4,7 +4,7 @@
 #' 3rd). Built-in rules are provided for English, French, and Spanish.
 #'
 #' @section Old interface:
-#' `ordinal()` and `format_ordinal()` are retired; please use `label_ordinal()`
+#' `ordinal()` and `format_ordinal()` are superseded; please use `label_ordinal()`
 #' instead.
 #' @inherit number_format return params
 #' @param prefix,suffix Symbols to display before and after value.

@@ -9,7 +9,7 @@
 #' `date_short()` formats changes (e.g. new month, new year) specially.
 #'
 #' @section Old interface:
-#' `date_format()` and `time_format()` are retired; please use `label_date()`
+#' `date_format()` and `time_format()` are superseded; please use `label_date()`
 #' and `label_time()` instead.
 #' @inherit number_format return
 #' @param format For `date_format()` and `time_format()` a date/time format

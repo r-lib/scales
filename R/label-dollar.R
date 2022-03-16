@@ -4,7 +4,7 @@
 #' a convenient heuristic.
 #'
 #' @section Old interface:
-#' `dollar()` and `format_dollar()` are retired; please use `label_dollar()`
+#' `dollar()` and `format_dollar()` are superseded; please use `label_dollar()`
 #' instead.
 #'
 #' @inherit number_format return params

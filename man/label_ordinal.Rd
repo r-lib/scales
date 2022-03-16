@@ -72,7 +72,7 @@ Round values to integers and then display as ordinal values (e.g. 1st, 2nd,
 }
 \section{Old interface}{
 
-\code{ordinal()} and \code{format_ordinal()} are retired; please use \code{label_ordinal()}
+\code{ordinal()} and \code{format_ordinal()} are superseded; please use \code{label_ordinal()}
 instead.
 }
 

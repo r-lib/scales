@@ -14,7 +14,7 @@
 #' they work similarly for all scales, including those that generate legends
 #' rather than axes.
 #' @section Old interface:
-#' `number_format()`, `comma_format()`, and `comma()` are retired; please use
+#' `number_format()`, `comma_format()`, and `comma()` are superseded; please use
 #' `label_number()` and `label_comma()` instead.
 #' @param x A numeric vector to format.
 #' @param accuracy A number to round to. Use (e.g.) `0.01` to show 2 decimal

@@ -83,7 +83,7 @@ Label percentages (2.5\%, 50\%, etc)
 }
 \section{Old interface}{
 
-\code{percent()} and \code{percent_format()} are retired; please use \code{label_percent()}
+\code{percent()} and \code{percent_format()} are superseded; please use \code{label_percent()}
 instead.
 }
 

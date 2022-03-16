@@ -3,7 +3,7 @@
 #' Uses [strwrap()] to split long labels across multiple lines.
 #'
 #' @section Old interface:
-#' `wrap_format()` is retired; please use `label_format()` instead.
+#' `wrap_format()` is superseded; please use `label_format()` instead.
 #' @inherit number_format return
 #' @param width Number of characters per line.
 #' @export

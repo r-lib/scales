@@ -1,7 +1,7 @@
 #' Label percentages (2.5%, 50%, etc)
 #'
 #' @section Old interface:
-#' `percent()` and `percent_format()` are retired; please use `label_percent()`
+#' `percent()` and `percent_format()` are superseded; please use `label_percent()`
 #' instead.
 #' @inherit number_format return params
 #' @export

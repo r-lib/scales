@@ -1,7 +1,7 @@
 #' Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 #'
 #' @section Old interface:
-#' `scientific_format()` and `scientific()` are retired; please use
+#' `scientific_format()` and `scientific()` are superseded; please use
 #' `label_scientific()`.
 #' @inherit number_format return params
 #' @param digits Number of digits to show before exponent.
