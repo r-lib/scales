@@ -11,10 +11,10 @@ Transformation for times (class hms)
 }
 \examples{
 if (require("hms")) {
-hms <- round(runif(10) * 86400)
-t <- hms_trans()
-t$transform(hms)
-t$inverse(t$transform(hms))
-t$breaks(hms)
+  hms <- round(runif(10) * 86400)
+  t <- hms_trans()
+  t$transform(hms)
+  t$inverse(t$transform(hms))
+  t$breaks(hms)
 }
 }

@@ -23,13 +23,15 @@
 #' demo_continuous(c(0, 1), labels = label_pvalue(prefix = prefix))
 label_pvalue <- function(accuracy = .001, decimal.mark = ".", prefix = NULL, add_p = FALSE) {
   force_all(accuracy, decimal.mark, add_p)
-  function(x) pvalue(
+  function(x) {
+    pvalue(
       x,
       accuracy = accuracy,
       decimal.mark = decimal.mark,
       prefix = prefix,
       add_p = add_p
     )
+  }
 }
 
 #' @rdname label_pvalue
@@ -43,7 +45,6 @@ pvalue <- function(x,
                    decimal.mark = ".",
                    prefix = NULL,
                    add_p = FALSE) {
-
   out <- number(x, accuracy, decimal.mark = decimal.mark)
   below <- number(accuracy, accuracy, decimal.mark = decimal.mark)
   above <- number(1 - accuracy, accuracy, decimal.mark = decimal.mark)

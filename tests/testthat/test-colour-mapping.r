@@ -67,7 +67,6 @@ test_that("CIELab overflow", {
 })
 
 test_that("factors match by name, not position", {
-
   full <- factor(letters[1:5])
   pal <- col_factor("magma", na.color = NA, levels = full)
 
@@ -84,7 +83,8 @@ test_that("qualitative palettes don't interpolate", {
 
   allColors <- RColorBrewer::brewer.pal(
     n = RColorBrewer::brewer.pal.info["Accent", "maxcolors"],
-    name = "Accent")
+    name = "Accent"
+  )
 
   # If we're not interpolating, then the colors for each level should match
   # exactly with the color in the corresponding position in the palette.
@@ -121,7 +121,8 @@ test_that("OK, qualitative palettes sometimes interpolate", {
 
   allColors <- RColorBrewer::brewer.pal(
     n = RColorBrewer::brewer.pal.info["Accent", "maxcolors"],
-    name = "Accent")
+    name = "Accent"
+  )
 
   result <- expect_warning(pal(letters[1:20]))
   # The first and last levels are the first and last palette colors

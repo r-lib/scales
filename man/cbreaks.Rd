@@ -40,7 +40,9 @@ cbreaks(c(0, 30), labels = dollar_format())
 # You can also specify them manually:
 cbreaks(c(0, 100), breaks = c(15, 20, 80))
 cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
-cbreaks(c(0, 100), breaks = c(15, 20, 80),
-  labels = expression(alpha, beta, gamma))
+cbreaks(c(0, 100),
+  breaks = c(15, 20, 80),
+  labels = expression(alpha, beta, gamma)
+)
 }
 \keyword{internal}

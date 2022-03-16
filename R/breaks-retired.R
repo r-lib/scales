@@ -26,8 +26,8 @@ date_breaks <- function(width = "1 month") {
 #' @keywords internal
 #' @export
 #' @examples
-#' trans_breaks("log10", function(x) 10 ^ x)(c(1, 1e6))
-#' trans_breaks("sqrt", function(x) x ^ 2)(c(1, 100))
+#' trans_breaks("log10", function(x) 10^x)(c(1, 1e6))
+#' trans_breaks("sqrt", function(x) x^2)(c(1, 100))
 #' trans_breaks(function(x) 1 / x, function(x) 1 / x)(c(1, 100))
 #' trans_breaks(function(x) -x, function(x) -x)(c(1, 100))
 trans_breaks <- function(trans, inv, n = 5, ...) {
@@ -73,8 +73,10 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #' # You can also specify them manually:
 #' cbreaks(c(0, 100), breaks = c(15, 20, 80))
 #' cbreaks(c(0, 100), breaks = c(15, 20, 80), labels = c(1.5, 2.0, 8.0))
-#' cbreaks(c(0, 100), breaks = c(15, 20, 80),
-#'   labels = expression(alpha, beta, gamma))
+#' cbreaks(c(0, 100),
+#'   breaks = c(15, 20, 80),
+#'   labels = expression(alpha, beta, gamma)
+#' )
 cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_format()) {
   if (zero_range(range)) {
     return(list(breaks = range[1], labels = format(range[1])))

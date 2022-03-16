@@ -146,7 +146,7 @@ show_col(col_quantile("Blues", domain = NULL)(sort(rexp(16))))
 # Categorical data; by default, the values being coloured span the gamut...
 show_col(col_factor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 # ...unless the data is a factor, without droplevels...
-show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
+show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels = LETTERS)))
 # ...or the domain is stated explicitly.
 show_col(col_factor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
 }

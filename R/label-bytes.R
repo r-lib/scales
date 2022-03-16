@@ -45,8 +45,14 @@ label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
     powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
 
     if (units %in% c("auto_si", "auto_binary")) {
-      base <- switch(units, auto_binary = 1024, auto_si = 1000)
-      suffix <- switch(units, auto_binary = "iB", auto_si = "B")
+      base <- switch(units,
+        auto_binary = 1024,
+        auto_si = 1000
+      )
+      suffix <- switch(units,
+        auto_binary = "iB",
+        auto_si = "B"
+      )
 
       rescale <- rescale_by_suffix(x * scale, breaks = c(0, base^powers))
 

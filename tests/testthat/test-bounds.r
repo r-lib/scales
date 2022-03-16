@@ -75,9 +75,9 @@ test_that("scaling is possible with logical values", {
 })
 
 test_that("expand_range respects mul and add values", {
-  expect_equal(expand_range(c(1,1), mul = 0, add = 0.6), c(0.4, 1.6))
-  expect_equal(expand_range(c(1,1), mul = 1, add = 0.6), c(-0.6, 2.6))
-  expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
+  expect_equal(expand_range(c(1, 1), mul = 0, add = 0.6), c(0.4, 1.6))
+  expect_equal(expand_range(c(1, 1), mul = 1, add = 0.6), c(-0.6, 2.6))
+  expect_equal(expand_range(c(1, 9), mul = 0, add = 2), c(-1, 11))
 })
 
 test_that("out of bounds functions return correct values", {

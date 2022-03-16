@@ -25,4 +25,3 @@ test_that("can control prefixes", {
     c("a0.01", "b0.50", "c0.99")
   )
 })
-

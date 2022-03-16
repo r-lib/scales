@@ -35,7 +35,7 @@ col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
 #' muted("red")
 #' muted("blue")
 #' show_col(c("red", "blue", muted("red"), muted("blue")))
-muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
+muted <- function(colour, l = 30, c = 70) col2hcl(colour, l = l, c = c)
 
 #' Modify colour transparency
 #'
@@ -51,7 +51,6 @@ muted <- function(colour, l=30, c=70) col2hcl(colour, l = l, c = c)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
-
   if (length(colour) != length(alpha)) {
     if (length(colour) > 1 && length(alpha) > 1) {
       stop("Only one of colour and alpha can be vectorised")
@@ -105,7 +104,7 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
   size <- max(dim(colours))
   plot(c(0, size), c(0, -size), type = "n", xlab = "", ylab = "", axes = FALSE)
   rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
-       col = colours, border = borders
+    col = colours, border = borders
   )
   if (labels) {
     hcl <- farver::decode_colour(colours, "rgb", "hcl")

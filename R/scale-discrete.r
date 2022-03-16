@@ -5,8 +5,10 @@
 #' @param na.value aesthetic to use for missing values
 #' @export
 #' @examples
-#' with(mtcars, plot(disp, mpg, pch = 20, cex = 3,
-#'   col = dscale(factor(cyl), brewer_pal())))
+#' with(mtcars, plot(disp, mpg,
+#'   pch = 20, cex = 3,
+#'   col = dscale(factor(cyl), brewer_pal())
+#' ))
 dscale <- function(x, palette, na.value = NA) {
   limits <- train_discrete(x)
   map_discrete(palette, x, limits, na.value)
@@ -24,7 +26,9 @@ is.discrete <- function(x) {
 #' @param na.rm If `TRUE`, will remove missing values
 #' @export
 train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
-  if (is.null(new)) return(existing)
+  if (is.null(new)) {
+    return(existing)
+  }
 
   if (!is.discrete(new)) {
     stop("Continuous value supplied to discrete scale", call. = FALSE)
@@ -34,7 +38,9 @@ train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
 
 discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
   new <- clevels(new, drop = drop, na.rm = na.rm)
-  if (is.null(old)) return(new)
+  if (is.null(old)) {
+    return(new)
+  }
   if (!is.character(old)) old <- clevels(old, na.rm = na.rm)
 
   new_levels <- setdiff(new, as.character(old))

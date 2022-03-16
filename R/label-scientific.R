@@ -19,7 +19,8 @@
 label_scientific <- function(digits = 3, scale = 1, prefix = "", suffix = "",
                              decimal.mark = ".", trim = TRUE, ...) {
   force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)
-  function(x) scientific(
+  function(x) {
+    scientific(
       x,
       digits = digits,
       scale = scale,
@@ -28,6 +29,7 @@ label_scientific <- function(digits = 3, scale = 1, prefix = "", suffix = "",
       decimal.mark = decimal.mark,
       ...
     )
+  }
 }
 
 #' @export
@@ -38,7 +40,9 @@ scientific_format <- label_scientific
 #' @rdname label_scientific
 scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
                        decimal.mark = ".", trim = TRUE, ...) {
-  if (length(x) == 0) return(character())
+  if (length(x) == 0) {
+    return(character())
+  }
   x <- signif(x * scale, digits)
   ret <- paste0(
     prefix,

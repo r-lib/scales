@@ -91,7 +91,7 @@ extended_breaks <- breaks_extended
 #' demo_datetime(one_month,
 #'   breaks = breaks_pretty(12),
 #'   labels = label_date_short()
-#')
+#' )
 breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n

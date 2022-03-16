@@ -32,7 +32,10 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy
   ))
 
   symbol <- validate_byte_symbol(symbol, symbols)
-  base <- switch(units, binary = 1024, si = 1000)
+  base <- switch(units,
+    binary = 1024,
+    si = 1000
+  )
 
   if (symbol == "auto") {
     power <- findInterval(abs(x), base^powers)
@@ -76,7 +79,7 @@ validate_byte_symbol <- function(symbol, symbols, default = "auto") {
 #' @keywords internal
 #' @examples
 #' tf <- trans_format("log10", scientific_format())
-#' tf(10 ^ 1:6)
+#' tf(10^1:6)
 trans_format <- function(trans, format = scientific_format()) {
   if (is.character(trans)) trans <- match.fun(trans)
   force(format)
@@ -134,7 +137,9 @@ format_format <- function(...) {
   force_all(...)
 
   function(x) {
-    if (!is.null(names(x))) return(names(x))
+    if (!is.null(names(x))) {
+      return(names(x))
+    }
     ret <- format(x, ..., trim = TRUE, justify = "left")
 
     # format.character() renders NA as "NA"

@@ -54,10 +54,10 @@
 #' )
 #' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
-                          suffix = "", big.mark = ",", decimal.mark = ".",
-                          trim = TRUE, largest_with_cents = 100000,
-                          negative_parens = FALSE, rescale_large = NULL,
-                          ...) {
+                         suffix = "", big.mark = ",", decimal.mark = ".",
+                         trim = TRUE, largest_with_cents = 100000,
+                         negative_parens = FALSE, rescale_large = NULL,
+                         ...) {
   force_all(
     accuracy,
     scale,
@@ -71,7 +71,8 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
     rescale_large,
     ...
   )
-  function(x) dollar(
+  function(x) {
+    dollar(
       x,
       accuracy = accuracy,
       scale = scale,
@@ -85,6 +86,7 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
       rescale_large = rescale_large,
       ...
     )
+  }
 }
 
 needs_cents <- function(x, threshold) {
@@ -111,7 +113,9 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    trim = TRUE, largest_with_cents = 100000,
                    negative_parens = FALSE, rescale_large = NULL,
                    ...) {
-  if (length(x) == 0) return(character())
+  if (length(x) == 0) {
+    return(character())
+  }
   if (is.null(accuracy) && is.null(rescale_large)) {
     if (needs_cents(x * scale, largest_with_cents)) {
       accuracy <- .01
