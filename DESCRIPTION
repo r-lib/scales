@@ -1,19 +1,13 @@
 Package: scales
 Title: Scale Functions for Visualization
 Version: 1.1.1.9000
-Authors@R: 
-    c(person(given = "Hadley",
-             family = "Wickham",
-             role = c("aut", "cre"),
-             email = "hadley@rstudio.com"),
-      person(given = "Dana",
-             family = "Seidel",
-             role = "aut"),
-      person(given = "RStudio",
-             role = "cph"))
-Description: Graphical scales map data to aesthetics, and
-    provide methods for automatically determining breaks and labels for
-    axes and legends.
+Authors@R: c(
+    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("Dana", "Seidel", role = "aut"),
+    person("RStudio", role = c("cph", "fnd"))
+  )
+Description: Graphical scales map data to aesthetics, and provide methods
+    for automatically determining breaks and labels for axes and legends.
 License: MIT + file LICENSE
 URL: https://scales.r-lib.org, https://github.com/r-lib/scales
 BugReports: https://github.com/r-lib/scales/issues
@@ -34,7 +28,8 @@ Suggests:
     ggplot2,
     hms (>= 0.5.0),
     testthat (>= 2.1.0)
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2

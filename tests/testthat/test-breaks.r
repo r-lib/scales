@@ -13,8 +13,8 @@ test_that("breaks_pretty() arguments are forcely evaluated on each call #81", {
   expect_equal(subfun2(1), subfuns[[2]](1))
 
   # A ... argument:
-  subfun1 <- breaks_pretty(n = 10,  min.n = 2)
-  subfun2 <- breaks_pretty(n = 10,  min.n = 5)
+  subfun1 <- breaks_pretty(n = 10, min.n = 2)
+  subfun2 <- breaks_pretty(n = 10, min.n = 5)
 
   subfuns <- list()
   cases <- c(2, 5)
@@ -24,4 +24,3 @@ test_that("breaks_pretty() arguments are forcely evaluated on each call #81", {
   expect_equal(subfun1(1), subfuns[[1]](1))
   expect_equal(subfun2(1), subfuns[[2]](1))
 })
-

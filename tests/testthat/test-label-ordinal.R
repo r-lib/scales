@@ -27,4 +27,3 @@ test_that("ordinal format maintains order", {
 test_that("ordinal preserves names", {
   expect_named(ordinal(c(a = 1)), "a")
 })
-

@@ -28,3 +28,7 @@ test_that("tricky breaks don't change unexpectedly", {
     number_auto(10^(1:7))
   })
 })
+
+test_that("single values > 1e+06 don't throw error", {
+  expect_equal(label_number_auto()(30925005), "30 925 005")
+})

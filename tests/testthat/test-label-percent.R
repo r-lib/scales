@@ -18,8 +18,8 @@ test_that("preserves names", {
 
 test_that("default accuracy works for range of inputs", {
   x <- c(0.1, 0.2, 0.5)
-  expect_equal(percent(x / 100), c("0.10%", "0.20%", "0.50%"))
-  expect_equal(percent(x / 10), c("1.0%", "2.0%", "5.0%"))
+  expect_equal(percent(x / 100), c("0.1%", "0.2%", "0.5%"))
+  expect_equal(percent(x / 10), c("1%", "2%", "5%"))
   expect_equal(percent(x), c("10%", "20%", "50%"))
   expect_equal(percent(x * 10), c("100%", "200%", "500%"))
 })

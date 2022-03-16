@@ -76,7 +76,7 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
@@ -112,7 +112,7 @@ that inserts a comma every three digits.
 }
 \section{Old interface}{
 
-\code{number_format()}, \code{comma_format()}, and \code{comma()} are retired; please use
+\code{number_format()}, \code{comma_format()}, and \code{comma()} are superseded; please use
 \code{label_number()} and \code{label_comma()} instead.
 }
 

@@ -14,7 +14,7 @@
 #' they work similarly for all scales, including those that generate legends
 #' rather than axes.
 #' @section Old interface:
-#' `number_format()`, `comma_format()`, and `comma()` are retired; please use
+#' `number_format()`, `comma_format()`, and `comma()` are superseded; please use
 #' `label_number()` and `label_comma()` instead.
 #' @param x A numeric vector to format.
 #' @param accuracy A number to round to. Use (e.g.) `0.01` to show 2 decimal
@@ -24,7 +24,7 @@
 #'
 #'   Applied to rescaled data.
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
-#'   formating. This is useful if the underlying data is very small or very
+#'   formatting. This is useful if the underlying data is very small or very
 #'   large.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param big.mark Character used between every 3 digits to separate thousands.
@@ -50,8 +50,8 @@
 #' demo_continuous(c(32, 212), label = label_number(suffix = "\u00b0F"))
 #' demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
-                          suffix = "", big.mark = " ", decimal.mark = ".",
-                          trim = TRUE, ...) {
+                         suffix = "", big.mark = " ", decimal.mark = ".",
+                         trim = TRUE, ...) {
   force_all(
     accuracy,
     scale,
@@ -62,7 +62,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
     trim,
     ...
   )
-  function(x) number(
+  function(x) {
+    number(
       x,
       accuracy = accuracy,
       scale = scale,
@@ -73,6 +74,7 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
       trim = trim,
       ...
     )
+  }
 }
 
 
@@ -80,8 +82,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
 #' @rdname label_number
 #' @param digits Deprecated, use `accuracy` instead.
 label_comma <- function(accuracy = NULL, scale = 1, prefix = "",
-                         suffix = "", big.mark = ",", decimal.mark = ".",
-                         trim = TRUE, digits, ...) {
+                        suffix = "", big.mark = ",", decimal.mark = ".",
+                        trim = TRUE, digits, ...) {
   if (!missing(digits)) {
     warning(
       "`digits` argument is deprecated, use `accuracy` instead.",
@@ -145,7 +147,9 @@ comma_format <- label_comma
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
                    trim = TRUE, ...) {
-  if (length(x) == 0) return(character())
+  if (length(x) == 0) {
+    return(character())
+  }
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
@@ -186,7 +190,14 @@ precision <- function(x) {
   if (smallest_diff < sqrt(.Machine$double.eps)) {
     1
   } else {
+    precision <- 10^(floor(log10(smallest_diff)) - 1)
+
+    # reduce precision when final digit always 0
+    if (all(round(x / precision) %% 10 == 0)) {
+      precision <- precision * 10
+    }
+
     # Never return precision bigger than 1
-    pmin(10^(floor(log10(smallest_diff)) - 1), 1)
+    pmin(precision, 1)
   }
 }

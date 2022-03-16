@@ -80,7 +80,9 @@ lines.trans <- function(x, ..., xlim) {
 #' @rdname trans_new
 #' @export
 as.trans <- function(x) {
-  if (is.trans(x)) return(x)
+  if (is.trans(x)) {
+    return(x)
+  }
 
   f <- paste0(x, "_trans")
   match.fun(f)()

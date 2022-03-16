@@ -142,15 +142,15 @@ yj_trans <- function(p) {
     inv_pos <- function(x) exp(x) - 1
   } else {
     trans_pos <- function(x) ((x + 1)^p - 1) / p
-    inv_pos <- function(x) (p*x + 1)^(1/p) - 1
+    inv_pos <- function(x) (p * x + 1)^(1 / p) - 1
   }
 
   if (abs(2 - p) < eps) {
     trans_neg <- function(x) -log(-x + 1)
     inv_neg <- function(x) 1 - exp(-x)
   } else {
-    trans_neg <- function(x) -((-x + 1)^(2 - p) - 1)/(2 - p)
-    inv_neg <- function(x) 1 - (-(2 - p)*x + 1)^(1/(2 - p))
+    trans_neg <- function(x) -((-x + 1)^(2 - p) - 1) / (2 - p)
+    inv_neg <- function(x) 1 - (-(2 - p) * x + 1)^(1 / (2 - p))
   }
 
   trans_new(
@@ -325,8 +325,7 @@ sqrt_trans <- function() {
   trans_new(
     "sqrt",
     "sqrt",
-    function(x) x ^ 2,
+    function(x) x^2,
     domain = c(0, Inf)
   )
 }
-

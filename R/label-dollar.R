@@ -4,7 +4,7 @@
 #' a convenient heuristic.
 #'
 #' @section Old interface:
-#' `dollar()` and `format_dollar()` are retired; please use `label_dollar()`
+#' `dollar()` and `format_dollar()` are superseded; please use `label_dollar()`
 #' instead.
 #'
 #' @inherit number_format return params
@@ -14,6 +14,11 @@
 #'   value is less than `largest_with_cents` which by default is 100,000.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param negative_parens Display negative using parentheses?
+#' @param rescale_large Named list indicating suffixes given to large values
+#'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
+#'   value specifies the power-of-ten. The two most common scales are provided
+#'   (`rescale_short_scale()` and `rescale_long_scale()`).
+#'   If `NULL`, the default, these suffixes aren't used.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @family labels for continuous scales
@@ -23,7 +28,7 @@
 #'
 #' # Customise currency display with prefix and suffix
 #' demo_continuous(c(1, 100), labels = label_dollar(prefix = "USD "))
-#' euro <- dollar_format(
+#' euro <- label_dollar(
 #'   prefix = "",
 #'   suffix = "\u20ac",
 #'   big.mark = ".",
@@ -33,10 +38,26 @@
 #'
 #' # Use negative_parens = TRUE for finance style display
 #' demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+#'
+#' # In finance the short scale is most prevalent
+#' dollar <- label_dollar(rescale_large = rescale_short_scale())
+#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
+#'
+#' # In other contexts the long scale might be used
+#' long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
+#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
+#'
+#' # You can also define a custom naming scheme
+#' gbp <- label_dollar(
+#'   prefix = "\u00a3",
+#'   rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+#' )
+#' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
-                          suffix = "", big.mark = ",", decimal.mark = ".",
-                          trim = TRUE, largest_with_cents = 100000,
-                          negative_parens = FALSE, ...) {
+                         suffix = "", big.mark = ",", decimal.mark = ".",
+                         trim = TRUE, largest_with_cents = 100000,
+                         negative_parens = FALSE, rescale_large = NULL,
+                         ...) {
   force_all(
     accuracy,
     scale,
@@ -47,9 +68,11 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
     trim,
     largest_with_cents,
     negative_parens,
+    rescale_large,
     ...
   )
-  function(x) dollar(
+  function(x) {
+    dollar(
       x,
       accuracy = accuracy,
       scale = scale,
@@ -60,8 +83,10 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
       trim = trim,
       largest_with_cents = largest_with_cents,
       negative_parens,
+      rescale_large = rescale_large,
       ...
     )
+  }
 }
 
 needs_cents <- function(x, threshold) {
@@ -86,9 +111,12 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = FALSE, ...) {
-  if (length(x) == 0) return(character())
-  if (is.null(accuracy)) {
+                   negative_parens = FALSE, rescale_large = NULL,
+                   ...) {
+  if (length(x) == 0) {
+    return(character())
+  }
+  if (is.null(accuracy) && is.null(rescale_large)) {
     if (needs_cents(x * scale, largest_with_cents)) {
       accuracy <- .01
     } else {
@@ -101,6 +129,18 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
 
   negative <- !is.na(x) & x < 0
   x <- abs(x)
+
+  if (!is.null(rescale_large)) {
+    if (!(is.integer(rescale_large) && all(rescale_large > 0))) {
+      stop("`rescale_large` must be positive integers.", call. = FALSE)
+    }
+
+    rescale <- rescale_by_suffix(x * scale, breaks = c(0, 10^rescale_large))
+
+    sep <- if (suffix == "") "" else " "
+    suffix <- paste0(rescale$suffix, sep, suffix)
+    scale <- scale * rescale$scale
+  }
 
   amount <- number(
     x,
@@ -125,4 +165,16 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   names(amount) <- names(x)
 
   amount
+}
+
+#' @export
+#' @rdname label_dollar
+rescale_short_scale <- function() {
+  c(K = 3L, M = 6L, B = 9L, T = 12L)
+}
+
+#' @export
+#' @rdname label_dollar
+rescale_long_scale <- function() {
+  c(K = 3L, M = 6L, B = 12L, T = 18L)
 }

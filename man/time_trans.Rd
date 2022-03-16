@@ -14,7 +14,7 @@ the time zone will be extracted from first input with a non-null tz.}
 Transformation for date-times (class POSIXt)
 }
 \examples{
-hours <- seq(ISOdate(2000,3,20, tz = ""), by = "hour", length.out = 10)
+hours <- seq(ISOdate(2000, 3, 20, tz = ""), by = "hour", length.out = 10)
 t <- time_trans()
 t$transform(hours)
 t$inverse(t$transform(hours))

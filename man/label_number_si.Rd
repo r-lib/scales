@@ -2,11 +2,13 @@
 % Please edit documentation in R/label-number-si.R
 \name{label_number_si}
 \alias{label_number_si}
-\title{Label numbers with SI prefixes (2k, 1M, 5T etc)}
+\title{Label numbers with SI prefixes (2 kg, 5 mm, etc)}
 \usage{
-label_number_si(accuracy = 1, unit = NULL, sep = NULL, ...)
+label_number_si(unit, accuracy = NULL, scale = 1, ...)
 }
 \arguments{
+\item{unit}{Unit of measurement (e.g. \code{"m"} for meter, the SI unit of length).}
+
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
@@ -14,10 +16,9 @@ difference between adjacent values.
 
 Applied to rescaled data.}
 
-\item{unit}{Optional units specifier.}
-
-\item{sep}{Separator between number and SI unit. Defaults to \code{" "} if
-\code{units} is supplied, and \code{""} if not.}
+\item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formatting. This is useful if the underlying data is already using an SI
+prefix.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
@@ -32,16 +33,21 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{number_si()} automatically scales and labels with the best SI prefix,
-"K" for values \eqn{\ge} 10e3, "M" for \eqn{\ge} 10e6,
-"B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
+\code{label_number_si()} automatically adds the most suitable SI prefix and scales
+the values appropriately. For example, values greater than 1000 gain a "k"
+prefix (abbreviated from "kilo-") and are scaled by 1/1000.
+See \href{https://en.wikipedia.org/wiki/Metric_prefix}{Metric Prefix} on Wikipedia
+for more details.
 }
 \examples{
-demo_continuous(c(1, 1e9), label = label_number_si())
-demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
-demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
+demo_continuous(c(1, 1000), labels = label_number_si("m"))
 
-demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
+demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si("m"))
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("g"))
+
+# use scale when data already uses SI prefix (e.g. stored in kg)
+kg <- label_number_si("g", scale = 1e3)
+demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = kg)
 }
 \seealso{
 Other labels for continuous scales: 

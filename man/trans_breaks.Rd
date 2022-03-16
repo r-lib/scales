@@ -17,12 +17,12 @@ vector returns the transformed values}
 \item{...}{other arguments passed on to pretty}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 These often do not produce very attractive breaks.
 }
 \examples{
-trans_breaks("log10", function(x) 10 ^ x)(c(1, 1e6))
-trans_breaks("sqrt", function(x) x ^ 2)(c(1, 100))
+trans_breaks("log10", function(x) 10^x)(c(1, 1e6))
+trans_breaks("sqrt", function(x) x^2)(c(1, 100))
 trans_breaks(function(x) 1 / x, function(x) 1 / x)(c(1, 100))
 trans_breaks(function(x) -x, function(x) -x)(c(1, 100))
 }

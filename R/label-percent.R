@@ -1,7 +1,7 @@
 #' Label percentages (2.5%, 50%, etc)
 #'
 #' @section Old interface:
-#' `percent()` and `percent_format()` are retired; please use `label_percent()`
+#' `percent()` and `percent_format()` are superseded; please use `label_percent()`
 #' instead.
 #' @inherit number_format return params
 #' @export
@@ -17,8 +17,8 @@
 #' )
 #' demo_continuous(c(0, .01), labels = french_percent)
 label_percent <- function(accuracy = NULL, scale = 100, prefix = "",
-                           suffix = "%", big.mark = " ", decimal.mark = ".",
-                           trim = TRUE, ...) {
+                          suffix = "%", big.mark = " ", decimal.mark = ".",
+                          trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,
     scale = scale,

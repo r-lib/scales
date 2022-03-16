@@ -3,7 +3,7 @@ test_that("auto units always rounds down", {
 })
 
 test_that("auto units handles 0 and other special values", {
-  expect_equal(label_bytes()(NA), NA_character_)
+  expect_equal(label_bytes()(NA_real_), NA_character_)
   expect_equal(label_bytes()(0), "0 B")
   expect_equal(label_bytes()(-1), "-1 B")
   expect_equal(label_bytes()(Inf), "Inf")
@@ -12,6 +12,11 @@ test_that("auto units handles 0 and other special values", {
 test_that("can use either binary or si units", {
   expect_equal(label_bytes("kB")(1000), "1 kB")
   expect_equal(label_bytes("kiB")(1024), "1 kiB")
+})
+
+test_that("compatible with scale argument", {
+  expect_equal(label_bytes("auto_si", scale = 2)(500), "1 kB")
+  expect_equal(label_bytes("auto_binary", scale = 2)(512), "1 kiB")
 })
 
 test_that("errors if unknown unit", {
