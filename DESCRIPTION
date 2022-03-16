@@ -28,6 +28,7 @@ Suggests:
     ggplot2,
     hms (>= 0.5.0),
     testthat (>= 2.1.0)
+Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
