@@ -4,7 +4,7 @@ Version: 1.1.1.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("Dana", "Seidel", role = "aut"),
-    person("RStudio", role = "cph")
+    person("RStudio", role = c("cph", "fnd"))
   )
 Description: Graphical scales map data to aesthetics, and provide methods
     for automatically determining breaks and labels for axes and legends.
