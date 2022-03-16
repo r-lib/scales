@@ -4,10 +4,13 @@
 \alias{label_log}
 \title{Label numbers in log format (10^3, 10^6, etc)}
 \usage{
-label_log(base = 10)
+label_log(base = 10, digits = NULL)
 }
 \arguments{
-\item{base}{base of logarithm to use}
+\item{base}{Base of logarithm to use}
+
+\item{digits}{Number of significant digits to show for the exponent. Argument
+is passed on to \code{\link[base:format]{base::format()}}.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that

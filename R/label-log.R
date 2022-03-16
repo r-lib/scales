@@ -2,7 +2,9 @@
 #'
 #' `label_log()` displays numbers as base^exponent, using superscript formatting.
 #'
-#' @param base base of logarithm to use
+#' @param base Base of logarithm to use
+#' @param digits Number of significant digits to show for the exponent. Argument
+#'   is passed on to [base::format()].
 #' @inherit number_format return
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
@@ -10,11 +12,12 @@
 #' @examples
 #' demo_log10(c(1, 1e5), labels = label_log())
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
-label_log <- function(base = 10) {
+label_log <- function(base = 10, digits = NULL) {
   function(x) {
     if (length(x) == 0) return(expression())
 
-    text <- paste0(base, "^", log(x, base = base))
+    exponent <- format(log(x, base = base), digits = digits)
+    text <- paste0(base, "^", exponent)
     ret <- parse_safe(text)
 
     # restore NAs from input vector
