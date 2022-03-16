@@ -1,7 +1,8 @@
 #' Colour Brewer palette (discrete)
 #'
-#' @param type One of seq (sequential), div (diverging) or qual (qualitative)
-#' @param palette If a string, will use that named palette.  If a number, will
+#' @param type One of "seq" (sequential), "div" (diverging) or "qual"
+#'   (qualitative)
+#' @param palette If a string, will use that named palette. If a number, will
 #'   index into the list of palettes of appropriate `type`
 #' @param direction Sets the order of colours in the scale. If 1, the default,
 #'   colours are as output by [RColorBrewer::brewer.pal()]. If -1, the
@@ -13,7 +14,7 @@
 #' show_col(brewer_pal("div")(5))
 #' show_col(brewer_pal(palette = "Greens")(5))
 #'
-#' # Can use with gradient_n to create a continous gradient
+#' # Can use with gradient_n to create a continuous gradient
 #' cols <- brewer_pal("div")(5)
 #' show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
 brewer_pal <- function(type = "seq", palette = 1, direction = 1) {

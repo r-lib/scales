@@ -7,9 +7,10 @@
 brewer_pal(type = "seq", palette = 1, direction = 1)
 }
 \arguments{
-\item{type}{One of seq (sequential), div (diverging) or qual (qualitative)}
+\item{type}{One of "seq" (sequential), "div" (diverging) or "qual"
+(qualitative)}
 
-\item{palette}{If a string, will use that named palette.  If a number, will
+\item{palette}{If a string, will use that named palette. If a number, will
 index into the list of palettes of appropriate \code{type}}
 
 \item{direction}{Sets the order of colours in the scale. If 1, the default,
@@ -24,7 +25,7 @@ show_col(brewer_pal()(10))
 show_col(brewer_pal("div")(5))
 show_col(brewer_pal(palette = "Greens")(5))
 
-# Can use with gradient_n to create a continous gradient
+# Can use with gradient_n to create a continuous gradient
 cols <- brewer_pal("div")(5)
 show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
 }
