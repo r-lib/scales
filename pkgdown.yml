@@ -1,8 +1,8 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1.9001
-pkgdown_sha: 672b8fc2d10d98ed9bab242c2af56662e5983e9b
+pandoc: 2.14.2
+pkgdown: 2.0.2
+pkgdown_sha: ~
 articles: {}
-last_built: 2021-03-26T16:45Z
+last_built: 2022-03-16T14:20Z
 urls:
   reference: https://scales.r-lib.org/reference
   article: https://scales.r-lib.org/articles
