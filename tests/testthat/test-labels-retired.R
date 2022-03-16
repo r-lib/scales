@@ -1,7 +1,7 @@
 test_that("unit format", {
   expect_equal(
     unit_format(unit = "km", scale = 1e-3)(c(1e3, NA, 2e3)),
-    c("1.0 km", NA, "2.0 km")
+    c("1 km", NA, "2 km")
   )
   expect_equal(
     unit_format(unit = "ha", scale = 1e-4, accuracy = .1)(c(1e3, 2e3)),
