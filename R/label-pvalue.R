@@ -3,7 +3,7 @@
 #' Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 #'
 #' @section Old interface:
-#' `pvalue()` and `pvalue_dollar()` are superseded; please use `label_pvalue()`
+#' `pvalue()` and `pvalue_format()` are superseded; please use `label_pvalue()`
 #' instead.
 #' @inherit number_format return params
 #' @param prefix A character vector of length 3 giving the prefixes to
