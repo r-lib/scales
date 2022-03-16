@@ -64,9 +64,10 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>type</dt>
-<dd><p>One of seq (sequential), div (diverging) or qual (qualitative)</p></dd>
+<dd><p>One of "seq" (sequential), "div" (diverging) or "qual"
+(qualitative)</p></dd>
 <dt>palette</dt>
-<dd><p>If a string, will use that named palette.  If a number, will
+<dd><p>If a string, will use that named palette. If a number, will
 index into the list of palettes of appropriate <code>type</code></p></dd>
 <dt>direction</dt>
 <dd><p>Sets the order of colours in the scale. If 1, the default,
@@ -89,7 +90,7 @@ order of colours is reversed.</p></dd>
 <span class="r-in"><span class="fu"><a href="show_col.html">show_col</a></span><span class="op">(</span><span class="fu">brewer_pal</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Greens"</span><span class="op">)</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="brewer_pal-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># Can use with gradient_n to create a continous gradient</span></span>
+<span class="r-in"><span class="co"># Can use with gradient_n to create a continuous gradient</span></span>
 <span class="r-in"><span class="va">cols</span> <span class="op">&lt;-</span> <span class="fu">brewer_pal</span><span class="op">(</span><span class="st">"div"</span><span class="op">)</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="show_col.html">show_col</a></span><span class="op">(</span><span class="fu"><a href="gradient_n_pal.html">gradient_n_pal</a></span><span class="op">(</span><span class="va">cols</span><span class="op">)</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">30</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="brewer_pal-4.png" alt="" width="700" height="433"></span>
