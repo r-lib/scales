@@ -12,7 +12,7 @@
 #' @examples
 #' demo_log10(c(1, 1e5), labels = label_log())
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
-label_log <- function(base = 10, digits = NULL) {
+label_log <- function(base = 10, digits = 3) {
   function(x) {
     if (length(x) == 0) return(expression())
 

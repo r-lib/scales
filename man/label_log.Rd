@@ -4,7 +4,7 @@
 \alias{label_log}
 \title{Label numbers in log format (10^3, 10^6, etc)}
 \usage{
-label_log(base = 10, digits = NULL)
+label_log(base = 10, digits = 3)
 }
 \arguments{
 \item{base}{Base of logarithm to use}
