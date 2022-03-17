@@ -65,11 +65,19 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>width</dt>
 <dd><p>Distance between each break. Either a number, or for
-date/times, a single string of the form "n unit", e.g. "1 month",
+date/times, a single string of the form <code>"{n} {unit}"</code>, e.g. "1 month",
 "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 "month", "year".</p></dd>
 <dt>offset</dt>
-<dd><p>Use if you don't want breaks to start at zero</p></dd>
+<dd><p>Use if you don't want breaks to start at zero, or on a
+conventional date or time boundary such as the 1st of January or midnight.
+Either a number, or for date/times, a single string of the form
+<code>"{n} {unit}"</code>, as for <code>width</code>.</p>
+<p><code>offset</code> can be a vector, which will accumulate in the order given. This
+is mostly useful for dates, where e.g. <code>c("3 months", "5 days")</code> will
+offset by three months and five days, which is useful for the UK tax year.
+Note that due to way that dates are rounded, there's no guarantee that
+<code>offset = c(x, y)</code> will give the same result as <code>offset = c(y, x)</code>.</p></dd>
 </dl></div>
 
     <div class="section level2">
@@ -114,6 +122,26 @@ date/times, a single string of the form "n unit", e.g. "1 month",
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_time</a></span><span class="op">(</span><span class="va">one_hour</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"600 sec"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_time(breaks = breaks_width("600 sec"))</span>
 <span class="r-plt img"><img src="breaks_width-11.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Offets are useful for years that begin on dates other than the 1st of</span></span>
+<span class="r-in"><span class="co"># January, such as the UK financial year, which begins on the 1st of April.</span></span>
+<span class="r-in"><span class="va">three_years</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-01-01"</span>, <span class="st">"2021-01-01"</span>, <span class="st">"2022-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span></span>
+<span class="r-in">  <span class="va">three_years</span>,</span>
+<span class="r-in">  breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"1 year"</span>, offset <span class="op">=</span> <span class="st">"3 months"</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("1 year", offset = "3 months"))</span>
+<span class="r-plt img"><img src="breaks_width-12.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># The offset can be a vector, to create offsets that have compound units,</span></span>
+<span class="r-in"><span class="co"># such as the UK fiscal (tax) year, which begins on the 6th of April.</span></span>
+<span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span></span>
+<span class="r-in">  <span class="va">three_years</span>,</span>
+<span class="r-in">  breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"1 year"</span>, offset <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"3 months"</span>, <span class="st">"5 days"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("1 year", offset = c("3 months", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     "5 days")))</span>
+<span class="r-plt img"><img src="breaks_width-13.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
