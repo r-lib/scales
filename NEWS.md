@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `label_date()` and `label_time()` gain a `locale` argument that allows you
+  to set the locale used to generate day and month names (#309).
+
 * `label_number_auto()` correctly formats single numbers that are greater than
   1e+06 without an error (@karawoo, #321)
 

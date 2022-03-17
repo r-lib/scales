@@ -20,6 +20,7 @@ Imports:
     munsell (>= 0.5),
     R6,
     RColorBrewer,
+    rlang,
     viridisLite
 Suggests: 
     bit64,
@@ -27,6 +28,7 @@ Suggests:
     dichromat,
     ggplot2,
     hms (>= 0.5.0),
+    stringi,
     testthat (>= 2.1.0)
 Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
