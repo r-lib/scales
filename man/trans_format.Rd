@@ -16,10 +16,10 @@ a function with single parameter x, a numeric vector, that
 returns a character vector of list of expressions
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 }
 \examples{
 tf <- trans_format("log10", scientific_format())
-tf(10 ^ 1:6)
+tf(10^1:6)
 }
 \keyword{internal}

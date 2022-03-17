@@ -27,7 +27,7 @@ from_date <- function(x) {
 #'   the time zone will be extracted from first input with a non-null tz.
 #' @export
 #' @examples
-#' hours <- seq(ISOdate(2000,3,20, tz = ""), by = "hour", length.out = 10)
+#' hours <- seq(ISOdate(2000, 3, 20, tz = ""), by = "hour", length.out = 10)
 #' t <- time_trans()
 #' t$transform(hours)
 #' t$inverse(t$transform(hours))
@@ -59,11 +59,11 @@ time_trans <- function(tz = NULL) {
 #' @export
 #' @examples
 #' if (require("hms")) {
-#' hms <- round(runif(10) * 86400)
-#' t <- hms_trans()
-#' t$transform(hms)
-#' t$inverse(t$transform(hms))
-#' t$breaks(hms)
+#'   hms <- round(runif(10) * 86400)
+#'   t <- hms_trans()
+#'   t$transform(hms)
+#'   t$inverse(t$transform(hms))
+#'   t$breaks(hms)
 #' }
 hms_trans <- function() {
   trans_new(

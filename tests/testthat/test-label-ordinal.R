@@ -1,6 +1,6 @@
 
 test_that("ordinal format in English", {
-  verify_output(test_path("test-label-ordinal.txt"), {
+  expect_snapshot({
     ordinal(c(1:4, 11:21, 101, NA))
 
     ordinal(c(1, 2, 10, 11, NA), rules = ordinal_french())
@@ -27,4 +27,3 @@ test_that("ordinal format maintains order", {
 test_that("ordinal preserves names", {
   expect_named(ordinal(c(a = 1)), "a")
 })
-

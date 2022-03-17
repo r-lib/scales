@@ -2,14 +2,14 @@
 #'
 #' `label_date()` and `label_time()` label date/times using date/time format
 #' strings. `label_date_short()` automatically constructs a short format string
-#' suffiicient to uniquely identify labels. It's inspired by matplotlib's
+#' sufficient to uniquely identify labels. It's inspired by matplotlib's
 #' [`ConciseDateFormatter`](https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter),
 #' but uses a slightly different approach: `ConciseDateFormatter` formats
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.
 #'
 #' @section Old interface:
-#' `date_format()` and `time_format()` are retired; please use `label_date()`
+#' `date_format()` and `time_format()` are superseded; please use `label_date()`
 #' and `label_time()` instead.
 #' @inherit number_format return
 #' @param format For `date_format()` and `time_format()` a date/time format

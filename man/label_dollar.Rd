@@ -4,6 +4,8 @@
 \alias{label_dollar}
 \alias{dollar_format}
 \alias{dollar}
+\alias{rescale_short_scale}
+\alias{rescale_long_scale}
 \title{Label currencies ($100, $2.50, etc)}
 \usage{
 label_dollar(
@@ -16,6 +18,7 @@ label_dollar(
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = FALSE,
+  rescale_large = NULL,
   ...
 )
 
@@ -29,6 +32,7 @@ dollar_format(
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = FALSE,
+  rescale_large = NULL,
   ...
 )
 
@@ -43,8 +47,13 @@ dollar(
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = FALSE,
+  rescale_large = NULL,
   ...
 )
+
+rescale_short_scale()
+
+rescale_long_scale()
 }
 \arguments{
 \item{accuracy, largest_with_cents}{Number to round to. If \code{NULL}, the default,
@@ -53,7 +62,7 @@ values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
 
 \item{scale}{A scaling factor: \code{x} will be multiplied by \code{scale} before
-formating. This is useful if the underlying data is very small or very
+formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
@@ -67,6 +76,12 @@ decimal point.}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{negative_parens}{Display negative using parentheses?}
+
+\item{rescale_large}{Named list indicating suffixes given to large values
+(e.g. thousands, millions, billions, trillions). Name gives suffix, and
+value specifies the power-of-ten. The two most common scales are provided
+(\code{rescale_short_scale()} and \code{rescale_long_scale()}).
+If \code{NULL}, the default, these suffixes aren't used.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
@@ -88,7 +103,7 @@ a convenient heuristic.
 }
 \section{Old interface}{
 
-\code{dollar()} and \code{format_dollar()} are retired; please use \code{label_dollar()}
+\code{dollar()} and \code{format_dollar()} are superseded; please use \code{label_dollar()}
 instead.
 }
 
@@ -98,7 +113,7 @@ demo_continuous(c(1, 100), labels = label_dollar())
 
 # Customise currency display with prefix and suffix
 demo_continuous(c(1, 100), labels = label_dollar(prefix = "USD "))
-euro <- dollar_format(
+euro <- label_dollar(
   prefix = "",
   suffix = "\u20ac",
   big.mark = ".",
@@ -108,6 +123,21 @@ demo_continuous(c(1000, 1100), labels = euro)
 
 # Use negative_parens = TRUE for finance style display
 demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+
+# In finance the short scale is most prevalent
+dollar <- label_dollar(rescale_large = rescale_short_scale())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
+
+# In other contexts the long scale might be used
+long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
+
+# You can also define a custom naming scheme
+gbp <- label_dollar(
+  prefix = "\u00a3",
+  rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+)
+demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 }
 \seealso{
 Other labels for continuous scales: 

@@ -4,7 +4,7 @@
 #' 3rd). Built-in rules are provided for English, French, and Spanish.
 #'
 #' @section Old interface:
-#' `ordinal()` and `format_ordinal()` are retired; please use `label_ordinal()`
+#' `ordinal()` and `format_ordinal()` are superseded; please use `label_ordinal()`
 #' instead.
 #' @inherit number_format return params
 #' @param prefix,suffix Symbols to display before and after value.
@@ -34,7 +34,8 @@
 label_ordinal <- function(prefix = "", suffix = "", big.mark = " ",
                           rules = ordinal_english(), ...) {
   force_all(prefix, suffix, big.mark, rules, ...)
-  function(x) ordinal(
+  function(x) {
+    ordinal(
       x,
       prefix = prefix,
       suffix = suffix,
@@ -42,6 +43,7 @@ label_ordinal <- function(prefix = "", suffix = "", big.mark = " ",
       rules = rules,
       ...
     )
+  }
 }
 
 
@@ -62,7 +64,10 @@ ordinal_english <- function() {
 #' @export
 #' @rdname label_ordinal
 ordinal_french <- function(gender = c("masculin", "feminin"), plural = FALSE) {
-  suffix <- switch(match.arg(gender), masculin = "er", feminin = "re")
+  suffix <- switch(match.arg(gender),
+    masculin = "er",
+    feminin = "re"
+  )
 
   label <- list("^1$", ".")
   names(label) <- c(suffix, "e")

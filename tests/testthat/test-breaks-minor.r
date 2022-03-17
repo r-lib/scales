@@ -1,5 +1,3 @@
-context("minor breaks")
-
 l1 <- c(0, 9)
 l2 <- -l1
 b1 <- extended_breaks()(l1)

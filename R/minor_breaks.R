@@ -65,7 +65,9 @@ loop_breaks <- function(range, breaks, f) {
 regular_minor_breaks <- function(reverse = FALSE) {
   function(b, limits, n) {
     b <- b[!is.na(b)]
-    if (length(b) < 2) return()
+    if (length(b) < 2) {
+      return()
+    }
 
     bd <- diff(b)[1]
 
@@ -89,4 +91,3 @@ regular_minor_breaks <- function(reverse = FALSE) {
     breaks
   }
 }
-

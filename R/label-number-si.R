@@ -1,46 +1,55 @@
-#' Label numbers with SI prefixes (2k, 1M, 5T etc)
+#' Label numbers with SI prefixes (2 kg, 5 mm, etc)
 #'
-#' `number_si()` automatically scales and labels with the best SI prefix,
-#' "K" for values \eqn{\ge} 10e3, "M" for \eqn{\ge} 10e6,
-#' "B" for \eqn{\ge} 10e9, and "T" for \eqn{\ge} 10e12.
+#' `label_number_si()` automatically adds the most suitable SI prefix and scales
+#' the values appropriately. For example, values greater than 1000 gain a "k"
+#' prefix (abbreviated from "kilo-") and are scaled by 1/1000.
+#' See [Metric Prefix](https://en.wikipedia.org/wiki/Metric_prefix) on Wikipedia
+#' for more details.
 #'
 #' @inherit number_format return params
-#' @param unit Optional units specifier.
-#' @param sep Separator between number and SI unit. Defaults to `" "` if
-#'   `units` is supplied, and `""` if not.
+#' @param unit Unit of measurement (e.g. `"m"` for meter, the SI unit of length).
+#' @param scale A scaling factor: `x` will be multiplied by `scale` before
+#'   formatting. This is useful if the underlying data is already using an SI
+#'   prefix.
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
 #' @examples
-#' demo_continuous(c(1, 1e9), label = label_number_si())
-#' demo_continuous(c(1, 5000), label = label_number_si(unit = "g"))
-#' demo_continuous(c(1, 1000), label = label_number_si(unit = "m"))
+#' demo_continuous(c(1, 1000), labels = label_number_si("m"))
 #'
-#' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si())
-label_number_si <- function(accuracy = 1, unit = NULL, sep = NULL, ...) {
-  sep <- if (is.null(unit)) "" else " "
+#' demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si("m"))
+#' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("g"))
+#'
+#' # use scale when data already uses SI prefix (e.g. stored in kg)
+#' kg <- label_number_si("g", scale = 1e3)
+#' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = kg)
+label_number_si <- function(unit, accuracy = NULL, scale = 1, ...) {
+  sep <- if (is.null(unit) || !nzchar(unit)) "" else " "
   force_all(accuracy, ...)
 
   function(x) {
-    breaks <- c(0, 10^c(K = 3, M = 6, B = 9, T = 12))
+    rescale <- rescale_by_suffix(x * scale, breaks = 10^si_powers)
 
-    n_suffix <- cut(abs(x),
-      breaks = c(unname(breaks), Inf),
-      labels = c(names(breaks)),
-      right = FALSE
-    )
-    n_suffix[is.na(n_suffix)] <- ""
-    suffix <- paste0(sep, n_suffix, unit)
-
-    scale <- 1 / breaks[n_suffix]
-    # for handling Inf and 0-1 correctly
-    scale[which(scale %in% c(Inf, NA))] <- 1
+    suffix <- paste0(sep, rescale$suffix, unit)
+    scale <- scale * rescale$scale
 
     number(x,
       accuracy = accuracy,
-      scale = unname(scale),
+      scale = scale,
       suffix = suffix,
       ...
     )
   }
 }
+
+# power-of-ten prefixes used by the International System of Units (SI)
+# https://www.bipm.org/en/measurement-units/prefixes.html
+#
+# note: irregular prefixes (hecto, deca, deci, centi) are not stored
+# because they don't commonly appear in scientific usage anymore
+si_powers <- (-8:8) * 3
+names(si_powers) <- c(
+  rev(c("m", "\u00b5", "n", "p", "f", "a", "z", "y")), "",
+        "k", "M",      "G", "T", "P", "E", "Z", "Y"
+)
+si_powers

@@ -56,7 +56,7 @@ Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 }
 \section{Old interface}{
 
-\code{pvalue()} and \code{pvalue_dollar()} are retired; please use \code{label_pvalue()}
+\code{pvalue()} and \code{pvalue_format()} are superseded; please use \code{label_pvalue()}
 instead.
 }
 

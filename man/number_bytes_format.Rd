@@ -18,7 +18,7 @@ variants for binary units.}
 \item{units}{which unit base to use, "binary" (1024 base) or "si" (1000 base)}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 These functions are kept for backward compatibility, but you should switch
 to \code{\link[=label_bytes]{label_bytes()}} for new code.
 }

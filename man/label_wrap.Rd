@@ -27,7 +27,7 @@ Uses \code{\link[=strwrap]{strwrap()}} to split long labels across multiple line
 }
 \section{Old interface}{
 
-\code{wrap_format()} is retired; please use \code{label_format()} instead.
+\code{wrap_format()} is superseded; please use \code{label_format()} instead.
 }
 
 \examples{

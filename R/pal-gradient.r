@@ -17,7 +17,9 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   force(values)
 
   function(x) {
-    if (length(x) == 0) return(character())
+    if (length(x) == 0) {
+      return(character())
+    }
 
     if (!is.null(values)) {
       xs <- seq(0, 1, length.out = length(values))
@@ -44,8 +46,8 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 #' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 100)))
 #'
 #' library(munsell)
-#' image(r, col = div_gradient_pal(low =
-#'    mnsl(complement("10R 4/6"), fix = TRUE))(seq(0, 1, length = 100)))
+#' pal <- div_gradient_pal(low = mnsl(complement("10R 4/6"), fix = TRUE))
+#' image(r, col = pal(seq(0, 1, length.out = 100)))
 #' @importFrom munsell mnsl
 div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
   gradient_n_pal(c(low, mid, high), space = space)

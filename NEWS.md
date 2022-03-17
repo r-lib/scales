@@ -2,8 +2,37 @@
 
 * `breaks_width()` now supports units like `"3 months"` in the `offset`
   argument.
+
+* `label_number_auto()` correctly formats single numbers that are greater than
+  1e+06 without an error (@karawoo, #321)
+
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
+
+* `label_number_si()` now correctly uses [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix)
+  (e.g. abbreviations "k" for "kilo-" and "m" for "milli-"). It previously used
+  [short scale abbreviations](https://en.wikipedia.org/wiki/Long_and_short_scales)
+  (e.g. "M" for million, "B" for billion). The short scale is most commonly used
+  in finance, so it is now supported via the new `rescale_large` argument of
+  `label_dollar()` (@davidchall, #235).
+
+* `label_number_si()` now requires the `unit` argument is specified. The default
+  value of the `accuracy` argument is now `NULL`, which automatically chooses
+  the precision. The `sep` argument is removed, which had no purpose (@davidchall, #235).
+
+* `label_dollar()` gains a `rescale_large` argument to support scaling of large
+  numbers by suffix (e.g. "M" for million, "B" for billion). In finance, the
+  short scale is most prevalent (i.e. 1 billion = 1 thousand million). In other
+  contexts, the long scale might be desired (i.e. 1 billion = 1 million million).
+  These two common scales are supported by setting `rescale_large = rescale_short_scale()`
+  or `rescale_large = rescale_long_scale()`, but custom scaling-by-suffix is also
+  supported (@davidchall, #235).
+  
+* `label_bytes()` now correctly accounts for the `scale` argument when choosing
+  auto units (@davidchall, #235).
+  
+* Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
+  unnecessary digits (@davidchall, #304).
 
 # scales 1.1.1
 

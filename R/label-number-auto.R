@@ -21,21 +21,26 @@
 #' # scientific notation as possible
 #' demo_log10(c(1, 1e7), labels = label_number_auto())
 label_number_auto <- function() {
-
   function(x) {
-    if (length(x) == 0) return(character(0))
-    if (sum(is.finite(x)) == 0) return(format(x, trim = TRUE))
+    if (length(x) == 0) {
+      return(character(0))
+    }
+    if (sum(is.finite(x)) == 0) {
+      return(format(x, trim = TRUE))
+    }
 
     max_magnitude <- max(abs(x[x != 0 & is.finite(x)]))
     min_magnitude <- min(abs(x[x != 0 & is.finite(x)]))
 
     if (max_magnitude > 1e6) {
-      format_shortest(x,
+      format_shortest(
+        x,
         number_format(1),
         format_format(scientific = TRUE)
       )
     } else if (min_magnitude < 1e-3) {
-      format_shortest(x,
+      format_shortest(
+        x,
         format_format(scientific = FALSE),
         format_format(scientific = TRUE)
       )
@@ -53,7 +58,7 @@ label_number_auto <- function() {
 format_shortest <- function(breaks, ...) {
   options <- list(...)
   labels <- vapply(options, function(labeller) labeller(breaks), character(length(breaks)))
-  apply(labels, 1, shortest)
+  apply(matrix(labels, nrow = length(breaks)), 1, shortest)
 }
 
 shortest <- function(x) {
