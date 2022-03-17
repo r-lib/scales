@@ -1,6 +1,8 @@
 #' Older interface to `label_bytes()`
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' These functions are kept for backward compatibility, but you should switch
 #' to [label_bytes()] for new code.
 #'
@@ -93,7 +95,9 @@ trans_format <- function(trans, format = scientific_format()) {
 
 #' Unit labels
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_number_si()] instead.
 #'
@@ -126,7 +130,9 @@ unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' Label using `format()`
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_date()] instead.
 #'

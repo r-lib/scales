@@ -8,10 +8,7 @@
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.
 #'
-#' @section Old interface:
-#' `date_format()` and `time_format()` are superseded; please use `label_date()`
-#' and `label_time()` instead.
-#' @inherit number_format return
+#' @inherit label_number return
 #' @param format For `date_format()` and `time_format()` a date/time format
 #'   string using standard POSIX specification.  See [strptime()] for details.
 #'
@@ -114,10 +111,19 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC") {
 }
 
 
+#' Superseded interface to `label_date()`/`label_time()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_date()/[label_time()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_date
+#' @inheritParams label_date
 date_format <- label_date
 
 #' @export
-#' @rdname label_date
+#' @rdname date_format
 time_format <- label_time

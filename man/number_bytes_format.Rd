@@ -19,6 +19,7 @@ variants for binary units.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 These functions are kept for backward compatibility, but you should switch
 to \code{\link[=label_bytes]{label_bytes()}} for new code.
 }

@@ -1,9 +1,6 @@
 #' Label percentages (2.5%, 50%, etc)
 #'
-#' @section Old interface:
-#' `percent()` and `percent_format()` are superseded; please use `label_percent()`
-#' instead.
-#' @inherit number_format return params
+#' @inherit label_number return params
 #' @export
 #' @family labels for continuous scales
 #' @examples
@@ -31,12 +28,21 @@ label_percent <- function(accuracy = NULL, scale = 100, prefix = "",
   )
 }
 
+#' Superseded interface to `label_percent()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_percent()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_percent
+#' @inheritParams label_percent
 percent_format <- label_percent
 
 #' @export
-#' @rdname label_percent
+#' @rdname percent_format
 percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
                     suffix = "%", big.mark = " ", decimal.mark = ".",
                     trim = TRUE, ...) {
