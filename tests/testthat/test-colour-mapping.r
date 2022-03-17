@@ -200,6 +200,14 @@ test_that("Palettes with ncolor < 3 work properly", {
   test_palette("Spectral")
 })
 
+test_that("col_quantile handles skewed data", {
+  expect_snapshot({
+    x <- c(1:5, rep(10, 10))
+    col <- col_quantile("RdYlBu", domain = x, n = 7)(x)
+    col <- col_quantile("RdYlBu", domain = NULL, n = 7)(x)
+  })
+})
+
 test_that("Arguments to `cut` are respected", {
   colors1 <- col_bin("Greens", 1:3, 1:3)(1:3)
   # Intervals are [1,2) and [2,3], so 2 and 3 are the same
