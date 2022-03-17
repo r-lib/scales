@@ -1,5 +1,3 @@
-context("discrete")
-
 test_that("na.rm = FALSE keeps NA", {
   x1 <- c("a", NA)
   x2 <- factor(x1)

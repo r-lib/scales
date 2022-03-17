@@ -1,5 +1,3 @@
-context("breaks - extended")
-
 test_that("extended breaks returns no breaks for bad inputs", {
   breaks <- extended_breaks()
 

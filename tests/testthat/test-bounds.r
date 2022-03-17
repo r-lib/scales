@@ -1,5 +1,3 @@
-context("Bounds")
-
 test_that("rescale_mid returns correct results", {
   x <- c(-1, 0, 1)
 
@@ -36,8 +34,8 @@ test_that("rescale functions handle NAs consistently", {
 })
 
 test_that("zero range inputs return mid range", {
-  expect_that(rescale(0), equals(0.5))
-  expect_that(rescale(c(0, 0)), equals(c(0.5, 0.5)))
+  expect_equal(rescale(0), 0.5)
+  expect_equal(rescale(c(0, 0)), c(0.5, 0.5))
 })
 
 test_that("scaling is possible with dates and times", {

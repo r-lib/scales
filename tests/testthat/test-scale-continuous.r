@@ -2,10 +2,10 @@ test_that("NA.value works for continuous scales", {
   x <- c(NA, seq(0, 1, length.out = 10), NA)
   pal <- rescale_pal()
 
-  expect_that(cscale(x, pal)[1], equals(NA_real_))
-  expect_that(cscale(x, pal)[12], equals(NA_real_))
-  expect_that(cscale(x, pal, 5)[1], equals(5))
-  expect_that(cscale(x, pal, 5)[12], equals(5))
+  expect_equal(cscale(x, pal)[1], NA_real_)
+  expect_equal(cscale(x, pal)[12], NA_real_)
+  expect_equal(cscale(x, pal, 5)[1], 5)
+  expect_equal(cscale(x, pal, 5)[12], 5)
 })
 
 test_that("train_continuous stops on discrete values", {

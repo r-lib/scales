@@ -1,5 +1,3 @@
-context("Hue pal")
-
 test_that("hue_pal arguments are forcely evaluated on each call #81", {
   col1 <- hue_pal(h.start = 0)
   col2 <- hue_pal(h.start = 90)

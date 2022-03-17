@@ -1,5 +1,3 @@
-context("Trans - dates and times")
-
 a_time <- ISOdatetime(2012, 1, 1, 11, 30, 0, tz = "UTC")
 a_date <- as.Date(a_time)
 
