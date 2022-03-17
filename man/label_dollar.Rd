@@ -103,7 +103,7 @@ a convenient heuristic.
 }
 \section{Old interface}{
 
-\code{dollar()} and \code{format_dollar()} are retired; please use \code{label_dollar()}
+\code{dollar()} and \code{format_dollar()} are superseded; please use \code{label_dollar()}
 instead.
 }
 

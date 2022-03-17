@@ -14,7 +14,5 @@ test_that("parse_format() returns an expression object", {
 })
 
 test_that("math_format() returns expression", {
-  expect_equal(label_math()(1), expression(10 ^ 1))
+  expect_equal(label_math()(1), expression(10^1))
 })
-
-

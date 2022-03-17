@@ -1,5 +1,3 @@
-context("Breaks - log")
-
 test_that("Five ticks over 10^4 range work", {
   expect_equal(breaks_log()(10^(1:5)), 10^(1:5))
 })

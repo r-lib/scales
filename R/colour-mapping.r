@@ -52,8 +52,9 @@ col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, re
     if (is.null(rng)) rng <- range(x, na.rm = TRUE)
 
     rescaled <- rescale(x, from = rng)
-    if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE))
+    if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE)) {
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+    }
 
     if (reverse) {
       rescaled <- 1 - rescaled
@@ -108,7 +109,7 @@ getBins <- function(domain, x, bins, pretty) {
 #' @rdname col_numeric
 #' @export
 col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
-  na.color = "#808080", alpha = FALSE, reverse = FALSE, right = FALSE) {
+                    na.color = "#808080", alpha = FALSE, reverse = FALSE, right = FALSE) {
 
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # breaks are specified
@@ -116,11 +117,14 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
     domain <- NULL
   }
   autobin <- is.null(domain) && length(bins) == 1
-  if (!is.null(domain))
+  if (!is.null(domain)) {
     bins <- getBins(domain, NULL, bins, pretty)
+  }
   numColors <- if (length(bins) == 1) bins else length(bins) - 1
-  colorFunc <- col_factor(palette, domain = if (!autobin) 1:numColors,
-    na.color = na.color, alpha = alpha, reverse = reverse)
+  colorFunc <- col_factor(palette,
+    domain = if (!autobin) 1:numColors,
+    na.color = na.color, alpha = alpha, reverse = reverse
+  )
   pf <- safePaletteFunc(palette, na.color, alpha)
 
   withColorAttr("bin", list(bins = bins, na.color = na.color, right = right), function(x) {
@@ -129,8 +133,9 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
     }
     binsToUse <- getBins(domain, x, bins, pretty)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
-    if (any(is.na(x) != is.na(ints)))
+    if (any(is.na(x) != is.na(ints))) {
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+    }
     colorFunc(ints)
   })
 }
@@ -144,31 +149,48 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
 #' @rdname col_numeric
 #' @export
 col_quantile <- function(palette, domain, n = 4,
-  probs = seq(0, 1, length.out = n + 1), na.color = "#808080", alpha = FALSE,
-  reverse = FALSE, right = FALSE) {
-
+                         probs = seq(0, 1, length.out = n + 1), na.color = "#808080", alpha = FALSE,
+                         reverse = FALSE, right = FALSE) {
   if (!is.null(domain)) {
-    bins <- stats::quantile(domain, probs, na.rm = TRUE, names = FALSE)
+    bins <- safe_quantile(domain, probs)
     return(withColorAttr(
       "quantile", list(probs = probs, na.color = na.color, right = right),
-      col_bin(palette, domain = NULL, bins = bins, na.color = na.color,
-        alpha = alpha, reverse = reverse)
+      col_bin(palette,
+        domain = NULL, bins = bins, na.color = na.color,
+        alpha = alpha, reverse = reverse
+      )
     ))
   }
 
   # I don't have a precise understanding of how quantiles are meant to map to colors.
   # If you say probs = seq(0, 1, 0.25), which has length 5, does that map to 4 colors
   # or 5? 4, right?
-  colorFunc <- col_factor(palette, domain = 1:(length(probs) - 1),
-    na.color = na.color, alpha = alpha, reverse = reverse)
+  colorFunc <- col_factor(palette,
+    domain = 1:(length(probs) - 1),
+    na.color = na.color, alpha = alpha, reverse = reverse
+  )
 
   withColorAttr("quantile", list(probs = probs, na.color = na.color, right = right), function(x) {
-    binsToUse <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
+    binsToUse <- safe_quantile(x, probs)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
-    if (any(is.na(x) != is.na(ints)))
+    if (any(is.na(x) != is.na(ints))) {
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+    }
     colorFunc(ints)
   })
+}
+
+safe_quantile <- function(x, probs) {
+  bins <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
+  if (anyDuplicated(bins)) {
+    bins <- unique(bins)
+    warning(
+      "Skewed data means we can only allocate ", length(bins), " unique colours ",
+      "not the " , length(probs) - 1, " requested",
+      call. = FALSE
+    )
+  }
+  bins
 }
 
 # If already a factor, return the levels. Otherwise, convert to factor then
@@ -209,7 +231,7 @@ getLevels <- function(domain, x, lvls, ordered) {
 #' @rdname col_numeric
 #' @export
 col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
-  na.color = "#808080", alpha = FALSE, reverse = FALSE) {
+                       na.color = "#808080", alpha = FALSE, reverse = FALSE) {
 
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # levels are specified
@@ -270,7 +292,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
 #' # Categorical data; by default, the values being coloured span the gamut...
 #' show_col(col_factor("RdYlBu", domain = NULL)(LETTERS[1:5]))
 #' # ...unless the data is a factor, without droplevels...
-#' show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels=LETTERS)))
+#' show_col(col_factor("RdYlBu", domain = NULL)(factor(LETTERS[1:5], levels = LETTERS)))
 #' # ...or the domain is stated explicitly.
 #' show_col(col_factor("RdYlBu", levels = LETTERS)(LETTERS[1:5]))
 #' @rdname col_numeric

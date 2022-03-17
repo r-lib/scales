@@ -12,7 +12,7 @@ date_breaks(width = "1 month")
 followed by "s". Fractional seconds are supported.}
 }
 \description{
-\Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 Use \code{breaks_width()} instead.
 }
 \keyword{internal}

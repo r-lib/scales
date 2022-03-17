@@ -112,7 +112,7 @@ that inserts a comma every three digits.
 }
 \section{Old interface}{
 
-\code{number_format()}, \code{comma_format()}, and \code{comma()} are retired; please use
+\code{number_format()}, \code{comma_format()}, and \code{comma()} are superseded; please use
 \code{label_number()} and \code{label_comma()} instead.
 }
 

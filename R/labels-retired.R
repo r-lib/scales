@@ -1,6 +1,6 @@
 #' Older interface to `label_bytes()`
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' `r lifecycle::badge('superseded')`
 #' These functions are kept for backward compatibility, but you should switch
 #' to [label_bytes()] for new code.
 #'
@@ -32,7 +32,10 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy
   ))
 
   symbol <- validate_byte_symbol(symbol, symbols)
-  base <- switch(units, binary = 1024, si = 1000)
+  base <- switch(units,
+    binary = 1024,
+    si = 1000
+  )
 
   if (symbol == "auto") {
     power <- findInterval(abs(x), base^powers)
@@ -66,7 +69,7 @@ validate_byte_symbol <- function(symbol, symbols, default = "auto") {
 
 #' Format labels after transformation
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' `r lifecycle::badge('superseded')`
 #'
 #' @param trans transformation to apply
 #' @param format additional formatter to apply after transformation
@@ -76,7 +79,7 @@ validate_byte_symbol <- function(symbol, symbols, default = "auto") {
 #' @keywords internal
 #' @examples
 #' tf <- trans_format("log10", scientific_format())
-#' tf(10 ^ 1:6)
+#' tf(10^1:6)
 trans_format <- function(trans, format = scientific_format()) {
   if (is.character(trans)) trans <- match.fun(trans)
   force(format)
@@ -90,7 +93,7 @@ trans_format <- function(trans, format = scientific_format()) {
 
 #' Unit labels
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' `r lifecycle::badge('superseded')`
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_number_si()] instead.
 #'
@@ -123,7 +126,7 @@ unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' Label using `format()`
 #'
-#' \Sexpr[results=rd, stage=render]{lifecycle::badge("retired")}
+#' `r lifecycle::badge('superseded')`
 #' This function is kept for backward compatiblity; you should either use
 #' [label_number()] or [label_date()] instead.
 #'
@@ -134,7 +137,9 @@ format_format <- function(...) {
   force_all(...)
 
   function(x) {
-    if (!is.null(names(x))) return(names(x))
+    if (!is.null(names(x))) {
+      return(names(x))
+    }
     ret <- format(x, ..., trim = TRUE, justify = "left")
 
     # format.character() renders NA as "NA"

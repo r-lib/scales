@@ -71,7 +71,7 @@ Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 }
 \section{Old interface}{
 
-\code{scientific_format()} and \code{scientific()} are retired; please use
+\code{scientific_format()} and \code{scientific()} are superseded; please use
 \code{label_scientific()}.
 }
 

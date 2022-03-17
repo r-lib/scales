@@ -16,10 +16,13 @@
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
-#'   trans = sqrt_trans())))
+#'   trans = sqrt_trans()
+#' )))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
-#' with(mtcars, plot(disp, mpg, pch = 20, cex = 5,
-#'   col = cscale(hp, seq_gradient_pal("grey80", "black"))))
+#' with(mtcars, plot(disp, mpg,
+#'   pch = 20, cex = 5,
+#'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
+#' ))
 cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
   stopifnot(is.trans(trans))
 
@@ -35,7 +38,9 @@ cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
 #' @inheritParams train_discrete
 #' @export
 train_continuous <- function(new, existing = NULL) {
-  if (is.null(new)) return(existing)
+  if (is.null(new)) {
+    return(existing)
+  }
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     stop("Discrete value supplied to continuous scale", call. = FALSE)

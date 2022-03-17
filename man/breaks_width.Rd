@@ -8,11 +8,20 @@ breaks_width(width, offset = 0)
 }
 \arguments{
 \item{width}{Distance between each break. Either a number, or for
-date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+date/times, a single string of the form \code{"{n} {unit}"}, e.g. "1 month",
 "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 "month", "year".}
 
-\item{offset}{Use if you don't want breaks to start at zero}
+\item{offset}{Use if you don't want breaks to start at zero, or on a
+conventional date or time boundary such as the 1st of January or midnight.
+Either a number, or for date/times, a single string of the form
+\code{"{n} {unit}"}, as for \code{width}.
+
+\code{offset} can be a vector, which will accumulate in the order given. This
+is mostly useful for dates, where e.g. \code{c("3 months", "5 days")} will
+offset by three months and five days, which is useful for the UK tax year.
+Note that due to way that dates are rounded, there's no guarantee that
+\code{offset = c(x, y)} will give the same result as \code{offset = c(y, x)}.}
 }
 \description{
 Useful for numeric, date, and date-time scales.
@@ -36,4 +45,19 @@ one_hour <- hms::hms(hours = 0:1)
 demo_time(one_hour)
 demo_time(one_hour, breaks = breaks_width("15 min"))
 demo_time(one_hour, breaks = breaks_width("600 sec"))
+
+# Offets are useful for years that begin on dates other than the 1st of
+# January, such as the UK financial year, which begins on the 1st of April.
+three_years <- as.POSIXct(c("2020-01-01", "2021-01-01", "2022-01-01"))
+demo_datetime(
+  three_years,
+  breaks = breaks_width("1 year", offset = "3 months")
+)
+
+# The offset can be a vector, to create offsets that have compound units,
+# such as the UK fiscal (tax) year, which begins on the 6th of April.
+demo_datetime(
+  three_years,
+  breaks = breaks_width("1 year", offset = c("3 months", "5 days"))
+)
 }

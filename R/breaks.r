@@ -3,10 +3,19 @@
 #' Useful for numeric, date, and date-time scales.
 #'
 #' @param width Distance between each break. Either a number, or for
-#'   date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+#'   date/times, a single string of the form `"{n} {unit}"`, e.g. "1 month",
 #'   "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 #'   "month", "year".
-#' @param offset Use if you don't want breaks to start at zero
+#' @param offset Use if you don't want breaks to start at zero, or on a
+#'   conventional date or time boundary such as the 1st of January or midnight.
+#'   Either a number, or for date/times, a single string of the form
+#'   `"{n} {unit}"`, as for `width`.
+#'
+#'   `offset` can be a vector, which will accumulate in the order given. This
+#'   is mostly useful for dates, where e.g. `c("3 months", "5 days")` will
+#'   offset by three months and five days, which is useful for the UK tax year.
+#'   Note that due to way that dates are rounded, there's no guarantee that
+#'   `offset = c(x, y)` will give the same result as `offset = c(y, x)`.
 #' @export
 #' @examples
 #' demo_continuous(c(0, 100))
@@ -27,11 +36,30 @@
 #' demo_time(one_hour)
 #' demo_time(one_hour, breaks = breaks_width("15 min"))
 #' demo_time(one_hour, breaks = breaks_width("600 sec"))
+#'
+#' # Offets are useful for years that begin on dates other than the 1st of
+#' # January, such as the UK financial year, which begins on the 1st of April.
+#' three_years <- as.POSIXct(c("2020-01-01", "2021-01-01", "2022-01-01"))
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = "3 months")
+#' )
+#'
+#' # The offset can be a vector, to create offsets that have compound units,
+#' # such as the UK fiscal (tax) year, which begins on the 6th of April.
+#' demo_datetime(
+#'   three_years,
+#'   breaks = breaks_width("1 year", offset = c("3 months", "5 days"))
+#' )
 breaks_width <- function(width, offset = 0) {
   force_all(width, offset)
 
   function(x) {
-    fullseq(x, width) + offset
+    x <- fullseq(x, width)
+    for (i in offset) {
+      x <- offset_by(x, i)
+    }
+    x
   }
 }
 
@@ -75,7 +103,7 @@ extended_breaks <- breaks_extended
 #' primarily useful for date/times, as [extended_breaks()] should do a slightly
 #' better job for numeric scales.
 #'
-#' `pretty_breaks()` is retired; use `breaks_pretty()` instead.
+#' `pretty_breaks()` is superseded; use `breaks_pretty()` instead.
 #'
 #' @inheritParams breaks_extended
 #' @param ... other arguments passed on to [pretty()]
@@ -91,7 +119,7 @@ extended_breaks <- breaks_extended
 #' demo_datetime(one_month,
 #'   breaks = breaks_pretty(12),
 #'   labels = label_date_short()
-#')
+#' )
 breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n

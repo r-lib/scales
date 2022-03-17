@@ -1,5 +1,3 @@
-context("round_any")
-
 test_that("round_any function rounds numeric", {
   expect_equal(round_any(135, 10), 140)
   expect_equal(round_any(135, 100), 100)

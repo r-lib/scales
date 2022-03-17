@@ -40,7 +40,7 @@ test_that("rescale_large compatible with scale argument", {
 
   expect_equal(
     label_dollar(scale = 2, rescale_large = rescale_short_scale())(x * 1e3),
-    c("$2.0K", "$4.0K", "$20.0K", "$200.0K")
+    c("$2K", "$4K", "$20K", "$200K")
   )
   expect_equal(
     label_dollar(scale = 2, rescale_large = rescale_short_scale())(x * 1e4),

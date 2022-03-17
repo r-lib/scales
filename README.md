@@ -10,18 +10,18 @@ status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org
 [![R build
 status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/scales/branch/master/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=master)
+coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
 
 One of the most difficult parts of any graphics package is scaling,
 converting from data values to perceptual properties. The inverse of
 scaling, making guides (legends and axes) that can be used to read the
-graph, is often even harder\! The scales packages provides the internal
+graph, is often even harder! The scales packages provides the internal
 scaling infrastructure used by [ggplot2](http://ggplot2.tidyverse.org/),
 and gives you tools to override the default breaks, labels,
 transformations and palettes.
 
-# Installation
+## Installation
 
 ``` r
 # Scales is installed when you install ggplot2 or the tidyverse.
@@ -33,9 +33,9 @@ install.packages("scales")
 devtools::install_github("r-lib/scales")
 ```
 
-# Usage
+## Usage
 
-## Breaks and labels
+### Breaks and labels
 
 The most common use of the scales package is to customise to control the
 appearance of axis and legend labels. Use a `break_` function to control
@@ -67,7 +67,6 @@ txhousing %>%
 ![](man/figures/README-labels-1.png)<!-- -->
 
 ``` r
-
 economics %>% 
   filter(date < ymd("1970-01-01")) %>% 
   ggplot(aes(date, pce)) + 
@@ -88,7 +87,7 @@ Generally, I don’t recommend running `library(scales)` because when you
 type (e.g.) `scales::label_` autocomplete will provide you with a list
 of labelling functions to job your memory.
 
-## Advanced features
+### Advanced features
 
 Scales colour palettes are used to power the scales in ggplot2, but you
 can use them in any plotting system. The following example shows how you
@@ -115,7 +114,7 @@ transformation functions for repeated use.
 # use trans_new to build a new transformation
 logp3_trans <- trans_new(
   name = "logp",
-  trans = function(x) log(x + 3),
+  transform = function(x) log(x + 3),
   inverse = function(x) exp(x) - 3,
   breaks = log_breaks()
 )

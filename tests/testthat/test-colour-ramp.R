@@ -1,5 +1,3 @@
-context("Colour ramp")
-
 test_that("Special values yield NAs", {
   pal <- seq_gradient_pal()
 

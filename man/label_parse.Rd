@@ -39,7 +39,7 @@ with each string.
 }
 \section{Old interface}{
 
-\code{parse_format()} and \code{math_format()} was retired; please use
+\code{parse_format()} and \code{math_format()} was superseded; please use
 \code{label_parse()} and \code{label_math()} instead.
 }
 

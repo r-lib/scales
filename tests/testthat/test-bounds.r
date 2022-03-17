@@ -1,5 +1,3 @@
-context("Bounds")
-
 test_that("rescale_mid returns correct results", {
   x <- c(-1, 0, 1)
 
@@ -36,8 +34,8 @@ test_that("rescale functions handle NAs consistently", {
 })
 
 test_that("zero range inputs return mid range", {
-  expect_that(rescale(0), equals(0.5))
-  expect_that(rescale(c(0, 0)), equals(c(0.5, 0.5)))
+  expect_equal(rescale(0), 0.5)
+  expect_equal(rescale(c(0, 0)), c(0.5, 0.5))
 })
 
 test_that("scaling is possible with dates and times", {
@@ -75,9 +73,9 @@ test_that("scaling is possible with logical values", {
 })
 
 test_that("expand_range respects mul and add values", {
-  expect_equal(expand_range(c(1,1), mul = 0, add = 0.6), c(0.4, 1.6))
-  expect_equal(expand_range(c(1,1), mul = 1, add = 0.6), c(-0.6, 2.6))
-  expect_equal(expand_range(c(1,9), mul = 0, add = 2), c(-1, 11))
+  expect_equal(expand_range(c(1, 1), mul = 0, add = 0.6), c(0.4, 1.6))
+  expect_equal(expand_range(c(1, 1), mul = 1, add = 0.6), c(-0.6, 2.6))
+  expect_equal(expand_range(c(1, 9), mul = 0, add = 2), c(-1, 11))
 })
 
 test_that("out of bounds functions return correct values", {

@@ -1,5 +1,3 @@
-context("Ranges")
-
 test_that("R6 inheritance works", {
   expect_error(ContinuousRange$new(), NA)
   expect_error(DiscreteRange$new(), NA)

@@ -48,8 +48,12 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
 
   # farver is not currently case insensitive, but col2rgb() is
   colors <- tolower(colors)
-  lab_in <- farver::decode_colour(colors, alpha = TRUE, to = "lab",
-                                  na_value = "transparent")
+  lab_in <- farver::decode_colour(
+    colour = colors,
+    alpha = TRUE,
+    to = "lab",
+    na_value = "transparent"
+  )
 
   x_in <- seq(0, 1, length.out = length(colors))
   l_interp <- stats::approxfun(x_in, lab_in[, 1])

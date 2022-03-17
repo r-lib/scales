@@ -7,7 +7,7 @@ test_that("gracefully handles bad input works", {
 })
 
 test_that("tricky breaks don't change unexpectedly", {
-  verify_output(test_path("test-label-number-auto.txt"), {
+  expect_snapshot({
     number_auto <- label_number_auto()
     number_auto(c(0, 0.000001))
     number_auto(c(0.0009, 0.0010, 0.0011))
@@ -27,4 +27,8 @@ test_that("tricky breaks don't change unexpectedly", {
     "Pick shortest individually"
     number_auto(10^(1:7))
   })
+})
+
+test_that("single values > 1e+06 don't throw error", {
+  expect_equal(label_number_auto()(30925005), "30 925 005")
 })
