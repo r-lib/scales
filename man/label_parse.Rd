@@ -52,6 +52,7 @@ demo_discrete(greek, labels = label_parse())
 # Use label_math() with continuous scales
 demo_continuous(c(1, 5))
 demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
+demo_continuous(c(1, 5), labels = label_math())
 }
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.

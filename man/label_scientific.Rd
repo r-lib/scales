@@ -95,6 +95,7 @@ Other labels for continuous scales:
 
 Other labels for log scales: 
 \code{\link{label_bytes}()},
+\code{\link{label_log}()},
 \code{\link{label_number_si}()}
 }
 \concept{labels for continuous scales}

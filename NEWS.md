@@ -39,6 +39,9 @@
 * Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
   unnecessary digits (@davidchall, #304).
 
+* New `label_log()` displays the base and a superscript exponent, for use with
+  logarithmic axes (@davidchall, #312).
+
 # scales 1.1.1
 
 * `breaks_width()` now handles `difftime`/`hms` objects (@bhogan-mitre, #244).

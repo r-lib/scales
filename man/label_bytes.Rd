@@ -71,6 +71,7 @@ Other labels for continuous scales:
 \code{\link{label_scientific}()}
 
 Other labels for log scales: 
+\code{\link{label_log}()},
 \code{\link{label_number_si}()},
 \code{\link{label_scientific}()}
 }
