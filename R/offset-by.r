@@ -24,7 +24,9 @@ offset_by.POSIXt <- function(x, size) {
     fun <- function(x) seq(x, length.out = 2, by = size)[2]
   }
   out <- lapply(x, fun)
-  do.call(c, out)
+  out <- do.call(c, out)
+  attr(out, "tzone") <- attr(x, "tzone")
+  out
 }
 
 #' @export
