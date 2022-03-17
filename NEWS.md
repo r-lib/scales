@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `breaks_width()` now supports units like `"3 months"` in the `offset`
+  argument.
+
 * `label_number_auto()` correctly formats single numbers that are greater than
   1e+06 without an error (@karawoo, #321)
 
