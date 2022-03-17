@@ -30,6 +30,8 @@ show_col(hue_pal(l = 30)(9))
 
 show_col(hue_pal()(9))
 show_col(hue_pal(direction = -1)(9))
+show_col(hue_pal(h.start = 30)(9))
+show_col(hue_pal(h.start = 90)(9))
 
 show_col(hue_pal()(9))
 show_col(hue_pal(h = c(0, 90))(9))

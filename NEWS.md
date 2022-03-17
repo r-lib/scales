@@ -1,5 +1,7 @@
 # scales (development version)
 
+* `hue_pal()` respects `h.start` once again (#288).
+
 * `col_quantile()` no longer errors if data is sufficiently skewed that we
   can't generate the requested number of unique colours (#294).
 

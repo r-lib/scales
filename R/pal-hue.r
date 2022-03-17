@@ -16,6 +16,8 @@
 #'
 #' show_col(hue_pal()(9))
 #' show_col(hue_pal(direction = -1)(9))
+#' show_col(hue_pal(h.start = 30)(9))
+#' show_col(hue_pal(h.start = 90)(9))
 #'
 #' show_col(hue_pal()(9))
 #' show_col(hue_pal(h = c(0, 90))(9))
@@ -37,6 +39,8 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
     }
 
     hues <- seq(h[1], h[2], length.out = n)
+    hues <- (hues + h.start) %% 360
+
     hcl <- cbind(hues, c, l)
 
     pal <- farver::encode_colour(hcl, from = "hcl")
