@@ -1,5 +1,3 @@
-context("Offsets")
-
 test_that("breaks_width() offset supports numeric units", {
   scale_range <- 0:1
   breaks <- breaks_width(1, offset = 0.5)
@@ -11,7 +9,7 @@ test_that("breaks_width() with offset supports Date and POSIXt units #247 #269",
   compound_breaks <- breaks_width("1 year", offset = c("3 months", "5 days"))
 
   Date_range <- as.Date(c("2020-01-01", "2020-01-02"))
-  POSIXt_range <- as.POSIXct(c("2020-01-01", "2020-01-02"))
+  POSIXt_range <- as.POSIXct(c("2020-01-01", "2020-01-02"), tz = "UTC")
 
   # Date
   expect_equal(
@@ -26,21 +24,17 @@ test_that("breaks_width() with offset supports Date and POSIXt units #247 #269",
   # POSIXt
   expect_equal(
     breaks(POSIXt_range),
-    as.POSIXct(c("2020-04-01", "2021-04-01"))
+    as.POSIXct(c("2020-04-01", "2021-04-01"), tz = "UTC")
   )
   expect_equal(
     compound_breaks(POSIXt_range),
-    as.POSIXct(c("2020-04-06", "2021-04-06"))
+    as.POSIXct(c("2020-04-06", "2021-04-06"), tz = "UTC")
   )
 
   # Fractional seconds
   fractional_seconds <- breaks_width("1 sec", offset = "0.5 secs")
-  sec_range <- as.POSIXct(c("2020-01-01 00:00:00", "2020-01-01 00:00:01"))
-  expected <-
-    structure(
-      c(1577836800.5, 1577836801.5, 1577836802.5),
-      class = c("POSIXct", "POSIXt")
-    )
+  sec_range <- as.POSIXct(c("2020-01-01 00:00:00", "2020-01-01 00:00:01"), tz = "UTC")
+  expected <- .POSIXct(c(1577836800.5, 1577836801.5, 1577836802.5), tz = "UTC")
   expect_equal(fractional_seconds(sec_range), expected)
 })
 
