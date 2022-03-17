@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `col_quantile()` no longer errors if data is sufficiently skewed that we
+  can't generate the requested number of unique colours (#294).
+
 * `breaks_width()` now supports units like `"3 months"` in the `offset`
   argument.
 
