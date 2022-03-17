@@ -14,7 +14,9 @@
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
 label_log <- function(base = 10, digits = 3) {
   function(x) {
-    if (length(x) == 0) return(expression())
+    if (length(x) == 0) {
+      return(expression())
+    }
 
     exponent <- format(log(x, base = base), digits = digits)
     text <- paste0(base, "^", exponent)
