@@ -11,6 +11,8 @@ asn_trans <- function() {
     "asn",
     function(x) 2 * asin(sqrt(x)),
     function(x) sin(x / 2)^2,
+    d_transform = function(x) 1 / sqrt(x - x^2),
+    d_inverse = function(x) sin(x) / 2,
     domain = c(0, 1)
   )
 }
@@ -21,7 +23,14 @@ asn_trans <- function() {
 #' @examples
 #' plot(atanh_trans(), xlim = c(-1, 1))
 atanh_trans <- function() {
-  trans_new("atanh", "atanh", "tanh", domain = c(-1, 1))
+  trans_new(
+    "atanh",
+    "atanh",
+    "tanh",
+    d_transform = function(x) 1 / (1 - x^2),
+    d_inverse = function(x) 1 / cosh(x)^2,
+    domain = c(-1, 1)
+  )
 }
 
 #' Inverse Hyperbolic Sine transformation
@@ -198,7 +207,9 @@ exp_trans <- function(base = exp(1)) {
   trans_new(
     paste0("power-", format(base)),
     function(x) base^x,
-    function(x) log(x, base = base)
+    function(x) log(x, base = base),
+    d_transform = function(x) base^x * log(base),
+    d_inverse = function(x) 1 / x / log(base)
   )
 }
 
@@ -208,7 +219,13 @@ exp_trans <- function(base = exp(1)) {
 #' @examples
 #' plot(identity_trans(), xlim = c(-1, 1))
 identity_trans <- function() {
-  trans_new("identity", "force", "force")
+  trans_new(
+    "identity",
+    "force",
+    "force",
+    d_transform = function(x) 1,
+    d_inverse = function(x) 1
+  )
 }
 
 
@@ -237,11 +254,13 @@ identity_trans <- function() {
 #' lines(log_trans(), xlim = c(1, 20), col = "red")
 log_trans <- function(base = exp(1)) {
   force(base)
-  trans <- function(x) log(x, base)
-  inv <- function(x) base^x
-
-  trans_new(paste0("log-", format(base)), trans, inv,
-    log_breaks(base = base),
+  trans_new(
+    paste0("log-", format(base)),
+    function(x) log(x, base),
+    function(x) base^x,
+    d_transform = function(x) 1 / x / log(base),
+    d_inverse = function(x) base^x * log(base),
+    breaks = log_breaks(base = base),
     domain = c(1e-100, Inf)
   )
 }
@@ -261,7 +280,11 @@ log2_trans <- function() {
 #' @export
 log1p_trans <- function() {
   trans_new(
-    "log1p", "log1p", "expm1",
+    "log1p",
+    "log1p",
+    "expm1",
+    d_transform = function(x) 1 / (1 + x),
+    d_inverse = "exp",
     domain = c(-1 + .Machine$double.eps, Inf)
   )
 }
@@ -273,15 +296,18 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
   trans_new(
     "pseudo_log",
     function(x) asinh(x / (2 * sigma)) / log(base),
-    function(x) 2 * sigma * sinh(x * log(base))
+    function(x) 2 * sigma * sinh(x * log(base)),
+    d_transform = function(x) 1 / (sqrt(4 + x^2/sigma^2) * sigma * log(base)),
+    d_inverse = function(x) 2 * sigma * cosh(x * log(base)) * log(base)
   )
 }
 
 #' Probability transformation
 #'
 #' @param distribution probability distribution.  Should be standard R
-#'   abbreviation so that "p" + distribution is a valid probability density
-#'   function, and "q" + distribution is a valid quantile function.
+#'   abbreviation so that "p" + distribution is a valid cumulative distribution
+#'   function, "q" + distribution is a valid quantile function, and
+#'   "d" + distribution is a valid probability density function.
 #' @param ... other arguments passed on to distribution and quantile functions
 #' @export
 #' @examples
@@ -290,11 +316,14 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 probability_trans <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
+  dfun <- match.fun(paste0("d", distribution))
 
   trans_new(
     paste0("prob-", distribution),
     function(x) qfun(x, ...),
     function(x) pfun(x, ...),
+    d_transform = function(x) 1 / dfun(qfun(x, ...), ...),
+    d_inverse = function(x) dfun(x, ...),
     domain = c(0, 1)
   )
 }
@@ -314,7 +343,9 @@ reciprocal_trans <- function() {
   trans_new(
     "reciprocal",
     function(x) 1 / x,
-    function(x) 1 / x
+    function(x) 1 / x,
+    d_transform = function(x) -1 / x^2,
+    d_inverse = function(x) -1 / x^2
   )
 }
 
@@ -332,6 +363,8 @@ reverse_trans <- function() {
     "reverse",
     function(x) -x,
     function(x) -x,
+    d_transform = function(x) -1,
+    d_inverse = function(x) -1,
     minor_breaks = regular_minor_breaks(reverse = TRUE)
   )
 }
@@ -349,6 +382,8 @@ sqrt_trans <- function() {
     "sqrt",
     "sqrt",
     function(x) ifelse(x < 0, NA_real_, x ^ 2),
+    d_transform = function(x) 0.5 / sqrt(x),
+    d_inverse = function(x) 2 * x,
     domain = c(0, Inf)
   )
 }

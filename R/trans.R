@@ -3,14 +3,19 @@
 #' A transformation encapsulates a transformation and its inverse, as well
 #' as the information needed to create pleasing breaks and labels. The `breaks()`
 #' function is applied on the un-transformed range of the data, and the
-#' `format()` function takes the output of the `breaks()` function and return
-#' well-formatted labels.
+#' `format()` function takes the output of the `breaks()` function and returns
+#' well-formatted labels. Transformations may also include the derivatives of the
+#' transformation and its inverse, but are not required to.
 #'
 #' @param name transformation name
 #' @param transform function, or name of function, that performs the
 #'   transformation
 #' @param inverse function, or name of function, that performs the
 #'   inverse of the transformation
+#' @param d_transform Optional function, or name of function, that gives the
+#'   derivative of the transformation. May be `NULL`.
+#' @param d_inverse Optional function, or name of function, that gives the
+#'   derivative of the inverse of the transformation. May be `NULL`.
 #' @param breaks default breaks function for this transformation. The breaks
 #'   function is applied to the un-transformed data.
 #' @param minor_breaks default minor breaks function for this transformation.
@@ -23,17 +28,23 @@
 #' @export
 #' @keywords internal
 #' @aliases trans
-trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
+trans_new <- function(name, transform, inverse,
+                      d_transform = NULL, d_inverse = NULL,
+                      breaks = extended_breaks(),
                       minor_breaks = regular_minor_breaks(),
                       format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
+  if (is.character(d_transform)) d_transform <- match.fun(d_transform)
+  if (is.character(d_inverse)) d_inverse <- match.fun(d_inverse)
 
   structure(
     list(
       name = name,
       transform = transform,
       inverse = inverse,
+      d_transform = d_transform,
+      d_inverse = d_inverse,
       breaks = breaks,
       minor_breaks = minor_breaks,
       format = format,
