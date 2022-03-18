@@ -89,30 +89,35 @@ asinh_trans <- function() {
 #' plot(modulus_trans(1), xlim = c(-10, 10))
 #' plot(modulus_trans(2), xlim = c(-10, 10))
 boxcox_trans <- function(p, offset = 0) {
-  trans <- function(x) {
+  if (abs(p) < 1e-07) {
+    trans <- function(x) log(x + offset)
+    inv <- function(x) exp(x) - offset
+    d_trans <- function(x) 1 / (x + offset)
+    d_inv <- "exp"
+  } else {
+    trans <- function(x) ((x + offset)^p - 1) / p
+    inv <- function(x) (x * p + 1)^(1 / p) - offset
+    d_trans <- function(x) (x + offset)^(p - 1)
+    d_inv <- function(x) (x * p + 1)^(1 / p - 1)
+  }
+
+  trans_with_check <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
       cli::cli_abort(c(
         "{.fun boxcox_trans} must be given only positive values",
         i = "Consider using {.fun modulus_trans} instead?"
       ))
     }
-    if (abs(p) < 1e-07) {
-      log(x + offset)
-    } else {
-      ((x + offset)^p - 1) / p
-    }
-  }
-
-  inv <- function(x) {
-    if (abs(p) < 1e-07) {
-      exp(x) - offset
-    } else {
-      (x * p + 1)^(1 / p) - offset
-    }
+    trans(x)
   }
 
   trans_new(
-    paste0("pow-", format(p)), trans, inv, domain = c(0, Inf)
+    paste0("pow-", format(p)),
+    trans_with_check,
+    inv,
+    d_transform = d_trans,
+    d_inverse = d_inv,
+    domain = c(0, Inf)
   )
 }
 
@@ -122,12 +127,17 @@ modulus_trans <- function(p, offset = 1) {
   if (abs(p) < 1e-07) {
     trans <- function(x) sign(x) * log(abs(x) + offset)
     inv <- function(x) sign(x) * (exp(abs(x)) - offset)
+    d_trans <- function(x) 1 / (abs(x) + offset)
+    d_inv <- function(x) exp(abs(x))
   } else {
     trans <- function(x) sign(x) * ((abs(x) + offset)^p - 1) / p
     inv <- function(x) sign(x) * ((abs(x) * p + 1)^(1 / p) - offset)
+    d_trans <- function(x) (abs(x) + offset)^(p - 1)
+    d_inv <- function(x) (abs(x) * p + 1)^(1 / p - 1)
   }
   trans_new(
-    paste0("mt-pow-", format(p)), trans, inv
+    paste0("mt-pow-", format(p)), trans, inv,
+    d_transform = d_trans, d_inverse = d_inv
   )
 }
 
@@ -162,34 +172,44 @@ yj_trans <- function(p) {
   eps <- 1e-7
 
   if (abs(p) < eps) {
-    trans_pos <- function(x) log(x + 1)
-    inv_pos <- function(x) exp(x) - 1
+    trans_pos <- log1p
+    inv_pos <- expm1
+    d_trans_pos <- function(x) 1 / (1 + x)
+    d_inv_pos <- exp
   } else {
     trans_pos <- function(x) ((x + 1)^p - 1) / p
     inv_pos <- function(x) (p * x + 1)^(1 / p) - 1
+    d_trans_pos <- function(x) (x + 1)^(p - 1)
+    d_inv_pos <- function(x) (p * x + 1)^(1 / p - 1)
   }
 
   if (abs(2 - p) < eps) {
-    trans_neg <- function(x) -log(-x + 1)
+    trans_neg <- function(x) -log1p(-x)
     inv_neg <- function(x) 1 - exp(-x)
+    d_trans_neg <- function(x) 1 / (1 - x)
+    d_inv_new <- function(x) exp(-x)
   } else {
     trans_neg <- function(x) -((-x + 1)^(2 - p) - 1) / (2 - p)
     inv_neg <- function(x) 1 - (-(2 - p) * x + 1)^(1 / (2 - p))
+    d_trans_neg <- function(x) (1 - x)^(1 - p)
+    d_inv_neg <- function(x) (-(2 - p) * x + 1)^(1 / (2 - p) - 1)
   }
 
   trans_new(
     paste0("yeo-johnson-", format(p)),
     function(x) trans_two_sided(x, trans_pos, trans_neg),
-    function(x) trans_two_sided(x, inv_pos, inv_neg)
+    function(x) trans_two_sided(x, inv_pos, inv_neg),
+    d_transform = function(x) trans_two_sided(x, d_trans_pos, d_trans_neg, f_at_0 = 1),
+    d_inverse = function(x) trans_two_sided(x, d_inv_pos, d_inv_neg, f_at_0 = 1)
   )
 }
 
-trans_two_sided <- function(x, pos, neg) {
+trans_two_sided <- function(x, pos, neg, f_at_0 = 0) {
   out <- rep(NA_real_, length(x))
   present <- !is.na(x)
   out[present & x > 0] <- pos(x[present & x > 0])
   out[present & x < 0] <- neg(x[present & x < 0])
-  out[present & x == 0] <- 0
+  out[present & x == 0] <- f_at_0
   out
 }
 
