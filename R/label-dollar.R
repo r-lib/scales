@@ -13,7 +13,8 @@
 #'   values has non-zero fractional component (e.g. cents) and the largest
 #'   value is less than `largest_with_cents` which by default is 100,000.
 #' @param prefix,suffix Symbols to display before and after value.
-#' @param negative_parens Display negative using parentheses?
+#' @param negative_parens `r lifecycle::badge("deprecated")` Use
+#'   `style_negative = "parens"` instead.
 #' @param rescale_large Named list indicating suffixes given to large values
 #'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
 #'   value specifies the power-of-ten. The two most common scales are provided
@@ -37,7 +38,7 @@
 #' demo_continuous(c(1000, 1100), labels = euro)
 #'
 #' # Use negative_parens = TRUE for finance style display
-#' demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+#' demo_continuous(c(-100, 100), labels = label_dollar(style_negative = "parens"))
 #'
 #' # In finance the short scale is most prevalent
 #' short <- label_dollar(rescale_large = rescale_short_scale())
@@ -111,7 +112,8 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = FALSE, rescale_large = NULL,
+                   negative_parens = deprecated(), rescale_large = NULL,
+                   style_negative = c("hyphen", "minus", "parens"),
                    ...) {
   if (length(x) == 0) {
     return(character())
@@ -153,7 +155,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
-    # style_negative = style_negative,
+    style_negative = style_negative,
     ...
   )
 
