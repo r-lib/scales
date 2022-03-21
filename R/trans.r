@@ -93,8 +93,7 @@ as.trans <- function(x, arg = deparse(substitute(x))) {
       compose_trans(!!!lapply(x, as.trans))
     }
   } else {
-    msg <- sprintf("`%s` must be a character vector or a transformer object")
-    stop(msg, call. = FALSE)
+    abort(sprintf("`%s` must be a character vector or a transformer object", arg))
   }
 }
 
