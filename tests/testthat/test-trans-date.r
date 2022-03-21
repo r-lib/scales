@@ -57,3 +57,11 @@ test_that("date_breaks() works", {
     as.Date(c("2012-01-01", "2012-02-01"))
   )
 })
+
+test_that("can invert domain", {
+  t <- date_trans()
+  expect_equal(t$transform(t$domain), c(-Inf, Inf))
+
+  t <- time_trans()
+  expect_equal(t$transform(t$domain), c(-Inf, Inf))
+})

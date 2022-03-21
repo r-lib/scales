@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `time_trans()` and `date_trans()` have `domains` of the correct type so that 
+  they can be transformed without error (#298).
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we
