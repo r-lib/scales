@@ -14,7 +14,7 @@
 compose_trans <- function(...) {
   trans_list <- lapply(list2(...), as.trans)
   if (length(trans_list) == 0) {
-    stop("Must include at least 1 transformer to compose")
+    abort("Must include at least 1 transformer to compose")
   }
 
   # Resolve domains
@@ -22,7 +22,7 @@ compose_trans <- function(...) {
     domain <- compose_fwd(trans_list[[1]]$domain, trans_list[-1])
   )
   if (any(is.na(domain))) {
-    stop("Sequence of transformations yields empty domain")
+    abort("Sequence of transformations yields invalid domain")
   }
 
   names <- vapply(trans_list, "[[", "name", FUN.VALUE = character(1))
