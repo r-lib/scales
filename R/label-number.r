@@ -153,7 +153,9 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
-  nsmall <- min(max(nsmall, 0), 20)
+  nsmall <- pmin(pmax(nsmall, 0), 20)
+
+  ret <- ave(scale * x, ndigits)
 
   ret <- format(
     scale * x,
