@@ -30,18 +30,15 @@ label_number_si <- function(unit, accuracy = NULL, scale = 1, ...) {
   function(x) {
     rescale <- rescale_by_suffix(x * scale, breaks = 10^si_powers)
 
-    out <- character(length(x))
-    names(out) <- names(x)
-    for (suffix in unique(rescale$suffix)) {
-      idx <- suffix == rescale$suffix
-      out[idx] <- number(x[idx],
-        accuracy = accuracy,
-        scale = scale * rescale$scale[idx],
-        suffix = paste0(sep, suffix, unit),
-        ...
-      )
-    }
-    out
+    suffix <- paste0(sep, rescale$suffix, unit)
+    scale <- scale * rescale$scale
+
+    number(x,
+      accuracy = accuracy,
+      scale = scale,
+      suffix = suffix,
+      ...
+    )
   }
 }
 
@@ -56,4 +53,3 @@ names(si_powers) <- c(
         "k", "M",      "G", "T", "P", "E", "Z", "Y"
 )
 si_powers
-

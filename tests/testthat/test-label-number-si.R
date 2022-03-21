@@ -7,14 +7,6 @@ test_that("rescales values independently", {
   expect_equal(number_si(c(-1e3, 1e6, 1e9)), c("-1k", "1M", "1G"))
 })
 
-test_that("processes accuracy by suffix group", {
-  x <- c(0, 250, 500, 750, 1250, 1500) * 1e3
-  expect_equal(
-    label_number_si("")(x),
-    c("0", "250k", "500k", "750k", "1.25M", "1.50M")
-  )
-})
-
 test_that("requires unit argument", {
   expect_error(label_number_si())
   expect_silent(label_number_si("m"))
