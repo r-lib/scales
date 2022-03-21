@@ -9,3 +9,10 @@
     Error <simpleError>
       object 'x_trans' of mode 'function' was not found
 
+# trans has useful print method
+
+    Code
+      trans_new("test", transform = identity, inverse = identity)
+    Output
+      Transformer: test [-Inf, Inf]
+
