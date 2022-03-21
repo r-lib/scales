@@ -4,13 +4,12 @@
 #' transformers together. The most important use case is to combine reverse
 #' with other transformations.
 #'
-#' @param ... One or more transformers, either specified with string
+#' @param ... One or more transformers, either specified with string or
+#'   as individual transformer objects.
 #' @export
-#'
 #' @examples
-#'
-#' demo_continuous(10^c(-2:4), trans = "log10")
-#' demo_continuous(10^c(-2:4), trans = compose_trans("log10", "reverse"))
+#' demo_continuous(10^c(-2:4), trans = "log10", labels = label_log())
+#' demo_continuous(10^c(-2:4), trans = c("log10", "reverse"), labels = label_log())
 compose_trans <- function(...) {
   trans_list <- lapply(list2(...), as.trans)
   if (length(trans_list) == 0) {
@@ -24,6 +23,7 @@ compose_trans <- function(...) {
   if (any(is.na(domain))) {
     abort("Sequence of transformations yields invalid domain")
   }
+  domain <- range(domain)
 
   names <- vapply(trans_list, "[[", "name", FUN.VALUE = character(1))
 

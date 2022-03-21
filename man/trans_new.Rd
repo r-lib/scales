@@ -19,7 +19,7 @@ trans_new(
 
 is.trans(x)
 
-as.trans(x)
+as.trans(x, arg = deparse(substitute(x)))
 }
 \arguments{
 \item{name}{transformation name}
