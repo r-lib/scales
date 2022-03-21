@@ -12,6 +12,8 @@ number(
   suffix = "",
   big.mark = " ",
   decimal.mark = ".",
+  style_positive = c("none", "plus"),
+  style_negative = c("hyphen", "minus", "parens"),
   trim = TRUE,
   ...
 )

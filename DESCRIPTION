@@ -20,6 +20,7 @@ Imports:
     munsell (>= 0.5),
     R6,
     RColorBrewer,
+    rlang,
     viridisLite
 Suggests: 
     bit64,

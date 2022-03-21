@@ -17,7 +17,7 @@ label_dollar(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  negative_parens = FALSE,
+  negative_parens = deprecated(),
   rescale_large = NULL,
   ...
 )
@@ -31,7 +31,7 @@ dollar_format(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  negative_parens = FALSE,
+  negative_parens = deprecated(),
   rescale_large = NULL,
   ...
 )

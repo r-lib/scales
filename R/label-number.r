@@ -146,14 +146,24 @@ comma_format <- label_comma
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
+                   style_positive = c("none", "plus"),
+                   style_negative = c("hyphen", "minus", "parens"),
                    trim = TRUE, ...) {
   if (length(x) == 0) {
     return(character())
   }
+
+  style_positive <- arg_match(style_positive)
+  style_negative <- arg_match(style_negative)
+
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
   nsmall <- min(max(nsmall, 0), 20)
+
+  sign <- sign(x)
+  sign[is.na(sign)] <- 0
+  x <- abs(x)
 
   ret <- format(
     scale * x,
@@ -166,6 +176,17 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   )
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+
+  if (style_negative == "hyphen") {
+    ret[sign < 0] <- paste0("-", ret[sign < 0])
+  } else if (style_negative == "minus") {
+    ret[sign < 0] <- paste0("\u2212", ret[sign < 0])
+  } else if (style_negative == "parens") {
+    ret[sign < 0] <- paste0("(", ret[sign < 0], ")")
+  }
+  if (style_positive == "plus") {
+    ret[sign > 0] <- paste0("+", ret[sign > 0])
+  }
 
   # restore NAs from input vector
   ret[is.na(x)] <- NA
