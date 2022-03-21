@@ -1,5 +1,11 @@
 # scales (development version)
 
+* New `compose_trans()` allows arbitrary composition of transformers. This
+  is mostly easily achieved by passing a character vector whenever you might
+  previously have passed the name of a single transformer. For example,
+  `scale_y_continuous(trans = c("log10", "reverse"))` will create a 
+  reverse log-10 scale (#287).
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we
