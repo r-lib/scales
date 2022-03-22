@@ -1,5 +1,14 @@
 # scales (development version)
 
+* `number()` gains new `style_positive` and `style_negative` parameters that
+  control how positive and negative numbers are styled (#249, #262).
+  
+* `number()` puts the `prefix` after the negative sign, rather than before it,
+  yielding (e.g) `-$1` rather than `$-1`.
+
+* The `negative_parens` argument to `dollar()` is now deprecated in favour of
+  `style_negative = "parens"`.
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we

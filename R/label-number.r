@@ -26,10 +26,24 @@
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
 #'   formatting. This is useful if the underlying data is very small or very
 #'   large.
-#' @param prefix,suffix Symbols to display before and after value.
+#' @param prefix Additional text to display before the number. The suffix is
+#'   applied to absolute value before `style_positive` and `style_negative` are
+#'   processed so that `prefix = "$"` will yield (e.g.) `-$1` and `($1)`.
+#' @param suffix Additional text to display after the number.
 #' @param big.mark Character used between every 3 digits to separate thousands.
 #' @param decimal.mark The character to be used to indicate the numeric
 #'   decimal point.
+#' @param style_positive A string that determines the style of positive numbers:
+#'
+#'   * `"none"` (the default): no change, e.g. `1`.
+#'   * `"plus"`: preceded by `+`, e.g. `+1`.
+#' @param style_negative A string that determines the style of negative numbers:
+#'
+#'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
+#'   * `"minus"`, uses a proper Unicode minus symbol. This is a typographical
+#'      nicety that ensures `-` aligns with the horizontal bar of the
+#'      the horizontal bar of `+`.
+#'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
@@ -51,6 +65,8 @@
 #' demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
+                         style_positive = c("none", "plus"),
+                         style_negative = c("hyphen", "minus", "parens"),
                          trim = TRUE, ...) {
   force_all(
     accuracy,
@@ -59,6 +75,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
     suffix,
     big.mark,
     decimal.mark,
+    style_positive,
+    style_negative,
     trim,
     ...
   )
@@ -71,6 +89,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
       suffix = suffix,
       big.mark = big.mark,
       decimal.mark = decimal.mark,
+      style_positive = style_positive,
+      style_negative = style_negative,
       trim = trim,
       ...
     )

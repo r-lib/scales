@@ -88,6 +88,15 @@ If \code{NULL}, the default, these suffixes aren't used.}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{x}{A numeric vector}
+
+\item{style_negative}{A string that determines the style of negative numbers:
+\itemize{
+\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures \code{-} aligns with the horizontal bar of the
+the horizontal bar of \code{+}.
+\item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
+}}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
