@@ -33,6 +33,19 @@ test_that("number preserves names", {
   expect_named(number(c(a = 1)), "a")
 })
 
+test_that("can control positive and negative styles", {
+  expect_equal(number(1, style_positive = "none"), "1")
+  expect_equal(number(1, style_positive = "plus"), "+1")
+  expect_equal(number(-1, style_negative = "hyphen"), "-1")
+  expect_equal(number(-1, style_negative = "minus"), "\u22121")
+  expect_equal(number(-1, style_negative = "parens"), "(1)")
+})
+
+test_that("prefix applied before negative format", {
+  expect_equal(number(-1, prefix = "$"), "-$1")
+  expect_equal(number(-1, prefix = "$", style_negative = "parens"), "($1)")
+})
+
 # Comma formatter --------------------------------------------------------
 
 test_that("comma format always adds commas", {
