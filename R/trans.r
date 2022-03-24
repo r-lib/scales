@@ -90,7 +90,7 @@ as.trans <- function(x, arg = deparse(substitute(x))) {
       f <- paste0(x, "_trans")
       match.fun(f)()
     } else {
-      compose_trans(!!!lapply(x, as.trans))
+      compose_trans(!!!x)
     }
   } else {
     abort(sprintf("`%s` must be a character vector or a transformer object", arg))
