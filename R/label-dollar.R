@@ -9,7 +9,8 @@
 #'   values has non-zero fractional component (e.g. cents) and the largest
 #'   value is less than `largest_with_cents` which by default is 100,000.
 #' @param prefix,suffix Symbols to display before and after value.
-#' @param negative_parens Display negative using parentheses?
+#' @param negative_parens `r lifecycle::badge("deprecated")` Use
+#'   `style_negative = "parens"` instead.
 #' @param rescale_large Named list indicating suffixes given to large values
 #'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
 #'   value specifies the power-of-ten. The two most common scales are provided
@@ -33,11 +34,11 @@
 #' demo_continuous(c(1000, 1100), labels = euro)
 #'
 #' # Use negative_parens = TRUE for finance style display
-#' demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+#' demo_continuous(c(-100, 100), labels = label_dollar(style_negative = "parens"))
 #'
 #' # In finance the short scale is most prevalent
-#' dollar <- label_dollar(rescale_large = rescale_short_scale())
-#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
+#' short <- label_dollar(rescale_large = rescale_short_scale())
+#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = short)
 #'
 #' # In other contexts the long scale might be used
 #' long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
@@ -52,7 +53,7 @@
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
                          suffix = "", big.mark = ",", decimal.mark = ".",
                          trim = TRUE, largest_with_cents = 100000,
-                         negative_parens = FALSE, rescale_large = NULL,
+                         negative_parens = deprecated(), rescale_large = NULL,
                          ...) {
   force_all(
     accuracy,
@@ -116,7 +117,8 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = FALSE, rescale_large = NULL,
+                   negative_parens = deprecated(), rescale_large = NULL,
+                   style_negative = c("hyphen", "minus", "parens"),
                    ...) {
   if (length(x) == 0) {
     return(character())
@@ -132,9 +134,6 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     big.mark <- " "
   }
 
-  negative <- !is.na(x) & x < 0
-  x <- abs(x)
-
   if (!is.null(rescale_large)) {
     if (!(is.integer(rescale_large) && all(rescale_large > 0))) {
       stop("`rescale_large` must be positive integers.", call. = FALSE)
@@ -147,6 +146,11 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     scale <- scale * rescale$scale
   }
 
+  if (lifecycle::is_present(negative_parens)) {
+    lifecycle::deprecate_warn("1.2.0", "dollar(negative_parens)", "dollar(style_negative)")
+    style_negative <- if (negative_parens) "parens" else "minus"
+  }
+
   amount <- number(
     x,
     accuracy = accuracy,
@@ -156,14 +160,9 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     big.mark = big.mark,
     decimal.mark = decimal.mark,
     trim = trim,
+    style_negative = style_negative,
     ...
   )
-
-  if (negative_parens) {
-    amount <- paste0(ifelse(negative, "(", ""), amount, ifelse(negative, ")", ""))
-  } else {
-    amount <- paste0(ifelse(negative, "-", ""), amount)
-  }
 
   # restore NAs from input vector
   amount[is.na(x)] <- NA

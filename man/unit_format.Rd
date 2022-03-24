@@ -29,13 +29,15 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
 \item{unit}{The units to append.}
 
 \item{sep}{The separator between the number and the unit label.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{suffix}{Additional text to display after the number.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 

@@ -14,7 +14,7 @@ dollar_format(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  negative_parens = FALSE,
+  negative_parens = deprecated(),
   rescale_large = NULL,
   ...
 )
@@ -29,8 +29,9 @@ dollar(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  negative_parens = FALSE,
+  negative_parens = deprecated(),
   rescale_large = NULL,
+  style_negative = c("hyphen", "minus", "parens"),
   ...
 )
 }
@@ -61,7 +62,8 @@ values will be rounded to the nearest integer, unless any of the
 values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
 
-\item{negative_parens}{Display negative using parentheses?}
+\item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
+\code{style_negative = "parens"} instead.}
 
 \item{rescale_large}{Named list indicating suffixes given to large values
 (e.g. thousands, millions, billions, trillions). Name gives suffix, and

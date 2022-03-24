@@ -23,10 +23,24 @@
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
 #'   formatting. This is useful if the underlying data is very small or very
 #'   large.
-#' @param prefix,suffix Symbols to display before and after value.
+#' @param prefix Additional text to display before the number. The suffix is
+#'   applied to absolute value before `style_positive` and `style_negative` are
+#'   processed so that `prefix = "$"` will yield (e.g.) `-$1` and `($1)`.
+#' @param suffix Additional text to display after the number.
 #' @param big.mark Character used between every 3 digits to separate thousands.
 #' @param decimal.mark The character to be used to indicate the numeric
 #'   decimal point.
+#' @param style_positive A string that determines the style of positive numbers:
+#'
+#'   * `"none"` (the default): no change, e.g. `1`.
+#'   * `"plus"`: preceded by `+`, e.g. `+1`.
+#' @param style_negative A string that determines the style of negative numbers:
+#'
+#'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
+#'   * `"minus"`, uses a proper Unicode minus symbol. This is a typographical
+#'      nicety that ensures `-` aligns with the horizontal bar of the
+#'      the horizontal bar of `+`.
+#'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
@@ -43,11 +57,20 @@
 #' demo_continuous(c(0, 1e-6), labels = label_number())
 #' demo_continuous(c(0, 1e-6), labels = label_number(scale = 1e6))
 #'
+#' # Use style arguments to vary the appearance of positive and negative numbers
+#' demo_continuous(c(-1e3, 1e3), labels = label_number(
+#'   style_positive = "plus",
+#'   style_negative = "minus"
+#' ))
+#' demo_continuous(c(-1e3, 1e3), labels = label_number(style_negative = "parens"))
+#'
 #' # You can use prefix and suffix for other types of display
-#' demo_continuous(c(32, 212), label = label_number(suffix = "\u00b0F"))
-#' demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
+#' demo_continuous(c(32, 212), labels = label_number(suffix = "\u00b0F"))
+#' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
+                         style_positive = c("none", "plus"),
+                         style_negative = c("hyphen", "minus", "parens"),
                          trim = TRUE, ...) {
   force_all(
     accuracy,
@@ -56,6 +79,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
     suffix,
     big.mark,
     decimal.mark,
+    style_positive,
+    style_negative,
     trim,
     ...
   )
@@ -68,6 +93,8 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
       suffix = suffix,
       big.mark = big.mark,
       decimal.mark = decimal.mark,
+      style_positive = style_positive,
+      style_negative = style_negative,
       trim = trim,
       ...
     )
@@ -155,14 +182,24 @@ comma_format <- label_comma
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
+                   style_positive = c("none", "plus"),
+                   style_negative = c("hyphen", "minus", "parens"),
                    trim = TRUE, ...) {
   if (length(x) == 0) {
     return(character())
   }
+
+  style_positive <- arg_match(style_positive)
+  style_negative <- arg_match(style_negative)
+
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
   nsmall <- -floor(log10(accuracy))
   nsmall <- min(max(nsmall, 0), 20)
+
+  sign <- sign(x)
+  sign[is.na(sign)] <- 0
+  x <- abs(x)
 
   ret <- format(
     scale * x,
@@ -175,6 +212,17 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   )
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
+
+  if (style_negative == "hyphen") {
+    ret[sign < 0] <- paste0("-", ret[sign < 0])
+  } else if (style_negative == "minus") {
+    ret[sign < 0] <- paste0("\u2212", ret[sign < 0])
+  } else if (style_negative == "parens") {
+    ret[sign < 0] <- paste0("(", ret[sign < 0], ")")
+  }
+  if (style_positive == "plus") {
+    ret[sign > 0] <- paste0("+", ret[sign > 0])
+  }
 
   # restore NAs from input vector
   ret[is.na(x)] <- NA

@@ -15,7 +15,7 @@ label_dollar(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  negative_parens = FALSE,
+  negative_parens = deprecated(),
   rescale_large = NULL,
   ...
 )
@@ -44,7 +44,8 @@ decimal point.}
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{negative_parens}{Display negative using parentheses?}
+\item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
+\code{style_negative = "parens"} instead.}
 
 \item{rescale_large}{Named list indicating suffixes given to large values
 (e.g. thousands, millions, billions, trillions). Name gives suffix, and
@@ -83,11 +84,11 @@ euro <- label_dollar(
 demo_continuous(c(1000, 1100), labels = euro)
 
 # Use negative_parens = TRUE for finance style display
-demo_continuous(c(-100, 100), labels = label_dollar(negative_parens = TRUE))
+demo_continuous(c(-100, 100), labels = label_dollar(style_negative = "parens"))
 
 # In finance the short scale is most prevalent
-dollar <- label_dollar(rescale_large = rescale_short_scale())
-demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = dollar)
+short <- label_dollar(rescale_large = rescale_short_scale())
+demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = short)
 
 # In other contexts the long scale might be used
 long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())

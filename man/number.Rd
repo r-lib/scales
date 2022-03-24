@@ -12,6 +12,8 @@ number(
   suffix = "",
   big.mark = " ",
   decimal.mark = ".",
+  style_positive = c("none", "plus"),
+  style_negative = c("hyphen", "minus", "parens"),
   trim = TRUE,
   ...
 )
@@ -28,14 +30,31 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
+\item{prefix}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
 
-\item{suffix}{Symbols to display before and after value.}
+\item{suffix}{Additional text to display after the number.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
+
+\item{style_positive}{A string that determines the style of positive numbers:
+\itemize{
+\item \code{"none"} (the default): no change, e.g. \code{1}.
+\item \code{"plus"}: preceded by \code{+}, e.g. \code{+1}.
+}}
+
+\item{style_negative}{A string that determines the style of negative numbers:
+\itemize{
+\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures \code{-} aligns with the horizontal bar of the
+the horizontal bar of \code{+}.
+\item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
+}}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}

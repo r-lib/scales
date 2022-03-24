@@ -1,5 +1,14 @@
 # scales (development version)
 
+* `number()` gains new `style_positive` and `style_negative` parameters that
+  control how positive and negative numbers are styled (#249, #262).
+  
+* `number()` puts the `prefix` after the negative sign, rather than before it,
+  yielding (e.g) `-$1` rather than `$-1`.
+
+* The `negative_parens` argument to `dollar()` is now deprecated in favour of
+  `style_negative = "parens"`.
+
 * New `compose_trans()` allows arbitrary composition of transformers. This
   is mostly easily achieved by passing a character vector whenever you might
   previously have passed the name of a single transformer. For example,
