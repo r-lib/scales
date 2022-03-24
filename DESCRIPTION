@@ -29,7 +29,8 @@ Suggests:
     ggplot2,
     hms (>= 0.5.0),
     stringi,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    waldo (>= 0.4.0)
 Config/Needs/website: tidyverse/tidytemplate
 Encoding: UTF-8
 LazyLoad: yes
