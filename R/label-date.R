@@ -15,7 +15,11 @@
 #'   For `date_short()` a character vector of length 4 giving the format
 #'   components to use for year, month, day, and hour respectively.
 #' @param tz a time zone name, see [timezones()]. Defaults
-#'  to UTC
+#'   to UTC
+#' @param locale Locale to use when for day and month names. The default
+#'   uses the current locale. Setting this argument requires stringi, and you
+#'   can see a complete list of supported locales with
+#'   [stringi::stri_locale_list()].
 #' @export
 #' @examples
 #' date_range <- function(start, days) {
@@ -26,6 +30,8 @@
 #' two_months <- date_range("2020-05-01", 60)
 #' demo_datetime(two_months)
 #' demo_datetime(two_months, labels = date_format("%m/%d"))
+#' demo_datetime(two_months, labels = date_format("%e %b", locale = "fr"))
+#' demo_datetime(two_months, labels = date_format("%e %B", locale = "es"))
 #' # ggplot2 provides a short-hand:
 #' demo_datetime(two_months, date_labels = "%m/%d")
 #'
@@ -35,9 +41,11 @@
 #' one_year <- date_range("2020-05-01", 365)
 #' demo_datetime(one_year, date_breaks = "month")
 #' demo_datetime(one_year, date_breaks = "month", labels = label_date_short())
-label_date <- function(format = "%Y-%m-%d", tz = "UTC") {
-  force_all(format, tz)
-  function(x) format(x, format, tz = tz) # format handles NAs correctly when dealing with dates
+label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
+  force_all(format, tz, locale)
+  function(x) {
+    format_dt(x, format = format, tz = tz, locale = locale)
+  }
 }
 
 #' @export
@@ -93,11 +101,11 @@ append_if <- function(x, cond, value) {
 
 #' @export
 #' @rdname label_date
-label_time <- function(format = "%H:%M:%S", tz = "UTC") {
+label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
   force_all(format, tz)
   function(x) {
     if (inherits(x, "POSIXt")) {
-      format(x, format = format, tz = tz) # format handles NAs correctly for times
+      format_dt(x, format = format, tz = tz, locale = locale)
     } else if (inherits(x, "difftime")) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
@@ -110,6 +118,15 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC") {
   }
 }
 
+format_dt <- function(x, format, tz = "UTC", locale = NULL) {
+  if (is.null(locale)) {
+    format(x, format = format, tz = tz)
+  } else {
+    check_installed("stringi")
+    format <- stringi::stri_datetime_fstr(format)
+    stringi::stri_datetime_format(x, format, tz = tz, locale = locale)
+  }
+}
 
 #' Superseded interface to `label_date()`/`label_time()`
 #'

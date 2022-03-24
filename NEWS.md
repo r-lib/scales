@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `label_date()` and `label_time()` gain a `locale` argument that allows you
+  to set the locale used to generate day and month names (#309).
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we

@@ -5,9 +5,9 @@
 \alias{time_format}
 \title{Superseded interface to \code{label_date()}/\code{label_time()}}
 \usage{
-date_format(format = "\%Y-\%m-\%d", tz = "UTC")
+date_format(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 
-time_format(format = "\%H:\%M:\%S", tz = "UTC")
+time_format(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
 }
 \arguments{
 \item{format}{For \code{date_format()} and \code{time_format()} a date/time format
@@ -18,6 +18,11 @@ components to use for year, month, day, and hour respectively.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
 to UTC}
+
+\item{locale}{Locale to use when for day and month names. The default
+uses the current locale. Setting this argument requires stringi, and you
+can see a complete list of supported locales with
+\code{\link[stringi:stri_locale_list]{stringi::stri_locale_list()}}.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}

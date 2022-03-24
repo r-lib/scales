@@ -6,11 +6,11 @@
 \alias{label_time}
 \title{Label date/times}
 \usage{
-label_date(format = "\%Y-\%m-\%d", tz = "UTC")
+label_date(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 
 label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
 
-label_time(format = "\%H:\%M:\%S", tz = "UTC")
+label_time(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
 }
 \arguments{
 \item{format}{For \code{date_format()} and \code{time_format()} a date/time format
@@ -21,6 +21,11 @@ components to use for year, month, day, and hour respectively.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
 to UTC}
+
+\item{locale}{Locale to use when for day and month names. The default
+uses the current locale. Setting this argument requires stringi, and you
+can see a complete list of supported locales with
+\code{\link[stringi:stri_locale_list]{stringi::stri_locale_list()}}.}
 
 \item{sep}{Separator to use when combining date formats into a single string.}
 }
@@ -52,6 +57,8 @@ date_range <- function(start, days) {
 two_months <- date_range("2020-05-01", 60)
 demo_datetime(two_months)
 demo_datetime(two_months, labels = date_format("\%m/\%d"))
+demo_datetime(two_months, labels = date_format("\%e \%b", locale = "fr"))
+demo_datetime(two_months, labels = date_format("\%e \%B", locale = "es"))
 # ggplot2 provides a short-hand:
 demo_datetime(two_months, date_labels = "\%m/\%d")
 
