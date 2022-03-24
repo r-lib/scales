@@ -12,7 +12,7 @@ date_trans <- function() {
     transform = "from_date",
     inverse = "to_date",
     breaks = breaks_pretty(),
-    domain = as.Date(c(-Inf, Inf))
+    domain = to_date(c(-Inf, Inf))
   )
 }
 
@@ -60,7 +60,7 @@ time_trans <- function(tz = NULL) {
     transform = "from_time",
     inverse = "to_time",
     breaks = breaks_pretty(),
-    domain = as.POSIXct(c(-Inf, Inf), tz = tz)
+    domain = to_time(c(-Inf, Inf))
   )
 }
 
