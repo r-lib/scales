@@ -3,10 +3,7 @@
 #' Round values to integers and then display as ordinal values (e.g. 1st, 2nd,
 #' 3rd). Built-in rules are provided for English, French, and Spanish.
 #'
-#' @section Old interface:
-#' `ordinal()` and `format_ordinal()` are superseded; please use `label_ordinal()`
-#' instead.
-#' @inherit number_format return params
+#' @inherit label_number return params
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param rules Named list of regular expressions, matched in order.
 #'   Name gives suffix, and value specifies which numbers to match.
@@ -83,12 +80,21 @@ ordinal_spanish <- function() {
   stats::setNames(list("."), ".\u00ba")
 }
 
+#' Superseded interface to `label_ordinal()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_ordinal()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_ordinal
+#' @inheritParams label_ordinal
 ordinal_format <- label_ordinal
 
 #' @export
-#' @rdname label_ordinal
+#' @rdname ordinal_format
 ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
                     rules = ordinal_english(), ...) {
   na_idx <- is.na(x)

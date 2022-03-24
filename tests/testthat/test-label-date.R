@@ -18,6 +18,12 @@ test_that("time_format works correctly", {
   expect_equal(time_format()(na_time), NA_character_)
 })
 
+test_that("can set locale", {
+  x <- ISOdate(2012, 1, 1, 11, tz = "UTC")
+  expect_equal(date_format("%B", locale = "fr")(x), "janvier")
+  expect_equal(time_format("%B", locale = "fr")(x), "janvier")
+})
+
 test_that("date_short doesn't change unexpectedly", {
   expect_snapshot({
     dformat <- label_date_short()

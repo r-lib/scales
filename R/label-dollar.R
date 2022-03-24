@@ -3,11 +3,7 @@
 #' Format numbers as currency, rounding values to dollars or cents using
 #' a convenient heuristic.
 #'
-#' @section Old interface:
-#' `dollar()` and `format_dollar()` are superseded; please use `label_dollar()`
-#' instead.
-#'
-#' @inherit number_format return params
+#' @inherit label_number return params
 #' @param accuracy,largest_with_cents Number to round to. If `NULL`, the default,
 #'   values will be rounded to the nearest integer, unless any of the
 #'   values has non-zero fractional component (e.g. cents) and the largest
@@ -102,12 +98,21 @@ needs_cents <- function(x, threshold) {
   !all(x == floor(x), na.rm = TRUE)
 }
 
+#' Superseded interface to `label_dollar()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_dollar()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_dollar
+#' @inheritParams label_dollar
 dollar_format <- label_dollar
 
 #' @export
-#' @rdname label_dollar
+#' @rdname dollar_format
 #' @param x A numeric vector
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",

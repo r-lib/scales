@@ -48,7 +48,10 @@ trans_new <- function(name, transform, inverse, breaks = extended_breaks(),
 is.trans <- function(x) inherits(x, "trans")
 
 #' @export
-print.trans <- function(x, ...) cat("Transformer: ", x$name, "\n")
+print.trans <- function(x, ...) {
+  cat("Transformer: ", x$name, " [", x$domain[[1]], ", ", x$domain[[2]], "]\n", sep = "")
+  invisible(x)
+}
 
 #' @export
 plot.trans <- function(x, y, ..., xlim, ylim = NULL) {
@@ -79,13 +82,19 @@ lines.trans <- function(x, ..., xlim) {
 
 #' @rdname trans_new
 #' @export
-as.trans <- function(x) {
+as.trans <- function(x, arg = deparse(substitute(x))) {
   if (is.trans(x)) {
-    return(x)
+    x
+  } else if (is.character(x) && length(x) >= 1) {
+    if (length(x) == 1) {
+      f <- paste0(x, "_trans")
+      match.fun(f)()
+    } else {
+      compose_trans(!!!x)
+    }
+  } else {
+    abort(sprintf("`%s` must be a character vector or a transformer object", arg))
   }
-
-  f <- paste0(x, "_trans")
-  match.fun(f)()
 }
 
 #' Compute range of transformed values

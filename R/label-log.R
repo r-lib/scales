@@ -5,7 +5,7 @@
 #' @param base Base of logarithm to use
 #' @param digits Number of significant digits to show for the exponent. Argument
 #'   is passed on to [base::format()].
-#' @inherit number_format return
+#' @inherit label_number return
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
 #' @family labels for log scales

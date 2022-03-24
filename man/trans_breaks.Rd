@@ -18,6 +18,7 @@ vector returns the transformed values}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 These often do not produce very attractive breaks.
 }
 \examples{

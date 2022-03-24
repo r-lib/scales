@@ -21,6 +21,7 @@ what the breaks will be.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 This function wraps up the components needed to go from a continuous range
 to a set of breaks and labels suitable for display on axes or legends.
 }

@@ -9,6 +9,18 @@
 * The `negative_parens` argument to `dollar()` is now deprecated in favour of
   `style_negative = "parens"`.
 
+* New `compose_trans()` allows arbitrary composition of transformers. This
+  is mostly easily achieved by passing a character vector whenever you might
+  previously have passed the name of a single transformer. For example,
+  `scale_y_continuous(trans = c("log10", "reverse"))` will create a 
+  reverse log-10 scale (#287).
+
+* `time_trans()` and `date_trans()` have `domains` of the correct type so that 
+  they can be transformed without error (#298).
+
+* `label_date()` and `label_time()` gain a `locale` argument that allows you
+  to set the locale used to generate day and month names (#309).
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we

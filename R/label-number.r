@@ -13,10 +13,7 @@
 #' ggplot2 scales. The examples demonstrate their use with x scales, but
 #' they work similarly for all scales, including those that generate legends
 #' rather than axes.
-#' @section Old interface:
-#' `number_format()`, `comma_format()`, and `comma()` are superseded; please use
-#' `label_number()` and `label_comma()` instead.
-#' @param x A numeric vector to format.
+#'
 #' @param accuracy A number to round to. Use (e.g.) `0.01` to show 2 decimal
 #'   places of precision. If `NULL`, the default, uses a heuristic that should
 #'   ensure breaks have the minimum number of digits needed to show the
@@ -122,8 +119,18 @@ label_comma <- function(accuracy = NULL, scale = 1, prefix = "",
   )
 }
 
+#' Superseded interface to `label_number()`/`label_comma()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_number()]/[label_comma()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_number
+#' @inheritParams label_number
+#' @param x A numeric vector to format.
 comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
                   suffix = "", big.mark = ",", decimal.mark = ".",
                   trim = TRUE, digits, ...) {
@@ -147,11 +154,11 @@ comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
 }
 
 #' @export
-#' @rdname label_number
+#' @rdname comma
 number_format <- label_number
 
 #' @export
-#' @rdname label_number
+#' @rdname comma
 comma_format <- label_comma
 
 #' A low-level numeric formatter
