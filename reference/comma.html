@@ -84,6 +84,8 @@ to <code><a href="label_number.html">label_number()</a></code>/<code><a href="la
   suffix <span class="op">=</span> <span class="st">""</span>,
   big.mark <span class="op">=</span> <span class="st">" "</span>,
   decimal.mark <span class="op">=</span> <span class="st">"."</span>,
+  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,
+  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
   trim <span class="op">=</span> <span class="cn">TRUE</span>,
   <span class="va">...</span>
 <span class="op">)</span>
@@ -116,9 +118,11 @@ difference between adjacent values.</p>
 formatting. This is useful if the underlying data is very small or very
 large.</p></dd>
 <dt>prefix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display before the number. The suffix is
+applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
+processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
 <dt>suffix</dt>
-<dd><p>Symbols to display before and after value.</p></dd>
+<dd><p>Additional text to display after the number.</p></dd>
 <dt>big.mark</dt>
 <dd><p>Character used between every 3 digits to separate thousands.</p></dd>
 <dt>decimal.mark</dt>
@@ -131,6 +135,17 @@ width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-li
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> Use <code>accuracy</code> instead.</p></dd>
 <dt>...</dt>
 <dd><p>Other arguments passed on to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>.</p></dd>
+<dt>style_positive</dt>
+<dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
+<li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
+</ul></dd>
+<dt>style_negative</dt>
+<dd><p>A string that determines the style of negative numbers:</p><ul><li><p><code>"hyphen"</code> (the default): preceded by a standard hypen <code>-</code>, e.g. <code>-1</code>.</p></li>
+<li><p><code>"minus"</code>, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures <code>-</code> aligns with the horizontal bar of the
+the horizontal bar of <code>+</code>.</p></li>
+<li><p><code>"parens"</code>, wrapped in parentheses, e.g. <code>(1)</code>.</p></li>
+</ul></dd>
 </dl></div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
