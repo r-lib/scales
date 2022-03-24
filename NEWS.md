@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `time_trans()` and `date_trans()` have `domains` of the correct type so that 
+  they can be transformed without error (#298).
+
 * `label_date()` and `label_time()` gain a `locale` argument that allows you
   to set the locale used to generate day and month names (#309).
 
