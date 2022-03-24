@@ -1,3 +1,11 @@
+test_that("extended breaks returns no breaks for bad inputs", {
+  breaks <- extended_breaks()
+
+  expect_equal(breaks(NA), numeric())
+  expect_equal(breaks(Inf), numeric())
+  expect_equal(breaks(NaN), numeric())
+})
+
 test_that("breaks_pretty() arguments are forcely evaluated on each call #81", {
   subfun1 <- breaks_pretty(n = 5)
   subfun2 <- breaks_pretty(n = 10)
