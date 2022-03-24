@@ -6,6 +6,9 @@
   `scale_y_continuous(trans = c("log10", "reverse"))` will create a 
   reverse log-10 scale (#287).
 
+* `label_date()` and `label_time()` gain a `locale` argument that allows you
+  to set the locale used to generate day and month names (#309).
+
 * `hue_pal()` respects `h.start` once again (#288).
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we

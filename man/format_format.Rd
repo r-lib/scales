@@ -11,6 +11,7 @@ format_format(...)
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 This function is kept for backward compatiblity; you should either use
 \code{\link[=label_number]{label_number()}} or \code{\link[=label_date]{label_date()}} instead.
 }

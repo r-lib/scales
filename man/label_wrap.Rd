@@ -2,12 +2,9 @@
 % Please edit documentation in R/label-wrap.R
 \name{label_wrap}
 \alias{label_wrap}
-\alias{wrap_format}
 \title{Label strings by wrapping across multiple lines}
 \usage{
 label_wrap(width)
-
-wrap_format(width)
 }
 \arguments{
 \item{width}{Number of characters per line.}
@@ -25,11 +22,6 @@ rather than axes.
 \description{
 Uses \code{\link[=strwrap]{strwrap()}} to split long labels across multiple lines.
 }
-\section{Old interface}{
-
-\code{wrap_format()} is superseded; please use \code{label_format()} instead.
-}
-
 \examples{
 x <- c(
   "this is a long label",

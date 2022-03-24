@@ -2,34 +2,9 @@
 % Please edit documentation in R/label-percent.R
 \name{label_percent}
 \alias{label_percent}
-\alias{percent_format}
-\alias{percent}
 \title{Label percentages (2.5\%, 50\%, etc)}
 \usage{
 label_percent(
-  accuracy = NULL,
-  scale = 100,
-  prefix = "",
-  suffix = "\%",
-  big.mark = " ",
-  decimal.mark = ".",
-  trim = TRUE,
-  ...
-)
-
-percent_format(
-  accuracy = NULL,
-  scale = 100,
-  prefix = "",
-  suffix = "\%",
-  big.mark = " ",
-  decimal.mark = ".",
-  trim = TRUE,
-  ...
-)
-
-percent(
-  x,
   accuracy = NULL,
   scale = 100,
   prefix = "",
@@ -65,8 +40,6 @@ decimal point.}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
-
-\item{x}{A numeric vector to format.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -81,12 +54,6 @@ rather than axes.
 \description{
 Label percentages (2.5\%, 50\%, etc)
 }
-\section{Old interface}{
-
-\code{percent()} and \code{percent_format()} are superseded; please use \code{label_percent()}
-instead.
-}
-
 \examples{
 demo_continuous(c(0, 1))
 demo_continuous(c(0, 1), labels = label_percent())

@@ -2,8 +2,6 @@
 % Please edit documentation in R/label-pvalue.R
 \name{label_pvalue}
 \alias{label_pvalue}
-\alias{pvalue_format}
-\alias{pvalue}
 \title{Label p-values (e.g. <0.001, 0.25, p >= 0.99)}
 \usage{
 label_pvalue(
@@ -12,15 +10,6 @@ label_pvalue(
   prefix = NULL,
   add_p = FALSE
 )
-
-pvalue_format(
-  accuracy = 0.001,
-  decimal.mark = ".",
-  prefix = NULL,
-  add_p = FALSE
-)
-
-pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL, add_p = FALSE)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -38,8 +27,6 @@ put in front of numbers. The default values are \code{c("<", "", ">")}
 if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
 
 \item{add_p}{Add "p=" before the value?}
-
-\item{x}{A numeric vector to format.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -54,12 +41,6 @@ rather than axes.
 \description{
 Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 }
-\section{Old interface}{
-
-\code{pvalue()} and \code{pvalue_format()} are superseded; please use \code{label_pvalue()}
-instead.
-}
-
 \examples{
 demo_continuous(c(0, 1))
 demo_continuous(c(0, 1), labels = label_pvalue())
