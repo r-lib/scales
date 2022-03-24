@@ -76,11 +76,11 @@ but uses a slightly different approach: <code>ConciseDateFormatter</code> format
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">label_date</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span>, tz <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">label_date</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span>, tz <span class="op">=</span> <span class="st">"UTC"</span>, locale <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="fu">label_date_short</span><span class="op">(</span>format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"%Y"</span>, <span class="st">"%b"</span>, <span class="st">"%d"</span>, <span class="st">"%H:%M"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>
 
-<span class="fu">label_time</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%H:%M:%S"</span>, tz <span class="op">=</span> <span class="st">"UTC"</span><span class="op">)</span></code></pre></div>
+<span class="fu">label_time</span><span class="op">(</span>format <span class="op">=</span> <span class="st">"%H:%M:%S"</span>, tz <span class="op">=</span> <span class="st">"UTC"</span>, locale <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -93,6 +93,11 @@ components to use for year, month, day, and hour respectively.</p></dd>
 <dt>tz</dt>
 <dd><p>a time zone name, see <code><a href="https://rdrr.io/r/base/timezones.html" class="external-link">timezones()</a></code>. Defaults
 to UTC</p></dd>
+<dt>locale</dt>
+<dd><p>Locale to use when for day and month names. The default
+uses the current locale. Setting this argument requires stringi, and you
+can see a complete list of supported locales with
+<code><a href="https://rdrr.io/pkg/stringi/man/stri_locale_list.html" class="external-link">stringi::stri_locale_list()</a></code>.</p></dd>
 <dt>sep</dt>
 <dd><p>Separator to use when combining date formats into a single string.</p></dd>
 </dl></div>
@@ -121,23 +126,29 @@ rather than axes.</p>
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">two_months</span>, labels <span class="op">=</span> <span class="fu"><a href="date_format.html">date_format</a></span><span class="op">(</span><span class="st">"%m/%d"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(labels = date_format("%m/%d"))</span>
 <span class="r-plt img"><img src="label_date-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">two_months</span>, labels <span class="op">=</span> <span class="fu"><a href="date_format.html">date_format</a></span><span class="op">(</span><span class="st">"%e %b"</span>, locale <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(labels = date_format("%e %b", locale = "fr"))</span>
+<span class="r-plt img"><img src="label_date-3.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">two_months</span>, labels <span class="op">=</span> <span class="fu"><a href="date_format.html">date_format</a></span><span class="op">(</span><span class="st">"%e %B"</span>, locale <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(labels = date_format("%e %B", locale = "es"))</span>
+<span class="r-plt img"><img src="label_date-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># ggplot2 provides a short-hand:</span></span>
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">two_months</span>, date_labels <span class="op">=</span> <span class="st">"%m/%d"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(date_labels = "%m/%d")</span>
-<span class="r-plt img"><img src="label_date-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_date-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># An alternative labelling system is label_date_short()</span></span>
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">two_months</span>, date_breaks <span class="op">=</span> <span class="st">"7 days"</span>, labels <span class="op">=</span> <span class="fu">label_date_short</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(date_breaks = "7 days", labels = label_date_short())</span>
-<span class="r-plt img"><img src="label_date-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_date-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># This is particularly effective for dense labels</span></span>
 <span class="r-in"><span class="va">one_year</span> <span class="op">&lt;-</span> <span class="fu">date_range</span><span class="op">(</span><span class="st">"2020-05-01"</span>, <span class="fl">365</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_year</span>, date_breaks <span class="op">=</span> <span class="st">"month"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(date_breaks = "month")</span>
-<span class="r-plt img"><img src="label_date-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_date-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_year</span>, date_breaks <span class="op">=</span> <span class="st">"month"</span>, labels <span class="op">=</span> <span class="fu">label_date_short</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(date_breaks = "month", labels = label_date_short())</span>
-<span class="r-plt img"><img src="label_date-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_date-8.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
