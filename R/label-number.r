@@ -57,9 +57,16 @@
 #' demo_continuous(c(0, 1e-6), labels = label_number())
 #' demo_continuous(c(0, 1e-6), labels = label_number(scale = 1e6))
 #'
+#' # Use style arguments to vary the appearance of positive and negative numbers
+#' demo_continuous(c(-1e3, 1e3), labels = label_number(
+#'   style_positive = "plus",
+#'   style_negative = "minus"
+#' ))
+#' demo_continuous(c(-1e3, 1e3), labels = label_number(style_negative = "parens"))
+#'
 #' # You can use prefix and suffix for other types of display
-#' demo_continuous(c(32, 212), label = label_number(suffix = "\u00b0F"))
-#' demo_continuous(c(0, 100), label = label_number(suffix = "\u00b0C"))
+#' demo_continuous(c(32, 212), labels = label_number(suffix = "\u00b0F"))
+#' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
                          style_positive = c("none", "plus"),
