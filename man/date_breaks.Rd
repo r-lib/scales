@@ -13,6 +13,7 @@ followed by "s". Fractional seconds are supported.}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 Use \code{breaks_width()} instead.
 }
 \keyword{internal}

@@ -7,7 +7,7 @@ test_that("gracefully handles bad input works", {
 })
 
 test_that("tricky breaks don't change unexpectedly", {
-  verify_output(test_path("test-label-number-auto.txt"), {
+  expect_snapshot({
     number_auto <- label_number_auto()
     number_auto(c(0, 0.000001))
     number_auto(c(0.0009, 0.0010, 0.0011))

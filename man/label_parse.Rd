@@ -3,17 +3,11 @@
 \name{label_parse}
 \alias{label_parse}
 \alias{label_math}
-\alias{parse_format}
-\alias{math_format}
 \title{Label with mathematical annotations}
 \usage{
 label_parse()
 
 label_math(expr = 10^.x, format = force)
-
-parse_format()
-
-math_format(expr = 10^.x, format = force)
 }
 \arguments{
 \item{expr}{expression to use}
@@ -37,12 +31,6 @@ rather than axes.
 \code{label_math()} constructs expressions by replacing the pronoun \code{.x}
 with each string.
 }
-\section{Old interface}{
-
-\code{parse_format()} and \code{math_format()} was superseded; please use
-\code{label_parse()} and \code{label_math()} instead.
-}
-
 \examples{
 # Use label_parse() with discrete scales
 greek <- c("alpha", "beta", "gamma")
@@ -52,6 +40,7 @@ demo_discrete(greek, labels = label_parse())
 # Use label_math() with continuous scales
 demo_continuous(c(1, 5))
 demo_continuous(c(1, 5), labels = label_math(alpha[.x]))
+demo_continuous(c(1, 5), labels = label_math())
 }
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.

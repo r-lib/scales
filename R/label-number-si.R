@@ -6,7 +6,7 @@
 #' See [Metric Prefix](https://en.wikipedia.org/wiki/Metric_prefix) on Wikipedia
 #' for more details.
 #'
-#' @inherit number_format return params
+#' @inherit label_number return params
 #' @param unit Unit of measurement (e.g. `"m"` for meter, the SI unit of length).
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
 #'   formatting. This is useful if the underlying data is already using an SI

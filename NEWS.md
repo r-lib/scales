@@ -3,6 +3,14 @@
 * `label_date()` and `label_time()` gain a `locale` argument that allows you
   to set the locale used to generate day and month names (#309).
 
+* `hue_pal()` respects `h.start` once again (#288).
+
+* `col_quantile()` no longer errors if data is sufficiently skewed that we
+  can't generate the requested number of unique colours (#294).
+
+* `breaks_width()` now supports units like `"3 months"` in the `offset`
+  argument.
+
 * `label_number_auto()` correctly formats single numbers that are greater than
   1e+06 without an error (@karawoo, #321)
 
@@ -33,6 +41,9 @@
   
 * Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
   unnecessary digits (@davidchall, #304).
+
+* New `label_log()` displays the base and a superscript exponent, for use with
+  logarithmic axes (@davidchall, #312).
 
 # scales 1.1.1
 

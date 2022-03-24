@@ -11,11 +11,20 @@ minor_breaks_n(n)
 }
 \arguments{
 \item{width}{Distance between each break. Either a number, or for
-date/times, a single string of the form "{n} {unit}", e.g. "1 month",
+date/times, a single string of the form \code{"{n} {unit}"}, e.g. "1 month",
 "5 days". Unit can be of one "sec", "min", "hour", "day", "week",
 "month", "year".}
 
-\item{offset}{Use if you don't want breaks to start at zero}
+\item{offset}{Use if you don't want breaks to start at zero, or on a
+conventional date or time boundary such as the 1st of January or midnight.
+Either a number, or for date/times, a single string of the form
+\code{"{n} {unit}"}, as for \code{width}.
+
+\code{offset} can be a vector, which will accumulate in the order given. This
+is mostly useful for dates, where e.g. \code{c("3 months", "5 days")} will
+offset by three months and five days, which is useful for the UK tax year.
+Note that due to way that dates are rounded, there's no guarantee that
+\code{offset = c(x, y)} will give the same result as \code{offset = c(y, x)}.}
 
 \item{n}{number of breaks}
 }

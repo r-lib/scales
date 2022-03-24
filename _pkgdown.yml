@@ -29,14 +29,17 @@ reference:
   desc: >
     Functions for rescaling data and adjusting scale ranges.
   contents:
-  - starts_with("rescale")
+  - rescale
+  - rescale_max
+  - rescale_mid
+  - rescale_none
+  - rescale_pal
   - matches("range")
   - squish
   - squish_infinite
   - expand_range
   - discard
   - censor
-  - -Range
 
 - title: Transformations
   desc: >
@@ -44,7 +47,6 @@ reference:
     their inverses, and ways of generating breaks and labels.
   contents:
   - matches("trans")
-  - -trans_breaks
 
 - title: "Colour palettes & colour mapping"
   desc: >

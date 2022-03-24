@@ -1,5 +1,3 @@
-context("Colors")
-
 bw <- c("black", "white")
 
 test_that("Edgy col_bin scenarios", {
@@ -74,7 +72,7 @@ test_that("factors match by name, not position", {
   expect_identical(pal(partial), pal(droplevels(partial)))
 
   # Sending in values outside of the color scale should result in a warning and na.color
-  col <- expect_warning(pal(letters[10:20]))
+  expect_warning(col <- pal(letters[10:20]))
   expect_true(all(is.na(col)))
 })
 
@@ -124,7 +122,7 @@ test_that("OK, qualitative palettes sometimes interpolate", {
     name = "Accent"
   )
 
-  result <- expect_warning(pal(letters[1:20]))
+  expect_warning(result <- pal(letters[1:20]))
   # The first and last levels are the first and last palette colors
   expect_true(all(result[c(1, 20)] %in% allColors))
   # All the rest are interpolated though
@@ -165,7 +163,7 @@ test_that("col_quantile can be reversed", {
 
 test_that("col_factor can be reversed", {
   # With interpolation
-  verifyReversal(col_factor, letters, filter = expect_warning)
+  verifyReversal(col_factor, letters[1:8])
 
   # Without interpolation
   accent <- suppressWarnings(RColorBrewer::brewer.pal(Inf, "Accent"))
@@ -200,6 +198,14 @@ test_that("Palettes with ncolor < 3 work properly", {
   test_palette("Blues")
   # Diverging palette
   test_palette("Spectral")
+})
+
+test_that("col_quantile handles skewed data", {
+  expect_snapshot({
+    x <- c(1:5, rep(10, 10))
+    col <- col_quantile("RdYlBu", domain = x, n = 7)(x)
+    col <- col_quantile("RdYlBu", domain = NULL, n = 7)(x)
+  })
 })
 
 test_that("Arguments to `cut` are respected", {

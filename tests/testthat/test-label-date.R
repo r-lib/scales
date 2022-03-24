@@ -25,7 +25,7 @@ test_that("can set locale", {
 })
 
 test_that("date_short doesn't change unexpectedly", {
-  verify_output(test_path("test-label-date-short.txt"), {
+  expect_snapshot({
     dformat <- label_date_short()
 
     "dates"

@@ -152,7 +152,7 @@ col_quantile <- function(palette, domain, n = 4,
                          probs = seq(0, 1, length.out = n + 1), na.color = "#808080", alpha = FALSE,
                          reverse = FALSE, right = FALSE) {
   if (!is.null(domain)) {
-    bins <- stats::quantile(domain, probs, na.rm = TRUE, names = FALSE)
+    bins <- safe_quantile(domain, probs)
     return(withColorAttr(
       "quantile", list(probs = probs, na.color = na.color, right = right),
       col_bin(palette,
@@ -171,13 +171,26 @@ col_quantile <- function(palette, domain, n = 4,
   )
 
   withColorAttr("quantile", list(probs = probs, na.color = na.color, right = right), function(x) {
-    binsToUse <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
+    binsToUse <- safe_quantile(x, probs)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
     if (any(is.na(x) != is.na(ints))) {
       warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
     }
     colorFunc(ints)
   })
+}
+
+safe_quantile <- function(x, probs) {
+  bins <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
+  if (anyDuplicated(bins)) {
+    bins <- unique(bins)
+    warning(
+      "Skewed data means we can only allocate ", length(bins), " unique colours ",
+      "not the " , length(probs) - 1, " requested",
+      call. = FALSE
+    )
+  }
+  bins
 }
 
 # If already a factor, return the levels. Otherwise, convert to factor then

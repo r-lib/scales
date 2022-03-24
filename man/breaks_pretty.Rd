@@ -2,7 +2,6 @@
 % Please edit documentation in R/breaks.r
 \name{breaks_pretty}
 \alias{breaks_pretty}
-\alias{pretty_breaks}
 \title{Pretty breaks for date/times}
 \usage{
 breaks_pretty(n = 5, ...)
@@ -17,9 +16,6 @@ breaks that requested.}
 Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}. This is
 primarily useful for date/times, as \code{\link[=extended_breaks]{extended_breaks()}} should do a slightly
 better job for numeric scales.
-}
-\details{
-\code{pretty_breaks()} is superseded; use \code{breaks_pretty()} instead.
 }
 \examples{
 one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
