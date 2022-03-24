@@ -1,18 +1,6 @@
 # Evaluates all arguments (see #81)
 force_all <- function(...) list(...)
 
-range_finite <- function(x) {
-  suppressWarnings(range(x, na.rm = TRUE, finite = TRUE))
-}
-
-seq2 <- function(from, to) {
-  if (from > to) {
-    numeric()
-  } else {
-    from:to
-  }
-}
-
 demo_ggplot <- function(x, scale_name, ...) {
   call <- substitute(list(...))
   call[[1]] <- as.name(scale_name)
