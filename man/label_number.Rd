@@ -52,7 +52,7 @@ width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
-\item{digits}{Deprecated, use \code{accuracy} instead.}
+\item{digits}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{accuracy} instead.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that

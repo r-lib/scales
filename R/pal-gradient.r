@@ -11,7 +11,7 @@
 
 gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   if (!identical(space, "Lab")) {
-    warning("Non Lab interpolation is deprecated", call. = FALSE)
+    lifecycle::deprecate_warn("0.3.0", "gradient_n_pal(space = 'only supports be \"Lab\"')")
   }
   ramp <- colour_ramp(colours)
   force(values)

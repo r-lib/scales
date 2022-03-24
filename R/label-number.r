@@ -77,14 +77,15 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
 
 #' @export
 #' @rdname label_number
-#' @param digits Deprecated, use `accuracy` instead.
+#' @param digits `r lifecycle::badge("deprecated")` Use `accuracy` instead.
 label_comma <- function(accuracy = NULL, scale = 1, prefix = "",
                         suffix = "", big.mark = ",", decimal.mark = ".",
                         trim = TRUE, digits, ...) {
   if (!missing(digits)) {
-    warning(
-      "`digits` argument is deprecated, use `accuracy` instead.",
-      .call = FALSE
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "label_comma(digits)",
+      with = "label_comma(accuracy)"
     )
   }
   number_format(
@@ -115,9 +116,10 @@ comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
                   suffix = "", big.mark = ",", decimal.mark = ".",
                   trim = TRUE, digits, ...) {
   if (!missing(digits)) {
-    warning(
-      "`digits` argument is deprecated, use `accuracy` instead.",
-      .call = FALSE
+    lifecycle::deprecate_warn(
+      when = "1.0.0",
+      what = "comma(digits)",
+      with = "comma(accuracy)"
     )
   }
   number(
