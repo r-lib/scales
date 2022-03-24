@@ -1,9 +1,6 @@
 #' Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 #'
-#' @section Old interface:
-#' `scientific_format()` and `scientific()` are superseded; please use
-#' `label_scientific()`.
-#' @inherit number_format return params
+#' @inherit label_number return params
 #' @param digits Number of digits to show before exponent.
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param ... Other arguments passed on to [base::format()].
@@ -32,12 +29,21 @@ label_scientific <- function(digits = 3, scale = 1, prefix = "", suffix = "",
   }
 }
 
+#' Superseded interface to `label_scientific()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_scientific()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_scientific
+#' @inheritParams label_scientific
 scientific_format <- label_scientific
 
 #' @export
-#' @rdname label_scientific
+#' @rdname scientific_format
 scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
                        decimal.mark = ".", trim = TRUE, ...) {
   if (length(x) == 0) {

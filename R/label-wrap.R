@@ -2,9 +2,7 @@
 #'
 #' Uses [strwrap()] to split long labels across multiple lines.
 #'
-#' @section Old interface:
-#' `wrap_format()` is superseded; please use `label_format()` instead.
-#' @inherit number_format return
+#' @inherit label_number return
 #' @param width Number of characters per line.
 #' @export
 #' @family labels for discrete scales
@@ -24,6 +22,15 @@ label_wrap <- function(width) {
   }
 }
 
+#' Superseded interface to `label_wrap()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_wrap()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @rdname label_wrap
+#' @inheritParams label_wrap
 wrap_format <- label_wrap
