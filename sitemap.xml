@@ -64,10 +64,16 @@
     <loc>https://scales.r-lib.org/reference/colour_ramp.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org/reference/comma.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org/reference/cscale.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/date_breaks.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/date_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/date_trans.html</loc>
@@ -80,6 +86,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/div_gradient_pal.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/dollar_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/dscale.html</loc>
@@ -181,7 +190,22 @@
     <loc>https://scales.r-lib.org/reference/oob.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org/reference/ordinal_format.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/parse_format.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/percent_format.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pretty_breaks.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org/reference/probability_trans.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pvalue_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/reciprocal_trans.html</loc>
@@ -209,6 +233,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/scales-package.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/scientific_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/seq_gradient_pal.html</loc>
@@ -248,6 +275,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/viridis_pal.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/wrap_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/yj_trans.html</loc>
