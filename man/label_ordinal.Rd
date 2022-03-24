@@ -5,8 +5,6 @@
 \alias{ordinal_english}
 \alias{ordinal_french}
 \alias{ordinal_spanish}
-\alias{ordinal_format}
-\alias{ordinal}
 \title{Label ordinal numbers (1st, 2nd, 3rd, etc)}
 \usage{
 label_ordinal(
@@ -22,23 +20,6 @@ ordinal_english()
 ordinal_french(gender = c("masculin", "feminin"), plural = FALSE)
 
 ordinal_spanish()
-
-ordinal_format(
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  rules = ordinal_english(),
-  ...
-)
-
-ordinal(
-  x,
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  rules = ordinal_english(),
-  ...
-)
 }
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after value.}
@@ -53,8 +34,6 @@ Name gives suffix, and value specifies which numbers to match.}
 \item{gender}{Masculin or feminin gender for French ordinal.}
 
 \item{plural}{Plural or singular for French ordinal.}
-
-\item{x}{A numeric vector to format.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -70,12 +49,6 @@ rather than axes.
 Round values to integers and then display as ordinal values (e.g. 1st, 2nd,
 3rd). Built-in rules are provided for English, French, and Spanish.
 }
-\section{Old interface}{
-
-\code{ordinal()} and \code{format_ordinal()} are superseded; please use \code{label_ordinal()}
-instead.
-}
-
 \examples{
 demo_continuous(c(1, 5))
 demo_continuous(c(1, 5), labels = label_ordinal())

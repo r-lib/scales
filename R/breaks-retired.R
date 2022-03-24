@@ -1,6 +1,8 @@
 #' Regularly spaced dates
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' Use `breaks_width()` instead.
 #'
 #' @param width an interval specification, one of "sec", "min", "hour",
@@ -15,7 +17,9 @@ date_breaks <- function(width = "1 month") {
 
 #' Pretty breaks on transformed scale
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' These often do not produce very attractive breaks.
 #'
 #' @param trans function of single variable, `x`, that given a numeric
@@ -42,7 +46,9 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 
 #' Compute breaks for continuous scale
 #'
+#' @description
 #' `r lifecycle::badge('superseded')`
+#'
 #' This function wraps up the components needed to go from a continuous range
 #' to a set of breaks and labels suitable for display on axes or legends.
 #'

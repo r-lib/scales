@@ -4,10 +4,7 @@
 #' `label_math()` constructs expressions by replacing the pronoun `.x`
 #' with each string.
 #'
-#' @section Old interface:
-#' `parse_format()` and `math_format()` was superseded; please use
-#' `label_parse()` and `label_math()` instead.
-#' @inherit number_format return
+#' @inherit label_number return
 #' @seealso [plotmath] for the details of mathematical formatting in R.
 #' @export
 #' @family labels for continuous scales
@@ -54,10 +51,19 @@ label_math <- function(expr = 10^.x, format = force) {
   }
 }
 
-#' @rdname label_parse
+#' Superseded interface to `label_parse()`/`label_math()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [label_parse()]/[label_math()] for new code.
+#'
+#' @keywords internal
 #' @export
+#' @inheritParams label_parse
 parse_format <- label_parse
-#' @rdname label_parse
+#' @rdname parse_format
 #' @export
 math_format <- label_math
 

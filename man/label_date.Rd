@@ -4,8 +4,6 @@
 \alias{label_date}
 \alias{label_date_short}
 \alias{label_time}
-\alias{date_format}
-\alias{time_format}
 \title{Label date/times}
 \usage{
 label_date(format = "\%Y-\%m-\%d", tz = "UTC")
@@ -13,10 +11,6 @@ label_date(format = "\%Y-\%m-\%d", tz = "UTC")
 label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC")
-
-date_format(format = "\%Y-\%m-\%d", tz = "UTC")
-
-time_format(format = "\%H:\%M:\%S", tz = "UTC")
 }
 \arguments{
 \item{format}{For \code{date_format()} and \code{time_format()} a date/time format
@@ -49,12 +43,6 @@ but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
 }
-\section{Old interface}{
-
-\code{date_format()} and \code{time_format()} are superseded; please use \code{label_date()}
-and \code{label_time()} instead.
-}
-
 \examples{
 date_range <- function(start, days) {
   start <- as.POSIXct(start)

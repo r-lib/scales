@@ -103,8 +103,6 @@ extended_breaks <- breaks_extended
 #' primarily useful for date/times, as [extended_breaks()] should do a slightly
 #' better job for numeric scales.
 #'
-#' `pretty_breaks()` is superseded; use `breaks_pretty()` instead.
-#'
 #' @inheritParams breaks_extended
 #' @param ... other arguments passed on to [pretty()]
 #' @export
@@ -130,7 +128,15 @@ breaks_pretty <- function(n = 5, ...) {
   }
 }
 
+#' Superseded interface to `breaks_pretty()`
+#'
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' These functions are kept for backward compatibility; you should switch
+#' to [breaks_pretty()] for new code.
+#'
+#' @keywords internal
 #' @export
-#' @usage NULL
-#' @rdname breaks_pretty
+#' @inheritParams breaks_pretty
 pretty_breaks <- breaks_pretty

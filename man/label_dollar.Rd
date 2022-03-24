@@ -2,42 +2,11 @@
 % Please edit documentation in R/label-dollar.R
 \name{label_dollar}
 \alias{label_dollar}
-\alias{dollar_format}
-\alias{dollar}
 \alias{rescale_short_scale}
 \alias{rescale_long_scale}
 \title{Label currencies ($100, $2.50, etc)}
 \usage{
 label_dollar(
-  accuracy = NULL,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
-  trim = TRUE,
-  largest_with_cents = 1e+05,
-  negative_parens = FALSE,
-  rescale_large = NULL,
-  ...
-)
-
-dollar_format(
-  accuracy = NULL,
-  scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
-  trim = TRUE,
-  largest_with_cents = 1e+05,
-  negative_parens = FALSE,
-  rescale_large = NULL,
-  ...
-)
-
-dollar(
-  x,
   accuracy = NULL,
   scale = 1,
   prefix = "$",
@@ -84,8 +53,6 @@ value specifies the power-of-ten. The two most common scales are provided
 If \code{NULL}, the default, these suffixes aren't used.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
-
-\item{x}{A numeric vector}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -101,12 +68,6 @@ rather than axes.
 Format numbers as currency, rounding values to dollars or cents using
 a convenient heuristic.
 }
-\section{Old interface}{
-
-\code{dollar()} and \code{format_dollar()} are superseded; please use \code{label_dollar()}
-instead.
-}
-
 \examples{
 demo_continuous(c(0, 1), labels = label_dollar())
 demo_continuous(c(1, 100), labels = label_dollar())

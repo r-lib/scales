@@ -3,9 +3,6 @@
 \name{label_number}
 \alias{label_number}
 \alias{label_comma}
-\alias{comma}
-\alias{number_format}
-\alias{comma_format}
 \title{Label numbers in decimal format (e.g. 0.12, 1,234)}
 \usage{
 label_number(
@@ -20,42 +17,6 @@ label_number(
 )
 
 label_comma(
-  accuracy = NULL,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
-  trim = TRUE,
-  digits,
-  ...
-)
-
-comma(
-  x,
-  accuracy = NULL,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
-  trim = TRUE,
-  digits,
-  ...
-)
-
-number_format(
-  accuracy = NULL,
-  scale = 1,
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  decimal.mark = ".",
-  trim = TRUE,
-  ...
-)
-
-comma_format(
   accuracy = NULL,
   scale = 1,
   prefix = "",
@@ -92,8 +53,6 @@ width (see \code{\link[base:format]{base::format()}}).}
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 
 \item{digits}{Deprecated, use \code{accuracy} instead.}
-
-\item{x}{A numeric vector to format.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -110,12 +69,6 @@ Use \code{label_number()} force decimal display of numbers (i.e. don't use
 \link[=label_scientific]{scientific} notation). \code{label_comma()} is a special case
 that inserts a comma every three digits.
 }
-\section{Old interface}{
-
-\code{number_format()}, \code{comma_format()}, and \code{comma()} are superseded; please use
-\code{label_number()} and \code{label_comma()} instead.
-}
-
 \examples{
 demo_continuous(c(-1e6, 1e6))
 demo_continuous(c(-1e6, 1e6), labels = label_number())
