@@ -2,8 +2,6 @@
 % Please edit documentation in R/label-dollar.R
 \name{label_dollar}
 \alias{label_dollar}
-\alias{rescale_short_scale}
-\alias{rescale_long_scale}
 \title{Label currencies ($100, $2.50, etc)}
 \usage{
 label_dollar(
@@ -16,13 +14,8 @@ label_dollar(
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = deprecated(),
-  rescale_large = NULL,
   ...
 )
-
-rescale_short_scale()
-
-rescale_long_scale()
 }
 \arguments{
 \item{accuracy, largest_with_cents}{Number to round to. If \code{NULL}, the default,
@@ -46,12 +39,6 @@ width (see \code{\link[base:format]{base::format()}}).}
 
 \item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
 \code{style_negative = "parens"} instead.}
-
-\item{rescale_large}{Named list indicating suffixes given to large values
-(e.g. thousands, millions, billions, trillions). Name gives suffix, and
-value specifies the power-of-ten. The two most common scales are provided
-(\code{rescale_short_scale()} and \code{rescale_long_scale()}).
-If \code{NULL}, the default, these suffixes aren't used.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
@@ -86,18 +73,22 @@ demo_continuous(c(1000, 1100), labels = euro)
 # Use negative_parens = TRUE for finance style display
 demo_continuous(c(-100, 100), labels = label_dollar(style_negative = "parens"))
 
-# In finance the short scale is most prevalent
-short <- label_dollar(rescale_large = rescale_short_scale())
-demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = short)
+# Use scale_cut to use K/M/B where appropriate
+demo_log10(c(1, 1e16),
+  breaks = log_breaks(7, 1e3),
+  labels = label_dollar(scale_cut = cut_short_scale())
+)
+# cut_short_scale() uses B = one thousand million
+# cut_long_scale() uses B = one million million
+demo_log10(c(1, 1e16),
+  breaks = log_breaks(7, 1e3),
+  labels = label_dollar(scale_cut = cut_long_scale())
+)
 
-# In other contexts the long scale might be used
-long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
-demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
-
-# You can also define a custom naming scheme
+# You can also define your own breaks
 gbp <- label_dollar(
   prefix = "\u00a3",
-  rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+  scale_cut = c(k = 1e3, m = 1e6, bn = 1e9, tn = 1e12)
 )
 demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 }

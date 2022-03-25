@@ -35,27 +35,24 @@
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
-* `label_number_si()` now correctly uses [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix)
-  (e.g. abbreviations "k" for "kilo-" and "m" for "milli-"). It previously used
+* `label_number_si()` is deprecated because it previously used
   [short scale abbreviations](https://en.wikipedia.org/wiki/Long_and_short_scales)
-  (e.g. "M" for million, "B" for billion). The short scale is most commonly used
-  in finance, so it is now supported via the new `rescale_large` argument of
-  `label_dollar()` (@davidchall, #235).
+  instead of the correct [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix).
+  You can mimic either the previous results or get the correct labels with
+  `label_number(scale_cut = cut_scale_short())` or
+  `label_number(scale_cut = cut_SI("m"))`.
 
-* `label_number_si()` now requires the `unit` argument is specified. The default
-  value of the `accuracy` argument is now `NULL`, which automatically chooses
-  the precision. The `sep` argument is removed, which had no purpose (@davidchall, #235).
+* `number()` gains a new `scale_cut` argument that enables independent 
+  scaling of different parts of the range. This is useful in `label_dollar()` 
+  to support scaling of large numbers by suffix (e.g. "M" for million, "B" 
+  for billion). It can be used with `cut_short_scale()` when billion =
+  thousand million and `cut_long_scale()` when billion = million million.
+  Additionally, the accuracy is now computed per scale category, so rescaled
+  values can have different numbers of decimal places.
 
-* `label_dollar()` gains a `rescale_large` argument to support scaling of large
-  numbers by suffix (e.g. "M" for million, "B" for billion). In finance, the
-  short scale is most prevalent (i.e. 1 billion = 1 thousand million). In other
-  contexts, the long scale might be desired (i.e. 1 billion = 1 million million).
-  These two common scales are supported by setting `rescale_large = rescale_short_scale()`
-  or `rescale_large = rescale_long_scale()`, but custom scaling-by-suffix is also
-  supported (@davidchall, #235).
-  
 * `label_bytes()` now correctly accounts for the `scale` argument when choosing
-  auto units (@davidchall, #235).
+  auto units (@davidchall, #235) and leaves `0` as is (instead of formatting to 
+  "0 B") for consistency with `label_number_si()`.
   
 * Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
   unnecessary digits (@davidchall, #304).
