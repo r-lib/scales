@@ -46,6 +46,13 @@ test_that("prefix applied before negative format", {
   expect_equal(number(-1, prefix = "$", style_negative = "parens"), "($1)")
 })
 
+test_that("accuracy is vectorised", {
+  expect_equal(
+    number(rep(0.1234, 4), accuracy = 10^(0:-3)),
+    c("0", "0.1", "0.12", "0.123")
+  )
+})
+
 # Comma formatter --------------------------------------------------------
 
 test_that("comma format always adds commas", {

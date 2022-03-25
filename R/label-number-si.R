@@ -23,20 +23,24 @@
 #' # use scale when data already uses SI prefix (e.g. stored in kg)
 #' kg <- label_number_si("g", scale = 1e3)
 #' demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = kg)
-label_number_si <- function(unit, accuracy = NULL, scale = 1, ...) {
+label_number_si <- function(unit, accuracy = NULL, scale = 1, suffix = "", ...) {
   sep <- if (is.null(unit) || !nzchar(unit)) "" else " "
   force_all(accuracy, ...)
 
   function(x) {
-    rescale <- rescale_by_suffix(x * scale, breaks = 10^si_powers)
-
-    suffix <- paste0(sep, rescale$suffix, unit)
-    scale <- scale * rescale$scale
+    rescale <- rescale_by_suffix(
+      x = x,
+      breaks = 10^si_powers,
+      scale = scale,
+      suffix = unit,
+      accuracy = accuracy,
+      space = unit != ""
+    )
 
     number(x,
-      accuracy = accuracy,
-      scale = scale,
-      suffix = suffix,
+      accuracy = rescale$accuracy,
+      scale = rescale$scale,
+      suffix = rescale$suffix,
       ...
     )
   }

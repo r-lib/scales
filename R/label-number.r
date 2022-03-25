@@ -194,22 +194,29 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
 
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
-  nsmall <- -floor(log10(accuracy))
-  nsmall <- min(max(nsmall, 0), 20)
+  nsmalls <- -floor(log10(accuracy))
+  nsmalls <- pmin(pmax(nsmalls, 0), 20)
 
   sign <- sign(x)
   sign[is.na(sign)] <- 0
   x <- abs(x)
+  x_scaled <- scale * x
 
-  ret <- format(
-    scale * x,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    nsmall = nsmall,
-    scientific = FALSE,
-    ...
-  )
+  ret <- character(length(x))
+  for (nsmall in unique(nsmalls)) {
+    idx <- nsmall == nsmalls
+
+    ret[idx] <- format(
+      x_scaled[idx],
+      big.mark = big.mark,
+      decimal.mark = decimal.mark,
+      trim = trim,
+      nsmall = nsmall,
+      scientific = FALSE,
+      ...
+    )
+  }
+
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
 

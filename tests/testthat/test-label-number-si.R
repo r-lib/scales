@@ -42,3 +42,11 @@ test_that("number_si preserves names", {
   number_si <- label_number_si("m")
   expect_named(number_si(c(a = 1)), "a")
 })
+
+test_that("accuracy computed on individual scales", {
+  x <- c(0, 250, 500, 750, 1250, 1500) * 1e3
+  expect_equal(
+    label_number_si("")(x),
+    c("0", "250k", "500k", "750k", "1.25M", "1.50M")
+  )
+})

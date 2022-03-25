@@ -139,11 +139,17 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
       stop("`rescale_large` must be positive integers.", call. = FALSE)
     }
 
-    rescale <- rescale_by_suffix(x * scale, breaks = c(0, 10^rescale_large))
-
-    sep <- if (suffix == "") "" else " "
-    suffix <- paste0(rescale$suffix, sep, suffix)
-    scale <- scale * rescale$scale
+    rescale <- rescale_by_suffix(
+      x = x,
+      breaks = c(0, 10^rescale_large),
+      scale = scale,
+      suffix = suffix,
+      accuracy = accuracy,
+      space = FALSE
+    )
+    scale <- rescale$scale
+    suffix <- rescale$suffix
+    accuracy <- rescale$accuracy
   }
 
   if (lifecycle::is_present(negative_parens)) {
