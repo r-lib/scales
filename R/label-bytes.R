@@ -82,7 +82,7 @@ cut_bytes <- function(units = c("si", "binary")) {
   base <- if (units == "binary") 1024 else 1000
   suffix <- if (units == "binary") "iB" else "B"
 
-  out <- c(1, base^powers)
-  names(out) <- paste0(" ", c("", names(powers)), suffix)
+  out <- c(0, base^powers)
+  names(out) <- c(paste0(" ", suffix), paste0(" ", names(powers), suffix))
   out
 }

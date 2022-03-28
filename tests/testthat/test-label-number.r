@@ -150,7 +150,7 @@ test_that("scale applied before scale_cut", {
 })
 
 test_that("cut_si() adds space before unit", {
-  expect_equal(number(c(1, 1000), scale_cut = cut_si("m")), c("1 m", "1 km"))
+  expect_equal(number(c(0, 1, 1000), scale_cut = cut_si("m")), c("0 m", "1 m", "1 km"))
 })
 
 test_that("handles out-of-range inputs", {
@@ -159,9 +159,10 @@ test_that("handles out-of-range inputs", {
 
 test_that("scale_cut checks its inputs", {
   expect_snapshot(error = TRUE, {
-    number(1, scale_cut = 1)
+    number(1, scale_cut = 0)
     number(1, scale_cut = "x")
-    number(1, scale_cut = c(x = 0, y = 1))
+    number(1, scale_cut = c(x = 1, y = 2))
+    number(1, scale_cut = c(x = 0, NA))
   })
 
 })

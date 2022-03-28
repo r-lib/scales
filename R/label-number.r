@@ -319,18 +319,21 @@ precision <- function(x) {
 # each value of x is assigned a suffix and associated scaling factor
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
-  if (!is.numeric(breaks) || !is_named(breaks)) {
+  if (!is.numeric(breaks) || is.null(names(breaks))) {
     abort("`scale_cut` must be a named numeric vector")
   }
-  breaks <- sort(breaks)
-  if (any(breaks <= 0 | is.na(breaks))) {
-    abort("`scale_cut` values must be non-missing and greater than zero")
+  breaks <- sort(breaks, na.last = TRUE)
+  if (any(is.na(breaks))) {
+    abort("`scale_cut` values must not be missing")
+  }
+  if (!identical(breaks[[1]], 0) && !identical(breaks[[1]], 0L)) {
+    abort("Smallest value of `scales_cut` must be zero")
   }
 
   break_suffix <- as.character(cut(
     abs(x * scale),
-    breaks = c(0, unname(breaks), Inf),
-    labels = c("", names(breaks)),
+    breaks = c(unname(breaks), Inf),
+    labels = c(names(breaks)),
     right = FALSE
   ))
   break_suffix[is.na(break_suffix)] <- names(which.min(breaks))
@@ -341,7 +344,6 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   # exact zero is not scaled
   x_zero <- which(abs(x) == 0)
   scale[x_zero] <- 1
-  break_suffix[x_zero] <- ""
 
   suffix <- paste0(break_suffix, suffix)
   accuracy <- accuracy %||% stats::ave(x * scale, scale, FUN = precision)
@@ -359,13 +361,13 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 #' @export
 #' @rdname number
 cut_short_scale <- function() {
-  c(K = 1e3, M = 1e6, B = 1e9, T = 1e12)
+  c(0, K = 1e3, M = 1e6, B = 1e9, T = 1e12)
 }
 
 #' @export
 #' @rdname number
 cut_long_scale <- function() {
-  c(K = 1e3, M = 1e6, B = 1e12, T = 1e18)
+  c(0, K = 1e3, M = 1e6, B = 1e12, T = 1e18)
 }
 
 # power-of-ten prefixes used by the International System of Units (SI)
@@ -384,7 +386,7 @@ si_powers <- c(
 #' @export
 #' @rdname number
 cut_si <- function(unit) {
-  out <- 10^si_powers
-  names(out) <- paste0(" ", names(out), unit)
+  out <- c(0, 10^si_powers)
+  names(out) <- c(paste0(" ", unit), paste0(" ", names(si_powers), unit))
   out
 }

@@ -33,7 +33,7 @@ test_that("rescale_large works", {
     c("$1", "$1K", "$1M", "$1,000M", "$1B", "$1,000B", "$1T")
   )
   expect_equal(
-    label_dollar(scale_cut = c(k = 1e3, m = 1e6, bn = 1e9, tn = 1e12))(x),
+    label_dollar(scale_cut = c(0, k = 1e3, m = 1e6, bn = 1e9, tn = 1e12))(x),
     c("$1", "$1k", "$1m", "$1bn", "$1tn", "$1,000tn", "$1,000,000tn")
   )
 })

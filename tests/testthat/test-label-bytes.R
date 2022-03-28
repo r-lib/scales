@@ -4,7 +4,7 @@ test_that("auto units always rounds down", {
 
 test_that("auto units handles 0 and other special values", {
   expect_equal(label_bytes()(NA_real_), NA_character_)
-  expect_equal(label_bytes()(0), "0")
+  expect_equal(label_bytes()(0), "0 B")
   expect_equal(label_bytes()(-1), "-1 B")
   expect_equal(label_bytes()(Inf), "Inf")
 })
