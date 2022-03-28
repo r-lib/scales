@@ -40,15 +40,16 @@
   instead of the correct [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix).
   You can mimic either the previous results or get the correct labels with
   `label_number(scale_cut = cut_scale_short())` or
-  `label_number(scale_cut = cut_SI("m"))` (with help from @davidchall).
+  `label_number(scale_cut = cut_SI("m"))` (#339, with help from @davidchall).
 
 * `number()` gains a new `scale_cut` argument that enables independent 
   scaling of different parts of the range. This is useful in `label_dollar()` 
   to support scaling of large numbers by suffix (e.g. "M" for million, "B" 
   for billion). It can be used with `cut_short_scale()` when billion =
-  thousand million and `cut_long_scale()` when billion = million million.
-  Additionally, the accuracy is now computed per scale category, so rescaled
-  values can have different numbers of decimal places.
+  thousand million and `cut_long_scale()` when billion = million million
+  (initial implementation provided by @davidchall). Additionally, the accuracy 
+  is now computed per scale category, so rescaled values can have different 
+  numbers of decimal places (#339).
 
 * `label_bytes()` now correctly accounts for the `scale` argument when choosing
   auto units (@davidchall, #235) and leaves `0` as is (instead of formatting to 
