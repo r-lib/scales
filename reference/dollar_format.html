@@ -74,7 +74,6 @@ to <code><a href="label_dollar.html">label_dollar()</a></code> for new code.</p>
   trim <span class="op">=</span> <span class="cn">TRUE</span>,
   largest_with_cents <span class="op">=</span> <span class="fl">1e+05</span>,
   negative_parens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span>,
-  rescale_large <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">...</span>
 <span class="op">)</span>
 
@@ -88,8 +87,8 @@ to <code><a href="label_dollar.html">label_dollar()</a></code> for new code.</p>
   decimal.mark <span class="op">=</span> <span class="st">"."</span>,
   trim <span class="op">=</span> <span class="cn">TRUE</span>,
   largest_with_cents <span class="op">=</span> <span class="fl">1e+05</span>,
+  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,
   negative_parens <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span>,
-  rescale_large <span class="op">=</span> <span class="cn">NULL</span>,
   style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
@@ -126,12 +125,6 @@ value is less than <code>largest_with_cents</code> which by default is 100,000.<
 <dt>negative_parens</dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> Use
 <code>style_negative = "parens"</code> instead.</p></dd>
-<dt>rescale_large</dt>
-<dd><p>Named list indicating suffixes given to large values
-(e.g. thousands, millions, billions, trillions). Name gives suffix, and
-value specifies the power-of-ten. The two most common scales are provided
-(<code><a href="label_dollar.html">rescale_short_scale()</a></code> and <code><a href="label_dollar.html">rescale_long_scale()</a></code>).
-If <code>NULL</code>, the default, these suffixes aren't used.</p></dd>
 <dt>...</dt>
 <dd><p>Other arguments passed on to <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>.</p></dd>
 <dt>x</dt>
