@@ -4,8 +4,8 @@
 #' `r lifecycle::badge("deprecated")`
 #'
 #' `label_number_si()` is deprecated because the previous unit didn't actually
-#' SI units, but instead used the so called "short scale". You can now get the
-#' same results as the previous with
+#' use SI units, but instead used the so called "short scale". You can now get the
+#' same results as before with
 #' `label_number(scale_cut = cut_short_scale())`, or if you want correct SI
 #' units, `label_number(scale_cut = cut_si("unit"))`.
 #'

@@ -43,14 +43,14 @@
 #'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
 #' @param scale_cut Named numeric vector that allows you to rescale large
 #'   (or small) numbers and add a prefix. Built-in helpers include:
-#'   * `cut_short_scale()`: (10^3, 10^6] = K, (10^6, 10^9] = B, (10^9, 10^12] = T.
-#'   * `cut_long_scale()`: (10^3, 10^6] = K, (10^6, 10^12] = B, (10^12, 10^18] = T.
+#'   * `cut_short_scale()`: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+#'   * `cut_long_scale()`: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
 #'   * `cut_si(unit)`: uses standard SI units.
 #'
 #'   If you supply a vector `c(a = 100, b = 1000)`, absolute values in the
-#'   range `[0, 100]` will not be rescaled, values in the range `(100, 1000]`
-#'   will be divided by 100 and given the suffix "a", and values in
-#'   the range `(1000, Inf)` will be divided by 1000 and given the suffix "b".
+#'   range `[0, 100)` will not be rescaled, absolute values in the range `[100, 1000)`
+#'   will be divided by 100 and given the suffix "a", and absolute values in
+#'   the range `[1000, Inf)` will be divided by 1000 and given the suffix "b".
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
@@ -124,7 +124,7 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
       decimal.mark = decimal.mark,
       style_positive = style_positive,
       style_negative = style_negative,
-      scale_cut,
+      scale_cut = scale_cut,
       trim = trim,
       ...
     )
@@ -314,7 +314,7 @@ precision <- function(x) {
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
   if (!is.numeric(breaks) || !is_named(breaks)) {
-    abort("`scale_cut` must be a named integer vector")
+    abort("`scale_cut` must be a named numeric vector")
   }
   breaks <- sort(breaks)
   if (any(breaks <= 0 | is.na(breaks))) {
