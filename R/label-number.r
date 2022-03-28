@@ -378,11 +378,13 @@ cut_long_scale <- function() {
 # because they don't commonly appear in scientific usage anymore
 si_powers <- c(
   y = -24, z = -21, a = -18, f = -15,
-  p = -12, n =  -9, "\u00b5" = -6, m = -3,
+  p = -12, n =  -9, micro = -6, m = -3,
   0,
   k =  3, M =  6, G =  9, T = 12,
   P = 15, E = 18, Z = 21, Y = 24
 )
+# Avoid using UTF8 as symbol
+names(si_powers)[si_powers == -6] <- "\u00b5"
 
 #' @export
 #' @rdname number
