@@ -385,6 +385,6 @@ si_powers <- c(
 #' @rdname number
 cut_si <- function(unit) {
   out <- 10^si_powers
-  names(out) <- paste0(if (unit != "") " ", names(out), unit)
+  names(out) <- paste0(" ", names(out), unit)
   out
 }
