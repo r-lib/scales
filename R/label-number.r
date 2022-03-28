@@ -83,8 +83,14 @@
 #'   breaks = log_breaks(10),
 #'   labels = label_number(scale_cut = cut_si("g"))
 #' )
+#' # use scale and scale_cut when data already uses SI prefix
+#' # for example, if data was stored in kg
+#'   c(1e-9, 1),
+#'   breaks = log_breaks(10),
+#'   labels = label_number(scale_cut = cut_si("g"), scale = 1e3)
+#' )
 #'
-#' # Use style arguments to vary the appearance of positive and negative numbers
+#' #' # Use style arguments to vary the appearance of positive and negative numbers
 #' demo_continuous(c(-1e3, 1e3), labels = label_number(
 #'   style_positive = "plus",
 #'   style_negative = "minus"

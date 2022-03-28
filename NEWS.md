@@ -40,7 +40,7 @@
   instead of the correct [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix).
   You can mimic either the previous results or get the correct labels with
   `label_number(scale_cut = cut_scale_short())` or
-  `label_number(scale_cut = cut_SI("m"))`.
+  `label_number(scale_cut = cut_SI("m"))` (with help from @davidchall).
 
 * `number()` gains a new `scale_cut` argument that enables independent 
   scaling of different parts of the range. This is useful in `label_dollar()` 
