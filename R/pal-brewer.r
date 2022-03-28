@@ -7,7 +7,7 @@
 #' @param direction Sets the order of colours in the scale. If 1, the default,
 #'   colours are as output by [RColorBrewer::brewer.pal()]. If -1, the
 #'   order of colours is reversed.
-#' @references <http://colorbrewer2.org>
+#' @references <https://colorbrewer2.org>
 #' @export
 #' @examples
 #' show_col(brewer_pal()(10))

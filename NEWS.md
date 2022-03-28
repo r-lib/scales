@@ -256,7 +256,7 @@
  
 * `expand_range()` arguments `mul` and `add` now affect scales with a range of 0    
   (@dpseidel, 
-  [ggplot2-2281](https://www.github.com/tidyverse/ggplot2/issues/2281)).
+  [ggplot2-2281](https://github.com/tidyverse/ggplot2/issues/2281)).
 
 * `extended_breaks()` now allows user specification of the `labeling::extended()` 
   argument `only.loose` to permit more flexible breaks specification 
@@ -300,12 +300,12 @@
 * `scale_continuous()` uses a more correct check for numeric values.
 
 * NaN is correctly recognised as a missing value by the gradient palettes
-  ([ggplot2-1482](https://www.github.com/tidyverse/ggplot2/issues/1482)).
+  ([ggplot2-1482](https://github.com/tidyverse/ggplot2/issues/1482)).
   
 # scales 0.3.0
 
 * `rescale()` preserves missing values in input when the range of `x` is
-  (effectively) 0 ([ggplot2-985](https://www.github.com/tidyverse/ggplot2/issues/985)).
+  (effectively) 0 ([ggplot2-985](https://github.com/tidyverse/ggplot2/issues/985)).
 
 * Continuous colour palettes now use `colour_ramp()` instead of `colorRamp()`.
   This only supports interpolation in Lab colour space, but is hundreds of

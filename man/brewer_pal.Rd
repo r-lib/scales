@@ -30,5 +30,5 @@ cols <- brewer_pal("div")(5)
 show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
 }
 \references{
-\url{http://colorbrewer2.org}
+\url{https://colorbrewer2.org}
 }

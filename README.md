@@ -10,16 +10,16 @@ status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org
 [![R build
 status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://codecov.io/gh/r-lib/scales?branch=main)
+coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
 
 One of the most difficult parts of any graphics package is scaling,
 converting from data values to perceptual properties. The inverse of
 scaling, making guides (legends and axes) that can be used to read the
 graph, is often even harder! The scales packages provides the internal
-scaling infrastructure used by [ggplot2](http://ggplot2.tidyverse.org/),
-and gives you tools to override the default breaks, labels,
-transformations and palettes.
+scaling infrastructure used by
+[ggplot2](https://ggplot2.tidyverse.org/), and gives you tools to
+override the default breaks, labels, transformations and palettes.
 
 ## Installation
 
@@ -60,7 +60,7 @@ txhousing %>%
   ) + 
   scale_y_log10(
     "Total sales",
-    labels = scales::label_number_si()
+    labels = scales::label_number(scale_cut = scales::cut_short_scale())
   )
 ```
 

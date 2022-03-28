@@ -2,7 +2,7 @@
 #'
 #' Scale bytes into human friendly units. Can use either SI units (e.g.
 #' kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
-#' [Units of Information](http://en.wikipedia.org/wiki/Units_of_information)
+#' [Units of Information](https://en.wikipedia.org/wiki/Units_of_information)
 #' on Wikipedia for more details.
 #'
 #' @param units Unit to use. Should either one of:
