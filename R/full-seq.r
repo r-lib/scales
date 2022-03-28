@@ -5,7 +5,6 @@
 #' @param ... other arguments passed on to methods
 #' @keywords internal
 #' @export
-#' @seealso [plyr::round_any()]
 fullseq <- function(range, size, ...) UseMethod("fullseq")
 
 #' @export
