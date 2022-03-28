@@ -164,5 +164,10 @@ test_that("scale_cut checks its inputs", {
     number(1, scale_cut = c(x = 1, y = 2))
     number(1, scale_cut = c(x = 0, NA))
   })
+})
 
+test_that("built-in functions return expected values", {
+  expect_equal(number(1e9, scale_cut = cut_short_scale()), "1B")
+  expect_equal(number(1e9, scale_cut = cut_long_scale()), "1 000M")
+  expect_equal(number(1e9, scale_cut = cut_si("m")), "1 Gm")
 })
