@@ -85,6 +85,7 @@
 #' )
 #' # use scale and scale_cut when data already uses SI prefix
 #' # for example, if data was stored in kg
+#' demo_log10(
 #'   c(1e-9, 1),
 #'   breaks = log_breaks(10),
 #'   labels = label_number(scale_cut = cut_si("g"), scale = 1e3)

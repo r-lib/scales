@@ -46,7 +46,7 @@
 #' # You can also define your own breaks
 #' gbp <- label_dollar(
 #'   prefix = "\u00a3",
-#'   scale_cut = c(k = 1e3, m = 1e6, bn = 1e9, tn = 1e12)
+#'   scale_cut = c(0, k = 1e3, m = 1e6, bn = 1e9, tn = 1e12)
 #' )
 #' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
