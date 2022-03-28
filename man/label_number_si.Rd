@@ -38,8 +38,8 @@ rather than axes.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
 \code{label_number_si()} is deprecated because the previous unit didn't actually
-SI units, but instead used the so called "short scale". You can now get the
-same results as the previous with
+use SI units, but instead used the so called "short scale". You can now get the
+same results as before with
 \code{label_number(scale_cut = cut_short_scale())}, or if you want correct SI
 units, \code{label_number(scale_cut = cut_si("unit"))}.
 }

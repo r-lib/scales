@@ -95,15 +95,15 @@ the horizontal bar of \code{+}.
 \item{scale_cut}{Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:
 \itemize{
-\item \code{cut_short_scale()}: (10^3, 10^6] = K, (10^6, 10^9] = B, (10^9, 10^12] = T.
-\item \code{cut_long_scale()}: (10^3, 10^6] = K, (10^6, 10^12] = B, (10^12, 10^18] = T.
+\item \code{cut_short_scale()}: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+\item \code{cut_long_scale()}: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
 \item \code{cut_si(unit)}: uses standard SI units.
 }
 
 If you supply a vector \code{c(a = 100, b = 1000)}, absolute values in the
-range \verb{[0, 100]} will not be rescaled, values in the range \verb{(100, 1000]}
-will be divided by 100 and given the suffix "a", and values in
-the range \verb{(1000, Inf)} will be divided by 1000 and given the suffix "b".}
+range \verb{[0, 100)} will not be rescaled, absolute values in the range \verb{[100, 1000)}
+will be divided by 100 and given the suffix "a", and absolute values in
+the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
