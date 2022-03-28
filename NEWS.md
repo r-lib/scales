@@ -1,13 +1,40 @@
 # scales (development version)
 
-* `number()` gains new `style_positive` and `style_negative` parameters that
-  control how positive and negative numbers are styled (#249, #262).
-  
-* `number()` puts the `prefix` after the negative sign, rather than before it,
-  yielding (e.g) `-$1` rather than `$-1`.
+## New features
 
-* The `negative_parens` argument to `dollar()` is now deprecated in favour of
-  `style_negative = "parens"`.
+* `label_number()`:
+
+  * New `style_positive` and `style_negative` argument control how positive and
+    negative numbers are styled (#249, #262).
+  
+  * The `prefix` comes after the negative sign, rather than before it, yielding 
+    (e.g) the correct `-$1` instead of `$-1`.
+
+  * New `scale_cut` argument enables independent scaling of different parts of 
+    the range. This is useful in `label_dollar()`  to support scaling 
+    of large numbers by suffix (e.g. "M" for million, "B" for billion). It can 
+    be used with `cut_short_scale()` when billion = thousand million and 
+    `cut_long_scale()` when billion = million million (initial implementation
+    provided by @davidchall). Additionally, the accuracy is now computed per 
+    scale category, so rescaled values can have different numbers of decimal 
+    places (#339).
+
+  * `label_number_si()` is deprecated because it previously used
+    [short scale abbreviations](https://en.wikipedia.org/wiki/Long_and_short_scales)
+    instead of the correct [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix).
+    You can mimic the previous results with 
+    `label_number(scale_cut = cut_scale_short())` or get real SI labels with
+    `label_number(scale_cut = cut_SI("m"))` (#339, with help from @davidchall).
+
+* `label_bytes()` now correctly accounts for the `scale` argument when choosing
+  auto units (@davidchall, #235) and leaves `0` as is (instead of formatting to 
+  "0 B") for consistency with `label_number_si()`.
+
+* `label_date()` and `label_time()` gain a `locale` argument that allows you
+  to set the locale used to generate day and month names (#309).
+
+* New `label_log()` displays the base and a superscript exponent, for use with
+  logarithmic axes (@davidchall, #312).
 
 * New `compose_trans()` allows arbitrary composition of transformers. This
   is mostly easily achieved by passing a character vector whenever you might
@@ -15,19 +42,17 @@
   `scale_y_continuous(trans = c("log10", "reverse"))` will create a 
   reverse log-10 scale (#287).
 
-* `time_trans()` and `date_trans()` have `domains` of the correct type so that 
-  they can be transformed without error (#298).
+## Bug fixes and minor improvements
 
-* `label_date()` and `label_time()` gain a `locale` argument that allows you
-  to set the locale used to generate day and month names (#309).
-
-* `hue_pal()` respects `h.start` once again (#288).
+* `breaks_width()` now supports units like `"3 months"` in the `offset`
+  argument.
 
 * `col_quantile()` no longer errors if data is sufficiently skewed that we
   can't generate the requested number of unique colours (#294).
 
-* `breaks_width()` now supports units like `"3 months"` in the `offset`
-  argument.
+* `dollar(negative_parens)` is deprecated in favour of `style_negative = "parens"`.
+
+* `hue_pal()` respects `h.start` once again (#288).
 
 * `label_number_auto()` correctly formats single numbers that are greater than
   1e+06 without an error (@karawoo, #321)
@@ -35,31 +60,11 @@
 * `manual_pal()` now always returns an unnamed colour vector, which is easy to
   use with `ggplot2::discrete_scale()` (@yutannihilation, #284).
 
-* `label_number_si()` is deprecated because it previously used
-  [short scale abbreviations](https://en.wikipedia.org/wiki/Long_and_short_scales)
-  instead of the correct [SI prefixes](https://en.wikipedia.org/wiki/Metric_prefix).
-  You can mimic either the previous results or get the correct labels with
-  `label_number(scale_cut = cut_scale_short())` or
-  `label_number(scale_cut = cut_SI("m"))` (#339, with help from @davidchall).
+* `time_trans()` and `date_trans()` have `domains` of the correct type so that 
+  they can be transformed without error (#298).
 
-* `number()` gains a new `scale_cut` argument that enables independent 
-  scaling of different parts of the range. This is useful in `label_dollar()` 
-  to support scaling of large numbers by suffix (e.g. "M" for million, "B" 
-  for billion). It can be used with `cut_short_scale()` when billion =
-  thousand million and `cut_long_scale()` when billion = million million
-  (initial implementation provided by @davidchall). Additionally, the accuracy 
-  is now computed per scale category, so rescaled values can have different 
-  numbers of decimal places (#339).
-
-* `label_bytes()` now correctly accounts for the `scale` argument when choosing
-  auto units (@davidchall, #235) and leaves `0` as is (instead of formatting to 
-  "0 B") for consistency with `label_number_si()`.
-  
 * Internal `precision()`, used when `accuracy = NULL`, now avoids displaying
   unnecessary digits (@davidchall, #304).
-
-* New `label_log()` displays the base and a superscript exponent, for use with
-  logarithmic axes (@davidchall, #312).
 
 # scales 1.1.1
 
