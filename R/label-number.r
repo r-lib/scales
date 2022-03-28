@@ -41,6 +41,16 @@
 #'      nicety that ensures `-` aligns with the horizontal bar of the
 #'      the horizontal bar of `+`.
 #'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
+#' @param scale_cut Named numeric vector that allows you to rescale large
+#'   (or small) numbers and add a prefix. Built-in helpers include:
+#'   * `cut_short_scale()`: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+#'   * `cut_long_scale()`: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
+#'   * `cut_si(unit)`: uses standard SI units.
+#'
+#'   If you supply a vector `c(a = 100, b = 1000)`, absolute values in the
+#'   range `[0, 100)` will not be rescaled, absolute values in the range `[100, 1000)`
+#'   will be divided by 100 and given the suffix "a", and absolute values in
+#'   the range `[1000, Inf)` will be divided by 1000 and given the suffix "b".
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
@@ -57,7 +67,31 @@
 #' demo_continuous(c(0, 1e-6), labels = label_number())
 #' demo_continuous(c(0, 1e-6), labels = label_number(scale = 1e6))
 #'
-#' # Use style arguments to vary the appearance of positive and negative numbers
+#' #' Use scale_cut to automatically add prefixes for large/small numbers
+#' demo_log10(
+#'   c(1, 1e9),
+#'   breaks = log_breaks(10),
+#'   labels = label_number(scale_cut = cut_short_scale())
+#' )
+#' demo_log10(
+#'   c(1, 1e9),
+#'   breaks = log_breaks(10),
+#'   labels = label_number(scale_cut = cut_si("m"))
+#' )
+#' demo_log10(
+#'   c(1e-9, 1),
+#'   breaks = log_breaks(10),
+#'   labels = label_number(scale_cut = cut_si("g"))
+#' )
+#' # use scale and scale_cut when data already uses SI prefix
+#' # for example, if data was stored in kg
+#' demo_log10(
+#'   c(1e-9, 1),
+#'   breaks = log_breaks(10),
+#'   labels = label_number(scale_cut = cut_si("g"), scale = 1e3)
+#' )
+#'
+#' #' # Use style arguments to vary the appearance of positive and negative numbers
 #' demo_continuous(c(-1e3, 1e3), labels = label_number(
 #'   style_positive = "plus",
 #'   style_negative = "minus"
@@ -71,6 +105,7 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
                          style_positive = c("none", "plus"),
                          style_negative = c("hyphen", "minus", "parens"),
+                         scale_cut = NULL,
                          trim = TRUE, ...) {
   force_all(
     accuracy,
@@ -81,6 +116,7 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
     decimal.mark,
     style_positive,
     style_negative,
+    scale_cut,
     trim,
     ...
   )
@@ -95,6 +131,7 @@ label_number <- function(accuracy = NULL, scale = 1, prefix = "",
       decimal.mark = decimal.mark,
       style_positive = style_positive,
       style_negative = style_negative,
+      scale_cut = scale_cut,
       trim = trim,
       ...
     )
@@ -184,6 +221,7 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
                    style_positive = c("none", "plus"),
                    style_negative = c("hyphen", "minus", "parens"),
+                   scale_cut = NULL,
                    trim = TRUE, ...) {
   if (length(x) == 0) {
     return(character())
@@ -192,24 +230,44 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   style_positive <- arg_match(style_positive)
   style_negative <- arg_match(style_negative)
 
+  if (!is.null(scale_cut)) {
+    cut <- scale_cut(x,
+      breaks = scale_cut,
+      scale = scale,
+      accuracy = accuracy,
+      suffix = suffix
+    )
+
+    scale <- cut$scale
+    suffix <- cut$suffix
+    accuracy <- cut$accuracy
+  }
+
   accuracy <- accuracy %||% precision(x * scale)
   x <- round_any(x, accuracy / scale)
-  nsmall <- -floor(log10(accuracy))
-  nsmall <- min(max(nsmall, 0), 20)
+  nsmalls <- -floor(log10(accuracy))
+  nsmalls <- pmin(pmax(nsmalls, 0), 20)
 
   sign <- sign(x)
   sign[is.na(sign)] <- 0
   x <- abs(x)
+  x_scaled <- scale * x
 
-  ret <- format(
-    scale * x,
-    big.mark = big.mark,
-    decimal.mark = decimal.mark,
-    trim = trim,
-    nsmall = nsmall,
-    scientific = FALSE,
-    ...
-  )
+  ret <- character(length(x))
+  for (nsmall in unique(nsmalls)) {
+    idx <- nsmall == nsmalls
+
+    ret[idx] <- format(
+      x_scaled[idx],
+      big.mark = big.mark,
+      decimal.mark = decimal.mark,
+      trim = trim,
+      nsmall = nsmall,
+      scientific = FALSE,
+      ...
+    )
+  }
+
   ret <- paste0(prefix, ret, suffix)
   ret[is.infinite(x)] <- as.character(x[is.infinite(x)])
 
@@ -257,4 +315,79 @@ precision <- function(x) {
     # Never return precision bigger than 1
     pmin(precision, 1)
   }
+}
+
+# each value of x is assigned a suffix and associated scaling factor
+scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
+
+  if (!is.numeric(breaks) || is.null(names(breaks))) {
+    abort("`scale_cut` must be a named numeric vector")
+  }
+  breaks <- sort(breaks, na.last = TRUE)
+  if (any(is.na(breaks))) {
+    abort("`scale_cut` values must not be missing")
+  }
+  if (!identical(breaks[[1]], 0) && !identical(breaks[[1]], 0L)) {
+    abort("Smallest value of `scales_cut` must be zero")
+  }
+
+  break_suffix <- as.character(cut(
+    abs(x * scale),
+    breaks = c(unname(breaks), Inf),
+    labels = c(names(breaks)),
+    right = FALSE
+  ))
+  break_suffix[is.na(break_suffix)] <- names(which.min(breaks))
+
+  scale <- scale * unname(1 / breaks[break_suffix])
+  scale[which(scale %in% c(Inf, NA))] <- 1
+
+  # exact zero is not scaled
+  x_zero <- which(abs(x) == 0)
+  scale[x_zero] <- 1
+
+  suffix <- paste0(break_suffix, suffix)
+  accuracy <- accuracy %||% stats::ave(x * scale, scale, FUN = precision)
+
+  list(
+    scale = scale,
+    suffix = suffix,
+    accuracy = accuracy
+  )
+}
+
+#' #' See [Metric Prefix](https://en.wikipedia.org/wiki/Metric_prefix) on Wikipedia
+#' for more details.
+
+#' @export
+#' @rdname number
+cut_short_scale <- function() {
+  c(0, K = 1e3, M = 1e6, B = 1e9, T = 1e12)
+}
+
+#' @export
+#' @rdname number
+cut_long_scale <- function() {
+  c(0, K = 1e3, M = 1e6, B = 1e12, T = 1e18)
+}
+
+# power-of-ten prefixes used by the International System of Units (SI)
+# https://www.bipm.org/en/measurement-units/prefixes.html
+#
+# note: irregular prefixes (hecto, deca, deci, centi) are not stored
+# because they don't commonly appear in scientific usage anymore
+si_powers <- c(
+  y = -24, z = -21, a = -18, f = -15,
+  p = -12, n =  -9, "\u00b5" = -6, m = -3,
+  0,
+  k =  3, M =  6, G =  9, T = 12,
+  P = 15, E = 18, Z = 21, Y = 24
+)
+
+#' @export
+#' @rdname number
+cut_si <- function(unit) {
+  out <- c(0, 10^si_powers)
+  names(out) <- c(paste0(" ", unit), paste0(" ", names(si_powers), unit))
+  out
 }

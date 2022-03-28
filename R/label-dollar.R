@@ -11,11 +11,6 @@
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param negative_parens `r lifecycle::badge("deprecated")` Use
 #'   `style_negative = "parens"` instead.
-#' @param rescale_large Named list indicating suffixes given to large values
-#'   (e.g. thousands, millions, billions, trillions). Name gives suffix, and
-#'   value specifies the power-of-ten. The two most common scales are provided
-#'   (`rescale_short_scale()` and `rescale_long_scale()`).
-#'   If `NULL`, the default, these suffixes aren't used.
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
 #' @family labels for continuous scales
@@ -36,24 +31,28 @@
 #' # Use negative_parens = TRUE for finance style display
 #' demo_continuous(c(-100, 100), labels = label_dollar(style_negative = "parens"))
 #'
-#' # In finance the short scale is most prevalent
-#' short <- label_dollar(rescale_large = rescale_short_scale())
-#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = short)
+#' # Use scale_cut to use K/M/B where appropriate
+#' demo_log10(c(1, 1e16),
+#'   breaks = log_breaks(7, 1e3),
+#'   labels = label_dollar(scale_cut = cut_short_scale())
+#' )
+#' # cut_short_scale() uses B = one thousand million
+#' # cut_long_scale() uses B = one million million
+#' demo_log10(c(1, 1e16),
+#'   breaks = log_breaks(7, 1e3),
+#'   labels = label_dollar(scale_cut = cut_long_scale())
+#' )
 #'
-#' # In other contexts the long scale might be used
-#' long <- label_dollar(prefix = "", rescale_large = rescale_long_scale())
-#' demo_log10(c(1, 1e18), breaks = log_breaks(7, 1e3), labels = long)
-#'
-#' # You can also define a custom naming scheme
+#' # You can also define your own breaks
 #' gbp <- label_dollar(
 #'   prefix = "\u00a3",
-#'   rescale_large = c(k = 3L, m = 6L, bn = 9L, tn = 12L)
+#'   scale_cut = c(0, k = 1e3, m = 1e6, bn = 1e9, tn = 1e12)
 #' )
 #' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
                          suffix = "", big.mark = ",", decimal.mark = ".",
                          trim = TRUE, largest_with_cents = 100000,
-                         negative_parens = deprecated(), rescale_large = NULL,
+                         negative_parens = deprecated(),
                          ...) {
   force_all(
     accuracy,
@@ -65,7 +64,6 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
     trim,
     largest_with_cents,
     negative_parens,
-    rescale_large,
     ...
   )
   function(x) {
@@ -79,8 +77,7 @@ label_dollar <- function(accuracy = NULL, scale = 1, prefix = "$",
       decimal.mark = decimal.mark,
       trim = trim,
       largest_with_cents = largest_with_cents,
-      negative_parens,
-      rescale_large = rescale_large,
+      negative_parens = negative_parens,
       ...
     )
   }
@@ -117,13 +114,14 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = deprecated(), rescale_large = NULL,
+                   scale_cut = NULL,
+                   negative_parens = deprecated(),
                    style_negative = c("hyphen", "minus", "parens"),
                    ...) {
   if (length(x) == 0) {
     return(character())
   }
-  if (is.null(accuracy) && is.null(rescale_large)) {
+  if (is.null(accuracy) && is.null(scale_cut)) {
     if (needs_cents(x * scale, largest_with_cents)) {
       accuracy <- .01
     } else {
@@ -134,24 +132,12 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     big.mark <- " "
   }
 
-  if (!is.null(rescale_large)) {
-    if (!(is.integer(rescale_large) && all(rescale_large > 0))) {
-      stop("`rescale_large` must be positive integers.", call. = FALSE)
-    }
-
-    rescale <- rescale_by_suffix(x * scale, breaks = c(0, 10^rescale_large))
-
-    sep <- if (suffix == "") "" else " "
-    suffix <- paste0(rescale$suffix, sep, suffix)
-    scale <- scale * rescale$scale
-  }
-
   if (lifecycle::is_present(negative_parens)) {
     lifecycle::deprecate_warn("1.2.0", "dollar(negative_parens)", "dollar(style_negative)")
     style_negative <- if (negative_parens) "parens" else "minus"
   }
 
-  amount <- number(
+  number(
     x,
     accuracy = accuracy,
     scale = scale,
@@ -161,24 +147,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
     decimal.mark = decimal.mark,
     trim = trim,
     style_negative = style_negative,
+    scale_cut = scale_cut,
     ...
   )
-
-  # restore NAs from input vector
-  amount[is.na(x)] <- NA
-  names(amount) <- names(x)
-
-  amount
-}
-
-#' @export
-#' @rdname label_dollar
-rescale_short_scale <- function() {
-  c(K = 3L, M = 6L, B = 9L, T = 12L)
-}
-
-#' @export
-#' @rdname label_dollar
-rescale_long_scale <- function() {
-  c(K = 3L, M = 6L, B = 12L, T = 18L)
 }

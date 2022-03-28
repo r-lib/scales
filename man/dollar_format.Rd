@@ -15,7 +15,6 @@ dollar_format(
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = deprecated(),
-  rescale_large = NULL,
   ...
 )
 
@@ -29,8 +28,8 @@ dollar(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
+  scale_cut = NULL,
   negative_parens = deprecated(),
-  rescale_large = NULL,
   style_negative = c("hyphen", "minus", "parens"),
   ...
 )
@@ -64,12 +63,6 @@ value is less than \code{largest_with_cents} which by default is 100,000.}
 
 \item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
 \code{style_negative = "parens"} instead.}
-
-\item{rescale_large}{Named list indicating suffixes given to large values
-(e.g. thousands, millions, billions, trillions). Name gives suffix, and
-value specifies the power-of-ten. The two most common scales are provided
-(\code{rescale_short_scale()} and \code{rescale_long_scale()}).
-If \code{NULL}, the default, these suffixes aren't used.}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 

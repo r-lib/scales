@@ -4,7 +4,7 @@
 \alias{label_number_si}
 \title{Label numbers with SI prefixes (2 kg, 5 mm, etc)}
 \usage{
-label_number_si(unit, accuracy = NULL, scale = 1, ...)
+label_number_si(unit = "", accuracy = NULL, scale = 1, suffix = "", ...)
 }
 \arguments{
 \item{unit}{Unit of measurement (e.g. \code{"m"} for meter, the SI unit of length).}
@@ -20,6 +20,8 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is already using an SI
 prefix.}
 
+\item{suffix}{Additional text to display after the number.}
+
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
 }
 \value{
@@ -33,21 +35,23 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{label_number_si()} automatically adds the most suitable SI prefix and scales
-the values appropriately. For example, values greater than 1000 gain a "k"
-prefix (abbreviated from "kilo-") and are scaled by 1/1000.
-See \href{https://en.wikipedia.org/wiki/Metric_prefix}{Metric Prefix} on Wikipedia
-for more details.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\code{label_number_si()} is deprecated because the previous unit didn't actually
+use SI units, but instead used the so called "short scale". You can now get the
+same results as before with
+\code{label_number(scale_cut = cut_short_scale())}, or if you want correct SI
+units, \code{label_number(scale_cut = cut_si("unit"))}.
 }
 \examples{
-demo_continuous(c(1, 1000), labels = label_number_si("m"))
+# label_number_si() doesn't actually produce SI prefixes:
+demo_continuous(c(1, 1e9), labels = label_number_si("g"))
 
-demo_log10(c(1, 1e9), breaks = log_breaks(10), labels = label_number_si("m"))
-demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = label_number_si("g"))
+# If you want real SI prefixes, use cut_si()
+demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_si("m")))
 
-# use scale when data already uses SI prefix (e.g. stored in kg)
-kg <- label_number_si("g", scale = 1e3)
-demo_log10(c(1e-9, 1), breaks = log_breaks(10), labels = kg)
+# If you want the existing behavior, use cut_short_scale()
+demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_short_scale()))
 }
 \seealso{
 Other labels for continuous scales: 
@@ -67,3 +71,4 @@ Other labels for log scales:
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}
+\keyword{internal}

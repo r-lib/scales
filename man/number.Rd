@@ -2,6 +2,9 @@
 % Please edit documentation in R/label-number.r
 \name{number}
 \alias{number}
+\alias{cut_short_scale}
+\alias{cut_long_scale}
+\alias{cut_si}
 \title{A low-level numeric formatter}
 \usage{
 number(
@@ -14,9 +17,16 @@ number(
   decimal.mark = ".",
   style_positive = c("none", "plus"),
   style_negative = c("hyphen", "minus", "parens"),
+  scale_cut = NULL,
   trim = TRUE,
   ...
 )
+
+cut_short_scale()
+
+cut_long_scale()
+
+cut_si(unit)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -55,6 +65,19 @@ nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
 }}
+
+\item{scale_cut}{Named numeric vector that allows you to rescale large
+(or small) numbers and add a prefix. Built-in helpers include:
+\itemize{
+\item \code{cut_short_scale()}: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+\item \code{cut_long_scale()}: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
+\item \code{cut_si(unit)}: uses standard SI units.
+}
+
+If you supply a vector \code{c(a = 100, b = 1000)}, absolute values in the
+range \verb{[0, 100)} will not be rescaled, absolute values in the range \verb{[100, 1000)}
+will be divided by 100 and given the suffix "a", and absolute values in
+the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
