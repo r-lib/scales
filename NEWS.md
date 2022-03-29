@@ -27,8 +27,7 @@
     `label_number(scale_cut = cut_SI("m"))` (#339, with help from @davidchall).
 
 * `label_bytes()` now correctly accounts for the `scale` argument when choosing
-  auto units (@davidchall, #235) and leaves `0` as is (instead of formatting to 
-  "0 B") for consistency with `label_number_si()`.
+  auto units (@davidchall, #235).
 
 * `label_date()` and `label_time()` gain a `locale` argument that allows you
   to set the locale used to generate day and month names (#309).
