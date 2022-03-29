@@ -28,9 +28,9 @@ dollar(
   decimal.mark = ".",
   trim = TRUE,
   largest_with_cents = 1e+05,
-  scale_cut = NULL,
   negative_parens = deprecated(),
   style_negative = c("hyphen", "minus", "parens"),
+  scale_cut = NULL,
   ...
 )
 }

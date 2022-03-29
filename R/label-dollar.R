@@ -114,9 +114,9 @@ dollar_format <- label_dollar
 dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
                    suffix = "", big.mark = ",", decimal.mark = ".",
                    trim = TRUE, largest_with_cents = 100000,
-                   scale_cut = NULL,
                    negative_parens = deprecated(),
                    style_negative = c("hyphen", "minus", "parens"),
+                   scale_cut = NULL,
                    ...) {
   if (length(x) == 0) {
     return(character())
