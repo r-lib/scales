@@ -43,7 +43,7 @@ rather than axes.
 \code{label_date()} and \code{label_time()} label date/times using date/time format
 strings. \code{label_date_short()} automatically constructs a short format string
 sufficient to uniquely identify labels. It's inspired by matplotlib's
-\href{https://matplotlib.org/api/dates_api.html#matplotlib.dates.ConciseDateFormatter}{\code{ConciseDateFormatter}},
+\href{https://matplotlib.org/stable/api/dates_api.html#matplotlib.dates.ConciseDateFormatter}{\code{ConciseDateFormatter}},
 but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
