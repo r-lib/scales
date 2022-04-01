@@ -1,8 +1,8 @@
 #' Viridis palette
 #'
 #' @inheritParams viridisLite::viridis
-#' @param begin,end The (corrected) hue in [0,1] at which the color map
-#'   begins and ends
+#' @param begin,end The (corrected) hue in `[0,1]` at which the color map
+#'   begins and ends.
 #' @references <https://bids.github.io/colormap/>
 #' @export
 #' @examples
