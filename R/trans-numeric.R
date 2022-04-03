@@ -243,8 +243,8 @@ identity_trans <- function() {
     "identity",
     "force",
     "force",
-    d_transform = function(x) 1,
-    d_inverse = function(x) 1
+    d_transform = function(x) rep(1, length(x)),
+    d_inverse = function(x) rep(1, length(x))
   )
 }
 
@@ -383,8 +383,8 @@ reverse_trans <- function() {
     "reverse",
     function(x) -x,
     function(x) -x,
-    d_transform = function(x) -1,
-    d_inverse = function(x) -1,
+    d_transform = function(x) rep(-1, length(x)),
+    d_inverse = function(x) rep(-1, length(x)),
     minor_breaks = regular_minor_breaks(reverse = TRUE)
   )
 }
