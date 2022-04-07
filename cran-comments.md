@@ -21,21 +21,9 @@ I'm seeing a warning from the JSTOR links, presumably because of their overactiv
 
 We checked 464 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 2 new problems
  * We failed to check 21 packages
 
 Issues with CRAN packages are summarised below.
-
-### New problems
-(This reports the first line of each new failure)
-
-* BIGL
-  checking whether package ‘BIGL’ can be installed ... WARNING
-  False positive because RGL does not work on our check machine.
-
-* gt
-  checking tests ... ERROR
-  I provided a fix to the authors on May 7
 
 ### Failed to check
 
