@@ -22,9 +22,9 @@ number(
   ...
 )
 
-cut_short_scale()
+cut_short_scale(space = FALSE)
 
-cut_long_scale()
+cut_long_scale(space = FALSE)
 
 cut_si(unit)
 }
@@ -83,6 +83,10 @@ the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{space}{Add a space before the scale suffix?}
+
+\item{unit}{SI unit abbreviation.}
 }
 \value{
 A character vector of \code{length(x)}.

@@ -161,6 +161,11 @@ test_that("handles out-of-range inputs", {
   expect_equal(number(1e15, scale_cut = cut_short_scale()), "1 000T")
 })
 
+test_that("short and long scale can add spaces", {
+  expect_equal(number(1000, scale_cut = cut_short_scale(TRUE)), "1 K")
+  expect_equal(number(1000, scale_cut = cut_long_scale(TRUE)), "1 K")
+})
+
 test_that("scale_cut checks its inputs", {
   expect_snapshot(error = TRUE, {
     number(1, scale_cut = 0)

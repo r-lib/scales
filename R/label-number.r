@@ -361,14 +361,23 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
 #' @export
 #' @rdname number
-cut_short_scale <- function() {
-  c(0, K = 1e3, M = 1e6, B = 1e9, T = 1e12)
+#' @param space Add a space before the scale suffix?
+cut_short_scale <- function(space = FALSE) {
+  out <- c(0, K = 1e3, M = 1e6, B = 1e9, T = 1e12)
+  if (space) {
+    names(out) <- paste0(" ", names(out))
+  }
+  out
 }
 
 #' @export
 #' @rdname number
-cut_long_scale <- function() {
-  c(0, K = 1e3, M = 1e6, B = 1e12, T = 1e18)
+cut_long_scale <- function(space = FALSE) {
+  out <- c(0, K = 1e3, M = 1e6, B = 1e12, T = 1e18)
+  if (space) {
+    names(out) <- paste0(" ", names(out))
+  }
+  out
 }
 
 # power-of-ten prefixes used by the International System of Units (SI)
@@ -388,6 +397,7 @@ names(si_powers)[si_powers == -6] <- "\u00b5"
 
 #' @export
 #' @rdname number
+#' @param unit SI unit abbreviation.
 cut_si <- function(unit) {
   out <- c(0, 10^si_powers)
   names(out) <- c(paste0(" ", unit), paste0(" ", names(si_powers), unit))

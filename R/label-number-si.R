@@ -44,7 +44,7 @@ label_number_si <- function(unit = "", accuracy = NULL, scale = 1, suffix = "", 
 }
 
 cut_bad_si <- function(unit) {
-  out <- cut_short_scale()
-  names(out) <- paste0(if (unit != "") " ", names(out), unit)
+  out <- cut_short_scale(unit != "")
+  names(out) <- paste0(names(out), unit)
   out
 }
