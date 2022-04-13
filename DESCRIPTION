@@ -1,6 +1,6 @@
 Package: scales
 Title: Scale Functions for Visualization
-Version: 1.1.1.9000
+Version: 1.2.0
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
     person("Dana", "Seidel", role = "aut"),
