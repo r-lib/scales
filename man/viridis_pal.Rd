@@ -11,7 +11,7 @@ viridis_pal(alpha = 1, begin = 0, end = 1, direction = 1, option = "D")
 \code{\link[grDevices]{hsv}}.}
 
 \item{begin, end}{The (corrected) hue in \verb{[0,1]} at which the color map
-begins and ends}
+begins and ends.}
 
 \item{direction}{Sets the order of colors in the scale. If 1, the default,
 colors are ordered from darkest to lightest. If -1, the order of colors is
