@@ -93,6 +93,8 @@ reference:
 
 news:
   releases:
+  - text: "Version 1.2.0"
+    href: https://www.tidyverse.org/blog/2022/04/scales-1-2-0/
   - text: "Version 1.1.0"
     href: https://www.tidyverse.org/blog/2019/11/scales-1-1-0/
   - text: "Version 1.0.0"
