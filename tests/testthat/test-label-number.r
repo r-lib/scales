@@ -147,6 +147,10 @@ test_that("zero and special values don't get units", {
 
 test_that("scale applied before scale_cut", {
   expect_equal(number(500, scale = 2, scale_cut = cut_short_scale()), "1K")
+  expect_equal(
+    number(c(0, 5e5, 1.2e6), scale = 1/1000, scale_cut = cut_short_scale()),
+    c("0", "500", "1K")
+  )
 })
 
 test_that("cut_si() adds space before unit", {

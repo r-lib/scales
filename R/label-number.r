@@ -339,18 +339,18 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   ))
   break_suffix[is.na(break_suffix)] <- names(which.min(breaks))
 
-  scale <- scale * unname(1 / breaks[break_suffix])
-  scale[which(scale %in% c(Inf, NA))] <- 1
+  break_scale <- scale * unname(1 / breaks[break_suffix])
+  break_scale[which(break_scale %in% c(Inf, NA))] <- scale
 
   # exact zero is not scaled
   x_zero <- which(abs(x) == 0)
   scale[x_zero] <- 1
 
   suffix <- paste0(break_suffix, suffix)
-  accuracy <- accuracy %||% stats::ave(x * scale, scale, FUN = precision)
+  accuracy <- accuracy %||% stats::ave(x * break_scale, break_scale, FUN = precision)
 
   list(
-    scale = scale,
+    scale = break_scale,
     suffix = suffix,
     accuracy = accuracy
   )
