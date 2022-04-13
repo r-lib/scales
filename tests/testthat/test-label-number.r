@@ -162,6 +162,8 @@ test_that("handles out-of-range inputs", {
 })
 
 test_that("short and long scale can add spaces", {
+  skip_if_not(getRversion() > "3.4")
+
   expect_equal(number(1000, scale_cut = cut_short_scale(TRUE)), "1 K")
   expect_equal(number(1000, scale_cut = cut_long_scale(TRUE)), "1 K")
 })
