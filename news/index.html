@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">scales</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,9 +52,9 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="scales-development-version">scales (development version)<a class="anchor" aria-label="anchor" href="#scales-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.0" id="scales-120">scales 1.2.0<a class="anchor" aria-label="anchor" href="#scales-120"></a></h2>
 <div class="section level3">
-<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="new-features-1-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-2-0"></a></h3>
 <ul><li>
 <p><code><a href="../reference/label_number.html">label_number()</a></code>:</p>
 <ul><li><p>New <code>style_positive</code> and <code>style_negative</code> argument control how positive and negative numbers are styled (<a href="https://github.com/r-lib/scales/issues/249" class="external-link">#249</a>, <a href="https://github.com/r-lib/scales/issues/262" class="external-link">#262</a>).</p></li>
@@ -68,7 +68,7 @@
 <li><p>New <code><a href="../reference/compose_trans.html">compose_trans()</a></code> allows arbitrary composition of transformers. This is mostly easily achieved by passing a character vector whenever you might previously have passed the name of a single transformer. For example, <code>scale_y_continuous(trans = c("log10", "reverse"))</code> will create a reverse log-10 scale (<a href="https://github.com/r-lib/scales/issues/287" class="external-link">#287</a>).</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="bug-fixes-and-minor-improvements-development-version">Bug fixes and minor improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-minor-improvements-development-version"></a></h3>
+<h3 id="bug-fixes-and-minor-improvements-1-2-0">Bug fixes and minor improvements<a class="anchor" aria-label="anchor" href="#bug-fixes-and-minor-improvements-1-2-0"></a></h3>
 <ul><li><p><code><a href="../reference/breaks_width.html">breaks_width()</a></code> now supports units like <code>"3 months"</code> in the <code>offset</code> argument.</p></li>
 <li><p><code><a href="../reference/col_numeric.html">col_quantile()</a></code> no longer errors if data is sufficiently skewed that we can’t generate the requested number of unique colours (<a href="https://github.com/r-lib/scales/issues/294" class="external-link">#294</a>).</p></li>
 <li><p><code>dollar(negative_parens)</code> is deprecated in favour of <code>style_negative = "parens"</code>.</p></li>
