@@ -154,6 +154,7 @@ test_that("scale applied before scale_cut", {
 })
 
 test_that("cut_si() adds space before unit", {
+  skip_if_not(getRversion() > "3.4")
   expect_equal(number(c(0, 1, 1000), scale_cut = cut_si("m")), c("0 m", "1 m", "1 km"))
 })
 
@@ -178,6 +179,8 @@ test_that("scale_cut checks its inputs", {
 })
 
 test_that("built-in functions return expected values", {
+  skip_if_not(getRversion() > "3.4")
+
   expect_equal(number(1e9, scale_cut = cut_short_scale()), "1B")
   expect_equal(number(1e9, scale_cut = cut_long_scale()), "1 000M")
   expect_equal(number(1e9, scale_cut = cut_si("m")), "1 Gm")
