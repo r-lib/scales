@@ -18,7 +18,7 @@
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
-#' @examples
+#' @examplesIf getRversion() >= "3.5"
 #' # label_number_si() doesn't actually produce SI prefixes:
 #' demo_continuous(c(1, 1e9), labels = label_number_si("g"))
 #'
