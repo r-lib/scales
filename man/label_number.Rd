@@ -105,6 +105,7 @@ Use \code{label_number()} force decimal display of numbers (i.e. don't use
 that inserts a comma every three digits.
 }
 \examples{
+\dontshow{if (getRversion() >= "3.5") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 demo_continuous(c(-1e6, 1e6))
 demo_continuous(c(-1e6, 1e6), labels = label_number())
 demo_continuous(c(-1e6, 1e6), labels = label_comma())
@@ -150,4 +151,5 @@ demo_continuous(c(-1e3, 1e3), labels = label_number(style_negative = "parens"))
 # You can use prefix and suffix for other types of display
 demo_continuous(c(32, 212), labels = label_number(suffix = "\u00b0F"))
 demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
+\dontshow{\}) # examplesIf}
 }

@@ -55,7 +55,7 @@
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
-#' @examples
+#' @examplesIf getRversion() >= "3.5"
 #' demo_continuous(c(-1e6, 1e6))
 #' demo_continuous(c(-1e6, 1e6), labels = label_number())
 #' demo_continuous(c(-1e6, 1e6), labels = label_comma())
