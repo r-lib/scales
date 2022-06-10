@@ -81,9 +81,9 @@ label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") 
     }
 
     for_mat <- cbind(
-      ifelse(changes[, 1], format[[1]], NA),
-      ifelse(changes[, 2], format[[2]], NA),
-      ifelse(changes[, 3], format[[3]], NA),
+      ifelse(changes[, 1], format[[1]], ""),
+      ifelse(changes[, 2], format[[2]], ""),
+      ifelse(changes[, 3], format[[3]], ""),
       format[[4]]
     )
 
