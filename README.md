@@ -67,6 +67,7 @@ txhousing %>%
 ![](man/figures/README-labels-1.png)<!-- -->
 
 ``` r
+
 economics %>% 
   filter(date < ymd("1970-01-01")) %>% 
   ggplot(aes(date, pce)) + 
@@ -85,7 +86,7 @@ economics %>%
 
 Generally, I don’t recommend running `library(scales)` because when you
 type (e.g.) `scales::label_` autocomplete will provide you with a list
-of labelling functions to job your memory.
+of labelling functions to jog your memory.
 
 ### Advanced features
 
