@@ -19,32 +19,4 @@ I'm seeing a warning from the JSTOR links, presumably because of their overactiv
 
 ## revdepcheck results
 
-We checked 464 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
-
- * We failed to check 21 packages
-
-Issues with CRAN packages are summarised below.
-
-### Failed to check
-
-* anglr            (NA)
-* DeducerSpatial   (NA)
-* dimRed           (NA)
-* dtwSat           (NA)
-* eechidna         (NA)
-* fingertipscharts (NA)
-* geneNetBP        (NA)
-* geomerge         (NA)
-* ggalt            (NA)
-* GGEBiplots       (NA)
-* inlmisc          (NA)
-* loon             (NA)
-* MarketMatching   (NA)
-* plotKML          (NA)
-* ppcSpatial       (NA)
-* quadmesh         (NA)
-* rAvis            (NA)
-* simplevis        (NA)
-* smartR           (NA)
-* surveillance     (NA)
-* SWMPrExtension   (NA)
+I did not re-check revdeps because this just contains a documentation fix.
