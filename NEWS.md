@@ -1,4 +1,4 @@
-# scales (development version)
+# scales 1.2.1
 
 * Re-document to fix HTML issues in `.Rd`.
 
