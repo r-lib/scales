@@ -35,7 +35,7 @@ dollar(
 )
 }
 \arguments{
-\item{accuracy}{Number to round to. If \code{NULL}, the default,
+\item{accuracy, largest_with_cents}{Number to round to. If \code{NULL}, the default,
 values will be rounded to the nearest integer, unless any of the
 values has non-zero fractional component (e.g. cents) and the largest
 value is less than \code{largest_with_cents} which by default is 100,000.}
@@ -44,9 +44,7 @@ value is less than \code{largest_with_cents} which by default is 100,000.}
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
-
-\item{suffix}{Symbols to display before and after value.}
+\item{prefix, suffix}{Symbols to display before and after value.}
 
 \item{big.mark}{Character used between every 3 digits to separate thousands.}
 
@@ -55,11 +53,6 @@ decimal point.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
-
-\item{largest_with_cents}{Number to round to. If \code{NULL}, the default,
-values will be rounded to the nearest integer, unless any of the
-values has non-zero fractional component (e.g. cents) and the largest
-value is less than \code{largest_with_cents} which by default is 100,000.}
 
 \item{negative_parens}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use
 \code{style_negative = "parens"} instead.}

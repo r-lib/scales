@@ -33,9 +33,7 @@ scientific(
 formatting. This is useful if the underlying data is very small or very
 large.}
 
-\item{prefix}{Symbols to display before and after value.}
-
-\item{suffix}{Symbols to display before and after value.}
+\item{prefix, suffix}{Symbols to display before and after value.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
 decimal point.}
