@@ -77,7 +77,7 @@ economics %>%
   )
 ```
 
-Generally, I don't recommend running `library(scales)` because when you type (e.g.) `scales::label_` autocomplete will provide you with a list of labelling functions to job your memory.
+Generally, I don't recommend running `library(scales)` because when you type (e.g.) `scales::label_` autocomplete will provide you with a list of labelling functions to jog your memory.
 
 ### Advanced features
 
