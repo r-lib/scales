@@ -116,3 +116,8 @@ test_that("Yeo-Johnson transform works", {
   expect_equal(yj_trans(lambdas[2])$transform(x[[2]]), expected_data[[2]])
   expect_equal(yj_trans(lambdas[3])$transform(x[[3]]), expected_data[[3]])
 })
+
+test_that("probability transforms have domain (0,1)", {
+  expect_true(all(logit_trans()$domain == c(0, 1)))
+  expect_true(all(probit_trans()$domain == c(0, 1)))
+})
