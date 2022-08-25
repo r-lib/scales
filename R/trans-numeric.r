@@ -269,14 +269,15 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 #' @examples
 #' plot(logit_trans(), xlim = c(0, 1))
 #' plot(probit_trans(), xlim = c(0, 1))
-probability_trans <- function(distribution, ...) {
+probability_trans <- function(distribution, ..., domain = c(0,1)) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
 
   trans_new(
     paste0("prob-", distribution),
     function(x) qfun(x, ...),
-    function(x) pfun(x, ...)
+    function(x) pfun(x, ...),
+    domain = domain
   )
 }
 #' @export
