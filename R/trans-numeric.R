@@ -21,7 +21,16 @@ asn_trans <- function() {
 #' @examples
 #' plot(atanh_trans(), xlim = c(-1, 1))
 atanh_trans <- function() {
-  trans_new("atanh", "atanh", "tanh")
+  trans_new("atanh", "atanh", "tanh", domain = c(-1, 1))
+}
+
+#' Inverse Hyperbolic Sine transformation
+#'
+#' @export
+#' @examples
+#' plot(asinhs_trans(), xlim = c(-1e2, 1e2))
+asinh_trans <- function() {
+  trans_new("asinh", asinh, inverse = sinh)
 }
 
 #' Box-Cox & modulus transformations
