@@ -41,7 +41,7 @@ decimal point.}
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+\item{...}{Other arguments passed on to \code{\link[=label_number]{label_number()}}}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that

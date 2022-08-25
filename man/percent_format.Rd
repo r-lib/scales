@@ -54,7 +54,7 @@ decimal point.}
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+\item{...}{Other arguments passed on to \code{\link[=label_number]{label_number()}}}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}

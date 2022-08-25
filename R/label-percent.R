@@ -1,5 +1,6 @@
 #' Label percentages (2.5%, 50%, etc)
 #'
+#' @param ... Other arguments passed on to [label_number()]
 #' @inherit label_number return params
 #' @export
 #' @family labels for continuous scales
@@ -16,7 +17,7 @@
 label_percent <- function(accuracy = NULL, scale = 100, prefix = "",
                           suffix = "%", big.mark = " ", decimal.mark = ".",
                           trim = TRUE, ...) {
-  number_format(
+  label_number(
     accuracy = accuracy,
     scale = scale,
     prefix = prefix,
