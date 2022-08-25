@@ -10,5 +10,5 @@ asinh_trans()
 Inverse Hyperbolic Sine transformation
 }
 \examples{
-plot(asinhs_trans(), xlim = c(-1e2, 1e2))
+plot(asinh_trans(), xlim = c(-1e2, 1e2))
 }

@@ -28,7 +28,7 @@ atanh_trans <- function() {
 #'
 #' @export
 #' @examples
-#' plot(asinhs_trans(), xlim = c(-1e2, 1e2))
+#' plot(asinh_trans(), xlim = c(-1e2, 1e2))
 asinh_trans <- function() {
   trans_new("asinh", asinh, inverse = sinh)
 }
