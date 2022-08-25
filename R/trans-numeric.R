@@ -270,6 +270,7 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 #'   abbreviation so that "p" + distribution is a valid probability density
 #'   function, and "q" + distribution is a valid quantile function.
 #' @param ... other arguments passed on to distribution and quantile functions
+#' @inheritParams trans_new
 #' @export
 #' @examples
 #' plot(logit_trans(), xlim = c(0, 1))
