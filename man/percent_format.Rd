@@ -54,7 +54,17 @@ decimal point.}
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{...}{Other arguments passed on to \code{\link[=label_number]{label_number()}}}
+\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+}
+\value{
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}

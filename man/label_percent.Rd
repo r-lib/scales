@@ -41,7 +41,35 @@ decimal point.}
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
 
-\item{...}{Other arguments passed on to \code{\link[=label_number]{label_number()}}}
+\item{...}{
+  Arguments passed on to \code{\link[=label_number]{label_number}}
+  \describe{
+    \item{\code{style_positive}}{A string that determines the style of positive numbers:
+\itemize{
+\item \code{"none"} (the default): no change, e.g. \code{1}.
+\item \code{"plus"}: preceded by \code{+}, e.g. \code{+1}.
+}}
+    \item{\code{style_negative}}{A string that determines the style of negative numbers:
+\itemize{
+\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures \code{-} aligns with the horizontal bar of the
+the horizontal bar of \code{+}.
+\item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
+}}
+    \item{\code{scale_cut}}{Named numeric vector that allows you to rescale large
+(or small) numbers and add a prefix. Built-in helpers include:
+\itemize{
+\item \code{cut_short_scale()}: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+\item \code{cut_long_scale()}: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
+\item \code{cut_si(unit)}: uses standard SI units.
+}
+
+If you supply a vector \code{c(a = 100, b = 1000)}, absolute values in the
+range \verb{[0, 100)} will not be rescaled, absolute values in the range \verb{[100, 1000)}
+will be divided by 100 and given the suffix "a", and absolute values in
+the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
+  }}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
