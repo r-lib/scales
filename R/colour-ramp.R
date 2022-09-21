@@ -67,12 +67,17 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   }
 
   structure(
-    function(x) {
-      lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
-      out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab")
-      out[is.na(out)] <- na.color
+    function(x, color_fmt = "character") {
+      lab_out <- list(l_interp(x), u_interp(x), v_interp(x))
+      if (color_fmt == "character") {
+        out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab", na_value = na.color)
+      } else {
+        out <- farver::encode_native(lab_out, alpha = alpha_interp(x), from = "lab", na_value = na.color)
+      }
       out
     },
-    safe_palette_func = TRUE
+    safe_palette_func = TRUE,
+    accepts_native_output = TRUE,
+    may_return_NA = is.na(na.color)
   )
 }
