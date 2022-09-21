@@ -18,19 +18,25 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab", na.color = NA)
   ramp <- colour_ramp(colours, na.color = na.color)
   force(values)
 
-  function(x) {
-    if (length(x) == 0) {
-      return(character())
-    }
-
-    if (!is.null(values)) {
-      xs <- seq(0, 1, length.out = length(values))
-      f <- stats::approxfun(values, xs)
-      x <- f(x)
-    }
-
-    ramp(x)
-  }
+  structure(
+    function(x, color_fmt = "character") {
+      if (length(x) == 0) {
+        if (color_fmt == "character") {
+          return(character())
+        } else {
+          return(integer())
+        }
+      }
+      if (!is.null(values)) {
+        xs <- seq(0, 1, length.out = length(values))
+        f <- stats::approxfun(values, xs)
+        x <- f(x)
+      }
+      ramp(x, color_fmt = color_fmt)
+    },
+    accepts_native_output = TRUE,
+    may_return_NA = is.na(na.color)
+  )
 }
 
 #' Diverging colour gradient (continuous).
