@@ -7,28 +7,36 @@
 #'   to map an arbitrary range to between 0 and 1.
 #' @param space colour space in which to calculate gradient. Must be "Lab" -
 #'   other values are deprecated.
+#' @param na.color The color to use for missing values. By default missing
+#'   values are left missing.
 #' @export
 
-gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
+gradient_n_pal <- function(colours, values = NULL, space = "Lab", na.color = NA) {
   if (!identical(space, "Lab")) {
     lifecycle::deprecate_warn("0.3.0", "gradient_n_pal(space = 'only supports be \"Lab\"')")
   }
-  ramp <- colour_ramp(colours)
+  ramp <- colour_ramp(colours, na.color = na.color)
   force(values)
 
-  function(x) {
-    if (length(x) == 0) {
-      return(character())
-    }
-
-    if (!is.null(values)) {
-      xs <- seq(0, 1, length.out = length(values))
-      f <- stats::approxfun(values, xs)
-      x <- f(x)
-    }
-
-    ramp(x)
-  }
+  structure(
+    function(x, color_fmt = "character") {
+      if (length(x) == 0) {
+        if (color_fmt == "character") {
+          return(character())
+        } else {
+          return(integer())
+        }
+      }
+      if (!is.null(values)) {
+        xs <- seq(0, 1, length.out = length(values))
+        f <- stats::approxfun(values, xs)
+        x <- f(x)
+      }
+      ramp(x, color_fmt = color_fmt)
+    },
+    accepts_native_output = TRUE,
+    may_return_NA = is.na(na.color)
+  )
 }
 
 #' Diverging colour gradient (continuous).
@@ -49,8 +57,8 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
 #' pal <- div_gradient_pal(low = mnsl(complement("10R 4/6"), fix = TRUE))
 #' image(r, col = pal(seq(0, 1, length.out = 100)))
 #' @importFrom munsell mnsl
-div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
-  gradient_n_pal(c(low, mid, high), space = space)
+div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab", na.color = NA) {
+  gradient_n_pal(c(low, mid, high), space = space, na.color = na.color)
 }
 
 #' Sequential colour gradient palette (continuous)
@@ -66,6 +74,6 @@ div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = 
 #'
 #' library(munsell)
 #' show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))
-seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
-  gradient_n_pal(c(low, high), space = space)
+seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab", na.color = NA) {
+  gradient_n_pal(c(low, high), space = space, na.color = na.color)
 }
