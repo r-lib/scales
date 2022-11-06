@@ -4,13 +4,17 @@
 \alias{alpha}
 \title{Modify colour transparency}
 \usage{
-alpha(colour, alpha = NA)
+alpha(colour, alpha = NA, color_fmt = "character")
 }
 \arguments{
 \item{colour}{colour}
 
 \item{alpha}{new alpha level in [0,1].  If alpha is \code{NA},
 existing alpha values are preserved.}
+
+\item{color_fmt}{A string, whether the output should be a character vector
+with colours (\code{"character"}) or an integer vector in the native color
+format (\code{"native"})}
 }
 \description{
 Vectorised in both colour and alpha.
