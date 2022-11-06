@@ -4,7 +4,7 @@
 \alias{gradient_n_pal}
 \title{Arbitrary colour gradient palette (continuous)}
 \usage{
-gradient_n_pal(colours, values = NULL, space = "Lab")
+gradient_n_pal(colours, values = NULL, space = "Lab", na.color = NA)
 }
 \arguments{
 \item{colours}{vector of colours}
@@ -16,6 +16,9 @@ to map an arbitrary range to between 0 and 1.}
 
 \item{space}{colour space in which to calculate gradient. Must be "Lab" -
 other values are deprecated.}
+
+\item{na.color}{The color to use for missing values. By default missing
+values are left missing.}
 }
 \description{
 Arbitrary colour gradient palette (continuous)
