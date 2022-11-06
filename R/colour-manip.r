@@ -44,29 +44,46 @@ muted <- function(colour, l = 30, c = 70) col2hcl(colour, l = l, c = c)
 #' @param colour colour
 #' @param alpha new alpha level in \[0,1].  If alpha is `NA`,
 #'   existing alpha values are preserved.
+#' @param color_fmt A string, whether the output should be a character vector
+#'   with colours (`"character"`) or an integer vector in the native color
+#'   format (`"native"`)
 #' @export
 #' @examples
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
-alpha <- function(colour, alpha = NA) {
+alpha <- function(colour, alpha = NA, color_fmt = "character") {
+  color_fmt <- match.arg(color_fmt, c("character", "native"))
   if (length(colour) != length(alpha)) {
     if (length(colour) > 1 && length(alpha) > 1) {
       stop("Only one of colour and alpha can be vectorised")
     }
+  }
 
-    if (length(colour) > 1) {
-      alpha <- rep(alpha, length.out = length(colour))
-    } else {
-      colour <- rep(colour, length.out = length(alpha))
+  if (length(colour) != length(alpha)) {
+    if (length(colour) > 1 && length(alpha) > 1) {
+      stop("Only one of colour and alpha can be vectorised")
     }
   }
 
-  rgb <- farver::decode_colour(colour, alpha = TRUE)
-  rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
-
-  farver::encode_colour(rgb, rgb[, 4])
+  if (color_fmt == "character") {
+    if (is.integer(colour)) {
+      colour <- farver::decode_native(colour)
+    }
+    if (length(colour) == 1) {
+      colour <- rep(colour, length.out = length(alpha))
+    }
+    farver::set_channel(colour, "alpha", alpha, skip_na_values = TRUE)
+  } else {
+    if (is.character(colour)) {
+      colour <- farver::encode_native(colour)
+    }
+    if (length(colour) == 1) {
+      colour <- rep(colour, length.out = length(alpha))
+    }
+    farver::set_channel_native(colour, "alpha", alpha, skip_na_values = TRUE)
+  }
 }
 
 #' Show colours
