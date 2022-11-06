@@ -8,7 +8,8 @@ div_gradient_pal(
   low = mnsl("10B 4/6"),
   mid = mnsl("N 8/0"),
   high = mnsl("10R 4/6"),
-  space = "Lab"
+  space = "Lab",
+  na.color = NA
 )
 }
 \arguments{
@@ -20,6 +21,9 @@ div_gradient_pal(
 
 \item{space}{colour space in which to calculate gradient. Must be "Lab" -
 other values are deprecated.}
+
+\item{na.color}{The color to use for missing values. By default missing
+values are left missing.}
 }
 \description{
 Diverging colour gradient (continuous).

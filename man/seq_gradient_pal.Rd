@@ -4,7 +4,12 @@
 \alias{seq_gradient_pal}
 \title{Sequential colour gradient palette (continuous)}
 \usage{
-seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab")
+seq_gradient_pal(
+  low = mnsl("10B 4/6"),
+  high = mnsl("10R 4/6"),
+  space = "Lab",
+  na.color = NA
+)
 }
 \arguments{
 \item{low}{colour for low end of gradient.}
@@ -13,6 +18,9 @@ seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab")
 
 \item{space}{colour space in which to calculate gradient. Must be "Lab" -
 other values are deprecated.}
+
+\item{na.color}{The color to use for missing values. By default missing
+values are left missing.}
 }
 \description{
 Sequential colour gradient palette (continuous)
