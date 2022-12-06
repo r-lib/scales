@@ -27,3 +27,12 @@ test_that("train_continuous with new=NULL maintains existing range.", {
     c(1, 5)
   )
 })
+
+test_that("train_continuous works with integer64", {
+  skip_if_not_installed("bit64")
+  new <- bit64::as.integer64(1:10)
+  expect_identical(
+    train_continuous(new),
+    c(1, 10)
+  )
+})
