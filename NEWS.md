@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `train_continuous()` coerces `new` to numeric before calculating range 
+  (@teunbrand, #369).
+
 # scales 1.2.1
 
 * Re-document to fix HTML issues in `.Rd`.
