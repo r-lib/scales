@@ -46,7 +46,10 @@ train_continuous <- function(new, existing = NULL) {
     stop("Discrete value supplied to continuous scale", call. = FALSE)
   }
 
-  suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))
+  # Needs casting to numeric because some `new` vectors can misbehave when
+  # combined with a NULL `existing` (#369)
+  suppressWarnings(range(existing, as.numeric(new),
+                         na.rm = TRUE, finite = TRUE))
 }
 
 # Map values for a continuous palette.
