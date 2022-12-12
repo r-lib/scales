@@ -39,7 +39,8 @@ function is applied to the raw data.}
 to breaks generated to the raw data.}
 
 \item{domain}{domain, as numeric vector of length 2, over which
-transformation is valued}
+transformation is valued. The function in the \code{transform} argument is
+expected to be able to transform the \code{domain} argument.}
 }
 \description{
 A transformation encapsulates a transformation and its inverse, as well

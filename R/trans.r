@@ -18,7 +18,8 @@
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated to the raw data.
 #' @param domain domain, as numeric vector of length 2, over which
-#'   transformation is valued
+#'   transformation is valued. The function in the `transform` argument is
+#'   expected to be able to transform the `domain` argument.
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export
 #' @keywords internal
