@@ -10,7 +10,8 @@ asn_trans <- function() {
   trans_new(
     "asn",
     function(x) 2 * asin(sqrt(x)),
-    function(x) sin(x / 2)^2
+    function(x) sin(x / 2)^2,
+    domain = c(0, 1)
   )
 }
 
@@ -88,7 +89,7 @@ boxcox_trans <- function(p, offset = 0) {
   }
 
   trans_new(
-    paste0("pow-", format(p)), trans, inv
+    paste0("pow-", format(p)), trans, inv, domain = c(0, Inf)
   )
 }
 
@@ -276,7 +277,8 @@ probability_trans <- function(distribution, ...) {
   trans_new(
     paste0("prob-", distribution),
     function(x) qfun(x, ...),
-    function(x) pfun(x, ...)
+    function(x) pfun(x, ...),
+    domain = c(0, 1)
   )
 }
 #' @export
