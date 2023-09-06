@@ -86,11 +86,21 @@ as.trans <- function(x, arg = deparse(substitute(x))) {
   if (is.trans(x)) {
     x
   } else if (is.character(x) && length(x) >= 1) {
+    if (any(x == "new")) {
+      abort("`trans_new()` cannot be used as a transformer.")
+    }
     if (length(x) == 1) {
-      f <- paste0(x, "_trans")
+      f <- paste0("trans_", x)
+      # For backward compatibility
+      if (!exists(f, mode = "function")) {
+        f2 <- paste0(x, "_trans")
+        if (exists(f2, mode = "function")) {
+          f <- f2
+        }
+      }
       match.fun(f)()
     } else {
-      compose_trans(!!!x)
+      trans_compose(!!!x)
     }
   } else {
     abort(sprintf("`%s` must be a character vector or a transformer object", arg))

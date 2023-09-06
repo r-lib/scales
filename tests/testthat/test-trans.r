@@ -20,6 +20,7 @@ test_that("as.trans generates informative error", {
     as.trans(1)
     as.trans("x")
   })
+  expect_snapshot_error(as.trans("new"))
 })
 
 test_that("trans has useful print method", {

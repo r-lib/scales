@@ -9,7 +9,11 @@
       as.trans("x")
     Condition
       Error in `get()`:
-      ! object 'x_trans' of mode 'function' was not found
+      ! object 'trans_x' of mode 'function' was not found
+
+---
+
+    `trans_new()` cannot be used as a transformer.
 
 # trans has useful print method
 
