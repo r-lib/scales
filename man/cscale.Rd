@@ -4,7 +4,7 @@
 \alias{cscale}
 \title{Continuous scale}
 \usage{
-cscale(x, palette, na.value = NA_real_, trans = identity_trans())
+cscale(x, palette, na.value = NA_real_, trans = trans_identity())
 }
 \arguments{
 \item{x}{vector of continuous values to scale}
