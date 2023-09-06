@@ -10,7 +10,7 @@
 #' @examples
 #' demo_continuous(10^c(-2:4), trans = "log10", labels = label_log())
 #' demo_continuous(10^c(-2:4), trans = c("log10", "reverse"), labels = label_log())
-compose_trans <- function(...) {
+trans_compose <- function(...) {
   trans_list <- lapply(list2(...), as.trans)
   if (length(trans_list) == 0) {
     abort("Must include at least 1 transformer to compose")
@@ -35,6 +35,10 @@ compose_trans <- function(...) {
     domain = domain
   )
 }
+
+#' @export
+#' @rdname trans_compose
+compose_trans <- trans_compose
 
 compose_fwd <- function(x, trans_list) {
   for (trans in trans_list) {

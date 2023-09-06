@@ -6,7 +6,7 @@
 #' @export
 #' @examples
 #' plot(asn_trans(), xlim = c(0, 1))
-asn_trans <- function() {
+trans_asn <- function() {
   trans_new(
     "asn",
     function(x) 2 * asin(sqrt(x)),
@@ -14,14 +14,22 @@ asn_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname trans_asn
+asn_trans <- trans_asn
+
 #' Arc-tangent transformation
 #'
 #' @export
 #' @examples
 #' plot(atanh_trans(), xlim = c(-1, 1))
-atanh_trans <- function() {
+trans_atanh <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
+
+#' @export
+#' @rdname trans_atanh
+atanh_trans <- trans_atanh
 
 #' Box-Cox & modulus transformations
 #'
@@ -66,9 +74,10 @@ atanh_trans <- function() {
 #' plot(modulus_trans(1), xlim = c(-10, 10))
 #' plot(modulus_trans(2), xlim = c(-10, 10))
 boxcox_trans <- function(p, offset = 0) {
+trans_boxcox <- function(p, offset = 0) {
   trans <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
-      stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
+      stop("trans_boxcox must be given only positive values. Consider using trans_modulus instead?",
         call. = F
       )
     }
@@ -92,9 +101,13 @@ boxcox_trans <- function(p, offset = 0) {
   )
 }
 
-#' @rdname boxcox_trans
 #' @export
-modulus_trans <- function(p, offset = 1) {
+#' @rdname trans_boxcox
+boxcox_trans <- trans_boxcox
+
+#' @rdname trans_boxcox
+#' @export
+trans_modulus <- function(p, offset = 1) {
   if (abs(p) < 1e-07) {
     trans <- function(x) sign(x) * log(abs(x) + offset)
     inv <- function(x) sign(x) * (exp(abs(x)) - offset)
@@ -106,6 +119,10 @@ modulus_trans <- function(p, offset = 1) {
     paste0("mt-pow-", format(p)), trans, inv
   )
 }
+
+#' @export
+#' @rdname trans_boxcox
+modulus_trans <- trans_modulus
 
 #' Yeo-Johnson transformation
 #'
@@ -134,7 +151,7 @@ modulus_trans <- function(p, offset = 1) {
 #' plot(yj_trans(0), xlim = c(-10, 10))
 #' plot(yj_trans(1), xlim = c(-10, 10))
 #' plot(yj_trans(2), xlim = c(-10, 10))
-yj_trans <- function(p) {
+trans_yj <- function(p) {
   eps <- 1e-7
 
   if (abs(p) < eps) {
@@ -160,6 +177,10 @@ yj_trans <- function(p) {
   )
 }
 
+#' @export
+#' @rdname trans_yj
+yj_trans <- trans_yj
+
 trans_two_sided <- function(x, pos, neg) {
   out <- rep(NA_real_, length(x))
   present <- !is.na(x)
@@ -178,7 +199,7 @@ trans_two_sided <- function(x, pos, neg) {
 #' plot(exp_trans(1), xlim = c(-2, 2))
 #' plot(exp_trans(2), xlim = c(-2, 2))
 #' plot(exp_trans(), xlim = c(-2, 2))
-exp_trans <- function(base = exp(1)) {
+trans_exp <- function(base = exp(1)) {
   force(base)
   trans_new(
     paste0("power-", format(base)),
@@ -187,15 +208,22 @@ exp_trans <- function(base = exp(1)) {
   )
 }
 
+#' @export
+#' @rdname trans_exp
+exp_trans <- trans_exp
+
 #' Identity transformation (do nothing)
 #'
 #' @export
 #' @examples
 #' plot(identity_trans(), xlim = c(-1, 1))
-identity_trans <- function() {
+trans_identity <- function() {
   trans_new("identity", "force", "force")
 }
 
+#' @export
+#' @rdname trans_exp
+identity_trans <- trans_identity
 
 #' Log transformations
 #'
@@ -220,7 +248,7 @@ identity_trans <- function() {
 #' # For large positives nubmers it's very close to log
 #' plot(pseudo_log_trans(), xlim = c(1, 20))
 #' lines(log_trans(), xlim = c(1, 20), col = "red")
-log_trans <- function(base = exp(1)) {
+trans_log <- function(base = exp(1)) {
   force(base)
   trans <- function(x) log(x, base)
   inv <- function(x) base^x
@@ -230,34 +258,55 @@ log_trans <- function(base = exp(1)) {
     domain = c(1e-100, Inf)
   )
 }
+
 #' @export
-#' @rdname log_trans
-log10_trans <- function() {
-  log_trans(10)
+#' @rdname trans_log
+log_trans <- trans_log
+
+#' @export
+#' @rdname trans_log
+trans_log10 <- function() {
+  trans_log(10)
 }
 
 #' @export
-#' @rdname log_trans
-log2_trans <- function() {
-  log_trans(2)
+#' @rdname trans_log
+log10_trans <- trans_log10
+
+#' @export
+#' @rdname trans_log
+trans_log2 <- function() {
+  trans_log(2)
 }
 
-#' @rdname log_trans
 #' @export
-log1p_trans <- function() {
+#' @rdname trans_log
+log2_trans <- trans_log2
+
+#' @rdname trans_log
+#' @export
+trans_log1p <- function() {
   trans_new("log1p", "log1p", "expm1")
 }
 
-#' @rdname log_trans
+#' @export
+#' @rdname trans_log
+log1p_trans <- trans_log1p
+
+#' @rdname trans_log
 #' @param sigma Scaling factor for the linear part of pseudo-log transformation.
 #' @export
-pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
+trans_pseudo_log <- function(sigma = 1, base = exp(1)) {
   trans_new(
     "pseudo_log",
     function(x) asinh(x / (2 * sigma)) / log(base),
     function(x) 2 * sigma * sinh(x * log(base))
   )
 }
+
+#' @export
+#' @rdname trans_log
+pseudo_log_trans <- trans_pseudo_log
 
 #' Probability transformation
 #'
@@ -269,7 +318,7 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 #' @examples
 #' plot(logit_trans(), xlim = c(0, 1))
 #' plot(probit_trans(), xlim = c(0, 1))
-probability_trans <- function(distribution, ...) {
+trans_probability <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
 
@@ -279,19 +328,30 @@ probability_trans <- function(distribution, ...) {
     function(x) pfun(x, ...)
   )
 }
+
 #' @export
-#' @rdname probability_trans
-logit_trans <- function() probability_trans("logis")
+#' @rdname trans_probability
+probability_trans <- trans_probability
+
 #' @export
-#' @rdname probability_trans
-probit_trans <- function() probability_trans("norm")
+#' @rdname trans_probability
+trans_logit <- function() trans_probability("logis")
+#' @export
+#' @rdname trans_probability
+logit_trans <- trans_logit
+#' @export
+#' @rdname trans_probability
+trans_probit <- function() trans_probability("norm")
+#' @export
+#' @rdname trans_probability
+probit_trans <- trans_probit
 
 #' Reciprocal transformation
 #'
 #' @export
 #' @examples
 #' plot(reciprocal_trans(), xlim = c(0, 1))
-reciprocal_trans <- function() {
+trans_reciprocal <- function() {
   trans_new(
     "reciprocal",
     function(x) 1 / x,
@@ -299,12 +359,16 @@ reciprocal_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname trans_reciprocal
+reciprocal_trans <- trans_reciprocal
+
 #' Reverse transformation
 #'
 #' @export
 #' @examples
 #' plot(reverse_trans(), xlim = c(-1, 1))
-reverse_trans <- function() {
+trans_reverse <- function() {
   trans_new(
     "reverse",
     function(x) -x,
@@ -312,6 +376,10 @@ reverse_trans <- function() {
     minor_breaks = regular_minor_breaks(reverse = TRUE)
   )
 }
+
+#' @export
+#' @rdname trans_reverse
+reverse_trans <- trans_reverse
 
 #' Square-root transformation
 #'
@@ -321,7 +389,7 @@ reverse_trans <- function() {
 #' @export
 #' @examples
 #' plot(sqrt_trans(), xlim = c(0, 5))
-sqrt_trans <- function() {
+trans_sqrt <- function() {
   trans_new(
     "sqrt",
     "sqrt",
@@ -329,3 +397,6 @@ sqrt_trans <- function() {
     domain = c(0, Inf)
   )
 }
+
+#' @export
+#' @rdname trans_sqrt

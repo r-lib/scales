@@ -7,7 +7,7 @@
 #' t$transform(years)
 #' t$inverse(t$transform(years))
 #' t$format(t$breaks(range(years)))
-date_trans <- function() {
+trans_date <- function() {
   trans_new("date",
     transform = "from_date",
     inverse = "to_date",
@@ -15,6 +15,10 @@ date_trans <- function() {
     domain = to_date(c(-Inf, Inf))
   )
 }
+
+#' @export
+#' @rdname trans_date
+date_trans <- trans_date
 
 to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
@@ -37,7 +41,7 @@ from_date <- function(x) {
 #' t$transform(hours)
 #' t$inverse(t$transform(hours))
 #' t$format(t$breaks(range(hours)))
-time_trans <- function(tz = NULL) {
+trans_time <- function(tz = NULL) {
   force(tz)
   to_time <- function(x) {
     structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
@@ -64,6 +68,10 @@ time_trans <- function(tz = NULL) {
   )
 }
 
+#' @export
+#' @rdname trans_time
+time_trans <- trans_time
+
 #' Transformation for times (class hms)
 #'
 #' @export
@@ -75,7 +83,7 @@ time_trans <- function(tz = NULL) {
 #'   t$inverse(t$transform(hms))
 #'   t$breaks(hms)
 #' }
-hms_trans <- function() {
+trans_hms <- function() {
   trans_new(
     "hms",
     transform = function(x) {
@@ -85,6 +93,10 @@ hms_trans <- function() {
     breaks = time_breaks()
   )
 }
+
+#' @export
+#' @rdname trans_hms
+hms_trans <- trans_hms
 
 time_breaks <- function(n = 5) {
   force(n)
