@@ -3,7 +3,7 @@
 #' @export
 #' @examples
 #' years <- seq(as.Date("1910/1/1"), as.Date("1999/1/1"), "years")
-#' t <- date_trans()
+#' t <- trans_date()
 #' t$transform(years)
 #' t$inverse(t$transform(years))
 #' t$format(t$breaks(range(years)))
@@ -23,7 +23,7 @@ date_trans <- trans_date
 to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
   if (!inherits(x, "Date")) {
-    stop("Invalid input: date_trans works with objects of class Date only",
+    stop("Invalid input: trans_date works with objects of class Date only",
       call. = FALSE
     )
   }
@@ -37,7 +37,7 @@ from_date <- function(x) {
 #' @export
 #' @examples
 #' hours <- seq(ISOdate(2000, 3, 20, tz = ""), by = "hour", length.out = 10)
-#' t <- time_trans()
+#' t <- trans_time()
 #' t$transform(hours)
 #' t$inverse(t$transform(hours))
 #' t$format(t$breaks(range(hours)))
@@ -49,7 +49,7 @@ trans_time <- function(tz = NULL) {
 
   from_time <- function(x) {
     if (!inherits(x, "POSIXct")) {
-      stop("Invalid input: time_trans works with objects of class ",
+      stop("Invalid input: trans_time works with objects of class ",
         "POSIXct only",
         call. = FALSE
       )
@@ -78,7 +78,7 @@ time_trans <- trans_time
 #' @examples
 #' if (require("hms")) {
 #'   hms <- round(runif(10) * 86400)
-#'   t <- hms_trans()
+#'   t <- trans_hms()
 #'   t$transform(hms)
 #'   t$inverse(t$transform(hms))
 #'   t$breaks(hms)

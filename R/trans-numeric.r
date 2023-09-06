@@ -5,7 +5,7 @@
 #'
 #' @export
 #' @examples
-#' plot(asn_trans(), xlim = c(0, 1))
+#' plot(trans_asn(), xlim = c(0, 1))
 trans_asn <- function() {
   trans_new(
     "asn",
@@ -22,7 +22,7 @@ asn_trans <- trans_asn
 #'
 #' @export
 #' @examples
-#' plot(atanh_trans(), xlim = c(-1, 1))
+#' plot(trans_atanh(), xlim = c(-1, 1))
 trans_atanh <- function() {
   trans_new("atanh", "atanh", "tanh")
 }
@@ -52,9 +52,9 @@ atanh_trans <- trans_atanh
 #'
 #' @param p Transformation exponent, \eqn{\lambda}.
 #' @param offset Constant offset. 0 for Box-Cox type 1,
-#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
+#'   otherwise any non-negative constant (Box-Cox type 2). `trans_modulus()`
 #'   sets the default to 1.
-#' @seealso [yj_trans()]
+#' @seealso [trans_yj()]
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
@@ -64,16 +64,15 @@ atanh_trans <- trans_atanh
 #' \url{http://www.jstor.org/stable/2986305}
 #' @export
 #' @examples
-#' plot(boxcox_trans(-1), xlim = c(0, 10))
-#' plot(boxcox_trans(0), xlim = c(0, 10))
-#' plot(boxcox_trans(1), xlim = c(0, 10))
-#' plot(boxcox_trans(2), xlim = c(0, 10))
+#' plot(trans_boxcox(-1), xlim = c(0, 10))
+#' plot(trans_boxcox(0), xlim = c(0, 10))
+#' plot(trans_boxcox(1), xlim = c(0, 10))
+#' plot(trans_boxcox(2), xlim = c(0, 10))
 #'
-#' plot(modulus_trans(-1), xlim = c(-10, 10))
-#' plot(modulus_trans(0), xlim = c(-10, 10))
-#' plot(modulus_trans(1), xlim = c(-10, 10))
-#' plot(modulus_trans(2), xlim = c(-10, 10))
-boxcox_trans <- function(p, offset = 0) {
+#' plot(trans_modulus(-1), xlim = c(-10, 10))
+#' plot(trans_modulus(0), xlim = c(-10, 10))
+#' plot(trans_modulus(1), xlim = c(-10, 10))
+#' plot(trans_modulus(2), xlim = c(-10, 10))
 trans_boxcox <- function(p, offset = 0) {
   trans <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
@@ -127,7 +126,7 @@ modulus_trans <- trans_modulus
 #' Yeo-Johnson transformation
 #'
 #' The Yeo-Johnson transformation is a flexible transformation that is similiar
-#' to Box-Cox, [boxcox_trans()], but does not require input values to be greater
+#' to Box-Cox, [trans_boxcox()], but does not require input values to be greater
 #' than zero.
 #'
 #' The transformation takes one of four forms depending on the values of `y` and \eqn{\lambda}.
@@ -147,10 +146,10 @@ modulus_trans <- trans_modulus
 #' \url{http://www.jstor.org/stable/2673623}
 #' @export
 #' @examples
-#' plot(yj_trans(-1), xlim = c(-10, 10))
-#' plot(yj_trans(0), xlim = c(-10, 10))
-#' plot(yj_trans(1), xlim = c(-10, 10))
-#' plot(yj_trans(2), xlim = c(-10, 10))
+#' plot(trans_yj(-1), xlim = c(-10, 10))
+#' plot(trans_yj(0), xlim = c(-10, 10))
+#' plot(trans_yj(1), xlim = c(-10, 10))
+#' plot(trans_yj(2), xlim = c(-10, 10))
 trans_yj <- function(p) {
   eps <- 1e-7
 
@@ -195,10 +194,10 @@ trans_two_sided <- function(x, pos, neg) {
 #' @param base Base of logarithm
 #' @export
 #' @examples
-#' plot(exp_trans(0.5), xlim = c(-2, 2))
-#' plot(exp_trans(1), xlim = c(-2, 2))
-#' plot(exp_trans(2), xlim = c(-2, 2))
-#' plot(exp_trans(), xlim = c(-2, 2))
+#' plot(trans_exp(0.5), xlim = c(-2, 2))
+#' plot(trans_exp(1), xlim = c(-2, 2))
+#' plot(trans_exp(2), xlim = c(-2, 2))
+#' plot(trans_exp(), xlim = c(-2, 2))
 trans_exp <- function(base = exp(1)) {
   force(base)
   trans_new(
@@ -216,7 +215,7 @@ exp_trans <- trans_exp
 #'
 #' @export
 #' @examples
-#' plot(identity_trans(), xlim = c(-1, 1))
+#' plot(trans_identity(), xlim = c(-1, 1))
 trans_identity <- function() {
   trans_new("identity", "force", "force")
 }
@@ -227,27 +226,27 @@ identity_trans <- trans_identity
 
 #' Log transformations
 #'
-#' * `log_trans()`: `log(x)`
-#' * `log1p()`: `log(x + 1)`
-#' * `pseudo_log_trans()`:  smoothly transition to linear scale around 0.
+#' * `trans_log()`: `log(x)`
+#' * `trans_log1p()`: `log(x + 1)`
+#' * `trans_pseudo_log()`:  smoothly transition to linear scale around 0.
 #'
 #' @param base base of logarithm
 #' @export
 #' @examples
-#' plot(log2_trans(), xlim = c(0, 5))
-#' plot(log_trans(), xlim = c(0, 5))
-#' plot(log10_trans(), xlim = c(0, 5))
+#' plot(trans_log2(), xlim = c(0, 5))
+#' plot(trans_log(), xlim = c(0, 5))
+#' plot(trans_log10(), xlim = c(0, 5))
 #'
-#' plot(log_trans(), xlim = c(0, 2))
-#' plot(log1p_trans(), xlim = c(-1, 1))
+#' plot(trans_log(), xlim = c(0, 2))
+#' plot(trans_log1p(), xlim = c(-1, 1))
 #'
 #' # The pseudo-log is defined for all real numbers
-#' plot(pseudo_log_trans(), xlim = c(-5, 5))
-#' lines(log_trans(), xlim = c(0, 5), col = "red")
+#' plot(trans_pseudo_log(), xlim = c(-5, 5))
+#' lines(trans_log(), xlim = c(0, 5), col = "red")
 #'
 #' # For large positives nubmers it's very close to log
-#' plot(pseudo_log_trans(), xlim = c(1, 20))
-#' lines(log_trans(), xlim = c(1, 20), col = "red")
+#' plot(trans_pseudo_log(), xlim = c(1, 20))
+#' lines(trans_log(), xlim = c(1, 20), col = "red")
 trans_log <- function(base = exp(1)) {
   force(base)
   trans <- function(x) log(x, base)
@@ -316,8 +315,8 @@ pseudo_log_trans <- trans_pseudo_log
 #' @param ... other arguments passed on to distribution and quantile functions
 #' @export
 #' @examples
-#' plot(logit_trans(), xlim = c(0, 1))
-#' plot(probit_trans(), xlim = c(0, 1))
+#' plot(trans_logit(), xlim = c(0, 1))
+#' plot(trans_probit(), xlim = c(0, 1))
 trans_probability <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
@@ -350,7 +349,7 @@ probit_trans <- trans_probit
 #'
 #' @export
 #' @examples
-#' plot(reciprocal_trans(), xlim = c(0, 1))
+#' plot(trans_reciprocal(), xlim = c(0, 1))
 trans_reciprocal <- function() {
   trans_new(
     "reciprocal",
@@ -367,7 +366,7 @@ reciprocal_trans <- trans_reciprocal
 #'
 #' @export
 #' @examples
-#' plot(reverse_trans(), xlim = c(-1, 1))
+#' plot(trans_reverse(), xlim = c(-1, 1))
 trans_reverse <- function() {
   trans_new(
     "reverse",
@@ -388,7 +387,7 @@ reverse_trans <- trans_reverse
 #'
 #' @export
 #' @examples
-#' plot(sqrt_trans(), xlim = c(0, 5))
+#' plot(trans_sqrt(), xlim = c(0, 5))
 trans_sqrt <- function() {
   trans_new(
     "sqrt",
@@ -400,3 +399,4 @@ trans_sqrt <- function() {
 
 #' @export
 #' @rdname trans_sqrt
+sqrt_trans <- trans_sqrt

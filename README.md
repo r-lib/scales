@@ -112,7 +112,7 @@ transformation functions for repeated use.
 
 ``` r
 # use trans_new to build a new transformation
-logp3_trans <- trans_new(
+trans_log3p <- trans_new(
   name = "logp",
   transform = function(x) log(x + 3),
   inverse = function(x) exp(x) - 3,
@@ -122,7 +122,7 @@ logp3_trans <- trans_new(
 dsamp <- sample_n(diamonds, 100)
 ggplot(dsamp, aes(carat, price, colour = color)) +
   geom_point() + 
-  scale_y_continuous(trans = logp3_trans)
+  scale_y_continuous(trans = trans_log3p)
 ```
 
 ![](man/figures/README-transforms-1.png)<!-- -->

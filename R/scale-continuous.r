@@ -16,14 +16,14 @@
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
-#'   trans = sqrt_trans()
+#'   trans = trans_sqrt()
 #' )))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg,
 #'   pch = 20, cex = 5,
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
 #' ))
-cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
+cscale <- function(x, palette, na.value = NA_real_, trans = trans_identity()) {
   stopifnot(is.trans(trans))
 
   x <- trans$transform(x)
