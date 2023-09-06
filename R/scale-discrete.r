@@ -7,7 +7,7 @@
 #' @examples
 #' with(mtcars, plot(disp, mpg,
 #'   pch = 20, cex = 3,
-#'   col = dscale(factor(cyl), brewer_pal())
+#'   col = dscale(factor(cyl), pal_brewer())
 #' ))
 dscale <- function(x, palette, na.value = NA) {
   limits <- train_discrete(x)

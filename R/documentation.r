@@ -9,4 +9,4 @@ seealso <- function(pattern) {
 
 seealso_trans <- function() seealso("_trans$")
 
-seealso_pal <- function() seealso("_pal$")
+seealso_pal <- function() seealso("^pal_")
