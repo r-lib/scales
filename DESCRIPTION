@@ -14,14 +14,17 @@ BugReports: https://github.com/r-lib/scales/issues
 Depends: 
     R (>= 3.2)
 Imports: 
+    cli,
     farver (>= 2.0.3),
+    glue,
     labeling,
     lifecycle,
     munsell (>= 0.5),
     R6,
     RColorBrewer,
     rlang (>= 1.0.0),
-    viridisLite
+    viridisLite,
+    withr
 Suggests: 
     bit64,
     covr,
