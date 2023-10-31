@@ -28,8 +28,8 @@ override the default breaks, labels, transformations and palettes.
 install.packages("scales")
 
 # Or the development version from Github:
-# install.packages("devtools")
-devtools::install_github("r-lib/scales")
+# install.packages("pak")
+pak::pak("r-lib/scales")
 ```
 
 ## Usage
