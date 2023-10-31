@@ -98,7 +98,50 @@ large.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Other arguments passed on to <code><a href="number.html">number()</a></code></p></dd>
+<dd><p>Arguments passed on to <code><a href="number.html">number</a></code></p><dl><dt><code>prefix</code></dt>
+<dd><p>Additional text to display before the number. The suffix is
+applied to absolute value before <code>style_positive</code> and <code>style_negative</code> are
+processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
+
+    <dt><code>suffix</code></dt>
+<dd><p>Additional text to display after the number.</p></dd>
+
+    <dt><code>big.mark</code></dt>
+<dd><p>Character used between every 3 digits to separate thousands.</p></dd>
+
+    <dt><code>decimal.mark</code></dt>
+<dd><p>The character to be used to indicate the numeric
+decimal point.</p></dd>
+
+    <dt><code>style_positive</code></dt>
+<dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
+<li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
+</ul></dd>
+
+    <dt><code>style_negative</code></dt>
+<dd><p>A string that determines the style of negative numbers:</p><ul><li><p><code>"hyphen"</code> (the default): preceded by a standard hypen <code>-</code>, e.g. <code>-1</code>.</p></li>
+<li><p><code>"minus"</code>, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures <code>-</code> aligns with the horizontal bar of the
+the horizontal bar of <code>+</code>.</p></li>
+<li><p><code>"parens"</code>, wrapped in parentheses, e.g. <code>(1)</code>.</p></li>
+</ul></dd>
+
+    <dt><code>scale_cut</code></dt>
+<dd><p>Named numeric vector that allows you to rescale large
+(or small) numbers and add a prefix. Built-in helpers include:</p><ul><li><p><code><a href="number.html">cut_short_scale()</a></code>: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.</p></li>
+<li><p><code><a href="number.html">cut_long_scale()</a></code>: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.</p></li>
+<li><p><code>cut_si(unit)</code>: uses standard SI units.</p></li>
+</ul><p>If you supply a vector <code>c(a = 100, b = 1000)</code>, absolute values in the
+range <code>[0, 100)</code> will not be rescaled, absolute values in the range <code>[100, 1000)</code>
+will be divided by 100 and given the suffix "a", and absolute values in
+the range <code>[1000, Inf)</code> will be divided by 1000 and given the suffix "b".</p></dd>
+
+    <dt><code>trim</code></dt>
+<dd><p>Logical, if <code>FALSE</code>, values are right-justified to a common
+width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-link">base::format()</a></code>).</p></dd>
+
+  
+</dl></dd>
 
 </dl></div>
     <div class="section level2">

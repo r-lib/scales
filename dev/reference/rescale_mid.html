@@ -49,7 +49,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Rescale vector to have specified minimum, midpoint, and maximum</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-lib/scales/blob/HEAD/R/bounds.r" class="external-link"><code>R/bounds.r</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-lib/scales/blob/HEAD/R/bounds.R" class="external-link"><code>R/bounds.R</code></a></small>
       <div class="d-none name"><code>rescale_mid.Rd</code></div>
     </div>
 
@@ -125,16 +125,15 @@ calculated from the range of <code>x</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 0.90909091 0.91919192 0.92929293 0.93939394 0.94949495 0.95959596</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [97] 0.96969697 0.97979798 0.98989899 1.00000000</span>
 <span class="r-in"><span><span class="fu">rescale_mid</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, mid <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.547796685 0.227565888 0.775155711 0.035044582 0.636009468</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.624809743 0.005208192 0.093650171 0.072229943 0.597791055</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.923052720 0.186881237 0.848834610 0.452363474 0.460706097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] 0.057535043 0.384075276 0.420143777 0.515544261 0.232685877</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] 0.736856517 0.504835690 0.810895151 0.502066568 0.795525709</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 0.295587025 0.942232856 0.920625667 0.280542714 0.597874829</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.035804893 0.519318056 0.146565031 0.109928389 0.372390703</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] 0.629460106 0.183984213 0.972850922 0.332806302 0.877896953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 0.830765771 0.324417656 0.645020409 0.443135288 0.898257719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [46] 1.000000000 0.994978452 0.038958527 0.988145527 0.749590981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.53102549 0.49820261 0.58963434 0.10423814 0.63906105 0.81103325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.82121678 0.41065758 0.87205953 0.75301660 0.54032468 0.70694760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.56572588 0.90891022 0.60874765 0.45202216 0.83491934 0.37708531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.87366480 0.47326346 0.77333802 0.46512898 0.04181616 0.19767923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.06920714 0.98210785 0.01136377 0.09949048 0.93130809 1.00000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.61006902 0.36038530 0.63003770 0.09245964 0.09696080 0.76827533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.47452134 0.19480699 0.39151454 0.45632066 0.76483305 0.51675977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.22175576 0.27783087 0.03166956 0.09152955 0.20590314 0.55244601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.72378385 0.96315160</span>
 <span class="r-in"><span><span class="fu">rescale_mid</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5</span>
 </code></pre></div>
