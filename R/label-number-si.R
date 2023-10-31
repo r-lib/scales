@@ -15,6 +15,7 @@
 #' @param scale A scaling factor: `x` will be multiplied by `scale` before
 #'   formatting. This is useful if the underlying data is already using an SI
 #'   prefix.
+#' @inheritDotParams label_number
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales

@@ -11,7 +11,7 @@
 #' @param prefix,suffix Symbols to display before and after value.
 #' @param negative_parens `r lifecycle::badge("deprecated")` Use
 #'   `style_negative = "parens"` instead.
-#' @param ... Other arguments passed on to [base::format()].
+#' @inheritDotParams number
 #' @export
 #' @family labels for continuous scales
 #' @examples
