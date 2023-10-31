@@ -7,8 +7,7 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
-[![R build
-status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
+[![R-CMD-check](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
@@ -67,6 +66,7 @@ txhousing %>%
 ![](man/figures/README-labels-1.png)<!-- -->
 
 ``` r
+
 economics %>% 
   filter(date < ymd("1970-01-01")) %>% 
   ggplot(aes(date, pce)) + 
