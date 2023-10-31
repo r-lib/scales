@@ -53,7 +53,7 @@ atanh_trans <- function() {
 #'
 #' John, J. A., & Draper, N. R. (1980).
 #' An alternative family of transformations. Applied Statistics, 190-197.
-#' \url{http://www.jstor.org/stable/2986305}
+#' \url{https://www.jstor.org/stable/2986305}
 #' @export
 #' @examples
 #' plot(boxcox_trans(-1), xlim = c(0, 10))
@@ -127,7 +127,7 @@ modulus_trans <- function(p, offset = 1) {
 #' @param p Transformation exponent, \eqn{\lambda}.
 #' @references Yeo, I., & Johnson, R. (2000).
 #' A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
-#' \url{http://www.jstor.org/stable/2673623}
+#' \url{https://www.jstor.org/stable/2673623}
 #' @export
 #' @examples
 #' plot(yj_trans(-1), xlim = c(-10, 10))

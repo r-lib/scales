@@ -53,7 +53,7 @@ Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 
 John, J. A., & Draper, N. R. (1980).
 An alternative family of transformations. Applied Statistics, 190-197.
-\url{http://www.jstor.org/stable/2986305}
+\url{https://www.jstor.org/stable/2986305}
 }
 \seealso{
 \code{\link[=yj_trans]{yj_trans()}}

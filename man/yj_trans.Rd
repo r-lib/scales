@@ -36,5 +36,5 @@ plot(yj_trans(2), xlim = c(-10, 10))
 \references{
 Yeo, I., & Johnson, R. (2000).
 A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
-\url{http://www.jstor.org/stable/2673623}
+\url{https://www.jstor.org/stable/2673623}
 }
