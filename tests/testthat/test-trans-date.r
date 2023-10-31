@@ -10,10 +10,10 @@ with_tz <- function(x, value) {
 
 test_that("date/time scales raise error on incorrect inputs", {
   time <- time_trans()
-  expect_error(time$transform(a_date), "Invalid input")
+  expect_snapshot_error(time$transform(a_date))
 
   date <- date_trans()
-  expect_error(date$transform(a_time), "Invalid input")
+  expect_snapshot_error(date$transform(a_time))
 })
 
 test_that("time scales learn timezones", {

@@ -64,7 +64,7 @@ pvalue <- function(x,
     }
   } else {
     if (!is.character(prefix) || length(prefix) != 3) {
-      stop("`prefix` must be a length 3 character vector", call. = FALSE)
+      cli::cli_abort("{.arg prefix} must be a length 3 character vector")
     }
   }
 

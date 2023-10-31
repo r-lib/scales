@@ -23,8 +23,7 @@ Imports:
     R6,
     RColorBrewer,
     rlang (>= 1.0.0),
-    viridisLite,
-    withr
+    viridisLite
 Suggests: 
     bit64,
     covr,

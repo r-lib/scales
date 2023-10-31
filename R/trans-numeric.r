@@ -68,9 +68,10 @@ atanh_trans <- function() {
 boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
-      stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
-        call. = F
-      )
+      cli::cli_abort(c(
+        "{.fun boxcox_trans} must be given only positive values",
+        i = "Consider using {.fun modulus_trans} instead?"
+      ))
     }
     if (abs(p) < 1e-07) {
       log(x + offset)

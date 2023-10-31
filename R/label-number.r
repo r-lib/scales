@@ -321,14 +321,14 @@ precision <- function(x) {
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
   if (!is.numeric(breaks) || is.null(names(breaks))) {
-    abort("`scale_cut` must be a named numeric vector")
+    cli::cli_abort("{.arg scale_cut} must be a named numeric vector")
   }
   breaks <- sort(breaks, na.last = TRUE)
   if (any(is.na(breaks))) {
-    abort("`scale_cut` values must not be missing")
+    cli::cli_abort("{.arg scale_cut} values must not be missing")
   }
   if (!identical(breaks[[1]], 0) && !identical(breaks[[1]], 0L)) {
-    abort("Smallest value of `scales_cut` must be zero")
+    cli::cli_abort("Smallest value of {.arg scales_cut} must be zero")
   }
 
   break_suffix <- as.character(cut(

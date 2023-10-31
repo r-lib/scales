@@ -45,7 +45,7 @@ brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
 pal_name <- function(palette, type) {
   if (is.character(palette)) {
     if (!palette %in% unlist(brewer)) {
-      warning("Unknown palette ", palette)
+      cli::cli_warn("Unknown palette: {.val {palette}}")
       palette <- "Greens"
     }
     return(palette)

@@ -13,7 +13,7 @@
 compose_trans <- function(...) {
   trans_list <- lapply(list2(...), as.trans)
   if (length(trans_list) == 0) {
-    abort("Must include at least 1 transformer to compose")
+    cli::cli_abort("{.fun compose_trans} must include at least 1 transformer to compose")
   }
 
   # Resolve domains
@@ -21,7 +21,7 @@ compose_trans <- function(...) {
     domain <- compose_fwd(trans_list[[1]]$domain, trans_list[-1])
   )
   if (any(is.na(domain))) {
-    abort("Sequence of transformations yields invalid domain")
+    cli::cli_abort("Sequence of transformations yields invalid domain")
   }
   domain <- range(domain)
 
