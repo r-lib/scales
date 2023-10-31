@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# scales <a href='https://scales.r-lib.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# scales <a href="https://scales.r-lib.org/"><img src="man/figures/logo.png" align="right" height="138" alt="scales website" /></a>
 
 <!-- badges: start -->
 
