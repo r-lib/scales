@@ -1,6 +1,3 @@
-## R CMD check results
-0 errors | 1 warnings | 0 notes
-
 I'm seeing a warning from the JSTOR links, presumably because of their overactive robot detection software:
 
   URL: http://www.jstor.org/stable/2673623
