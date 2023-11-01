@@ -16,9 +16,9 @@
 #' @param minor_breaks default minor breaks function for this transformation.
 #' @param format default format for this transformation. The format is applied
 #'   to breaks generated on the un-transformed data.
-#' @param domain domain, as numeric vector of length 2, over which
-#'   transformation is valued. The function in the `transform` argument is
-#'   expected to be able to transform the `domain` argument.
+#' @param domain the allowed range of the data to be transformed. The function
+#'   in the `transform` argument is expected to be able to transform the `domain`
+#'   argument.
 #' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
 #' @export
 #' @keywords internal

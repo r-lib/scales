@@ -38,9 +38,9 @@ function is applied to the un-transformed data.}
 \item{format}{default format for this transformation. The format is applied
 to breaks generated on the un-transformed data.}
 
-\item{domain}{domain, as numeric vector of length 2, over which
-transformation is valued. The function in the \code{transform} argument is
-expected to be able to transform the \code{domain} argument.}
+\item{domain}{the allowed range of the data to be transformed. The function
+in the \code{transform} argument is expected to be able to transform the \code{domain}
+argument.}
 }
 \description{
 A transformation encapsulates a transformation and its inverse, as well
