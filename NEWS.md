@@ -4,6 +4,9 @@
   (@teunbrand, #369).
 * Training on factor data no longer sorts the range after multiple training 
   passes (#383)
+* Attempt to make the sort behavior of the range consistent for character 
+  vectors during training. Mixing of character and factor data will still lead
+  to different results depending on the training order.
 
 # scales 1.2.1
 
