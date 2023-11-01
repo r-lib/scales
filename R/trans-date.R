@@ -19,9 +19,7 @@ date_trans <- function() {
 to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
   if (!inherits(x, "Date")) {
-    stop("Invalid input: date_trans works with objects of class Date only",
-      call. = FALSE
-    )
+    cli::cli_abort("{.fun date_trans} works with objects of class {.cls Date} only")
   }
   structure(as.numeric(x), names = names(x))
 }
@@ -45,10 +43,7 @@ time_trans <- function(tz = NULL) {
 
   from_time <- function(x) {
     if (!inherits(x, "POSIXct")) {
-      stop("Invalid input: time_trans works with objects of class ",
-        "POSIXct only",
-        call. = FALSE
-      )
+      cli::cli_abort("{.fun time_trans} works with objects of class {.cls POSIXct} only")
     }
     if (is.null(tz)) {
       tz <<- attr(as.POSIXlt(x), "tzone")[[1]]

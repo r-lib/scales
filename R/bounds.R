@@ -351,7 +351,7 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) {
     return(TRUE)
   }
-  if (length(x) != 2) stop("x must be length 1 or 2")
+  if (length(x) != 2) cli::cli_abort("{.arg x} must be length 1 or 2")
   if (any(is.na(x))) {
     return(NA)
   }

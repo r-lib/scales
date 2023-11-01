@@ -51,18 +51,15 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy
 
 validate_byte_symbol <- function(symbol, symbols, default = "auto") {
   if (length(symbol) != 1) {
-    n <- length(symbol)
-    stop("`symbol` must have length 1, not length ", n, ".", call. = FALSE)
+    cli::cli_abort("{.arg symbol} must have length 1, not length {length(symbol)}")
   }
 
   valid_symbols <- c(default, symbols)
   if (!(symbol %in% valid_symbols)) {
-    warning(
-      "`symbol` must be one of: '", paste0(valid_symbols, collapse = "', '"),
-      "'; not '", symbol, "'.\n",
-      "Defaulting to '", default, "'.",
-      call. = FALSE
-    )
+    cli::cli_warn(c(
+      "{.arg symbol} must be one of {.or {.or {valid_symbols}}}",
+      i = "The provided value ({.val {symbol}}) will be changed to the default ({.val {default}})"
+    ))
     symbol <- default
   }
 

@@ -109,11 +109,7 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
     } else if (inherits(x, "difftime")) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
-      stop(
-        "time_format can't be used with objects of class ", paste(class(x), collapse = "/"),
-        ".",
-        call. = FALSE
-      )
+      cli::cli_abort("{.fun label_time} can't be used with an object of class {.cls {class(x)}}")
     }
   }
 }

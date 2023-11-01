@@ -2,9 +2,11 @@ Package: scales
 Title: Scale Functions for Visualization
 Version: 1.2.1.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@rstudio.com", role = c("aut", "cre")),
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut")),
+    person("Thomas Lin", "Pedersen", , "thomasp85@posit.co", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-5147-4711")),
     person("Dana", "Seidel", role = "aut"),
-    person("RStudio", role = c("cph", "fnd"))
+    person("Posit, PBC", role = c("cph", "fnd"))
   )
 Description: Graphical scales map data to aesthetics, and provide methods
     for automatically determining breaks and labels for axes and legends.
@@ -12,9 +14,11 @@ License: MIT + file LICENSE
 URL: https://scales.r-lib.org, https://github.com/r-lib/scales
 BugReports: https://github.com/r-lib/scales/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.6)
 Imports: 
+    cli,
     farver (>= 2.0.3),
+    glue,
     labeling,
     lifecycle,
     munsell (>= 0.5),
@@ -32,8 +36,8 @@ Suggests:
     testthat (>= 3.0.0),
     waldo (>= 0.4.0)
 Config/Needs/website: tidyverse/tidytemplate
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.2.1
-Config/testthat/edition: 3
+RoxygenNote: 7.2.3
