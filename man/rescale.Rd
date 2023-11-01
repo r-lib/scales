@@ -8,6 +8,7 @@
 \alias{rescale.POSIXt}
 \alias{rescale.Date}
 \alias{rescale.integer64}
+\alias{rescale.AsIs}
 \title{Rescale continuous vector to have specified minimum and maximum}
 \usage{
 rescale(x, to, from, ...)
@@ -23,6 +24,8 @@ rescale(x, to, from, ...)
 \method{rescale}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
 \method{rescale}{integer64}(x, to = c(0, 1), from = range(x, na.rm = TRUE), ...)
+
+\method{rescale}{AsIs}(x, to, from, ...)
 }
 \arguments{
 \item{x}{continuous vector of values to manipulate.}
@@ -36,6 +39,9 @@ calculated from the range of \code{x}}
 }
 \description{
 Rescale continuous vector to have specified minimum and maximum
+}
+\details{
+Objects of class \verb{<AsIs>} are returned unaltered.
 }
 \examples{
 rescale(1:100)

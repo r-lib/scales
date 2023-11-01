@@ -4,6 +4,8 @@
   (@teunbrand, #369).
 * Training on factor data no longer sorts the range after multiple training 
   passes (#383)
+* `rescale(I(x), ...)` and `rescale_mid(I(x), ...)` return `I(x)` unaltered 
+  (@teunbrand, #403).
 
 # scales 1.2.1
 
