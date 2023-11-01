@@ -17,7 +17,7 @@ test_that("Mutable ranges work", {
   x <- DiscreteRange$new()
   x$train(factor(letters[1:3]))
   expect_equal(x$range, c("a", "b", "c"))
-  x$train(factor("a", "h"))
+  x$train(factor(c("a", "h")))
   expect_equal(x$range, c("a", "b", "c", "h"))
   x$reset()
   expect_equal(x$range, NULL)
