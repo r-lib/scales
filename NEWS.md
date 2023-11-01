@@ -8,6 +8,8 @@
   vectors during training. Mixing of character and factor data will still lead
   to different results depending on the training order.
 * Add a rescale method for `difftime` objects (#382)
+* The `scale_cut` argument in `number()` now works as advertised for values 
+  below the lowest cut value (#346)
 
 # scales 1.2.1
 

@@ -327,9 +327,6 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   if (any(is.na(breaks))) {
     cli::cli_abort("{.arg scale_cut} values must not be missing")
   }
-  if (!identical(breaks[[1]], 0) && !identical(breaks[[1]], 0L)) {
-    cli::cli_abort("Smallest value of {.arg scales_cut} must be zero")
-  }
 
   break_suffix <- as.character(cut(
     abs(x * scale),
@@ -337,14 +334,13 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
     labels = c(names(breaks)),
     right = FALSE
   ))
-  break_suffix[is.na(break_suffix)] <- names(which.min(breaks))
+  break_suffix[is.na(break_suffix)] <- ""
 
   break_scale <- scale * unname(1 / breaks[break_suffix])
   break_scale[which(break_scale %in% c(Inf, NA))] <- scale
 
-  # exact zero is not scaled
-  x_zero <- which(abs(x) == 0)
-  scale[x_zero] <- 1
+  # exact zero is not scaled, nor are values below lowest break
+  break_scale[abs(x) == 0 | is.na(break_scale)] <- 1
 
   suffix <- paste0(break_suffix, suffix)
   accuracy <- accuracy %||% stats::ave(x * break_scale, break_scale, FUN = precision)

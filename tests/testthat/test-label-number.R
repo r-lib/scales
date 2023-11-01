@@ -171,7 +171,6 @@ test_that("scale_cut checks its inputs", {
   expect_snapshot(error = TRUE, {
     number(1, scale_cut = 0)
     number(1, scale_cut = "x")
-    number(1, scale_cut = c(x = 1, y = 2))
     number(1, scale_cut = c(x = 0, NA))
   })
 })
