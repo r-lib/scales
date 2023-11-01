@@ -31,7 +31,7 @@ train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
   }
 
   if (!is.discrete(new)) {
-    stop("Continuous value supplied to discrete scale", call. = FALSE)
+    cli::cli_abort("Continuous value supplied to a discrete scale")
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm)
 }

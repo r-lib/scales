@@ -1,14 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# scales <a href='https://scales.r-lib.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# scales <a href="https://scales.r-lib.org/"><img src="man/figures/logo.png" align="right" height="138" alt="scales website" /></a>
 
 <!-- badges: start -->
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
-[![R build
-status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
+[![R-CMD-check](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
@@ -29,8 +28,8 @@ override the default breaks, labels, transformations and palettes.
 install.packages("scales")
 
 # Or the development version from Github:
-# install.packages("devtools")
-devtools::install_github("r-lib/scales")
+# install.packages("pak")
+pak::pak("r-lib/scales")
 ```
 
 ## Usage
@@ -67,6 +66,7 @@ txhousing %>%
 ![](man/figures/README-labels-1.png)<!-- -->
 
 ``` r
+
 economics %>% 
   filter(date < ymd("1970-01-01")) %>% 
   ggplot(aes(date, pce)) + 

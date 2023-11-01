@@ -24,7 +24,7 @@
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
 #' ))
 cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
-  stopifnot(is.trans(trans))
+  if (!is.trans(trans)) cli::cli_abort("{.arg trans} must be a {.cls trans} object")
 
   x <- trans$transform(x)
   limits <- train_continuous(x)
@@ -43,7 +43,7 @@ train_continuous <- function(new, existing = NULL) {
   }
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
-    stop("Discrete value supplied to continuous scale", call. = FALSE)
+    cli::cli_abort("Discrete value supplied to a continuous scale")
   }
 
   suppressWarnings(range(existing, new, na.rm = TRUE, finite = TRUE))

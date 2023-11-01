@@ -7,7 +7,7 @@ demo_ggplot <- function(x, scale_name, ...) {
   cat(paste0(deparse(call), "\n", collapse = ""))
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    message("Skipping; ggplot2 not installed")
+    cli::cli_inform("Skipping; {.pkg ggplot2} not installed")
     return(invisible())
   }
 
