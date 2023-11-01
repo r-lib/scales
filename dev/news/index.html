@@ -58,6 +58,7 @@
 <code><a href="../reference/train_continuous.html">train_continuous()</a></code> coerces <code>new</code> to numeric before calculating range (<a href="https://github.com/teunbrand" class="external-link">@teunbrand</a>, <a href="https://github.com/r-lib/scales/issues/369" class="external-link">#369</a>).</li>
 <li>Training on factor data no longer sorts the range after multiple training passes (<a href="https://github.com/r-lib/scales/issues/383" class="external-link">#383</a>)</li>
 <li>Attempt to make the sort behavior of the range consistent for character vectors during training. Mixing of character and factor data will still lead to different results depending on the training order.</li>
+<li>Add a rescale method for <code>difftime</code> objects (<a href="https://github.com/r-lib/scales/issues/382" class="external-link">#382</a>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="scales-121">scales 1.2.1<a class="anchor" aria-label="anchor" href="#scales-121"></a></h2><p class="text-muted">CRAN release: 2022-08-19</p>
