@@ -49,8 +49,14 @@ discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
   if (length(new_levels) == 0) {
     return(old)
   }
+  range <- c(old, new_levels)
 
-  sort(c(old, new_levels))
+  # Avoid sorting levels when dealing with factors to mimick behaviour of
+  # clevels()
+  if (is.factor(new)) {
+    return(range)
+  }
+  sort(range)
 }
 
 clevels <- function(x, drop = FALSE, na.rm = FALSE) {

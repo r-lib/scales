@@ -2,6 +2,8 @@
 
 * `train_continuous()` coerces `new` to numeric before calculating range 
   (@teunbrand, #369).
+* Training on factor data no longer sorts the range after multiple training 
+  passes (#383)
 
 # scales 1.2.1
 
