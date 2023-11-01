@@ -1,11 +1,10 @@
 #' Create a new transformation object
 #'
 #' A transformation encapsulates a transformation and its inverse, as well
-#' as the information needed to create pleasing breaks and labels. The breaks
-#' function is applied on the transformed range of the range, and it's
-#' expected that the labels function will perform some kind of inverse
-#' transformation on these breaks to give them labels that are meaningful on
-#' the original scale.
+#' as the information needed to create pleasing breaks and labels. The `breaks()`
+#' function is applied on the un-transformed range of the data, and the
+#' `format()` function takes the output of the `breaks()` function and return
+#' well-formatted labels.
 #'
 #' @param name transformation name
 #' @param transform function, or name of function, that performs the
@@ -13,10 +12,10 @@
 #' @param inverse function, or name of function, that performs the
 #'   inverse of the transformation
 #' @param breaks default breaks function for this transformation. The breaks
-#'   function is applied to the raw data.
+#'   function is applied to the un-transformed data.
 #' @param minor_breaks default minor breaks function for this transformation.
 #' @param format default format for this transformation. The format is applied
-#'   to breaks generated to the raw data.
+#'   to breaks generated on the un-transformed data.
 #' @param domain domain, as numeric vector of length 2, over which
 #'   transformation is valued. The function in the `transform` argument is
 #'   expected to be able to transform the `domain` argument.

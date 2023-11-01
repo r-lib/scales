@@ -31,12 +31,12 @@ transformation}
 inverse of the transformation}
 
 \item{breaks}{default breaks function for this transformation. The breaks
-function is applied to the raw data.}
+function is applied to the un-transformed data.}
 
 \item{minor_breaks}{default minor breaks function for this transformation.}
 
 \item{format}{default format for this transformation. The format is applied
-to breaks generated to the raw data.}
+to breaks generated on the un-transformed data.}
 
 \item{domain}{domain, as numeric vector of length 2, over which
 transformation is valued. The function in the \code{transform} argument is
@@ -44,11 +44,10 @@ expected to be able to transform the \code{domain} argument.}
 }
 \description{
 A transformation encapsulates a transformation and its inverse, as well
-as the information needed to create pleasing breaks and labels. The breaks
-function is applied on the transformed range of the range, and it's
-expected that the labels function will perform some kind of inverse
-transformation on these breaks to give them labels that are meaningful on
-the original scale.
+as the information needed to create pleasing breaks and labels. The \code{breaks()}
+function is applied on the un-transformed range of the data, and the
+\code{format()} function takes the output of the \code{breaks()} function and return
+well-formatted labels.
 }
 \seealso{
 \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
