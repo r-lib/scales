@@ -7,6 +7,7 @@
 * Attempt to make the sort behavior of the range consistent for character 
   vectors during training. Mixing of character and factor data will still lead
   to different results depending on the training order.
+* Add a rescale method for `difftime` objects (#382)
 
 # scales 1.2.1
 

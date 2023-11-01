@@ -58,6 +58,10 @@ rescale.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), ..
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
+#' @rdname rescale
+#' @export
+rescale.difftime <- rescale.numeric
+
 
 #' Rescale vector to have specified minimum, midpoint, and maximum
 #'

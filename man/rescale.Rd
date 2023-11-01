@@ -8,6 +8,7 @@
 \alias{rescale.POSIXt}
 \alias{rescale.Date}
 \alias{rescale.integer64}
+\alias{rescale.difftime}
 \title{Rescale continuous vector to have specified minimum and maximum}
 \usage{
 rescale(x, to, from, ...)
@@ -23,6 +24,8 @@ rescale(x, to, from, ...)
 \method{rescale}{Date}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 
 \method{rescale}{integer64}(x, to = c(0, 1), from = range(x, na.rm = TRUE), ...)
+
+\method{rescale}{difftime}(x, to = c(0, 1), from = range(x, na.rm = TRUE, finite = TRUE), ...)
 }
 \arguments{
 \item{x}{continuous vector of values to manipulate.}
