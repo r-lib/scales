@@ -4,7 +4,7 @@
       compose_trans()
     Condition
       Error in `compose_trans()`:
-      ! Must include at least 1 transformer to compose
+      ! `compose_trans()` must include at least 1 transformer to compose
     Code
       compose_trans("reverse", "log10")
     Condition

@@ -38,7 +38,7 @@ col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, re
   if (length(domain) > 0) {
     rng <- range(domain, na.rm = TRUE)
     if (!all(is.finite(rng))) {
-      stop("Wasn't able to determine range of domain")
+      cli::cli_abort("Wasn't able to determine range of {.arg domain}")
     }
   }
 
@@ -53,7 +53,7 @@ col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, re
 
     rescaled <- rescale(x, from = rng)
     if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE)) {
-      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
     }
 
     if (reverse) {
@@ -74,7 +74,7 @@ withColorAttr <- function(type, args = list(), fun) {
 # bins is non-NULL. It may be a scalar value (# of breaks) or a set of breaks.
 getBins <- function(domain, x, bins, pretty) {
   if (is.null(domain) && is.null(x)) {
-    stop("Assertion failed: domain and x can't both be NULL")
+    cli::cli_abort("{.arg domain} and {.arg x} can't both be NULL")
   }
 
   # Hard-coded bins
@@ -83,7 +83,10 @@ getBins <- function(domain, x, bins, pretty) {
   }
 
   if (bins < 2) {
-    stop("Invalid bins value of ", bins, "; bin count must be at least 2")
+    cli::cli_abort(c(
+      "Invalid {.arg bins} value ({bins})",
+      i = "bin count must be at least 2"
+    ))
   }
   if (pretty) {
     base::pretty(domain %||% x, n = bins)
@@ -134,7 +137,7 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
     binsToUse <- getBins(domain, x, bins, pretty)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
     if (any(is.na(x) != is.na(ints))) {
-      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
     }
     colorFunc(ints)
   })
@@ -174,7 +177,7 @@ col_quantile <- function(palette, domain, n = 4,
     binsToUse <- safe_quantile(x, probs)
     ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
     if (any(is.na(x) != is.na(ints))) {
-      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
     }
     colorFunc(ints)
   })
@@ -184,11 +187,7 @@ safe_quantile <- function(x, probs) {
   bins <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
   if (anyDuplicated(bins)) {
     bins <- unique(bins)
-    warning(
-      "Skewed data means we can only allocate ", length(bins), " unique colours ",
-      "not the " , length(probs) - 1, " requested",
-      call. = FALSE
-    )
+    cli::cli_warn("Skewed data means we can only allocate {length(bins)} unique colours not the {length(probs) - 1} requested")
   }
   bins
 }
@@ -240,7 +239,7 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
   }
 
   if (!is.null(levels) && anyDuplicated(levels)) {
-    warning("Duplicate levels detected", call. = FALSE)
+    cli::cli_warn("Duplicate levels detected")
     levels <- unique(levels)
   }
   lvls <- getLevels(domain, NULL, levels, ordered)
@@ -257,12 +256,12 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
     origNa <- is.na(x)
     x <- match(as.character(x), lvls)
     if (any(is.na(x) != origNa)) {
-      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
     }
 
     scaled <- rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
-      warning("Some values were outside the color scale and will be treated as NA", call. = FALSE)
+      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
     }
     if (reverse) {
       scaled <- 1 - scaled
@@ -383,7 +382,7 @@ filterRGB <- function(f) {
     } else if (is.matrix(results)) {
       farver::encode_colour(results, from = "rgb")
     } else {
-      stop("Unexpected result type ", class(x)[[1]])
+      cli::cli_abort("Unexpected result type {.cls {class(x)}}")
     }
   }
 }

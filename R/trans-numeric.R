@@ -53,7 +53,7 @@ atanh_trans <- function() {
 #'
 #' John, J. A., & Draper, N. R. (1980).
 #' An alternative family of transformations. Applied Statistics, 190-197.
-#' \url{http://www.jstor.org/stable/2986305}
+#' \url{https://www.jstor.org/stable/2986305}
 #' @export
 #' @examples
 #' plot(boxcox_trans(-1), xlim = c(0, 10))
@@ -68,9 +68,10 @@ atanh_trans <- function() {
 boxcox_trans <- function(p, offset = 0) {
   trans <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
-      stop("boxcox_trans must be given only positive values. Consider using modulus_trans instead?",
-        call. = F
-      )
+      cli::cli_abort(c(
+        "{.fun boxcox_trans} must be given only positive values",
+        i = "Consider using {.fun modulus_trans} instead?"
+      ))
     }
     if (abs(p) < 1e-07) {
       log(x + offset)
@@ -127,7 +128,7 @@ modulus_trans <- function(p, offset = 1) {
 #' @param p Transformation exponent, \eqn{\lambda}.
 #' @references Yeo, I., & Johnson, R. (2000).
 #' A New Family of Power Transformations to Improve Normality or Symmetry. Biometrika, 87(4), 954-959.
-#' \url{http://www.jstor.org/stable/2673623}
+#' \url{https://www.jstor.org/stable/2673623}
 #' @export
 #' @examples
 #' plot(yj_trans(-1), xlim = c(-10, 10))
@@ -300,6 +301,10 @@ reciprocal_trans <- function() {
 }
 
 #' Reverse transformation
+#'
+#' reversing transformation works by multiplying the input with -1. This means
+#' that reverse transformation cannot easily be composed with transformations
+#' that require positive input unless the reversing is done as a final step.
 #'
 #' @export
 #' @examples
