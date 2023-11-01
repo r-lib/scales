@@ -2,7 +2,9 @@ Package: scales
 Title: Scale Functions for Visualization
 Version: 1.2.1.9000
 Authors@R: c(
-    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut", "cre")),
+    person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut")),
+    person("Thomas Lin", "Pedersen", , "thomasp85@posit.co", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-5147-4711")),
     person("Dana", "Seidel", role = "aut"),
     person("Posit, PBC", role = c("cph", "fnd"))
   )

@@ -20,10 +20,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Hadley Wickham \email{hadley@posit.co}
+\strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@posit.co} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})
 
 Authors:
 \itemize{
+  \item Hadley Wickham \email{hadley@posit.co}
   \item Dana Seidel
 }
 
