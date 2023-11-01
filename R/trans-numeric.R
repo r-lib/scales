@@ -247,7 +247,10 @@ log2_trans <- function() {
 #' @rdname log_trans
 #' @export
 log1p_trans <- function() {
-  trans_new("log1p", "log1p", "expm1")
+  trans_new(
+    "log1p", "log1p", "expm1",
+    domain = c(-1 + .Machine$double.eps, Inf)
+  )
 }
 
 #' @rdname log_trans
