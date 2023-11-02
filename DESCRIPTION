@@ -33,8 +33,7 @@ Suggests:
     ggplot2,
     hms (>= 0.5.0),
     stringi,
-    testthat (>= 3.0.0),
-    waldo (>= 0.4.0)
+    testthat (>= 3.0.0)
 Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/edition: 3
 Encoding: UTF-8
