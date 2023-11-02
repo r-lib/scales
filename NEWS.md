@@ -20,6 +20,9 @@
   `breaks_timespan()` adds functionality for finding pleasant breakpoints across
   the various bases in time units, while `timespan_trans()` wraps it all 
   together and provides an alternative to `hms_trans()` (#212)
+* Add an inverse (area) hyperbolic sine transformation `asinh_trans()`, which
+  provides a logarithm-like transformation of a space, but which accommodates
+  negative values (#297)
 
 # scales 1.2.1
 
