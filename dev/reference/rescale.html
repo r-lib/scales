@@ -80,7 +80,10 @@
 <span><span class="fu">rescale</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for difftime</span></span>
-<span><span class="fu">rescale</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, finite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">rescale</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, finite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for AsIs</span></span>
+<span><span class="fu">rescale</span><span class="op">(</span><span class="va">x</span>, <span class="va">to</span>, <span class="va">from</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -102,6 +105,10 @@ calculated from the range of <code>x</code></p></dd>
 <dd><p>other arguments passed on to methods</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Objects of class <code>&lt;AsIs&gt;</code> are returned unaltered.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -124,15 +131,15 @@ calculated from the range of <code>x</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 0.90909091 0.91919192 0.92929293 0.93939394 0.94949495 0.95959596</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [97] 0.96969697 0.97979798 0.98989899 1.00000000</span>
 <span class="r-in"><span><span class="fu">rescale</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.24524712 0.43021970 0.89176514 0.19590766 1.00000000 0.71358401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.24954836 0.26217656 0.60557322 0.18707460 0.51148151 0.51484372</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.24136933 0.23304164 0.72837883 0.19269893 0.68202339 0.13231393</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.70735284 0.66889683 0.74635401 0.69012856 0.33038117 0.48976751</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.35408685 0.00000000 0.28172529 0.28436577 0.08715631 0.74659182</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.10672548 0.29595179 0.76339333 0.04794095 0.19471112 0.35611022</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.79293548 0.73600787 0.70067361 0.38783804 0.18011480 0.45057988</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.65493406 0.41237281 0.56173018 0.44686048 0.46074684 0.90108471</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.14665245 0.44770025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.81889223 0.26882880 0.21136888 0.86603308 0.93656668 0.16628870</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.46660131 0.48973619 0.82996980 0.55652629 0.77913623 0.09223415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.84021111 0.64974259 0.25169372 0.14895471 0.67106665 0.93492300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.05066146 0.26120716 0.27263051 0.16238582 1.00000000 0.93747153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.73641351 0.43405301 0.06353620 0.62956333 0.67424010 0.92911326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.27287973 0.72282027 0.00000000 0.09538153 0.66564752 0.17272082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.38844216 0.01255143 0.46811608 0.51790473 0.24141518 0.96468290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.58239386 0.50616001 0.04369384 0.47163740 0.38032742 0.87102193</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.44042024 0.30958143</span>
 <span class="r-in"><span><span class="fu">rescale</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5</span>
 </code></pre></div>

@@ -77,7 +77,10 @@
 <span><span class="fu">rescale_mid</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">mid</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S3 method for integer64</span></span>
-<span><span class="fu">rescale_mid</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, mid <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">rescale_mid</span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, mid <span class="op">=</span> <span class="fl">0</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for AsIs</span></span>
+<span><span class="fu">rescale_mid</span><span class="op">(</span><span class="va">x</span>, <span class="va">to</span>, <span class="va">from</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -103,6 +106,10 @@ calculated from the range of <code>x</code></p></dd>
 <dd><p>other arguments passed on to methods</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Objects of class <code>&lt;AsIs&gt;</code> are returned unaltered.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -125,16 +132,16 @@ calculated from the range of <code>x</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [91] 0.90909091 0.91919192 0.92929293 0.93939394 0.94949495 0.95959596</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [97] 0.96969697 0.97979798 0.98989899 1.00000000</span>
 <span class="r-in"><span><span class="fu">rescale_mid</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span>, mid <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.796253573 0.000000000 0.836128308 0.866520859 0.678571054</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.297150395 0.072260467 0.255680225 0.668449370 0.944420774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.507520751 0.978278319 0.797384970 0.078728888 0.934961493</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] 0.450535334 0.670352916 0.557750788 0.806979912 0.886375438</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] 0.574898422 0.377923447 0.630622482 0.983890316 0.127088834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 0.810433832 0.314469080 0.035915585 0.693047559 0.343511083</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.449516938 0.858571753 0.105016916 0.005661789 0.674283895</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] 0.047061656 0.527045749 0.417282957 0.290167655 0.755488161</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 0.037756914 0.560533229 0.955910812 0.320961305 0.761003131</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [46] 0.630978602 0.078700510 0.344242441 0.950128844 0.063375782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.442740431 0.507259917 0.355789345 0.275167937 0.383537820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] 0.094911285 0.759094531 0.723169739 0.908224699 0.246310923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] 0.787499258 0.609194844 0.554131637 0.000000000 0.098079788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [16] 0.020435586 0.377972718 0.756040225 0.996792360 0.879350038</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] 0.503521915 0.397745231 0.912205531 0.886090224 0.490154133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [26] 0.645780317 0.513446194 0.280696196 0.627043279 0.795920260</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.901823443 0.229055141 0.175639317 0.366528248 0.107467272</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [36] 0.003256317 0.882446568 0.348486065 0.961279853 0.463354044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] 0.217333310 0.630943914 0.736639943 0.815946403 0.990064537</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [46] 0.445212922 0.422226199 0.906432341 0.213201327 0.503059908</span>
 <span class="r-in"><span><span class="fu">rescale_mid</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5</span>
 </code></pre></div>
