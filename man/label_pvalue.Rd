@@ -54,7 +54,7 @@ demo_continuous(c(0, 1), labels = label_pvalue(prefix = prefix))
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
-\code{\link{label_dollar}()},
+\code{\link{label_currency}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_ordinal}()},

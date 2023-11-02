@@ -4,8 +4,22 @@
   (@teunbrand, #369).
 * Training on factor data no longer sorts the range after multiple training 
   passes (#383)
+* Attempt to make the sort behavior of the range consistent for character 
+  vectors during training. Mixing of character and factor data will still lead
+  to different results depending on the training order.
+* Add a rescale method for `difftime` objects (#382)
 * `rescale(I(x), ...)` and `rescale_mid(I(x), ...)` return `I(x)` unaltered 
   (@teunbrand, #403).
+* The `scale_cut` argument in `number()` now works as advertised for values 
+  below the lowest cut value (#346)
+* `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
+* `sqrt_trans()` no longer returns an inverse for values outside of its domain 
+  (#214)
+* Add better support for `difftime` objects. `label_timespan()` adds 
+  functionality for adding correct unit suffix to timespan data, 
+  `breaks_timespan()` adds functionality for finding pleasant breakpoints across
+  the various bases in time units, while `timespan_trans()` wraps it all 
+  together and provides an alternative to `hms_trans()` (#212)
 
 # scales 1.2.1
 

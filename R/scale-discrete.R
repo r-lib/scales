@@ -37,11 +37,16 @@ train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
 }
 
 discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
+  is_factor <- is.factor(new) || is.factor(old)
   new <- clevels(new, drop = drop, na.rm = na.rm)
   if (is.null(old)) {
     return(new)
   }
-  if (!is.character(old)) old <- clevels(old, na.rm = na.rm)
+  if (!is.character(old)) {
+    old <- clevels(old, na.rm = na.rm)
+  } else {
+    old <- sort(old, na.last = if (na.rm) NA else TRUE)
+  }
 
   new_levels <- setdiff(new, as.character(old))
 
@@ -53,10 +58,10 @@ discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
 
   # Avoid sorting levels when dealing with factors to mimick behaviour of
   # clevels()
-  if (is.factor(new)) {
+  if (is_factor) {
     return(range)
   }
-  sort(range)
+  sort(range, na.last = if (na.rm) NA else TRUE)
 }
 
 clevels <- function(x, drop = FALSE, na.rm = FALSE) {

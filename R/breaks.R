@@ -140,3 +140,45 @@ breaks_pretty <- function(n = 5, ...) {
 #' @export
 #' @inheritParams breaks_pretty
 pretty_breaks <- breaks_pretty
+
+#' Breaks for timespan data
+#'
+#' As timespan units span a variety of bases (1000 below seconds, 60 for second
+#' and minutes, 24 for hours, and 7 for days), the range of the input data
+#' determines the base used for calculating breaks
+#'
+#' @param unit The unit used to interpret numeric data input
+#' @inheritParams breaks_extended
+#' @export
+#' @examples
+#' demo_timespan(seq(0, 100), breaks = breaks_timespan())
+#'
+breaks_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), n = 5) {
+  unit <- arg_match(unit)
+  force(n)
+  function(x) {
+    x <- as.numeric(as.difftime(x, units = unit), units = "secs")
+    rng <- range(x)
+    diff <- rng[2] - rng[1]
+
+    if (diff <= 2 * 60) {
+      scale <- 1
+    } else if (diff <= 2 * 3600) {
+      scale <- 60
+    } else if (diff <= 2 * 86400) {
+      scale <- 3600
+    } else if (diff <= 2 * 604800) {
+      scale <- 86400
+    } else {
+      scale <- 604800
+    }
+
+    rng <- rng / scale
+    breaks <- labeling::extended(
+      rng[1], rng[2], n,
+      Q = c(1, 2, 1.5, 4, 3),
+      only.loose = FALSE
+    )
+    as.difftime(breaks * scale, units = "secs")
+  }
+}

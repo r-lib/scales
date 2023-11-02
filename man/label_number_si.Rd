@@ -94,7 +94,7 @@ demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_short_scale()))
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
-\code{\link{label_dollar}()},
+\code{\link{label_currency}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_ordinal}()},
 \code{\link{label_parse}()},

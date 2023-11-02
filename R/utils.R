@@ -55,3 +55,9 @@ demo_datetime <- function(x, ...) {
 demo_time <- function(x, ...) {
   demo_ggplot(x, "scale_x_time", ...)
 }
+
+#' @rdname demo_continuous
+#' @export
+demo_timespan <- function(x, ...) {
+  demo_ggplot(x, "scale_x_continuous", ...)
+}
