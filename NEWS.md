@@ -11,6 +11,8 @@
 * The `scale_cut` argument in `number()` now works as advertised for values 
   below the lowest cut value (#346)
 * `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
+* `sqrt_trans()` no longer returns an inverse for values outside of its domain 
+  (#214)
 
 # scales 1.2.1
 
