@@ -13,6 +13,11 @@
 * `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
 * `sqrt_trans()` no longer returns an inverse for values outside of its domain 
   (#214)
+* Add better support for `difftime` objects. `label_timespan()` adds 
+  functionality for adding correct unit suffix to timespan data, 
+  `breaks_timespan()` adds functionality for finding pleasant breakpoints across
+  the various bases in time units, while `timespan_trans()` wraps it all 
+  together and provides an alternative to `hms_trans()` (#212)
 
 # scales 1.2.1
 

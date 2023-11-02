@@ -6,6 +6,7 @@
 \alias{demo_discrete}
 \alias{demo_datetime}
 \alias{demo_time}
+\alias{demo_timespan}
 \title{Demonstrate scales functions with ggplot2 code}
 \usage{
 demo_continuous(x, ...)
@@ -17,6 +18,8 @@ demo_discrete(x, ...)
 demo_datetime(x, ...)
 
 demo_time(x, ...)
+
+demo_timespan(x, ...)
 }
 \arguments{
 \item{x}{A vector of data}

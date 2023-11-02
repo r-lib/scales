@@ -4,6 +4,7 @@
 \alias{label_date}
 \alias{label_date_short}
 \alias{label_time}
+\alias{label_timespan}
 \title{Label date/times}
 \usage{
 label_date(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
@@ -11,6 +12,8 @@ label_date(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
+
+label_timespan(unit = c("secs", "mins", "hours", "days", "weeks"), ...)
 }
 \arguments{
 \item{format}{For \code{date_format()} and \code{time_format()} a date/time format
@@ -28,6 +31,44 @@ can see a complete list of supported locales with
 \code{\link[stringi:stri_locale_list]{stringi::stri_locale_list()}}.}
 
 \item{sep}{Separator to use when combining date formats into a single string.}
+
+\item{unit}{The unit used to interpret numeric input}
+
+\item{...}{
+  Arguments passed on to \code{\link[=number]{number}}
+  \describe{
+    \item{\code{accuracy}}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
+
+Applied to rescaled data.}
+    \item{\code{scale}}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formatting. This is useful if the underlying data is very small or very
+large.}
+    \item{\code{prefix}}{Additional text to display before the number. The suffix is
+applied to absolute value before \code{style_positive} and \code{style_negative} are
+processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
+    \item{\code{suffix}}{Additional text to display after the number.}
+    \item{\code{big.mark}}{Character used between every 3 digits to separate thousands.}
+    \item{\code{decimal.mark}}{The character to be used to indicate the numeric
+decimal point.}
+    \item{\code{style_positive}}{A string that determines the style of positive numbers:
+\itemize{
+\item \code{"none"} (the default): no change, e.g. \code{1}.
+\item \code{"plus"}: preceded by \code{+}, e.g. \code{+1}.
+}}
+    \item{\code{style_negative}}{A string that determines the style of negative numbers:
+\itemize{
+\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures \code{-} aligns with the horizontal bar of the
+the horizontal bar of \code{+}.
+\item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
+}}
+    \item{\code{trim}}{Logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base:format]{base::format()}}).}
+  }}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -47,6 +88,8 @@ sufficient to uniquely identify labels. It's inspired by matplotlib's
 but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
+\code{label_timespan()} is intended to show time passed and adds common time units
+suffix to the input (ns, µs, ms, s, m, h, d, w).
 }
 \examples{
 date_range <- function(start, days) {
