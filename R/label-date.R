@@ -8,7 +8,7 @@
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.
 #' `label_timespan()` is intended to show time passed and adds common time units
-#' suffix to the input (ns, µs, ms, s, m, h, d, w).
+#' suffix to the input (ns, `r "\u03BC"`s, ms, s, m, h, d, w).
 #'
 #' @inherit label_number return
 #' @param format For `date_format()` and `time_format()` a date/time format
@@ -131,7 +131,7 @@ label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"),
       scale_cut = c(
         0,
         "ns" = 1e-9,
-        "µs" = 1e-6,
+        "\u03BCs" = 1e-6,
         "ms" = 1e-3,
         "s" = 1,
         "m" = 60,

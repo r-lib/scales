@@ -66,6 +66,7 @@ time_trans <- function(tz = NULL) {
 #' the range of the data. `hms_trans()` provides the same but using standard hms
 #' idioms and formatting.
 #'
+#' @inheritParams label_timespan
 #' @export
 #' @examples
 #' # timespan_trans allows you to specify the time unit numeric data is

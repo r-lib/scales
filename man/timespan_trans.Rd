@@ -9,6 +9,9 @@ timespan_trans(unit = c("secs", "mins", "hours", "days", "weeks"))
 
 hms_trans()
 }
+\arguments{
+\item{unit}{The unit used to interpret numeric input}
+}
 \description{
 \code{timespan_trans()} provides transformations for data encoding time passed
 along with breaks and label formatting showing standard unit of time fitting
