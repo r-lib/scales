@@ -133,10 +133,10 @@
     <loc>https://scales.r-lib.org/dev/reference/label_bytes.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/label_date.html</loc>
+    <loc>https://scales.r-lib.org/dev/reference/label_currency.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/label_dollar.html</loc>
+    <loc>https://scales.r-lib.org/dev/reference/label_date.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/label_log.html</loc>
