@@ -33,9 +33,7 @@ asinh_trans <- function() {
   trans_new(
     "asinh",
     transform = asinh,
-    inverse = sinh,
-    d_transform = function(x) 1 / sqrt(x^2 + 1),
-    d_inverse = cosh
+    inverse = sinh
   )
 }
 
