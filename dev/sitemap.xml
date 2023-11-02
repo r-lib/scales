@@ -46,6 +46,9 @@
     <loc>https://scales.r-lib.org/dev/reference/breaks_pretty.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org/dev/reference/breaks_timespan.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org/dev/reference/breaks_width.html</loc>
   </url>
   <url>
@@ -113,9 +116,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/grey_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/hms_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/hue_pal.html</loc>
@@ -254,6 +254,9 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/time_trans.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/timespan_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/train_continuous.html</loc>

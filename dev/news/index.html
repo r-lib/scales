@@ -64,6 +64,7 @@
 <code><a href="../reference/dollar_format.html">label_dollar()</a></code> has been superseeded by <code><a href="../reference/label_currency.html">label_currency()</a></code> for clarity (<a href="https://github.com/r-lib/scales/issues/344" class="external-link">#344</a>)</li>
 <li>
 <code><a href="../reference/sqrt_trans.html">sqrt_trans()</a></code> no longer returns an inverse for values outside of its domain (<a href="https://github.com/r-lib/scales/issues/214" class="external-link">#214</a>)</li>
+<li>Add better support for <code>difftime</code> objects. <code><a href="../reference/label_date.html">label_timespan()</a></code> adds functionality for adding correct unit suffix to timespan data, <code><a href="../reference/breaks_timespan.html">breaks_timespan()</a></code> adds functionality for finding pleasant breakpoints across the various bases in time units, while <code><a href="../reference/timespan_trans.html">timespan_trans()</a></code> wraps it all together and provides an alternative to <code><a href="../reference/timespan_trans.html">hms_trans()</a></code> (<a href="https://github.com/r-lib/scales/issues/212" class="external-link">#212</a>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="scales-121">scales 1.2.1<a class="anchor" aria-label="anchor" href="#scales-121"></a></h2><p class="text-muted">CRAN release: 2022-08-19</p>
@@ -201,7 +202,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.1" id="scales-041">scales 0.4.1<a class="anchor" aria-label="anchor" href="#scales-041"></a></h2><p class="text-muted">CRAN release: 2016-11-09</p>
 <ul><li><p><code><a href="../reference/breaks_extended.html">extended_breaks()</a></code> no longer fails on pathological inputs.</p></li>
-<li><p>New <code><a href="../reference/hms_trans.html">hms_trans()</a></code> for transforming hms time vectors.</p></li>
+<li><p>New <code><a href="../reference/timespan_trans.html">hms_trans()</a></code> for transforming hms time vectors.</p></li>
 <li><p><code><a href="../reference/train_discrete.html">train_discrete()</a></code> gets a new <code>na.rm</code> argument which controls whether <code>NA</code>s are preserved or dropped.</p></li>
 </ul></div>
     <div class="section level2">
