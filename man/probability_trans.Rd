@@ -6,7 +6,7 @@
 \alias{probit_trans}
 \title{Probability transformation}
 \usage{
-probability_trans(distribution, ..., domain = c(0, 1))
+probability_trans(distribution, ...)
 
 logit_trans()
 
@@ -18,9 +18,6 @@ abbreviation so that "p" + distribution is a valid probability density
 function, and "q" + distribution is a valid quantile function.}
 
 \item{...}{other arguments passed on to distribution and quantile functions}
-
-\item{domain}{domain, as numeric vector of length 2, over which
-transformation is valued}
 }
 \description{
 Probability transformation
