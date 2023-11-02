@@ -10,6 +10,7 @@
 * Add a rescale method for `difftime` objects (#382)
 * The `scale_cut` argument in `number()` now works as advertised for values 
   below the lowest cut value (#346)
+* `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
 
 # scales 1.2.1
 
