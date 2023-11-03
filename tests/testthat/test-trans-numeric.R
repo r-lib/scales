@@ -142,6 +142,15 @@ test_that("atanh_trans derivatives work", {
   expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
 })
 
+test_that("asinh_trans derivatives work", {
+  trans <- asinh_trans()
+  expect_equal(trans$d_transform(c(-1, 0, 1)), c(sqrt(2) / 2, 1, sqrt(2) / 2))
+  expect_equal(trans$d_inverse(c(-log(2), 0, log(2))), c(1.25, 1, 1.25))
+  x <- seq(-0.9, 0.9, length.out = 10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
 test_that("boxcox_trans derivatives work", {
   trans <- boxcox_trans(p = 0, offset = 1)
   expect_equal(trans$d_transform(c(0, 1, 2)), c(1, 1/2, 1/3))
