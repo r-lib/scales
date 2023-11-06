@@ -12,6 +12,10 @@
   (@teunbrand, #403).
 * The `scale_cut` argument in `number()` now works as advertised for values 
   below the lowest cut value (#346)
+* Added a new option to the `style_positive` argument in `label_*()` functions.
+  Setting this to `"space"` will add a figure space in front of the number to 
+  make it easier to align positive and negative values as figure space takes up
+  the same amount of space as `-` (#366)
 * `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
 * `sqrt_trans()` no longer returns an inverse for values outside of its domain 
   (#214)

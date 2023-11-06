@@ -34,6 +34,10 @@
 #'
 #'   * `"none"` (the default): no change, e.g. `1`.
 #'   * `"plus"`: preceded by `+`, e.g. `+1`.
+#'   * `"space"`: preceded by a Unicode "figure space", i.e., a space equally
+#'     as wide as a number or `+`. Compared to `"none"`, adding a figure space
+#'     can ensure numbers remain properly aligned when they are left- or
+#'     right-justified.
 #' @param style_negative A string that determines the style of negative numbers:
 #'
 #'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
@@ -103,7 +107,7 @@
 #' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
-                         style_positive = c("none", "plus"),
+                         style_positive = c("none", "plus", "space"),
                          style_negative = c("hyphen", "minus", "parens"),
                          scale_cut = NULL,
                          trim = TRUE, ...) {
@@ -219,7 +223,7 @@ comma_format <- label_comma
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
-                   style_positive = c("none", "plus"),
+                   style_positive = c("none", "plus", "space"),
                    style_negative = c("hyphen", "minus", "parens"),
                    scale_cut = NULL,
                    trim = TRUE, ...) {
@@ -280,6 +284,8 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   }
   if (style_positive == "plus") {
     ret[sign > 0] <- paste0("+", ret[sign > 0])
+  } else if (style_positive == "space") {
+    ret[sign > 0] <- paste0("\u2007", ret[sign > 0])
   }
 
   # restore NAs from input vector
