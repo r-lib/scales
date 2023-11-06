@@ -27,6 +27,7 @@
 * Add an inverse (area) hyperbolic sine transformation `asinh_trans()`, which
   provides a logarithm-like transformation of a space, but which accommodates
   negative values (#297)
+* Correct the domain calculation for `compose_trans()` (@mjskay, #408).
 * Transformation objects can optionally include the derivatives of the transform
   and the inverse transform (@mjskay, #322).
 

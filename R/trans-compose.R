@@ -16,10 +16,22 @@ compose_trans <- function(...) {
     cli::cli_abort("{.fun compose_trans} must include at least 1 transformer to compose")
   }
 
-  # Resolve domains
-  suppressWarnings(
-    domain <- compose_fwd(trans_list[[1]]$domain, trans_list[-1])
-  )
+  # Resolve domains. First push the domain of the first transformation all the
+  # way forward through the sequence of transformations, intersecting it with
+  # all domains along the way, to get the range. Then push the range back
+  # through the inverses to get the domain.
+  range <- trans_list[[1]]$transform(trans_list[[1]]$domain)
+  for (trans in trans_list[-1]) {
+    lower <- max(min(trans$domain), min(range))
+    upper <- min(max(trans$domain), max(range))
+    if (isTRUE(lower <= upper)) {
+      range <- trans$transform(c(lower, upper))
+    } else {
+      range <- c(NA_real_, NA_real_)
+      break
+    }
+  }
+  domain <- compose_rev(range, trans_list)
   if (any(is.na(domain))) {
     cli::cli_abort("Sequence of transformations yields invalid domain")
   }
