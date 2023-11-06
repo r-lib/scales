@@ -98,7 +98,7 @@ lines.transform <- function(x, ..., xlim) {
 #' @rdname trans_new
 #' @export
 as.transform <- function(x, arg = deparse(substitute(x))) {
-  if (is.tranform(x)) {
+  if (is.transform(x)) {
     x
   } else if (is.character(x) && length(x) >= 1) {
     if (length(x) == 1) {
