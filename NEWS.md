@@ -17,19 +17,24 @@
   make it easier to align positive and negative values as figure space takes up
   the same amount of space as `-` (#366)
 * `label_dollar()` has been superseeded by `label_currency()` for clarity (#344)
-* `sqrt_trans()` no longer returns an inverse for values outside of its domain 
-  (#214)
+* `transform_sqrt()` no longer returns an inverse for values outside of its 
+  domain (#214)
 * Add better support for `difftime` objects. `label_timespan()` adds 
   functionality for adding correct unit suffix to timespan data, 
   `breaks_timespan()` adds functionality for finding pleasant breakpoints across
-  the various bases in time units, while `timespan_trans()` wraps it all 
-  together and provides an alternative to `hms_trans()` (#212)
-* Add an inverse (area) hyperbolic sine transformation `asinh_trans()`, which
-  provides a logarithm-like transformation of a space, but which accommodates
-  negative values (#297)
-* Correct the domain calculation for `compose_trans()` (@mjskay, #408).
+  the various bases in time units, while `transform_timespan()` wraps it all 
+  together and provides an alternative to `transform_hms()` (#212)
+* Add an inverse (area) hyperbolic sine transformation `transform_asinh()`, 
+  which provides a logarithm-like transformation of a space, but which 
+  accommodates negative values (#297)
+* Correct the domain calculation for `transform_compose()` (@mjskay, #408).
 * Transformation objects can optionally include the derivatives of the transform
   and the inverse transform (@mjskay, #322).
+* Transformation function have been renamed to `transform_*`-prefixed names 
+  instead of `*_trans`-suffixed names. This allows for a better tab-completion
+  search of transformations. The S3 class of transformations has been
+  renamed from `"trans"` to `"transform"`.
+  
 
 # scales 1.2.1
 
