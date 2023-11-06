@@ -13,25 +13,42 @@
 compose_trans <- function(...) {
   trans_list <- lapply(list2(...), as.trans)
   if (length(trans_list) == 0) {
-    abort("Must include at least 1 transformer to compose")
+    cli::cli_abort("{.fun compose_trans} must include at least 1 transformer to compose")
   }
 
-  # Resolve domains
-  suppressWarnings(
-    domain <- compose_fwd(trans_list[[1]]$domain, trans_list[-1])
-  )
+  # Resolve domains. First push the domain of the first transformation all the
+  # way forward through the sequence of transformations, intersecting it with
+  # all domains along the way, to get the range. Then push the range back
+  # through the inverses to get the domain.
+  range <- trans_list[[1]]$transform(trans_list[[1]]$domain)
+  for (trans in trans_list[-1]) {
+    lower <- max(min(trans$domain), min(range))
+    upper <- min(max(trans$domain), max(range))
+    if (isTRUE(lower <= upper)) {
+      range <- trans$transform(c(lower, upper))
+    } else {
+      range <- c(NA_real_, NA_real_)
+      break
+    }
+  }
+  domain <- compose_rev(range, trans_list)
   if (any(is.na(domain))) {
-    abort("Sequence of transformations yields invalid domain")
+    cli::cli_abort("Sequence of transformations yields invalid domain")
   }
   domain <- range(domain)
 
   names <- vapply(trans_list, "[[", "name", FUN.VALUE = character(1))
 
+  has_d_transform <- all(lengths(lapply(trans_list, "[[", "d_transform")) > 0)
+  has_d_inverse <- all(lengths(lapply(trans_list, "[[", "d_inverse")) > 0)
+
   trans_new(
     paste0("composition(", paste0(names, collapse = ","), ")"),
-    transform = function(x) compose_fwd(x, trans_list),
-    inverse   = function(x) compose_rev(x, trans_list),
-    breaks    = function(x) trans_list[[1]]$breaks(x),
+    transform   = function(x) compose_fwd(x, trans_list),
+    inverse     = function(x) compose_rev(x, trans_list),
+    d_transform = if (has_d_transform) function(x) compose_deriv_fwd(x, trans_list),
+    d_inverse   = if (has_d_inverse) function(x) compose_deriv_rev(x, trans_list),
+    breaks      = function(x) trans_list[[1]]$breaks(x),
     domain = domain
   )
 }
@@ -48,4 +65,22 @@ compose_rev <- function(x, trans_list) {
     x <- trans$inverse(x)
   }
   x
+}
+
+compose_deriv_fwd <- function(x, trans_list) {
+  x_deriv <- 1
+  for (trans in trans_list) {
+    x_deriv <- trans$d_transform(x) * x_deriv
+    x <- trans$transform(x)
+  }
+  x_deriv
+}
+
+compose_deriv_rev <- function(x, trans_list) {
+  x_deriv <- 1
+  for (trans in rev(trans_list)) {
+    x_deriv <- trans$d_inverse(x) * x_deriv
+    x <- trans$inverse(x)
+  }
+  x_deriv
 }

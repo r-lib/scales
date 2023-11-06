@@ -31,17 +31,22 @@ train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE) {
   }
 
   if (!is.discrete(new)) {
-    stop("Continuous value supplied to discrete scale", call. = FALSE)
+    cli::cli_abort("Continuous value supplied to a discrete scale")
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm)
 }
 
 discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
+  is_factor <- is.factor(new) || is.factor(old)
   new <- clevels(new, drop = drop, na.rm = na.rm)
   if (is.null(old)) {
     return(new)
   }
-  if (!is.character(old)) old <- clevels(old, na.rm = na.rm)
+  if (!is.character(old)) {
+    old <- clevels(old, na.rm = na.rm)
+  } else {
+    old <- sort(old, na.last = if (na.rm) NA else TRUE)
+  }
 
   new_levels <- setdiff(new, as.character(old))
 
@@ -49,8 +54,14 @@ discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE) {
   if (length(new_levels) == 0) {
     return(old)
   }
+  range <- c(old, new_levels)
 
-  sort(c(old, new_levels))
+  # Avoid sorting levels when dealing with factors to mimick behaviour of
+  # clevels()
+  if (is_factor) {
+    return(range)
+  }
+  sort(range, na.last = if (na.rm) NA else TRUE)
 }
 
 clevels <- function(x, drop = FALSE, na.rm = FALSE) {

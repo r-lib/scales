@@ -13,7 +13,7 @@
 #'   * `auto_si` or `auto_binary` to automatically pick the most appropriate
 #'     unit for each value.
 #' @inheritParams number_format
-#' @param ... Other arguments passed on to [number()]
+#' @inheritDotParams number
 #' @return A labeller function that takes a numeric vector of breaks and
 #'   returns a character vector of labels.
 #' @export
@@ -37,7 +37,9 @@
 #'   labels = label_bytes("auto_binary")
 #' )
 label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
-  stopifnot(is.character(units), length(units) == 1)
+  if (!(is.character(units) && length(units) == 1)) {
+    cli::cli_abort("{.arg units} must be a scalar string")
+  }
   force_all(accuracy, ...)
 
   function(x) {
@@ -56,7 +58,7 @@ label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
         base <- 1024
         power <- powers[[match(units, bin_units)]]
       } else {
-        stop("'", units, "' is not a valid unit", call. = FALSE)
+        cli::cli_abort("{.val {units}} is not a valid unit")
       }
 
       suffix <- paste0(" ", units)

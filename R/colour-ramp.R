@@ -34,7 +34,7 @@
 #' show_col(ramp(seq(0, 1, length = 12)))
 colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
   if (length(colors) == 0) {
-    stop("Must provide at least one colour to create a colour ramp")
+    cli::cli_abort("Must provide at least one colour to create a colour ramp")
   }
 
   if (length(colors) == 1) {

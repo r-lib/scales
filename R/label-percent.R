@@ -1,6 +1,7 @@
 #' Label percentages (2.5%, 50%, etc)
 #'
 #' @inherit label_number return params
+#' @inheritDotParams label_number
 #' @export
 #' @family labels for continuous scales
 #' @examples

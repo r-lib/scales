@@ -25,13 +25,13 @@
 #' show_col(pal_hue(h = c(180, 270))(9))
 #' show_col(pal_hue(h = c(270, 360))(9))
 pal_hue <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
-  stopifnot(length(h) == 2)
-  stopifnot(length(c) == 1)
-  stopifnot(length(l) == 1)
+  if (length(h) != 2) cli::cli_abort("{.arg h} must have length 2.")
+  if (length(l) != 1) cli::cli_abort("{.arg l} must have length 1.")
+  if (length(c) != 1) cli::cli_abort("{.arg c} must have length 1.")
   force_all(h, c, l, h.start, direction)
   function(n) {
     if (n == 0) {
-      stop("Must request at least one colour from a hue palette.", call. = FALSE)
+      cli::cli_abort("Must request at least one colour from a hue palette.")
     }
 
     if ((diff(h) %% 360) < 1) {

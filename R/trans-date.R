@@ -19,9 +19,7 @@ date_trans <- function() {
 to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
   if (!inherits(x, "Date")) {
-    stop("Invalid input: date_trans works with objects of class Date only",
-      call. = FALSE
-    )
+    cli::cli_abort("{.fun date_trans} works with objects of class {.cls Date} only")
   }
   structure(as.numeric(x), names = names(x))
 }
@@ -45,10 +43,7 @@ time_trans <- function(tz = NULL) {
 
   from_time <- function(x) {
     if (!inherits(x, "POSIXct")) {
-      stop("Invalid input: time_trans works with objects of class ",
-        "POSIXct only",
-        call. = FALSE
-      )
+      cli::cli_abort("{.fun time_trans} works with objects of class {.cls POSIXct} only")
     }
     if (is.null(tz)) {
       tz <<- attr(as.POSIXlt(x), "tzone")[[1]]
@@ -66,15 +61,50 @@ time_trans <- function(tz = NULL) {
 
 #' Transformation for times (class hms)
 #'
+#' `timespan_trans()` provides transformations for data encoding time passed
+#' along with breaks and label formatting showing standard unit of time fitting
+#' the range of the data. `hms_trans()` provides the same but using standard hms
+#' idioms and formatting.
+#'
+#' @inheritParams label_timespan
 #' @export
 #' @examples
+#' # timespan_trans allows you to specify the time unit numeric data is
+#' # interpreted in
+#' min_trans <- timespan_trans("mins")
+#' demo_timespan(seq(0, 100), trans = min_trans)
+#' # Input already in difftime format is interpreted correctly
+#' demo_timespan(as.difftime(seq(0, 100), units = "secs"), trans = min_trans)
+#'
 #' if (require("hms")) {
+#'   # hms_trans always assumes seconds
 #'   hms <- round(runif(10) * 86400)
 #'   t <- hms_trans()
 #'   t$transform(hms)
 #'   t$inverse(t$transform(hms))
 #'   t$breaks(hms)
+#'   # The break labels also follow the hms format
+#'   demo_timespan(hms, trans = t)
 #' }
+#'
+timespan_trans <- function(unit = c("secs", "mins", "hours", "days", "weeks")) {
+  unit <- arg_match(unit)
+  trans_new(
+    "timespan",
+    transform = function(x) {
+      structure(as.numeric(as.difftime(x, units = unit), units = "secs"), names = names(x))
+    },
+    inverse = function(x) {
+      x <- as.difftime(x, units = "secs")
+      units(x) <- unit
+      x
+    },
+    breaks = breaks_timespan(unit),
+    format = label_timespan(unit)
+  )
+}
+#' @rdname timespan_trans
+#' @export
 hms_trans <- function() {
   trans_new(
     "hms",
@@ -82,32 +112,13 @@ hms_trans <- function() {
       structure(as.numeric(x), names = names(x))
     },
     inverse = hms::as_hms,
-    breaks = time_breaks()
+    breaks = breaks_hms()
   )
 }
 
-time_breaks <- function(n = 5) {
-  force(n)
+breaks_hms <- function(n = 5) {
+  base_breaks <- breaks_timespan("secs", n)
   function(x) {
-    rng <- as.numeric(range(x))
-    diff <- rng[2] - rng[1]
-
-    if (diff <= 2 * 60) {
-      scale <- 1
-    } else if (diff <= 2 * 3600) {
-      scale <- 60
-    } else if (diff <= 2 * 86400) {
-      scale <- 3600
-    } else {
-      scale <- 86400
-    }
-
-    rng <- rng / scale
-    breaks <- labeling::extended(
-      rng[1], rng[2], n,
-      Q = c(1, 2, 1.5, 4, 3),
-      only.loose = FALSE
-    )
-    hms::as_hms(breaks * scale)
+    hms::as_hms(base_breaks(x))
   }
 }

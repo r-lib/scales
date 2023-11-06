@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# scales <a href='https://scales.r-lib.org'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# scales <a href="https://scales.r-lib.org/"><img src="man/figures/logo.png" align="right" height="138" alt="scales website" /></a>
  
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
-[![R build status](https://github.com/r-lib/scales/workflows/R-CMD-check/badge.svg)](https://github.com/r-lib/scales/actions)
+[![R-CMD-check](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales?branch=main)
 <!-- badges: end -->
 
@@ -32,15 +32,15 @@ One of the most difficult parts of any graphics package is scaling, converting f
 install.packages("scales")
 
 # Or the development version from Github:
-# install.packages("devtools")
-devtools::install_github("r-lib/scales")
+# install.packages("pak")
+pak::pak("r-lib/scales")
 ```
   
 ## Usage
 
 ### Breaks and labels
 
-The most common use of the scales package is to customise to control the appearance of axis and legend labels. Use a `break_` function to control how breaks are generated from the limits, and a `label_` function to control how breaks are turned in to labels.
+The most common use of the scales package is to control the appearance of axis and legend labels. Use a `break_` function to control how breaks are generated from the limits, and a `label_` function to control how breaks are turned in to labels.
 
 ```{r labels}
 library(ggplot2)
@@ -77,7 +77,7 @@ economics %>%
   )
 ```
 
-Generally, I don't recommend running `library(scales)` because when you type (e.g.) `scales::label_` autocomplete will provide you with a list of labelling functions to job your memory.
+Generally, I don't recommend running `library(scales)` because when you type (e.g.) `scales::label_` autocomplete will provide you with a list of labelling functions to jog your memory.
 
 ### Advanced features
 

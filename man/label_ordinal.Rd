@@ -29,7 +29,52 @@ ordinal_spanish()
 \item{rules}{Named list of regular expressions, matched in order.
 Name gives suffix, and value specifies which numbers to match.}
 
-\item{...}{Other arguments passed on to \code{\link[base:format]{base::format()}}.}
+\item{...}{
+  Arguments passed on to \code{\link[=number]{number}}
+  \describe{
+    \item{\code{accuracy}}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
+places of precision. If \code{NULL}, the default, uses a heuristic that should
+ensure breaks have the minimum number of digits needed to show the
+difference between adjacent values.
+
+Applied to rescaled data.}
+    \item{\code{scale}}{A scaling factor: \code{x} will be multiplied by \code{scale} before
+formatting. This is useful if the underlying data is very small or very
+large.}
+    \item{\code{decimal.mark}}{The character to be used to indicate the numeric
+decimal point.}
+    \item{\code{style_positive}}{A string that determines the style of positive numbers:
+\itemize{
+\item \code{"none"} (the default): no change, e.g. \code{1}.
+\item \code{"plus"}: preceded by \code{+}, e.g. \code{+1}.
+\item \code{"space"}: preceded by a Unicode "figure space", i.e., a space equally
+as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
+can ensure numbers remain properly aligned when they are left- or
+right-justified.
+}}
+    \item{\code{style_negative}}{A string that determines the style of negative numbers:
+\itemize{
+\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
+nicety that ensures \code{-} aligns with the horizontal bar of the
+the horizontal bar of \code{+}.
+\item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
+}}
+    \item{\code{scale_cut}}{Named numeric vector that allows you to rescale large
+(or small) numbers and add a prefix. Built-in helpers include:
+\itemize{
+\item \code{cut_short_scale()}: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
+\item \code{cut_long_scale()}: [10^3, 10^6) = K, [10^6, 10^12) = M, [10^12, 10^18) = B, [10^18, Inf) = T.
+\item \code{cut_si(unit)}: uses standard SI units.
+}
+
+If you supply a vector \code{c(a = 100, b = 1000)}, absolute values in the
+range \verb{[0, 100)} will not be rescaled, absolute values in the range \verb{[100, 1000)}
+will be divided by 100 and given the suffix "a", and absolute values in
+the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
+    \item{\code{trim}}{Logical, if \code{FALSE}, values are right-justified to a common
+width (see \code{\link[base:format]{base::format()}}).}
+  }}
 
 \item{gender}{Masculin or feminin gender for French ordinal.}
 
@@ -69,7 +114,7 @@ demo_continuous(c(1, 10),
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
-\code{\link{label_dollar}()},
+\code{\link{label_currency}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_parse}()},

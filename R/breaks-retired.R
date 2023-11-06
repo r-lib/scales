@@ -92,9 +92,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
     breaks <- breaks(range)
 
     if (!is.function(labels)) {
-      stop("Labels can only be manually specified in conjunction with breaks",
-        call. = FALSE
-      )
+      cli::cli_abort("{.arg labels} can only be manually specified in conjunction with {.arg breaks}")
     }
   }
 
@@ -102,7 +100,7 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
     labels <- labels(breaks)
   } else {
     if (length(labels) != length(breaks)) {
-      stop("Labels and breaks must be same length")
+      cli::cli_abort("{.arg labels} and {.arg breaks} must be same length")
     }
     if (is.expression(labels)) {
       labels <- as.list(labels)

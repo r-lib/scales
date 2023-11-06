@@ -7,7 +7,7 @@ demo_ggplot <- function(x, scale_name, ...) {
   cat(paste0(deparse(call), "\n", collapse = ""))
 
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    message("Skipping; ggplot2 not installed")
+    cli::cli_inform("Skipping; {.pkg ggplot2} not installed")
     return(invisible())
   }
 
@@ -54,4 +54,10 @@ demo_datetime <- function(x, ...) {
 #' @export
 demo_time <- function(x, ...) {
   demo_ggplot(x, "scale_x_time", ...)
+}
+
+#' @rdname demo_continuous
+#' @export
+demo_timespan <- function(x, ...) {
+  demo_ggplot(x, "scale_x_continuous", ...)
 }

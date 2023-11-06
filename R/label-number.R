@@ -34,6 +34,10 @@
 #'
 #'   * `"none"` (the default): no change, e.g. `1`.
 #'   * `"plus"`: preceded by `+`, e.g. `+1`.
+#'   * `"space"`: preceded by a Unicode "figure space", i.e., a space equally
+#'     as wide as a number or `+`. Compared to `"none"`, adding a figure space
+#'     can ensure numbers remain properly aligned when they are left- or
+#'     right-justified.
 #' @param style_negative A string that determines the style of negative numbers:
 #'
 #'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
@@ -103,7 +107,7 @@
 #' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
                          suffix = "", big.mark = " ", decimal.mark = ".",
-                         style_positive = c("none", "plus"),
+                         style_positive = c("none", "plus", "space"),
                          style_negative = c("hyphen", "minus", "parens"),
                          scale_cut = NULL,
                          trim = TRUE, ...) {
@@ -219,7 +223,7 @@ comma_format <- label_comma
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
                    suffix = "", big.mark = " ", decimal.mark = ".",
-                   style_positive = c("none", "plus"),
+                   style_positive = c("none", "plus", "space"),
                    style_negative = c("hyphen", "minus", "parens"),
                    scale_cut = NULL,
                    trim = TRUE, ...) {
@@ -280,6 +284,8 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   }
   if (style_positive == "plus") {
     ret[sign > 0] <- paste0("+", ret[sign > 0])
+  } else if (style_positive == "space") {
+    ret[sign > 0] <- paste0("\u2007", ret[sign > 0])
   }
 
   # restore NAs from input vector
@@ -321,14 +327,11 @@ precision <- function(x) {
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
   if (!is.numeric(breaks) || is.null(names(breaks))) {
-    abort("`scale_cut` must be a named numeric vector")
+    cli::cli_abort("{.arg scale_cut} must be a named numeric vector")
   }
   breaks <- sort(breaks, na.last = TRUE)
   if (any(is.na(breaks))) {
-    abort("`scale_cut` values must not be missing")
-  }
-  if (!identical(breaks[[1]], 0) && !identical(breaks[[1]], 0L)) {
-    abort("Smallest value of `scales_cut` must be zero")
+    cli::cli_abort("{.arg scale_cut} values must not be missing")
   }
 
   break_suffix <- as.character(cut(
@@ -337,14 +340,13 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
     labels = c(names(breaks)),
     right = FALSE
   ))
-  break_suffix[is.na(break_suffix)] <- names(which.min(breaks))
+  break_suffix[is.na(break_suffix)] <- ""
 
   break_scale <- scale * unname(1 / breaks[break_suffix])
   break_scale[which(break_scale %in% c(Inf, NA))] <- scale
 
-  # exact zero is not scaled
-  x_zero <- which(abs(x) == 0)
-  scale[x_zero] <- 1
+  # exact zero is not scaled, nor are values below lowest break
+  break_scale[abs(x) == 0 | is.na(break_scale)] <- 1
 
   suffix <- paste0(break_suffix, suffix)
   accuracy <- accuracy %||% stats::ave(x * break_scale, break_scale, FUN = precision)

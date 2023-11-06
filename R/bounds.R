@@ -5,6 +5,9 @@
 #' @param from input range (vector of length two).  If not given, is
 #'   calculated from the range of `x`
 #' @param ... other arguments passed on to methods
+#' @details
+#' Objects of class `<AsIs>` are returned unaltered.
+#'
 #' @keywords manip
 #' @export
 #' @examples
@@ -58,6 +61,13 @@ rescale.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), ..
   (x - from[1]) / diff(from) * diff(to) + to[1]
 }
 
+#' @rdname rescale
+#' @export
+rescale.difftime <- rescale.numeric
+
+#' @rdname rescale
+#' @export
+rescale.AsIs <- function(x, to, from, ...) x
 
 #' Rescale vector to have specified minimum, midpoint, and maximum
 #'
@@ -68,6 +78,8 @@ rescale.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE), ..
 #'   calculated from the range of `x`
 #' @param mid mid-point of input range
 #' @param ... other arguments passed on to methods
+#' @details
+#' Objects of class `<AsIs>` are returned unaltered.
 #' @examples
 #' rescale_mid(1:100, mid = 50.5)
 #' rescale_mid(runif(50), mid = 0.5)
@@ -128,6 +140,10 @@ rescale_mid.integer64 <- function(x, to = c(0, 1), from = range(x, na.rm = TRUE)
   (x - mid) / extent * diff(to) + mean(to)
 }
 
+
+#' @rdname rescale_mid
+#' @export
+rescale_mid.AsIs <- function(x, to, from, ...) x
 
 #' Rescale numeric vector to have specified maximum
 #'
@@ -351,7 +367,7 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) {
     return(TRUE)
   }
-  if (length(x) != 2) stop("x must be length 1 or 2")
+  if (length(x) != 2) cli::cli_abort("{.arg x} must be length 1 or 2")
   if (any(is.na(x))) {
     return(NA)
   }

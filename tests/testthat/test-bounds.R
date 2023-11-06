@@ -71,6 +71,11 @@ test_that("scaling is possible with NULL values", {
   expect_null(rescale_mid(NULL))
 })
 
+test_that("rescaling does not alter AsIs objects", {
+  expect_identical(I(1:3), rescale(I(1:3), from = c(0, 4)))
+  expect_identical(I(1:3), rescale_mid(I(1:3), from = c(0, 4), mid = 1))
+})
+
 test_that("scaling is possible with logical values", {
   expect_equal(rescale(c(FALSE, TRUE)), c(0, 1))
   expect_equal(rescale_mid(c(FALSE, TRUE), mid = 0.5), c(0, 1))

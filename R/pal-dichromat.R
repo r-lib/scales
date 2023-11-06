@@ -13,17 +13,10 @@
 #'   show_col(pal_gradient_n(cols)(seq(0, 1, length.out = 30)))
 #' }
 pal_dichromat <- function(name) {
-  if (!requireNamespace("dichromat", quietly = TRUE)) {
-    stop("Package dichromat must be installed for this function to work. Please install it.",
-      call. = FALSE
-    )
-  }
+  check_installed("dichromat")
 
   if (!any(name == names(dichromat::colorschemes))) {
-    stop("Palette name must be one of ",
-      paste0(names(dichromat::colorschemes), collapse = ", "),
-      call. = FALSE
-    )
+    cli::cli_abort("Palette name must be one of {.or {.val {names(dichromat::colorschemes)}}}")
   }
 
   pal <- dichromat::colorschemes[[name]]

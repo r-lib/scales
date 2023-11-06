@@ -27,3 +27,7 @@ test_that("trans has useful print method", {
     trans_new("test", transform = identity, inverse = identity)
   })
 })
+
+test_that("inverse of trans_sqrt() returns NA for values outside of range", {
+  expect_equal(sqrt_trans()$inverse(-2), NA_real_)
+})
