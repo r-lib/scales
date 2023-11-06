@@ -98,11 +98,18 @@ lines.transform <- function(x, ..., xlim) {
 #' @rdname trans_new
 #' @export
 as.transform <- function(x, arg = deparse(substitute(x))) {
-  if (is.trans(x)) {
+  if (is.tranform(x)) {
     x
   } else if (is.character(x) && length(x) >= 1) {
     if (length(x) == 1) {
-      f <- paste0(x, "_trans")
+      f <- paste0("transform_", x)
+      # For backward compatibility
+      if (!exists(f, mode = "function")) {
+        f2 <- paste0(x, "_trans")
+        if (exists(f2, mode = "function")) {
+          f <- f2
+        }
+      }
       match.fun(f)()
     } else {
       transform_compose(!!!x)
