@@ -116,3 +116,161 @@ test_that("Yeo-Johnson transform works", {
   expect_equal(yj_trans(lambdas[2])$transform(x[[2]]), expected_data[[2]])
   expect_equal(yj_trans(lambdas[3])$transform(x[[3]]), expected_data[[3]])
 })
+
+test_that("probability transforms have domain (0,1)", {
+  expect_equal(logit_trans()$domain, c(0, 1))
+  expect_equal(probit_trans()$domain, c(0, 1))
+})
+
+# Derivatives -------------------------------------------------------------
+
+test_that("asn_trans derivatives work", {
+  trans <- asn_trans()
+  expect_equal(trans$d_transform(c(0, 0.5, 1)), c(Inf, 2, Inf))
+  expect_equal(trans$d_inverse(c(0, pi/2, pi)), c(0, 0.5, 0))
+  x <- seq(0.1, 0.9, length.out = 10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("atanh_trans derivatives work", {
+  trans <- atanh_trans()
+  expect_equal(trans$d_transform(c(-1, 0, 1)), c(Inf, 1, Inf))
+  expect_equal(trans$d_inverse(c(-log(2), 0, log(2))), c(0.64, 1, 0.64))
+  x <- seq(-0.9, 0.9, length.out = 10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("asinh_trans derivatives work", {
+  trans <- asinh_trans()
+  expect_equal(trans$d_transform(c(-1, 0, 1)), c(sqrt(2) / 2, 1, sqrt(2) / 2))
+  expect_equal(trans$d_inverse(c(-log(2), 0, log(2))), c(1.25, 1, 1.25))
+  x <- seq(-0.9, 0.9, length.out = 10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("boxcox_trans derivatives work", {
+  trans <- boxcox_trans(p = 0, offset = 1)
+  expect_equal(trans$d_transform(c(0, 1, 2)), c(1, 1/2, 1/3))
+  expect_equal(trans$d_inverse(c(0, 1, 2)), exp(c(0, 1, 2)))
+  x <- 0:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+
+  trans <- boxcox_trans(p = 2, offset = 2)
+  expect_equal(trans$d_transform(c(0, 1, 2)), c(2, 3, 4))
+  expect_equal(trans$d_inverse(c(0, 0.5, 4)), c(1, sqrt(2) / 2, 1/3))
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("modulus_trans derivatives work", {
+  trans <- modulus_trans(p = 0, offset = 1)
+  expect_equal(trans$d_transform(c(-2, -1, 1, 2)), c(1/3, 1/2, 1/2, 1/3))
+  expect_equal(trans$d_inverse(c(-2, -1, 1, 2)), exp(c(2, 1, 1, 2)))
+  x <- c(-10:-2, 2:10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+
+  trans <- modulus_trans(p = 2, offset = 2)
+  expect_equal(trans$d_transform(c(-2, -1, 1, 2)), c(4, 3, 3, 4))
+  expect_equal(trans$d_inverse(c(-4, -0.5, 0.5, 4)), c(1/3, sqrt(2) / 2, sqrt(2) / 2, 1/3))
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("yj_trans derivatives work", {
+  trans <- yj_trans(p = 0)
+  expect_equal(trans$d_transform(c(-2, -1, 1, 2)), c(3, 2, 0.5, 1/3))
+  expect_equal(trans$d_inverse(c(-1/2, 1, 2)), c(sqrt(2) / 2, exp(1), exp(2)))
+  x <- c(-10:10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+
+  trans <- yj_trans(p = 3)
+  expect_equal(trans$d_transform(c(-2, -1, 1, 2)), c(1/9, 1/4, 4, 9))
+  expect_equal(trans$d_inverse(c(-4, -0.5, 1)), c(1/9, 4, (1/16)^(1/3)))
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(0:10), 1 / trans$d_transform(trans$inverse(0:10)))
+})
+
+test_that("exp_trans derivatives work", {
+  trans <- exp_trans(10)
+  expect_equal(trans$d_transform(c(0, 1, 2)), c(1, 10, 100) * log(10))
+  expect_equal(trans$d_inverse(c(0.1, 1, 10) / log(10)), c(10, 1, 0.1))
+  x <- 1:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("identity_trans derivatives work", {
+  trans <- identity_trans()
+  expect_equal(trans$d_transform(numeric(0)), numeric(0))
+  expect_equal(trans$d_transform(c(0, 1, 2)), c(1, 1, 1))
+  expect_equal(trans$d_inverse(numeric(0)), numeric(0))
+  expect_equal(trans$d_inverse(c(0, 1, 2)), c(1, 1, 1))
+})
+
+test_that("log_trans derivatives work", {
+  trans <- log_trans(10)
+  expect_equal(trans$d_transform(c(0.1, 1, 10) / log(10)), c(10, 1, 0.1))
+  expect_equal(trans$d_inverse(c(0, 1, 2)), c(1, 10, 100) * log(10))
+  x <- 1:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("log1p_trans derivatives work", {
+  trans <- log1p_trans()
+  expect_equal(trans$d_transform(c(0, 1, 2)), c(1, 1/2, 1/3))
+  expect_equal(trans$d_inverse(c(0, 1, 2)), exp(c(0, 1, 2)))
+  x <- 0:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("pseudo_log_trans derivatives work", {
+  trans <- pseudo_log_trans(0.5)
+  expect_equal(trans$d_transform(c(0, 1)), c(1, sqrt(2) / 2))
+  expect_equal(trans$d_inverse(c(0, 1)), c(1, cosh(1)))
+  x <- 1:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("logit_trans derivatives work", {
+  trans <- logit_trans()
+  expect_equal(trans$d_transform(c(0.1, 0.5, 0.8)), c(100/9, 4, 6.25))
+  expect_equal(trans$d_inverse(c(0, 1, 2)), dlogis(c(0, 1, 2)))
+  x <- seq(0.1, 0.9, length.out = 10)
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("reciprocal_trans derivatives work", {
+  trans <- reciprocal_trans()
+  expect_equal(trans$d_transform(c(0.1, 1, 10)), c(-100, -1, -0.01))
+  expect_equal(trans$d_inverse(c(0.1, 1, 10)), c(-100, -1, -0.01))
+  x <- (1:20)/10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
+
+test_that("reverse_trans derivatives work", {
+  trans <- reverse_trans()
+  expect_equal(trans$d_transform(numeric(0)), numeric(0))
+  expect_equal(trans$d_transform(c(-1, 1, 2)), c(-1, -1, -1))
+  expect_equal(trans$d_inverse(numeric(0)), numeric(0))
+  expect_equal(trans$d_inverse(c(-1, 1, 2)), c(-1, -1, -1))
+})
+
+test_that("sqrt_trans derivatives work", {
+  trans <- sqrt_trans()
+  expect_equal(trans$d_transform(c(1, 4, 9)), c(1/2, 1/4, 1/6))
+  expect_equal(trans$d_inverse(c(1, 2, 3)), c(2, 4, 6))
+  x <- 1:10
+  expect_equal(trans$d_transform(x), 1 / trans$d_inverse(trans$transform(x)))
+  expect_equal(trans$d_inverse(x), 1 / trans$d_transform(trans$inverse(x)))
+})
