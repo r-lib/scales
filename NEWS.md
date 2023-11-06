@@ -23,6 +23,7 @@
 * Add an inverse (area) hyperbolic sine transformation `asinh_trans()`, which
   provides a logarithm-like transformation of a space, but which accommodates
   negative values (#297)
+* Correct the domain calculation for `compose_trans()` (@mjskay, #408).
 
 # scales 1.2.1
 
