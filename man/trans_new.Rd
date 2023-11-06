@@ -11,6 +11,8 @@ trans_new(
   name,
   transform,
   inverse,
+  d_transform = NULL,
+  d_inverse = NULL,
   breaks = extended_breaks(),
   minor_breaks = regular_minor_breaks(),
   format = format_format(),
@@ -30,6 +32,12 @@ transformation}
 \item{inverse}{function, or name of function, that performs the
 inverse of the transformation}
 
+\item{d_transform}{Optional function, or name of function, that gives the
+derivative of the transformation. May be \code{NULL}.}
+
+\item{d_inverse}{Optional function, or name of function, that gives the
+derivative of the inverse of the transformation. May be \code{NULL}.}
+
 \item{breaks}{default breaks function for this transformation. The breaks
 function is applied to the un-transformed data.}
 
@@ -46,8 +54,9 @@ argument.}
 A transformation encapsulates a transformation and its inverse, as well
 as the information needed to create pleasing breaks and labels. The \code{breaks()}
 function is applied on the un-transformed range of the data, and the
-\code{format()} function takes the output of the \code{breaks()} function and return
-well-formatted labels.
+\code{format()} function takes the output of the \code{breaks()} function and returns
+well-formatted labels. Transformations may also include the derivatives of the
+transformation and its inverse, but are not required to.
 }
 \seealso{
 \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}

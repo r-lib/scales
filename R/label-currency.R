@@ -19,13 +19,13 @@
 #'
 #' # Customise currency display with prefix and suffix
 #' demo_continuous(c(1, 100), labels = label_currency(prefix = "USD "))
-#' euro <- label_currency(
-#'   prefix = "",
-#'   suffix = "\u20ac",
+#' yen <- label_currency(
+#'   prefix = "¥",
+#'   suffix = "",
 #'   big.mark = ".",
 #'   decimal.mark = ","
 #' )
-#' demo_continuous(c(1000, 1100), labels = euro)
+#' demo_continuous(c(1000, 1100), labels = yen)
 #'
 #' # Use style_negative = "parens" for finance style display
 #' demo_continuous(c(-100, 100), labels = label_currency(style_negative = "parens"))

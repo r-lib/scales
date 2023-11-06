@@ -11,6 +11,8 @@ asn_trans <- function() {
     "asn",
     function(x) 2 * asin(sqrt(x)),
     function(x) sin(x / 2)^2,
+    d_transform = function(x) 1 / sqrt(x - x^2),
+    d_inverse = function(x) sin(x) / 2,
     domain = c(0, 1)
   )
 }
@@ -21,7 +23,14 @@ asn_trans <- function() {
 #' @examples
 #' plot(atanh_trans(), xlim = c(-1, 1))
 atanh_trans <- function() {
-  trans_new("atanh", "atanh", "tanh", domain = c(-1, 1))
+  trans_new(
+    "atanh",
+    "atanh",
+    "tanh",
+    d_transform = function(x) 1 / (1 - x^2),
+    d_inverse = function(x) 1 / cosh(x)^2,
+    domain = c(-1, 1)
+  )
 }
 
 #' Inverse Hyperbolic Sine transformation
@@ -33,7 +42,9 @@ asinh_trans <- function() {
   trans_new(
     "asinh",
     transform = asinh,
-    inverse = sinh
+    inverse = sinh,
+    d_transform = function(x) 1 / sqrt(x^2 + 1),
+    d_inverse = cosh
   )
 }
 
@@ -80,30 +91,35 @@ asinh_trans <- function() {
 #' plot(modulus_trans(1), xlim = c(-10, 10))
 #' plot(modulus_trans(2), xlim = c(-10, 10))
 boxcox_trans <- function(p, offset = 0) {
-  trans <- function(x) {
+  if (abs(p) < 1e-07) {
+    trans <- function(x) log(x + offset)
+    inv <- function(x) exp(x) - offset
+    d_trans <- function(x) 1 / (x + offset)
+    d_inv <- "exp"
+  } else {
+    trans <- function(x) ((x + offset)^p - 1) / p
+    inv <- function(x) (x * p + 1)^(1 / p) - offset
+    d_trans <- function(x) (x + offset)^(p - 1)
+    d_inv <- function(x) (x * p + 1)^(1 / p - 1)
+  }
+
+  trans_with_check <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
       cli::cli_abort(c(
         "{.fun boxcox_trans} must be given only positive values",
         i = "Consider using {.fun modulus_trans} instead?"
       ))
     }
-    if (abs(p) < 1e-07) {
-      log(x + offset)
-    } else {
-      ((x + offset)^p - 1) / p
-    }
-  }
-
-  inv <- function(x) {
-    if (abs(p) < 1e-07) {
-      exp(x) - offset
-    } else {
-      (x * p + 1)^(1 / p) - offset
-    }
+    trans(x)
   }
 
   trans_new(
-    paste0("pow-", format(p)), trans, inv, domain = c(0, Inf)
+    paste0("pow-", format(p)),
+    trans_with_check,
+    inv,
+    d_transform = d_trans,
+    d_inverse = d_inv,
+    domain = c(0, Inf)
   )
 }
 
@@ -113,12 +129,17 @@ modulus_trans <- function(p, offset = 1) {
   if (abs(p) < 1e-07) {
     trans <- function(x) sign(x) * log(abs(x) + offset)
     inv <- function(x) sign(x) * (exp(abs(x)) - offset)
+    d_trans <- function(x) 1 / (abs(x) + offset)
+    d_inv <- function(x) exp(abs(x))
   } else {
     trans <- function(x) sign(x) * ((abs(x) + offset)^p - 1) / p
     inv <- function(x) sign(x) * ((abs(x) * p + 1)^(1 / p) - offset)
+    d_trans <- function(x) (abs(x) + offset)^(p - 1)
+    d_inv <- function(x) (abs(x) * p + 1)^(1 / p - 1)
   }
   trans_new(
-    paste0("mt-pow-", format(p)), trans, inv
+    paste0("mt-pow-", format(p)), trans, inv,
+    d_transform = d_trans, d_inverse = d_inv
   )
 }
 
@@ -153,34 +174,44 @@ yj_trans <- function(p) {
   eps <- 1e-7
 
   if (abs(p) < eps) {
-    trans_pos <- function(x) log(x + 1)
-    inv_pos <- function(x) exp(x) - 1
+    trans_pos <- log1p
+    inv_pos <- expm1
+    d_trans_pos <- function(x) 1 / (1 + x)
+    d_inv_pos <- exp
   } else {
     trans_pos <- function(x) ((x + 1)^p - 1) / p
     inv_pos <- function(x) (p * x + 1)^(1 / p) - 1
+    d_trans_pos <- function(x) (x + 1)^(p - 1)
+    d_inv_pos <- function(x) (p * x + 1)^(1 / p - 1)
   }
 
   if (abs(2 - p) < eps) {
-    trans_neg <- function(x) -log(-x + 1)
+    trans_neg <- function(x) -log1p(-x)
     inv_neg <- function(x) 1 - exp(-x)
+    d_trans_neg <- function(x) 1 / (1 - x)
+    d_inv_new <- function(x) exp(-x)
   } else {
     trans_neg <- function(x) -((-x + 1)^(2 - p) - 1) / (2 - p)
     inv_neg <- function(x) 1 - (-(2 - p) * x + 1)^(1 / (2 - p))
+    d_trans_neg <- function(x) (1 - x)^(1 - p)
+    d_inv_neg <- function(x) (-(2 - p) * x + 1)^(1 / (2 - p) - 1)
   }
 
   trans_new(
     paste0("yeo-johnson-", format(p)),
     function(x) trans_two_sided(x, trans_pos, trans_neg),
-    function(x) trans_two_sided(x, inv_pos, inv_neg)
+    function(x) trans_two_sided(x, inv_pos, inv_neg),
+    d_transform = function(x) trans_two_sided(x, d_trans_pos, d_trans_neg, f_at_0 = 1),
+    d_inverse = function(x) trans_two_sided(x, d_inv_pos, d_inv_neg, f_at_0 = 1)
   )
 }
 
-trans_two_sided <- function(x, pos, neg) {
+trans_two_sided <- function(x, pos, neg, f_at_0 = 0) {
   out <- rep(NA_real_, length(x))
   present <- !is.na(x)
   out[present & x > 0] <- pos(x[present & x > 0])
   out[present & x < 0] <- neg(x[present & x < 0])
-  out[present & x == 0] <- 0
+  out[present & x == 0] <- f_at_0
   out
 }
 
@@ -198,7 +229,9 @@ exp_trans <- function(base = exp(1)) {
   trans_new(
     paste0("power-", format(base)),
     function(x) base^x,
-    function(x) log(x, base = base)
+    function(x) log(x, base = base),
+    d_transform = function(x) base^x * log(base),
+    d_inverse = function(x) 1 / x / log(base)
   )
 }
 
@@ -208,7 +241,13 @@ exp_trans <- function(base = exp(1)) {
 #' @examples
 #' plot(identity_trans(), xlim = c(-1, 1))
 identity_trans <- function() {
-  trans_new("identity", "force", "force")
+  trans_new(
+    "identity",
+    "force",
+    "force",
+    d_transform = function(x) rep(1, length(x)),
+    d_inverse = function(x) rep(1, length(x))
+  )
 }
 
 
@@ -237,11 +276,13 @@ identity_trans <- function() {
 #' lines(log_trans(), xlim = c(1, 20), col = "red")
 log_trans <- function(base = exp(1)) {
   force(base)
-  trans <- function(x) log(x, base)
-  inv <- function(x) base^x
-
-  trans_new(paste0("log-", format(base)), trans, inv,
-    log_breaks(base = base),
+  trans_new(
+    paste0("log-", format(base)),
+    function(x) log(x, base),
+    function(x) base^x,
+    d_transform = function(x) 1 / x / log(base),
+    d_inverse = function(x) base^x * log(base),
+    breaks = log_breaks(base = base),
     domain = c(1e-100, Inf)
   )
 }
@@ -261,7 +302,11 @@ log2_trans <- function() {
 #' @export
 log1p_trans <- function() {
   trans_new(
-    "log1p", "log1p", "expm1",
+    "log1p",
+    "log1p",
+    "expm1",
+    d_transform = function(x) 1 / (1 + x),
+    d_inverse = "exp",
     domain = c(-1 + .Machine$double.eps, Inf)
   )
 }
@@ -273,15 +318,18 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
   trans_new(
     "pseudo_log",
     function(x) asinh(x / (2 * sigma)) / log(base),
-    function(x) 2 * sigma * sinh(x * log(base))
+    function(x) 2 * sigma * sinh(x * log(base)),
+    d_transform = function(x) 1 / (sqrt(4 + x^2/sigma^2) * sigma * log(base)),
+    d_inverse = function(x) 2 * sigma * cosh(x * log(base)) * log(base)
   )
 }
 
 #' Probability transformation
 #'
 #' @param distribution probability distribution.  Should be standard R
-#'   abbreviation so that "p" + distribution is a valid probability density
-#'   function, and "q" + distribution is a valid quantile function.
+#'   abbreviation so that "p" + distribution is a valid cumulative distribution
+#'   function, "q" + distribution is a valid quantile function, and
+#'   "d" + distribution is a valid probability density function.
 #' @param ... other arguments passed on to distribution and quantile functions
 #' @export
 #' @examples
@@ -290,11 +338,14 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 probability_trans <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
+  dfun <- match.fun(paste0("d", distribution))
 
   trans_new(
     paste0("prob-", distribution),
     function(x) qfun(x, ...),
     function(x) pfun(x, ...),
+    d_transform = function(x) 1 / dfun(qfun(x, ...), ...),
+    d_inverse = function(x) dfun(x, ...),
     domain = c(0, 1)
   )
 }
@@ -314,7 +365,9 @@ reciprocal_trans <- function() {
   trans_new(
     "reciprocal",
     function(x) 1 / x,
-    function(x) 1 / x
+    function(x) 1 / x,
+    d_transform = function(x) -1 / x^2,
+    d_inverse = function(x) -1 / x^2
   )
 }
 
@@ -332,6 +385,8 @@ reverse_trans <- function() {
     "reverse",
     function(x) -x,
     function(x) -x,
+    d_transform = function(x) rep(-1, length(x)),
+    d_inverse = function(x) rep(-1, length(x)),
     minor_breaks = regular_minor_breaks(reverse = TRUE)
   )
 }
@@ -349,6 +404,8 @@ sqrt_trans <- function() {
     "sqrt",
     "sqrt",
     function(x) ifelse(x < 0, NA_real_, x ^ 2),
+    d_transform = function(x) 0.5 / sqrt(x),
+    d_inverse = function(x) 2 * x,
     domain = c(0, Inf)
   )
 }
