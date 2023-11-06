@@ -84,11 +84,11 @@ alpha <- function(colour, alpha = NA) {
 #' @importFrom graphics par plot rect text
 #' @keywords internal
 #' @examples
-#' show_col(hue_pal()(9))
-#' show_col(hue_pal()(9), borders = NA)
+#' show_col(pal_hue()(9))
+#' show_col(pal_hue()(9), borders = NA)
 #'
-#' show_col(viridis_pal()(16))
-#' show_col(viridis_pal()(16), labels = FALSE)
+#' show_col(pal_viridis()(16))
+#' show_col(pal_viridis()(16), labels = FALSE)
 show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
                      ncol = NULL) {
   n <- length(colours)

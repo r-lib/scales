@@ -9,9 +9,9 @@
 #'   other values are deprecated.
 #' @export
 
-gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
+pal_gradient_n <- function(colours, values = NULL, space = "Lab") {
   if (!identical(space, "Lab")) {
-    lifecycle::deprecate_warn("0.3.0", "gradient_n_pal(space = 'only supports be \"Lab\"')")
+    lifecycle::deprecate_warn("0.3.0", "pal_gradient_n(space = 'only supports be \"Lab\"')")
   }
   ramp <- colour_ramp(colours)
   force(values)
@@ -31,41 +31,53 @@ gradient_n_pal <- function(colours, values = NULL, space = "Lab") {
   }
 }
 
+#' @export
+#' @rdname pal_gradient_n
+gradient_n_pal <- pal_gradient_n
+
 #' Diverging colour gradient (continuous).
 #'
 #' @param low colour for low end of gradient.
 #' @param mid colour for mid point
 #' @param high colour for high end of gradient.
-#' @inheritParams gradient_n_pal
+#' @inheritParams pal_gradient_n
 #' @export
 #' @examples
 #' x <- seq(-1, 1, length.out = 100)
 #' r <- sqrt(outer(x^2, x^2, "+"))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 12)))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 30)))
-#' image(r, col = div_gradient_pal()(seq(0, 1, length.out = 100)))
+#' image(r, col = pal_div_gradient()(seq(0, 1, length.out = 12)))
+#' image(r, col = pal_div_gradient()(seq(0, 1, length.out = 30)))
+#' image(r, col = pal_div_gradient()(seq(0, 1, length.out = 100)))
 #'
 #' library(munsell)
-#' pal <- div_gradient_pal(low = mnsl(complement("10R 4/6"), fix = TRUE))
+#' pal <- pal_div_gradient(low = mnsl(complement("10R 4/6"), fix = TRUE))
 #' image(r, col = pal(seq(0, 1, length.out = 100)))
 #' @importFrom munsell mnsl
-div_gradient_pal <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
-  gradient_n_pal(c(low, mid, high), space = space)
+pal_div_gradient <- function(low = mnsl("10B 4/6"), mid = mnsl("N 8/0"), high = mnsl("10R 4/6"), space = "Lab") {
+  pal_gradient_n(c(low, mid, high), space = space)
 }
+
+#' @export
+#' @rdname pal_div_gradient
+div_gradient_pal <- pal_div_gradient
 
 #' Sequential colour gradient palette (continuous)
 #'
 #' @param low colour for low end of gradient.
 #' @param high colour for high end of gradient.
-#' @inheritParams gradient_n_pal
+#' @inheritParams pal_gradient_n
 #' @export
 #' @examples
 #' x <- seq(0, 1, length.out = 25)
-#' show_col(seq_gradient_pal()(x))
-#' show_col(seq_gradient_pal("white", "black")(x))
+#' show_col(pal_seq_gradient()(x))
+#' show_col(pal_seq_gradient("white", "black")(x))
 #'
 #' library(munsell)
-#' show_col(seq_gradient_pal("white", mnsl("10R 4/6"))(x))
-seq_gradient_pal <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
-  gradient_n_pal(c(low, high), space = space)
+#' show_col(pal_seq_gradient("white", mnsl("10R 4/6"))(x))
+pal_seq_gradient <- function(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab") {
+  pal_gradient_n(c(low, high), space = space)
 }
+
+#' @export
+#' @rdname pal_seq_gradient
+seq_gradient_pal <- pal_seq_gradient

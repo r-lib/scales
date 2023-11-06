@@ -14,14 +14,14 @@
 #'  \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.
 #' @export
 #' @examples
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale())))
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale(),
 #'   trans = sqrt_trans()
 #' )))
-#' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
+#' with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_area())))
 #' with(mtcars, plot(disp, mpg,
 #'   pch = 20, cex = 5,
-#'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
+#'   col = cscale(hp, pal_seq_gradient("grey80", "black"))
 #' ))
 cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
   if (!is.trans(trans)) cli::cli_abort("{.arg trans} must be a {.cls trans} object")

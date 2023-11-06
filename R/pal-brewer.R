@@ -10,14 +10,14 @@
 #' @references <https://colorbrewer2.org>
 #' @export
 #' @examples
-#' show_col(brewer_pal()(10))
-#' show_col(brewer_pal("div")(5))
-#' show_col(brewer_pal(palette = "Greens")(5))
+#' show_col(pal_brewer()(10))
+#' show_col(pal_brewer("div")(5))
+#' show_col(pal_brewer(palette = "Greens")(5))
 #'
 #' # Can use with gradient_n to create a continuous gradient
-#' cols <- brewer_pal("div")(5)
-#' show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
-brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
+#' cols <- pal_brewer("div")(5)
+#' show_col(pal_gradient_n(cols)(seq(0, 1, length.out = 30)))
+pal_brewer <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
   force(direction)
   function(n) {
@@ -41,6 +41,10 @@ brewer_pal <- function(type = "seq", palette = 1, direction = 1) {
     pal
   }
 }
+
+#' @export
+#' @rdname pal_brewer
+brewer_pal <- pal_brewer
 
 pal_name <- function(palette, type) {
   if (is.character(palette)) {

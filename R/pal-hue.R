@@ -9,25 +9,25 @@
 #'   1 = clockwise, -1 = counter-clockwise
 #' @export
 #' @examples
-#' show_col(hue_pal()(4))
-#' show_col(hue_pal()(9))
-#' show_col(hue_pal(l = 90)(9))
-#' show_col(hue_pal(l = 30)(9))
+#' show_col(pal_hue()(4))
+#' show_col(pal_hue()(9))
+#' show_col(pal_hue(l = 90)(9))
+#' show_col(pal_hue(l = 30)(9))
 #'
-#' show_col(hue_pal()(9))
-#' show_col(hue_pal(direction = -1)(9))
-#' show_col(hue_pal(h.start = 30)(9))
-#' show_col(hue_pal(h.start = 90)(9))
+#' show_col(pal_hue()(9))
+#' show_col(pal_hue(direction = -1)(9))
+#' show_col(pal_hue(h.start = 30)(9))
+#' show_col(pal_hue(h.start = 90)(9))
 #'
-#' show_col(hue_pal()(9))
-#' show_col(hue_pal(h = c(0, 90))(9))
-#' show_col(hue_pal(h = c(90, 180))(9))
-#' show_col(hue_pal(h = c(180, 270))(9))
-#' show_col(hue_pal(h = c(270, 360))(9))
-hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
-  if (length(h) != 2) cli::cli_abort("{.arg h} must have length 2")
-  if (length(l) != 1) cli::cli_abort("{.arg l} must have length 1")
-  if (length(c) != 1) cli::cli_abort("{.arg c} must have length 1")
+#' show_col(pal_hue()(9))
+#' show_col(pal_hue(h = c(0, 90))(9))
+#' show_col(pal_hue(h = c(90, 180))(9))
+#' show_col(pal_hue(h = c(180, 270))(9))
+#' show_col(pal_hue(h = c(270, 360))(9))
+pal_hue <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction = 1) {
+  if (length(h) != 2) cli::cli_abort("{.arg h} must have length 2.")
+  if (length(l) != 1) cli::cli_abort("{.arg l} must have length 1.")
+  if (length(c) != 1) cli::cli_abort("{.arg c} must have length 1.")
   force_all(h, c, l, h.start, direction)
   function(n) {
     if (n == 0) {
@@ -52,3 +52,8 @@ hue_pal <- function(h = c(0, 360) + 15, c = 100, l = 65, h.start = 0, direction 
     }
   }
 }
+
+#' @export
+#' @rdname pal_hue
+hue_pal <- pal_hue
+

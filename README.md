@@ -96,11 +96,11 @@ might apply them to a base plot.
 ``` r
 library(scales)
 # pull a list of colours from any palette
-viridis_pal()(4)
+pal_viridis()(4)
 #> [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"
 
 # use in combination with baseR `palette()` to set new defaults
-palette(brewer_pal(palette = "Set2")(4))
+palette(pal_brewer(palette = "Set2")(4))
 par(mar = c(5, 5, 1, 1))
 plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
 ```

@@ -2,7 +2,7 @@
 #'
 #' @param solid should shapes be solid or not?
 #' @export
-shape_pal <- function(solid = TRUE) {
+pal_shape <- function(solid = TRUE) {
   force(solid)
   function(n) {
     if (n > 6) {
@@ -19,3 +19,7 @@ shape_pal <- function(solid = TRUE) {
     }
   }
 }
+
+#' @export
+#' @rdname pal_shape
+shape_pal <- pal_shape

@@ -322,14 +322,14 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
   if (length(pal) == 1 && pal %in% row.names(RColorBrewer::brewer.pal.info)) {
     paletteInfo <- RColorBrewer::brewer.pal.info[pal, ]
     if (!is.null(nlevels)) {
-      # brewer_pal will return NAs if you ask for more colors than the palette has
-      colors <- brewer_pal(palette = pal)(abs(nlevels))
+      # pal_brewer will return NAs if you ask for more colors than the palette has
+      colors <- pal_brewer(palette = pal)(abs(nlevels))
       colors <- colors[!is.na(colors)]
     } else {
-      colors <- brewer_pal(palette = pal)(RColorBrewer::brewer.pal.info[pal, "maxcolors"]) # Get all colors
+      colors <- pal_brewer(palette = pal)(RColorBrewer::brewer.pal.info[pal, "maxcolors"]) # Get all colors
     }
   } else if (length(pal) == 1 && pal %in% c("viridis", "magma", "inferno", "plasma")) {
-    colors <- viridis_pal(option = pal)(256)
+    colors <- pal_viridis(option = pal)(256)
   } else {
     colors <- pal
   }
