@@ -73,7 +73,7 @@ are creating your own labelling function.</p>
 <span>  suffix <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  big.mark <span class="op">=</span> <span class="st">" "</span>,</span>
 <span>  decimal.mark <span class="op">=</span> <span class="st">"."</span>,</span>
-<span>  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span><span class="op">)</span>,</span>
+<span>  style_positive <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"none"</span>, <span class="st">"plus"</span>, <span class="st">"space"</span><span class="op">)</span>,</span>
 <span>  style_negative <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"hyphen"</span>, <span class="st">"minus"</span>, <span class="st">"parens"</span><span class="op">)</span>,</span>
 <span>  scale_cut <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  trim <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -125,6 +125,10 @@ decimal point.</p></dd>
 <dt>style_positive</dt>
 <dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
 <li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
+<li><p><code>"space"</code>: preceded by a Unicode "figure space", i.e., a space equally
+as wide as a number or <code>+</code>. Compared to <code>"none"</code>, adding a figure space
+can ensure numbers remain properly aligned when they are left- or
+right-justified.</p></li>
 </ul></dd>
 
 

@@ -62,6 +62,7 @@
 <li>
 <code>rescale(I(x), ...)</code> and <code>rescale_mid(I(x), ...)</code> return <code>I(x)</code> unaltered (<a href="https://github.com/teunbrand" class="external-link">@teunbrand</a>, <a href="https://github.com/r-lib/scales/issues/403" class="external-link">#403</a>).</li>
 <li>The <code>scale_cut</code> argument in <code><a href="../reference/number.html">number()</a></code> now works as advertised for values below the lowest cut value (<a href="https://github.com/r-lib/scales/issues/346" class="external-link">#346</a>)</li>
+<li>Added a new option to the <code>style_positive</code> argument in <code>label_*()</code> functions. Setting this to <code>"space"</code> will add a figure space in front of the number to make it easier to align positive and negative values as figure space takes up the same amount of space as <code>-</code> (<a href="https://github.com/r-lib/scales/issues/366" class="external-link">#366</a>)</li>
 <li>
 <code><a href="../reference/dollar_format.html">label_dollar()</a></code> has been superseeded by <code><a href="../reference/label_currency.html">label_currency()</a></code> for clarity (<a href="https://github.com/r-lib/scales/issues/344" class="external-link">#344</a>)</li>
 <li>
