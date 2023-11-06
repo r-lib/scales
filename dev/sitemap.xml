@@ -25,9 +25,6 @@
     <loc>https://scales.r-lib.org/dev/reference/alpha.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/area_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/dev/reference/asinh_trans.html</loc>
   </url>
   <url>
@@ -53,9 +50,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/breaks_width.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/brewer_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/cbreaks.html</loc>
@@ -91,12 +85,6 @@
     <loc>https://scales.r-lib.org/dev/reference/demo_continuous.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/dichromat_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/div_gradient_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/dev/reference/dollar_format.html</loc>
   </url>
   <url>
@@ -113,18 +101,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/fullseq.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/gradient_n_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/grey_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/hue_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/identity_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/identity_trans.html</loc>
@@ -172,13 +148,7 @@
     <loc>https://scales.r-lib.org/dev/reference/label_wrap.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/linetype_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/dev/reference/log_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/manual_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/minor_breaks_width.html</loc>
@@ -197,6 +167,48 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/ordinal_format.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_area.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_brewer.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_dichromat.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_div_gradient.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_gradient_n.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_grey.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_hue.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_identity.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_linetype.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_manual.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_rescale.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_seq_gradient.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_shape.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/dev/reference/pal_viridis.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/parse_format.html</loc>
@@ -232,9 +244,6 @@
     <loc>https://scales.r-lib.org/dev/reference/rescale_none.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/dev/reference/rescale_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/dev/reference/reverse_trans.html</loc>
   </url>
   <url>
@@ -242,12 +251,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/scientific_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/seq_gradient_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/shape_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/show_col.html</loc>
@@ -281,9 +284,6 @@
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/unit_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/dev/reference/viridis_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/dev/reference/wrap_format.html</loc>

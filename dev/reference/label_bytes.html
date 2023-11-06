@@ -116,6 +116,10 @@ decimal point.</p></dd>
     <dt><code>style_positive</code></dt>
 <dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
 <li><p><code>"plus"</code>: preceded by <code>+</code>, e.g. <code>+1</code>.</p></li>
+<li><p><code>"space"</code>: preceded by a Unicode "figure space", i.e., a space equally
+as wide as a number or <code>+</code>. Compared to <code>"none"</code>, adding a figure space
+can ensure numbers remain properly aligned when they are left- or
+right-justified.</p></li>
 </ul></dd>
 
     <dt><code>style_negative</code></dt>
