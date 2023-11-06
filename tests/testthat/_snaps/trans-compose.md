@@ -1,13 +1,13 @@
 # produces informative errors
 
     Code
-      compose_trans()
+      transform_compose()
     Condition
-      Error in `compose_trans()`:
-      ! `compose_trans()` must include at least 1 transformer to compose
+      Error in `transform_compose()`:
+      ! `transform_compose()` must include at least 1 transformer to compose
     Code
-      compose_trans("sqrt", "reverse", "log10")
+      transform_compose("sqrt", "reverse", "log10")
     Condition
-      Error in `compose_trans()`:
+      Error in `transform_compose()`:
       ! Sequence of transformations yields invalid domain
 

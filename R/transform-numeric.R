@@ -5,8 +5,8 @@
 #'
 #' @export
 #' @examples
-#' plot(asn_trans(), xlim = c(0, 1))
-asn_trans <- function() {
+#' plot(transform_asn(), xlim = c(0, 1))
+transform_asn <- function() {
   trans_new(
     "asn",
     function(x) 2 * asin(sqrt(x)),
@@ -17,12 +17,16 @@ asn_trans <- function() {
   )
 }
 
+#' @rdname transform_asn
+#' @export
+asn_trans <- transform_asn
+
 #' Arc-tangent transformation
 #'
 #' @export
 #' @examples
-#' plot(atanh_trans(), xlim = c(-1, 1))
-atanh_trans <- function() {
+#' plot(transform_atanh(), xlim = c(-1, 1))
+transform_atanh <- function() {
   trans_new(
     "atanh",
     "atanh",
@@ -33,12 +37,16 @@ atanh_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname transform_atanh
+atanh_trans <- transform_atanh
+
 #' Inverse Hyperbolic Sine transformation
 #'
 #' @export
 #' @examples
-#' plot(asinh_trans(), xlim = c(-1e2, 1e2))
-asinh_trans <- function() {
+#' plot(transform_asinh(), xlim = c(-1e2, 1e2))
+transform_asinh <- function() {
   trans_new(
     "asinh",
     transform = asinh,
@@ -47,6 +55,10 @@ asinh_trans <- function() {
     d_inverse = cosh
   )
 }
+
+#' @export
+#' @rdname transform_asinh
+asinh_trans <- transform_asinh
 
 #' Box-Cox & modulus transformations
 #'
@@ -69,9 +81,9 @@ asinh_trans <- function() {
 #'
 #' @param p Transformation exponent, \eqn{\lambda}.
 #' @param offset Constant offset. 0 for Box-Cox type 1,
-#'   otherwise any non-negative constant (Box-Cox type 2). `modulus_trans()`
+#'   otherwise any non-negative constant (Box-Cox type 2). `transform_modulus()`
 #'   sets the default to 1.
-#' @seealso [yj_trans()]
+#' @seealso [transform_yj()]
 #' @references Box, G. E., & Cox, D. R. (1964). An analysis of transformations.
 #' Journal of the Royal Statistical Society. Series B (Methodological), 211-252.
 #' \url{https://www.jstor.org/stable/2984418}
@@ -81,16 +93,16 @@ asinh_trans <- function() {
 #' \url{https://www.jstor.org/stable/2986305}
 #' @export
 #' @examples
-#' plot(boxcox_trans(-1), xlim = c(0, 10))
-#' plot(boxcox_trans(0), xlim = c(0, 10))
-#' plot(boxcox_trans(1), xlim = c(0, 10))
-#' plot(boxcox_trans(2), xlim = c(0, 10))
+#' plot(transform_boxcox(-1), xlim = c(0, 10))
+#' plot(transform_boxcox(0), xlim = c(0, 10))
+#' plot(transform_boxcox(1), xlim = c(0, 10))
+#' plot(transform_boxcox(2), xlim = c(0, 10))
 #'
-#' plot(modulus_trans(-1), xlim = c(-10, 10))
-#' plot(modulus_trans(0), xlim = c(-10, 10))
-#' plot(modulus_trans(1), xlim = c(-10, 10))
-#' plot(modulus_trans(2), xlim = c(-10, 10))
-boxcox_trans <- function(p, offset = 0) {
+#' plot(transform_modulus(-1), xlim = c(-10, 10))
+#' plot(transform_modulus(0), xlim = c(-10, 10))
+#' plot(transform_modulus(1), xlim = c(-10, 10))
+#' plot(transform_modulus(2), xlim = c(-10, 10))
+transform_boxcox <- function(p, offset = 0) {
   if (abs(p) < 1e-07) {
     trans <- function(x) log(x + offset)
     inv <- function(x) exp(x) - offset
@@ -106,8 +118,8 @@ boxcox_trans <- function(p, offset = 0) {
   trans_with_check <- function(x) {
     if (any((x + offset) < 0, na.rm = TRUE)) {
       cli::cli_abort(c(
-        "{.fun boxcox_trans} must be given only positive values",
-        i = "Consider using {.fun modulus_trans} instead?"
+        "{.fun transform_boxcox} must be given only positive values",
+        i = "Consider using {.fun transform_modulus} instead?"
       ))
     }
     trans(x)
@@ -123,9 +135,13 @@ boxcox_trans <- function(p, offset = 0) {
   )
 }
 
-#' @rdname boxcox_trans
 #' @export
-modulus_trans <- function(p, offset = 1) {
+#' @rdname transform_boxcox
+boxcox_trans <- transform_boxcox
+
+#' @rdname transform_boxcox
+#' @export
+transform_modulus <- function(p, offset = 1) {
   if (abs(p) < 1e-07) {
     trans <- function(x) sign(x) * log(abs(x) + offset)
     inv <- function(x) sign(x) * (exp(abs(x)) - offset)
@@ -143,11 +159,15 @@ modulus_trans <- function(p, offset = 1) {
   )
 }
 
+#' @rdname transform_boxcox
+#' @export
+modulus_trans <- transform_modulus
+
 #' Yeo-Johnson transformation
 #'
-#' The Yeo-Johnson transformation is a flexible transformation that is similiar
-#' to Box-Cox, [boxcox_trans()], but does not require input values to be greater
-#' than zero.
+#' The Yeo-Johnson transformation is a flexible transformation that is similar
+#' to Box-Cox, [transform_boxcox()], but does not require input values to be
+#' greater than zero.
 #'
 #' The transformation takes one of four forms depending on the values of `y` and \eqn{\lambda}.
 #'
@@ -166,11 +186,11 @@ modulus_trans <- function(p, offset = 1) {
 #' \url{https://www.jstor.org/stable/2673623}
 #' @export
 #' @examples
-#' plot(yj_trans(-1), xlim = c(-10, 10))
-#' plot(yj_trans(0), xlim = c(-10, 10))
-#' plot(yj_trans(1), xlim = c(-10, 10))
-#' plot(yj_trans(2), xlim = c(-10, 10))
-yj_trans <- function(p) {
+#' plot(transform_yj(-1), xlim = c(-10, 10))
+#' plot(transform_yj(0), xlim = c(-10, 10))
+#' plot(transform_yj(1), xlim = c(-10, 10))
+#' plot(transform_yj(2), xlim = c(-10, 10))
+transform_yj <- function(p) {
   eps <- 1e-7
 
   if (abs(p) < eps) {
@@ -206,6 +226,10 @@ yj_trans <- function(p) {
   )
 }
 
+#' @export
+#' @rdname transform_yj
+yj_trans <- transform_yj
+
 trans_two_sided <- function(x, pos, neg, f_at_0 = 0) {
   out <- rep(NA_real_, length(x))
   present <- !is.na(x)
@@ -220,11 +244,11 @@ trans_two_sided <- function(x, pos, neg, f_at_0 = 0) {
 #' @param base Base of logarithm
 #' @export
 #' @examples
-#' plot(exp_trans(0.5), xlim = c(-2, 2))
-#' plot(exp_trans(1), xlim = c(-2, 2))
-#' plot(exp_trans(2), xlim = c(-2, 2))
-#' plot(exp_trans(), xlim = c(-2, 2))
-exp_trans <- function(base = exp(1)) {
+#' plot(transform_exp(0.5), xlim = c(-2, 2))
+#' plot(transform_exp(1), xlim = c(-2, 2))
+#' plot(transform_exp(2), xlim = c(-2, 2))
+#' plot(transform_exp(), xlim = c(-2, 2))
+transform_exp <- function(base = exp(1)) {
   force(base)
   trans_new(
     paste0("power-", format(base)),
@@ -235,12 +259,16 @@ exp_trans <- function(base = exp(1)) {
   )
 }
 
+#' @export
+#' @rdname transform_exp
+exp_trans <- transform_exp
+
 #' Identity transformation (do nothing)
 #'
 #' @export
 #' @examples
-#' plot(identity_trans(), xlim = c(-1, 1))
-identity_trans <- function() {
+#' plot(transform_identity(), xlim = c(-1, 1))
+transform_identity <- function() {
   trans_new(
     "identity",
     "force",
@@ -250,31 +278,35 @@ identity_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname transform_identity
+identity_trans <- transform_identity
+
 
 #' Log transformations
 #'
-#' * `log_trans()`: `log(x)`
+#' * `transform_log()`: `log(x)`
 #' * `log1p()`: `log(x + 1)`
-#' * `pseudo_log_trans()`:  smoothly transition to linear scale around 0.
+#' * `transform_pseudo_log()`:  smoothly transition to linear scale around 0.
 #'
 #' @param base base of logarithm
 #' @export
 #' @examples
-#' plot(log2_trans(), xlim = c(0, 5))
-#' plot(log_trans(), xlim = c(0, 5))
-#' plot(log10_trans(), xlim = c(0, 5))
+#' plot(transform_log2(), xlim = c(0, 5))
+#' plot(transform_log(), xlim = c(0, 5))
+#' plot(transform_log10(), xlim = c(0, 5))
 #'
-#' plot(log_trans(), xlim = c(0, 2))
-#' plot(log1p_trans(), xlim = c(-1, 1))
+#' plot(transform_log(), xlim = c(0, 2))
+#' plot(transform_log1p(), xlim = c(-1, 1))
 #'
 #' # The pseudo-log is defined for all real numbers
-#' plot(pseudo_log_trans(), xlim = c(-5, 5))
-#' lines(log_trans(), xlim = c(0, 5), col = "red")
+#' plot(transform_pseudo_log(), xlim = c(-5, 5))
+#' lines(transform_log(), xlim = c(0, 5), col = "red")
 #'
-#' # For large positives nubmers it's very close to log
-#' plot(pseudo_log_trans(), xlim = c(1, 20))
-#' lines(log_trans(), xlim = c(1, 20), col = "red")
-log_trans <- function(base = exp(1)) {
+#' # For large positives numbers it's very close to log
+#' plot(transform_pseudo_log(), xlim = c(1, 20))
+#' lines(transform_log(), xlim = c(1, 20), col = "red")
+transform_log <- function(base = exp(1)) {
   force(base)
   trans_new(
     paste0("log-", format(base)),
@@ -287,20 +319,20 @@ log_trans <- function(base = exp(1)) {
   )
 }
 #' @export
-#' @rdname log_trans
-log10_trans <- function() {
-  log_trans(10)
+#' @rdname transform_log
+transform_log10 <- function() {
+  transform_log(10)
 }
 
 #' @export
-#' @rdname log_trans
-log2_trans <- function() {
-  log_trans(2)
+#' @rdname transform_log
+transform_log2 <- function() {
+  transform_log(2)
 }
 
-#' @rdname log_trans
+#' @rdname transform_log
 #' @export
-log1p_trans <- function() {
+transform_log1p <- function() {
   trans_new(
     "log1p",
     "log1p",
@@ -311,10 +343,24 @@ log1p_trans <- function() {
   )
 }
 
-#' @rdname log_trans
+#' @export
+#' @rdname transform_log
+log_trans   <- transform_log
+#' @export
+#' @rdname transform_log
+log10_trans <- transform_log10
+#' @export
+#' @rdname transform_log
+log2_trans  <- transform_log2
+#' @export
+#' @rdname transform_log
+log1p_trans <- transform_log1p
+
+
+#' @rdname transform_log
 #' @param sigma Scaling factor for the linear part of pseudo-log transformation.
 #' @export
-pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
+transform_pseudo_log <- function(sigma = 1, base = exp(1)) {
   trans_new(
     "pseudo_log",
     function(x) asinh(x / (2 * sigma)) / log(base),
@@ -323,6 +369,10 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
     d_inverse = function(x) 2 * sigma * cosh(x * log(base)) * log(base)
   )
 }
+
+#' @export
+#' @rdname transform_log
+pseudo_log_trans <- transform_pseudo_log
 
 #' Probability transformation
 #'
@@ -333,9 +383,9 @@ pseudo_log_trans <- function(sigma = 1, base = exp(1)) {
 #' @param ... other arguments passed on to distribution and quantile functions
 #' @export
 #' @examples
-#' plot(logit_trans(), xlim = c(0, 1))
-#' plot(probit_trans(), xlim = c(0, 1))
-probability_trans <- function(distribution, ...) {
+#' plot(transform_logit(), xlim = c(0, 1))
+#' plot(transform_probit(), xlim = c(0, 1))
+transform_probability <- function(distribution, ...) {
   qfun <- match.fun(paste0("q", distribution))
   pfun <- match.fun(paste0("p", distribution))
   dfun <- match.fun(paste0("d", distribution))
@@ -349,19 +399,32 @@ probability_trans <- function(distribution, ...) {
     domain = c(0, 1)
   )
 }
+
 #' @export
-#' @rdname probability_trans
-logit_trans <- function() probability_trans("logis")
+#' @rdname transform_probability
+transform_logit <- function() transform_probability("logis")
 #' @export
-#' @rdname probability_trans
-probit_trans <- function() probability_trans("norm")
+#' @rdname transform_probability
+transform_probit <- function() transform_probability("norm")
+
+
+#' @export
+#' @rdname transform_probability
+probability_trans <- transform_probability
+#' @export
+#' @rdname transform_probability
+logit_trans <- transform_logit
+#' @export
+#' @rdname transform_probability
+probit_trans <- transform_probit
+
 
 #' Reciprocal transformation
 #'
 #' @export
 #' @examples
-#' plot(reciprocal_trans(), xlim = c(0, 1))
-reciprocal_trans <- function() {
+#' plot(transform_reciprocal(), xlim = c(0, 1))
+transform_reciprocal <- function() {
   trans_new(
     "reciprocal",
     function(x) 1 / x,
@@ -371,6 +434,10 @@ reciprocal_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname transform_reciprocal
+reciprocal_trans <- transform_reciprocal
+
 #' Reverse transformation
 #'
 #' reversing transformation works by multiplying the input with -1. This means
@@ -379,8 +446,8 @@ reciprocal_trans <- function() {
 #'
 #' @export
 #' @examples
-#' plot(reverse_trans(), xlim = c(-1, 1))
-reverse_trans <- function() {
+#' plot(transform_reverse(), xlim = c(-1, 1))
+transform_reverse <- function() {
   trans_new(
     "reverse",
     function(x) -x,
@@ -391,6 +458,10 @@ reverse_trans <- function() {
   )
 }
 
+#' @export
+#' @rdname transform_reverse
+reverse_trans <- transform_reverse
+
 #' Square-root transformation
 #'
 #' This is the variance stabilising transformation for the Poisson
@@ -398,8 +469,8 @@ reverse_trans <- function() {
 #'
 #' @export
 #' @examples
-#' plot(sqrt_trans(), xlim = c(0, 5))
-sqrt_trans <- function() {
+#' plot(transform_sqrt(), xlim = c(0, 5))
+transform_sqrt <- function() {
   trans_new(
     "sqrt",
     "sqrt",
@@ -409,3 +480,7 @@ sqrt_trans <- function() {
     domain = c(0, Inf)
   )
 }
+
+#' @export
+#' @rdname transform_sqrt
+sqrt_trans <- transform_sqrt

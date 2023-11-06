@@ -11,19 +11,19 @@
 #'  leaves the data unchanged.
 #'
 #'  Built in transformations:
-#'  \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.
+#'  \Sexpr[results=rd,stage=build]{scales:::seealso_transform()}.
 #' @export
 #' @examples
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
-#'   trans = sqrt_trans()
+#'   trans = transform_sqrt()
 #' )))
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg,
 #'   pch = 20, cex = 5,
 #'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
 #' ))
-cscale <- function(x, palette, na.value = NA_real_, trans = identity_trans()) {
+cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()) {
   if (!is.trans(trans)) cli::cli_abort("{.arg trans} must be a {.cls trans} object")
 
   x <- trans$transform(x)

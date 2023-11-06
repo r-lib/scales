@@ -48,6 +48,10 @@ width (see \code{\link[base:format]{base::format()}}).}
 \itemize{
 \item \code{"none"} (the default): no change, e.g. \code{1}.
 \item \code{"plus"}: preceded by \code{+}, e.g. \code{+1}.
+\item \code{"space"}: preceded by a Unicode "figure space", i.e., a space equally
+as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
+can ensure numbers remain properly aligned when they are left- or
+right-justified.
 }}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
