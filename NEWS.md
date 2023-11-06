@@ -30,6 +30,8 @@
 * Correct the domain calculation for `compose_trans()` (@mjskay, #408).
 * Transformation objects can optionally include the derivatives of the transform
   and the inverse transform (@mjskay, #322).
+* Palette functions now have the `pal_`-prefix. The old `_pal`-suffixed versions
+  are kept for backward compatibility.
 
 # scales 1.2.1
 
