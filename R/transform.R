@@ -136,11 +136,11 @@ as.trans <- as.transform
 #' @param x a numeric vector to compute the range of
 #' @export
 #' @keywords internal
-range_transform <- function(transform, x) {
+trim_to_domain <- function(transform, x) {
   transform <- as.transform(transform)
   range(transform$transform(range(squish(x, transform$domain), na.rm = TRUE)))
 }
 
 #' @export
-#' @rdname range_transform
-trans_range <- range_transform
+#' @rdname trim_to_domain
+trans_range <- trim_to_domain

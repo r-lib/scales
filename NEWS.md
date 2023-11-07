@@ -33,8 +33,8 @@
 * Transformation function have been renamed to `transform_*`-prefixed names 
   instead of `*_trans`-suffixed names. This allows for a better tab-completion
   search of transformations. The S3 class of transformations has been
-  renamed from `"trans"` to `"transform"`. `new_transform()` is the new 
-  `trans_new()`.
+  renamed from `"trans"` to `"transform"`. `new_transform()` replaces 
+  `trans_new()` and `trim_to_domain()` replaces `trans_range()`.
 * Palette functions now have the `pal_`-prefix. The old `_pal`-suffixed versions
   are kept for backward compatibility.
   
