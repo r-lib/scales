@@ -1,8 +1,8 @@
 test_that("Transformed ranges silently drop out-of-domain values", {
-  r1 <- trans_range(transform_log(), -1:10)
+  r1 <- range_transform(transform_log(), -1:10)
   expect_equal(r1, log(c(1e-100, 10)))
 
-  r2 <- trans_range(transform_sqrt(), -1:10)
+  r2 <- range_transform(transform_sqrt(), -1:10)
   expect_equal(r2, sqrt(c(0, 10)))
 })
 
