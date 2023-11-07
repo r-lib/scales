@@ -21,7 +21,7 @@
 #' with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
 #' with(mtcars, plot(disp, mpg,
 #'   pch = 20, cex = 5,
-#'   col = cscale(hp, seq_gradient_pal("grey80", "black"))
+#'   col = cscale(hp, pal_seq_gradient("grey80", "black"))
 #' ))
 cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()) {
   if (!is.trans(trans)) cli::cli_abort("{.arg trans} must be a {.cls trans} object")

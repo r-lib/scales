@@ -5,14 +5,14 @@
 #' @export
 #' @examples
 #' if (requireNamespace("dichromat", quietly = TRUE)) {
-#'   show_col(dichromat_pal("BluetoOrange.10")(10))
-#'   show_col(dichromat_pal("BluetoOrange.10")(5))
+#'   show_col(pal_dichromat("BluetoOrange.10")(10))
+#'   show_col(pal_dichromat("BluetoOrange.10")(5))
 #'
 #'   # Can use with gradient_n to create a continous gradient
-#'   cols <- dichromat_pal("DarkRedtoBlue.12")(12)
-#'   show_col(gradient_n_pal(cols)(seq(0, 1, length.out = 30)))
+#'   cols <- pal_dichromat("DarkRedtoBlue.12")(12)
+#'   show_col(pal_gradient_n(cols)(seq(0, 1, length.out = 30)))
 #' }
-dichromat_pal <- function(name) {
+pal_dichromat <- function(name) {
   check_installed("dichromat")
 
   if (!any(name == names(dichromat::colorschemes))) {
@@ -22,6 +22,10 @@ dichromat_pal <- function(name) {
   pal <- dichromat::colorschemes[[name]]
   function(n) pal[seq_len(n)]
 }
+
+#' @export
+#' @rdname pal_dichromat
+dichromat_pal <- pal_dichromat
 
 
 dichromat_schemes <- function() {

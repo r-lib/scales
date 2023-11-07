@@ -3,6 +3,11 @@
 #' Leaves values unchanged - useful when the data is already scaled.
 #'
 #' @export
-identity_pal <- function() {
+pal_identity <- function() {
   function(x) x
 }
+
+
+#' @export
+#' @rdname pal_identity
+identity_pal <- pal_identity
