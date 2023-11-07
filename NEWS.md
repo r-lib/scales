@@ -35,8 +35,9 @@
   search of transformations. The S3 class of transformations has been
   renamed from `"trans"` to `"transform"`. `new_transform()` is the new 
   `trans_new()`.
+* Palette functions now have the `pal_`-prefix. The old `_pal`-suffixed versions
+  are kept for backward compatibility.
   
-
 # scales 1.2.1
 
 * Re-document to fix HTML issues in `.Rd`.

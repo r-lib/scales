@@ -27,11 +27,11 @@ Built in transformations:
 Continuous scale
 }
 \examples{
-with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal())))
-with(mtcars, plot(disp, mpg, cex = cscale(hp, rescale_pal(),
+with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale())))
+with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale(),
   trans = transform_sqrt()
 )))
-with(mtcars, plot(disp, mpg, cex = cscale(hp, area_pal())))
+with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_area())))
 with(mtcars, plot(disp, mpg,
   pch = 20, cex = 5,
   col = cscale(hp, pal_seq_gradient("grey80", "black"))
