@@ -7,7 +7,7 @@
 #' @examples
 #' plot(transform_asn(), xlim = c(0, 1))
 transform_asn <- function() {
-  trans_new(
+  new_transform(
     "asn",
     function(x) 2 * asin(sqrt(x)),
     function(x) sin(x / 2)^2,
@@ -27,7 +27,7 @@ asn_trans <- transform_asn
 #' @examples
 #' plot(transform_atanh(), xlim = c(-1, 1))
 transform_atanh <- function() {
-  trans_new(
+  new_transform(
     "atanh",
     "atanh",
     "tanh",
@@ -47,7 +47,7 @@ atanh_trans <- transform_atanh
 #' @examples
 #' plot(transform_asinh(), xlim = c(-1e2, 1e2))
 transform_asinh <- function() {
-  trans_new(
+  new_transform(
     "asinh",
     transform = asinh,
     inverse = sinh,
@@ -125,7 +125,7 @@ transform_boxcox <- function(p, offset = 0) {
     trans(x)
   }
 
-  trans_new(
+  new_transform(
     paste0("pow-", format(p)),
     trans_with_check,
     inv,
@@ -153,7 +153,7 @@ transform_modulus <- function(p, offset = 1) {
     d_trans <- function(x) (abs(x) + offset)^(p - 1)
     d_inv <- function(x) (abs(x) * p + 1)^(1 / p - 1)
   }
-  trans_new(
+  new_transform(
     paste0("mt-pow-", format(p)), trans, inv,
     d_transform = d_trans, d_inverse = d_inv
   )
@@ -217,7 +217,7 @@ transform_yj <- function(p) {
     d_inv_neg <- function(x) (-(2 - p) * x + 1)^(1 / (2 - p) - 1)
   }
 
-  trans_new(
+  new_transform(
     paste0("yeo-johnson-", format(p)),
     function(x) trans_two_sided(x, trans_pos, trans_neg),
     function(x) trans_two_sided(x, inv_pos, inv_neg),
@@ -250,7 +250,7 @@ trans_two_sided <- function(x, pos, neg, f_at_0 = 0) {
 #' plot(transform_exp(), xlim = c(-2, 2))
 transform_exp <- function(base = exp(1)) {
   force(base)
-  trans_new(
+  new_transform(
     paste0("power-", format(base)),
     function(x) base^x,
     function(x) log(x, base = base),
@@ -269,7 +269,7 @@ exp_trans <- transform_exp
 #' @examples
 #' plot(transform_identity(), xlim = c(-1, 1))
 transform_identity <- function() {
-  trans_new(
+  new_transform(
     "identity",
     "force",
     "force",
@@ -308,7 +308,7 @@ identity_trans <- transform_identity
 #' lines(transform_log(), xlim = c(1, 20), col = "red")
 transform_log <- function(base = exp(1)) {
   force(base)
-  trans_new(
+  new_transform(
     paste0("log-", format(base)),
     function(x) log(x, base),
     function(x) base^x,
@@ -333,7 +333,7 @@ transform_log2 <- function() {
 #' @rdname transform_log
 #' @export
 transform_log1p <- function() {
-  trans_new(
+  new_transform(
     "log1p",
     "log1p",
     "expm1",
@@ -361,7 +361,7 @@ log1p_trans <- transform_log1p
 #' @param sigma Scaling factor for the linear part of pseudo-log transformation.
 #' @export
 transform_pseudo_log <- function(sigma = 1, base = exp(1)) {
-  trans_new(
+  new_transform(
     "pseudo_log",
     function(x) asinh(x / (2 * sigma)) / log(base),
     function(x) 2 * sigma * sinh(x * log(base)),
@@ -390,7 +390,7 @@ transform_probability <- function(distribution, ...) {
   pfun <- match.fun(paste0("p", distribution))
   dfun <- match.fun(paste0("d", distribution))
 
-  trans_new(
+  new_transform(
     paste0("prob-", distribution),
     function(x) qfun(x, ...),
     function(x) pfun(x, ...),
@@ -425,7 +425,7 @@ probit_trans <- transform_probit
 #' @examples
 #' plot(transform_reciprocal(), xlim = c(0, 1))
 transform_reciprocal <- function() {
-  trans_new(
+  new_transform(
     "reciprocal",
     function(x) 1 / x,
     function(x) 1 / x,
@@ -448,7 +448,7 @@ reciprocal_trans <- transform_reciprocal
 #' @examples
 #' plot(transform_reverse(), xlim = c(-1, 1))
 transform_reverse <- function() {
-  trans_new(
+  new_transform(
     "reverse",
     function(x) -x,
     function(x) -x,
@@ -471,7 +471,7 @@ reverse_trans <- transform_reverse
 #' @examples
 #' plot(transform_sqrt(), xlim = c(0, 5))
 transform_sqrt <- function() {
-  trans_new(
+  new_transform(
     "sqrt",
     "sqrt",
     function(x) ifelse(x < 0, NA_real_, x ^ 2),

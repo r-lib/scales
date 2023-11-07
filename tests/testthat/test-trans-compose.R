@@ -11,7 +11,7 @@ test_that("composes derivatives correctly", {
 })
 
 test_that("produces NULL derivatives if not all transforms have derivatives", {
-  t <- transform_compose("sqrt", trans_new("no_deriv", identity, identity))
+  t <- transform_compose("sqrt", new_transform("no_deriv", identity, identity))
   expect_null(t$d_transform)
   expect_null(t$d_inverse)
 })

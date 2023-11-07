@@ -28,11 +28,11 @@
 #' @export
 #' @keywords internal
 #' @aliases trans
-trans_new <- function(name, transform, inverse,
-                      d_transform = NULL, d_inverse = NULL,
-                      breaks = extended_breaks(),
-                      minor_breaks = regular_minor_breaks(),
-                      format = format_format(), domain = c(-Inf, Inf)) {
+new_transform <- function(name, transform, inverse,
+                          d_transform = NULL, d_inverse = NULL,
+                          breaks = extended_breaks(),
+                          minor_breaks = regular_minor_breaks(),
+                          format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   if (is.character(d_transform)) d_transform <- match.fun(d_transform)
@@ -54,12 +54,16 @@ trans_new <- function(name, transform, inverse,
   )
 }
 
-#' @rdname trans_new
+#' @rdname new_transform
+#' @export
+trans_new <- new_transform
+
+#' @rdname new_transform
 #' @export
 is.transform <- function(x) inherits(x, "transform")
 
 #' @export
-#' @rdname trans_new
+#' @rdname new_transform
 is.trans <- is.transform
 
 #' @export
@@ -95,7 +99,7 @@ lines.transform <- function(x, ..., xlim) {
   graphics::lines(xgrid, y, ...)
 }
 
-#' @rdname trans_new
+#' @rdname new_transform
 #' @export
 as.transform <- function(x, arg = deparse(substitute(x))) {
   if (is.transform(x)) {
@@ -120,7 +124,7 @@ as.transform <- function(x, arg = deparse(substitute(x))) {
 }
 
 #' @export
-#' @rdname trans_new
+#' @rdname new_transform
 as.trans <- as.transform
 
 #' Compute range of transformed values

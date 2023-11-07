@@ -14,7 +14,7 @@
 # trans has useful print method
 
     Code
-      trans_new("test", transform = identity, inverse = identity)
+      new_transform("test", transform = identity, inverse = identity)
     Output
       Transformer: test [-Inf, Inf]
 

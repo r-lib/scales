@@ -24,7 +24,7 @@ test_that("as.transform generates informative error", {
 
 test_that("trans has useful print method", {
   expect_snapshot({
-    trans_new("test", transform = identity, inverse = identity)
+    new_transform("test", transform = identity, inverse = identity)
   })
 })
 

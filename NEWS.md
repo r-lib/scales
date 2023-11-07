@@ -33,7 +33,8 @@
 * Transformation function have been renamed to `transform_*`-prefixed names 
   instead of `*_trans`-suffixed names. This allows for a better tab-completion
   search of transformations. The S3 class of transformations has been
-  renamed from `"trans"` to `"transform"`.
+  renamed from `"trans"` to `"transform"`. `new_transform()` is the new 
+  `trans_new()`.
   
 
 # scales 1.2.1

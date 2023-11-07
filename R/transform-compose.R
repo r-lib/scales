@@ -42,7 +42,7 @@ transform_compose <- function(...) {
   has_d_transform <- all(lengths(lapply(trans_list, "[[", "d_transform")) > 0)
   has_d_inverse <- all(lengths(lapply(trans_list, "[[", "d_inverse")) > 0)
 
-  trans_new(
+  new_transform(
     paste0("composition(", paste0(names, collapse = ","), ")"),
     transform   = function(x) compose_fwd(x, trans_list),
     inverse     = function(x) compose_rev(x, trans_list),

@@ -98,8 +98,8 @@ scales also gives users the ability to define and apply their own custom
 transformation functions for repeated use.
 
 ```{r transforms}
-# use trans_new to build a new transformation
-transform_logp3 <- trans_new(
+# use new_transform to build a new transformation
+transform_logp3 <- new_transform(
   name = "logp",
   transform = function(x) log(x + 3),
   inverse = function(x) exp(x) - 3,

@@ -8,7 +8,8 @@
 #' t$inverse(t$transform(years))
 #' t$format(t$breaks(range(years)))
 transform_date <- function() {
-  trans_new("date",
+  new_transform(
+    "date",
     transform = "from_date",
     inverse = "to_date",
     breaks = breaks_pretty(),
@@ -55,7 +56,7 @@ transform_time <- function(tz = NULL) {
     structure(as.numeric(x), names = names(x))
   }
 
-  trans_new("time",
+  new_transform("time",
     transform = "from_time",
     inverse = "to_time",
     breaks = breaks_pretty(),
@@ -97,7 +98,7 @@ time_trans <- transform_time
 #'
 transform_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks")) {
   unit <- arg_match(unit)
-  trans_new(
+  new_transform(
     "timespan",
     transform = function(x) {
       structure(as.numeric(as.difftime(x, units = unit), units = "secs"), names = names(x))
@@ -119,7 +120,7 @@ timespan_trans <- transform_timespan
 #' @rdname transform_timespan
 #' @export
 transform_hms <- function() {
-  trans_new(
+  new_transform(
     "hms",
     transform = function(x) {
       structure(as.numeric(x), names = names(x))
