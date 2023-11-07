@@ -83,18 +83,6 @@ same results as before with
 \code{label_number(scale_cut = cut_short_scale())}, or if you want correct SI
 units, \code{label_number(scale_cut = cut_si("unit"))}.
 }
-\examples{
-\dontshow{if (getRversion() >= "3.5") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# label_number_si() doesn't actually produce SI prefixes:
-demo_continuous(c(1, 1e9), labels = label_number_si("g"))
-
-# If you want real SI prefixes, use cut_si()
-demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_si("m")))
-
-# If you want the existing behavior, use cut_short_scale()
-demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_short_scale()))
-\dontshow{\}) # examplesIf}
-}
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},

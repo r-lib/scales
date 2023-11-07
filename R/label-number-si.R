@@ -19,15 +19,6 @@
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
-#' @examplesIf getRversion() >= "3.5"
-#' # label_number_si() doesn't actually produce SI prefixes:
-#' demo_continuous(c(1, 1e9), labels = label_number_si("g"))
-#'
-#' # If you want real SI prefixes, use cut_si()
-#' demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_si("m")))
-#'
-#' # If you want the existing behavior, use cut_short_scale()
-#' demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_short_scale()))
 label_number_si <- function(unit = "", accuracy = NULL, scale = 1, suffix = "", ...) {
   lifecycle::deprecate_stop(
     when = "1.2.0",
