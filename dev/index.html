@@ -163,8 +163,8 @@
 <p><img src="reference/figures/README-palettes-1.png"><!-- --></p>
 <p>scales also gives users the ability to define and apply their own custom transformation functions for repeated use.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># use trans_new to build a new transformation</span></span>
-<span><span class="va">logp3_trans</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/trans_new.html">trans_new</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="co"># use new_transform to build a new transformation</span></span>
+<span><span class="va">transform_logp3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/new_transform.html">new_transform</a></span><span class="op">(</span></span>
 <span>  name <span class="op">=</span> <span class="st">"logp"</span>,</span>
 <span>  transform <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">3</span><span class="op">)</span>,</span>
 <span>  inverse <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">-</span> <span class="fl">3</span>,</span>
@@ -174,7 +174,7 @@
 <span><span class="va">dsamp</span> <span class="op">&lt;-</span> <span class="fu">sample_n</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dsamp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span>, colour <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="va">logp3_trans</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="va">transform_logp3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-transforms-1.png"><!-- --></p>
 </div>
 </div>
