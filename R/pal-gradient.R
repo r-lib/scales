@@ -8,10 +8,9 @@
 #' @param space colour space in which to calculate gradient. Must be "Lab" -
 #'   other values are deprecated.
 #' @export
-
 pal_gradient_n <- function(colours, values = NULL, space = "Lab") {
   if (!identical(space, "Lab")) {
-    lifecycle::deprecate_warn("0.3.0", "pal_gradient_n(space = 'only supports be \"Lab\"')")
+    lifecycle::deprecate_stop("0.3.0", "pal_gradient_n(space = 'only supports be \"Lab\"')")
   }
   ramp <- colour_ramp(colours)
   force(values)

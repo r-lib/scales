@@ -29,18 +29,10 @@
 #' # If you want the existing behavior, use cut_short_scale()
 #' demo_continuous(c(1, 1e9), labels = label_number(scale_cut = cut_short_scale()))
 label_number_si <- function(unit = "", accuracy = NULL, scale = 1, suffix = "", ...) {
-  lifecycle::deprecate_warn(
+  lifecycle::deprecate_stop(
     when = "1.2.0",
     what = "label_number_si()",
     with = "label_number(scale_cut)"
-  )
-
-  label_number(
-    suffix = suffix,
-    scale_cut = cut_bad_si(unit),
-    accuracy = accuracy,
-    scale = scale,
-    ...
   )
 }
 

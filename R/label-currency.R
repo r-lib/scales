@@ -166,8 +166,7 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = "$",
   }
 
   if (lifecycle::is_present(negative_parens)) {
-    lifecycle::deprecate_warn("1.2.0", "dollar(negative_parens)", "dollar(style_negative)")
-    style_negative <- if (negative_parens) "parens" else "minus"
+    lifecycle::deprecate_stop("1.2.0", "dollar(negative_parens)", "dollar(style_negative)")
   }
 
   number(

@@ -150,7 +150,7 @@ label_comma <- function(accuracy = NULL, scale = 1, prefix = "",
                         suffix = "", big.mark = ",", decimal.mark = ".",
                         trim = TRUE, digits, ...) {
   if (!missing(digits)) {
-    lifecycle::deprecate_warn(
+    lifecycle::deprecate_stop(
       when = "1.0.0",
       what = "label_comma(digits)",
       with = "label_comma(accuracy)"
@@ -184,7 +184,7 @@ comma <- function(x, accuracy = NULL, scale = 1, prefix = "",
                   suffix = "", big.mark = ",", decimal.mark = ".",
                   trim = TRUE, digits, ...) {
   if (!missing(digits)) {
-    lifecycle::deprecate_warn(
+    lifecycle::deprecate_stop(
       when = "1.0.0",
       what = "comma(digits)",
       with = "comma(accuracy)"

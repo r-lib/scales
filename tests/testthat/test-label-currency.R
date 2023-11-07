@@ -3,10 +3,7 @@ test_that("negative comes before prefix", {
 })
 
 test_that("negative_parens is deprecated", {
-  lifecycle::expect_deprecated({
-    out <- label_dollar(negative_parens = TRUE)(-1)
-  })
-  expect_equal(out, "($1)")
+  lifecycle::expect_defunct(label_dollar(negative_parens = TRUE)(1))
 })
 
 test_that("preserves NAs", {
