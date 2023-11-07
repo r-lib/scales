@@ -7,6 +7,6 @@ seealso <- function(pattern) {
   paste0("\\code{\\link{", names, "}}", collapse = ", ")
 }
 
-seealso_trans <- function() seealso("_trans$")
+seealso_transform <- function() seealso("^transform_")
 
 seealso_pal <- function() seealso("^pal_")

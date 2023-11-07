@@ -4,7 +4,7 @@
 \alias{cscale}
 \title{Continuous scale}
 \usage{
-cscale(x, palette, na.value = NA_real_, trans = identity_trans())
+cscale(x, palette, na.value = NA_real_, trans = transform_identity())
 }
 \arguments{
 \item{x}{vector of continuous values to scale}
@@ -21,7 +21,7 @@ raw data prior to scaling.  Defaults to the identity transformation which
 leaves the data unchanged.
 
 Built in transformations:
-\Sexpr[results=rd,stage=build]{scales:::seealso_trans()}.}
+\Sexpr[results=rd,stage=build]{scales:::seealso_transform()}.}
 }
 \description{
 Continuous scale
@@ -29,7 +29,7 @@ Continuous scale
 \examples{
 with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale())))
 with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_rescale(),
-  trans = sqrt_trans()
+  trans = transform_sqrt()
 )))
 with(mtcars, plot(disp, mpg, cex = cscale(hp, pal_area())))
 with(mtcars, plot(disp, mpg,

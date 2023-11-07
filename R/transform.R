@@ -24,15 +24,15 @@
 #' @param domain the allowed range of the data to be transformed. The function
 #'   in the `transform` argument is expected to be able to transform the `domain`
 #'   argument.
-#' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_trans()}
+#' @seealso \Sexpr[results=rd,stage=build]{scales:::seealso_transform()}
 #' @export
 #' @keywords internal
 #' @aliases trans
-trans_new <- function(name, transform, inverse,
-                      d_transform = NULL, d_inverse = NULL,
-                      breaks = extended_breaks(),
-                      minor_breaks = regular_minor_breaks(),
-                      format = format_format(), domain = c(-Inf, Inf)) {
+new_transform <- function(name, transform, inverse,
+                          d_transform = NULL, d_inverse = NULL,
+                          breaks = extended_breaks(),
+                          minor_breaks = regular_minor_breaks(),
+                          format = format_format(), domain = c(-Inf, Inf)) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   if (is.character(d_transform)) d_transform <- match.fun(d_transform)
@@ -50,22 +50,30 @@ trans_new <- function(name, transform, inverse,
       format = format,
       domain = domain
     ),
-    class = "trans"
+    class = "transform"
   )
 }
 
-#' @rdname trans_new
+#' @rdname new_transform
 #' @export
-is.trans <- function(x) inherits(x, "trans")
+trans_new <- new_transform
+
+#' @rdname new_transform
+#' @export
+is.transform <- function(x) inherits(x, "transform")
 
 #' @export
-print.trans <- function(x, ...) {
+#' @rdname new_transform
+is.trans <- is.transform
+
+#' @export
+print.transform <- function(x, ...) {
   cat("Transformer: ", x$name, " [", x$domain[[1]], ", ", x$domain[[2]], "]\n", sep = "")
   invisible(x)
 }
 
 #' @export
-plot.trans <- function(x, y, ..., xlim, ylim = NULL) {
+plot.transform <- function(x, y, ..., xlim, ylim = NULL) {
   if (is.null(ylim)) {
     ylim <- range(x$transform(seq(xlim[1], xlim[2], length = 100)), finite = TRUE)
   }
@@ -84,40 +92,55 @@ plot.trans <- function(x, y, ..., xlim, ylim = NULL) {
 }
 
 #' @export
-lines.trans <- function(x, ..., xlim) {
+lines.transform <- function(x, ..., xlim) {
   xgrid <- seq(xlim[1], xlim[2], length = 100)
   y <- suppressWarnings(x$transform(xgrid))
 
   graphics::lines(xgrid, y, ...)
 }
 
-#' @rdname trans_new
+#' @rdname new_transform
 #' @export
-as.trans <- function(x, arg = deparse(substitute(x))) {
-  if (is.trans(x)) {
+as.transform <- function(x, arg = deparse(substitute(x))) {
+  if (is.transform(x)) {
     x
   } else if (is.character(x) && length(x) >= 1) {
     if (length(x) == 1) {
-      f <- paste0(x, "_trans")
+      f <- paste0("transform_", x)
+      # For backward compatibility
+      if (!exists(f, mode = "function")) {
+        f2 <- paste0(x, "_trans")
+        if (exists(f2, mode = "function")) {
+          f <- f2
+        }
+      }
       match.fun(f)()
     } else {
-      compose_trans(!!!x)
+      transform_compose(!!!x)
     }
   } else {
     cli::cli_abort(sprintf("{.arg %s} must be a character vector or a transformer object", arg))
   }
 }
 
+#' @export
+#' @rdname new_transform
+as.trans <- as.transform
+
 #' Compute range of transformed values
 #'
-#' Silently drops any ranges outside of the domain of `trans`.
+#' Silently drops any ranges outside of the domain of `transform`.
 #'
-#' @param trans a transformation object, or the name of a transformation object
+#' @param transform a transformation object, or the name of a transformation object
 #'   given as a string.
 #' @param x a numeric vector to compute the range of
 #' @export
 #' @keywords internal
-trans_range <- function(trans, x) {
-  trans <- as.trans(trans)
-  range(trans$transform(range(squish(x, trans$domain), na.rm = TRUE)))
+trim_to_domain <- function(transform, x) {
+  transform <- as.transform(transform)
+  range(transform$transform(range(squish(x, transform$domain), na.rm = TRUE)))
 }
+
+#' @export
+#' @rdname trim_to_domain
+trans_range <- trim_to_domain

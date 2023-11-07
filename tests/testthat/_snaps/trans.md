@@ -1,20 +1,20 @@
-# as.trans generates informative error
+# as.transform generates informative error
 
     Code
-      as.trans(1)
+      as.transform(1)
     Condition
-      Error in `as.trans()`:
+      Error in `as.transform()`:
       ! `1` must be a character vector or a transformer object
     Code
-      as.trans("x")
+      as.transform("x")
     Condition
       Error in `get()`:
-      ! object 'x_trans' of mode 'function' was not found
+      ! object 'transform_x' of mode 'function' was not found
 
 # trans has useful print method
 
     Code
-      trans_new("test", transform = identity, inverse = identity)
+      new_transform("test", transform = identity, inverse = identity)
     Output
       Transformer: test [-Inf, Inf]
 

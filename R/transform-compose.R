@@ -10,10 +10,10 @@
 #' @examples
 #' demo_continuous(10^c(-2:4), trans = "log10", labels = label_log())
 #' demo_continuous(10^c(-2:4), trans = c("log10", "reverse"), labels = label_log())
-compose_trans <- function(...) {
-  trans_list <- lapply(list2(...), as.trans)
+transform_compose <- function(...) {
+  trans_list <- lapply(list2(...), as.transform)
   if (length(trans_list) == 0) {
-    cli::cli_abort("{.fun compose_trans} must include at least 1 transformer to compose")
+    cli::cli_abort("{.fun transform_compose} must include at least 1 transformer to compose")
   }
 
   # Resolve domains. First push the domain of the first transformation all the
@@ -42,7 +42,7 @@ compose_trans <- function(...) {
   has_d_transform <- all(lengths(lapply(trans_list, "[[", "d_transform")) > 0)
   has_d_inverse <- all(lengths(lapply(trans_list, "[[", "d_inverse")) > 0)
 
-  trans_new(
+  new_transform(
     paste0("composition(", paste0(names, collapse = ","), ")"),
     transform   = function(x) compose_fwd(x, trans_list),
     inverse     = function(x) compose_rev(x, trans_list),
@@ -52,6 +52,10 @@ compose_trans <- function(...) {
     domain = domain
   )
 }
+
+#' @export
+#' @rdname transform_compose
+compose_trans <- transform_compose
 
 compose_fwd <- function(x, trans_list) {
   for (trans in trans_list) {
