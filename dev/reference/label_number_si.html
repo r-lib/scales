@@ -185,19 +185,19 @@ rather than axes.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># label_number_si() doesn't actually produce SI prefixes:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e9</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_number_si</span><span class="op">(</span><span class="st">"g"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_number_si("g"))</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>`label_number_si()` was deprecated in scales 1.2.0.</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `scale_cut` argument of `label_number()` instead.</span>
-<span class="r-plt img"><img src="label_number_si-1.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> `label_number_si()` was deprecated in scales 1.2.0 and is now</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> defunct.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `scale_cut` argument of `label_number()` instead.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># If you want real SI prefixes, use cut_si()</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e9</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="label_number.html">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="number.html">cut_si</a></span><span class="op">(</span><span class="st">"m"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_number(scale_cut = cut_si("m")))</span>
-<span class="r-plt img"><img src="label_number_si-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_number_si-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># If you want the existing behavior, use cut_short_scale()</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e9</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu"><a href="label_number.html">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="number.html">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_number(scale_cut = cut_short_scale()))</span>
-<span class="r-plt img"><img src="label_number_si-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_number_si-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
