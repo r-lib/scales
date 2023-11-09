@@ -108,13 +108,15 @@ as.transform <- function(x, arg = deparse(substitute(x))) {
     if (length(x) == 1) {
       f <- paste0("transform_", x)
       # For backward compatibility
-      if (!exists(f, mode = "function")) {
+      fun <- get0(f, mode = "function")
+      if (is.null(fun)) {
         f2 <- paste0(x, "_trans")
-        if (exists(f2, mode = "function")) {
-          f <- f2
-        }
+        fun <- get0(f2, mode = "function")
       }
-      match.fun(f)()
+      if (is.null(fun)) {
+        cli::cli_abort("Could not find any function named {.fun {f}} or {.fun {f2}}")
+      }
+      fun()
     } else {
       transform_compose(!!!x)
     }
