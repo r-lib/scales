@@ -8,8 +8,8 @@
     Code
       as.transform("x")
     Condition
-      Error in `get()`:
-      ! object 'transform_x' of mode 'function' was not found
+      Error in `as.transform()`:
+      ! Could not find any function named `transform_x()` or `x_trans()`
 
 # trans has useful print method
 
