@@ -177,10 +177,8 @@ test_that("scale_cut checks its inputs", {
 
 test_that("scale_cut prefers clean cuts", {
   x <- c(518400, 691200)
-  timebreaks <- c(0, ns = 1e-09, μs = 1e-06, ms = 0.001, s = 1, m = 60, h = 3600,
-                  d = 86400, w = 604800)
   # prefers days over week in second element
-  expect_equal(number(x, scale_cut = timebreaks), c("6d", "8d"))
+  expect_equal(number(x, scale_cut = cut_time_scale()), c("6d", "8d"))
 })
 
 test_that("built-in functions return expected values", {
