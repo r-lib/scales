@@ -137,7 +137,10 @@ the horizontal bar of <code>+</code>.</p></li>
 </ul><p>If you supply a vector <code>c(a = 100, b = 1000)</code>, absolute values in the
 range <code>[0, 100)</code> will not be rescaled, absolute values in the range <code>[100, 1000)</code>
 will be divided by 100 and given the suffix "a", and absolute values in
-the range <code>[1000, Inf)</code> will be divided by 1000 and given the suffix "b".</p></dd>
+the range <code>[1000, Inf)</code> will be divided by 1000 and given the suffix "b".
+If the division creates an irrational value (or one with many digits), the
+cut value below will be tried to see if it improves the look of the final
+label.</p></dd>
 
   
 </dl></dd>
