@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-11-09T13:48Z
+last_built: 2023-11-10T08:57Z
 urls:
   reference: https://scales.r-lib.org/reference
   article: https://scales.r-lib.org/articles
