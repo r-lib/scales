@@ -120,7 +120,7 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
 #' @rdname label_date
 #' @param unit The unit used to interpret numeric input
 #' @inheritDotParams number accuracy scale prefix suffix big.mark decimal.mark style_positive style_negative trim
-label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"),
+label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), space = FALSE,
                            ...) {
   unit <- arg_match(unit)
   force_all(...)
@@ -128,17 +128,7 @@ label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"),
     x <- as.numeric(as.difftime(x, units = unit), units = "secs")
     number(
       x,
-      scale_cut = c(
-        0,
-        "ns" = 1e-9,
-        "\u03BCs" = 1e-6,
-        "ms" = 1e-3,
-        "s" = 1,
-        "m" = 60,
-        "h" = 3600,
-        "d" = 24 * 3600,
-        "w" = 7 * 24 * 3600
-      ),
+      scale_cut = cut_time_scale(space),
       ...
     )
   }

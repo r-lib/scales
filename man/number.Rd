@@ -4,6 +4,7 @@
 \alias{number}
 \alias{cut_short_scale}
 \alias{cut_long_scale}
+\alias{cut_time_scale}
 \alias{cut_si}
 \title{A low-level numeric formatter}
 \usage{
@@ -25,6 +26,8 @@ number(
 cut_short_scale(space = FALSE)
 
 cut_long_scale(space = FALSE)
+
+cut_time_scale(space = FALSE)
 
 cut_si(unit)
 }
@@ -81,7 +84,10 @@ the horizontal bar of \code{+}.
 If you supply a vector \code{c(a = 100, b = 1000)}, absolute values in the
 range \verb{[0, 100)} will not be rescaled, absolute values in the range \verb{[100, 1000)}
 will be divided by 100 and given the suffix "a", and absolute values in
-the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".}
+the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".
+If the division creates an irrational value (or one with many digits), the
+cut value below will be tried to see if it improves the look of the final
+label.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}

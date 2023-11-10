@@ -55,6 +55,9 @@
 #'   range `[0, 100)` will not be rescaled, absolute values in the range `[100, 1000)`
 #'   will be divided by 100 and given the suffix "a", and absolute values in
 #'   the range `[1000, Inf)` will be divided by 1000 and given the suffix "b".
+#'   If the division creates an irrational value (or one with many digits), the
+#'   cut value below will be tried to see if it improves the look of the final
+#'   label.
 #' @param trim Logical, if `FALSE`, values are right-justified to a common
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
@@ -342,6 +345,17 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   ))
   break_suffix[is.na(break_suffix)] <- ""
 
+  # See if any of the cuts aren't perfect cuts
+  bad_break <- ((x * scale / breaks[break_suffix]) %% 1 != 0) %|% FALSE
+  if (any(bad_break)) {
+    # If the break below result in a perfect cut, prefer it
+    lower_break <- breaks[match(break_suffix[bad_break], names(breaks)) - 1]
+    improved_break <- (x[bad_break] * scale / lower_break) %% 1 == 0
+    # Unless the break below is a power of 10 change (1.25 is as good as 1250)
+    power10_break <- log10(breaks[break_suffix[bad_break]] / lower_break) %% 1 == 0
+    break_suffix[bad_break][improved_break & !power10_break] <- names(lower_break[improved_break & !power10_break])
+  }
+
   break_scale <- scale * unname(1 / breaks[break_suffix])
   break_scale[which(break_scale %in% c(Inf, NA))] <- scale
 
@@ -376,6 +390,26 @@ cut_short_scale <- function(space = FALSE) {
 #' @rdname number
 cut_long_scale <- function(space = FALSE) {
   out <- c(0, K = 1e3, M = 1e6, B = 1e12, T = 1e18)
+  if (space) {
+    names(out) <- paste0(" ", names(out))
+  }
+  out
+}
+
+#' @export
+#' @rdname number
+cut_time_scale <- function(space = FALSE) {
+  out <- c(
+    0,
+    "ns" = 1e-9,
+    "\u03BCs" = 1e-6,
+    "ms" = 1e-3,
+    "s" = 1,
+    "m" = 60,
+    "h" = 3600,
+    "d" = 24 * 3600,
+    "w" = 7 * 24 * 3600
+  )
   if (space) {
     names(out) <- paste0(" ", names(out))
   }

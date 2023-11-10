@@ -13,7 +13,11 @@ label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
 
-label_timespan(unit = c("secs", "mins", "hours", "days", "weeks"), ...)
+label_timespan(
+  unit = c("secs", "mins", "hours", "days", "weeks"),
+  space = FALSE,
+  ...
+)
 }
 \arguments{
 \item{format}{For \code{date_format()} and \code{time_format()} a date/time format

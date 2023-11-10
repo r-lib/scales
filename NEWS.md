@@ -38,6 +38,8 @@
 ## Misc
 * The `scale_cut` argument in `number()` now works as advertised for values 
   below the lowest cut value (#346)
+* `scale_cut` will now choose a more appropriate cut in the case of the first
+  cut creating an irrational-ish number.
 * Added a new option to the `style_positive` argument in `label_*()` functions.
   Setting this to `"space"` will add a figure space in front of the number to 
   make it easier to align positive and negative values as figure space takes up
