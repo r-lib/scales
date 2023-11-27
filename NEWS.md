@@ -14,10 +14,13 @@
 * `train_continuous()` coerces `new` to numeric before calculating range 
   (@teunbrand, #369).
 * Training on factor data no longer sorts the range after multiple training 
-  passes (#383)
+  passes if the new `fct` argument of `train_discrete()` is used (#383)
+* The `DiscreteRange` class now keeps track on whether it has been trained on
+  factor data.
 * Attempt to make the sort behavior of the range consistent for character 
-  vectors during training. Mixing of character and factor data will still lead
-  to different results depending on the training order.
+  vectors during training. Mixing of character and factor data will make the 
+  factor level order take precedence no matter if the training starts with a 
+  charactor vector
 
 ## Transformations
 * Transformation function have been renamed to `transform_*`-prefixed names 

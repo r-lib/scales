@@ -4,7 +4,7 @@
 \alias{train_discrete}
 \title{Train (update) a discrete scale}
 \usage{
-train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE)
+train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE, fct = NA)
 }
 \arguments{
 \item{new}{New data to add to scale}
@@ -14,6 +14,8 @@ train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE)
 \item{drop}{\code{TRUE}, will drop factor levels not associated with data}
 
 \item{na.rm}{If \code{TRUE}, will remove missing values}
+
+\item{fct}{Treat \code{existing} as if it came from a factor (ie. don't sort the range)}
 }
 \description{
 Train (update) a discrete scale

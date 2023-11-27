@@ -46,3 +46,10 @@ test_that("factor discrete ranges stay in order", {
   expect_equal(discrete_range(f, c("a", "b", "c")), letters[3:1])
   expect_equal(discrete_range(f, c("a", "b", "c", NA), na.rm = FALSE), c(letters[3:1], NA))
 })
+
+test_that("factor discrete ranges take precedence over character", {
+  f <- factor(letters[1:3], levels = letters[3:1])
+
+  expect_equal(discrete_range(letters[1:3], f), letters[3:1])
+  expect_equal(discrete_range(letters[1:4], f), letters[c(3:1, 4)])
+})

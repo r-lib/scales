@@ -17,10 +17,15 @@ DiscreteRange <- R6::R6Class(
   "DiscreteRange",
   inherit = Range,
   list(
+    factor = NULL,
     train = function(x, drop = FALSE, na.rm = FALSE) {
-      self$range <- train_discrete(x, self$range, drop, na.rm)
+      self$factor <- self$factor %||% is.factor(x)
+      self$range <- train_discrete(x, self$range, drop, na.rm, self$factor)
     },
-    reset = function() self$range <- NULL
+    reset = function() {
+      self$range <- NULL
+      self$factor <- NULL
+    }
   )
 )
 
