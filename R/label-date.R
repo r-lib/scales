@@ -8,7 +8,7 @@
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.
 #' `label_timespan()` is intended to show time passed and adds common time units
-#' suffix to the input (ns, `r "\u03BC"`s, ms, s, m, h, d, w).
+#' suffix to the input (ns, us, ms, s, m, h, d, w).
 #'
 #' @inherit label_number return
 #' @param format For `date_format()` and `time_format()` a date/time format

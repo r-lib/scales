@@ -99,7 +99,7 @@ but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
 \code{label_timespan()} is intended to show time passed and adds common time units
-suffix to the input (ns, μs, ms, s, m, h, d, w).
+suffix to the input (ns, us, ms, s, m, h, d, w).
 }
 \examples{
 date_range <- function(start, days) {
