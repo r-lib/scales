@@ -119,6 +119,7 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
 #' @export
 #' @rdname label_date
 #' @param unit The unit used to interpret numeric input
+#' @param space Add a space before the time unit?
 #' @inheritDotParams number accuracy scale prefix suffix big.mark decimal.mark style_positive style_negative trim
 label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), space = FALSE,
                            ...) {

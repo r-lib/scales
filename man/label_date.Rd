@@ -38,6 +38,8 @@ can see a complete list of supported locales with
 
 \item{unit}{The unit used to interpret numeric input}
 
+\item{space}{Add a space before the time unit?}
+
 \item{...}{
   Arguments passed on to \code{\link[=number]{number}}
   \describe{
