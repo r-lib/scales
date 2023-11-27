@@ -1,29 +1,36 @@
 ## revdepcheck results
 
-We checked 4093 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 904 reverse dependencies (893 from CRAN + 11 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 2 new problems
- * We failed to check 9 packages
+ * We saw 3 new problems
+ * We failed to check 12 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* dials
+* duke
   checking tests ... ERROR
 
-* DriveML
+* ggside
+  checking tests ... ERROR
+
+* WoodSimulatR
+  checking examples ... ERROR
   checking re-building of vignette outputs ... WARNING
 
 ### Failed to check
 
-* CausalImpact (NA)
-* cbar         (NA)
-* conos        (NA)
-* ctsem        (NA)
-* geocmeans    (NA)
-* loon.ggplot  (NA)
-* SSVS         (NA)
-* valse        (NA)
-* vivid        (NA)
+* FAMetA         (NA)
+* genekitr       (NA)
+* ggPMX          (NA)
+* grandR         (NA)
+* lilikoi        (NA)
+* MarketMatching (NA)
+* MARVEL         (NA)
+* numbat         (NA)
+* oHMMed         (NA)
+* OlinkAnalyze   (NA)
+* SCpubr         (NA)
+* tidySEM        (NA)
