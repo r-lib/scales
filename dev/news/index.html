@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">scales</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +25,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-news">
     <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/11/scales-1-3-0/">Version 1.3.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2022/04/scales-1-2-0/">Version 1.2.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2019/11/scales-1-1-0/">Version 1.1.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2018/08/scales-1-0-0/">Version 1.0.0</a>
@@ -54,15 +55,18 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="scales-development-version">scales (development version)<a class="anchor" aria-label="anchor" href="#scales-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.3.0" id="scales-130">scales 1.3.0<a class="anchor" aria-label="anchor" href="#scales-130"></a></h2><p class="text-muted">CRAN release: 2023-11-28</p>
 <div class="section level3">
-<h3 id="better-type-support-development-version">Better type support<a class="anchor" aria-label="anchor" href="#better-type-support-development-version"></a></h3>
+<h3 id="better-type-support-1-3-0">Better type support<a class="anchor" aria-label="anchor" href="#better-type-support-1-3-0"></a></h3>
 <ul><li>
 <code>rescale(I(x), ...)</code> and <code>rescale_mid(I(x), ...)</code> return <code>I(x)</code> unaltered (<a href="https://github.com/teunbrand" class="external-link">@teunbrand</a>, <a href="https://github.com/r-lib/scales/issues/403" class="external-link">#403</a>).</li>
 <li>Add a rescale method for <code>difftime</code> objects (<a href="https://github.com/r-lib/scales/issues/382" class="external-link">#382</a>)</li>
 <li>Add better support for <code>difftime</code> objects. <code><a href="../reference/label_date.html">label_timespan()</a></code> adds functionality for adding correct unit suffix to timespan data, <code><a href="../reference/breaks_timespan.html">breaks_timespan()</a></code> adds functionality for finding pleasant breakpoints across the various bases in time units, while <code><a href="../reference/transform_timespan.html">transform_timespan()</a></code> wraps it all together and provides an alternative to <code><a href="../reference/transform_timespan.html">transform_hms()</a></code> (<a href="https://github.com/r-lib/scales/issues/212" class="external-link">#212</a>)</li>
 </ul></div>
 <div class="section level3">
-<h3 id="ranges-development-version">Ranges<a class="anchor" aria-label="anchor" href="#ranges-development-version"></a></h3>
+<h3 id="ranges-1-3-0">Ranges<a class="anchor" aria-label="anchor" href="#ranges-1-3-0"></a></h3>
 <ul><li>
 <code><a href="../reference/train_continuous.html">train_continuous()</a></code> coerces <code>new</code> to numeric before calculating range (<a href="https://github.com/teunbrand" class="external-link">@teunbrand</a>, <a href="https://github.com/r-lib/scales/issues/369" class="external-link">#369</a>).</li>
 <li>Training on factor data no longer sorts the range after multiple training passes if the new <code>fct</code> argument of <code><a href="../reference/train_discrete.html">train_discrete()</a></code> is used (<a href="https://github.com/r-lib/scales/issues/383" class="external-link">#383</a>)</li>
@@ -70,7 +74,7 @@
 <li>Attempt to make the sort behavior of the range consistent for character vectors during training. Mixing of character and factor data will make the factor level order take precedence no matter if the training starts with a charactor vector</li>
 </ul></div>
 <div class="section level3">
-<h3 id="transformations-development-version">Transformations<a class="anchor" aria-label="anchor" href="#transformations-development-version"></a></h3>
+<h3 id="transformations-1-3-0">Transformations<a class="anchor" aria-label="anchor" href="#transformations-1-3-0"></a></h3>
 <ul><li>Transformation function have been renamed to <code>transform_*</code>-prefixed names instead of <code>*_trans</code>-suffixed names. This allows for a better tab-completion search of transformations. The S3 class of transformations has been renamed from <code>"trans"</code> to <code>"transform"</code>. <code><a href="../reference/new_transform.html">new_transform()</a></code> replaces <code><a href="../reference/new_transform.html">trans_new()</a></code> and <code><a href="../reference/trim_to_domain.html">trim_to_domain()</a></code> replaces <code><a href="../reference/trim_to_domain.html">trans_range()</a></code>. All old functions are kept for posterity.</li>
 <li>
 <code><a href="../reference/transform_sqrt.html">transform_sqrt()</a></code> no longer returns an inverse for values outside of its domain (<a href="https://github.com/r-lib/scales/issues/214" class="external-link">#214</a>)</li>
@@ -79,7 +83,7 @@
 <li>Transformation objects can optionally include the derivatives of the transform and the inverse transform (<a href="https://github.com/mjskay" class="external-link">@mjskay</a>, <a href="https://github.com/r-lib/scales/issues/322" class="external-link">#322</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="misc-development-version">Misc<a class="anchor" aria-label="anchor" href="#misc-development-version"></a></h3>
+<h3 id="misc-1-3-0">Misc<a class="anchor" aria-label="anchor" href="#misc-1-3-0"></a></h3>
 <ul><li>The <code>scale_cut</code> argument in <code><a href="../reference/number.html">number()</a></code> now works as advertised for values below the lowest cut value (<a href="https://github.com/r-lib/scales/issues/346" class="external-link">#346</a>)</li>
 <li>
 <code>scale_cut</code> will now choose a more appropriate cut in the case of the first cut creating an irrational-ish number.</li>

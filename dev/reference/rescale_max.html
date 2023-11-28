@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">scales</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +25,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-news">
     <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2023/11/scales-1-3-0/">Version 1.3.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2022/04/scales-1-2-0/">Version 1.2.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2019/11/scales-1-1-0/">Version 1.1.0</a>
     <a class="external-link dropdown-item" href="https://www.tidyverse.org/blog/2018/08/scales-1-0-0/">Version 1.0.0</a>
@@ -90,15 +91,15 @@ calculated from the range of <code>x</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [79] 0.79 0.80 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.90 0.91</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [92] 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1.00</span>
 <span class="r-in"><span><span class="fu">rescale_max</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">50</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.21463170 0.43375408 0.29682378 0.18210299 0.08411789 0.12671805</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.47618576 0.99353169 0.51052596 0.97150391 0.24237883 0.29695766</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.70952685 0.56253929 0.65433174 0.60257020 0.44012149 0.79351616</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.95059911 0.19233820 0.77198320 1.00000000 0.41915690 0.29566382</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.05682278 0.24571943 0.40620814 0.64064077 0.38101844 0.89357528</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.28275145 0.42867977 0.25147861 0.81971332 0.55702568 0.41079264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.91215587 0.70744643 0.46615564 0.01137757 0.42182644 0.47822345</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.57739275 0.63361992 0.77513103 0.90456346 0.94277181 0.48658417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.99799453 0.48281839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 0.19447790 0.95906319 0.89647408 0.16681539 0.06320931 0.62141983</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] 0.58139111 0.42412832 0.53545751 0.75443005 0.40663462 0.48152792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] 0.23115675 0.82988717 0.25028116 0.16911370 0.77925411 0.46420135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] 0.94471219 0.39109475 0.82626885 0.38943164 0.39064885 0.53566804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] 0.43079377 0.63808830 0.89225061 0.18105839 0.96192132 0.94492542</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] 0.55471468 0.28760940 0.03719663 0.46021764 0.48890229 0.56762538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] 0.48402235 0.29593230 0.71549091 0.69212965 1.00000000 0.17423771</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] 0.01230645 0.14975310 0.42719421 0.14189637 0.97292899 0.13576839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] 0.88720245 0.57455890</span>
 <span class="r-in"><span><span class="fu">rescale_max</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 </code></pre></div>
