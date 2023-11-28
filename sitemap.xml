@@ -10,6 +10,9 @@
     <loc>https://scales.r-lib.org/LICENSE-text.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org/LICENSE.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org/authors.html</loc>
   </url>
   <url>
@@ -25,18 +28,6 @@
     <loc>https://scales.r-lib.org/reference/alpha.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/area_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/asn_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/atanh_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/boxcox_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/breaks_extended.html</loc>
   </url>
   <url>
@@ -46,10 +37,10 @@
     <loc>https://scales.r-lib.org/reference/breaks_pretty.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/breaks_width.html</loc>
+    <loc>https://scales.r-lib.org/reference/breaks_timespan.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/brewer_pal.html</loc>
+    <loc>https://scales.r-lib.org/reference/breaks_width.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/cbreaks.html</loc>
@@ -67,9 +58,6 @@
     <loc>https://scales.r-lib.org/reference/comma.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/compose_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/cscale.html</loc>
   </url>
   <url>
@@ -79,25 +67,13 @@
     <loc>https://scales.r-lib.org/reference/date_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/date_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/demo_continuous.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/dichromat_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/div_gradient_pal.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/dollar_format.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/dscale.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/exp_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/expand_range.html</loc>
@@ -109,34 +85,16 @@
     <loc>https://scales.r-lib.org/reference/fullseq.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/gradient_n_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/grey_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/hms_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/hue_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/identity_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/identity_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/index.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/label_bytes.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/label_date.html</loc>
+    <loc>https://scales.r-lib.org/reference/label_currency.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/label_dollar.html</loc>
+    <loc>https://scales.r-lib.org/reference/label_date.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/label_log.html</loc>
@@ -169,19 +127,13 @@
     <loc>https://scales.r-lib.org/reference/label_wrap.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/linetype_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/log_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/manual_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/minor_breaks_width.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/muted.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/new_transform.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/number.html</loc>
@@ -196,6 +148,48 @@
     <loc>https://scales.r-lib.org/reference/ordinal_format.html</loc>
   </url>
   <url>
+    <loc>https://scales.r-lib.org/reference/pal_area.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_brewer.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_dichromat.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_div_gradient.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_gradient_n.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_grey.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_hue.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_identity.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_linetype.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_manual.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_rescale.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_seq_gradient.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_shape.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/pal_viridis.html</loc>
+  </url>
+  <url>
     <loc>https://scales.r-lib.org/reference/parse_format.html</loc>
   </url>
   <url>
@@ -205,13 +199,7 @@
     <loc>https://scales.r-lib.org/reference/pretty_breaks.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/probability_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/pvalue_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/reciprocal_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/regular_minor_breaks.html</loc>
@@ -229,31 +217,13 @@
     <loc>https://scales.r-lib.org/reference/rescale_none.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/rescale_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/reverse_trans.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/scales-package.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/scientific_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/seq_gradient_pal.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/shape_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/show_col.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/sqrt_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/time_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/train_continuous.html</loc>
@@ -268,22 +238,61 @@
     <loc>https://scales.r-lib.org/reference/trans_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/trans_new.html</loc>
+    <loc>https://scales.r-lib.org/reference/transform_asinh.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/trans_range.html</loc>
+    <loc>https://scales.r-lib.org/reference/transform_asn.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_atanh.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_boxcox.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_compose.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_date.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_exp.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_identity.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_log.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_probability.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_reciprocal.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_reverse.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_sqrt.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_time.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_timespan.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/transform_yj.html</loc>
+  </url>
+  <url>
+    <loc>https://scales.r-lib.org/reference/trim_to_domain.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/unit_format.html</loc>
   </url>
   <url>
-    <loc>https://scales.r-lib.org/reference/viridis_pal.html</loc>
-  </url>
-  <url>
     <loc>https://scales.r-lib.org/reference/wrap_format.html</loc>
-  </url>
-  <url>
-    <loc>https://scales.r-lib.org/reference/yj_trans.html</loc>
   </url>
   <url>
     <loc>https://scales.r-lib.org/reference/zero_range.html</loc>
