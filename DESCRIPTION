@@ -1,6 +1,6 @@
 Package: scales
 Title: Scale Functions for Visualization
-Version: 1.3.0
+Version: 1.3.0.9000
 Authors@R: c(
     person("Hadley", "Wickham", , "hadley@posit.co", role = c("aut")),
     person("Thomas Lin", "Pedersen", , "thomas.pedersen@posit.co", role = c("cre", "aut"),
