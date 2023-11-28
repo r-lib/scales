@@ -3,6 +3,16 @@
 #' @inheritParams viridisLite::viridis
 #' @param begin,end The (corrected) hue in `[0,1]` at which the color map
 #'   begins and ends.
+#' @param option A character string indicating the color map option to use.
+#'   Eight options are available:
+#'   * `"magma"` (or `"A"`)
+#'   * `"inferno"` (or `"B"`)
+#'   * `"plasma"` (or `"C"`)
+#'   * `"viridis"` (or `"D"`)
+#'   * `"cividis"` (or `"E"`)
+#'   * `"rocket"` (or `"F"`)
+#'   * `"mako"` (or `"G"`)
+#'   * `"turbo"` (or `"H"`)
 #' @references <https://bids.github.io/colormap/>
 #' @export
 #' @examples
