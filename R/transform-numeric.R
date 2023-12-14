@@ -69,14 +69,14 @@ asinh_trans <- transform_asinh
 #' The Box-Cox power transformation (type 1) requires strictly positive values and
 #' takes the following form for `y > 0`:
 #' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
-#' When `y = 0`, the natural log transform is used.
+#' When \eqn{\lambda = 0}, the natural log transform is used.
 #'
 #' The modulus transformation implements a generalisation of the Box-Cox
 #' transformation that works for data with both positive and negative values.
-#' The equation takes the following forms, when `y != 0` :
+#' The equation takes the following forms, when \eqn{\lambda \neq 0} :
 #' \deqn{y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}}{
 #' y^(\lambda) = sign(y)*((|y|+1)^\lambda - 1)/\lambda}
-#' and when `y = 0`: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
+#' and when \eqn{\lambda = 0}: \deqn{y^{(\lambda)} =  sign(y) * \ln(|y| + 1)}{
 #' y^(\lambda) = sign(y) * ln(|y| + 1)}
 #'
 #' @param p Transformation exponent, \eqn{\lambda}.
