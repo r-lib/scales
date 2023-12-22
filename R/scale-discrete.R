@@ -26,13 +26,14 @@ is.discrete <- function(x) {
 #' @param na.rm If `TRUE`, will remove missing values
 #' @param fct Treat `existing` as if it came from a factor (ie. don't sort the range)
 #' @export
-train_discrete <- function(new, existing = NULL, drop = FALSE, na.rm = FALSE, fct = NA) {
+train_discrete <- function(new, existing = NULL, drop = FALSE,
+                           na.rm = FALSE, fct = NA, call = caller_env()) {
   if (is.null(new)) {
     return(existing)
   }
 
   if (!is.discrete(new)) {
-    cli::cli_abort("Continuous value supplied to a discrete scale")
+    cli::cli_abort("Continuous value supplied to a discrete scale", call = call)
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm, fct = fct)
 }
