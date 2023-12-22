@@ -37,13 +37,13 @@ cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()
 #'
 #' @inheritParams train_discrete
 #' @export
-train_continuous <- function(new, existing = NULL) {
+train_continuous <- function(new, existing = NULL, call = caller_env()) {
   if (is.null(new)) {
     return(existing)
   }
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
-    cli::cli_abort("Discrete value supplied to a continuous scale")
+    cli::cli_abort("Discrete value supplied to a continuous scale", call = call)
   }
 
   # Needs casting to numeric because some `new` vectors can misbehave when
