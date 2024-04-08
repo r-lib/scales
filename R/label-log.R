@@ -12,14 +12,25 @@
 #' @examples
 #' demo_log10(c(1, 1e5), labels = label_log())
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
-label_log <- function(base = 10, digits = 3) {
+label_log <- function(base = 10, digits = 3, signed = NULL) {
   function(x) {
     if (length(x) == 0) {
       return(expression())
     }
+    prefix <- rep("", length(x))
+    signed <- signed %||% if (any(is.finite(x))) any(x <= 0) else FALSE
+    if (signed) {
+      sign <- sign(x)
+      prefix[sign == +1] <- "+"
+      prefix[sign == -1] <- "-"
+      x <- abs(x)
+    }
 
-    exponent <- format(log(x, base = base), digits = digits)
-    text <- paste0(base, "^", exponent)
+    exponent <- format(zapsmall(log(x, base = base)), digits = digits)
+    text <- paste0(prefix, base, "^", exponent)
+    if (signed) {
+      text[x == 0] <- "0"
+    }
     ret <- parse_safe(text)
 
     # restore NAs from input vector
