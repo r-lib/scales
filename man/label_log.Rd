@@ -4,13 +4,17 @@
 \alias{label_log}
 \title{Label numbers in log format (10^3, 10^6, etc)}
 \usage{
-label_log(base = 10, digits = 3)
+label_log(base = 10, digits = 3, signed = NULL)
 }
 \arguments{
 \item{base}{Base of logarithm to use}
 
 \item{digits}{Number of significant digits to show for the exponent. Argument
 is passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{signed}{Should a \code{+} or \code{-} be displayed as a prefix? The
+default, \code{NULL}, displays signs if there are zeroes or negative numbers
+present.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that

@@ -5,6 +5,9 @@
 #' @param base Base of logarithm to use
 #' @param digits Number of significant digits to show for the exponent. Argument
 #'   is passed on to [base::format()].
+#' @param signed Should a `+` or `-` be displayed as a prefix? The
+#'   default, `NULL`, displays signs if there are zeroes or negative numbers
+#'   present.
 #' @inherit label_number return
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
