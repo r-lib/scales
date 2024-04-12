@@ -40,3 +40,17 @@ test_that("preserves names", {
   names(x) <- x
   expect_named(alpha(x, 0.5), names(x))
 })
+
+# col_mix -----------------------------------------------------------------
+
+test_that("col_mix interpolates colours", {
+
+  x <- col_mix("red", c("blue", "green"))
+  y <- col_mix(c("blue", "green"), "red")
+  expect_equal(x, y)
+  expect_equal(x, c("#800080", "#808000"))
+  x <- col_mix("red", "blue", amount = 0.75)
+  expect_equal(x, "#4000BFFF")
+
+})
+
