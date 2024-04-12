@@ -61,3 +61,42 @@ demo_time <- function(x, ...) {
 demo_timespan <- function(x, ...) {
   demo_ggplot(x, "scale_x_continuous", ...)
 }
+
+# Based on rlang/R/standalone-vctrs.R shim
+recycle_common <- function(..., size = NULL, call = caller_env()) {
+  x <- list2(...)
+  sizes <- lengths(x)
+  n <- unique(sizes)
+  if (length(n) == 1 && is.null(size)) {
+    return(x)
+  }
+  n <- setdiff(n, 1L)
+  ns <- length(n)
+
+  if (ns == 0) { # All have length 1
+    if (is.null(size)) {
+      return(xs)
+    }
+  } else if (ns == 1) {
+    if (is.null(size)) {
+      size <- n
+    } else if (n != size) {
+      bad <- names(sizes)[sizes != size]
+      cli::cli_abort(
+        "Cannot recycle {.and {.arg {bad}}} to length {size}.",
+        call = call
+      )
+    }
+  } else {
+    bad <- names(sizes)[!(sizes %in% c(1, size))]
+    what <- if (is.null(size)) "a common size" else paste0("length ", size)
+    cli::cli_abort(
+      "Cannot recycle {.and {.arg {bad}}} to {what}.",
+      call = call
+    )
+  }
+
+  to_recycle <- sizes == 1L
+  x[to_recycle] <- lapply(x[to_recycle], rep_len, length.out = size)
+  x
+}

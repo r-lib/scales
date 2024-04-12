@@ -51,17 +51,9 @@ muted <- function(colour, l = 30, c = 70) col2hcl(colour, l = l, c = c)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
-  if (length(colour) != length(alpha)) {
-    if (length(colour) > 1 && length(alpha) > 1) {
-      cli::cli_abort("Only one of {.arg colour} and {.arg alpha} can be vectorised")
-    }
-
-    if (length(colour) > 1) {
-      alpha <- rep(alpha, length.out = length(colour))
-    } else {
-      colour <- rep(colour, length.out = length(alpha))
-    }
-  }
+  input  <- recycle_common(colour = colour, alpha = alpha)
+  colour <- input[["colour"]]
+  alpha  <- input[["alpha"]]
 
   rgb <- farver::decode_colour(colour, alpha = TRUE)
   rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
