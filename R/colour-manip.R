@@ -105,3 +105,35 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
     text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
   }
 }
+
+#' Mix colours
+#'
+#' Produces an interpolation of two colours.
+#'
+#' @param a,b A character vector of colours.
+#' @param amount A numeric fraction between 0 and 1 giving the contribution of
+#'   the `b` colour.
+#' @param space A string giving a colour space to perform mixing operation in.
+#'   Polar spaces are not recommended.
+#'
+#' @return A character vector of colours.
+#' @export
+#'
+#' @examples
+#' col_mix("blue", "red") # purple
+#' col_mix("blue", "red", amount = 1) # red
+#' col_mix("blue", "red", amount = 0) # blue
+#'
+#' # Not recommended:
+#' col_mix("blue", "red", space = "hcl") # green!
+col_mix <- function(a, b, amount = 0.5, space = "rgb") {
+  input <- recycle_common(a = a, b = b, amount = amount)
+  if (any(input$amount < 0 | input$amount > 1)) {
+    cli::cli_abort("{.arg amount} must be between (0, 1).")
+  }
+  a <- farver::decode_colour(input$a, alpha = TRUE, to = space)
+  b <- farver::decode_colour(input$b, alpha = TRUE, to = space)
+  new <- (a * (1 - amount) + b * amount)
+  alpha <- new[, "alpha"]
+  farver::encode_colour(new, alpha = alpha, from = space)
+}
