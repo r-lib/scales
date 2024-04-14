@@ -47,3 +47,11 @@ col_lighter("red", 50) # light red
 col_darker("red", 50) # dark red
 col_saturate("red", -50) # brick-red
 }
+\seealso{
+Other colour manipulation: 
+\code{\link{alpha}()},
+\code{\link{col2hcl}()},
+\code{\link{col_mix}()},
+\code{\link{muted}()}
+}
+\concept{colour manipulation}

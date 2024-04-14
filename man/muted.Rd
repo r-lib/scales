@@ -21,3 +21,11 @@ muted("red")
 muted("blue")
 show_col(c("red", "blue", muted("red"), muted("blue")))
 }
+\seealso{
+Other colour manipulation: 
+\code{\link{alpha}()},
+\code{\link{col2hcl}()},
+\code{\link{col_mix}()},
+\code{\link{colour_manip}}
+}
+\concept{colour manipulation}

@@ -28,3 +28,11 @@ show_col(col2hcl(reds, c = seq(0, 80, length = 6)))
 show_col(col2hcl(reds, l = seq(0, 100, length = 6)))
 show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 }
+\seealso{
+Other colour manipulation: 
+\code{\link{alpha}()},
+\code{\link{col_mix}()},
+\code{\link{colour_manip}},
+\code{\link{muted}()}
+}
+\concept{colour manipulation}

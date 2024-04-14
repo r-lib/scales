@@ -9,6 +9,7 @@
 #' @param c Chroma, `[0, 100]`
 #' @param alpha Alpha, `[0, 1]`.
 #' @export
+#' @family colour manipulation
 #' @examples
 #' reds <- rep("red", 6)
 #' show_col(col2hcl(reds, h = seq(0, 180, length = 6)))
@@ -31,6 +32,7 @@ col2hcl <- function(colour, h = NULL, c = NULL, l = NULL, alpha = NULL) {
 #' @param l new luminance
 #' @param c new chroma
 #' @export
+#' @family colour manipulation
 #' @examples
 #' muted("red")
 #' muted("blue")
@@ -45,6 +47,7 @@ muted <- function(colour, l = 30, c = 70) col2hcl(colour, l = l, c = c)
 #' @param alpha new alpha level in \[0,1].  If alpha is `NA`,
 #'   existing alpha values are preserved.
 #' @export
+#' @family colour manipulation
 #' @examples
 #' alpha("red", 0.1)
 #' alpha(colours(), 0.5)
@@ -117,6 +120,7 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
 #'   Polar spaces are not recommended.
 #'
 #' @return A character vector of colours.
+#' @family colour manipulation
 #' @export
 #'
 #' @examples
@@ -159,6 +163,7 @@ col_mix <- function(a, b, amount = 0.5, space = "rgb") {
 #'
 #' @return A vector of colours.
 #' @name colour_manip
+#' @family colour manipulation
 #'
 #' @examples
 #' col_shift("red", 180) # teal

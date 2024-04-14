@@ -29,3 +29,11 @@ col_mix("blue", "red", amount = 0) # blue
 # Not recommended:
 col_mix("blue", "red", space = "hcl") # green!
 }
+\seealso{
+Other colour manipulation: 
+\code{\link{alpha}()},
+\code{\link{col2hcl}()},
+\code{\link{colour_manip}},
+\code{\link{muted}()}
+}
+\concept{colour manipulation}
