@@ -137,3 +137,62 @@ col_mix <- function(a, b, amount = 0.5, space = "rgb") {
   alpha <- new[, "alpha"]
   farver::encode_colour(new, alpha = alpha, from = space)
 }
+
+#' Colour manipulation
+#'
+#' These are a set of convenience functions for standard colour manipulation
+#' operations.
+#'
+#' @param col A character vector of colours.
+#' @param amount A numeric vector giving the change. The interpretation depends
+#'   on the function:
+#'   * `col_shift()` takes a number between -360 and 360 for shifting hues in
+#'     HCL space.
+#'   * `col_lighter()` and `col_darker()` take a number between -100 and 100 for
+#'     adding (or subtracting) to the lightness channel in HCL space.
+#'   * `col_saturate()` takes a number between -100 and 100 for adding to the
+#'     saturation channel in HSL space. Negative numbers desaturate the colour.
+#'
+#' @details
+#' `col_shift()` considers the hue channel to be periodic, so adding 180 to
+#' a colour with hue 270 will result in a colour with hue 90.
+#'
+#' @return A vector of colours.
+#' @name colour_manip
+#'
+#' @examples
+#' col_shift("red", 180) # teal
+#' col_lighter("red", 50) # light red
+#' col_darker("red", 50) # dark red
+#' col_saturate("red", -50) # brick-red
+NULL
+
+#' @export
+#' @rdname colour_manip
+col_shift <- function(col, amount = 10) {
+  input  <- recycle_common(col = col, amount = amount)
+  new <- farver::decode_colour(input$col, alpha = TRUE, to = "hcl")
+  new[, "h"] <- (new[, "h"] + input$amount) %% 360
+  farver::encode_colour(new, new[, "alpha"], from = "hcl")
+}
+
+#' @export
+#' @rdname colour_manip
+col_lighter <- function(col, amount = 10) {
+  input <- recycle_common(col = col, amount = amount)
+  farver::add_to_channel(input$col, "l", input$amount, space = "hcl")
+}
+
+#' @export
+#' @rdname colour_manip
+col_darker <- function(col, amount = 10) {
+  input <- recycle_common(col = col, amount = amount)
+  farver::add_to_channel(input$col, "l", -input$amount, space = "hcl")
+}
+
+#' @export
+#' @rdname colour_manip
+col_saturate <- function(col, amount = 10) {
+  input <- recycle_common(col = col, amount = amount)
+  farver::add_to_channel(input$col, "s", input$amount, space = "hsl")
+}
