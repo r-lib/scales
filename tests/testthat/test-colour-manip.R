@@ -54,3 +54,21 @@ test_that("col_mix interpolates colours", {
 
 })
 
+test_that("col_shift shifts colours correctly", {
+  x <- c("#FF0000", "#00FF00", "#0000FF")
+  expect_equal(col_shift(x, 360), x)
+  expect_equal(col_shift(x, 180), c("#00B8B8", "#FF92FF", "#535300"))
+})
+
+test_that("col_lighter and col_darker adjust lightness correctly", {
+  x <- c("#FF0000", "#00FF00", "#0000FF")
+  expect_equal(col_lighter(x, 30), c("#FF9999", "#99FF99", "#9999FF"))
+  expect_equal(col_darker(x, 30), c("#660000", "#006600", "#000066"))
+})
+
+test_that("col_saturate can (de)saturate colours", {
+  x <- c("#BF4040", "#40BF40", "#4040BF")
+  expect_equal(col_saturate(x, 30), c("#E51A1A", "#1AE51A", "#1A1AE5"))
+  expect_equal(col_saturate(x, -30), c("#996666", "#669966", "#666699"))
+})
+
