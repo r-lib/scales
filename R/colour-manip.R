@@ -153,7 +153,7 @@ col_mix <- function(a, b, amount = 0.5, space = "rgb") {
 #'   * `col_shift()` takes a number between -360 and 360 for shifting hues in
 #'     HCL space.
 #'   * `col_lighter()` and `col_darker()` take a number between -100 and 100 for
-#'     adding (or subtracting) to the lightness channel in HCL space.
+#'     adding (or subtracting) to the lightness channel in HSL space.
 #'   * `col_saturate()` takes a number between -100 and 100 for adding to the
 #'     saturation channel in HSL space. Negative numbers desaturate the colour.
 #'
@@ -185,14 +185,14 @@ col_shift <- function(col, amount = 10) {
 #' @rdname colour_manip
 col_lighter <- function(col, amount = 10) {
   input <- recycle_common(col = col, amount = amount)
-  farver::add_to_channel(input$col, "l", input$amount, space = "hcl")
+  farver::add_to_channel(input$col, "l", input$amount, space = "hsl")
 }
 
 #' @export
 #' @rdname colour_manip
 col_darker <- function(col, amount = 10) {
   input <- recycle_common(col = col, amount = amount)
-  farver::add_to_channel(input$col, "l", -input$amount, space = "hcl")
+  farver::add_to_channel(input$col, "l", -input$amount, space = "hsl")
 }
 
 #' @export

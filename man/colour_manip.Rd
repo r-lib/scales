@@ -25,7 +25,7 @@ on the function:
 \item \code{col_shift()} takes a number between -360 and 360 for shifting hues in
 HCL space.
 \item \code{col_lighter()} and \code{col_darker()} take a number between -100 and 100 for
-adding (or subtracting) to the lightness channel in HCL space.
+adding (or subtracting) to the lightness channel in HSL space.
 \item \code{col_saturate()} takes a number between -100 and 100 for adding to the
 saturation channel in HSL space. Negative numbers desaturate the colour.
 }}
