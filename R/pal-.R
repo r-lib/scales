@@ -45,3 +45,64 @@ palette_na_safe <- function(pal) {
 palette_type <- function(pal) {
   attr(pal, "type") %||% NA_character_
 }
+
+# Coercion ----------------------------------------------------------------
+
+## As discrete palette ----------------------------------------------------
+
+as_discrete_pal <- function(x, ...) {
+  UseMethod("as_discrete_pal")
+}
+
+as_discrete_pal.default <- function(x, ...) {
+  cli::cli_abort("Cannot convert {.arg x} to a discrete palette.")
+}
+
+as_discrete_pal.pal_discrete <- function(x, ...) {
+  x
+}
+
+as_discrete_pal.pal_continuous <- function(x, ...) {
+  force(x)
+  new_discrete_palette(
+    function(n) x(seq(0, 1, length.out = n)),
+    nlevels = 255
+  )
+}
+
+## As continuous palette --------------------------------------------------
+
+as_continuous_pal <- function(x, ...) {
+  UseMethod("as_continuous_pal")
+}
+
+as_continuous_pal.default <- function(x, ...) {
+  cli::cli_abort("Cannot convert {.arg x} to a continuous palette.")
+}
+
+as_continuous_pal.pal_continuous <- function(x, ...) {
+  x
+}
+
+as_continuous_pal.pal_discrete <- function(x, ...) {
+  nlevels <- palette_nlevels(x)
+  if (!is_integerish(nlevels, finite = TRUE)) {
+    cli::cli_abort(c(
+      "Cannot convert {.arg x} to continuous palette.",
+      i = "Unknown number of supported colours."
+    ))
+  }
+  type <- palette_type(x)
+  switch(
+    type,
+    color = , colour = colour_ramp(x(nlevels)),
+    numeric = new_continuous_palette(
+      approxfun(seq(0, 1, length.out = nlevels), x(nlevels)),
+      type = "numeric", na_safe = FALSE
+    ),
+    cli::cli_abort(
+      "Don't know how to convert a discrete {.field {type}} palette to \\
+      a continuous palette."
+    )
+  )
+}
