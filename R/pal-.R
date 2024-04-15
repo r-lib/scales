@@ -33,3 +33,15 @@ is_colour_pal <- function(x) {
 is_numeric_pal <- function(x) {
   is_pal(x) && any(palette_type(x) %in% c("numeric", "double", "integer"))
 }
+
+# Getters -----------------------------------------------------------------
+
+palette_nlevels <- function(pal) {
+  attr(pal, "nlevels") %||% NA_integer_
+}
+palette_na_safe <- function(pal) {
+  attr(pal, "na_safe") %||% FALSE
+}
+palette_type <- function(pal) {
+  attr(pal, "type") %||% NA_character_
+}
