@@ -8,9 +8,10 @@
 #' @export
 pal_rescale <- function(range = c(0.1, 1)) {
   force(range)
-  function(x) {
-    rescale(x, range, c(0, 1))
-  }
+  new_continuous_palette(
+    function(x) rescale(x, range, c(0, 1)),
+    "numeric", na_safe = FALSE
+  )
 }
 
 #' @export

@@ -4,7 +4,7 @@
 #' @export
 pal_shape <- function(solid = TRUE) {
   force(solid)
-  function(n) {
+  fun <- function(n) {
     if (n > 6) {
       cli::cli_warn(c(
         "The shape palette can deal with a maximum of 6 discrete values because more than 6 becomes difficult to discriminate",
@@ -18,6 +18,7 @@ pal_shape <- function(solid = TRUE) {
       c(1, 2, 0, 3, 7, 8)[seq_len(n)]
     }
   }
+  new_discrete_palette(fun, "shape", 6)
 }
 
 #' @export

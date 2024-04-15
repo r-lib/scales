@@ -9,9 +9,7 @@ pal_linetype <- function() {
     "12223242", "F282", "F4448444", "224282F2", "F1"
   )
 
-  function(n) {
-    types[seq_len(n)]
-  }
+  manual_pal(types, "linetype")
 }
 
 #' @export

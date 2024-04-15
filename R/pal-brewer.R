@@ -20,7 +20,7 @@
 pal_brewer <- function(type = "seq", palette = 1, direction = 1) {
   pal <- pal_name(palette, type)
   force(direction)
-  function(n) {
+  fun <- function(n) {
     # If <3 colors are requested, brewer.pal will return a 3-color palette and
     # give a warning. This warning isn't useful, so suppress it.
     # If the palette has k colors and >k colors are requested, brewer.pal will
@@ -40,6 +40,8 @@ pal_brewer <- function(type = "seq", palette = 1, direction = 1) {
 
     pal
   }
+  nlevels <- RColorBrewer::brewer.pal.info[pal, "maxcolors"]
+  new_discrete_palette(fun, "colour", nlevels)
 }
 
 #' @export

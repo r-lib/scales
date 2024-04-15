@@ -15,7 +15,7 @@ pal_gradient_n <- function(colours, values = NULL, space = "Lab") {
   ramp <- colour_ramp(colours)
   force(values)
 
-  function(x) {
+  fun <- function(x) {
     if (length(x) == 0) {
       return(character())
     }
@@ -28,6 +28,7 @@ pal_gradient_n <- function(colours, values = NULL, space = "Lab") {
 
     ramp(x)
   }
+  new_continuous_palette(fun, "colour", na_safe = FALSE)
 }
 
 #' @export
