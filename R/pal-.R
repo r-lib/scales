@@ -19,3 +19,17 @@ new_discrete_palette <- function(fun, type, nlevels = NA) {
   attr(fun, "nlevels") <- nlevels
   fun
 }
+
+
+# Testing -----------------------------------------------------------------
+
+is_pal <- function(x) is_continuous_pal(x) || is_discrete_pal(x)
+is_continuous_pal <- function(x) inherits(x, "pal_continuous")
+is_discrete_pal <- function(x) inherits(x, "pal_discrete")
+
+is_colour_pal <- function(x) {
+  is_pal(x) && any(palette_type(x) %in% c("color", "colour"))
+}
+is_numeric_pal <- function(x) {
+  is_pal(x) && any(palette_type(x) %in% c("numeric", "double", "integer"))
+}
