@@ -5,12 +5,15 @@
 \alias{manual_pal}
 \title{Manual palette (discrete)}
 \usage{
-pal_manual(values)
+pal_manual(values, type = NULL)
 
-manual_pal(values)
+manual_pal(values, type = NULL)
 }
 \arguments{
 \item{values}{vector of values to be used as a palette.}
+
+\item{type}{A string giving the type of return values. Some example strings
+include \code{"colour"}, \code{"numeric"}, \code{"linetype"} or \code{"shape"}.}
 }
 \description{
 Manual palette (discrete)

@@ -1,6 +1,7 @@
 #' Manual palette (discrete)
 #'
 #' @param values vector of values to be used as a palette.
+#' @inheritParams new_continuous_palette
 #' @export
 pal_manual <- function(values, type = NULL) {
   force(values)
