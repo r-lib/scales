@@ -21,7 +21,8 @@ label_log <- function(base = 10, digits = 3, signed = NULL) {
       return(expression())
     }
     prefix <- rep("", length(x))
-    signed <- signed %||% if (any(is.finite(x))) any(x <= 0) else FALSE
+    xfinite <- x[is.finite(x)]
+    signed <- signed %||% any(xfinite <= 0)
     if (signed) {
       sign <- sign(x)
       prefix[sign == +1] <- "+"
