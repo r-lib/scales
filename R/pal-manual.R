@@ -35,5 +35,5 @@ guess_pal_type <- function(x) {
 is_color <- function(x) {
   # '#' followed by 3,4,6 or 8 hex digits
   grepl("^#(([[:xdigit:]]{2}){3,4}|([[:xdigit:]]){3,4})$", x) |
-    x %in% colours()
+    x %in% grDevices::colours()
 }

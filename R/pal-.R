@@ -18,6 +18,7 @@
 #'   that can be returned by the discrete palette.
 #' @param x An object to test or coerce.
 #' @param pal A palette to retrieve properties from.
+#' @param ... Additional arguments. Currently not in use.
 #'
 #' @return
 #' For `new_continuous_palette()`, `new_discret_palette()`, `as_discrete_pal()`
@@ -187,7 +188,7 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
     type,
     color = , colour = colour_ramp(x(nlevels)),
     numeric = new_continuous_palette(
-      approxfun(seq(0, 1, length.out = nlevels), x(nlevels)),
+      stats::approxfun(seq(0, 1, length.out = nlevels), x(nlevels)),
       type = "numeric", na_safe = FALSE
     ),
     cli::cli_abort(
