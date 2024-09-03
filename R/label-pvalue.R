@@ -5,7 +5,7 @@
 #' @inherit label_number return params
 #' @param prefix A character vector of length 3 giving the prefixes to
 #'   put in front of numbers. The default values are `c("<", "", ">")`
-#'   if `add_p` is `TRUE` and `c("p<", "p=", "p>")` if `FALSE`.
+#'   if `add_p` is `FALSE` and `c("p<", "p=", "p>")` if `TRUE`.
 #' @param add_p Add "p=" before the value?
 #' @export
 #' @family labels for continuous scales
