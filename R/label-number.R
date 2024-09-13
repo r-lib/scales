@@ -350,6 +350,7 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   if (any(bad_break)) {
     # If the break below result in a perfect cut, prefer it
     lower_break <- breaks[match(break_suffix[bad_break], names(breaks)) - 1]
+    lower_break[lower_break == 0] <- 1  # Avoid choosing a non-existent break
     improved_break <- (x[bad_break] * scale / lower_break) %% 1 == 0
     # Unless the break below is a power of 10 change (1.25 is as good as 1250)
     power10_break <- log10(breaks[break_suffix[bad_break]] / lower_break) %% 1 == 0
