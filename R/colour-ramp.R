@@ -66,13 +66,11 @@ colour_ramp <- function(colors, na.color = NA, alpha = TRUE) {
     alpha_interp <- stats::approxfun(x_in, lab_in[, 4])
   }
 
-  structure(
-    function(x) {
-      lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
-      out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab")
-      out[is.na(out)] <- na.color
-      out
-    },
-    safe_palette_func = TRUE
-  )
+  fun <- function(x) {
+    lab_out <- cbind(l_interp(x), u_interp(x), v_interp(x))
+    out <- farver::encode_colour(lab_out, alpha = alpha_interp(x), from = "lab")
+    out[is.na(out)] <- na.color
+    out
+  }
+  new_continuous_palette(fun, type = "colour", na_safe = !is.na(na.color))
 }

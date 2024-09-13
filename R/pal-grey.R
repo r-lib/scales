@@ -9,7 +9,10 @@
 #' show_col(pal_grey(0, 1)(25))
 pal_grey <- function(start = 0.2, end = 0.8) {
   force_all(start, end)
-  function(n) grDevices::grey.colors(n, start = start, end = end)
+  new_discrete_palette(
+    function(n) grDevices::grey.colors(n, start = start, end = end),
+    type = "colour", nlevels = 255
+  )
 }
 
 #' @export

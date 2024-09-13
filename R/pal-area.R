@@ -5,7 +5,10 @@
 #' @export
 pal_area <- function(range = c(1, 6)) {
   force(range)
-  function(x) rescale(sqrt(x), range, c(0, 1))
+  new_continuous_palette(
+    function(x) rescale(sqrt(x), range, c(0, 1)),
+    type = "numeric"
+  )
 }
 
 #' @export

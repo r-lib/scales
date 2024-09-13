@@ -22,9 +22,10 @@
 #' show_col(pal_viridis(option = "plasma")(6))
 pal_viridis <- function(alpha = 1, begin = 0, end = 1, direction = 1, option = "D") {
   force_all(alpha, begin, end, direction, option)
-  function(n) {
+  fun <- function(n) {
     viridisLite::viridis(n, alpha, begin, end, direction, option)
   }
+  new_discrete_palette(fun, "colour", 255)
 }
 
 #' @export

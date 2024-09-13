@@ -20,7 +20,8 @@ pal_dichromat <- function(name) {
   }
 
   pal <- dichromat::colorschemes[[name]]
-  function(n) pal[seq_len(n)]
+
+  pal_manual(pal, type = "colour")
 }
 
 #' @export
