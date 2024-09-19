@@ -1,5 +1,37 @@
 .known_palettes <- new_environment(parent = empty_env())
 
+#' Known palettes
+#'
+#' The scales packages keeps track of a set of palettes it considers 'known'.
+#' The benefit of a known palette is that it can be called by name in functions
+#' as `as_continuous_pal()` or `as_discrete_pal()`.
+#'
+#' @param name A string giving the palette name.
+#' @param palette A [palette][new_continuos_palette], `function` or character
+#'   vector.
+#' @param warn_conflict A boolean which if `TRUE` (default), warns when
+#'   replacing a known palette.
+#' @param ... Additional arguments to pass to palette when it is a function
+#'   but not a palette class function.
+#'
+#' @return The `get_palette()` function returns a palette. The `set_palette()`
+#'   function is called for side effects and returns nothing.
+#' @export
+#'
+#' @examples
+#' # Get one of the known palettes
+#' get_palette("Okabe-Ito")
+#'
+#' # Set a new custom palette
+#' cols <- c("palegreen", "deepskyblue", "magenta")
+#' set_palette("aurora", palette = cols)
+#'
+#' # Palette is now known
+#' "aurora" %in% palette_names()
+#' as_continuous_pal("aurora")
+#'
+#' # Resetting palettes
+#' reset_palettes()
 get_palette <- function(name, ...) {
 
   name <- tolower(name)
@@ -29,6 +61,8 @@ get_palette <- function(name, ...) {
   cli::cli_abort("Failed to interpret {name} as palette.")
 }
 
+#' @export
+#' @rdname get_palette
 set_palette <- function(name, palette, warn_conflict = TRUE) {
   name <- tolower(name)
   if (!is_function(palette) && !is_character(palette)) {
@@ -44,10 +78,14 @@ set_palette <- function(name, palette, warn_conflict = TRUE) {
   invisible(NULL)
 }
 
+#' @export
+#' @rdname get_palette
 palette_names <- function() {
   names(.known_palettes)
 }
 
+#' @export
+#' @rdname get_palette
 reset_palettes <- function() {
   env_unbind(.known_palettes, palette_names())
   init_palettes()
