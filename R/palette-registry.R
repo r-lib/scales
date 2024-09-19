@@ -116,8 +116,8 @@ register_base_pals <- function() {
   if (getRversion() < "4.0.0") {
     return(invisible(NULL))
   }
-  names   <- getFromNamespace("palette.pals", "grDevices")()
-  palette <- getFromNamespace("palette.colors", "grDevices")
+  names   <- utils::getFromNamespace("palette.pals",   "grDevices")()
+  palette <- utils::getFromNamespace("palette.colors", "grDevices")
   for (name in names) {
     fun <- manual_pal(palette(palette = name), type = "colour")
     set_palette(name, fun, warn_conflict = FALSE)
