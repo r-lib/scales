@@ -113,6 +113,9 @@ register_hcl_pals <- function(n = 31) {
 }
 
 register_base_pals <- function() {
+  if (getRversion() < "4.0.0") {
+    return(invisible(NULL))
+  }
   names <- grDevices::palette.pals()
   for (name in names) {
     fun <- manual_pal(grDevices::palette.colors(palette = name), type = "colour")
