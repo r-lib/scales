@@ -63,6 +63,8 @@ init_palettes <- function() {
   set_palette("hue", pal_hue, warn_conflict = FALSE)
 }
 
+on_load(init_palettes())
+
 register_hcl_pals <- function(n = 31) {
   names <- grDevices::hcl.pals()
   for (name in names) {
