@@ -21,7 +21,7 @@ reset_palettes()
 \item{...}{Additional arguments to pass to palette when it is a function
 but not a palette class function.}
 
-\item{palette}{A \link[=new_continuos_palette]{palette}, \code{function} or character
+\item{palette}{A \link[=new_continuous_palette]{palette}, \code{function} or character
 vector.}
 
 \item{warn_conflict}{A boolean which if \code{TRUE} (default), warns when
@@ -32,7 +32,9 @@ The \code{get_palette()} function returns a palette. The \code{set_palette()}
 function is called for side effects and returns nothing.
 }
 \description{
-Known palettes
+The scales packages keeps track of a set of palettes it considers 'known'.
+The benefit of a known palette is that it can be called by name in functions
+as \code{as_continuous_pal()} or \code{as_discrete_pal()}.
 }
 \examples{
 # Get one of the known palettes
@@ -44,7 +46,7 @@ set_palette("aurora", palette = cols)
 
 # Palette is now known
 "aurora" \%in\% palette_names()
-get_palette("aurora")
+as_continuous_pal("aurora")
 
 # Resetting palettes
 reset_palettes()

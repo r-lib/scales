@@ -7,7 +7,7 @@
 #' as `as_continuous_pal()` or `as_discrete_pal()`.
 #'
 #' @param name A string giving the palette name.
-#' @param palette A [palette][new_continuos_palette], `function` or character
+#' @param palette A [palette][new_continuous_palette], `function` or character
 #'   vector.
 #' @param warn_conflict A boolean which if `TRUE` (default), warns when
 #'   replacing a known palette.
