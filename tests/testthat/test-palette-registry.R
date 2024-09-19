@@ -25,3 +25,17 @@ test_that("palette getters and setters work as intended", {
   reset_palettes()
   expect_false("rgb" %in% palette_names())
 })
+
+test_that("as_continuous_pal and as_discrete_pal can retrieve known palettes", {
+
+  colours <- c("#FF0000", "#00FF00", '#0000FF')
+  set_palette("rgb", colours)
+
+  pal <- as_discrete_pal("rgb")
+  expect_equal(pal(length(colours)), colours)
+
+  pal <- as_continuous_pal("rgb")
+  expect_equal(pal(seq(0, 1, length.out = length(colours))), colours)
+
+  reset_palettes()
+})
