@@ -38,7 +38,7 @@ as \code{as_continuous_pal()} or \code{as_discrete_pal()}.
 }
 \examples{
 # Get one of the known palettes
-get_palette("Okabe-Ito")
+get_palette("hue")
 
 # Set a new custom palette
 cols <- c("palegreen", "deepskyblue", "magenta")

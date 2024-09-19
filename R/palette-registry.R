@@ -20,7 +20,7 @@
 #'
 #' @examples
 #' # Get one of the known palettes
-#' get_palette("Okabe-Ito")
+#' get_palette("hue")
 #'
 #' # Set a new custom palette
 #' cols <- c("palegreen", "deepskyblue", "magenta")
@@ -116,9 +116,10 @@ register_base_pals <- function() {
   if (getRversion() < "4.0.0") {
     return(invisible(NULL))
   }
-  names <- grDevices::palette.pals()
+  names   <- getFromNamespace("palette.pals", "grDevices")()
+  palette <- getFromNamespace("palette.colors", "grDevices")
   for (name in names) {
-    fun <- manual_pal(grDevices::palette.colors(palette = name), type = "colour")
+    fun <- manual_pal(palette(palette = name), type = "colour")
     set_palette(name, fun, warn_conflict = FALSE)
   }
   invisible(NULL)
@@ -154,4 +155,3 @@ register_dichromat_pals <- function() {
   }
   invisible(NULL)
 }
-
