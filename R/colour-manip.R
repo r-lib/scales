@@ -87,6 +87,14 @@ alpha <- function(colour, alpha = NA) {
 show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
                      ncol = NULL) {
   n <- length(colours)
+  if (n == 1 && (is.function(colours) || !is_color(colours))) {
+    colours <- as_discrete_pal(colours)
+    n <- palette_nlevels(colours)
+    n <- if (is.na(n)) 16 else n
+    colours <- colours(n = n)
+    n <- length(colours)
+  }
+
   ncol <- ncol %||% ceiling(sqrt(length(colours)))
   nrow <- ceiling(n / ncol)
 

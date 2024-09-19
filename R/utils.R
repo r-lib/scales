@@ -100,3 +100,7 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   x[to_recycle] <- lapply(x[to_recycle], rep_len, length.out = size)
   x
 }
+
+.onLoad <- function(lib, pkg) {
+  run_on_load()
+}
