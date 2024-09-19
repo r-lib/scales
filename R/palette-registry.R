@@ -50,4 +50,65 @@ palette_names <- function() {
 
 reset_palettes <- function() {
   env_unbind(.known_palettes, palette_names())
+  init_palettes()
 }
+
+init_palettes <- function() {
+  register_hcl_pals()
+  register_base_pals()
+  register_viridis_pals()
+  register_brewer_pals()
+  register_dichromat_pals()
+  set_palette("grey", pal_grey, warn_conflict = FALSE)
+  set_palette("hue", pal_hue, warn_conflict = FALSE)
+}
+
+register_hcl_pals <- function(n = 31) {
+  names <- grDevices::hcl.pals()
+  for (name in names) {
+    fun <- colour_ramp(grDevices::hcl.colors(n, palette = name))
+    set_palette(name, fun, warn_conflict = FALSE)
+  }
+  invisible(NULL)
+}
+
+register_base_pals <- function() {
+  names <- grDevices::palette.pals()
+  for (name in names) {
+    fun <- manual_pal(grDevices::palette.colors(palette = name), type = "colour")
+    set_palette(name, fun, warn_conflict = FALSE)
+  }
+  invisible(NULL)
+}
+
+register_viridis_pals <- function() {
+  names <- c("magma", "inferno", "plasma", "viridis",
+             "cividis", "rocket", "mako", "turbo")
+  for (name in names) {
+    fun <- pal_viridis(option = name)
+    set_palette(name, fun, warn_conflict = FALSE)
+  }
+  invisible(NULL)
+}
+
+register_brewer_pals <- function() {
+  names <- rownames(RColorBrewer::brewer.pal.info)
+  for (name in names) {
+    fun <- pal_brewer(palette = name)
+    set_palette(name, fun, warn_conflict = FALSE)
+  }
+  invisible(NULL)
+}
+
+register_dichromat_pals <- function() {
+  if (!is_installed("dichromat")) {
+    return(invisible(NULL))
+  }
+  names <- names(dichromat::colorschemes)
+  for (name in names) {
+    fun <- manual_pal(dichromat::colorschemes[[name]], type = "colour")
+    set_palette(name, fun, warn_conflict = FALSE)
+  }
+  invisible(NULL)
+}
+
