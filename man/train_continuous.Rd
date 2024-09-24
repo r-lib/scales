@@ -4,12 +4,14 @@
 \alias{train_continuous}
 \title{Train (update) a continuous scale}
 \usage{
-train_continuous(new, existing = NULL)
+train_continuous(new, existing = NULL, call = caller_env())
 }
 \arguments{
 \item{new}{New data to add to scale}
 
 \item{existing}{Optional existing scale to update}
+
+\item{call}{A call to display in error messages}
 }
 \description{
 Strips attributes and always returns a numeric vector
