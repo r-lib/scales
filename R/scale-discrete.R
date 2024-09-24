@@ -25,6 +25,7 @@ is.discrete <- function(x) {
 #' @param drop `TRUE`, will drop factor levels not associated with data
 #' @param na.rm If `TRUE`, will remove missing values
 #' @param fct Treat `existing` as if it came from a factor (ie. don't sort the range)
+#' @param call A call to display in error messages
 #' @export
 train_discrete <- function(new, existing = NULL, drop = FALSE,
                            na.rm = FALSE, fct = NA, call = caller_env()) {
