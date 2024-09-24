@@ -43,7 +43,12 @@ train_continuous <- function(new, existing = NULL, call = caller_env()) {
   }
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
-    cli::cli_abort("Discrete value supplied to a continuous scale", call = call)
+    example <- unique(new)
+    example <- example[seq_len(pmin(length(example), 5))]
+    cli::cli_abort(c(
+      "Discrete value supplied to a continuous scale.",
+      i = "Example values: {.and {.val {example}}}."
+    ), call = call)
   }
 
   # Needs casting to numeric because some `new` vectors can misbehave when

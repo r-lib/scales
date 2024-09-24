@@ -32,9 +32,13 @@ train_discrete <- function(new, existing = NULL, drop = FALSE,
   if (is.null(new)) {
     return(existing)
   }
-
   if (!is.discrete(new)) {
-    cli::cli_abort("Continuous value supplied to a discrete scale", call = call)
+    example <- unique(new)
+    example <- example[seq_len(pmin(length(example), 5))]
+    cli::cli_abort(c(
+      "Continuous value supplied to a discrete scale.",
+      i = "Example values: {.and {.val {example}}}."
+    ), call = call)
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm, fct = fct)
 }
