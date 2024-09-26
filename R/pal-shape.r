@@ -8,7 +8,7 @@ pal_shape <- function(solid = TRUE) {
     if (n > 6) {
       cli::cli_warn(c(
         "The shape palette can deal with a maximum of 6 discrete values because more than 6 becomes difficult to discriminate",
-        i = "you have requested {n} values. Consider specifying shapes manually if you need that many have them."
+        i = "you have requested {n} values. Consider specifying shapes manually if you need that many of them."
       ))
     }
 
