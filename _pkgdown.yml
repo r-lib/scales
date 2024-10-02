@@ -27,6 +27,7 @@ reference:
   contents:
   - starts_with("breaks_")
   - minor_breaks_width
+  - minor_breaks_log
 
 - title: "Bounds: ranges & rescaling"
   desc: >
