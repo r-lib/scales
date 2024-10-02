@@ -82,6 +82,30 @@ breaks_log <- function(n = 5, base = 10) {
 #' @rdname breaks_log
 log_breaks <- breaks_log
 
+#' Minor breaks for log-10 axes
+#'
+#' This break function is designed to mark every power, multiples of 5 and/or 1
+#' of that power for base 10.
+#'
+#' @param detail Any of `1`, `5` and `10` to mark multiples of
+#'   powers, multiples of 5 of powers or just powers respectively.
+#' @param smallest Smallest absolute value to mark when the range includes
+#'   negative numbers.
+#'
+#' @return A function to generate minor ticks.
+#' @export
+#'
+#' @examples
+#' # Standard usage with log10 scale
+#' demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log())
+#' # Increasing detail over many powers
+#' demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log(detail = 1))
+#' # Adjusting until where to draw minor breaks
+#' demo_continuous(
+#'   c(-1000, 1000),
+#'   transform = asinh_trans(),
+#'   minor_breaks = minor_breaks_log(smallest = 1)
+#' )
 minor_breaks_log <- function(detail = NULL, smallest = NULL) {
   if (!is.null(detail) && (!length(detail) == 1 || !detail %in% c(1, 5, 10))) {
     cli::cli_abort("The {.arg detail} argument must be one of 1, 5 or 10.")
