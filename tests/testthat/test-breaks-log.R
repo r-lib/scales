@@ -90,3 +90,32 @@ test_that("breaks_log with very small ranges fall back to extended_breaks", {
     extended_breaks(n = 5)(c(0.95, 3))
   ))
 })
+
+test_that("minor_breaks_log has correct amount of detail", {
+  range <- c(1, 10)
+
+  test <- minor_breaks_log(detail = 1)(range)
+  expect_true(all(1:10 %in% test))
+
+  test <- minor_breaks_log(detail = 5)(range)
+  expect_false(all(1:10 %in% test))
+  expect_true(all(c(1, 5, 10) %in% test))
+
+  test <- minor_breaks_log(detail = 10)(range)
+  expect_true(all(c(1, 10) %in% test))
+  expect_false(5 %in% test)
+
+  test <- minor_breaks_log(detail = 1)(c(-10, 10))
+  expect_true(all(-10:10 %in%  test))
+})
+
+test_that("minor_breaks_log rejects invalid arguments", {
+  expect_error(
+    minor_breaks_log(7),
+    "must be one of 1, 5 or 10"
+  )
+  expect_error(
+    minor_breaks_log(smallest = 0),
+    "must be a finite, positive, non-zero number."
+  )
+})
