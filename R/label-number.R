@@ -298,6 +298,30 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   ret
 }
 
+number_options <- function(
+  decimal.mark = ".",
+  big.mark = " ",
+  style_positive = c("none", "plus", "space"),
+  style_negative = c("hyphen", "minus", "parens"),
+  currency.prefix = "$",
+  currency.suffix = "",
+  currency.decimal.mark = decimal.mark,
+  currency.big.mark = setdiff(c(".", ","), currency.decimal.mark)[1],
+  ordinal.rules = ordinal_english()
+) {
+  opts <- options(
+    scales.decimal.mark          = decimal.mark,
+    scales.big.mark              = big.mark,
+    scales.style_positive        = arg_match(style_positive),
+    scales.style_negative        = arg_match(style_negative),
+    scales.currency.prefix       = currency.prefix,
+    scales.currency.suffix       = currency.suffix,
+    scales.currency.decimal.mark = currency.decimal.mark,
+    scales.currency.big.mark     = currency.big.mark,
+    scales.ordinal.rules         = ordinal.rules
+  )
+  invisible(opts)
+}
 
 # Helpers -----------------------------------------------------------------
 
