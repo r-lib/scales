@@ -109,9 +109,9 @@
 #' demo_continuous(c(32, 212), labels = label_number(suffix = "\u00b0F"))
 #' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
-                         suffix = "", big.mark = " ", decimal.mark = ".",
-                         style_positive = c("none", "plus", "space"),
-                         style_negative = c("hyphen", "minus", "parens"),
+                         suffix = "", big.mark = NULL, decimal.mark = NULL,
+                         style_positive = NULL,
+                         style_negative = NULL,
                          scale_cut = NULL,
                          trim = TRUE, ...) {
   force_all(
@@ -225,17 +225,21 @@ comma_format <- label_comma
 #' @inheritParams label_number
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
-                   suffix = "", big.mark = " ", decimal.mark = ".",
-                   style_positive = c("none", "plus", "space"),
-                   style_negative = c("hyphen", "minus", "parens"),
+                   suffix = "", big.mark = NULL, decimal.mark = NULL,
+                   style_positive = NULL,
+                   style_negative = NULL,
                    scale_cut = NULL,
                    trim = TRUE, ...) {
   if (length(x) == 0) {
     return(character())
   }
+  big.mark <- big.mark %||% getOption("scales.big.mark", default = " ")
+  decimal.mark <- decimal.mark %||% getOption("scales.decimal.mark", default = ".")
+  style_positive <- style_positive %||% getOption("scales.style_positive", default = "none")
+  style_negative <- style_negative %||% getOption("scales.style_negative", default = "hyphen")
 
-  style_positive <- arg_match(style_positive)
-  style_negative <- arg_match(style_negative)
+  style_positive <- arg_match(style_positive, c("none", "plus", "space"))
+  style_negative <- arg_match(style_negative, c("hyphen", "minus", "parens"))
 
   if (!is.null(scale_cut)) {
     cut <- scale_cut(x,
