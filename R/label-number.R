@@ -28,8 +28,11 @@
 #'   processed so that `prefix = "$"` will yield (e.g.) `-$1` and `($1)`.
 #' @param suffix Additional text to display after the number.
 #' @param big.mark Character used between every 3 digits to separate thousands.
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param decimal.mark The character to be used to indicate the numeric
-#'   decimal point.
+#'   decimal point.  The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param style_positive A string that determines the style of positive numbers:
 #'
 #'   * `"none"` (the default): no change, e.g. `1`.
@@ -38,6 +41,9 @@
 #'     as wide as a number or `+`. Compared to `"none"`, adding a figure space
 #'     can ensure numbers remain properly aligned when they are left- or
 #'     right-justified.
+#'
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param style_negative A string that determines the style of negative numbers:
 #'
 #'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
@@ -45,6 +51,9 @@
 #'      nicety that ensures `-` aligns with the horizontal bar of the
 #'      the horizontal bar of `+`.
 #'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
+#'
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param scale_cut Named numeric vector that allows you to rescale large
 #'   (or small) numbers and add a prefix. Built-in helpers include:
 #'   * `cut_short_scale()`: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
@@ -302,6 +311,34 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   ret
 }
 
+#' Number options
+#'
+#' Control the settings for formatting numbers globally.
+#'
+#' @inheritParams label_number
+#' @param currency.prefix,currency.suffix,currency.decimal.mark,currency.big.mark
+#'   Settings for [`label_currency()`] passed on without the `currency.`-prefix.
+#' @param ordinal.rules Setting for [`label_ordinal()`] passed on without the
+#'   `ordinal.`-prefix.
+#'
+#' @return The old options invisibly
+#' @export
+#'
+#' @examples
+#' # Default number formatting
+#' x <- c(0.1, 1, 1000)
+#' label_number()(x)
+#'
+#' # Now again with new options set
+#' number_options(style_positive = "plus", decimal.mark = ",")
+#' label_number()(x)
+#'
+#' # The options are the argument names with a 'scales.'-prefix
+#' options("scales.style_positive")
+#'
+#' # Resetting the options to their defaults
+#' number_options()
+#' label_number()(x)
 number_options <- function(
   decimal.mark = ".",
   big.mark = " ",
