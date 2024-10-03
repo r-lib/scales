@@ -6,7 +6,7 @@
 \usage{
 label_pvalue(
   accuracy = 0.001,
-  decimal.mark = ".",
+  decimal.mark = NULL,
   prefix = NULL,
   add_p = FALSE
 )
@@ -20,7 +20,8 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{prefix}{A character vector of length 3 giving the prefixes to
 put in front of numbers. The default values are \code{c("<", "", ">")}

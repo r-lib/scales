@@ -10,8 +10,8 @@ percent_format(
   scale = 100,
   prefix = "",
   suffix = "\%",
-  big.mark = " ",
-  decimal.mark = ".",
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -22,8 +22,8 @@ percent(
   scale = 100,
   prefix = "",
   suffix = "\%",
-  big.mark = " ",
-  decimal.mark = ".",
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -46,10 +46,13 @@ processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1
 
 \item{suffix}{Additional text to display after the number.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}

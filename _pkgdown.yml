@@ -19,6 +19,7 @@ reference:
   contents:
   - starts_with("label_")
   - matches("format")
+  - number_options
 
 - title:  Axis breaks
   desc: >

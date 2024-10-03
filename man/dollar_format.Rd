@@ -23,10 +23,10 @@ dollar(
   x,
   accuracy = NULL,
   scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   largest_with_cents = 1e+05,
   negative_parens = deprecated(),
@@ -55,10 +55,13 @@ large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}

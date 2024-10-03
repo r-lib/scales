@@ -188,3 +188,49 @@ test_that("built-in functions return expected values", {
   expect_equal(number(1e9, scale_cut = cut_long_scale()), "1 000M")
   expect_equal(number(1e9, scale_cut = cut_si("m")), "1 Gm")
 })
+
+# options -----------------------------------------------------------------
+
+test_that("number_options are observed", {
+
+  number_options(decimal.mark = ",", big.mark = ".")
+  expect_equal(
+    label_number()(c(0.1, 10, 1e6)),
+    c("0,1", "10,0", "1.000.000,0")
+  )
+
+  number_options(style_positive = "plus", style_negative = "parens")
+  expect_equal(
+    label_number()(c(-0.1, 0, 1)),
+    c("(0.1)", "0.0", "+1.0")
+  )
+
+  number_options(
+    currency.prefix = "", currency.suffix = " GBP",
+    currency.decimal.mark = ",", currency.big.mark = "."
+  )
+  # Regular number are not affected
+  expect_equal(
+    label_number()(c(0.1, 10, 1e6)),
+    c("0.1", "10.0", "1 000 000.0")
+  )
+  # But currency is affected
+  expect_equal(
+    label_currency(accuracy = 0.1)(c(0.1, 10, 1e6)),
+    c("0,1 GBP", "10,0 GBP", "1.000.000,0 GBP")
+  )
+
+  number_options(ordinal.rules = ordinal_french(plural = TRUE))
+  expect_equal(
+    label_ordinal()(1:4),
+    c("1ers", "2es", "3es", "4es")
+  )
+
+  # Can be reset
+  number_options()
+  expect_equal(
+    label_ordinal()(1:4),
+    c("1st", "2nd", "3rd", "4th")
+  )
+})
+

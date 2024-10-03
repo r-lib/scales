@@ -15,7 +15,7 @@
 #' )
 #' demo_continuous(c(0, .01), labels = french_percent)
 label_percent <- function(accuracy = NULL, scale = 100, prefix = "",
-                          suffix = "%", big.mark = " ", decimal.mark = ".",
+                          suffix = "%", big.mark = NULL, decimal.mark = NULL,
                           trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,
@@ -45,7 +45,7 @@ percent_format <- label_percent
 #' @export
 #' @rdname percent_format
 percent <- function(x, accuracy = NULL, scale = 100, prefix = "",
-                    suffix = "%", big.mark = " ", decimal.mark = ".",
+                    suffix = "%", big.mark = NULL, decimal.mark = NULL,
                     trim = TRUE, ...) {
   number(
     x = x,

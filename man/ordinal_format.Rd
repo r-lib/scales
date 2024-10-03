@@ -5,27 +5,16 @@
 \alias{ordinal}
 \title{Superseded interface to \code{label_ordinal()}}
 \usage{
-ordinal_format(
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  rules = ordinal_english(),
-  ...
-)
+ordinal_format(prefix = "", suffix = "", big.mark = NULL, rules = NULL, ...)
 
-ordinal(
-  x,
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  rules = ordinal_english(),
-  ...
-)
+ordinal(x, prefix = "", suffix = "", big.mark = " ", rules = NULL, ...)
 }
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{rules}{Named list of regular expressions, matched in order.
 Name gives suffix, and value specifies which numbers to match.}
