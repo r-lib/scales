@@ -2,15 +2,26 @@
 % Please edit documentation in R/label-log.R
 \name{label_log}
 \alias{label_log}
+\alias{format_log}
 \title{Label numbers in log format (10^3, 10^6, etc)}
 \usage{
-label_log(base = 10, digits = 3)
+label_log(base = 10, digits = 3, signed = NULL)
+
+format_log(x, base = 10, signed = NULL, ...)
 }
 \arguments{
 \item{base}{Base of logarithm to use}
 
 \item{digits}{Number of significant digits to show for the exponent. Argument
 is passed on to \code{\link[base:format]{base::format()}}.}
+
+\item{signed}{Should a \code{+} or \code{-} be displayed as a prefix? The
+default, \code{NULL}, displays signs if there are zeroes or negative numbers
+present.}
+
+\item{x}{A numeric vector to format}
+
+\item{...}{Passed on to \code{format()}.}
 }
 \value{
 All \code{label_()} functions return a "labelling" function, i.e. a function that
@@ -23,11 +34,14 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-\code{label_log()} displays numbers as base^exponent, using superscript formatting.
+\code{label_log()} and \code{format_log()} display numbers as base^exponent, using
+superscript formatting. \code{label_log()} returns expressions suitable for
+labelling in scales, whereas \code{format_log()} returns deparsed text.
 }
 \examples{
 demo_log10(c(1, 1e5), labels = label_log())
 demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
+format_log(c(0.1, 1, 10))
 }
 \seealso{
 \code{\link[=breaks_log]{breaks_log()}} for the related breaks algorithm.
