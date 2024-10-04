@@ -4,6 +4,8 @@
 #' superscript formatting. `label_log()` returns expressions suitable for
 #' labelling in scales, whereas `format_log()` returns deparsed text.
 #'
+#'
+#' @param x A numeric vector to format
 #' @param base Base of logarithm to use
 #' @param digits Number of significant digits to show for the exponent. Argument
 #'   is passed on to [base::format()].

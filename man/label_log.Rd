@@ -19,6 +19,8 @@ is passed on to \code{\link[base:format]{base::format()}}.}
 default, \code{NULL}, displays signs if there are zeroes or negative numbers
 present.}
 
+\item{x}{A numeric vector to format}
+
 \item{...}{Passed on to \code{format()}.}
 }
 \value{
@@ -39,6 +41,7 @@ labelling in scales, whereas \code{format_log()} returns deparsed text.
 \examples{
 demo_log10(c(1, 1e5), labels = label_log())
 demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
+format_log(c(0.1, 1, 10))
 }
 \seealso{
 \code{\link[=breaks_log]{breaks_log()}} for the related breaks algorithm.
