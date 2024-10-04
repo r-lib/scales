@@ -182,3 +182,31 @@ breaks_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), 
     as.difftime(breaks * scale, units = "secs")
   }
 }
+
+#' Breaks for exponentially transformed data
+#'
+#' This breaks function typically labels zero and the last `n - 1` integers of a
+#' range if that range is large enough (currently: 3). For smaller ranges, it
+#' uses [`breaks_extended()`].
+#'
+#' @inheritParams breaks_extended
+#' @export
+#' @examples
+#' # Small range
+#' demo_continuous(c(100, 102), transform = "exp", breaks = breaks_exp())
+#' # Large range
+#' demo_continuous(c(0, 100), transform = "exp", breaks = breaks_exp(n = 4))
+breaks_exp <- function(n = 5, ...) {
+  n_default <- n
+  default <- extended_breaks(n = n_default, ...)
+  function(x, n = n_default) {
+    # Discard -Infs
+    x <- sort(pmax(x, 0))
+    top <- floor(x[2])
+    if (top >= 3 && abs(diff(x)) >= 3) {
+      unique(c(top - seq_len(min(top, n_default - 1)) + 1, 0))
+    } else {
+      default(x)
+    }
+  }
+}

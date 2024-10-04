@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
+  (@teunbrand, #405).
+
 # scales 1.3.0
 
 ## Better type support
