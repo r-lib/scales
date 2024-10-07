@@ -1,6 +1,6 @@
 #' Label numbers in decimal format (e.g. 0.12, 1,234)
 #'
-#' Use `label_number()` force decimal display of numbers (i.e. don't use
+#' Use `label_number()` to force decimal display of numbers (i.e. don't use
 #' [scientific][label_scientific] notation). `label_comma()` is a special case
 #' that inserts a comma every three digits.
 #'
@@ -40,7 +40,7 @@
 #'     right-justified.
 #' @param style_negative A string that determines the style of negative numbers:
 #'
-#'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
+#'   * `"hyphen"` (the default): preceded by a standard hyphen `-`, e.g. `-1`.
 #'   * `"minus"`, uses a proper Unicode minus symbol. This is a typographical
 #'      nicety that ensures `-` aligns with the horizontal bar of the
 #'      the horizontal bar of `+`.
