@@ -22,6 +22,8 @@
 #'   uses the current locale. Setting this argument requires stringi, and you
 #'   can see a complete list of supported locales with
 #'   [stringi::stri_locale_list()].
+#' @param leading A string to replace leading zeroes with. Can be `""` to
+#'   disable leading characters or `"\u2007"` for figure-spaces.
 #' @export
 #' @examples
 #' date_range <- function(start, days) {
@@ -53,8 +55,9 @@ label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
 #' @export
 #' @rdname label_date
 #' @param sep Separator to use when combining date formats into a single string.
-label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") {
-  force_all(format, sep)
+label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
+                             leading = "0") {
+  force_all(format, sep, leading)
 
   function(x) {
     dt <- unclass(as.POSIXlt(x))
@@ -90,7 +93,16 @@ label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") 
     )
 
     format <- apply(for_mat, 1, function(x) paste(rev(x[!is.na(x)]), collapse = sep))
-    format(x, format)
+    x <- format(x, format)
+
+    if (isTRUE(leading == "0")) {
+      return(x)
+    }
+
+    # Replace leading 0s with `leading` character
+    x <- gsub("^0", leading, x)
+    x <- gsub(paste0(sep, "0"), paste0(sep, leading), x, fixed = TRUE)
+    x
   }
 }
 
