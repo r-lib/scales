@@ -122,6 +122,9 @@ breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n
   function(x, n = n_default) {
+    if (zero_range(as.numeric(x))) {
+      return(x[1])
+    }
     breaks <- pretty(x, n, ...)
     names(breaks) <- attr(breaks, "labels")
     breaks
