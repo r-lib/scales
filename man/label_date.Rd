@@ -9,7 +9,11 @@
 \usage{
 label_date(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 
-label_date_short(format = c("\%Y", "\%b", "\%d", "\%H:\%M"), sep = "\\n")
+label_date_short(
+  format = c("\%Y", "\%b", "\%d", "\%H:\%M"),
+  sep = "\\n",
+  leading = "0"
+)
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
 
@@ -35,6 +39,9 @@ can see a complete list of supported locales with
 \code{\link[stringi:stri_locale_list]{stringi::stri_locale_list()}}.}
 
 \item{sep}{Separator to use when combining date formats into a single string.}
+
+\item{leading}{A string to replace leading zeroes with. Can be \code{""} to
+disable leading characters or \code{"\\u2007"} for figure-spaces.}
 
 \item{unit}{The unit used to interpret numeric input}
 

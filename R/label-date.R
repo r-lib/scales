@@ -22,6 +22,8 @@
 #'   uses the current locale. Setting this argument requires stringi, and you
 #'   can see a complete list of supported locales with
 #'   [stringi::stri_locale_list()].
+#' @param leading A string to replace leading zeroes with. Can be `""` to
+#'   disable leading characters or `"\u2007"` for figure-spaces.
 #' @export
 #' @examples
 #' date_range <- function(start, days) {

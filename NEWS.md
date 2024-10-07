@@ -1,5 +1,7 @@
 # scales (development version)
 
+* New `label_date_short(leading)` argument to replace leading zeroes (#442)
+
 # scales 1.3.0
 
 ## Better type support
