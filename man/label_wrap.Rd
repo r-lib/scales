@@ -34,6 +34,7 @@ demo_discrete(x, labels = label_wrap(20))
 }
 \seealso{
 Other labels for discrete scales: 
+\code{\link{label_lut}()},
 \code{\link{label_parse}()}
 }
 \concept{labels for discrete scales}
