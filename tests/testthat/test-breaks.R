@@ -30,3 +30,7 @@ test_that("breaks_pretty() arguments are forcely evaluated on each call #81", {
   expect_equal(subfun1(1), subfuns[[1]](1))
   expect_equal(subfun2(1), subfuns[[2]](1))
 })
+
+test_that("breaks_pretty() returns input when given zero-width range (#446)", {
+  expect_equal(breaks_pretty()(c(1, 1)), 1)
+})

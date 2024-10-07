@@ -1,5 +1,7 @@
 # scales (development version)
 
+* `breaks_pretty()` will return the input limit when it has no range (#446)
+
 # scales 1.3.0
 
 ## Better type support
