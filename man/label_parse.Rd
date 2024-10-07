@@ -56,6 +56,7 @@ Other labels for continuous scales:
 \code{\link{label_scientific}()}
 
 Other labels for discrete scales: 
+\code{\link{label_lut}()},
 \code{\link{label_wrap}()}
 }
 \concept{labels for continuous scales}

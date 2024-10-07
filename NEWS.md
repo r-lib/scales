@@ -1,5 +1,7 @@
 # scales (development version)
 
+* New `label_lut()` for named lookup of labels (#458).
+
 # scales 1.3.0
 
 ## Better type support
