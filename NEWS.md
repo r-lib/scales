@@ -1,5 +1,7 @@
 # scales (development version)
 
+* New `label_glue()` labelling function for interpolated strings (#457).
+
 # scales 1.3.0
 
 ## Better type support
