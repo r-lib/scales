@@ -90,6 +90,7 @@ units, \code{label_number(scale_cut = cut_si("unit"))}.
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
 \code{\link{label_currency}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_ordinal}()},
 \code{\link{label_parse}()},
