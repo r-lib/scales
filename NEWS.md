@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `fullseq()` and by extension `breaks_width()` can now deal with unsorted 
+  ranges (#435).
+
 # scales 1.3.0
 
 ## Better type support
