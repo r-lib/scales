@@ -329,11 +329,12 @@ precision <- function(x) {
 # each value of x is assigned a suffix and associated scaling factor
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
-  if (!is.numeric(breaks) || is.null(names(breaks))) {
-    cli::cli_abort("{.arg scale_cut} must be a named numeric vector")
+  check_object(breaks, is.numeric, "a numeric vector")
+  if (is.null(names(breaks))) {
+    cli::cli_abort("{.arg scale_cut} must have names")
   }
   breaks <- sort(breaks, na.last = TRUE)
-  if (any(is.na(breaks))) {
+  if (anyNA(breaks)) {
     cli::cli_abort("{.arg scale_cut} values must not be missing")
   }
 

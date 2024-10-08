@@ -111,7 +111,10 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
     } else if (inherits(x, "difftime")) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
-      cli::cli_abort("{.fun label_time} can't be used with an object of class {.cls {class(x)}}")
+      stop_input_type(
+        x, as_cli("used with a {.cls POSIXt} or {.cls difftime} object"),
+        arg = I(as_cli("{.fn label_time}"))
+      )
     }
   }
 }

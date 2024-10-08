@@ -4,7 +4,7 @@
       as.transform(1)
     Condition
       Error in `as.transform()`:
-      ! `1` must be a character vector or a transformer object
+      ! `x` must be a character vector or transform object, not the number 1.
     Code
       as.transform("x")
     Condition

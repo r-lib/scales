@@ -14,11 +14,7 @@
 #' }
 pal_dichromat <- function(name) {
   check_installed("dichromat")
-
-  if (!any(name == names(dichromat::colorschemes))) {
-    cli::cli_abort("Palette name must be one of {.or {.val {names(dichromat::colorschemes)}}}")
-  }
-
+  arg_match0(name, names(dichromat::colorschemes))
   pal <- dichromat::colorschemes[[name]]
 
   pal_manual(pal, type = "colour")

@@ -37,9 +37,7 @@
 #'   labels = label_bytes("auto_binary")
 #' )
 label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
-  if (!(is.character(units) && length(units) == 1)) {
-    cli::cli_abort("{.arg units} must be a scalar string")
-  }
+  check_string(units)
   force_all(accuracy, ...)
 
   function(x) {
@@ -51,14 +49,13 @@ label_bytes <- function(units = "auto_si", accuracy = 1, scale = 1, ...) {
       si_units <- paste0(names(powers), "B")
       bin_units <- paste0(names(powers), "iB")
 
+      arg_match0(units, c(si_units, bin_units))
       if (units %in% si_units) {
         base <- 1000
         power <- powers[[match(units, si_units)]]
-      } else if (units %in% bin_units) {
+      } else {
         base <- 1024
         power <- powers[[match(units, bin_units)]]
-      } else {
-        cli::cli_abort("{.val {units}} is not a valid unit")
       }
 
       suffix <- paste0(" ", units)
