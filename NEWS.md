@@ -1,5 +1,8 @@
 # scales (development version)
 
+* New function `compose_label()` to chain together label formatting functions 
+  (#462)
+
 # scales 1.3.0
 
 ## Better type support
