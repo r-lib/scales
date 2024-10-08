@@ -1,4 +1,29 @@
-
+#' Compose two or more label formatters together
+#'
+#' This labeller provides a general mechanism for composing two or more
+#' labellers together.
+#'
+#' @param ... One or more labelling functions. These will be applied to breaks
+#'   consecutively.
+#'   [Lambda syntax][rlang::as_function] is allowed.
+#' @param call A call to display in error messages.
+#'
+#' @return A labelling function that applies the provided
+#'   functions to breaks to return labels.
+#'
+#' @export
+#'
+#' @examples
+#' demo_continuous(
+#'   c(-100, 100),
+#'   labels = compose_label(abs, number, ~paste0(.x, " foobar"), toupper)
+#' )
+#'
+#' # Same result
+#' demo_continuous(
+#'   c(-100, 100),
+#'   labels = compose_label(abs, label_number(suffix = " FOOBAR"))
+#' )
 compose_label <- function(..., call = caller_env()) {
 
   label_list <- list2(...)
