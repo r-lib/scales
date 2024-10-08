@@ -24,8 +24,7 @@
 #'   col = cscale(hp, pal_seq_gradient("grey80", "black"))
 #' ))
 cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()) {
-  if (!is.trans(trans)) cli::cli_abort("{.arg trans} must be a {.cls trans} object")
-
+  check_object(trans, is.transform, "a {.cls transform} object")
   x <- trans$transform(x)
   limits <- train_continuous(x)
   map_continuous(palette, x, limits, na.value)
