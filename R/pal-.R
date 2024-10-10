@@ -65,7 +65,7 @@ new_continuous_palette <- function(fun, type, na_safe = NA) {
   if (!is.function(fun)) {
     cli::cli_abort("{.arg fun} must be a function.")
   }
-  class(fun) <- union("pal_continuous", class(fun))
+  class(fun) <- union(c("pal_continuous", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "na_safe") <- na_safe
   fun
@@ -77,7 +77,7 @@ new_discrete_palette <- function(fun, type, nlevels = NA) {
   if (!is.function(fun)) {
     cli::cli_abort("{.arg fun} must be a function.")
   }
-  class(fun) <- union("pal_discrete", class(fun))
+  class(fun) <- union(c("pal_discrete", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "nlevels") <- nlevels
   fun
@@ -196,4 +196,16 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
       a continuous palette."
     )
   )
+}
+
+# Utility -----------------------------------------------------------------
+
+#' @export
+plot.pal_discrete <- function(x, y, ..., n_max = 25) {
+  show_col(x(pmin(n_max, palette_nlevels(x))), ...)
+}
+
+#' @export
+plot.pal_continuous <- function(x, y, ..., n_max = 25) {
+  show_col(x(seq(0, 1, length.out = n_max)), ...)
 }
