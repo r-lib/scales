@@ -197,3 +197,15 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
     )
   )
 }
+
+# Utility -----------------------------------------------------------------
+
+#' @export
+plot.pal_discrete <- function(x, y, ..., n_max = 25) {
+  show_col(x(pmin(n_max, palette_nlevels(x))), ...)
+}
+
+#' @export
+plot.pal_continuous <- function(x, y, ..., n_max = 25) {
+  show_col(x(seq(0, 1, length.out = n_max)), ...)
+}
