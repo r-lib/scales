@@ -17,7 +17,7 @@ col_darker(col, amount = 10)
 col_saturate(col, amount = 10)
 }
 \arguments{
-\item{col}{A character vector of colours.}
+\item{col}{A character vector of colours or a colour palette function.}
 
 \item{amount}{A numeric vector giving the change. The interpretation depends
 on the function:

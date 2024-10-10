@@ -113,7 +113,8 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
 #'
 #' Produces an interpolation of two colours.
 #'
-#' @param a,b A character vector of colours.
+#' @param a Either a character vector of colours or a colour palette function.
+#' @param b A character vector of colours.
 #' @param amount A numeric fraction between 0 and 1 giving the contribution of
 #'   the `b` colour.
 #' @param space A string giving a colour space to perform mixing operation in.
@@ -157,7 +158,7 @@ col_mix.scales_pal <- function(a, b, amount = 0.5, space = "rgb") {
 #' These are a set of convenience functions for standard colour manipulation
 #' operations.
 #'
-#' @param col A character vector of colours.
+#' @param col A character vector of colours or a colour palette function.
 #' @param amount A numeric vector giving the change. The interpretation depends
 #'   on the function:
 #'   * `col_shift()` takes a number between -360 and 360 for shifting hues in
