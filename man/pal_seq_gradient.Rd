@@ -5,9 +5,9 @@
 \alias{seq_gradient_pal}
 \title{Sequential colour gradient palette (continuous)}
 \usage{
-pal_seq_gradient(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab")
+pal_seq_gradient(low = "#2B6788", high = "#90503F", space = "Lab")
 
-seq_gradient_pal(low = mnsl("10B 4/6"), high = mnsl("10R 4/6"), space = "Lab")
+seq_gradient_pal(low = "#2B6788", high = "#90503F", space = "Lab")
 }
 \arguments{
 \item{low}{colour for low end of gradient.}
@@ -25,6 +25,5 @@ x <- seq(0, 1, length.out = 25)
 show_col(pal_seq_gradient()(x))
 show_col(pal_seq_gradient("white", "black")(x))
 
-library(munsell)
-show_col(pal_seq_gradient("white", mnsl("10R 4/6"))(x))
+show_col(pal_seq_gradient("white", "#90503F")(x))
 }

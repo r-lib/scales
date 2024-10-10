@@ -21,7 +21,6 @@ Imports:
     glue,
     labeling,
     lifecycle,
-    munsell (>= 0.5),
     R6,
     RColorBrewer,
     rlang (>= 1.0.0),
@@ -39,4 +38,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
