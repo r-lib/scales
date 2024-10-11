@@ -385,6 +385,7 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
 
   # Take the smaller (in magnitude) value of x, and use it as the scaling
   # factor.
+  x <- as.numeric(unclass(x))
   m <- min(abs(x))
 
   # If we get here, then exactly one of the x's is 0. Return FALSE
