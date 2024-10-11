@@ -4,13 +4,15 @@
 \alias{label_glue}
 \title{Interpolated labels}
 \usage{
-label_glue(pattern = "{x}", ..., .envir = caller_env())
+label_glue(pattern = "{x}", ..., parse = FALSE, .envir = caller_env())
 }
 \arguments{
 \item{pattern}{A glue string used for formatting. The \code{x} variable holds the
 breaks, so that \code{"{x}"} (default) returns the breaks as-is.}
 
 \item{...}{Arguments passed on to \code{\link[glue:glue]{glue::glue()}}.}
+
+\item{parse}{Whether to return labels as expressions.}
 
 \item{.envir}{[\code{environment}: \code{parent.frame()}]\cr Environment to evaluate each expression in. Expressions are
 evaluated from left to right. If \code{.x} is an environment, the expressions are

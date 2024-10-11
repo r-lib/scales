@@ -6,6 +6,7 @@
 #' @param pattern A glue string used for formatting. The `x` variable holds the
 #'   breaks, so that `"{x}"` (default) returns the breaks as-is.
 #' @param ... Arguments passed on to [`glue::glue()`].
+#' @param parse Whether to return labels as expressions.
 #' @inheritParams glue::glue
 #'
 #' @return A labeller function that takes a vector of breaks and returns a
@@ -25,10 +26,14 @@
 #' demo_discrete(species[-3], labels =  label_glue("The {x}\n{animal}"))
 #' # Contrary to directly glueing species + animal, which results in mislabelling!
 #' demo_discrete(species[-3], labels = glue::glue("The {species}\n{animal}"))
-label_glue <- function(pattern = "{x}", ..., .envir = caller_env()) {
+label_glue <- function(pattern = "{x}", ..., parse = FALSE, .envir = caller_env()) {
   args <- list2(...)
-  force_all(pattern, .envir)
+  force_all(pattern, parse, .envir)
   function(x) {
-    inject(glue::glue_data(list(x = x), pattern, !!!args, .envir = .envir))
+    x <- inject(glue::glue_data(list(x = x), pattern, !!!args, .envir = .envir))
+    if (parse) {
+      x <- parse_safe(x)
+    }
+    x
   }
 }
