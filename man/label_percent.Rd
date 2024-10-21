@@ -55,7 +55,7 @@ right-justified.
 }}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.

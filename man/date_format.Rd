@@ -28,6 +28,6 @@ can see a complete list of supported locales with
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
 These functions are kept for backward compatibility; you should switch
-to [label_date()/\code{\link[=label_time]{label_time()}} for new code.
+to \code{\link[=label_date]{label_date()}}/\code{\link[=label_time]{label_time()}} for new code.
 }
 \keyword{internal}
