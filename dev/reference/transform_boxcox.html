@@ -79,14 +79,14 @@ sets the default to 1.</p></dd>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The Box-Cox power transformation (type 1) requires strictly positive values and
-takes the following form for <code>y &gt; 0</code>:
+takes the following form for \(\lambda &gt; 0\):
 $$y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}$$
-When <code>y = 0</code>, the natural log transform is used.</p>
+When \(\lambda = 0\), the natural log transform is used.</p>
 <p>The modulus transformation implements a generalisation of the Box-Cox
 transformation that works for data with both positive and negative values.
-The equation takes the following forms, when <code>y != 0</code> :
+The equation takes the following forms, when \(\lambda \neq 0\) :
 $$y^{(\lambda)} = sign(y) * \frac{(|y| + 1)^\lambda - 1}{\lambda}$$
-and when <code>y = 0</code>: $$y^{(\lambda)} =  sign(y) * \ln(|y| + 1)$$</p>
+and when \(\lambda = 0\): $$y^{(\lambda)} =  sign(y) * \ln(|y| + 1)$$</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
