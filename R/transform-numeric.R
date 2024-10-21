@@ -67,7 +67,7 @@ asinh_trans <- transform_asinh
 #' Box-Cox to also work with negative values.
 #'
 #' The Box-Cox power transformation (type 1) requires strictly positive values and
-#' takes the following form for `y > 0`:
+#' takes the following form for \eqn{\lambda > 0}:
 #' \deqn{y^{(\lambda)} = \frac{y^\lambda - 1}{\lambda}}{y^(\lambda) = (y^\lambda - 1)/\lambda}
 #' When \eqn{\lambda = 0}, the natural log transform is used.
 #'
