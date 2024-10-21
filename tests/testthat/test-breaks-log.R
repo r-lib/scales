@@ -110,12 +110,6 @@ test_that("minor_breaks_log has correct amount of detail", {
 })
 
 test_that("minor_breaks_log rejects invalid arguments", {
-  expect_error(
-    minor_breaks_log(7),
-    "must be one of 1, 5 or 10"
-  )
-  expect_error(
-    minor_breaks_log(smallest = 0),
-    "must be a finite, positive, non-zero number."
-  )
+  expect_snapshot(minor_breaks_log(7), error = TRUE)
+  expect_snapshot(minor_breaks_log(smallest = 0), error = TRUE)
 })
