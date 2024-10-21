@@ -11,10 +11,10 @@
 #' suffix to the input (ns, us, ms, s, m, h, d, w).
 #'
 #' @inherit label_number return
-#' @param format For `date_format()` and `time_format()` a date/time format
+#' @param format For `label_date()` and `label_time()` a date/time format
 #'   string using standard POSIX specification.  See [strptime()] for details.
 #'
-#'   For `date_short()` a character vector of length 4 giving the format
+#'   For `label_date_short()` a character vector of length 4 giving the format
 #'   components to use for year, month, day, and hour respectively.
 #' @param tz a time zone name, see [timezones()]. Defaults
 #'   to UTC
@@ -31,9 +31,9 @@
 #'
 #' two_months <- date_range("2020-05-01", 60)
 #' demo_datetime(two_months)
-#' demo_datetime(two_months, labels = date_format("%m/%d"))
-#' demo_datetime(two_months, labels = date_format("%e %b", locale = "fr"))
-#' demo_datetime(two_months, labels = date_format("%e %B", locale = "es"))
+#' demo_datetime(two_months, labels = label_date("%m/%d"))
+#' demo_datetime(two_months, labels = label_date("%e %b", locale = "fr"))
+#' demo_datetime(two_months, labels = label_date("%e %B", locale = "es"))
 #' # ggplot2 provides a short-hand:
 #' demo_datetime(two_months, date_labels = "%m/%d")
 #'
