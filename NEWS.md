@@ -1,5 +1,6 @@
 # scales (development version)
 
+* New `label_date_short(leading)` argument to replace leading zeroes (#442)
 * `breaks_pretty()` will return the input limit when it has no range (#446)
 * `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
   (@teunbrand, #405).
