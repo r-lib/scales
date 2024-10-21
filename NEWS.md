@@ -1,5 +1,8 @@
 # scales (development version)
 
+* `label_log()` has a `signed` argument for displaying negative numbers 
+  (@teunbrand, #421).
+
 # scales 1.3.0
 
 ## Better type support
