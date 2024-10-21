@@ -2,6 +2,8 @@
 
 * The scales package now keeps track of known palettes. These can be retrieved
   using `get_palette()` or registered using `set_palette()` (#396).
+* `label_log()` has a `signed` argument for displaying negative numbers 
+  (@teunbrand, #421).
 
 # scales 1.3.0
 

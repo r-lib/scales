@@ -179,6 +179,11 @@ test_that("scale_cut prefers clean cuts", {
   x <- c(518400, 691200)
   # prefers days over week in second element
   expect_equal(number(x, scale_cut = cut_time_scale()), c("6d", "8d"))
+
+  # do not select off-scale breaks
+  x <- c(0, 500, 1500, 2000, 2500)
+  expect_equal(number(x, scale_cut = cut_short_scale()), c("0", "500", "1.5K", "2.0K", "2.5K"))
+
 })
 
 test_that("built-in functions return expected values", {
