@@ -31,8 +31,11 @@ test_that("breaks_pretty() arguments are forcely evaluated on each call #81", {
   expect_equal(subfun2(1), subfuns[[2]](1))
 })
 
-test_that("exponential breaks give sensible values", {
+test_that("breaks_pretty() returns input when given zero-width range (#446)", {
+  expect_equal(breaks_pretty()(c(1, 1)), 1)
+})
 
+test_that("exponential breaks give sensible values", {
   x <- breaks_exp()(c(0, 2))
   expect_equal(x, c(0, 0.5, 1, 1.5, 2))
 

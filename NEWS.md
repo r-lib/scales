@@ -1,5 +1,6 @@
 # scales (development version)
 
+* `breaks_pretty()` will return the input limit when it has no range (#446)
 * `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
   (@teunbrand, #405).
 * The scales package now keeps track of known palettes. These can be retrieved
