@@ -73,11 +73,7 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   n <- setdiff(n, 1L)
   ns <- length(n)
 
-  if (ns == 0) { # All have length 1
-    if (is.null(size)) {
-      return(xs)
-    }
-  } else if (ns == 1) {
+  if (ns == 1) {
     if (is.null(size)) {
       size <- n
     } else if (n != size) {
