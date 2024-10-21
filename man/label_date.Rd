@@ -24,10 +24,10 @@ label_timespan(
 )
 }
 \arguments{
-\item{format}{For \code{date_format()} and \code{time_format()} a date/time format
+\item{format}{For \code{label_date()} and \code{label_time()} a date/time format
 string using standard POSIX specification.  See \code{\link[=strptime]{strptime()}} for details.
 
-For \code{date_short()} a character vector of length 4 giving the format
+For \code{label_date_short()} a character vector of length 4 giving the format
 components to use for year, month, day, and hour respectively.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
@@ -63,9 +63,12 @@ large.}
 applied to absolute value before \code{style_positive} and \code{style_negative} are
 processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
     \item{\code{suffix}}{Additional text to display after the number.}
-    \item{\code{big.mark}}{Character used between every 3 digits to separate thousands.}
+    \item{\code{big.mark}}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{decimal.mark}}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_positive}}{A string that determines the style of positive numbers:
 \itemize{
 \item \code{"none"} (the default): no change, e.g. \code{1}.
@@ -74,7 +77,10 @@ decimal point.}
 as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
 \item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
@@ -82,7 +88,10 @@ right-justified.
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{trim}}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
   }}
@@ -116,9 +125,9 @@ date_range <- function(start, days) {
 
 two_months <- date_range("2020-05-01", 60)
 demo_datetime(two_months)
-demo_datetime(two_months, labels = date_format("\%m/\%d"))
-demo_datetime(two_months, labels = date_format("\%e \%b", locale = "fr"))
-demo_datetime(two_months, labels = date_format("\%e \%B", locale = "es"))
+demo_datetime(two_months, labels = label_date("\%m/\%d"))
+demo_datetime(two_months, labels = label_date("\%e \%b", locale = "fr"))
+demo_datetime(two_months, labels = label_date("\%e \%B", locale = "es"))
 # ggplot2 provides a short-hand:
 demo_datetime(two_months, date_labels = "\%m/\%d")
 

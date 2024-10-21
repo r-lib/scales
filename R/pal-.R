@@ -156,6 +156,14 @@ as_discrete_pal.pal_continuous <- function(x, ...) {
   )
 }
 
+#' @export
+as_discrete_pal.character <- function(x, ...) {
+  if (length(x) > 1)  {
+    return(pal_manual(x))
+  }
+  as_discrete_pal(get_palette(x, ...))
+}
+
 ## As continuous palette --------------------------------------------------
 
 #' @rdname new_continuous_palette
@@ -196,4 +204,12 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
       a continuous palette."
     )
   )
+}
+
+#' @export
+as_continuous_pal.character <- function(x, ...) {
+  if (length(x) > 1) {
+    return(colour_ramp(x))
+  }
+  as_continuous_pal(get_palette(x, ...))
 }

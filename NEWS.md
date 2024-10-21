@@ -1,6 +1,13 @@
 # scales (development version)
 
 * New `label_date_short(leading)` argument to replace leading zeroes (#442)
+* `breaks_pretty()` will return the input limit when it has no range (#446)
+* `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
+  (@teunbrand, #405).
+* The scales package now keeps track of known palettes. These can be retrieved
+  using `get_palette()` or registered using `set_palette()` (#396).
+* `label_log()` has a `signed` argument for displaying negative numbers 
+  (@teunbrand, #421).
 
 # scales 1.3.0
 

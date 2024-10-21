@@ -7,12 +7,12 @@
 \usage{
 pvalue_format(
   accuracy = 0.001,
-  decimal.mark = ".",
+  decimal.mark = NULL,
   prefix = NULL,
   add_p = FALSE
 )
 
-pvalue(x, accuracy = 0.001, decimal.mark = ".", prefix = NULL, add_p = FALSE)
+pvalue(x, accuracy = 0.001, decimal.mark = NULL, prefix = NULL, add_p = FALSE)
 }
 \arguments{
 \item{accuracy}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
@@ -23,11 +23,12 @@ difference between adjacent values.
 Applied to rescaled data.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{prefix}{A character vector of length 3 giving the prefixes to
-put in front of numbers. The default values are \code{c("<", "", ">")}
-if \code{add_p} is \code{TRUE} and \code{c("p<", "p=", "p>")} if \code{FALSE}.}
+put in front of numbers. The default values are \code{c("p<", "p=", "p>")}
+if \code{add_p} is \code{TRUE} and \code{c("<", "", ">")} if \code{FALSE}.}
 
 \item{add_p}{Add "p=" before the value?}
 }
