@@ -1,5 +1,7 @@
 # scales (development version)
 
+* `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
+  (@teunbrand, #405).
 * The scales package now keeps track of known palettes. These can be retrieved
   using `get_palette()` or registered using `set_palette()` (#396).
 * `label_log()` has a `signed` argument for displaying negative numbers 
