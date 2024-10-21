@@ -98,11 +98,14 @@ applied to absolute value before <code>style_positive</code> and <code>style_neg
 processed so that <code>prefix = "$"</code> will yield (e.g.) <code>-$1</code> and <code>($1)</code>.</p></dd>
 
     <dt><code>big.mark</code></dt>
-<dd><p>Character used between every 3 digits to separate thousands.</p></dd>
+<dd><p>Character used between every 3 digits to separate thousands.
+The default (<code>NULL</code>) retrieves the setting from the
+<a href="number_options.html">number options</a>.</p></dd>
 
     <dt><code>decimal.mark</code></dt>
 <dd><p>The character to be used to indicate the numeric
-decimal point.</p></dd>
+decimal point.  The default (<code>NULL</code>) retrieves the setting from the
+<a href="number_options.html">number options</a>.</p></dd>
 
     <dt><code>style_positive</code></dt>
 <dd><p>A string that determines the style of positive numbers:</p><ul><li><p><code>"none"</code> (the default): no change, e.g. <code>1</code>.</p></li>
@@ -111,7 +114,8 @@ decimal point.</p></dd>
 as wide as a number or <code>+</code>. Compared to <code>"none"</code>, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.</p></li>
-</ul></dd>
+</ul><p>The default (<code>NULL</code>) retrieves the setting from the
+<a href="number_options.html">number options</a>.</p></dd>
 
     <dt><code>style_negative</code></dt>
 <dd><p>A string that determines the style of negative numbers:</p><ul><li><p><code>"hyphen"</code> (the default): preceded by a standard hypen <code>-</code>, e.g. <code>-1</code>.</p></li>
@@ -119,7 +123,8 @@ right-justified.</p></li>
 nicety that ensures <code>-</code> aligns with the horizontal bar of the
 the horizontal bar of <code>+</code>.</p></li>
 <li><p><code>"parens"</code>, wrapped in parentheses, e.g. <code>(1)</code>.</p></li>
-</ul></dd>
+</ul><p>The default (<code>NULL</code>) retrieves the setting from the
+<a href="number_options.html">number options</a>.</p></dd>
 
     <dt><code>scale_cut</code></dt>
 <dd><p>Named numeric vector that allows you to rescale large
