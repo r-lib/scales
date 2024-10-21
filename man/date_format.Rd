@@ -10,10 +10,10 @@ date_format(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 time_format(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)
 }
 \arguments{
-\item{format}{For \code{date_format()} and \code{time_format()} a date/time format
+\item{format}{For \code{label_date()} and \code{label_time()} a date/time format
 string using standard POSIX specification.  See \code{\link[=strptime]{strptime()}} for details.
 
-For \code{date_short()} a character vector of length 4 giving the format
+For \code{label_date_short()} a character vector of length 4 giving the format
 components to use for year, month, day, and hour respectively.}
 
 \item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
