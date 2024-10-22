@@ -9,7 +9,7 @@
       number(1, scale_cut = "x")
     Condition
       Error in `scale_cut()`:
-      ! `breaks` must be a numeric vector, not the string "x".
+      ! `scale_cut` must be a numeric vector, not the string "x".
     Code
       number(1, scale_cut = c(x = 0, NA))
     Condition

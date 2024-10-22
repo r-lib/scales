@@ -394,7 +394,7 @@ precision <- function(x) {
 # each value of x is assigned a suffix and associated scaling factor
 scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
 
-  check_object(breaks, is.numeric, "a numeric vector")
+  check_object(breaks, is.numeric, "a numeric vector", arg = caller_arg(breaks))
   if (is.null(names(breaks))) {
     cli::cli_abort("{.arg scale_cut} must have names")
   }
