@@ -20,7 +20,7 @@ test_that("compatible with scale argument", {
 })
 
 test_that("errors if unknown unit", {
-  expect_error(label_bytes("unit")(0), "must be one of")
+  expect_snapshot(label_bytes("unit")(0), error = TRUE)
 })
 
 # deprecated interface ----------------------------------------------------
