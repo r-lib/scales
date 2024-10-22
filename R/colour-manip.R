@@ -251,9 +251,7 @@ col_saturate.scales_pal <- function(col, amount = 10) {
 }
 
 wrap_col_adjustment <- function(inner, outer, args, call = caller_env()) {
-  if (!is_colour_pal(inner)) {
-    cli::cli_abort("palette must be a {.field colour} palette.", call = call)
-  }
+  check_object(inner, is_colour_pal, "a {.field colour} palette")
   force_all(inner, outer, args)
   fun <- function(...) inject(outer(inner(...), !!!args))
   if (is_discrete_pal(inner)) {
