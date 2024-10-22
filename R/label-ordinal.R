@@ -28,8 +28,8 @@
 #'   labels = label_ordinal(),
 #'   breaks = breaks_width(2)
 #' )
-label_ordinal <- function(prefix = "", suffix = "", big.mark = " ",
-                          rules = ordinal_english(), ...) {
+label_ordinal <- function(prefix = "", suffix = "", big.mark = NULL,
+                          rules = NULL, ...) {
   force_all(prefix, suffix, big.mark, rules, ...)
   function(x) {
     ordinal(
@@ -96,7 +96,9 @@ ordinal_format <- label_ordinal
 #' @export
 #' @rdname ordinal_format
 ordinal <- function(x, prefix = "", suffix = "", big.mark = " ",
-                    rules = ordinal_english(), ...) {
+                    rules = NULL, ...) {
+
+  rules <- rules %||% getOption("scales.ordinal.rules", default = ordinal_english())
   na_idx <- is.na(x)
   x <- round(x, digits = 0)
   x[na_idx] <- 1 # replace NAs with dummy value
