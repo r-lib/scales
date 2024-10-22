@@ -121,7 +121,8 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
 #'
 #' Produces an interpolation of two colours.
 #'
-#' @param a,b A character vector of colours.
+#' @param a Either a character vector of colours or a colour palette function.
+#' @param b A character vector of colours.
 #' @param amount A numeric fraction between 0 and 1 giving the contribution of
 #'   the `b` colour.
 #' @param space A string giving a colour space to perform mixing operation in.
@@ -139,6 +140,11 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
 #' # Not recommended:
 #' col_mix("blue", "red", space = "hcl") # green!
 col_mix <- function(a, b, amount = 0.5, space = "rgb") {
+  UseMethod("col_mix")
+}
+
+#' @export
+col_mix.default <- function(a, b, amount = 0.5, space = "rgb") {
   input <- recycle_common(a = a, b = b, amount = amount)
   if (any(input$amount < 0 | input$amount > 1)) {
     cli::cli_abort("{.arg amount} must be between (0, 1).")
@@ -150,12 +156,17 @@ col_mix <- function(a, b, amount = 0.5, space = "rgb") {
   farver::encode_colour(new, alpha = alpha, from = space)
 }
 
+#' @export
+col_mix.scales_pal <- function(a, b, amount = 0.5, space = "rgb") {
+  wrap_col_adjustment(a, col_mix, list(b = b, amount = amount, space = space))
+}
+
 #' Colour manipulation
 #'
 #' These are a set of convenience functions for standard colour manipulation
 #' operations.
 #'
-#' @param col A character vector of colours.
+#' @param col A character vector of colours or a colour palette function.
 #' @param amount A numeric vector giving the change. The interpretation depends
 #'   on the function:
 #'   * `col_shift()` takes a number between -360 and 360 for shifting hues in
@@ -183,6 +194,11 @@ NULL
 #' @export
 #' @rdname colour_manip
 col_shift <- function(col, amount = 10) {
+  UseMethod("col_shift")
+}
+
+#' @export
+col_shift.default <- function(col, amount = 10) {
   input  <- recycle_common(col = col, amount = amount)
   new <- farver::decode_colour(input$col, alpha = TRUE, to = "hcl")
   new[, "h"] <- (new[, "h"] + input$amount) %% 360
@@ -190,22 +206,57 @@ col_shift <- function(col, amount = 10) {
 }
 
 #' @export
+col_shift.scales_pal <- function(col, amount = 10) {
+  wrap_col_adjustment(col, col_shift, list(amount = amount))
+}
+
+#' @export
 #' @rdname colour_manip
 col_lighter <- function(col, amount = 10) {
+  UseMethod("col_lighter")
+}
+
+#' @export
+col_lighter.default <- function(col, amount = 10) {
   input <- recycle_common(col = col, amount = amount)
   farver::add_to_channel(input$col, "l", input$amount, space = "hsl")
 }
 
 #' @export
+col_lighter.scales_pal <- function(col, amount = 10) {
+  wrap_col_adjustment(col, col_lighter, list(amount = amount))
+}
+
+#' @export
 #' @rdname colour_manip
 col_darker <- function(col, amount = 10) {
-  input <- recycle_common(col = col, amount = amount)
-  farver::add_to_channel(input$col, "l", -input$amount, space = "hsl")
+  col_lighter(col, amount = -amount)
 }
 
 #' @export
 #' @rdname colour_manip
 col_saturate <- function(col, amount = 10) {
+  UseMethod("col_saturate")
+}
+
+#' @export
+col_saturate.default <- function(col, amount = 10) {
   input <- recycle_common(col = col, amount = amount)
   farver::add_to_channel(input$col, "s", input$amount, space = "hsl")
+}
+
+#' @export
+col_saturate.scales_pal <- function(col, amount = 10) {
+  wrap_col_adjustment(col, col_saturate, list(amount = amount))
+}
+
+wrap_col_adjustment <- function(inner, outer, args, call = caller_env()) {
+  check_object(inner, is_colour_pal, "a {.field colour} palette")
+  force_all(inner, outer, args)
+  fun <- function(...) inject(outer(inner(...), !!!args))
+  if (is_discrete_pal(inner)) {
+    new_discrete_palette(fun, type = "colour", nlevels = palette_nlevels(inner))
+  } else {
+    new_continuous_palette(fun, type = "colour", na_safe = palette_na_safe(inner))
+  }
 }

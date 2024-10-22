@@ -63,7 +63,7 @@
 #' show_col(pal(9))
 new_continuous_palette <- function(fun, type, na_safe = NA) {
   check_function(fun)
-  class(fun) <- union("pal_continuous", class(fun))
+  class(fun) <- union(c("pal_continuous", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "na_safe") <- na_safe
   fun
@@ -73,7 +73,7 @@ new_continuous_palette <- function(fun, type, na_safe = NA) {
 #' @export
 new_discrete_palette <- function(fun, type, nlevels = NA) {
   check_function(fun)
-  class(fun) <- union("pal_discrete", class(fun))
+  class(fun) <- union(c("pal_discrete", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "nlevels") <- nlevels
   fun
@@ -208,4 +208,16 @@ as_continuous_pal.character <- function(x, ...) {
     return(colour_ramp(x))
   }
   as_continuous_pal(get_palette(x, ...))
+}
+
+# Utility -----------------------------------------------------------------
+
+#' @export
+plot.pal_discrete <- function(x, y, ..., n_max = 25) {
+  show_col(x(pmin(n_max, palette_nlevels(x))), ...)
+}
+
+#' @export
+plot.pal_continuous <- function(x, y, ..., n_max = 25) {
+  show_col(x(seq(0, 1, length.out = n_max)), ...)
 }

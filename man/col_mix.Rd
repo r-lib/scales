@@ -7,7 +7,9 @@
 col_mix(a, b, amount = 0.5, space = "rgb")
 }
 \arguments{
-\item{a, b}{A character vector of colours.}
+\item{a}{Either a character vector of colours or a colour palette function.}
+
+\item{b}{A character vector of colours.}
 
 \item{amount}{A numeric fraction between 0 and 1 giving the contribution of
 the \code{b} colour.}
