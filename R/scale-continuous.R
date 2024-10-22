@@ -36,13 +36,18 @@ cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()
 #'
 #' @inheritParams train_discrete
 #' @export
-train_continuous <- function(new, existing = NULL) {
+train_continuous <- function(new, existing = NULL, call = caller_env()) {
   if (is.null(new)) {
     return(existing)
   }
 
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
-    cli::cli_abort("Discrete value supplied to a continuous scale")
+    example <- unique(new)
+    example <- example[seq_len(pmin(length(example), 5))]
+    cli::cli_abort(c(
+      "Discrete value supplied to a continuous scale.",
+      i = "Example values: {.and {.val {example}}}."
+    ), call = call)
   }
 
   # Needs casting to numeric because some `new` vectors can misbehave when

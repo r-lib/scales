@@ -82,6 +82,89 @@ breaks_log <- function(n = 5, base = 10) {
 #' @rdname breaks_log
 log_breaks <- breaks_log
 
+#' Minor breaks for log-10 axes
+#'
+#' This break function is designed to mark every power, multiples of 5 and/or 1
+#' of that power for base 10.
+#'
+#' @param detail Any of `1`, `5` and `10` to mark multiples of
+#'   powers, multiples of 5 of powers or just powers respectively.
+#' @param smallest Smallest absolute value to mark when the range includes
+#'   negative numbers.
+#'
+#' @return A function to generate minor ticks.
+#' @export
+#'
+#' @examples
+#' # Standard usage with log10 scale
+#' demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log())
+#' # Increasing detail over many powers
+#' demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log(detail = 1))
+#' # Adjusting until where to draw minor breaks
+#' demo_continuous(
+#'   c(-1000, 1000),
+#'   transform = asinh_trans(),
+#'   minor_breaks = minor_breaks_log(smallest = 1)
+#' )
+minor_breaks_log <- function(detail = NULL, smallest = NULL) {
+  if (!is.null(detail) && (!length(detail) == 1 || !detail %in% c(1, 5, 10))) {
+    cli::cli_abort("The {.arg detail} argument must be one of 1, 5 or 10.")
+  }
+  if (!is.null(smallest) &&
+      (!length(smallest) == 1 || smallest < 1e-100 || !is.finite(smallest))) {
+    cli::cli_abort(
+      "The {.arg smallest} argument must be a finite, positive, non-zero number."
+    )
+  }
+  force(smallest)
+  function(x, ...) {
+
+    has_negatives <- any(x <= 0)
+
+    if (has_negatives) {
+      large <- max(abs(x))
+      small <- smallest %||% min(c(1, large) * 0.1)
+      x <- sort(c(small * 10, large))
+    }
+
+    start <- floor(log10(min(x))) - 1L
+    end   <- ceiling(log10(max(x))) + 1L
+
+    if (is.null(detail)) {
+      i <- findInterval(abs(end - start), c(8, 15), left.open = TRUE) + 1L
+      detail <- c(1, 5, 10)[i]
+    }
+
+    ladder <- 10^seq(start, end, by = 1L)
+    tens <- fives <- ones <- numeric()
+    if (detail %in% c(10, 5, 1)) {
+      tens <- ladder
+    }
+    if (detail %in% c(5, 1)) {
+      fives <- 5 * ladder
+    }
+    if (detail == 1) {
+      ones <- as.vector(outer(1:9, ladder))
+      ones <- setdiff(ones, c(tens, fives))
+    }
+
+    if (has_negatives) {
+      tens  <- tens[tens >= small]
+      tens  <- c(tens, -tens, 0)
+      fives <- fives[fives >= small]
+      fives <- c(fives, -fives)
+      ones  <- ones[ones >= small]
+      ones  <- c(ones, -ones)
+    }
+
+    ticks <- c(tens, fives, ones)
+    n <- c(length(tens), length(fives), length(ones))
+
+    attr(ticks, "detail") <- rep(c(10, 5, 1), n)
+    ticks
+  }
+}
+
 #' @author Thierry Onkelinx, \email{thierry.onkelinx@inbo.be}
 #' @noRd
 log_sub_breaks <- function(rng, n = 5, base = 10) {

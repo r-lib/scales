@@ -14,10 +14,10 @@ number(
   scale = 1,
   prefix = "",
   suffix = "",
-  big.mark = " ",
-  decimal.mark = ".",
-  style_positive = c("none", "plus", "space"),
-  style_negative = c("hyphen", "minus", "parens"),
+  big.mark = NULL,
+  decimal.mark = NULL,
+  style_positive = NULL,
+  style_negative = NULL,
   scale_cut = NULL,
   trim = TRUE,
   ...
@@ -49,10 +49,13 @@ processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1
 
 \item{suffix}{Additional text to display after the number.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{style_positive}{A string that determines the style of positive numbers:
 \itemize{
@@ -62,16 +65,22 @@ decimal point.}
 as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{style_negative}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{scale_cut}{Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:

@@ -73,11 +73,7 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   n <- setdiff(n, 1L)
   ns <- length(n)
 
-  if (ns == 0) { # All have length 1
-    if (is.null(size)) {
-      return(xs)
-    }
-  } else if (ns == 1) {
+  if (ns == 1) {
     if (is.null(size)) {
       size <- n
     } else if (n != size) {
@@ -118,4 +114,8 @@ check_object <- function(x, check_fun, what, ..., allow_null = FALSE,
 
   stop_input_type(x, as_cli(what), ..., allow_null = allow_null,
                   arg = arg, call = call)
+}
+
+.onLoad <- function(lib, pkg) {
+  run_on_load()
 }
