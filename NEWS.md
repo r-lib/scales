@@ -1,5 +1,6 @@
 # scales (development version)
-
+* `fullseq()` and by extension `breaks_width()` can now deal with unsorted 
+  ranges (#435).
 * New `label_date_short(leading)` argument to replace leading zeroes (#442)
 * `breaks_pretty()` will return the input limit when it has no range (#446)
 * `transform_exp()` now has more sensible breaks, available in `breaks_exp()` 
