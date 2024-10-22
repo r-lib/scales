@@ -1,6 +1,6 @@
 #' Label numbers in decimal format (e.g. 0.12, 1,234)
 #'
-#' Use `label_number()` force decimal display of numbers (i.e. don't use
+#' Use `label_number()` to force decimal display of numbers (i.e. don't use
 #' [scientific][label_scientific] notation). `label_comma()` is a special case
 #' that inserts a comma every three digits.
 #'
@@ -28,8 +28,11 @@
 #'   processed so that `prefix = "$"` will yield (e.g.) `-$1` and `($1)`.
 #' @param suffix Additional text to display after the number.
 #' @param big.mark Character used between every 3 digits to separate thousands.
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param decimal.mark The character to be used to indicate the numeric
-#'   decimal point.
+#'   decimal point.  The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param style_positive A string that determines the style of positive numbers:
 #'
 #'   * `"none"` (the default): no change, e.g. `1`.
@@ -38,13 +41,19 @@
 #'     as wide as a number or `+`. Compared to `"none"`, adding a figure space
 #'     can ensure numbers remain properly aligned when they are left- or
 #'     right-justified.
+#'
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param style_negative A string that determines the style of negative numbers:
 #'
-#'   * `"hyphen"` (the default): preceded by a standard hypen `-`, e.g. `-1`.
+#'   * `"hyphen"` (the default): preceded by a standard hyphen `-`, e.g. `-1`.
 #'   * `"minus"`, uses a proper Unicode minus symbol. This is a typographical
 #'      nicety that ensures `-` aligns with the horizontal bar of the
 #'      the horizontal bar of `+`.
 #'   * `"parens"`, wrapped in parentheses, e.g. `(1)`.
+#'
+#'   The default (`NULL`) retrieves the setting from the
+#'   [number options][number_options].
 #' @param scale_cut Named numeric vector that allows you to rescale large
 #'   (or small) numbers and add a prefix. Built-in helpers include:
 #'   * `cut_short_scale()`: [10^3, 10^6) = K, [10^6, 10^9) = M, [10^9, 10^12) = B, [10^12, Inf) = T.
@@ -109,9 +118,9 @@
 #' demo_continuous(c(32, 212), labels = label_number(suffix = "\u00b0F"))
 #' demo_continuous(c(0, 100), labels = label_number(suffix = "\u00b0C"))
 label_number <- function(accuracy = NULL, scale = 1, prefix = "",
-                         suffix = "", big.mark = " ", decimal.mark = ".",
-                         style_positive = c("none", "plus", "space"),
-                         style_negative = c("hyphen", "minus", "parens"),
+                         suffix = "", big.mark = NULL, decimal.mark = NULL,
+                         style_positive = NULL,
+                         style_negative = NULL,
                          scale_cut = NULL,
                          trim = TRUE, ...) {
   force_all(
@@ -225,17 +234,21 @@ comma_format <- label_comma
 #' @inheritParams label_number
 #' @return A character vector of `length(x)`.
 number <- function(x, accuracy = NULL, scale = 1, prefix = "",
-                   suffix = "", big.mark = " ", decimal.mark = ".",
-                   style_positive = c("none", "plus", "space"),
-                   style_negative = c("hyphen", "minus", "parens"),
+                   suffix = "", big.mark = NULL, decimal.mark = NULL,
+                   style_positive = NULL,
+                   style_negative = NULL,
                    scale_cut = NULL,
                    trim = TRUE, ...) {
   if (length(x) == 0) {
     return(character())
   }
+  big.mark <- big.mark %||% getOption("scales.big.mark", default = " ")
+  decimal.mark <- decimal.mark %||% getOption("scales.decimal.mark", default = ".")
+  style_positive <- style_positive %||% getOption("scales.style_positive", default = "none")
+  style_negative <- style_negative %||% getOption("scales.style_negative", default = "hyphen")
 
-  style_positive <- arg_match(style_positive)
-  style_negative <- arg_match(style_negative)
+  style_positive <- arg_match(style_positive, c("none", "plus", "space"))
+  style_negative <- arg_match(style_negative, c("hyphen", "minus", "parens"))
 
   if (!is.null(scale_cut)) {
     cut <- scale_cut(x,
@@ -298,6 +311,58 @@ number <- function(x, accuracy = NULL, scale = 1, prefix = "",
   ret
 }
 
+#' Number options
+#'
+#' Control the settings for formatting numbers globally.
+#'
+#' @inheritParams label_number
+#' @param currency.prefix,currency.suffix,currency.decimal.mark,currency.big.mark
+#'   Settings for [`label_currency()`] passed on without the `currency.`-prefix.
+#' @param ordinal.rules Setting for [`label_ordinal()`] passed on without the
+#'   `ordinal.`-prefix.
+#'
+#' @return The old options invisibly
+#' @export
+#'
+#' @examples
+#' # Default number formatting
+#' x <- c(0.1, 1, 1000)
+#' label_number()(x)
+#'
+#' # Now again with new options set
+#' number_options(style_positive = "plus", decimal.mark = ",")
+#' label_number()(x)
+#'
+#' # The options are the argument names with a 'scales.'-prefix
+#' options("scales.style_positive")
+#'
+#' # Resetting the options to their defaults
+#' number_options()
+#' label_number()(x)
+number_options <- function(
+  decimal.mark = ".",
+  big.mark = " ",
+  style_positive = c("none", "plus", "space"),
+  style_negative = c("hyphen", "minus", "parens"),
+  currency.prefix = "$",
+  currency.suffix = "",
+  currency.decimal.mark = decimal.mark,
+  currency.big.mark = setdiff(c(".", ","), currency.decimal.mark)[1],
+  ordinal.rules = ordinal_english()
+) {
+  opts <- options(
+    scales.decimal.mark          = decimal.mark,
+    scales.big.mark              = big.mark,
+    scales.style_positive        = arg_match(style_positive),
+    scales.style_negative        = arg_match(style_negative),
+    scales.currency.prefix       = currency.prefix,
+    scales.currency.suffix       = currency.suffix,
+    scales.currency.decimal.mark = currency.decimal.mark,
+    scales.currency.big.mark     = currency.big.mark,
+    scales.ordinal.rules         = ordinal.rules
+  )
+  invisible(opts)
+}
 
 # Helpers -----------------------------------------------------------------
 
@@ -350,6 +415,7 @@ scale_cut <- function(x, breaks, scale = 1, accuracy = NULL, suffix = "") {
   if (any(bad_break)) {
     # If the break below result in a perfect cut, prefer it
     lower_break <- breaks[match(break_suffix[bad_break], names(breaks)) - 1]
+    lower_break[lower_break == 0] <- 1  # Avoid choosing a non-existent break
     improved_break <- (x[bad_break] * scale / lower_break) %% 1 == 0
     # Unless the break below is a power of 10 change (1.25 is as good as 1250)
     power10_break <- log10(breaks[break_suffix[bad_break]] / lower_break) %% 1 == 0
