@@ -72,7 +72,7 @@ The default (\code{NULL}) retrieves the setting from the
 
 \item{style_negative}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
@@ -116,7 +116,7 @@ they work similarly for all scales, including those that generate legends
 rather than axes.
 }
 \description{
-Use \code{label_number()} force decimal display of numbers (i.e. don't use
+Use \code{label_number()} to force decimal display of numbers (i.e. don't use
 \link[=label_scientific]{scientific} notation). \code{label_comma()} is a special case
 that inserts a comma every three digits.
 }
