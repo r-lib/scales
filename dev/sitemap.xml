@@ -20,6 +20,7 @@
 <url><loc>https://scales.r-lib.org/dev/reference/colour_manip.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/colour_ramp.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/comma.html</loc></url>
+<url><loc>https://scales.r-lib.org/dev/reference/compose_label.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/cscale.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/date_breaks.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/date_format.html</loc></url>
@@ -34,6 +35,7 @@
 <url><loc>https://scales.r-lib.org/dev/reference/label_bytes.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/label_currency.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/label_date.html</loc></url>
+<url><loc>https://scales.r-lib.org/dev/reference/label_dictionary.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/label_glue.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/label_log.html</loc></url>
 <url><loc>https://scales.r-lib.org/dev/reference/label_number.html</loc></url>
