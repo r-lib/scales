@@ -21,7 +21,6 @@ Imports:
     glue,
     labeling,
     lifecycle,
-    munsell (>= 0.5),
     R6,
     RColorBrewer,
     rlang (>= 1.0.0),
