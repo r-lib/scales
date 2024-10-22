@@ -56,6 +56,7 @@ demo_log10(c(1, 1e9))
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
 \code{\link{label_currency}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_ordinal}()},

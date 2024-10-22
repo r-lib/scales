@@ -1,4 +1,5 @@
 # scales (development version)
+* New `label_glue()` labelling function for interpolated strings (#457).
 * `fullseq()` and by extension `breaks_width()` can now deal with unsorted 
   ranges (#435).
 * New `label_date_short(leading)` argument to replace leading zeroes (#442)
