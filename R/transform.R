@@ -103,26 +103,32 @@ lines.transform <- function(x, ..., xlim) {
 #' @export
 as.transform <- function(x, arg = deparse(substitute(x))) {
   if (is.transform(x)) {
-    x
-  } else if (is.character(x) && length(x) >= 1) {
-    if (length(x) == 1) {
-      f <- paste0("transform_", x)
-      # For backward compatibility
-      fun <- get0(f, mode = "function")
-      if (is.null(fun)) {
-        f2 <- paste0(x, "_trans")
-        fun <- get0(f2, mode = "function")
-      }
-      if (is.null(fun)) {
-        cli::cli_abort("Could not find any function named {.fun {f}} or {.fun {f2}}")
-      }
-      fun()
-    } else {
-      transform_compose(!!!x)
-    }
-  } else {
-    cli::cli_abort(sprintf("{.arg %s} must be a character vector or a transformer object", arg))
+    return(x)
   }
+  if (!(is.character(x) && length(x) >= 1)) {
+    stop_input_type(x, "a character vector or transform object")
+  }
+
+  # A character vector is translated to a transform composition
+  if (length(x) != 1) {
+    return(transform_compose(!!!x))
+  }
+
+  # Single characters are interpreted as function names with the
+  # `transform_`-prefix
+  f <- paste0("transform_", x)
+  fun <- get0(f, mode = "function")
+
+  # For backward compatibility we preserve `trans_`-prefixes
+  if (is.null(fun)) {
+    f2 <- paste0(x, "_trans")
+    fun <- get0(f2, mode = "function")
+  }
+
+  if (is.null(fun)) {
+    cli::cli_abort("Could not find any function named {.fun {f}} or {.fun {f2}}")
+  }
+  fun()
 }
 
 #' @export

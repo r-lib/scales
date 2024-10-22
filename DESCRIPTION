@@ -23,7 +23,7 @@ Imports:
     lifecycle,
     R6,
     RColorBrewer,
-    rlang (>= 1.0.0),
+    rlang (>= 1.1.0),
     viridisLite
 Suggests: 
     bit64,
