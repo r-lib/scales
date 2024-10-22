@@ -39,7 +39,7 @@ compose_label <- function(..., call = caller_env()) {
     orig <- x
     for (labeller in label_list) {
       x <- labeller(x)
-      attr(x, "orig") <- orig
+      attr(x, "orig_breaks") <- orig
     }
     x[is.na(orig)] <- NA
     names(x) <- names(x) %||% names(orig)
