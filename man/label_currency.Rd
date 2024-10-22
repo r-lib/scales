@@ -7,10 +7,10 @@
 label_currency(
   accuracy = NULL,
   scale = 1,
-  prefix = "$",
-  suffix = "",
-  big.mark = ",",
-  decimal.mark = ".",
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
   trim = TRUE,
   largest_with_fractional = 1e+05,
   ...
@@ -29,10 +29,13 @@ large.}
 
 \item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
@@ -48,15 +51,21 @@ width (see \code{\link[base:format]{base::format()}}).}
 as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{scale_cut}}{Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:
 \itemize{
@@ -127,6 +136,7 @@ demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_ordinal}()},

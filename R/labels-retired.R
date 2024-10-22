@@ -111,7 +111,7 @@ trans_format <- function(trans, format = scientific_format()) {
 #' demo_continuous(c(0, 2500), labels = km)
 unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
                         unit = "m", sep = " ", suffix = paste0(sep, unit),
-                        big.mark = " ", decimal.mark = ".",
+                        big.mark = NULL, decimal.mark = NULL,
                         trim = TRUE, ...) {
   number_format(
     accuracy = accuracy,

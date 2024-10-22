@@ -7,13 +7,7 @@
 \alias{ordinal_spanish}
 \title{Label ordinal numbers (1st, 2nd, 3rd, etc)}
 \usage{
-label_ordinal(
-  prefix = "",
-  suffix = "",
-  big.mark = " ",
-  rules = ordinal_english(),
-  ...
-)
+label_ordinal(prefix = "", suffix = "", big.mark = NULL, rules = NULL, ...)
 
 ordinal_english()
 
@@ -24,7 +18,9 @@ ordinal_spanish()
 \arguments{
 \item{prefix, suffix}{Symbols to display before and after value.}
 
-\item{big.mark}{Character used between every 3 digits to separate thousands.}
+\item{big.mark}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{rules}{Named list of regular expressions, matched in order.
 Name gives suffix, and value specifies which numbers to match.}
@@ -42,7 +38,8 @@ Applied to rescaled data.}
 formatting. This is useful if the underlying data is very small or very
 large.}
     \item{\code{decimal.mark}}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_positive}}{A string that determines the style of positive numbers:
 \itemize{
 \item \code{"none"} (the default): no change, e.g. \code{1}.
@@ -51,15 +48,21 @@ decimal point.}
 as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{scale_cut}}{Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:
 \itemize{
@@ -118,6 +121,7 @@ demo_continuous(c(1, 10),
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
 \code{\link{label_currency}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_parse}()},

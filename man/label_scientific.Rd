@@ -9,7 +9,7 @@ label_scientific(
   scale = 1,
   prefix = "",
   suffix = "",
-  decimal.mark = ".",
+  decimal.mark = NULL,
   trim = TRUE,
   ...
 )
@@ -24,7 +24,8 @@ large.}
 \item{prefix, suffix}{Symbols to display before and after value.}
 
 \item{decimal.mark}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
 
 \item{trim}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
@@ -55,6 +56,7 @@ demo_log10(c(1, 1e9))
 Other labels for continuous scales: 
 \code{\link{label_bytes}()},
 \code{\link{label_currency}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_ordinal}()},

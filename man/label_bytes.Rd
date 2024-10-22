@@ -35,9 +35,12 @@ large.}
 applied to absolute value before \code{style_positive} and \code{style_negative} are
 processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
     \item{\code{suffix}}{Additional text to display after the number.}
-    \item{\code{big.mark}}{Character used between every 3 digits to separate thousands.}
+    \item{\code{big.mark}}{Character used between every 3 digits to separate thousands.
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{decimal.mark}}{The character to be used to indicate the numeric
-decimal point.}
+decimal point.  The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_positive}}{A string that determines the style of positive numbers:
 \itemize{
 \item \code{"none"} (the default): no change, e.g. \code{1}.
@@ -46,15 +49,21 @@ decimal point.}
 as wide as a number or \code{+}. Compared to \code{"none"}, adding a figure space
 can ensure numbers remain properly aligned when they are left- or
 right-justified.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{style_negative}}{A string that determines the style of negative numbers:
 \itemize{
-\item \code{"hyphen"} (the default): preceded by a standard hypen \code{-}, e.g. \code{-1}.
+\item \code{"hyphen"} (the default): preceded by a standard hyphen \code{-}, e.g. \code{-1}.
 \item \code{"minus"}, uses a proper Unicode minus symbol. This is a typographical
 nicety that ensures \code{-} aligns with the horizontal bar of the
 the horizontal bar of \code{+}.
 \item \code{"parens"}, wrapped in parentheses, e.g. \code{(1)}.
-}}
+}
+
+The default (\code{NULL}) retrieves the setting from the
+\link[=number_options]{number options}.}
     \item{\code{scale_cut}}{Named numeric vector that allows you to rescale large
 (or small) numbers and add a prefix. Built-in helpers include:
 \itemize{
@@ -105,6 +114,7 @@ demo_continuous(c(1, 1024^2),
 \seealso{
 Other labels for continuous scales: 
 \code{\link{label_currency}()},
+\code{\link{label_glue}()},
 \code{\link{label_number_auto}()},
 \code{\link{label_number_si}()},
 \code{\link{label_ordinal}()},

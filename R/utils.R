@@ -73,11 +73,7 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   n <- setdiff(n, 1L)
   ns <- length(n)
 
-  if (ns == 0) { # All have length 1
-    if (is.null(size)) {
-      return(xs)
-    }
-  } else if (ns == 1) {
+  if (ns == 1) {
     if (is.null(size)) {
       size <- n
     } else if (n != size) {
@@ -99,4 +95,8 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   to_recycle <- sizes == 1L
   x[to_recycle] <- lapply(x[to_recycle], rep_len, length.out = size)
   x
+}
+
+.onLoad <- function(lib, pkg) {
+  run_on_load()
 }
