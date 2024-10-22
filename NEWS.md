@@ -10,6 +10,7 @@
   using `get_palette()` or registered using `set_palette()` (#396).
 * `label_log()` has a `signed` argument for displaying negative numbers 
   (@teunbrand, #421).
+* New `label_dictionary()` for named lookup of labels (#458).
 
 * New function `compose_label()` to chain together label formatting functions 
   (#462)
