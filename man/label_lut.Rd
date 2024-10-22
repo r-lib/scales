@@ -41,6 +41,7 @@ demo_discrete(
 }
 \seealso{
 Other labels for discrete scales: 
+\code{\link{label_glue}()},
 \code{\link{label_parse}()},
 \code{\link{label_wrap}()}
 }
