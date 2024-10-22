@@ -11,6 +11,9 @@
 * `label_log()` has a `signed` argument for displaying negative numbers 
   (@teunbrand, #421).
 
+* New function `compose_label()` to chain together label formatting functions 
+  (#462)
+
 # scales 1.3.0
 
 ## Better type support
