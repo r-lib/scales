@@ -33,14 +33,14 @@
 #' )
 label_dictionary <- function(dictionary = character(), nomatch = NULL) {
 
-  if (!is.character(lut)) {
-    cli::cli_abort("The {.arg lut} argument must be a character vector.")
+  if (!is.character(dictionary)) {
+    cli::cli_abort("The {.arg dictionary} argument must be a character vector.")
   }
-  if (!is_named2(lut)) {
-    cli::cli_abort("The {.arg lut} argument must have names.")
+  if (!is_named2(dictionary)) {
+    cli::cli_abort("The {.arg dictionary} argument must have names.")
   }
-  names <- names(lut)
-  values <- unname(lut)
+  names <- names(dictionary)
+  values <- unname(dictionary)
 
   force(nomatch)
 
