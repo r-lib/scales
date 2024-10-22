@@ -19,6 +19,8 @@ reference:
   contents:
   - starts_with("label_")
   - matches("format")
+  - compose_label
+  - number_options
 
 - title:  Axis breaks
   desc: >
@@ -27,6 +29,7 @@ reference:
   contents:
   - starts_with("breaks_")
   - minor_breaks_width
+  - minor_breaks_log
 
 - title: "Bounds: ranges & rescaling"
   desc: >
@@ -68,6 +71,7 @@ reference:
   - contains("col")
   - muted
   - alpha
+  - get_palette
 
 - title: Non-colour palette functions
   desc: >

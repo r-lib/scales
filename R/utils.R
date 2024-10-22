@@ -73,11 +73,7 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   n <- setdiff(n, 1L)
   ns <- length(n)
 
-  if (ns == 0) { # All have length 1
-    if (is.null(size)) {
-      return(xs)
-    }
-  } else if (ns == 1) {
+  if (ns == 1) {
     if (is.null(size)) {
       size <- n
     } else if (n != size) {
@@ -99,4 +95,27 @@ recycle_common <- function(..., size = NULL, call = caller_env()) {
   to_recycle <- sizes == 1L
   x[to_recycle] <- lapply(x[to_recycle], rep_len, length.out = size)
   x
+}
+
+as_cli <- function(..., env = caller_env()) {
+  cli::cli_fmt(cli::cli_text(..., .envir = env))
+}
+
+check_object <- function(x, check_fun, what, ..., allow_null = FALSE,
+                         arg = caller_arg(x), call = caller_env()) {
+  if (!missing(x)) {
+    if (check_fun(x)) {
+      return(invisible(NULL))
+    }
+    if (allow_null && is_null(x)) {
+      return(invisible(NULL))
+    }
+  }
+
+  stop_input_type(x, as_cli(what), ..., allow_null = allow_null,
+                  arg = arg, call = call)
+}
+
+.onLoad <- function(lib, pkg) {
+  run_on_load()
 }

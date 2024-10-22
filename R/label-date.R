@@ -11,10 +11,10 @@
 #' suffix to the input (ns, us, ms, s, m, h, d, w).
 #'
 #' @inherit label_number return
-#' @param format For `date_format()` and `time_format()` a date/time format
+#' @param format For `label_date()` and `label_time()` a date/time format
 #'   string using standard POSIX specification.  See [strptime()] for details.
 #'
-#'   For `date_short()` a character vector of length 4 giving the format
+#'   For `label_date_short()` a character vector of length 4 giving the format
 #'   components to use for year, month, day, and hour respectively.
 #' @param tz a time zone name, see [timezones()]. Defaults
 #'   to UTC
@@ -22,6 +22,8 @@
 #'   uses the current locale. Setting this argument requires stringi, and you
 #'   can see a complete list of supported locales with
 #'   [stringi::stri_locale_list()].
+#' @param leading A string to replace leading zeroes with. Can be `""` to
+#'   disable leading characters or `"\u2007"` for figure-spaces.
 #' @export
 #' @examples
 #' date_range <- function(start, days) {
@@ -31,9 +33,9 @@
 #'
 #' two_months <- date_range("2020-05-01", 60)
 #' demo_datetime(two_months)
-#' demo_datetime(two_months, labels = date_format("%m/%d"))
-#' demo_datetime(two_months, labels = date_format("%e %b", locale = "fr"))
-#' demo_datetime(two_months, labels = date_format("%e %B", locale = "es"))
+#' demo_datetime(two_months, labels = label_date("%m/%d"))
+#' demo_datetime(two_months, labels = label_date("%e %b", locale = "fr"))
+#' demo_datetime(two_months, labels = label_date("%e %B", locale = "es"))
 #' # ggplot2 provides a short-hand:
 #' demo_datetime(two_months, date_labels = "%m/%d")
 #'
@@ -53,8 +55,9 @@ label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
 #' @export
 #' @rdname label_date
 #' @param sep Separator to use when combining date formats into a single string.
-label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") {
-  force_all(format, sep)
+label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
+                             leading = "0") {
+  force_all(format, sep, leading)
 
   function(x) {
     dt <- unclass(as.POSIXlt(x))
@@ -90,7 +93,16 @@ label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n") 
     )
 
     format <- apply(for_mat, 1, function(x) paste(rev(x[!is.na(x)]), collapse = sep))
-    format(x, format)
+    x <- format(x, format)
+
+    if (isTRUE(leading == "0")) {
+      return(x)
+    }
+
+    # Replace leading 0s with `leading` character
+    x <- gsub("^0", leading, x)
+    x <- gsub(paste0(sep, "0"), paste0(sep, leading), x, fixed = TRUE)
+    x
   }
 }
 
@@ -111,7 +123,10 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
     } else if (inherits(x, "difftime")) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
-      cli::cli_abort("{.fun label_time} can't be used with an object of class {.cls {class(x)}}")
+      stop_input_type(
+        x, as_cli("used with a {.cls POSIXt} or {.cls difftime} object"),
+        arg = I(as_cli("{.fn label_time}"))
+      )
     }
   }
 }
@@ -151,7 +166,7 @@ format_dt <- function(x, format, tz = "UTC", locale = NULL) {
 #' `r lifecycle::badge("superseded")`
 #'
 #' These functions are kept for backward compatibility; you should switch
-#' to [label_date()/[label_time()] for new code.
+#' to [label_date()]/[label_time()] for new code.
 #'
 #' @keywords internal
 #' @export

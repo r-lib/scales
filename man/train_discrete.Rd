@@ -4,7 +4,14 @@
 \alias{train_discrete}
 \title{Train (update) a discrete scale}
 \usage{
-train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE, fct = NA)
+train_discrete(
+  new,
+  existing = NULL,
+  drop = FALSE,
+  na.rm = FALSE,
+  fct = NA,
+  call = caller_env()
+)
 }
 \arguments{
 \item{new}{New data to add to scale}
@@ -16,6 +23,8 @@ train_discrete(new, existing = NULL, drop = FALSE, na.rm = FALSE, fct = NA)
 \item{na.rm}{If \code{TRUE}, will remove missing values}
 
 \item{fct}{Treat \code{existing} as if it came from a factor (ie. don't sort the range)}
+
+\item{call}{A call to display in error messages}
 }
 \description{
 Train (update) a discrete scale

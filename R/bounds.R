@@ -368,7 +368,7 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
     return(TRUE)
   }
   if (length(x) != 2) cli::cli_abort("{.arg x} must be length 1 or 2")
-  if (any(is.na(x))) {
+  if (anyNA(x)) {
     return(NA)
   }
 
@@ -378,13 +378,14 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
     return(TRUE)
   }
 
-  # If we reach this, then x must be (-Inf, Inf) or (Inf, -Inf)
-  if (all(is.infinite(x))) {
+  # If we reach this, then x must be (-Inf, <number>) or (<number>, Inf)
+  if (any(is.infinite(x))) {
     return(FALSE)
   }
 
   # Take the smaller (in magnitude) value of x, and use it as the scaling
   # factor.
+  x <- as.numeric(unclass(x))
   m <- min(abs(x))
 
   # If we get here, then exactly one of the x's is 0. Return FALSE

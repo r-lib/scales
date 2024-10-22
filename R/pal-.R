@@ -62,9 +62,7 @@
 #' pal <- as_discrete_pal(pal_div_gradient())
 #' show_col(pal(9))
 new_continuous_palette <- function(fun, type, na_safe = NA) {
-  if (!is.function(fun)) {
-    cli::cli_abort("{.arg fun} must be a function.")
-  }
+  check_function(fun)
   class(fun) <- union(c("pal_continuous", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "na_safe") <- na_safe
@@ -74,9 +72,7 @@ new_continuous_palette <- function(fun, type, na_safe = NA) {
 #' @rdname new_continuous_palette
 #' @export
 new_discrete_palette <- function(fun, type, nlevels = NA) {
-  if (!is.function(fun)) {
-    cli::cli_abort("{.arg fun} must be a function.")
-  }
+  check_function(fun)
   class(fun) <- union(c("pal_discrete", "scales_pal"), class(fun))
   attr(fun, "type") <- type
   attr(fun, "nlevels") <- nlevels
@@ -156,6 +152,14 @@ as_discrete_pal.pal_continuous <- function(x, ...) {
   )
 }
 
+#' @export
+as_discrete_pal.character <- function(x, ...) {
+  if (length(x) > 1)  {
+    return(pal_manual(x))
+  }
+  as_discrete_pal(get_palette(x, ...))
+}
+
 ## As continuous palette --------------------------------------------------
 
 #' @rdname new_continuous_palette
@@ -196,6 +200,14 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
       a continuous palette."
     )
   )
+}
+
+#' @export
+as_continuous_pal.character <- function(x, ...) {
+  if (length(x) > 1) {
+    return(colour_ramp(x))
+  }
+  as_continuous_pal(get_palette(x, ...))
 }
 
 # Utility -----------------------------------------------------------------

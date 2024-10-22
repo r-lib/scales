@@ -6,16 +6,16 @@
 \title{Diverging colour gradient (continuous).}
 \usage{
 pal_div_gradient(
-  low = mnsl("10B 4/6"),
-  mid = mnsl("N 8/0"),
-  high = mnsl("10R 4/6"),
+  low = "#2B6788",
+  mid = "#CBCBCB",
+  high = "#90503F",
   space = "Lab"
 )
 
 div_gradient_pal(
-  low = mnsl("10B 4/6"),
-  mid = mnsl("N 8/0"),
-  high = mnsl("10R 4/6"),
+  low = "#2B6788",
+  mid = "#CBCBCB",
+  high = "#90503F",
   space = "Lab"
 )
 }
@@ -39,7 +39,6 @@ image(r, col = pal_div_gradient()(seq(0, 1, length.out = 12)))
 image(r, col = pal_div_gradient()(seq(0, 1, length.out = 30)))
 image(r, col = pal_div_gradient()(seq(0, 1, length.out = 100)))
 
-library(munsell)
-pal <- pal_div_gradient(low = mnsl(complement("10R 4/6"), fix = TRUE))
+pal <- pal_div_gradient(low = "#2E6A70")
 image(r, col = pal(seq(0, 1, length.out = 100)))
 }
