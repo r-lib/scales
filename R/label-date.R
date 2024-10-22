@@ -163,7 +163,7 @@ format_dt <- function(x, format, tz = "UTC", locale = NULL) {
 #' `r lifecycle::badge("superseded")`
 #'
 #' These functions are kept for backward compatibility; you should switch
-#' to [label_date()/[label_time()] for new code.
+#' to [label_date()]/[label_time()] for new code.
 #'
 #' @keywords internal
 #' @export
