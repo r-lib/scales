@@ -14,8 +14,14 @@ consecutively.
 \item{call}{A call to display in error messages.}
 }
 \value{
-A labelling function that applies the provided
-functions to breaks to return labels.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 This labeller provides a general mechanism for composing two or more

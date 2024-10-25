@@ -3,13 +3,11 @@
 #' This labeller provides a general mechanism for composing two or more
 #' labellers together.
 #'
+#' @inherit label_number return
 #' @param ... One or more labelling functions. These will be applied to breaks
 #'   consecutively.
 #'   [Lambda syntax][rlang::as_function] is allowed.
 #' @param call A call to display in error messages.
-#'
-#' @return A labelling function that applies the provided
-#'   functions to breaks to return labels.
 #'
 #' @export
 #'

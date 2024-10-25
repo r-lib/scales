@@ -4,14 +4,13 @@
 #' Use `label_dictionary()` for looking up succinct breaks in a named character
 #' vector giving complete labels.
 #'
+#' @inherit label_number return
 #' @param dictionary A named character vector of labels. The names are expected
 #'   to match the breaks, and the values become the labels.
 #' @param nomatch A string to label breaks that do not match any name in
 #'  `dictionary`. When `NULL` (default), the breaks are not translated but are
 #'  kept as-is.
 #'
-#' @return A labeller function that takes a character vector of breaks and
-#'   returns a character vector of labels.
 #' @export
 #' @family labels for discrete scales
 #' @examples

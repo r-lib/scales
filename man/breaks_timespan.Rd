@@ -12,6 +12,12 @@ breaks_timespan(unit = c("secs", "mins", "hours", "days", "weeks"), n = 5)
 \item{n}{Desired number of breaks. You may get slightly more or fewer
 breaks that requested.}
 }
+\value{
+All \code{breaks_()} functions return a function for generating breaks. These
+functions takes, as their first argument a vector of values that represent
+the data range to provide breaks for. Some will optionally take a second
+argument that allows you to specify the number of breaks to recieve.
+}
 \description{
 As timespan units span a variety of bases (1000 below seconds, 60 for second
 and minutes, 24 for hours, and 7 for days), the range of the input data

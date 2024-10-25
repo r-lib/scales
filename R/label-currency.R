@@ -10,6 +10,7 @@
 #'   the largest value is less than `largest_with_fractional` which by default
 #'   is 100,000.
 #' @param prefix,suffix Symbols to display before and after value.
+#'
 #' @inheritDotParams number
 #' @export
 #' @family labels for continuous scales

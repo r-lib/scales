@@ -15,8 +15,14 @@ to match the breaks, and the values become the labels.}
 kept as-is.}
 }
 \value{
-A labeller function that takes a character vector of breaks and
-returns a character vector of labels.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 Use \code{label_dictionary()} for looking up succinct breaks in a named character

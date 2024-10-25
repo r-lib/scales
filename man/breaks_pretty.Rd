@@ -12,6 +12,12 @@ breaks that requested.}
 
 \item{...}{other arguments passed on to \code{\link[=pretty]{pretty()}}}
 }
+\value{
+All \code{breaks_()} functions return a function for generating breaks. These
+functions takes, as their first argument a vector of values that represent
+the data range to provide breaks for. Some will optionally take a second
+argument that allows you to specify the number of breaks to recieve.
+}
 \description{
 Uses default R break algorithm as implemented in \code{\link[=pretty]{pretty()}}. This is
 primarily useful for date/times, as \code{\link[=extended_breaks]{extended_breaks()}} should do a slightly

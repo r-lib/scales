@@ -4,6 +4,8 @@
 #' heuristics designed to automatically generate useful labels across a wide
 #' range of inputs
 #'
+#' @inherit label_number return
+#'
 #' @export
 #' @family labels for continuous scales
 #' @examples

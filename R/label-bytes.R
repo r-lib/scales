@@ -5,6 +5,7 @@
 #' [Units of Information](https://en.wikipedia.org/wiki/Units_of_information)
 #' on Wikipedia for more details.
 #'
+#' @inherit label_number return
 #' @param units Unit to use. Should either one of:
 #'   * "kB", "MB", "GB", "TB", "PB", "EB", "ZB", and "YB" for
 #'     SI units (base 1000).
@@ -14,8 +15,7 @@
 #'     unit for each value.
 #' @inheritParams number_format
 #' @inheritDotParams number
-#' @return A labeller function that takes a numeric vector of breaks and
-#'   returns a character vector of labels.
+#'
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
