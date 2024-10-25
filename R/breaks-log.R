@@ -25,6 +25,9 @@
 #' breaks, `>= n-2`, are returned or all candidates have been used.
 #' @param n desired number of breaks
 #' @param base base of logarithm to use
+#'
+#' @inherit breaks_width return
+#'
 #' @export
 #' @examples
 #' demo_log10(c(1, 1e5))
@@ -93,6 +96,7 @@ log_breaks <- breaks_log
 #'   negative numbers.
 #'
 #' @return A function to generate minor ticks.
+#'
 #' @export
 #'
 #' @examples

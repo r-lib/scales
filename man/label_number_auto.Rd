@@ -6,6 +6,16 @@
 \usage{
 label_number_auto()
 }
+\value{
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
+}
 \description{
 Switches between \code{\link[=number_format]{number_format()}} and \code{\link[=scientific_format]{scientific_format()}} based on a set of
 heuristics designed to automatically generate useful labels across a wide

@@ -3,14 +3,12 @@
 #' Use `label_glue()` to perform string interpolation using the \pkg{glue}
 #' package. Enclosed expressions will be evaluated as R code.
 #'
+#' @inherit label_number return
 #' @param pattern A glue string used for formatting. The `x` variable holds the
 #'   breaks, so that `"{x}"` (default) returns the breaks as-is.
 #' @param ... Arguments passed on to [`glue::glue()`].
 #' @param parse Whether to return labels as expressions.
 #' @inheritParams glue::glue
-#'
-#' @return A labeller function that takes a vector of breaks and returns a
-#'   character vector of labels.
 #' @export
 #' @family labels for continuous scales
 #' @family labels for discrete scales

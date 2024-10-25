@@ -23,6 +23,12 @@ offset by three months and five days, which is useful for the UK tax year.
 Note that due to way that dates are rounded, there's no guarantee that
 \code{offset = c(x, y)} will give the same result as \code{offset = c(y, x)}.}
 }
+\value{
+All \code{breaks_()} functions return a function for generating breaks. These
+functions takes, as their first argument a vector of values that represent
+the data range to provide breaks for. Some will optionally take a second
+argument that allows you to specify the number of breaks to recieve.
+}
 \description{
 Useful for numeric, date, and date-time scales.
 }

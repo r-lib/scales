@@ -4,7 +4,7 @@
 #' superscript formatting. `label_log()` returns expressions suitable for
 #' labelling in scales, whereas `format_log()` returns deparsed text.
 #'
-#'
+#' @inherit label_number return
 #' @param x A numeric vector to format
 #' @param base Base of logarithm to use
 #' @param digits Number of significant digits to show for the exponent. Argument
@@ -13,7 +13,7 @@
 #'   default, `NULL`, displays signs if there are zeroes or negative numbers
 #'   present.
 #' @param ... Passed on to `format()`.
-#' @inherit label_number return
+#' 
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
 #' @family labels for log scales

@@ -19,8 +19,14 @@ evaluated from left to right. If \code{.x} is an environment, the expressions ar
 evaluated in that environment and \code{.envir} is ignored. If \code{NULL} is passed, it is equivalent to \code{\link[=emptyenv]{emptyenv()}}.}
 }
 \value{
-A labeller function that takes a vector of breaks and returns a
-character vector of labels.
+All \code{label_()} functions return a "labelling" function, i.e. a function that
+takes a vector \code{x} and returns a character vector of \code{length(x)} giving a
+label for each input value.
+
+Labelling functions are designed to be used with the \code{labels} argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.
 }
 \description{
 Use \code{label_glue()} to perform string interpolation using the \pkg{glue}

@@ -12,6 +12,12 @@ breaks that requested.}
 
 \item{...}{other arguments passed on to \code{\link[labeling:extended]{labeling::extended()}}}
 }
+\value{
+All \code{breaks_()} functions return a function for generating breaks. These
+functions takes, as their first argument a vector of values that represent
+the data range to provide breaks for. Some will optionally take a second
+argument that allows you to specify the number of breaks to recieve.
+}
 \description{
 This breaks function typically labels zero and the last \code{n - 1} integers of a
 range if that range is large enough (currently: 3). For smaller ranges, it
