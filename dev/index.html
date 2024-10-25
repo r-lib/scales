@@ -101,37 +101,36 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">txhousing</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">make_date</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">city</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">sales</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5e2</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">sales</span>, group <span class="op">=</span> <span class="va">city</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> </span>
+<span><span class="va">txhousing</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu">make_date</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">city</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">sales</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5e2</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">sales</span>, group <span class="op">=</span> <span class="va">city</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span>na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span></span>
 <span>    <span class="cn">NULL</span>,</span>
-<span>    breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"2 years"</span><span class="op">)</span>, </span>
+<span>    breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"2 years"</span><span class="op">)</span>,</span>
 <span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/label_date.html">label_date</a></span><span class="op">(</span><span class="st">"'%y"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span></span>
 <span>    <span class="st">"Total sales"</span>,</span>
 <span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/label_number.html">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/number.html">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-labels-1.png"><!-- --></p>
+<p><img src="reference/figures/README-labels-1.png" alt="A line plot created with ggplot2, showing property sales in Texas. The x scale uses `scales::break_width()` to place breaks every second year, and `scales::label_date()` to create a custom format for the labels. The y-scale uses `scales::label_number()` to reformat the labels with `scales::cut_short_scale()`."></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">economics</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&lt;</span> <span class="fu">ymd</span><span class="op">(</span><span class="st">"1970-01-01"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">pce</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<code class="sourceCode R"><span><span class="va">economics</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">date</span> <span class="op">&lt;</span> <span class="fu">ymd</span><span class="op">(</span><span class="st">"1970-01-01"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">pce</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_date.html" class="external-link">scale_x_date</a></span><span class="op">(</span><span class="cn">NULL</span>,</span>
-<span>    breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"3 months"</span><span class="op">)</span>, </span>
+<span>    breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="st">"3 months"</span><span class="op">)</span>,</span>
 <span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/label_date.html">label_date_short</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span><span class="st">"Personal consumption expenditures"</span>,</span>
 <span>    breaks <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/breaks_extended.html">breaks_extended</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span>,</span>
-<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/dollar_format.html">label_dollar</a></span><span class="op">(</span><span class="op">)</span>  </span>
+<span>    labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="reference/dollar_format.html">label_dollar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-labels-2.png"><!-- --></p>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" alt="A line plot created with ggplot2, showing personal expenses between 1967 and 1970. The x axis uses `scales::break_width()` to put a break every 3 months and `scales::label_date_short()` to only show the year on the first occuring break of that year. The y axis uses `scales::breaks_extended()` to request 8 breaks, though only 6 are ultimately provided, and `scales::label_dollar()` to format the label as a dollar value."></p>
 <p>Generally, I don’t recommend running <code><a href="https://scales.r-lib.org">library(scales)</a></code> because when you type (e.g.) <code>scales::label_</code> autocomplete will provide you with a list of labelling functions to jog your memory.</p>
 </div>
 <div class="section level3">
@@ -139,7 +138,10 @@
 </h3>
 <p>Scales colour palettes are used to power the scales in ggplot2, but you can use them in any plotting system. The following example shows how you might apply them to a base plot.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co">#|   sepal length and sepal width in the Iris dataset. The points are coloured</span></span>
+<span><span class="co">#|   according to species and the `scales::pal_brewer()` are used to provide the</span></span>
+<span><span class="co">#|   colours.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
 <span><span class="co"># pull a list of colours from any palette</span></span>
 <span><span class="fu"><a href="reference/pal_viridis.html">pal_viridis</a></span><span class="op">(</span><span class="op">)</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "#440154FF" "#31688EFF" "#35B779FF" "#FDE725FF"</span></span>
@@ -148,7 +150,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/palette.html" class="external-link">palette</a></span><span class="op">(</span><span class="fu"><a href="reference/pal_brewer.html">pal_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set2"</span><span class="op">)</span><span class="op">(</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Sepal.Length</span> <span class="op">~</span> <span class="va">Sepal.Width</span>, data <span class="op">=</span> <span class="va">iris</span>, col <span class="op">=</span> <span class="va">Species</span>, pch <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-palettes-1.png"><!-- --></p>
+<p><img src="reference/figures/README-palettes-1.png" alt="A scatterplot created with base plot showing the relationship between"></p>
 <p>scales also gives users the ability to define and apply their own custom transformation functions for repeated use.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># use new_transform to build a new transformation</span></span>
@@ -161,9 +163,9 @@
 <span></span>
 <span><span class="va">dsamp</span> <span class="op">&lt;-</span> <span class="fu">sample_n</span><span class="op">(</span><span class="va">diamonds</span>, <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">dsamp</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">carat</span>, <span class="va">price</span>, colour <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="va">transform_logp3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-transforms-1.png"><!-- --></p>
+<p><img src="reference/figures/README-transforms-1.png" alt="A scatterplot created with ggplot2 showing the relationship between diamond price and its carat for a subset of the data in the diamonds dataset. The y scale uses a custom log transform created with `scales::new_transform()`."></p>
 </div>
 </div>
 </div>
@@ -216,7 +218,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=scales" class="external-link"><img src="https://www.r-pkg.org/badges/version/scales" alt="CRAN status"></a></li>
 <li><a href="https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/r-lib/scales?branch=main" class="external-link"><img src="https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://app.codecov.io/gh/r-lib/scales" class="external-link"><img src="https://codecov.io/gh/r-lib/scales/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
