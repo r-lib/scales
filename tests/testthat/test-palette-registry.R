@@ -4,13 +4,10 @@ test_that("palette getters and setters work as intended", {
   expect_in(c("hue", "grey"), palette_names())
 
   # We cannot get unknown palettes
-  expect_error(get_palette("rgb"), "Unknown palette")
+  expect_snapshot(get_palette("rgb"), error = TRUE)
 
   # We cannot set nonsense palettes
-  expect_error(
-    set_palette("foobar", list(a = 1:2, b = "A")),
-    "must be a"
-  )
+  expect_snapshot(set_palette("foobar", list(a = 1:2, b = "A")), error = TRUE)
 
   # Test we can set custom palettes
   colours <- c("red", "green", 'blue')

@@ -1,6 +1,6 @@
 test_that("R6 inheritance works", {
-  expect_error(ContinuousRange$new(), NA)
-  expect_error(DiscreteRange$new(), NA)
+  expect_no_error(ContinuousRange$new())
+  expect_no_error(DiscreteRange$new())
   expect_true(R6::is.R6(ContinuousRange$new()))
   expect_true(R6::is.R6(DiscreteRange$new()))
 })

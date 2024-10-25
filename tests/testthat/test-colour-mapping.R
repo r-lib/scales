@@ -19,11 +19,11 @@ test_that("Outside of domain returns na.color", {
     expect_true(is.na(col_numeric(bw, c(0, 1), na.color = NA)(-1)))
     expect_true(is.na(col_numeric(bw, c(0, 1), na.color = NA)(2)))
   })
-  expect_warning(col_factor(bw, letters, na.color = NA)("foo"))
-  expect_warning(col_quantile(bw, 0:1, na.color = NA)(-1))
-  expect_warning(col_quantile(bw, 0:1, na.color = NA)(2))
-  expect_warning(col_numeric(bw, c(0, 1), na.color = NA)(-1))
-  expect_warning(col_numeric(bw, c(0, 1), na.color = NA)(2))
+  expect_snapshot(col_factor(bw, letters, na.color = NA)("foo"))
+  expect_snapshot(col_quantile(bw, 0:1, na.color = NA)(-1))
+  expect_snapshot(col_quantile(bw, 0:1, na.color = NA)(2))
+  expect_snapshot(col_numeric(bw, c(0, 1), na.color = NA)(-1))
+  expect_snapshot(col_numeric(bw, c(0, 1), na.color = NA)(2))
 })
 
 test_that("Basic color accuracy", {
@@ -72,7 +72,7 @@ test_that("factors match by name, not position", {
   expect_identical(pal(partial), pal(droplevels(partial)))
 
   # Sending in values outside of the color scale should result in a warning and na.color
-  expect_warning(col <- pal(letters[10:20]))
+  expect_snapshot(col <- pal(letters[10:20]))
   expect_true(all(is.na(col)))
 })
 
@@ -110,7 +110,7 @@ test_that("qualitative palettes don't interpolate", {
   )
 
   # Values outside of the originally provided levels should be NA with warning
-  expect_warning(pal(letters[6]))
+  expect_snapshot(pal(letters[6]))
   expect_true(suppressWarnings(is.na(pal(letters[6]))))
 })
 
@@ -122,7 +122,7 @@ test_that("OK, qualitative palettes sometimes interpolate", {
     name = "Accent"
   )
 
-  expect_warning(result <- pal(letters[1:20]))
+  expect_snapshot(result <- pal(letters[1:20]))
   # The first and last levels are the first and last palette colors
   expect_true(all(result[c(1, 20)] %in% allColors))
   # All the rest are interpolated though
