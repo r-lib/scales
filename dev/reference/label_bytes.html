@@ -148,8 +148,13 @@ width (see <code><a href="https://rdrr.io/r/base/format.html" class="external-li
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A labeller function that takes a numeric vector of breaks and
-returns a character vector of labels.</p>
+    <p>All <code>label_()</code> functions return a "labelling" function, i.e. a function that
+takes a vector <code>x</code> and returns a character vector of <code>length(x)</code> giving a
+label for each input value.</p>
+<p>Labelling functions are designed to be used with the <code>labels</code> argument of
+ggplot2 scales. The examples demonstrate their use with x scales, but
+they work similarly for all scales, including those that generate legends
+rather than axes.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
