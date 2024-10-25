@@ -40,7 +40,7 @@ test_that("Byte formatter can take a symbol designator", {
   )
 
   # informative warning for incorrect spelling
-  expect_warning(number_bytes(c(50, 400, 502, NA), symbol = "k"), "must be")
+  expect_snapshot(number_bytes(c(50, 400, 502, NA), symbol = "k"))
 
   # respects unit designation
   expect_equal(number_bytes(1024, accuracy = .01), c("1.00 KiB"))
@@ -58,8 +58,8 @@ test_that("Byte formatter can take a symbol designator", {
   )
 
   # unit system is enforced
-  expect_warning(number_bytes(1024^(1:2), "kB", units = "binary"), "KiB")
-  expect_warning(number_bytes(1024^(1:2), "KiB", units = "si"), "kB")
+  expect_snapshot(number_bytes(1024^(1:2), "kB", units = "binary"))
+  expect_snapshot(number_bytes(1024^(1:2), "KiB", units = "si"))
 })
 
 test_that("Byte formatter handles zero values", {
@@ -80,8 +80,8 @@ test_that('Byte formatter symbol = "auto" can show variable multiples', {
 })
 
 test_that("Byte formatter throws informative error for wrong length symbol", {
-  expect_error(number_bytes(symbol = character()), "not length 0")
-  expect_error(number_bytes(symbol = c("kB", "MB")), "not length 2")
+  expect_snapshot(number_bytes(symbol = character()), error = TRUE)
+  expect_snapshot(number_bytes(symbol = c("kB", "MB")), error = TRUE)
 })
 
 test_that("preserves names", {

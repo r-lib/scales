@@ -1,5 +1,5 @@
 test_that("pal_manual gives warning if n greater than the number of values", {
-  expect_warning(pal_manual(c("red", "blue", "green"))(4), "can handle a maximum")
+  expect_snapshot(pal_manual(c("red", "blue", "green"))(4))
 })
 
 test_that("pal_manual returns an unnamed vector", {

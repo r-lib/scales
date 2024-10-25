@@ -17,9 +17,9 @@ test_that("Modulus is invertible for negative and positive numbers", {
 
 test_that("Boxcox gives error for negative values", {
   trans <- transform_boxcox(p = .1)
-  expect_error(trans$trans(-10:10))
+  expect_snapshot(trans$trans(-10:10), error = TRUE)
   trans <- transform_boxcox(p = -2)
-  expect_error(trans$trans(-10:10))
+  expect_snapshot(trans$trans(-10:10), error = TRUE)
 })
 
 test_that("Boxcox can handle NA values", {

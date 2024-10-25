@@ -9,7 +9,7 @@
 status](https://www.r-pkg.org/badges/version/scales)](https://CRAN.R-project.org/package=scales)
 [![R-CMD-check](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/scales/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/r-lib/scales/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales?branch=main)
+coverage](https://codecov.io/gh/r-lib/scales/graph/badge.svg)](https://app.codecov.io/gh/r-lib/scales)
 <!-- badges: end -->
 
 One of the most difficult parts of any graphics package is scaling,
@@ -46,42 +46,41 @@ library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 
-txhousing %>% 
-  mutate(date = make_date(year, month, 1)) %>% 
-  group_by(city) %>% 
-  filter(min(sales) > 5e2) %>% 
-  ggplot(aes(date, sales, group = city)) + 
-  geom_line(na.rm = TRUE) + 
+txhousing %>%
+  mutate(date = make_date(year, month, 1)) %>%
+  group_by(city) %>%
+  filter(min(sales) > 5e2) %>%
+  ggplot(aes(date, sales, group = city)) +
+  geom_line(na.rm = TRUE) +
   scale_x_date(
     NULL,
-    breaks = scales::breaks_width("2 years"), 
+    breaks = scales::breaks_width("2 years"),
     labels = scales::label_date("'%y")
-  ) + 
+  ) +
   scale_y_log10(
     "Total sales",
     labels = scales::label_number(scale_cut = scales::cut_short_scale())
   )
 ```
 
-![](man/figures/README-labels-1.png)<!-- -->
+<img src="man/figures/README-labels-1.png" alt="A line plot created with ggplot2, showing property sales in Texas. The x scale uses `scales::break_width()` to place breaks every second year, and `scales::label_date()` to create a custom format for the labels. The y-scale uses `scales::label_number()` to reformat the labels with `scales::cut_short_scale()`."  />
 
 ``` r
-
-economics %>% 
-  filter(date < ymd("1970-01-01")) %>% 
-  ggplot(aes(date, pce)) + 
-  geom_line() + 
+economics %>%
+  filter(date < ymd("1970-01-01")) %>%
+  ggplot(aes(date, pce)) +
+  geom_line() +
   scale_x_date(NULL,
-    breaks = scales::breaks_width("3 months"), 
+    breaks = scales::breaks_width("3 months"),
     labels = scales::label_date_short()
-  ) + 
+  ) +
   scale_y_continuous("Personal consumption expenditures",
     breaks = scales::breaks_extended(8),
-    labels = scales::label_dollar()  
+    labels = scales::label_dollar()
   )
 ```
 
-![](man/figures/README-labels-2.png)<!-- -->
+<img src="man/figures/README-unnamed-chunk-4-1.png" alt="A line plot created with ggplot2, showing personal expenses between 1967 and 1970. The x axis uses `scales::break_width()` to put a break every 3 months and `scales::label_date_short()` to only show the year on the first occuring break of that year. The y axis uses `scales::breaks_extended()` to request 8 breaks, though only 6 are ultimately provided, and `scales::label_dollar()` to format the label as a dollar value."  />
 
 Generally, I don’t recommend running `library(scales)` because when you
 type (e.g.) `scales::label_` autocomplete will provide you with a list
@@ -94,6 +93,9 @@ can use them in any plotting system. The following example shows how you
 might apply them to a base plot.
 
 ``` r
+#|   sepal length and sepal width in the Iris dataset. The points are coloured
+#|   according to species and the `scales::pal_brewer()` are used to provide the
+#|   colours.
 library(scales)
 # pull a list of colours from any palette
 pal_viridis()(4)
@@ -105,7 +107,7 @@ par(mar = c(5, 5, 1, 1))
 plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
 ```
 
-![](man/figures/README-palettes-1.png)<!-- -->
+<img src="man/figures/README-palettes-1.png" alt="A scatterplot created with base plot showing the relationship between"  />
 
 scales also gives users the ability to define and apply their own custom
 transformation functions for repeated use.
@@ -121,8 +123,8 @@ transform_logp3 <- new_transform(
 
 dsamp <- sample_n(diamonds, 100)
 ggplot(dsamp, aes(carat, price, colour = color)) +
-  geom_point() + 
+  geom_point() +
   scale_y_continuous(trans = transform_logp3)
 ```
 
-![](man/figures/README-transforms-1.png)<!-- -->
+<img src="man/figures/README-transforms-1.png" alt="A scatterplot created with ggplot2 showing the relationship between diamond price and its carat for a subset of the data in the diamonds dataset. The y scale uses a custom log transform created with `scales::new_transform()`."  />

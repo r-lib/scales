@@ -469,7 +469,7 @@ cut_time_scale <- function(space = FALSE) {
   out <- c(
     0,
     "ns" = 1e-9,
-    "\u03BCs" = 1e-6,
+    "us" = 1e-6,
     "ms" = 1e-3,
     "s" = 1,
     "m" = 60,
@@ -477,6 +477,9 @@ cut_time_scale <- function(space = FALSE) {
     "d" = 24 * 3600,
     "w" = 7 * 24 * 3600
   )
+  if (l10n_info()[["UTF-8"]]) {
+    names(out)[3] <- "\u03BCs"
+  }
   if (space) {
     names(out) <- paste0(" ", names(out))
   }
