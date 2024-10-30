@@ -14,6 +14,10 @@
 
 * New function `compose_label()` to chain together label formatting functions 
   (#462)
+* Palette function now have classes, attributes and coercion methods 
+  (@teunbrand, #426).
+* Added colour manipulation functions: `col_shift()`, `col_saturate()`, 
+  `col_darker()`, `col_lighter()` and `col_mix()` (@teunbrand, #423)
 
 # scales 1.3.0
 
