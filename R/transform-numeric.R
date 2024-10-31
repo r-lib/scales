@@ -255,8 +255,7 @@ transform_exp <- function(base = exp(1)) {
     function(x) base^x,
     function(x) log(x, base = base),
     d_transform = function(x) base^x * log(base),
-    d_inverse = function(x) 1 / x / log(base),
-    breaks = breaks_exp(),
+    d_inverse = function(x) 1 / x / log(base)
   )
 }
 
