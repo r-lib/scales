@@ -106,3 +106,6 @@ show_col(pal(c(0, 0.1, 0.2, 0.4, 1)))
 pal <- as_discrete_pal(pal_div_gradient())
 show_col(pal(9))
 }
+\seealso{
+\link[=palette-recommendations]{palette recommendations}
+}
