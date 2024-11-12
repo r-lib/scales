@@ -16,7 +16,7 @@
 #'
 #' @return The `get_palette()` function returns a palette. The `set_palette()`
 #'   function is called for side effects and returns nothing.
-#' @export
+#' @noRd
 #'
 #' @examples
 #' # Get one of the known palettes
@@ -61,8 +61,6 @@ get_palette <- function(name, ...) {
   cli::cli_abort("Failed to interpret {name} as palette.")
 }
 
-#' @export
-#' @rdname get_palette
 set_palette <- function(name, palette, warn_conflict = TRUE) {
   name <- tolower(name)
   if (!is_function(palette) && !is_character(palette)) {
@@ -78,14 +76,10 @@ set_palette <- function(name, palette, warn_conflict = TRUE) {
   invisible(NULL)
 }
 
-#' @export
-#' @rdname get_palette
 palette_names <- function() {
   names(.known_palettes)
 }
 
-#' @export
-#' @rdname get_palette
 reset_palettes <- function() {
   env_unbind(.known_palettes, palette_names())
   init_palettes()

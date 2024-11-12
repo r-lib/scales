@@ -71,7 +71,7 @@ reference:
   - contains("col")
   - muted
   - alpha
-  - get_palette
+  - palette-recommendations
 
 - title: Non-colour palette functions
   desc: >

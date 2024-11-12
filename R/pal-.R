@@ -1,3 +1,89 @@
+#' @name palette-recommendations
+#' @title Recommendations for colour palettes
+#' @description
+#' For the purposes of these recommendations, we define a palette as a function
+#' that either takes an `n` argument for the number of desired output colours or
+#' a `value` argument between 0-1 representing how far along a gradient output
+#' colours should be. The palette then returns a number of colours equal to `n`
+#' or `length(x)`.
+#'
+#' The convention in the scales package is to name functions that generate
+#' palettes (palette factories) with the `pal_`-prefix. The benefit of
+#' factories is that you can easily parameterise palettes, for example giving
+#' options for how a palette should be constructed.
+#'
+#' In the example below `pal_aurora()` is a palette factory parameterised by
+#' a `direction` argument.
+#'
+#' ```r
+#' pal_aurora <- function(direction = 1) {
+#'   colours <- c("palegreen", "deepskyblue", "magenta")
+#'   if (sign(direction) == -1) {
+#'     colours <- rev(colours)
+#'   }
+#'   pal_manual(colours, type = "colour")
+#' }
+#'
+#' class(pal_aurora())
+#' #> [1] "pal_discrete" "scales_pal"   "function"
+#' ```
+#'
+#' It is recommended that a palette factory returns a function with either the
+#' `pal_discrete` or `pal_continuous` class. If your factory constructs a
+#' plain vector of colours, then `pal_manual(type = "colour")` or
+#' `pal_gradient_n()` are useful to return a classed palette for this common
+#' use case.
+#'
+#' When your inner palette function does not return a defined vector of colours,
+#' it is recommended to use `new_discrete_palette` and `new_continuous_palette`
+#' instead and supplement the additional `type` and `na_safe`/`nlevels`
+#' properties. This should allow easy translation between discrete and
+#' continuous palettes.
+#'
+#' ```r
+#' pal_random <- function() {
+#'   fun <- function(n) {
+#'     sample(colours(distinct = TRUE), size = n)
+#'   }
+#'   new_discrete_palette(fun, type = "colour", nlevels = length(colours()))
+#' }
+#' ```
+#'
+#' If you don't have parameterised palettes, but also if you have palette
+#' factories, it is encouraged to export an (inner) palette function or
+#' plain colour vector. This is in addition to exporting the palette factory.
+#' Exporting this makes it easy for users to specify for example
+#' `as_continuous_pal(mypackage::aurora)`.
+#'
+#' ```
+#' #' @export
+#' aurora <- pal_aurora()
+#'
+#' # or:
+#'
+#' #' @export
+#' aurora <- c("palegreen", "deepskyblue", "magenta")
+#' ```
+#'
+#' Lastly, for testing purposes we encourage that your palettes can be
+#' interpreted both as discrete palette, but also a continuous palette.
+#' To test for  this, you can test the output of `as_discrete_pal()` and
+#' `as_continuous_pal()`.
+#'
+#' ```r
+#' test_that("pal_aurora can be discrete or continuous", {
+#'
+#'   my_pal <- pal_aurora()
+#'   colours <- c("palegreen", "deepskyblue", "magenta")
+#'
+#'   expect_equal(as_discrete_pal(my_pal)(3), colours)
+#'   expect_equal(as_continuous_pal(my_pal)(c(0, 0.5, 1)), alpha(colours, NA))
+#'
+#' })
+#' ```
+#' @seealso [palette utilities][new_continuous_palette]
+NULL
+
 # Constructors ------------------------------------------------------------
 
 #' Constructors for palettes
@@ -28,6 +114,7 @@
 #' For `palette_nlevels()` a single integer. For `palette_na_safe()` a boolean.
 #' For `palette_type()` a string.
 #' @export
+#' @seealso [palette recommendations][palette-recommendations]
 #'
 #' @examples
 #' # Creating a new discrete palette
