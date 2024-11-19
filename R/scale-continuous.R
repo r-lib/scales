@@ -41,6 +41,11 @@ train_continuous <- function(new, existing = NULL, call = caller_env()) {
     return(existing)
   }
 
+  new <- try_fetch(
+    range(new, na.rm = TRUE),
+    error = function(cnd) new
+  )
+
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     example <- unique(new)
     example <- example[seq_len(pmin(length(example), 5))]

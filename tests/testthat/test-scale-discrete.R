@@ -27,3 +27,13 @@ test_that("na.rm = TRUE drops NA", {
   expect_equal(train_discrete(x2, na.rm = TRUE), "a")
   expect_equal(train_discrete(x3, na.rm = TRUE), "a")
 })
+
+test_that("discrete ranges can be trained on S3 classes", {
+  my_obj <- structure(list("A", c("B", "C")), class = "foo")
+  levels.foo <- function(x) unique(unlist(x))
+  registerS3method("levels", "foo", method = levels.foo)
+  expect_equal(
+    train_discrete(my_obj),
+    LETTERS[1:3]
+  )
+})

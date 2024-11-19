@@ -1,4 +1,7 @@
 # scales (development version)
+* Range training now supports custom classes. Continuous classes require a
+  `range()` method that returns numeric values. Discrete classes require a
+  `levels()` method (and optionally a `droplevels()` method) (#480).
 * New `label_glue()` labelling function for interpolated strings (#457).
 * `fullseq()` and by extension `breaks_width()` can now deal with unsorted 
   ranges (#435).

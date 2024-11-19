@@ -15,7 +15,7 @@ dscale <- function(x, palette, na.value = NA) {
 }
 
 is.discrete <- function(x) {
-  is.factor(x) || is.character(x) || is.logical(x)
+  !is.null(levels(x)) || is.character(x) || is.logical(x)
 }
 
 #' Train (update) a discrete scale
@@ -90,8 +90,8 @@ discrete_range <- function(old, new, drop = FALSE, na.rm = FALSE, fct = NA) {
 clevels <- function(x, drop = FALSE, na.rm = FALSE) {
   if (is.null(x)) {
     character()
-  } else if (is.factor(x)) {
-    if (drop) x <- factor(x)
+  } else if (!is.null(levels(x))) {
+    if (drop) x <- droplevels(x)
 
     values <- levels(x)
     if (na.rm) {

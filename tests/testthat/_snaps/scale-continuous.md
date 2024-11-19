@@ -5,5 +5,5 @@
     Condition
       Error:
       ! Discrete value supplied to a continuous scale.
-      i Example values: "A", "B", "C", "D", and "E".
+      i Example values: "A" and "E".
 
