@@ -120,6 +120,7 @@ timespan_trans <- transform_timespan
 #' @rdname transform_timespan
 #' @export
 transform_hms <- function() {
+  check_installed("hms", "for the 'hms' transformation.")
   new_transform(
     "hms",
     transform = function(x) {
