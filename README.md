@@ -80,7 +80,7 @@ economics %>%
   )
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" alt="A line plot created with ggplot2, showing personal expenses between 1967 and 1970. The x axis uses `scales::break_width()` to put a break every 3 months and `scales::label_date_short()` to only show the year on the first occuring break of that year. The y axis uses `scales::breaks_extended()` to request 8 breaks, though only 6 are ultimately provided, and `scales::label_dollar()` to format the label as a dollar value."  />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="A line plot created with ggplot2, showing personal expenses between 1967 and 1970. The x axis uses `scales::break_width()` to put a break every 3 months and `scales::label_date_short()` to only show the year on the first occuring break of that year. The y axis uses `scales::breaks_extended()` to request 8 breaks, though only 6 are ultimately provided, and `scales::label_dollar()` to format the label as a dollar value."  />
 
 Generally, I don’t recommend running `library(scales)` because when you
 type (e.g.) `scales::label_` autocomplete will provide you with a list
@@ -93,9 +93,6 @@ can use them in any plotting system. The following example shows how you
 might apply them to a base plot.
 
 ``` r
-#|   sepal length and sepal width in the Iris dataset. The points are coloured
-#|   according to species and the `scales::pal_brewer()` are used to provide the
-#|   colours.
 library(scales)
 # pull a list of colours from any palette
 pal_viridis()(4)
@@ -107,7 +104,7 @@ par(mar = c(5, 5, 1, 1))
 plot(Sepal.Length ~ Sepal.Width, data = iris, col = Species, pch = 20)
 ```
 
-<img src="man/figures/README-palettes-1.png" alt="A scatterplot created with base plot showing the relationship between"  />
+<img src="man/figures/README-palettes-1.png" alt="A scatterplot created with base plot showing the relationship between sepal length and sepal width in the Iris dataset. The points are coloured according to species and the `scales::pal_brewer()` are used to provide the colours."  />
 
 scales also gives users the ability to define and apply their own custom
 transformation functions for repeated use.
@@ -121,6 +118,7 @@ transform_logp3 <- new_transform(
   breaks = log_breaks()
 )
 
+set.seed(1234) # Ensures same sampling
 dsamp <- sample_n(diamonds, 100)
 ggplot(dsamp, aes(carat, price, colour = color)) +
   geom_point() +

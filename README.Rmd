@@ -135,6 +135,7 @@ transform_logp3 <- new_transform(
   breaks = log_breaks()
 )
 
+set.seed(1234) # Ensures same sampling
 dsamp <- sample_n(diamonds, 100)
 ggplot(dsamp, aes(carat, price, colour = color)) +
   geom_point() +
