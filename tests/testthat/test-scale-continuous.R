@@ -34,3 +34,13 @@ test_that("train_continuous works with integer64", {
     c(1, 10)
   )
 })
+
+test_that("train_continuous can train on S3 classes", {
+  my_obj <- structure(c("IX", "CM", "X", "IV"), class = "bar")
+  range.bar <- function(x, ...) range(.romans[x], ...)
+  registerS3method("range", "bar", method = range.bar)
+  expect_equal(
+    train_continuous(my_obj),
+    c(4, 900)
+  )
+})
