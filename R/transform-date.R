@@ -43,7 +43,7 @@ from_date <- function(x) {
 transform_time <- function(tz = NULL) {
   force(tz)
   to_time <- function(x) {
-    structure(x, class = c("POSIXt", "POSIXct"), tzone = tz)
+    structure(x, class = c("POSIXct", "POSIXt"), tzone = tz)
   }
 
   from_time <- function(x) {
