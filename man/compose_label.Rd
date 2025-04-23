@@ -30,7 +30,7 @@ labellers together.
 \examples{
 demo_continuous(
   c(-100, 100),
-  labels = compose_label(abs, number, ~paste0(.x, " foobar"), toupper)
+  labels = compose_label(abs, number, \(x) paste0(x, " foobar"), toupper)
 )
 
 # Same result
