@@ -106,9 +106,7 @@ test_that("out of bounds functions return correct values", {
 })
 
 
-
 # zero_range --------------------------------------------------------------
-
 
 test_that("large numbers with small differences", {
   expect_false(zero_range(c(1330020857.8787, 1330020866.8787)))
@@ -177,4 +175,3 @@ test_that("Tolerance", {
   expect_false(zero_range(100000 * c(1, 1 + 1001 * eps)))
   expect_false(zero_range(.00001 * c(1, 1 + 1001 * eps)))
 })
-

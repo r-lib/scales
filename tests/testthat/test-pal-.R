@@ -1,8 +1,8 @@
 test_that("continuous palettes can be created, tested and coerced", {
-
   pal <- new_continuous_palette(
-    function(x) ((x - 0.5) * 4) ^2,
-    "numeric", na_safe = FALSE
+    function(x) ((x - 0.5) * 4)^2,
+    "numeric",
+    na_safe = FALSE
   )
   expect_equal(pal(seq(0, 1, by = 0.25)), c(4, 1, 0, 1, 4))
 
@@ -19,14 +19,13 @@ test_that("continuous palettes can be created, tested and coerced", {
   new <- as_discrete_pal(pal)
   expect_true(is_discrete_pal(new))
   expect_equal(new(5), c(4, 1, 0, 1, 4))
-
 })
 
 test_that("discrete palettes can be created, tested and coerced", {
-
   pal <- new_discrete_palette(
     function(n) c("red", "green", "blue")[seq_len(n)],
-    "colour", nlevels = 3
+    "colour",
+    nlevels = 3
   )
   expect_equal(pal(2), c("red", "green"))
 

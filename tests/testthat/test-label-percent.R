@@ -1,4 +1,3 @@
-
 test_that("negative percents work", {
   expect_equal(percent(-0.6, accuracy = 1), "-60%")
 })

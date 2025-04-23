@@ -148,14 +148,17 @@ test_that("zero and special values don't get units", {
 test_that("scale applied before scale_cut", {
   expect_equal(number(500, scale = 2, scale_cut = cut_short_scale()), "1K")
   expect_equal(
-    number(c(0, 5e5, 1.2e6), scale = 1/1000, scale_cut = cut_short_scale()),
+    number(c(0, 5e5, 1.2e6), scale = 1 / 1000, scale_cut = cut_short_scale()),
     c("0", "500", "1K")
   )
 })
 
 test_that("cut_si() adds space before unit", {
   skip_if_not(getRversion() >= "3.5")
-  expect_equal(number(c(0, 1, 1000), scale_cut = cut_si("m")), c("0 m", "1 m", "1 km"))
+  expect_equal(
+    number(c(0, 1, 1000), scale_cut = cut_si("m")),
+    c("0 m", "1 m", "1 km")
+  )
 })
 
 test_that("handles out-of-range inputs", {
@@ -182,8 +185,10 @@ test_that("scale_cut prefers clean cuts", {
 
   # do not select off-scale breaks
   x <- c(0, 500, 1500, 2000, 2500)
-  expect_equal(number(x, scale_cut = cut_short_scale()), c("0", "500", "1.5K", "2.0K", "2.5K"))
-
+  expect_equal(
+    number(x, scale_cut = cut_short_scale()),
+    c("0", "500", "1.5K", "2.0K", "2.5K")
+  )
 })
 
 test_that("built-in functions return expected values", {
@@ -197,7 +202,6 @@ test_that("built-in functions return expected values", {
 # options -----------------------------------------------------------------
 
 test_that("number_options are observed", {
-
   number_options(decimal.mark = ",", big.mark = ".")
   expect_equal(
     label_number()(c(0.1, 10, 1e6)),
@@ -211,8 +215,10 @@ test_that("number_options are observed", {
   )
 
   number_options(
-    currency.prefix = "", currency.suffix = " GBP",
-    currency.decimal.mark = ",", currency.big.mark = "."
+    currency.prefix = "",
+    currency.suffix = " GBP",
+    currency.decimal.mark = ",",
+    currency.big.mark = "."
   )
   # Regular number are not affected
   expect_equal(
@@ -238,4 +244,3 @@ test_that("number_options are observed", {
     c("1st", "2nd", "3rd", "4th")
   )
 })
-

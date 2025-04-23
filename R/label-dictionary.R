@@ -1,4 +1,3 @@
-
 #' Labels from lookup tables
 #'
 #' Use `label_dictionary()` for looking up succinct breaks in a named character
@@ -31,7 +30,6 @@
 #'   labels = label_dictionary(lut, nomatch = "unknown")
 #' )
 label_dictionary <- function(dictionary = character(), nomatch = NULL) {
-
   if (!is.character(dictionary)) {
     cli::cli_abort("The {.arg dictionary} argument must be a character vector.")
   }

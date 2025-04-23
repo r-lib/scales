@@ -34,5 +34,8 @@ test_that("produces correct domains", {
   expect_equal(transform_compose("log", "log")$domain, c(1, Inf))
   expect_equal(transform_compose("reverse", "log")$domain, c(-Inf, 0))
   expect_equal(transform_compose("reverse", "logit", "log")$domain, c(-1, -0.5))
-  expect_snapshot(transform_compose("sqrt", "reverse", "log")$domain, error = TRUE)
+  expect_snapshot(
+    transform_compose("sqrt", "reverse", "log")$domain,
+    error = TRUE
+  )
 })

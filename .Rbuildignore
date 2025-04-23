@@ -17,3 +17,5 @@
 ^\.github/workflows/pr-commands\.yaml$
 ^CRAN-SUBMISSION$
 ^LICENSE\.md$
+^[\.]?air\.toml$
+^\.vscode$

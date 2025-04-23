@@ -23,7 +23,6 @@
 #'   labels = compose_label(abs, label_number(suffix = " FOOBAR"))
 #' )
 compose_label <- function(..., call = caller_env()) {
-
   label_list <- list2(...)
   if (length(label_list) == 0) {
     return(identity)

@@ -8,13 +8,17 @@ pal_manual <- function(values, type = NULL) {
   fun <- function(n) {
     n_values <- length(values)
     if (n > n_values) {
-      cli::cli_warn("This manual palette can handle a maximum of {n_values} values. You have supplied {n}")
+      cli::cli_warn(
+        "This manual palette can handle a maximum of {n_values} values. You have supplied {n}"
+      )
     }
     unname(values[seq_len(n)])
   }
   type <- type %||% guess_pal_type(values)
   new_discrete_palette(
-    fun, type, length(values)
+    fun,
+    type,
+    length(values)
   )
 }
 

@@ -1,5 +1,4 @@
 test_that("palette getters and setters work as intended", {
-
   # Test that palettes have been populated in .onLoad
   expect_in(c("hue", "grey"), palette_names())
 
@@ -24,7 +23,6 @@ test_that("palette getters and setters work as intended", {
 })
 
 test_that("as_continuous_pal and as_discrete_pal can retrieve known palettes", {
-
   colours <- c("#FF0000", "#00FF00", '#0000FF')
   set_palette("rgb", colours)
 

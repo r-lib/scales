@@ -23,7 +23,12 @@
 #'   pch = 20, cex = 5,
 #'   col = cscale(hp, pal_seq_gradient("grey80", "black"))
 #' ))
-cscale <- function(x, palette, na.value = NA_real_, trans = transform_identity()) {
+cscale <- function(
+  x,
+  palette,
+  na.value = NA_real_,
+  trans = transform_identity()
+) {
   check_object(trans, is.transform, "a {.cls transform} object")
   x <- trans$transform(x)
   limits <- train_continuous(x)
@@ -49,23 +54,36 @@ train_continuous <- function(new, existing = NULL, call = caller_env()) {
   if (is.factor(new) || !typeof(new) %in% c("integer", "double")) {
     example <- unique(new)
     example <- example[seq_len(pmin(length(example), 5))]
-    cli::cli_abort(c(
-      "Discrete value supplied to a continuous scale.",
-      i = "Example values: {.and {.val {example}}}."
-    ), call = call)
+    cli::cli_abort(
+      c(
+        "Discrete value supplied to a continuous scale.",
+        i = "Example values: {.and {.val {example}}}."
+      ),
+      call = call
+    )
   }
 
   # Needs casting to numeric because some `new` vectors can misbehave when
   # combined with a NULL `existing` (#369)
-  suppressWarnings(range(existing, as.numeric(new),
-                         na.rm = TRUE, finite = TRUE))
+  suppressWarnings(range(
+    existing,
+    as.numeric(new),
+    na.rm = TRUE,
+    finite = TRUE
+  ))
 }
 
 # Map values for a continuous palette.
 #
 # @param oob out of bounds behaviour. Defaults to \code{\link{censor}}
 #   which turns oob values into missing values.
-map_continuous <- function(palette, x, limits, na.value = NA_real_, oob = censor) {
+map_continuous <- function(
+  palette,
+  x,
+  limits,
+  na.value = NA_real_,
+  oob = censor
+) {
   x <- oob(rescale(x, from = limits))
   pal <- palette(x)
   ifelse(!is.na(x), pal, na.value)

@@ -1,4 +1,3 @@
-
 test_that("arguments passed onto number()", {
   expect_equal(label_pvalue()(c(.5, NA)), c("0.500", NA))
   expect_equal(label_pvalue(0.1)(c(.5, NA)), c("0.5", NA))

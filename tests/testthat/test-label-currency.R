@@ -22,6 +22,10 @@ test_that("can rescale with scale_cut", {
   lab <- label_currency(scale_cut = cut_short_scale())
   expect_equal(lab(c(1, 1e3, 1e6)), c("$1", "$1K", "$1M"))
 
-  lab <- label_currency(scale_cut = cut_short_scale(), prefix = "", suffix = " USD")
+  lab <- label_currency(
+    scale_cut = cut_short_scale(),
+    prefix = "",
+    suffix = " USD"
+  )
   expect_equal(lab(c(1, 1e3, 1e6)), c("1 USD", "1K USD", "1M USD"))
 })

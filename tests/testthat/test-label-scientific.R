@@ -1,4 +1,3 @@
-
 test_that("scientific format shows specific sig figs", {
   expect_equal(label_scientific(digits = 1)(123456), "1e+05")
   expect_equal(label_scientific(digits = 2)(123456), "1.2e+05")

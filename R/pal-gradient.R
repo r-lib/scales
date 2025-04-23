@@ -10,7 +10,10 @@
 #' @export
 pal_gradient_n <- function(colours, values = NULL, space = "Lab") {
   if (!identical(space, "Lab")) {
-    lifecycle::deprecate_stop("0.3.0", "pal_gradient_n(space = 'only supports be \"Lab\"')")
+    lifecycle::deprecate_stop(
+      "0.3.0",
+      "pal_gradient_n(space = 'only supports be \"Lab\"')"
+    )
   }
   ramp <- colour_ramp(colours)
   force(values)
@@ -52,10 +55,11 @@ gradient_n_pal <- pal_gradient_n
 #' pal <- pal_div_gradient(low = "#2E6A70")
 #' image(r, col = pal(seq(0, 1, length.out = 100)))
 pal_div_gradient <- function(
-    low  = "#2B6788", # munsell::mnsl("10B 4/6"),
-    mid  = "#CBCBCB", # munsell::mnsl("N 8/0"),
-    high = "#90503F", # munsell::mnsl("10R 4/6"),
-    space = "Lab") {
+  low = "#2B6788", # munsell::mnsl("10B 4/6"),
+  mid = "#CBCBCB", # munsell::mnsl("N 8/0"),
+  high = "#90503F", # munsell::mnsl("10R 4/6"),
+  space = "Lab"
+) {
   pal_gradient_n(c(low, mid, high), space = space)
 }
 
@@ -76,9 +80,10 @@ div_gradient_pal <- pal_div_gradient
 #'
 #' show_col(pal_seq_gradient("white", "#90503F")(x))
 pal_seq_gradient <- function(
-    low  = "#2B6788", # munsell::mnsl("10B 4/6"),
-    high = "#90503F", # munsell::mnsl("10R 4/6"),
-    space = "Lab") {
+  low = "#2B6788", # munsell::mnsl("10B 4/6"),
+  high = "#90503F", # munsell::mnsl("10R 4/6"),
+  space = "Lab"
+) {
   pal_gradient_n(c(low, high), space = space)
 }
 

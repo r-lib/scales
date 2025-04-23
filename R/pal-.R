@@ -235,13 +235,14 @@ as_discrete_pal.pal_continuous <- function(x, ...) {
   force(x)
   new_discrete_palette(
     function(n) x(seq(0, 1, length.out = n)),
-    type = palette_type(x), nlevels = 255
+    type = palette_type(x),
+    nlevels = 255
   )
 }
 
 #' @export
 as_discrete_pal.character <- function(x, ...) {
-  if (length(x) > 1)  {
+  if (length(x) > 1) {
     return(pal_manual(x))
   }
   as_discrete_pal(get_palette(x, ...))
@@ -277,10 +278,12 @@ as_continuous_pal.pal_discrete <- function(x, ...) {
   type <- palette_type(x)
   switch(
     type,
-    color = , colour = colour_ramp(x(nlevels)),
+    color = ,
+    colour = colour_ramp(x(nlevels)),
     numeric = new_continuous_palette(
       stats::approxfun(seq(0, 1, length.out = nlevels), x(nlevels)),
-      type = "numeric", na_safe = FALSE
+      type = "numeric",
+      na_safe = FALSE
     ),
     cli::cli_abort(
       "Don't know how to convert a discrete {.field {type}} palette to \\

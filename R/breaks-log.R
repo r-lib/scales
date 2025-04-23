@@ -114,15 +114,16 @@ minor_breaks_log <- function(detail = NULL, smallest = NULL) {
   if (!is.null(detail) && (!length(detail) == 1 || !detail %in% c(1, 5, 10))) {
     cli::cli_abort("The {.arg detail} argument must be one of 1, 5 or 10.")
   }
-  if (!is.null(smallest) &&
-      (!length(smallest) == 1 || smallest < 1e-100 || !is.finite(smallest))) {
+  if (
+    !is.null(smallest) &&
+      (!length(smallest) == 1 || smallest < 1e-100 || !is.finite(smallest))
+  ) {
     cli::cli_abort(
       "The {.arg smallest} argument must be a finite, positive, non-zero number."
     )
   }
   force(smallest)
   function(x, ...) {
-
     has_negatives <- any(x <= 0)
 
     if (has_negatives) {
@@ -132,7 +133,7 @@ minor_breaks_log <- function(detail = NULL, smallest = NULL) {
     }
 
     start <- floor(log10(min(x))) - 1L
-    end   <- ceiling(log10(max(x))) + 1L
+    end <- ceiling(log10(max(x))) + 1L
 
     if (is.null(detail)) {
       i <- findInterval(abs(end - start), c(8, 15), left.open = TRUE) + 1L
@@ -153,12 +154,12 @@ minor_breaks_log <- function(detail = NULL, smallest = NULL) {
     }
 
     if (has_negatives) {
-      tens  <- tens[tens >= small]
-      tens  <- c(tens, -tens, 0)
+      tens <- tens[tens >= small]
+      tens <- c(tens, -tens, 0)
       fives <- fives[fives >= small]
       fives <- c(fives, -fives)
-      ones  <- ones[ones >= small]
-      ones  <- c(ones, -ones)
+      ones <- ones[ones >= small]
+      ones <- c(ones, -ones)
     }
 
     ticks <- c(tens, fives, ones)

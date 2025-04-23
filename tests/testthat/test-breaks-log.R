@@ -106,7 +106,7 @@ test_that("minor_breaks_log has correct amount of detail", {
   expect_false(5 %in% test)
 
   test <- minor_breaks_log(detail = 1)(c(-10, 10))
-  expect_true(all(-10:10 %in%  test))
+  expect_true(all(-10:10 %in% test))
 })
 
 test_that("minor_breaks_log rejects invalid arguments", {

@@ -49,13 +49,17 @@
 #'   scale_cut = c(0, k = 1e3, m = 1e6, bn = 1e9, tn = 1e12)
 #' )
 #' demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
-label_currency <- function(accuracy = NULL, scale = 1,
-                           prefix = NULL,
-                           suffix = NULL,
-                           big.mark = NULL,
-                           decimal.mark = NULL,
-                           trim = TRUE, largest_with_fractional = 100000,
-                           ...) {
+label_currency <- function(
+  accuracy = NULL,
+  scale = 1,
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  largest_with_fractional = 100000,
+  ...
+) {
   force_all(
     accuracy,
     scale,
@@ -110,11 +114,18 @@ needs_cents <- function(x, threshold) {
 #'   [label_currency()]
 #' @param negative_parens `r lifecycle::badge("deprecated")` Use
 #'   `style_negative = "parens"` instead.
-dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
-                          suffix = "", big.mark = ",", decimal.mark = ".",
-                          trim = TRUE, largest_with_cents = 100000,
-                          negative_parens = deprecated(),
-                          ...) {
+dollar_format <- function(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "$",
+  suffix = "",
+  big.mark = ",",
+  decimal.mark = ".",
+  trim = TRUE,
+  largest_with_cents = 100000,
+  negative_parens = deprecated(),
+  ...
+) {
   force_all(
     accuracy,
     scale,
@@ -148,17 +159,26 @@ dollar_format <- function(accuracy = NULL, scale = 1, prefix = "$",
 #' @export
 #' @rdname dollar_format
 #' @param x A numeric vector
-dollar <- function(x, accuracy = NULL, scale = 1, prefix = NULL,
-                   suffix = NULL, big.mark = NULL, decimal.mark = NULL,
-                   trim = TRUE, largest_with_cents = 100000,
-                   negative_parens = deprecated(),
-                   style_negative = c("hyphen", "minus", "parens"),
-                   scale_cut = NULL,
-                   ...) {
+dollar <- function(
+  x,
+  accuracy = NULL,
+  scale = 1,
+  prefix = NULL,
+  suffix = NULL,
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  largest_with_cents = 100000,
+  negative_parens = deprecated(),
+  style_negative = c("hyphen", "minus", "parens"),
+  scale_cut = NULL,
+  ...
+) {
   prefix <- prefix %||% getOption("scales.currency.prefix", default = "$")
   suffix <- suffix %||% getOption("scales.currency.suffix", default = "")
   big.mark <- big.mark %||% getOption("scales.currency.big.mark", default = ",")
-  decimal.mark <- decimal.mark %||% getOption("scales.currency.decimal.mark", default = ".")
+  decimal.mark <- decimal.mark %||%
+    getOption("scales.currency.decimal.mark", default = ".")
   if (length(x) == 0) {
     return(character())
   }
@@ -174,7 +194,11 @@ dollar <- function(x, accuracy = NULL, scale = 1, prefix = NULL,
   }
 
   if (lifecycle::is_present(negative_parens)) {
-    lifecycle::deprecate_stop("1.2.0", "dollar(negative_parens)", "dollar(style_negative)")
+    lifecycle::deprecate_stop(
+      "1.2.0",
+      "dollar(negative_parens)",
+      "dollar(style_negative)"
+    )
   }
 
   number(

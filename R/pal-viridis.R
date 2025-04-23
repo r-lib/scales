@@ -20,7 +20,13 @@
 #' show_col(pal_viridis(direction = -1)(6))
 #' show_col(pal_viridis(begin = 0.2, end = 0.8)(4))
 #' show_col(pal_viridis(option = "plasma")(6))
-pal_viridis <- function(alpha = 1, begin = 0, end = 1, direction = 1, option = "D") {
+pal_viridis <- function(
+  alpha = 1,
+  begin = 0,
+  end = 1,
+  direction = 1,
+  option = "D"
+) {
   force_all(alpha, begin, end, direction, option)
   fun <- function(n) {
     viridisLite::viridis(n, alpha, begin, end, direction, option)

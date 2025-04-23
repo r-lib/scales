@@ -28,11 +28,17 @@
 #' @export
 #' @keywords internal
 #' @aliases trans
-new_transform <- function(name, transform, inverse,
-                          d_transform = NULL, d_inverse = NULL,
-                          breaks = extended_breaks(),
-                          minor_breaks = regular_minor_breaks(),
-                          format = format_format(), domain = c(-Inf, Inf)) {
+new_transform <- function(
+  name,
+  transform,
+  inverse,
+  d_transform = NULL,
+  d_inverse = NULL,
+  breaks = extended_breaks(),
+  minor_breaks = regular_minor_breaks(),
+  format = format_format(),
+  domain = c(-Inf, Inf)
+) {
   if (is.character(transform)) transform <- match.fun(transform)
   if (is.character(inverse)) inverse <- match.fun(inverse)
   if (is.character(d_transform)) d_transform <- match.fun(d_transform)
@@ -68,18 +74,31 @@ is.trans <- is.transform
 
 #' @export
 print.transform <- function(x, ...) {
-  cat("Transformer: ", x$name, " [", x$domain[[1]], ", ", x$domain[[2]], "]\n", sep = "")
+  cat(
+    "Transformer: ",
+    x$name,
+    " [",
+    x$domain[[1]],
+    ", ",
+    x$domain[[2]],
+    "]\n",
+    sep = ""
+  )
   invisible(x)
 }
 
 #' @export
 plot.transform <- function(x, y, ..., xlim, ylim = NULL) {
   if (is.null(ylim)) {
-    ylim <- range(x$transform(seq(xlim[1], xlim[2], length = 100)), finite = TRUE)
+    ylim <- range(
+      x$transform(seq(xlim[1], xlim[2], length = 100)),
+      finite = TRUE
+    )
   }
 
   plot(
-    xlim, ylim,
+    xlim,
+    ylim,
     xlab = "",
     ylab = "",
     type = "n",
@@ -126,7 +145,9 @@ as.transform <- function(x, arg = deparse(substitute(x))) {
   }
 
   if (is.null(fun)) {
-    cli::cli_abort("Could not find any function named {.fun {f}} or {.fun {f2}}")
+    cli::cli_abort(
+      "Could not find any function named {.fun {f}} or {.fun {f2}}"
+    )
   }
   fun()
 }

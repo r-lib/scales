@@ -172,7 +172,10 @@ pretty_breaks <- breaks_pretty
 #' @examples
 #' demo_timespan(seq(0, 100), breaks = breaks_timespan())
 #'
-breaks_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), n = 5) {
+breaks_timespan <- function(
+  unit = c("secs", "mins", "hours", "days", "weeks"),
+  n = 5
+) {
   unit <- arg_match(unit)
   force(n)
   function(x) {
@@ -194,7 +197,9 @@ breaks_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), 
 
     rng <- rng / scale
     breaks <- labeling::extended(
-      rng[1], rng[2], n,
+      rng[1],
+      rng[2],
+      n,
       Q = c(1, 2, 1.5, 4, 3),
       only.loose = FALSE
     )
@@ -211,7 +216,7 @@ breaks_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), 
 #' @inheritParams breaks_extended
 #'
 #' @inherit breaks_width return
-#' 
+#'
 #' @export
 #' @examples
 #' # Small range

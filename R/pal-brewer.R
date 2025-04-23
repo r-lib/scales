@@ -63,16 +63,44 @@ pal_name <- function(palette, type) {
 
 brewer <- list(
   div = c(
-    "BrBG", "PiYG", "PRGn", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn",
+    "BrBG",
+    "PiYG",
+    "PRGn",
+    "PuOr",
+    "RdBu",
+    "RdGy",
+    "RdYlBu",
+    "RdYlGn",
     "Spectral"
   ),
   qual = c(
-    "Accent", "Dark2", "Paired", "Pastel1", "Pastel2", "Set1",
-    "Set2", "Set3"
+    "Accent",
+    "Dark2",
+    "Paired",
+    "Pastel1",
+    "Pastel2",
+    "Set1",
+    "Set2",
+    "Set3"
   ),
   seq = c(
-    "Blues", "BuGn", "BuPu", "GnBu", "Greens", "Greys", "Oranges",
-    "OrRd", "PuBu", "PuBuGn", "PuRd", "Purples", "RdPu", "Reds",
-    "YlGn", "YlGnBu", "YlOrBr", "YlOrRd"
+    "Blues",
+    "BuGn",
+    "BuPu",
+    "GnBu",
+    "Greens",
+    "Greys",
+    "Oranges",
+    "OrRd",
+    "PuBu",
+    "PuBuGn",
+    "PuRd",
+    "Purples",
+    "RdPu",
+    "Reds",
+    "YlGn",
+    "YlGnBu",
+    "YlOrBr",
+    "YlOrRd"
   )
 )

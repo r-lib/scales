@@ -18,7 +18,11 @@
 label_wrap <- function(width) {
   force(width)
   function(x) {
-    unlist(lapply(strwrap(x, width = width, simplify = FALSE), paste0, collapse = "\n"))
+    unlist(lapply(
+      strwrap(x, width = width, simplify = FALSE),
+      paste0,
+      collapse = "\n"
+    ))
   }
 }
 

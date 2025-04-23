@@ -54,9 +54,9 @@ muted <- function(colour, l = 30, c = 70) col2hcl(colour, l = l, c = c)
 #' alpha("red", seq(0, 1, length.out = 10))
 #' alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 alpha <- function(colour, alpha = NA) {
-  input  <- recycle_common(colour = colour, alpha = alpha)
+  input <- recycle_common(colour = colour, alpha = alpha)
   colour <- input[["colour"]]
-  alpha  <- input[["alpha"]]
+  alpha <- input[["alpha"]]
 
   rgb <- farver::decode_colour(colour, alpha = TRUE)
   rgb[!is.na(alpha), 4] <- alpha[!is.na(alpha)]
@@ -84,8 +84,13 @@ alpha <- function(colour, alpha = NA) {
 #'
 #' show_col(pal_viridis()(16))
 #' show_col(pal_viridis()(16), labels = FALSE)
-show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
-                     ncol = NULL) {
+show_col <- function(
+  colours,
+  labels = TRUE,
+  borders = NULL,
+  cex_label = 1,
+  ncol = NULL
+) {
   n <- length(colours)
   if (n == 1 && (is.function(colours) || !is_color(colours))) {
     colours <- as_discrete_pal(colours)
@@ -106,14 +111,25 @@ show_col <- function(colours, labels = TRUE, borders = NULL, cex_label = 1,
 
   size <- max(dim(colours))
   plot(c(0, size), c(0, -size), type = "n", xlab = "", ylab = "", axes = FALSE)
-  rect(col(colours) - 1, -row(colours) + 1, col(colours), -row(colours),
-    col = colours, border = borders
+  rect(
+    col(colours) - 1,
+    -row(colours) + 1,
+    col(colours),
+    -row(colours),
+    col = colours,
+    border = borders
   )
   if (labels) {
     hcl <- farver::decode_colour(colours, "rgb", "hcl")
     label_col <- ifelse(hcl[, "l"] > 50, "black", "white")
 
-    text(col(colours) - 0.5, -row(colours) + 0.5, colours, cex = cex_label, col = label_col)
+    text(
+      col(colours) - 0.5,
+      -row(colours) + 0.5,
+      colours,
+      cex = cex_label,
+      col = label_col
+    )
   }
 }
 
@@ -199,7 +215,7 @@ col_shift <- function(col, amount = 10) {
 
 #' @export
 col_shift.default <- function(col, amount = 10) {
-  input  <- recycle_common(col = col, amount = amount)
+  input <- recycle_common(col = col, amount = amount)
   new <- farver::decode_colour(input$col, alpha = TRUE, to = "hcl")
   new[, "h"] <- (new[, "h"] + input$amount) %% 360
   farver::encode_colour(new, new[, "alpha"], from = "hcl")
@@ -257,6 +273,10 @@ wrap_col_adjustment <- function(inner, outer, args, call = caller_env()) {
   if (is_discrete_pal(inner)) {
     new_discrete_palette(fun, type = "colour", nlevels = palette_nlevels(inner))
   } else {
-    new_continuous_palette(fun, type = "colour", na_safe = palette_na_safe(inner))
+    new_continuous_palette(
+      fun,
+      type = "colour",
+      na_safe = palette_na_safe(inner)
+    )
   }
 }
