@@ -135,7 +135,7 @@ breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n
   function(x, n = n_default) {
-    if (zero_range(as.numeric(x))) {
+    if (length(x) > 0 && zero_range(range(as.numeric(x), na.rm = TRUE))) {
       return(x[1])
     }
     breaks <- pretty(x, n, ...)

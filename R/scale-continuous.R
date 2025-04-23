@@ -47,7 +47,7 @@ train_continuous <- function(new, existing = NULL, call = caller_env()) {
   }
 
   new <- try_fetch(
-    range(new, na.rm = TRUE),
+    suppressWarnings(range(new, na.rm = TRUE, finite = TRUE)),
     error = function(cnd) new
   )
 

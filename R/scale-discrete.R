@@ -100,7 +100,7 @@ clevels <- function(x, drop = FALSE, na.rm = FALSE) {
   if (is.null(x)) {
     character()
   } else if (!is.null(levels(x))) {
-    if (drop) x <- droplevels(x)
+    if (drop && !is.character(x)) x <- droplevels(x)
 
     values <- levels(x)
     if (na.rm) {
