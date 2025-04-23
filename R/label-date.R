@@ -61,7 +61,7 @@ label_date_short <- function(
   sep = "\n",
   leading = "0"
 ) {
-  force_all(format, sep, leading)
+  force_all(format, sep, leading, tz, locale)
 
   function(x) {
     dt <- unclass(as.POSIXlt(x))
@@ -101,7 +101,7 @@ label_date_short <- function(
       1,
       function(x) paste(rev(x[!is.na(x)]), collapse = sep)
     )
-    x <- format(x, format)
+    x <- format_dt(x, format, tz = tz, locale = locale)
 
     if (isTRUE(leading == "0")) {
       return(x)
