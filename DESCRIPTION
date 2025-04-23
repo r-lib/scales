@@ -35,7 +35,7 @@ Suggests:
     testthat (>= 3.0.0)
 Config/Needs/website: tidyverse/tidytemplate
 Config/testthat/edition: 3
-Config/usethis/last-upkeep: 2024-10-24
+Config/usethis/last-upkeep: 2025-04-23
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
