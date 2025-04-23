@@ -46,6 +46,8 @@ reference:
   - expand_range
   - discard
   - censor
+  - limits_center
+  - limits_include
 
 - title: Transformations
   desc: >
