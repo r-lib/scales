@@ -6,16 +6,16 @@ Authors@R: c(
     person("Thomas Lin", "Pedersen", , "thomas.pedersen@posit.co", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-5147-4711")),
     person("Dana", "Seidel", role = "aut"),
-    person("Posit, PBC", role = c("cph", "fnd"))
+    person("Posit Software, PBC", role = c("cph", "fnd"), comment = c(ROR = "03wc8by49"))
   )
 Description: Graphical scales map data to aesthetics, and provide methods
     for automatically determining breaks and labels for axes and legends.
 License: MIT + file LICENSE
 URL: https://scales.r-lib.org, https://github.com/r-lib/scales
 BugReports: https://github.com/r-lib/scales/issues
-Depends: 
+Depends:
     R (>= 4.1)
-Imports: 
+Imports:
     cli,
     farver (>= 2.0.3),
     glue,
@@ -25,7 +25,7 @@ Imports:
     RColorBrewer,
     rlang (>= 1.1.0),
     viridisLite
-Suggests: 
+Suggests:
     bit64,
     covr,
     dichromat,
