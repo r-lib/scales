@@ -4,7 +4,10 @@ test_that("date_format works correctly", {
 
   expect_equal(date_format()(a_date), "2012-01-01")
   expect_equal(date_format(format = "%m/%d/%Y")(a_date), "01/01/2012")
-  expect_equal(date_format(format = "%m/%d/%Y", tz = "Etc/GMT+12")(a_date), "12/31/2011")
+  expect_equal(
+    date_format(format = "%m/%d/%Y", tz = "Etc/GMT+12")(a_date),
+    "12/31/2011"
+  )
   expect_equal(date_format()(na_date), NA_character_)
 })
 
@@ -25,10 +28,11 @@ test_that("can set locale", {
 })
 
 test_that("label_date_short can replace leading zeroes", {
-  x <- seq(as.Date("2024-01-01"),  as.Date("2025-01-01"), by = "1 month")
+  x <- seq(as.Date("2024-01-01"), as.Date("2025-01-01"), by = "1 month")
   labels <- label_date_short(
     format = c("%Y", "%m", "%d"),
-    sep = "-", leading = "x"
+    sep = "-",
+    leading = "x"
   )(x)
   expect_equal(labels, c("x1-2024", paste0("x", 2:9), c(10:12), "x1-2025"))
 })

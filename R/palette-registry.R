@@ -33,7 +33,6 @@
 #' # Resetting palettes
 #' reset_palettes()
 get_palette <- function(name, ...) {
-
   name <- tolower(name)
   if (!exists(name, envir = .known_palettes)) {
     cli::cli_abort("Unknown palette: {name}")
@@ -110,7 +109,7 @@ register_base_pals <- function() {
   if (getRversion() < "4.0.0") {
     return(invisible(NULL))
   }
-  names   <- utils::getFromNamespace("palette.pals",   "grDevices")()
+  names <- utils::getFromNamespace("palette.pals", "grDevices")()
   palette <- utils::getFromNamespace("palette.colors", "grDevices")
   for (name in names) {
     fun <- manual_pal(palette(palette = name), type = "colour")
@@ -120,8 +119,16 @@ register_base_pals <- function() {
 }
 
 register_viridis_pals <- function() {
-  names <- c("magma", "inferno", "plasma", "viridis",
-             "cividis", "rocket", "mako", "turbo")
+  names <- c(
+    "magma",
+    "inferno",
+    "plasma",
+    "viridis",
+    "cividis",
+    "rocket",
+    "mako",
+    "turbo"
+  )
   for (name in names) {
     fun <- pal_viridis(option = name)
     set_palette(name, fun, warn_conflict = FALSE)

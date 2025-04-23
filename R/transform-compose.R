@@ -13,7 +13,9 @@
 transform_compose <- function(...) {
   trans_list <- lapply(list2(...), as.transform)
   if (length(trans_list) == 0) {
-    cli::cli_abort("{.fun transform_compose} must include at least 1 transformer to compose")
+    cli::cli_abort(
+      "{.fun transform_compose} must include at least 1 transformer to compose"
+    )
   }
 
   # Resolve domains. First push the domain of the first transformation all the
@@ -44,11 +46,12 @@ transform_compose <- function(...) {
 
   new_transform(
     paste0("composition(", paste0(names, collapse = ","), ")"),
-    transform   = function(x) compose_fwd(x, trans_list),
-    inverse     = function(x) compose_rev(x, trans_list),
-    d_transform = if (has_d_transform) function(x) compose_deriv_fwd(x, trans_list),
-    d_inverse   = if (has_d_inverse) function(x) compose_deriv_rev(x, trans_list),
-    breaks      = function(x) trans_list[[1]]$breaks(x),
+    transform = function(x) compose_fwd(x, trans_list),
+    inverse = function(x) compose_rev(x, trans_list),
+    d_transform = if (has_d_transform)
+      function(x) compose_deriv_fwd(x, trans_list),
+    d_inverse = if (has_d_inverse) function(x) compose_deriv_rev(x, trans_list),
+    breaks = function(x) trans_list[[1]]$breaks(x),
     domain = domain
   )
 }

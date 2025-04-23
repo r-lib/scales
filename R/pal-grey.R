@@ -11,7 +11,8 @@ pal_grey <- function(start = 0.2, end = 0.8) {
   force_all(start, end)
   new_discrete_palette(
     function(n) grDevices::grey.colors(n, start = start, end = end),
-    type = "colour", nlevels = 255
+    type = "colour",
+    nlevels = 255
   )
 }
 

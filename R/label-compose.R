@@ -14,7 +14,7 @@
 #' @examples
 #' demo_continuous(
 #'   c(-100, 100),
-#'   labels = compose_label(abs, number, ~paste0(.x, " foobar"), toupper)
+#'   labels = compose_label(abs, number, \(x) paste0(x, " foobar"), toupper)
 #' )
 #'
 #' # Same result
@@ -23,7 +23,6 @@
 #'   labels = compose_label(abs, label_number(suffix = " FOOBAR"))
 #' )
 compose_label <- function(..., call = caller_env()) {
-
   label_list <- list2(...)
   if (length(label_list) == 0) {
     return(identity)

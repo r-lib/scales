@@ -17,7 +17,8 @@ floor_date <- function(date, time) {
 floor_time <- function(date, time) {
   to_time <- function(x) {
     force(x)
-    structure(x,
+    structure(
+      x,
       class = c("POSIXt", "POSIXct"),
       tzone = attr(date, "tzone", exact = TRUE) %||% ""
     )
@@ -55,7 +56,9 @@ unit_seconds <- function(unitspec) {
   prec <- parse_unit_spec(unitspec)
 
   unit_in_seconds <- c(
-    "sec" = 1, "min" = 60, "hour" = 3600,
+    "sec" = 1,
+    "min" = 60,
+    "hour" = 3600,
     c("day" = 1, "week" = 7, "month" = 31, "year" = 365) * 3600 * 24
   )
   prec$mult * unit_in_seconds[prec$unit]

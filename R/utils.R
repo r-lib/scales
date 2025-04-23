@@ -101,8 +101,15 @@ as_cli <- function(..., env = caller_env()) {
   cli::cli_fmt(cli::cli_text(..., .envir = env))
 }
 
-check_object <- function(x, check_fun, what, ..., allow_null = FALSE,
-                         arg = caller_arg(x), call = caller_env()) {
+check_object <- function(
+  x,
+  check_fun,
+  what,
+  ...,
+  allow_null = FALSE,
+  arg = caller_arg(x),
+  call = caller_env()
+) {
   if (!missing(x)) {
     if (check_fun(x)) {
       return(invisible(NULL))
@@ -112,8 +119,14 @@ check_object <- function(x, check_fun, what, ..., allow_null = FALSE,
     }
   }
 
-  stop_input_type(x, as_cli(what), ..., allow_null = allow_null,
-                  arg = arg, call = call)
+  stop_input_type(
+    x,
+    as_cli(what),
+    ...,
+    allow_null = allow_null,
+    arg = arg,
+    call = call
+  )
 }
 
 .onLoad <- function(lib, pkg) {

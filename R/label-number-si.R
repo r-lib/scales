@@ -19,7 +19,13 @@
 #' @export
 #' @family labels for continuous scales
 #' @family labels for log scales
-label_number_si <- function(unit = "", accuracy = NULL, scale = 1, suffix = "", ...) {
+label_number_si <- function(
+  unit = "",
+  accuracy = NULL,
+  scale = 1,
+  suffix = "",
+  ...
+) {
   lifecycle::deprecate_stop(
     when = "1.2.0",
     what = "label_number_si()",

@@ -8,13 +8,19 @@ test_that("works with numeric", {
 test_that("works with POSIXct", {
   x <- as.POSIXct(c("2000-01-01 08:29:58", "2000-01-01 08:30:10"), tz = "UTC")
 
-  expected <- as.POSIXct(c("2000-01-01 8:00:00 UTC", "2000-01-01 9:00:00 UTC"), tz = "UTC")
+  expected <- as.POSIXct(
+    c("2000-01-01 8:00:00 UTC", "2000-01-01 9:00:00 UTC"),
+    tz = "UTC"
+  )
   expect_equal(fullseq(x, "1 hour"), expected)
   expect_equal(fullseq(rev(x), "1 hour"), expected)
 
   expect_equal(
     fullseq(x, ".5 secs")[1:2],
-    as.POSIXct(c("2000-01-01 08:29:58.0 UTC", "2000-01-01 08:29:58.5 UTC"), tz = "UTC")
+    as.POSIXct(
+      c("2000-01-01 08:29:58.0 UTC", "2000-01-01 08:29:58.5 UTC"),
+      tz = "UTC"
+    )
   )
 })
 

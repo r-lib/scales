@@ -13,8 +13,15 @@
 #' demo_continuous(c(1, 10), labels = label_scientific(digits = 3))
 #'
 #' demo_log10(c(1, 1e9))
-label_scientific <- function(digits = 3, scale = 1, prefix = "", suffix = "",
-                             decimal.mark = NULL, trim = TRUE, ...) {
+label_scientific <- function(
+  digits = 3,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+) {
   force_all(digits, scale, prefix, suffix, decimal.mark, trim, ...)
   function(x) {
     scientific(
@@ -44,13 +51,22 @@ scientific_format <- label_scientific
 
 #' @export
 #' @rdname scientific_format
-scientific <- function(x, digits = 3, scale = 1, prefix = "", suffix = "",
-                       decimal.mark = NULL, trim = TRUE, ...) {
+scientific <- function(
+  x,
+  digits = 3,
+  scale = 1,
+  prefix = "",
+  suffix = "",
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+) {
   if (length(x) == 0) {
     return(character())
   }
   x <- signif(x * scale, digits)
-  decimal.mark <- decimal.mark %||% getOption("scales.decimal.mark", default = ".")
+  decimal.mark <- decimal.mark %||%
+    getOption("scales.decimal.mark", default = ".")
   ret <- paste0(
     prefix,
     format(x, decimal.mark = decimal.mark, trim = trim, scientific = TRUE, ...),

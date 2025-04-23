@@ -33,7 +33,10 @@ test_that("breaks_width() with offset supports Date and POSIXt units #247 #269",
 
   # Fractional seconds
   fractional_seconds <- breaks_width("1 sec", offset = "0.5 secs")
-  sec_range <- as.POSIXct(c("2020-01-01 00:00:00", "2020-01-01 00:00:01"), tz = "UTC")
+  sec_range <- as.POSIXct(
+    c("2020-01-01 00:00:00", "2020-01-01 00:00:01"),
+    tz = "UTC"
+  )
   expected <- .POSIXct(c(1577836800.5, 1577836801.5, 1577836802.5), tz = "UTC")
   expect_equal(fractional_seconds(sec_range), expected)
 })

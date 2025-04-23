@@ -83,7 +83,11 @@ trans_breaks <- function(trans, inv, n = 5, ...) {
 #'   breaks = c(15, 20, 80),
 #'   labels = expression(alpha, beta, gamma)
 #' )
-cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_format()) {
+cbreaks <- function(
+  range,
+  breaks = extended_breaks(),
+  labels = scientific_format()
+) {
   if (zero_range(range)) {
     return(list(breaks = range[1], labels = format(range[1])))
   }
@@ -92,7 +96,9 @@ cbreaks <- function(range, breaks = extended_breaks(), labels = scientific_forma
     breaks <- breaks(range)
 
     if (!is.function(labels)) {
-      cli::cli_abort("{.arg labels} can only be manually specified in conjunction with {.arg breaks}")
+      cli::cli_abort(
+        "{.arg labels} can only be manually specified in conjunction with {.arg breaks}"
+      )
     }
   }
 

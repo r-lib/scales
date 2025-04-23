@@ -27,18 +27,27 @@ is.discrete <- function(x) {
 #' @param fct Treat `existing` as if it came from a factor (ie. don't sort the range)
 #' @param call A call to display in error messages
 #' @export
-train_discrete <- function(new, existing = NULL, drop = FALSE,
-                           na.rm = FALSE, fct = NA, call = caller_env()) {
+train_discrete <- function(
+  new,
+  existing = NULL,
+  drop = FALSE,
+  na.rm = FALSE,
+  fct = NA,
+  call = caller_env()
+) {
   if (is.null(new)) {
     return(existing)
   }
   if (!is.discrete(new)) {
     example <- unique(new)
     example <- example[seq_len(pmin(length(example), 5))]
-    cli::cli_abort(c(
-      "Continuous value supplied to a discrete scale.",
-      i = "Example values: {.and {.val {example}}}."
-    ), call = call)
+    cli::cli_abort(
+      c(
+        "Continuous value supplied to a discrete scale.",
+        i = "Example values: {.and {.val {example}}}."
+      ),
+      call = call
+    )
   }
   discrete_range(existing, new, drop = drop, na.rm = na.rm, fct = fct)
 }

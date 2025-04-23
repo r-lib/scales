@@ -22,22 +22,29 @@ number_bytes_format <- function(symbol = "auto", units = "binary", ...) {
 
 #' @export
 #' @rdname number_bytes_format
-number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy = 1, ...) {
+number_bytes <- function(
+  x,
+  symbol = "auto",
+  units = c("binary", "si"),
+  accuracy = 1,
+  ...
+) {
   units <- match.arg(units, c("binary", "si"))
 
   powers <- si_powers[si_powers >= 3] / 3 # powers of 1000
   prefix <- names(powers)
 
-  symbols <- c("B", switch(units,
-    si     = paste0(prefix, "B"),
-    binary = paste0(toupper(prefix), "iB")
-  ))
+  symbols <- c(
+    "B",
+    switch(
+      units,
+      si = paste0(prefix, "B"),
+      binary = paste0(toupper(prefix), "iB")
+    )
+  )
 
   symbol <- validate_byte_symbol(symbol, symbols)
-  base <- switch(units,
-    binary = 1024,
-    si = 1000
-  )
+  base <- switch(units, binary = 1024, si = 1000)
 
   if (symbol == "auto") {
     power <- findInterval(abs(x), base^powers)
@@ -51,7 +58,9 @@ number_bytes <- function(x, symbol = "auto", units = c("binary", "si"), accuracy
 
 validate_byte_symbol <- function(symbol, symbols, default = "auto") {
   if (length(symbol) != 1) {
-    cli::cli_abort("{.arg symbol} must have length 1, not length {length(symbol)}")
+    cli::cli_abort(
+      "{.arg symbol} must have length 1, not length {length(symbol)}"
+    )
   }
 
   valid_symbols <- c(default, symbols)
@@ -109,10 +118,18 @@ trans_format <- function(trans, format = scientific_format()) {
 #' # Labels in kg, but original data in g
 #' km <- unit_format(unit = "km", scale = 1e-3, digits = 2)
 #' demo_continuous(c(0, 2500), labels = km)
-unit_format <- function(accuracy = NULL, scale = 1, prefix = "",
-                        unit = "m", sep = " ", suffix = paste0(sep, unit),
-                        big.mark = NULL, decimal.mark = NULL,
-                        trim = TRUE, ...) {
+unit_format <- function(
+  accuracy = NULL,
+  scale = 1,
+  prefix = "",
+  unit = "m",
+  sep = " ",
+  suffix = paste0(sep, unit),
+  big.mark = NULL,
+  decimal.mark = NULL,
+  trim = TRUE,
+  ...
+) {
   number_format(
     accuracy = accuracy,
     scale = scale,

@@ -13,7 +13,7 @@
 #'   default, `NULL`, displays signs if there are zeroes or negative numbers
 #'   present.
 #' @param ... Passed on to `format()`.
-#' 
+#'
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
 #' @family labels for log scales
@@ -34,7 +34,6 @@ label_log <- function(base = 10, digits = 3, signed = NULL) {
 #' @export
 #' @rdname label_log
 format_log <- function(x, base = 10, signed = NULL, ...) {
-
   if (length(x) == 0) {
     return(character())
   }

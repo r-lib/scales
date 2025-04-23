@@ -56,8 +56,13 @@ label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
 #' @export
 #' @rdname label_date
 #' @param sep Separator to use when combining date formats into a single string.
-label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
-                             leading = "0", tz = "UTC", locale = NULL) {
+label_date_short <- function(
+  format = c("%Y", "%b", "%d", "%H:%M"),
+  sep = "\n",
+  leading = "0",
+  tz = "UTC",
+  locale = NULL
+) {
   force_all(format, sep, leading, tz, locale)
 
   function(x) {
@@ -93,7 +98,11 @@ label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
       format[[4]]
     )
 
-    format <- apply(for_mat, 1, function(x) paste(rev(x[!is.na(x)]), collapse = sep))
+    format <- apply(
+      for_mat,
+      1,
+      function(x) paste(rev(x[!is.na(x)]), collapse = sep)
+    )
     x <- format_dt(x, format, tz = tz, locale = locale)
 
     if (isTRUE(leading == "0")) {
@@ -125,7 +134,8 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
       format(as.POSIXct(x), format = format, tz = tz)
     } else {
       stop_input_type(
-        x, as_cli("used with a {.cls POSIXt} or {.cls difftime} object"),
+        x,
+        as_cli("used with a {.cls POSIXt} or {.cls difftime} object"),
         arg = I(as_cli("{.fn label_time}"))
       )
     }
@@ -137,8 +147,11 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
 #' @param unit The unit used to interpret numeric input
 #' @param space Add a space before the time unit?
 #' @inheritDotParams number accuracy scale prefix suffix big.mark decimal.mark style_positive style_negative trim
-label_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks"), space = FALSE,
-                           ...) {
+label_timespan <- function(
+  unit = c("secs", "mins", "hours", "days", "weeks"),
+  space = FALSE,
+  ...
+) {
   unit <- arg_match(unit)
   force_all(...)
   function(x) {

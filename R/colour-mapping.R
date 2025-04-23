@@ -33,7 +33,13 @@
 #'   `alpha = TRUE` in which case #RRGGBBAA may also be possible).
 #'
 #' @export
-col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, reverse = FALSE) {
+col_numeric <- function(
+  palette,
+  domain,
+  na.color = "#808080",
+  alpha = FALSE,
+  reverse = FALSE
+) {
   rng <- NULL
   if (length(domain) > 0) {
     rng <- range(domain, na.rm = TRUE)
@@ -53,7 +59,9 @@ col_numeric <- function(palette, domain, na.color = "#808080", alpha = FALSE, re
 
     rescaled <- rescale(x, from = rng)
     if (any(rescaled < 0 | rescaled > 1, na.rm = TRUE)) {
-      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
+      cli::cli_warn(
+        "Some values were outside the color scale and will be treated as NA"
+      )
     }
 
     if (reverse) {
@@ -111,9 +119,16 @@ getBins <- function(domain, x, bins, pretty) {
 #' @param right parameter supplied to [base::cut()]. See Details
 #' @rdname col_numeric
 #' @export
-col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
-                    na.color = "#808080", alpha = FALSE, reverse = FALSE, right = FALSE) {
-
+col_bin <- function(
+  palette,
+  domain,
+  bins = 7,
+  pretty = TRUE,
+  na.color = "#808080",
+  alpha = FALSE,
+  reverse = FALSE,
+  right = FALSE
+) {
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # breaks are specified
   if (missing(domain) && length(bins) > 1) {
@@ -124,23 +139,38 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
     bins <- getBins(domain, NULL, bins, pretty)
   }
   numColors <- if (length(bins) == 1) bins else length(bins) - 1
-  colorFunc <- col_factor(palette,
+  colorFunc <- col_factor(
+    palette,
     domain = if (!autobin) 1:numColors,
-    na.color = na.color, alpha = alpha, reverse = reverse
+    na.color = na.color,
+    alpha = alpha,
+    reverse = reverse
   )
   pf <- safePaletteFunc(palette, na.color, alpha)
 
-  withColorAttr("bin", list(bins = bins, na.color = na.color, right = right), function(x) {
-    if (length(x) == 0 || all(is.na(x))) {
-      return(pf(x))
+  withColorAttr(
+    "bin",
+    list(bins = bins, na.color = na.color, right = right),
+    function(x) {
+      if (length(x) == 0 || all(is.na(x))) {
+        return(pf(x))
+      }
+      binsToUse <- getBins(domain, x, bins, pretty)
+      ints <- cut(
+        x,
+        binsToUse,
+        labels = FALSE,
+        include.lowest = TRUE,
+        right = right
+      )
+      if (any(is.na(x) != is.na(ints))) {
+        cli::cli_warn(
+          "Some values were outside the color scale and will be treated as NA"
+        )
+      }
+      colorFunc(ints)
     }
-    binsToUse <- getBins(domain, x, bins, pretty)
-    ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
-    if (any(is.na(x) != is.na(ints))) {
-      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
-    }
-    colorFunc(ints)
-  })
+  )
 }
 
 #' @details `col_quantile` similarly bins numeric data, but via the
@@ -151,16 +181,28 @@ col_bin <- function(palette, domain, bins = 7, pretty = TRUE,
 #'   argument is ignored.
 #' @rdname col_numeric
 #' @export
-col_quantile <- function(palette, domain, n = 4,
-                         probs = seq(0, 1, length.out = n + 1), na.color = "#808080", alpha = FALSE,
-                         reverse = FALSE, right = FALSE) {
+col_quantile <- function(
+  palette,
+  domain,
+  n = 4,
+  probs = seq(0, 1, length.out = n + 1),
+  na.color = "#808080",
+  alpha = FALSE,
+  reverse = FALSE,
+  right = FALSE
+) {
   if (!is.null(domain)) {
     bins <- safe_quantile(domain, probs)
     return(withColorAttr(
-      "quantile", list(probs = probs, na.color = na.color, right = right),
-      col_bin(palette,
-        domain = NULL, bins = bins, na.color = na.color,
-        alpha = alpha, reverse = reverse
+      "quantile",
+      list(probs = probs, na.color = na.color, right = right),
+      col_bin(
+        palette,
+        domain = NULL,
+        bins = bins,
+        na.color = na.color,
+        alpha = alpha,
+        reverse = reverse
       )
     ))
   }
@@ -168,26 +210,43 @@ col_quantile <- function(palette, domain, n = 4,
   # I don't have a precise understanding of how quantiles are meant to map to colors.
   # If you say probs = seq(0, 1, 0.25), which has length 5, does that map to 4 colors
   # or 5? 4, right?
-  colorFunc <- col_factor(palette,
+  colorFunc <- col_factor(
+    palette,
     domain = 1:(length(probs) - 1),
-    na.color = na.color, alpha = alpha, reverse = reverse
+    na.color = na.color,
+    alpha = alpha,
+    reverse = reverse
   )
 
-  withColorAttr("quantile", list(probs = probs, na.color = na.color, right = right), function(x) {
-    binsToUse <- safe_quantile(x, probs)
-    ints <- cut(x, binsToUse, labels = FALSE, include.lowest = TRUE, right = right)
-    if (any(is.na(x) != is.na(ints))) {
-      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
+  withColorAttr(
+    "quantile",
+    list(probs = probs, na.color = na.color, right = right),
+    function(x) {
+      binsToUse <- safe_quantile(x, probs)
+      ints <- cut(
+        x,
+        binsToUse,
+        labels = FALSE,
+        include.lowest = TRUE,
+        right = right
+      )
+      if (any(is.na(x) != is.na(ints))) {
+        cli::cli_warn(
+          "Some values were outside the color scale and will be treated as NA"
+        )
+      }
+      colorFunc(ints)
     }
-    colorFunc(ints)
-  })
+  )
 }
 
 safe_quantile <- function(x, probs) {
   bins <- stats::quantile(x, probs, na.rm = TRUE, names = FALSE)
   if (anyDuplicated(bins)) {
     bins <- unique(bins)
-    cli::cli_warn("Skewed data means we can only allocate {length(bins)} unique colours not the {length(probs) - 1} requested")
+    cli::cli_warn(
+      "Skewed data means we can only allocate {length(bins)} unique colours not the {length(probs) - 1} requested"
+    )
   }
   bins
 }
@@ -229,9 +288,15 @@ getLevels <- function(domain, x, lvls, ordered) {
 #'   factor, treat it as already in the correct order
 #' @rdname col_numeric
 #' @export
-col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
-                       na.color = "#808080", alpha = FALSE, reverse = FALSE) {
-
+col_factor <- function(
+  palette,
+  domain,
+  levels = NULL,
+  ordered = FALSE,
+  na.color = "#808080",
+  alpha = FALSE,
+  reverse = FALSE
+) {
   # domain usually needs to be explicitly provided (even if NULL) but not if
   # levels are specified
   if (missing(domain) && !is.null(levels)) {
@@ -251,17 +316,26 @@ col_factor <- function(palette, domain, levels = NULL, ordered = FALSE,
     }
 
     lvls <- getLevels(domain, x, lvls, ordered)
-    pf <- safePaletteFunc(palette, na.color, alpha, nlevels = length(lvls) * ifelse(reverse, -1, 1))
+    pf <- safePaletteFunc(
+      palette,
+      na.color,
+      alpha,
+      nlevels = length(lvls) * ifelse(reverse, -1, 1)
+    )
 
     origNa <- is.na(x)
     x <- match(as.character(x), lvls)
     if (any(is.na(x) != origNa)) {
-      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
+      cli::cli_warn(
+        "Some values were outside the color scale and will be treated as NA"
+      )
     }
 
     scaled <- rescale(as.integer(x), from = c(1, length(lvls)))
     if (any(scaled < 0 | scaled > 1, na.rm = TRUE)) {
-      cli::cli_warn("Some values were outside the color scale and will be treated as NA")
+      cli::cli_warn(
+        "Some values were outside the color scale and will be treated as NA"
+      )
     }
     if (reverse) {
       scaled <- 1 - scaled
@@ -327,9 +401,14 @@ toPaletteFunc.character <- function(pal, alpha, nlevels) {
       colors <- pal_brewer(palette = pal)(abs(nlevels))
       colors <- colors[!is.na(colors)]
     } else {
-      colors <- pal_brewer(palette = pal)(RColorBrewer::brewer.pal.info[pal, "maxcolors"]) # Get all colors
+      colors <- pal_brewer(palette = pal)(RColorBrewer::brewer.pal.info[
+        pal,
+        "maxcolors"
+      ]) # Get all colors
     }
-  } else if (length(pal) == 1 && pal %in% c("viridis", "magma", "inferno", "plasma")) {
+  } else if (
+    length(pal) == 1 && pal %in% c("viridis", "magma", "inferno", "plasma")
+  ) {
     colors <- pal_viridis(option = pal)(256)
   } else {
     colors <- pal

@@ -1,4 +1,3 @@
-
 test_that("ordinal format in English", {
   expect_snapshot({
     ordinal(c(1:4, 11:21, 101, NA))

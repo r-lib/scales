@@ -24,7 +24,9 @@ date_trans <- transform_date
 to_date <- function(x) structure(x, class = "Date")
 from_date <- function(x) {
   if (!inherits(x, "Date")) {
-    cli::cli_abort("{.fun transform_date} works with objects of class {.cls Date} only")
+    cli::cli_abort(
+      "{.fun transform_date} works with objects of class {.cls Date} only"
+    )
   }
   structure(as.numeric(x), names = names(x))
 }
@@ -48,7 +50,9 @@ transform_time <- function(tz = NULL) {
 
   from_time <- function(x) {
     if (!inherits(x, "POSIXct")) {
-      cli::cli_abort("{.fun transform_time} works with objects of class {.cls POSIXct} only")
+      cli::cli_abort(
+        "{.fun transform_time} works with objects of class {.cls POSIXct} only"
+      )
     }
     if (is.null(tz)) {
       tz <<- attr(as.POSIXlt(x), "tzone")[[1]]
@@ -56,7 +60,8 @@ transform_time <- function(tz = NULL) {
     structure(as.numeric(x), names = names(x))
   }
 
-  new_transform("time",
+  new_transform(
+    "time",
     transform = "from_time",
     inverse = "to_time",
     breaks = breaks_pretty(),
@@ -96,12 +101,17 @@ time_trans <- transform_time
 #'   demo_timespan(hms, trans = t)
 #' }
 #'
-transform_timespan <- function(unit = c("secs", "mins", "hours", "days", "weeks")) {
+transform_timespan <- function(
+  unit = c("secs", "mins", "hours", "days", "weeks")
+) {
   unit <- arg_match(unit)
   new_transform(
     "timespan",
     transform = function(x) {
-      structure(as.numeric(as.difftime(x, units = unit), units = "secs"), names = names(x))
+      structure(
+        as.numeric(as.difftime(x, units = unit), units = "secs"),
+        names = names(x)
+      )
     },
     inverse = function(x) {
       x <- as.difftime(x, units = "secs")
