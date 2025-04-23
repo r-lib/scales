@@ -57,8 +57,8 @@ label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
 #' @rdname label_date
 #' @param sep Separator to use when combining date formats into a single string.
 label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
-                             leading = "0") {
-  force_all(format, sep, leading)
+                             leading = "0", tz = "UTC", locale = NULL) {
+  force_all(format, sep, leading, tz, locale)
 
   function(x) {
     dt <- unclass(as.POSIXlt(x))
@@ -94,7 +94,7 @@ label_date_short <- function(format = c("%Y", "%b", "%d", "%H:%M"), sep = "\n",
     )
 
     format <- apply(for_mat, 1, function(x) paste(rev(x[!is.na(x)]), collapse = sep))
-    x <- format(x, format)
+    x <- format_dt(x, format, tz = tz, locale = locale)
 
     if (isTRUE(leading == "0")) {
       return(x)

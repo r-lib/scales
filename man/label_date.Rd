@@ -12,7 +12,9 @@ label_date(format = "\%Y-\%m-\%d", tz = "UTC", locale = NULL)
 label_date_short(
   format = c("\%Y", "\%b", "\%d", "\%H:\%M"),
   sep = "\\n",
-  leading = "0"
+  leading = "0",
+  tz = "UTC",
+  locale = NULL
 )
 
 label_time(format = "\%H:\%M:\%S", tz = "UTC", locale = NULL)

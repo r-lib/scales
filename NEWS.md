@@ -21,6 +21,7 @@
   (@teunbrand, #426).
 * Added colour manipulation functions: `col_shift()`, `col_saturate()`,
   `col_darker()`, `col_lighter()` and `col_mix()` (@teunbrand, #423)
+* `label_date_short()` gains `tz` and `locale` argument (#478)
 
 # scales 1.3.0
 
