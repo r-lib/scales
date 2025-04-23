@@ -1,36 +1,42 @@
 ## revdepcheck results
 
-We checked 904 reverse dependencies (893 from CRAN + 11 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 1099 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * We saw 3 new problems
- * We failed to check 12 packages
+ * We saw 9 new problems
+ * We failed to check 0 packages
 
 Issues with CRAN packages are summarised below.
 
 ### New problems
 (This reports the first line of each new failure)
 
-* duke
+* ggplot2
+  checking tests ... ERROR
+
+* ggprism
   checking tests ... ERROR
 
 * ggside
   checking tests ... ERROR
 
-* WoodSimulatR
+* iNZightPlots
   checking examples ... ERROR
-  checking re-building of vignette outputs ... WARNING
+  checking tests ... ERROR
 
-### Failed to check
+* Karen
+  checking examples ... ERROR
 
-* FAMetA         (NA)
-* genekitr       (NA)
-* ggPMX          (NA)
-* grandR         (NA)
-* lilikoi        (NA)
-* MarketMatching (NA)
-* MARVEL         (NA)
-* numbat         (NA)
-* oHMMed         (NA)
-* OlinkAnalyze   (NA)
-* SCpubr         (NA)
-* tidySEM        (NA)
+* RMixtComp
+  checking examples ... ERROR
+  checking re-building of vignette outputs ... ERROR
+
+* superheat
+  checking examples ... ERROR
+  checking tests ... ERROR
+
+* testcorr
+  checking examples ... ERROR
+
+* vaccineff
+  checking re-building of vignette outputs ... ERROR
+
