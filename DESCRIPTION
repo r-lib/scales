@@ -14,7 +14,7 @@ License: MIT + file LICENSE
 URL: https://scales.r-lib.org, https://github.com/r-lib/scales
 BugReports: https://github.com/r-lib/scales/issues
 Depends: 
-    R (>= 4.0)
+    R (>= 4.1)
 Imports: 
     cli,
     farver (>= 2.0.3),
