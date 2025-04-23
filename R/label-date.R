@@ -59,7 +59,9 @@ label_date <- function(format = "%Y-%m-%d", tz = "UTC", locale = NULL) {
 label_date_short <- function(
   format = c("%Y", "%b", "%d", "%H:%M"),
   sep = "\n",
-  leading = "0"
+  leading = "0",
+  tz = "UTC",
+  locale = NULL
 ) {
   force_all(format, sep, leading, tz, locale)
 
