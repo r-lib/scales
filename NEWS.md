@@ -1,3 +1,5 @@
+# scales (development version)
+
 # scales 1.4.0
 * Range training now supports custom classes. Continuous classes require a
   `range()` method that returns numeric values. Discrete classes require a
