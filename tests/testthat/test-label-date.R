@@ -16,9 +16,11 @@ test_that("time_format works correctly", {
   na_time <- ISOdatetime(NA, 1, 1, 1, 1, 0) # time of value NA
 
   expect_equal(time_format()(a_time), "11:30:00")
+  expect_equal(time_format()(na_time), NA_character_
+
+  skip_if_not_installed("hms")
   expect_equal(time_format()(hms::as_hms(a_time)), "11:30:00")
   expect_equal(time_format(format = "%H")(hms::as_hms(a_time)), "11")
-  expect_equal(time_format()(na_time), NA_character_)
 })
 
 test_that("can set locale", {
@@ -28,6 +30,7 @@ test_that("can set locale", {
 })
 
 test_that("label_date_short can replace leading zeroes", {
+  skip_if_not_installed("stringi")
   x <- seq(as.Date("2024-01-01"), as.Date("2025-01-01"), by = "1 month")
   labels <- label_date_short(
     format = c("%Y", "%m", "%d"),
