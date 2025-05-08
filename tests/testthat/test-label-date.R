@@ -30,6 +30,7 @@ test_that("can set locale", {
 })
 
 test_that("label_date_short can replace leading zeroes", {
+  skip_if_not_installed("stringi")
   x <- seq(as.Date("2024-01-01"), as.Date("2025-01-01"), by = "1 month")
   labels <- label_date_short(
     format = c("%Y", "%m", "%d"),
