@@ -84,6 +84,7 @@ reference:
   - manual_pal
   - rescale_pal
   - shape_pal
+  - pal_seq
 
 - title: Creating your own scales and mutable ranges
   desc: >
