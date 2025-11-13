@@ -14,9 +14,9 @@ breaks that requested.}
 }
 \value{
 All \code{breaks_()} functions return a function for generating breaks. These
-functions takes, as their first argument a vector of values that represent
+functions takes, as their first argument a vector of length 2 that represent
 the data range to provide breaks for. Some will optionally take a second
-argument that allows you to specify the number of breaks to recieve.
+argument that allows you to specify the number of breaks to receive.
 }
 \description{
 This breaks function typically labels zero and the last \code{n - 1} integers of a
