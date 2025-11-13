@@ -62,6 +62,14 @@ breaks_width <- function(width, offset = 0) {
   force_all(width, offset)
 
   function(x) {
+    x <- suppressWarnings(range(x, na.rm = TRUE))
+    x <- x[is.finite(x)]
+    if (length(x) == 0) {
+      return(x)
+    }
+    if (zero_range(as.numeric(x))) {
+      return(x[1])
+    }
     x <- fullseq(x, width)
     for (i in offset) {
       x <- offset_by(x, i)
@@ -92,13 +100,15 @@ breaks_width <- function(width, offset = 0) {
 breaks_extended <- function(n = 5, ...) {
   n_default <- n
   function(x, n = n_default) {
+    x <- suppressWarnings(range(x, na.rm = TRUE))
     x <- x[is.finite(x)]
     if (length(x) == 0) {
-      return(numeric())
+      return(x)
     }
-
-    rng <- range(x)
-    labeling::extended(rng[1], rng[2], n, ...)
+    if (zero_range(as.numeric(x))) {
+      return(x[1])
+    }
+    labeling::extended(x[1], x[2], n, ...)
   }
 }
 
@@ -135,7 +145,12 @@ breaks_pretty <- function(n = 5, ...) {
   force_all(n, ...)
   n_default <- n
   function(x, n = n_default) {
-    if (length(x) > 0 && zero_range(range(as.numeric(x), na.rm = TRUE))) {
+    x <- suppressWarnings(range(x, na.rm = TRUE))
+    x <- x[is.finite(x)]
+    if (length(x) == 0) {
+      return(x)
+    }
+    if (zero_range(as.numeric(x))) {
       return(x[1])
     }
     breaks <- pretty(x, n, ...)
@@ -180,8 +195,16 @@ breaks_timespan <- function(
   force(n)
   function(x) {
     x <- as.numeric(as.difftime(x, units = unit), units = "secs")
-    rng <- range(x)
-    diff <- rng[2] - rng[1]
+    x <- suppressWarnings(range(x, na.rm = TRUE))
+    x <- x[is.finite(x)]
+    if (length(x) == 0) {
+      return(as.difftime(x, units = "secs"))
+    }
+    if (zero_range(x)) {
+      return(as.difftime(x[1], units = "secs"))
+    }
+
+    diff <- x[2] - x[1]
 
     if (diff <= 2 * 60) {
       scale <- 1
@@ -195,10 +218,10 @@ breaks_timespan <- function(
       scale <- 604800
     }
 
-    rng <- rng / scale
+    x <- x / scale
     breaks <- labeling::extended(
-      rng[1],
-      rng[2],
+      x[1],
+      x[2],
       n,
       Q = c(1, 2, 1.5, 4, 3),
       only.loose = FALSE
@@ -228,7 +251,14 @@ breaks_exp <- function(n = 5, ...) {
   default <- extended_breaks(n = n_default, ...)
   function(x, n = n_default) {
     # Discard -Infs
-    x <- sort(pmax(x, 0))
+    x <- suppressWarnings(range(pmax(x, 0), na.rm = TRUE))
+    x <- x[is.finite(x)]
+    if (length(x) == 0) {
+      return(x)
+    }
+    if (zero_range(as.numeric(x))) {
+      return(x[1])
+    }
     top <- floor(x[2])
     if (top >= 3 && abs(diff(x)) >= 3) {
       unique(c(top - seq_len(min(top, n_default - 1)) + 1, 0))
