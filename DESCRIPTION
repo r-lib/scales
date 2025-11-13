@@ -40,4 +40,4 @@ Config/usethis/last-upkeep: 2025-04-23
 Encoding: UTF-8
 LazyLoad: yes
 Roxygen: list(markdown = TRUE, r6 = FALSE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
