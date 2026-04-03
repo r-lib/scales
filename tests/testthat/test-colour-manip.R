@@ -84,3 +84,10 @@ test_that("colour manipulation functions work on palettes", {
   expect_equal(col_saturate(pal, -50)(3), c("#BF4040", "#40BF40", "#4040BF"))
   expect_equal(col_mix(pal, "white")(3), c("#FF8080", "#80FF80", "#8080FF"))
 })
+
+# col_contrasting ------------------------------------------------
+
+test_that("col_contrasting chooses suitable colours", {
+  colours <- c("navy", "white", "black", "yellow")
+  expect_equal(col_contrasting(colours), c("white", "black", "white", "black"))
+})

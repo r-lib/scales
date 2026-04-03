@@ -35,6 +35,7 @@ col_mix("blue", "red", space = "hcl") # green!
 Other colour manipulation: 
 \code{\link{alpha}()},
 \code{\link{col2hcl}()},
+\code{\link{col_contrasting}()},
 \code{\link{colour_manip}},
 \code{\link{muted}()}
 }

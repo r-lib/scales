@@ -31,6 +31,7 @@ show_col(col2hcl(reds, alpha = seq(0, 1, length = 6)))
 \seealso{
 Other colour manipulation: 
 \code{\link{alpha}()},
+\code{\link{col_contrasting}()},
 \code{\link{col_mix}()},
 \code{\link{colour_manip}},
 \code{\link{muted}()}

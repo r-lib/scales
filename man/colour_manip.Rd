@@ -51,6 +51,7 @@ col_saturate("red", -50) # brick-red
 Other colour manipulation: 
 \code{\link{alpha}()},
 \code{\link{col2hcl}()},
+\code{\link{col_contrasting}()},
 \code{\link{col_mix}()},
 \code{\link{muted}()}
 }

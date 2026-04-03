@@ -177,6 +177,28 @@ col_mix.scales_pal <- function(a, b, amount = 0.5, space = "rgb") {
   wrap_col_adjustment(a, col_mix, list(b = b, amount = amount, space = space))
 }
 
+#' Choose a contrasting colour
+#'
+#' Chooses either `light` or `dark` based on the lightness of `colour`.
+#' This is useful for choosing a text colour that is legible on a solid background
+#' cooured with `colour`.
+#'
+#' @param colour character vector of colours to be modified
+#' @param light colour to return when `colour` is dark
+#' @param dark colour to return when `colour` is light
+#'
+#' @return A character vector of colours with the same length as `colour`
+#' @family colour manipulation
+#' @export
+#'
+#' @examples
+#' col_contrasting(c("navy", "white", "black", "yellow"))
+#'
+col_contrasting <- function(colour, light = "white", dark = "black") {
+  lab <- farver::decode_colour(colour, to = "lab")
+  ifelse(lab[, 1] < 50, light, dark)
+}
+
 #' Colour manipulation
 #'
 #' These are a set of convenience functions for standard colour manipulation

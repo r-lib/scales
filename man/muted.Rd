@@ -25,6 +25,7 @@ show_col(c("red", "blue", muted("red"), muted("blue")))
 Other colour manipulation: 
 \code{\link{alpha}()},
 \code{\link{col2hcl}()},
+\code{\link{col_contrasting}()},
 \code{\link{col_mix}()},
 \code{\link{colour_manip}}
 }
