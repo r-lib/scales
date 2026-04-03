@@ -24,6 +24,7 @@ alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 \seealso{
 Other colour manipulation: 
 \code{\link{col2hcl}()},
+\code{\link{col_contrasting}()},
 \code{\link{col_mix}()},
 \code{\link{colour_manip}},
 \code{\link{muted}()}
