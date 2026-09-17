@@ -64,11 +64,11 @@ pal_gradient_div <- function(
 }
 
 #' @export
-#' @rdname pal_div_gradient
+#' @rdname pal_gradient_div
 div_gradient_pal <- pal_gradient_div
 
 #' @export
-#' @rdname pal_div_gradient
+#' @rdname pal_gradient_div
 pal_div_gradient <- pal_gradient_div
 
 #' Sequential colour gradient palette (continuous)
@@ -92,9 +92,9 @@ pal_gradient_seq <- function(
 }
 
 #' @export
-#' @rdname pal_seq_gradient
+#' @rdname pal_gradient_seq
 seq_gradient_pal <- pal_gradient_seq
 
 #' @export
-#' @rdname pal_seq_gradient
+#' @rdname pal_gradient_seq
 pal_seq_gradient <- pal_gradient_seq

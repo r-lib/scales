@@ -2,9 +2,15 @@
 % Please edit documentation in R/pal-gradient.R
 \name{pal_gradient_seq}
 \alias{pal_gradient_seq}
+\alias{seq_gradient_pal}
+\alias{pal_seq_gradient}
 \title{Sequential colour gradient palette (continuous)}
 \usage{
 pal_gradient_seq(low = "#2B6788", high = "#90503F", space = "Lab")
+
+seq_gradient_pal(low = "#2B6788", high = "#90503F", space = "Lab")
+
+pal_seq_gradient(low = "#2B6788", high = "#90503F", space = "Lab")
 }
 \arguments{
 \item{low}{colour for low end of gradient.}

@@ -2,9 +2,25 @@
 % Please edit documentation in R/pal-gradient.R
 \name{pal_gradient_div}
 \alias{pal_gradient_div}
+\alias{div_gradient_pal}
+\alias{pal_div_gradient}
 \title{Diverging colour gradient (continuous).}
 \usage{
 pal_gradient_div(
+  low = "#2B6788",
+  mid = "#CBCBCB",
+  high = "#90503F",
+  space = "Lab"
+)
+
+div_gradient_pal(
+  low = "#2B6788",
+  mid = "#CBCBCB",
+  high = "#90503F",
+  space = "Lab"
+)
+
+pal_div_gradient(
   low = "#2B6788",
   mid = "#CBCBCB",
   high = "#90503F",
