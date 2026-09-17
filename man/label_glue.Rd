@@ -45,21 +45,21 @@ demo_discrete(species[-3], labels =  label_glue("The {x}\n{animal}"))
 demo_discrete(species[-3], labels = glue::glue("The {species}\n{animal}"))
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 
-Other labels for discrete scales: 
-\code{\link{label_dictionary}()},
-\code{\link{label_parse}()},
-\code{\link{label_wrap}()}
+Other labels for discrete scales:
+\code{\link[=label_dictionary]{label_dictionary()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_wrap]{label_wrap()}}
 }
 \concept{labels for continuous scales}
 \concept{labels for discrete scales}

@@ -45,21 +45,21 @@ demo_continuous(c(1, 5), labels = label_math())
 \seealso{
 \link{plotmath} for the details of mathematical formatting in R.
 
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 
-Other labels for discrete scales: 
-\code{\link{label_dictionary}()},
-\code{\link{label_glue}()},
-\code{\link{label_wrap}()}
+Other labels for discrete scales:
+\code{\link[=label_dictionary]{label_dictionary()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_wrap]{label_wrap()}}
 }
 \concept{labels for continuous scales}
 \concept{labels for discrete scales}

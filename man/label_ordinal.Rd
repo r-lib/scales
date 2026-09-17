@@ -26,8 +26,10 @@ The default (\code{NULL}) retrieves the setting from the
 Name gives suffix, and value specifies which numbers to match.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=number]{number}}
+  Arguments passed on to \code{\link{number}}
   \describe{
+    \item{\code{space}}{Add a space before the scale suffix?}
+    \item{\code{unit}}{SI unit abbreviation.}
     \item{\code{accuracy}}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should
 ensure breaks have the minimum number of digits needed to show the
@@ -118,15 +120,15 @@ demo_continuous(c(1, 10),
 )
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for continuous scales}
