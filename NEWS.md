@@ -1,4 +1,5 @@
 # scales (development version)
+* Rename `pal_gradient_*` functions for consistency: Now `pal_gradient_seq` and `pal_gradient_div`
 
 # scales 1.4.0
 * Range training now supports custom classes. Continuous classes require a

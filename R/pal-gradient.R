@@ -54,7 +54,7 @@ gradient_n_pal <- pal_gradient_n
 #'
 #' pal <- pal_div_gradient(low = "#2E6A70")
 #' image(r, col = pal(seq(0, 1, length.out = 100)))
-pal_div_gradient <- function(
+pal_gradient_div <- function(
   low = "#2B6788", # munsell::mnsl("10B 4/6"),
   mid = "#CBCBCB", # munsell::mnsl("N 8/0"),
   high = "#90503F", # munsell::mnsl("10R 4/6"),
@@ -65,7 +65,11 @@ pal_div_gradient <- function(
 
 #' @export
 #' @rdname pal_div_gradient
-div_gradient_pal <- pal_div_gradient
+div_gradient_pal <- pal_gradient_div
+
+#' @export
+#' @rdname pal_div_gradient
+pal_div_gradient <- pal_gradient_div
 
 #' Sequential colour gradient palette (continuous)
 #'
@@ -79,7 +83,7 @@ div_gradient_pal <- pal_div_gradient
 #' show_col(pal_seq_gradient("white", "black")(x))
 #'
 #' show_col(pal_seq_gradient("white", "#90503F")(x))
-pal_seq_gradient <- function(
+pal_gradient_seq <- function(
   low = "#2B6788", # munsell::mnsl("10B 4/6"),
   high = "#90503F", # munsell::mnsl("10R 4/6"),
   space = "Lab"
@@ -89,4 +93,8 @@ pal_seq_gradient <- function(
 
 #' @export
 #' @rdname pal_seq_gradient
-seq_gradient_pal <- pal_seq_gradient
+seq_gradient_pal <- pal_gradient_seq
+
+#' @export
+#' @rdname pal_seq_gradient
+pal_seq_gradient <- pal_gradient_seq

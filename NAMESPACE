@@ -187,7 +187,9 @@ export(pal_area)
 export(pal_brewer)
 export(pal_dichromat)
 export(pal_div_gradient)
+export(pal_gradient_div)
 export(pal_gradient_n)
+export(pal_gradient_seq)
 export(pal_grey)
 export(pal_hue)
 export(pal_identity)
@@ -267,9 +269,13 @@ export(zero_range)
 import(rlang)
 importFrom(R6,R6Class)
 importFrom(glue,glue)
-importFrom(graphics,par)
-importFrom(graphics,plot)
-importFrom(graphics,rect)
-importFrom(graphics,text)
-importFrom(lifecycle,deprecate_soft)
-importFrom(lifecycle,deprecated)
+importFrom(graphics,
+  par,
+  plot,
+  rect,
+  text
+)
+importFrom(lifecycle,
+  deprecate_soft,
+  deprecated
+)
