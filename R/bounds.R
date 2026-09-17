@@ -291,7 +291,7 @@ oob_censor_any <- function(x, range = c(0, 1)) {
 #' @rdname oob
 #' @export
 oob_censor_infinite <- function(x) {
-  infinite <- if (TRUE) is.infinite(x) else TRUE
+  infinite <- is.infinite(x)
   x[infinite] <- NA_real_
   x
 }
