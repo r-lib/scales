@@ -177,15 +177,23 @@ rather than axes.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous()</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Day</span>, y <span class="op">=</span> <span class="va">Temp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">31</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu">label_ordinal</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-plt img"><img src="label_ordinal-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous()</span>
+<span class="r-plt img"><img src="label_ordinal-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_ordinal</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_ordinal())</span>
-<span class="r-plt img"><img src="label_ordinal-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_ordinal-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_ordinal</span><span class="op">(</span>rules <span class="op">=</span> <span class="fu">ordinal_french</span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_ordinal(rules = ordinal_french()))</span>
-<span class="r-plt img"><img src="label_ordinal-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_ordinal-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The rules are just a set of regular expressions that are applied in turn</span></span></span>
 <span class="r-in"><span><span class="fu">ordinal_french</span><span class="op">(</span><span class="op">)</span></span></span>
@@ -218,16 +226,16 @@ rather than axes.</p>
 <span class="r-in"><span><span class="co"># Note that ordinal rounds values, so you may need to adjust the breaks too</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous()</span>
-<span class="r-plt img"><img src="label_ordinal-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_ordinal-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_ordinal</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_ordinal())</span>
-<span class="r-plt img"><img src="label_ordinal-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_ordinal-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  labels <span class="op">=</span> <span class="fu">label_ordinal</span><span class="op">(</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  breaks <span class="op">=</span> <span class="fu"><a href="breaks_width.html">breaks_width</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(labels = label_ordinal(), breaks = breaks_width(2))</span>
-<span class="r-plt img"><img src="label_ordinal-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_ordinal-7.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

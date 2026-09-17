@@ -60,6 +60,11 @@ Other labels for log scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(labels = label_log())
+
 demo_log10(c(1, 1e5), labels = label_log())
 #> scale_x_log10(labels = label_log())
 

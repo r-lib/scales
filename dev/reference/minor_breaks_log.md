@@ -28,6 +28,11 @@ A function to generate minor ticks.
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(minor_breaks = minor_breaks_log())
+
 # Standard usage with log10 scale
 demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log())
 #> scale_x_log10(minor_breaks = minor_breaks_log())

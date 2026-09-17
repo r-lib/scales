@@ -42,6 +42,11 @@ to recieve.
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(faithful, aes(x = waiting)) +
+  geom_histogram(binwidth = 2) +
+  scale_x_continuous(breaks = breaks_width(5))
+
 demo_continuous(c(0, 100))
 #> scale_x_continuous()
 

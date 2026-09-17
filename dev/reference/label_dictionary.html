@@ -89,7 +89,14 @@ rather than axes.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Example lookup table</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">ToothGrowth</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">supp</span>, y <span class="op">=</span> <span class="va">len</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_x_discrete</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    labels <span class="op">=</span> <span class="fu">label_dictionary</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>OJ <span class="op">=</span> <span class="st">"Orange juice"</span>, VC <span class="op">=</span> <span class="st">"Vitamin C"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-plt img"><img src="label_dictionary-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># Example lookup table</span></span></span>
 <span class="r-in"><span><span class="va">lut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="st">"4"</span> <span class="op">=</span> <span class="st">"four wheel drive"</span>,</span></span>
 <span class="r-in"><span>  <span class="st">"r"</span> <span class="op">=</span> <span class="st">"rear wheel drive"</span>,</span></span>
@@ -99,18 +106,18 @@ rather than axes.</p>
 <span class="r-in"><span><span class="co"># Typical usage</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_discrete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"4"</span>, <span class="st">"r"</span>, <span class="st">"f"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_dictionary</span><span class="op">(</span><span class="va">lut</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_discrete(labels = label_dictionary(lut))</span>
-<span class="r-plt img"><img src="label_dictionary-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_dictionary-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># By default, extra values ('w') will remain as-is</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_discrete</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"4"</span>, <span class="st">"r"</span>, <span class="st">"f"</span>, <span class="st">"w"</span><span class="op">)</span>, labels <span class="op">=</span> <span class="fu">label_dictionary</span><span class="op">(</span><span class="va">lut</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_discrete(labels = label_dictionary(lut))</span>
-<span class="r-plt img"><img src="label_dictionary-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_dictionary-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># Alternatively, you can relabel extra values</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_discrete</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"4"</span>, <span class="st">"r"</span>, <span class="st">"f"</span>, <span class="st">"w"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  labels <span class="op">=</span> <span class="fu">label_dictionary</span><span class="op">(</span><span class="va">lut</span>, nomatch <span class="op">=</span> <span class="st">"unknown"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_discrete(labels = label_dictionary(lut, nomatch = "unknown"))</span>
-<span class="r-plt img"><img src="label_dictionary-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="label_dictionary-4.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

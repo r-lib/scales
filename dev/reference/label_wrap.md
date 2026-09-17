@@ -36,6 +36,12 @@ Other labels for discrete scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+animals <- head(msleep[c("name", "sleep_total")], 8)
+ggplot(animals, aes(x = name, y = sleep_total)) +
+  geom_col() +
+  scale_x_discrete(labels = label_wrap(10))
+
 x <- c(
   "this is a long label",
   "this is another long label",

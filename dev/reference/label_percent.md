@@ -151,6 +151,11 @@ Other labels for continuous scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(mpg, aes(y = class, fill = drv)) +
+  geom_bar(position = "fill") +
+  scale_x_continuous(labels = label_percent())
+
 demo_continuous(c(0, 1))
 #> scale_x_continuous()
 

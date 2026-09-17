@@ -156,6 +156,11 @@ legends rather than axes.
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(midwest, aes(x = poptotal, y = percollege)) +
+  geom_point() +
+  scale_x_continuous(labels = label_number(scale_cut = cut_short_scale()))
+
 demo_continuous(c(-1e6, 1e6))
 #> scale_x_continuous()
 

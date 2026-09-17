@@ -84,46 +84,51 @@ argument that allows you to specify the number of breaks to recieve.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous()</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">faithful</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">waiting</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="breaks_width-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous()</span>
+<span class="r-plt img"><img src="breaks_width-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(breaks = breaks_width(10))</span>
-<span class="r-plt img"><img src="breaks_width-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="fl">20</span>, <span class="op">-</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(breaks = breaks_width(20, -4))</span>
-<span class="r-plt img"><img src="breaks_width-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-4.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="fl">20</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(breaks = breaks_width(20, 4))</span>
-<span class="r-plt img"><img src="breaks_width-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-5.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># This is also useful for dates</span></span></span>
 <span class="r-in"><span><span class="va">one_month</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"2020-05-01"</span>, <span class="st">"2020-06-01"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_month</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime()</span>
-<span class="r-plt img"><img src="breaks_width-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_month</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"1 week"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("1 week"))</span>
-<span class="r-plt img"><img src="breaks_width-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-7.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_month</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"5 days"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("5 days"))</span>
-<span class="r-plt img"><img src="breaks_width-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-8.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># This is so useful that scale_x_datetime() has a shorthand:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_datetime</a></span><span class="op">(</span><span class="va">one_month</span>, date_breaks <span class="op">=</span> <span class="st">"5 days"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(date_breaks = "5 days")</span>
-<span class="r-plt img"><img src="breaks_width-8.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-9.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># hms times also work</span></span></span>
 <span class="r-in"><span><span class="va">one_hour</span> <span class="op">&lt;-</span> <span class="fu">hms</span><span class="fu">::</span><span class="fu"><a href="https://hms.tidyverse.org/reference/hms.html" class="external-link">hms</a></span><span class="op">(</span>hours <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_time</a></span><span class="op">(</span><span class="va">one_hour</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_time()</span>
-<span class="r-plt img"><img src="breaks_width-9.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-10.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_time</a></span><span class="op">(</span><span class="va">one_hour</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"15 min"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_time(breaks = breaks_width("15 min"))</span>
-<span class="r-plt img"><img src="breaks_width-10.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-11.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_time</a></span><span class="op">(</span><span class="va">one_hour</span>, breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"600 sec"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_time(breaks = breaks_width("600 sec"))</span>
-<span class="r-plt img"><img src="breaks_width-11.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-12.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Offets are useful for years that begin on dates other than the 1st of</span></span></span>
 <span class="r-in"><span><span class="co"># January, such as the UK financial year, which begins on the 1st of April.</span></span></span>
@@ -133,7 +138,7 @@ argument that allows you to specify the number of breaks to recieve.</p>
 <span class="r-in"><span>  breaks <span class="op">=</span> <span class="fu">breaks_width</span><span class="op">(</span><span class="st">"1 year"</span>, offset <span class="op">=</span> <span class="st">"3 months"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("1 year", offset = "3 months"))</span>
-<span class="r-plt img"><img src="breaks_width-12.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-13.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The offset can be a vector, to create offsets that have compound units,</span></span></span>
 <span class="r-in"><span><span class="co"># such as the UK fiscal (tax) year, which begins on the 6th of April.</span></span></span>
@@ -143,7 +148,7 @@ argument that allows you to specify the number of breaks to recieve.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_datetime(breaks = breaks_width("1 year", offset = c("3 months", </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     "5 days")))</span>
-<span class="r-plt img"><img src="breaks_width-13.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="breaks_width-14.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

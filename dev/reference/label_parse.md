@@ -59,6 +59,15 @@ Other labels for discrete scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+plants <- transform(
+  PlantGrowth,
+  group = factor(group, labels = c("ctrl", "trt[1]", "trt[2]"))
+)
+ggplot(plants, aes(x = group, y = weight)) +
+  geom_boxplot() +
+  scale_x_discrete(labels = label_parse())
+
 # Use label_parse() with discrete scales
 greek <- c("alpha", "beta", "gamma")
 demo_discrete(greek)

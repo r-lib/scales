@@ -149,6 +149,12 @@ Other labels for continuous scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+states <- as.data.frame(state.x77)
+ggplot(states, aes(x = Income, y = `Life Exp`)) +
+  geom_point() +
+  scale_x_continuous(labels = label_currency(prefix = "USD "))
+
 demo_continuous(c(0, 1), labels = label_currency())
 #> scale_x_continuous(labels = label_currency())
 

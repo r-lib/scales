@@ -161,6 +161,14 @@ Other labels for continuous scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(airquality, aes(x = Day, y = Temp)) +
+  geom_point() +
+  scale_x_continuous(
+    breaks = c(1, 10, 20, 31),
+    labels = label_ordinal()
+  )
+
 demo_continuous(c(1, 5))
 #> scale_x_continuous()
 

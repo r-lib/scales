@@ -43,6 +43,13 @@ Other labels for discrete scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+  geom_boxplot() +
+  scale_x_discrete(
+    labels = label_dictionary(c(OJ = "Orange juice", VC = "Vitamin C"))
+  )
+
 # Example lookup table
 lut <- c(
   "4" = "four wheel drive",

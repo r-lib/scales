@@ -41,11 +41,14 @@ minor_breaks_n(n)
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  scale_x_continuous(minor_breaks = minor_breaks_width(1, offset = 0))
+
 demo_log10(c(1, 1e6))
 #> scale_x_log10()
 
-if (FALSE) {
-  # Requires https://github.com/tidyverse/ggplot2/pull/3591
-  demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
-}
+demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
+#> scale_x_log10(minor_breaks = minor_breaks_n(10))
 ```

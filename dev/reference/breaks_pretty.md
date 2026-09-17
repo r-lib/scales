@@ -35,6 +35,12 @@ to recieve.
 ## Examples
 
 ``` r
+library(ggplot2)
+eco <- transform(economics, date = as.POSIXct(date))
+ggplot(eco, aes(x = date, y = unemploy)) +
+  geom_line() +
+  scale_x_datetime(breaks = breaks_pretty(n = 10))
+
 one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
 demo_datetime(one_month)
 #> scale_x_datetime()

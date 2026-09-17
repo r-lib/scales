@@ -54,6 +54,11 @@ breaks, `>= n-2`, are returned or all candidates have been used.
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(breaks = breaks_log(n = 10))
+
 demo_log10(c(1, 1e5))
 #> scale_x_log10()
 

@@ -75,14 +75,19 @@ negative numbers.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Standard usage with log10 scale</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">msleep</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bodywt</span>, y <span class="op">=</span> <span class="va">sleep_total</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>minor_breaks <span class="op">=</span> <span class="fu">minor_breaks_log</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="minor_breaks_log-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># Standard usage with log10 scale</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e10</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="fu">minor_breaks_log</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_log10(minor_breaks = minor_breaks_log())</span>
-<span class="r-plt img"><img src="minor_breaks_log-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="minor_breaks_log-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># Increasing detail over many powers</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_log10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1e10</span><span class="op">)</span>, minor_breaks <span class="op">=</span> <span class="fu">minor_breaks_log</span><span class="op">(</span>detail <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_log10(minor_breaks = minor_breaks_log(detail = 1))</span>
-<span class="r-plt img"><img src="minor_breaks_log-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="minor_breaks_log-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="co"># Adjusting until where to draw minor breaks</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="demo_continuous.html">demo_continuous</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>,</span></span>
@@ -90,7 +95,7 @@ negative numbers.</p></dd>
 <span class="r-in"><span>  minor_breaks <span class="op">=</span> <span class="fu">minor_breaks_log</span><span class="op">(</span>smallest <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> scale_x_continuous(transform = asinh_trans(), minor_breaks = minor_breaks_log(smallest = 1))</span>
-<span class="r-plt img"><img src="minor_breaks_log-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="minor_breaks_log-4.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

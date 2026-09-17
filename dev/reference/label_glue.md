@@ -67,6 +67,11 @@ Other labels for discrete scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(ChickWeight, aes(x = Diet, y = weight)) +
+  geom_boxplot() +
+  scale_x_discrete(labels = label_glue("Diet {x}"))
+
 # Example variables
 animal  <- "penguin"
 species <- c("Adelie",  "Chinstrap", "Emperor", "Gentoo")

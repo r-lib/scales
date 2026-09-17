@@ -168,6 +168,16 @@ Other labels for log scales:
 ## Examples
 
 ``` r
+library(ggplot2)
+datasets <- c("diamonds", "economics", "midwest", "mpg", "msleep", "txhousing")
+sizes <- data.frame(
+  dataset = datasets,
+  size = sapply(datasets, function(x) as.numeric(object.size(get(x))))
+)
+ggplot(sizes, aes(x = size, y = dataset)) +
+  geom_col() +
+  scale_x_continuous(labels = label_bytes())
+
 demo_continuous(c(1, 1e6))
 #> scale_x_continuous()
 

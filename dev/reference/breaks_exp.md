@@ -34,6 +34,11 @@ to recieve.
 ## Examples
 
 ``` r
+library(ggplot2)
+ggplot(attenu, aes(x = mag, y = accel)) +
+  geom_point() +
+  scale_x_continuous(transform = "exp", breaks = breaks_exp())
+
 # Small range
 demo_continuous(c(100, 102), transform = "exp", breaks = breaks_exp())
 #> scale_x_continuous(transform = "exp", breaks = breaks_exp())
