@@ -29,8 +29,10 @@ formatting. This is useful if the underlying data is very small or very
 large.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=number]{number}}
+  Arguments passed on to \code{\link{number}}
   \describe{
+    \item{\code{space}}{Add a space before the scale suffix?}
+    \item{\code{unit}}{SI unit abbreviation.}
     \item{\code{prefix}}{Additional text to display before the number. The suffix is
 applied to absolute value before \code{style_positive} and \code{style_negative} are
 processed so that \code{prefix = "$"} will yield (e.g.) \verb{-$1} and \verb{($1)}.}
@@ -118,21 +120,21 @@ demo_continuous(c(1, 1024^2),
 )
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 
-Other labels for log scales: 
-\code{\link{label_log}()},
-\code{\link{label_number_si}()},
-\code{\link{label_scientific}()}
+Other labels for log scales:
+\code{\link[=label_log]{label_log()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}

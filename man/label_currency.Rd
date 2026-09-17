@@ -41,8 +41,10 @@ decimal point.  The default (\code{NULL}) retrieves the setting from the
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{
-  Arguments passed on to \code{\link[=number]{number}}
+  Arguments passed on to \code{\link{number}}
   \describe{
+    \item{\code{space}}{Add a space before the scale suffix?}
+    \item{\code{unit}}{SI unit abbreviation.}
     \item{\code{style_positive}}{A string that determines the style of positive numbers:
 \itemize{
 \item \code{"none"} (the default): no change, e.g. \code{1}.
@@ -134,15 +136,15 @@ gbp <- label_currency(
 demo_log10(c(1, 1e12), breaks = log_breaks(5, 1e3), labels = gbp)
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for continuous scales}

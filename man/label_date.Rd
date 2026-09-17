@@ -50,7 +50,7 @@ disable leading characters or \code{"\\u2007"} for figure-spaces.}
 \item{space}{Add a space before the time unit?}
 
 \item{...}{
-  Arguments passed on to \code{\link[=number]{number}}
+  Arguments passed on to \code{\link{number}}
   \describe{
     \item{\code{accuracy}}{A number to round to. Use (e.g.) \code{0.01} to show 2 decimal
 places of precision. If \code{NULL}, the default, uses a heuristic that should

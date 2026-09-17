@@ -53,21 +53,21 @@ demo_continuous(c(1, 10), labels = label_scientific(digits = 3))
 demo_log10(c(1, 1e9))
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}}
 
-Other labels for log scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_log}()},
-\code{\link{label_number_si}()}
+Other labels for log scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_log]{label_log()}},
+\code{\link[=label_number_si]{label_number_si()}}
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}

@@ -46,9 +46,9 @@ format_log(c(0.1, 1, 10))
 \seealso{
 \code{\link[=breaks_log]{breaks_log()}} for the related breaks algorithm.
 
-Other labels for log scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_number_si}()},
-\code{\link{label_scientific}()}
+Other labels for log scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for log scales}

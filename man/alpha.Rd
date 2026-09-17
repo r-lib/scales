@@ -22,10 +22,10 @@ alpha("red", seq(0, 1, length.out = 10))
 alpha(c("first" = "gold", "second" = "lightgray", "third" = "#cd7f32"), .5)
 }
 \seealso{
-Other colour manipulation: 
-\code{\link{col2hcl}()},
-\code{\link{col_mix}()},
+Other colour manipulation:
+\code{\link[=col2hcl]{col2hcl()}},
+\code{\link[=col_mix]{col_mix()}},
 \code{\link{colour_manip}},
-\code{\link{muted}()}
+\code{\link[=muted]{muted()}}
 }
 \concept{colour manipulation}

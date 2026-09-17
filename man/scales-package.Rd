@@ -6,7 +6,7 @@
 \alias{scales-package}
 \title{scales: Scale Functions for Visualization}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
 
 Graphical scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.
 }
@@ -24,13 +24,14 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Thomas Lin Pedersen \email{thomas.pedersen@posit.co} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})
   \item Hadley Wickham \email{hadley@posit.co}
   \item Dana Seidel
 }
 
 Other contributors:
 \itemize{
-  \item Posit Software, PBC (03wc8by49) [copyright holder, funder]
+  \item Posit Software, PBC (\href{https://ror.org/03wc8by49}{ROR}) [copyright holder, funder]
 }
 
 }

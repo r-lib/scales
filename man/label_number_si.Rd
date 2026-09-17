@@ -23,7 +23,7 @@ prefix.}
 \item{suffix}{Additional text to display after the number.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=label_number]{label_number}}
+  Arguments passed on to \code{\link{label_number}}
   \describe{
     \item{\code{prefix}}{Additional text to display before the number. The suffix is
 applied to absolute value before \code{style_positive} and \code{style_negative} are
@@ -74,6 +74,7 @@ cut value below will be tried to see if it improves the look of the final
 label.}
     \item{\code{trim}}{Logical, if \code{FALSE}, values are right-justified to a common
 width (see \code{\link[base:format]{base::format()}}).}
+    \item{\code{digits}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{accuracy} instead.}
   }}
 }
 \value{
@@ -96,21 +97,21 @@ same results as before with
 units, \code{label_number(scale_cut = cut_si("unit"))}.
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_percent}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_percent]{label_percent()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 
-Other labels for log scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_log}()},
-\code{\link{label_scientific}()}
+Other labels for log scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_log]{label_log()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for continuous scales}
 \concept{labels for log scales}

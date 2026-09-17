@@ -1,4 +1,5 @@
 # scales (development version)
+* Rename `pal_gradient_*` functions for consistency: Now `pal_gradient_seq` and `pal_gradient_div`
 * Argument `only_loose` added to `breaks_extended()` as a shortcut to implement labeling::extended(only.loose)
 
 # scales 1.4.0
