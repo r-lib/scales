@@ -23,6 +23,13 @@ rather than axes.
 Uses \code{\link[=strwrap]{strwrap()}} to split long labels across multiple lines.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+animals <- head(msleep[c("name", "sleep_total")], 8)
+ggplot(animals, aes(x = name, y = sleep_total)) +
+  geom_col() +
+  scale_x_discrete(labels = label_wrap(10))
+\dontshow{\}) # examplesIf}
 x <- c(
   "this is a long label",
   "this is another long label",

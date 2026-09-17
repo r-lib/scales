@@ -44,6 +44,12 @@ the candidate set. This is repeated until either a sufficient number of
 breaks, \verb{>= n-2}, are returned or all candidates have been used.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(breaks = breaks_log(n = 10))
+\dontshow{\}) # examplesIf}
 demo_log10(c(1, 1e5))
 demo_log10(c(1, 1e6))
 

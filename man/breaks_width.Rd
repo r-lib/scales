@@ -33,6 +33,12 @@ argument that allows you to specify the number of breaks to recieve.
 Useful for numeric, date, and date-time scales.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(faithful, aes(x = waiting)) +
+  geom_histogram(binwidth = 2) +
+  scale_x_continuous(breaks = breaks_width(5))
+\dontshow{\}) # examplesIf}
 demo_continuous(c(0, 100))
 demo_continuous(c(0, 100), breaks = breaks_width(10))
 demo_continuous(c(0, 100), breaks = breaks_width(20, -4))

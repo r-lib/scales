@@ -120,6 +120,17 @@ but uses a slightly different approach: \code{ConciseDateFormatter} formats
 suffix to the input (ns, us, ms, s, m, h, d, w).
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+lim <- as.Date(c("2004-01-01", "2005-01-01"))
+ggplot(economics, aes(x = date, y = psavert)) +
+  geom_line(na.rm = TRUE) +
+  labs(x = NULL, y = NULL) +
+  scale_x_date(
+    limits = lim,
+    labels = label_date_short()
+  )
+\dontshow{\}) # examplesIf}
 date_range <- function(start, days) {
   start <- as.POSIXct(start)
   c(start, start + days * 24 * 60 * 60)
