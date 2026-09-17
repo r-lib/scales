@@ -77,6 +77,7 @@ breaks_width <- function(width, offset = 0) {
 #'
 #' @param n Desired number of breaks. You may get slightly more or fewer
 #'   breaks that requested.
+#' @param only_loose if true, the extreme labels will be outside the data range
 #' @param ... other arguments passed on to [labeling::extended()]
 #'
 #' @inherit breaks_width return
@@ -89,7 +90,11 @@ breaks_width <- function(width, offset = 0) {
 #' demo_continuous(c(0, 10))
 #' demo_continuous(c(0, 10), breaks = breaks_extended(3))
 #' demo_continuous(c(0, 10), breaks = breaks_extended(10))
-breaks_extended <- function(n = 5, ...) {
+breaks_extended <- function(
+  n = 5,
+  only_loose = FALSE,
+  ...
+) {
   n_default <- n
   function(x, n = n_default) {
     x <- x[is.finite(x)]
@@ -98,7 +103,7 @@ breaks_extended <- function(n = 5, ...) {
     }
 
     rng <- range(x)
-    labeling::extended(rng[1], rng[2], n, ...)
+    labeling::extended(rng[1], rng[2], n, only.loose = only_loose, ...)
   }
 }
 
