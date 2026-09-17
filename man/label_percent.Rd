@@ -45,7 +45,7 @@ decimal point.  The default (\code{NULL}) retrieves the setting from the
 width (see \code{\link[base:format]{base::format()}}).}
 
 \item{...}{
-  Arguments passed on to \code{\link[=label_number]{label_number}}
+  Arguments passed on to \code{\link{label_number}}
   \describe{
     \item{\code{style_positive}}{A string that determines the style of positive numbers:
 \itemize{
@@ -85,6 +85,7 @@ the range \verb{[1000, Inf)} will be divided by 1000 and given the suffix "b".
 If the division creates an irrational value (or one with many digits), the
 cut value below will be tried to see if it improves the look of the final
 label.}
+    \item{\code{digits}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{accuracy} instead.}
   }}
 }
 \value{
@@ -112,15 +113,15 @@ french_percent <- label_percent(
 demo_continuous(c(0, .01), labels = french_percent)
 }
 \seealso{
-Other labels for continuous scales: 
-\code{\link{label_bytes}()},
-\code{\link{label_currency}()},
-\code{\link{label_glue}()},
-\code{\link{label_number_auto}()},
-\code{\link{label_number_si}()},
-\code{\link{label_ordinal}()},
-\code{\link{label_parse}()},
-\code{\link{label_pvalue}()},
-\code{\link{label_scientific}()}
+Other labels for continuous scales:
+\code{\link[=label_bytes]{label_bytes()}},
+\code{\link[=label_currency]{label_currency()}},
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_number_auto]{label_number_auto()}},
+\code{\link[=label_number_si]{label_number_si()}},
+\code{\link[=label_ordinal]{label_ordinal()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_pvalue]{label_pvalue()}},
+\code{\link[=label_scientific]{label_scientific()}}
 }
 \concept{labels for continuous scales}

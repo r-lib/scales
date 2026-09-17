@@ -32,10 +32,10 @@ col_mix("blue", "red", amount = 0) # blue
 col_mix("blue", "red", space = "hcl") # green!
 }
 \seealso{
-Other colour manipulation: 
-\code{\link{alpha}()},
-\code{\link{col2hcl}()},
+Other colour manipulation:
+\code{\link[=alpha]{alpha()}},
+\code{\link[=col2hcl]{col2hcl()}},
 \code{\link{colour_manip}},
-\code{\link{muted}()}
+\code{\link[=muted]{muted()}}
 }
 \concept{colour manipulation}

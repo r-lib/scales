@@ -5,11 +5,13 @@
 \alias{extended_breaks}
 \title{Automatic breaks for numeric axes}
 \usage{
-breaks_extended(n = 5, ...)
+breaks_extended(n = 5, only_loose = FALSE, ...)
 }
 \arguments{
 \item{n}{Desired number of breaks. You may get slightly more or fewer
 breaks that requested.}
+
+\item{only_loose}{if true, the extreme labels will be outside the data range}
 
 \item{...}{other arguments passed on to \code{\link[labeling:extended]{labeling::extended()}}}
 }

@@ -47,9 +47,9 @@ demo_discrete(
 )
 }
 \seealso{
-Other labels for discrete scales: 
-\code{\link{label_glue}()},
-\code{\link{label_parse}()},
-\code{\link{label_wrap}()}
+Other labels for discrete scales:
+\code{\link[=label_glue]{label_glue()}},
+\code{\link[=label_parse]{label_parse()}},
+\code{\link[=label_wrap]{label_wrap()}}
 }
 \concept{labels for discrete scales}

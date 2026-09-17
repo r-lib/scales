@@ -22,10 +22,10 @@ muted("blue")
 show_col(c("red", "blue", muted("red"), muted("blue")))
 }
 \seealso{
-Other colour manipulation: 
-\code{\link{alpha}()},
-\code{\link{col2hcl}()},
-\code{\link{col_mix}()},
+Other colour manipulation:
+\code{\link[=alpha]{alpha()}},
+\code{\link[=col2hcl]{col2hcl()}},
+\code{\link[=col_mix]{col_mix()}},
 \code{\link{colour_manip}}
 }
 \concept{colour manipulation}
