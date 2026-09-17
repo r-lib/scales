@@ -17,6 +17,12 @@
 #' @seealso [breaks_log()] for the related breaks algorithm.
 #' @export
 #' @family labels for log scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+#'   geom_point() +
+#'   scale_x_log10(labels = label_log())
+#'
 #' @examples
 #' demo_log10(c(1, 1e5), labels = label_log())
 #' demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))

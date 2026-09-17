@@ -33,6 +33,12 @@ Use \code{label_glue()} to perform string interpolation using the \pkg{glue}
 package. Enclosed expressions will be evaluated as R code.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(ChickWeight, aes(x = Diet, y = weight)) +
+  geom_boxplot() +
+  scale_x_discrete(labels = label_glue("Diet {x}"))
+\dontshow{\}) # examplesIf}
 # Example variables
 animal  <- "penguin"
 species <- c("Adelie",  "Chinstrap", "Emperor", "Gentoo")

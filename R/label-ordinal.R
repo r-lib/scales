@@ -12,6 +12,15 @@
 #' @inheritDotParams number
 #' @export
 #' @family labels for continuous scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(airquality, aes(x = Day, y = Temp)) +
+#'   geom_point() +
+#'   scale_x_continuous(
+#'     breaks = c(1, 10, 20, 31),
+#'     labels = label_ordinal()
+#'   )
+#'
 #' @examples
 #' demo_continuous(c(1, 5))
 #' demo_continuous(c(1, 5), labels = label_ordinal())

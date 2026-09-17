@@ -103,6 +103,15 @@ Round values to integers and then display as ordinal values (e.g. 1st, 2nd,
 3rd). Built-in rules are provided for English, French, and Spanish.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(airquality, aes(x = Day, y = Temp)) +
+  geom_point() +
+  scale_x_continuous(
+    breaks = c(1, 10, 20, 31),
+    labels = label_ordinal()
+  )
+\dontshow{\}) # examplesIf}
 demo_continuous(c(1, 5))
 demo_continuous(c(1, 5), labels = label_ordinal())
 demo_continuous(c(1, 5), labels = label_ordinal(rules = ordinal_french()))

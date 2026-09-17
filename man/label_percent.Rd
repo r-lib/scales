@@ -102,6 +102,12 @@ rather than axes.
 Label percentages (2.5\%, 50\%, etc)
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(mpg, aes(y = class, fill = drv)) +
+  geom_bar(position = "fill") +
+  scale_x_continuous(labels = label_percent())
+\dontshow{\}) # examplesIf}
 demo_continuous(c(0, 1))
 demo_continuous(c(0, 1), labels = label_percent())
 

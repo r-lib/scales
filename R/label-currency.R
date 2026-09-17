@@ -14,6 +14,13 @@
 #' @inheritDotParams number
 #' @export
 #' @family labels for continuous scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' states <- as.data.frame(state.x77)
+#' ggplot(states, aes(x = Income, y = `Life Exp`)) +
+#'   geom_point() +
+#'   scale_x_continuous(labels = label_currency(prefix = "USD "))
+#'
 #' @examples
 #' demo_continuous(c(0, 1), labels = label_currency())
 #' demo_continuous(c(1, 100), labels = label_currency())

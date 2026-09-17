@@ -33,9 +33,12 @@ Generate minor breaks between major breaks either spaced with a fixed width,
 or having a fixed number.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  scale_x_continuous(minor_breaks = minor_breaks_width(1, offset = 0))
+\dontshow{\}) # examplesIf}
 demo_log10(c(1, 1e6))
-if (FALSE) {
-  # Requires https://github.com/tidyverse/ggplot2/pull/3591
-  demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
-}
+demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
 }

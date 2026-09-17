@@ -46,6 +46,14 @@ rather than axes.
 Label numbers with scientific notation (e.g. 1e05, 1.5e-02)
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+# Brain weights (g) span several orders of magnitude
+small <- subset(msleep, brainwt < 1)
+ggplot(small, aes(x = brainwt, y = sleep_total)) +
+  geom_point() +
+  scale_x_continuous(labels = label_scientific())
+\dontshow{\}) # examplesIf}
 demo_continuous(c(1, 10))
 demo_continuous(c(1, 10), labels = label_scientific())
 demo_continuous(c(1, 10), labels = label_scientific(digits = 3))

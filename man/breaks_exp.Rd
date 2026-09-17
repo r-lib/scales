@@ -24,6 +24,12 @@ range if that range is large enough (currently: 3). For smaller ranges, it
 uses \code{\link[=breaks_extended]{breaks_extended()}}.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(attenu, aes(x = mag, y = accel)) +
+  geom_point() +
+  scale_x_continuous(transform = "exp", breaks = breaks_exp())
+\dontshow{\}) # examplesIf}
 # Small range
 demo_continuous(c(100, 102), transform = "exp", breaks = breaks_exp())
 # Large range

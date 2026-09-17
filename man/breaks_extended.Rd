@@ -26,6 +26,12 @@ Uses Wilkinson's extended breaks algorithm as implemented in the
 \pkg{labeling} package.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  scale_x_continuous(breaks = breaks_extended(n = 10))
+\dontshow{\}) # examplesIf}
 demo_continuous(c(0, 10))
 demo_continuous(c(0, 10), breaks = breaks_extended(3))
 demo_continuous(c(0, 10), breaks = breaks_extended(10))

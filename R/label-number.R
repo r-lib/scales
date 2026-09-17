@@ -71,6 +71,12 @@
 #'   width (see [base::format()]).
 #' @param ... Other arguments passed on to [base::format()].
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(midwest, aes(x = poptotal, y = percollege)) +
+#'   geom_point() +
+#'   scale_x_continuous(labels = label_number(scale_cut = cut_short_scale()))
+#'
 #' @examplesIf getRversion() >= "3.5"
 #' demo_continuous(c(-1e6, 1e6))
 #' demo_continuous(c(-1e6, 1e6), labels = label_number())

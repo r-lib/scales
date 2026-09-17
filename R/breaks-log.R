@@ -29,6 +29,12 @@
 #' @inherit breaks_width return
 #'
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+#'   geom_point() +
+#'   scale_x_log10(breaks = breaks_log(n = 10))
+#'
 #' @examples
 #' demo_log10(c(1, 1e5))
 #' demo_log10(c(1, 1e6))
@@ -98,6 +104,12 @@ log_breaks <- breaks_log
 #' @return A function to generate minor ticks.
 #'
 #' @export
+#'
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+#'   geom_point() +
+#'   scale_x_log10(minor_breaks = minor_breaks_log())
 #'
 #' @examples
 #' # Standard usage with log10 scale

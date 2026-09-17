@@ -39,6 +39,12 @@ superscript formatting. \code{label_log()} returns expressions suitable for
 labelling in scales, whereas \code{format_log()} returns deparsed text.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(labels = label_log())
+\dontshow{\}) # examplesIf}
 demo_log10(c(1, 1e5), labels = label_log())
 demo_log10(c(1, 1e5), breaks = breaks_log(base = 2), labels = label_log(base = 2))
 format_log(c(0.1, 1, 10))

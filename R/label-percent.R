@@ -4,6 +4,12 @@
 #' @inheritDotParams label_number
 #' @export
 #' @family labels for continuous scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(mpg, aes(y = class, fill = drv)) +
+#'   geom_bar(position = "fill") +
+#'   scale_x_continuous(labels = label_percent())
+#'
 #' @examples
 #' demo_continuous(c(0, 1))
 #' demo_continuous(c(0, 1), labels = label_percent())

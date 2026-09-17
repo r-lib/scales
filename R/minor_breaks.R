@@ -5,12 +5,15 @@
 #'
 #' @inheritParams breaks_width
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(mpg, aes(x = displ, y = hwy)) +
+#'   geom_point() +
+#'   scale_x_continuous(minor_breaks = minor_breaks_width(1, offset = 0))
+#'
 #' @examples
 #' demo_log10(c(1, 1e6))
-#' if (FALSE) {
-#'   # Requires https://github.com/tidyverse/ggplot2/pull/3591
-#'   demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
-#' }
+#' demo_log10(c(1, 1e6), minor_breaks = minor_breaks_n(10))
 minor_breaks_width <- function(width, offset) {
   # Check that has needed version of ggplot2
   f <- breaks_width(width, offset)
@@ -73,10 +76,14 @@ regular_minor_breaks <- function(reverse = FALSE) {
 
     # Allow minor breaks to extend outside major breaks towards limits
     if (!reverse) {
-      if (min(limits) < min(b)) b <- c(b[1] - bd, b)
+      if (min(limits) < min(b)) {
+        b <- c(b[1] - bd, b)
+      }
       if (max(limits) > max(b)) b <- c(b, b[length(b)] + bd)
     } else {
-      if (max(limits) > max(b)) b <- c(b[1] - bd, b)
+      if (max(limits) > max(b)) {
+        b <- c(b[1] - bd, b)
+      }
       if (min(limits) < min(b)) b <- c(b, b[length(b)] + bd)
     }
 

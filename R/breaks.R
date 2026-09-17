@@ -24,6 +24,12 @@
 #' argument that allows you to specify the number of breaks to recieve.
 #'
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(faithful, aes(x = waiting)) +
+#'   geom_histogram(binwidth = 2) +
+#'   scale_x_continuous(breaks = breaks_width(5))
+#'
 #' @examples
 #' demo_continuous(c(0, 100))
 #' demo_continuous(c(0, 100), breaks = breaks_width(10))
@@ -86,6 +92,12 @@ breaks_width <- function(width, offset = 0) {
 #'  Wilkinson's Algorithm for Positioning Tick Labels on Axes, InfoVis
 #'  2010 <http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf>.
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(mpg, aes(x = displ, y = hwy)) +
+#'   geom_point() +
+#'   scale_x_continuous(breaks = breaks_extended(n = 10))
+#'
 #' @examples
 #' demo_continuous(c(0, 10))
 #' demo_continuous(c(0, 10), breaks = breaks_extended(3))
@@ -124,6 +136,13 @@ extended_breaks <- breaks_extended
 #' @inherit breaks_width return
 #'
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' eco <- transform(economics, date = as.POSIXct(date))
+#' ggplot(eco, aes(x = date, y = unemploy)) +
+#'   geom_line() +
+#'   scale_x_datetime(breaks = breaks_pretty(n = 10))
+#'
 #' @examples
 #' one_month <- as.POSIXct(c("2020-05-01", "2020-06-01"))
 #' demo_datetime(one_month)
@@ -223,6 +242,12 @@ breaks_timespan <- function(
 #' @inherit breaks_width return
 #'
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(attenu, aes(x = mag, y = accel)) +
+#'   geom_point() +
+#'   scale_x_continuous(transform = "exp", breaks = breaks_exp())
+#'
 #' @examples
 #' # Small range
 #' demo_continuous(c(100, 102), transform = "exp", breaks = breaks_exp())

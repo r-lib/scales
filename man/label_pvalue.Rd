@@ -43,6 +43,14 @@ rather than axes.
 Formatter for p-values, using "<" and ">" for p-values close to 0 and 1.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+p <- sapply(mtcars[-1], function(x) cor.test(mtcars$mpg, x)$p.value)
+cors <- data.frame(variable = names(p), p = p)
+ggplot(cors, aes(x = p, y = variable)) +
+  geom_col() +
+  scale_x_continuous(labels = label_pvalue())
+\dontshow{\}) # examplesIf}
 demo_continuous(c(0, 1))
 demo_continuous(c(0, 1), labels = label_pvalue())
 demo_continuous(c(0, 1), labels = label_pvalue(accuracy = 0.1))

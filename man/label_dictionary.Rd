@@ -29,6 +29,14 @@ Use \code{label_dictionary()} for looking up succinct breaks in a named characte
 vector giving complete labels.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+  geom_boxplot() +
+  scale_x_discrete(
+    labels = label_dictionary(c(OJ = "Orange juice", VC = "Vitamin C"))
+  )
+\dontshow{\}) # examplesIf}
 # Example lookup table
 lut <- c(
   "4" = "four wheel drive",

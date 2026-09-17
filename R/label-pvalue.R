@@ -9,6 +9,14 @@
 #' @param add_p Add "p=" before the value?
 #' @export
 #' @family labels for continuous scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' p <- sapply(mtcars[-1], function(x) cor.test(mtcars$mpg, x)$p.value)
+#' cors <- data.frame(variable = names(p), p = p)
+#' ggplot(cors, aes(x = p, y = variable)) +
+#'   geom_col() +
+#'   scale_x_continuous(labels = label_pvalue())
+#'
 #' @examples
 #' demo_continuous(c(0, 1))
 #' demo_continuous(c(0, 1), labels = label_pvalue())

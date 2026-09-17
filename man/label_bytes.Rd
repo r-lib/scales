@@ -102,6 +102,17 @@ kB = 1000 bytes) or binary units (e.g. kiB = 1024 bytes). See
 on Wikipedia for more details.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+datasets <- c("diamonds", "economics", "midwest", "mpg", "msleep", "txhousing")
+sizes <- data.frame(
+  dataset = datasets,
+  size = sapply(datasets, function(x) as.numeric(object.size(get(x))))
+)
+ggplot(sizes, aes(x = size, y = dataset)) +
+  geom_col() +
+  scale_x_continuous(labels = label_bytes())
+\dontshow{\}) # examplesIf}
 demo_continuous(c(1, 1e6))
 demo_continuous(c(1, 1e6), labels = label_bytes())
 

@@ -121,6 +121,12 @@ Use \code{label_number()} to force decimal display of numbers (i.e. don't use
 that inserts a comma every three digits.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(midwest, aes(x = poptotal, y = percollege)) +
+  geom_point() +
+  scale_x_continuous(labels = label_number(scale_cut = cut_short_scale()))
+\dontshow{\}) # examplesIf}
 \dontshow{if (getRversion() >= "3.5") withAutoprint(\{ # examplesIf}
 demo_continuous(c(-1e6, 1e6))
 demo_continuous(c(-1e6, 1e6), labels = label_number())

@@ -21,6 +21,12 @@ This break function is designed to mark every power, multiples of 5 and/or 1
 of that power for base 10.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+ggplot(msleep, aes(x = bodywt, y = sleep_total)) +
+  geom_point() +
+  scale_x_log10(minor_breaks = minor_breaks_log())
+\dontshow{\}) # examplesIf}
 # Standard usage with log10 scale
 demo_log10(c(1, 1e10), minor_breaks = minor_breaks_log())
 # Increasing detail over many powers
