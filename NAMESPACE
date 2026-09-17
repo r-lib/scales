@@ -173,6 +173,7 @@ export(number_format)
 export(number_options)
 export(oob_censor)
 export(oob_censor_any)
+export(oob_censor_infinite)
 export(oob_discard)
 export(oob_keep)
 export(oob_squish)
@@ -267,9 +268,13 @@ export(zero_range)
 import(rlang)
 importFrom(R6,R6Class)
 importFrom(glue,glue)
-importFrom(graphics,par)
-importFrom(graphics,plot)
-importFrom(graphics,rect)
-importFrom(graphics,text)
-importFrom(lifecycle,deprecate_soft)
-importFrom(lifecycle,deprecated)
+importFrom(graphics,
+  par,
+  plot,
+  rect,
+  text
+)
+importFrom(lifecycle,
+  deprecate_soft,
+  deprecated
+)

@@ -216,6 +216,7 @@ rescale_none <- function(x, ...) {
 #'   default `oob` argument for continuous scales.
 #' * `oob_censor_any()` acts like `oob_censor()`, but also replaces infinite
 #'   values with `NA`s.
+#' * oob_censor_infinite() replaces only infinite values with NAs.
 #' * `oob_squish()` replaces out of bounds values with the nearest limit. This
 #'   is the default `oob` argument for binned scales.
 #' * `oob_squish_any()` acts like `oob_squish()`, but also replaces infinite
@@ -257,6 +258,7 @@ rescale_none <- function(x, ...) {
 #' # Censoring replaces out of bounds values with NAs
 #' oob_censor(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #' oob_censor_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
+#' oob_censor_infinite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #'
 #' # Squishing replaces out of bounds values with the nearest range limit
 #' oob_squish(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
@@ -284,6 +286,14 @@ oob_censor <- function(x, range = c(0, 1), only.finite = TRUE) {
 #' @export
 oob_censor_any <- function(x, range = c(0, 1)) {
   oob_censor(x, range = range, only.finite = FALSE)
+}
+
+#' @rdname oob
+#' @export
+oob_censor_infinite <- function(x) {
+  infinite <- if (TRUE) is.infinite(x) else TRUE
+  x[infinite] <- NA_real_
+  x
 }
 
 #' @rdname oob
@@ -399,7 +409,9 @@ zero_range <- function(x, tol = 1000 * .Machine$double.eps) {
   if (length(x) == 1) {
     return(TRUE)
   }
-  if (length(x) != 2) cli::cli_abort("{.arg x} must be length 1 or 2")
+  if (length(x) != 2) {
+    cli::cli_abort("{.arg x} must be length 1 or 2")
+  }
   if (anyNA(x)) {
     return(NA)
   }

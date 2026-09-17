@@ -4,6 +4,7 @@
 \alias{oob}
 \alias{oob_censor}
 \alias{oob_censor_any}
+\alias{oob_censor_infinite}
 \alias{oob_discard}
 \alias{oob_squish}
 \alias{oob_squish_any}
@@ -18,6 +19,8 @@
 oob_censor(x, range = c(0, 1), only.finite = TRUE)
 
 oob_censor_any(x, range = c(0, 1))
+
+oob_censor_infinite(x)
 
 oob_discard(x, range = c(0, 1))
 
@@ -63,6 +66,7 @@ These functions affect out of bounds values in the following ways:
 default \code{oob} argument for continuous scales.
 \item \code{oob_censor_any()} acts like \code{oob_censor()}, but also replaces infinite
 values with \code{NA}s.
+\item oob_censor_infinite() replaces only infinite values with NAs.
 \item \code{oob_squish()} replaces out of bounds values with the nearest limit. This
 is the default \code{oob} argument for binned scales.
 \item \code{oob_squish_any()} acts like \code{oob_squish()}, but also replaces infinite
@@ -95,6 +99,7 @@ position scales.
 # Censoring replaces out of bounds values with NAs
 oob_censor(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 oob_censor_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
+oob_censor_infinite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 
 # Squishing replaces out of bounds values with the nearest range limit
 oob_squish(c(-Inf, -1, 0.5, 1, 2, NA, Inf))

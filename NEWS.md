@@ -1,4 +1,5 @@
 # scales (development version)
+* New `oob_censor_infinite()` function, which replaces only infinite values, `-Inf` and `Inf`, with `NA` (#429). 
 
 # scales 1.4.0
 * Range training now supports custom classes. Continuous classes require a
