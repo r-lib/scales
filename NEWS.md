@@ -1,4 +1,5 @@
 # scales (development version)
+* Argument `only_loose` added to `breaks_extended()` as a shortcut to implement labeling::extended(only.loose)
 
 # scales 1.4.0
 * Range training now supports custom classes. Continuous classes require a
