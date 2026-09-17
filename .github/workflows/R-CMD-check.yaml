@@ -51,6 +51,14 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
+      # Workaround: the stringi binary for macOS links against the system ICU,
+      # which crashes (SIGABRT) when its symbols collide with the bundled ICU
+      # (seen in label_date() examples using a non-default locale). Install
+      # from source with the bundled ICU instead.
+      - if: runner.os == 'macOS'
+        run: install.packages("stringi", type = "source", configure.args = "--disable-pkg-config")
+        shell: Rscript {0}
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
