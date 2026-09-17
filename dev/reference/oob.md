@@ -13,6 +13,8 @@ These functions affect out of bounds values in the following ways:
 - `oob_censor_any()` acts like `oob_censor()`, but also replaces
   infinite values with `NA`s.
 
+- oob_censor_infinite() replaces only infinite values with NAs.
+
 - `oob_squish()` replaces out of bounds values with the nearest limit.
   This is the default `oob` argument for binned scales.
 
@@ -34,6 +36,8 @@ These functions affect out of bounds values in the following ways:
 oob_censor(x, range = c(0, 1), only.finite = TRUE)
 
 oob_censor_any(x, range = c(0, 1))
+
+oob_censor_infinite(x)
 
 oob_discard(x, range = c(0, 1))
 
@@ -107,6 +111,8 @@ oob_censor(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #> [1] -Inf   NA  0.5  1.0   NA   NA  Inf
 oob_censor_any(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
 #> [1]  NA  NA 0.5 1.0  NA  NA  NA
+oob_censor_infinite(c(-Inf, -1, 0.5, 1, 2, NA, Inf))
+#> [1]   NA -1.0  0.5  1.0  2.0   NA   NA
 
 # Squishing replaces out of bounds values with the nearest range limit
 oob_squish(c(-Inf, -1, 0.5, 1, 2, NA, Inf))

@@ -92,6 +92,7 @@ Functions for rescaling data and adjusting scale ranges.
   tolerance
 - [`oob_censor()`](https://scales.r-lib.org/dev/reference/oob.md)
   [`oob_censor_any()`](https://scales.r-lib.org/dev/reference/oob.md)
+  [`oob_censor_infinite()`](https://scales.r-lib.org/dev/reference/oob.md)
   [`oob_discard()`](https://scales.r-lib.org/dev/reference/oob.md)
   [`oob_squish()`](https://scales.r-lib.org/dev/reference/oob.md)
   [`oob_squish_any()`](https://scales.r-lib.org/dev/reference/oob.md)

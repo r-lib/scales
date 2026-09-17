@@ -7,6 +7,7 @@ oob_censor() replaces out of bounds values with NAs. This is the
 default oob argument for continuous scales.
 oob_censor_any() acts like oob_censor(), but also replaces infinite
 values with NAs.
+oob_censor_infinite() replaces only infinite values with NAs.
 oob_squish() replaces out of bounds values with the nearest limit. This
 is the default oob argument for binned scales.
 oob_squish_any() acts like oob_squish(), but also replaces infinite
@@ -25,6 +26,7 @@ oob_censor() replaces out of bounds values with NAs. This is the
 default oob argument for continuous scales.
 oob_censor_any() acts like oob_censor(), but also replaces infinite
 values with NAs.
+oob_censor_infinite() replaces only infinite values with NAs.
 oob_squish() replaces out of bounds values with the nearest limit. This
 is the default oob argument for binned scales.
 oob_squish_any() acts like oob_squish(), but also replaces infinite
@@ -86,6 +88,7 @@ ggplot2 continuous and binned scales, with <code>oob_discard</code> being an exc
 default <code>oob</code> argument for continuous scales.</p></li>
 <li><p><code>oob_censor_any()</code> acts like <code>oob_censor()</code>, but also replaces infinite
 values with <code>NA</code>s.</p></li>
+<li><p>oob_censor_infinite() replaces only infinite values with NAs.</p></li>
 <li><p><code>oob_squish()</code> replaces out of bounds values with the nearest limit. This
 is the default <code>oob</code> argument for binned scales.</p></li>
 <li><p><code>oob_squish_any()</code> acts like <code>oob_squish()</code>, but also replaces infinite
@@ -102,6 +105,8 @@ for ggplot2 scales.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">oob_censor</span><span class="op">(</span><span class="va">x</span>, range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, only.finite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">oob_censor_any</span><span class="op">(</span><span class="va">x</span>, range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">oob_censor_infinite</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">oob_discard</span><span class="op">(</span><span class="va">x</span>, range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -175,6 +180,8 @@ position scales.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -Inf   NA  0.5  1.0   NA   NA  Inf</span>
 <span class="r-in"><span><span class="fu">oob_censor_any</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  NA  NA 0.5 1.0  NA  NA  NA</span>
+<span class="r-in"><span><span class="fu">oob_censor_infinite</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   NA -1.0  0.5  1.0  2.0   NA   NA</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Squishing replaces out of bounds values with the nearest range limit</span></span></span>
 <span class="r-in"><span><span class="fu">oob_squish</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span></span>

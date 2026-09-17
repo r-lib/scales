@@ -2,6 +2,10 @@
 
 ## scales (development version)
 
+- New
+  [`oob_censor_infinite()`](https://scales.r-lib.org/dev/reference/oob.md)
+  function, which replaces only infinite values, `-Inf` and `Inf`, with
+  `NA` ([\#429](https://github.com/r-lib/scales/issues/429)).
 - Rename `pal_gradient_*` functions for consistency: Now
   `pal_gradient_seq` and `pal_gradient_div`
 - Argument `only_loose` added to
