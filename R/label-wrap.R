@@ -6,6 +6,13 @@
 #' @param width Number of characters per line.
 #' @export
 #' @family labels for discrete scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' animals <- head(msleep[c("name", "sleep_total")], 8)
+#' ggplot(animals, aes(x = name, y = sleep_total)) +
+#'   geom_col() +
+#'   scale_x_discrete(labels = label_wrap(10))
+#'
 #' @examples
 #' x <- c(
 #'   "this is a long label",

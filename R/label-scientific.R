@@ -7,6 +7,14 @@
 #' @family labels for continuous scales
 #' @family labels for log scales
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' # Brain weights (g) span several orders of magnitude
+#' small <- subset(msleep, brainwt < 1)
+#' ggplot(small, aes(x = brainwt, y = sleep_total)) +
+#'   geom_point() +
+#'   scale_x_continuous(labels = label_scientific())
+#'
 #' @examples
 #' demo_continuous(c(1, 10))
 #' demo_continuous(c(1, 10), labels = label_scientific())

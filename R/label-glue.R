@@ -13,6 +13,12 @@
 #' @family labels for continuous scales
 #' @family labels for discrete scales
 #'
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' ggplot(ChickWeight, aes(x = Diet, y = weight)) +
+#'   geom_boxplot() +
+#'   scale_x_discrete(labels = label_glue("Diet {x}"))
+#'
 #' @examples
 #' # Example variables
 #' animal  <- "penguin"

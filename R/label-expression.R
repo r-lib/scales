@@ -9,6 +9,16 @@
 #' @export
 #' @family labels for continuous scales
 #' @family labels for discrete scales
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' plants <- transform(
+#'   PlantGrowth,
+#'   group = factor(group, labels = c("ctrl", "trt[1]", "trt[2]"))
+#' )
+#' ggplot(plants, aes(x = group, y = weight)) +
+#'   geom_boxplot() +
+#'   scale_x_discrete(labels = label_parse())
+#'
 #' @examples
 #' # Use label_parse() with discrete scales
 #' greek <- c("alpha", "beta", "gamma")
