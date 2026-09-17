@@ -26,6 +26,17 @@
 #'   disable leading characters or `"\u2007"` for figure-spaces.
 #'
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#' lim <- as.Date(c("2004-01-01", "2005-01-01"))
+#' ggplot(economics, aes(x = date, y = psavert)) +
+#'   geom_line(na.rm = TRUE) +
+#'   labs(x = NULL, y = NULL) +
+#'   scale_x_date(
+#'     limits = lim,
+#'     labels = label_date_short()
+#'   )
+#'
 #' @examples
 #' date_range <- function(start, days) {
 #'   start <- as.POSIXct(start)
