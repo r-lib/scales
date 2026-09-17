@@ -19,3 +19,6 @@
 ^LICENSE\.md$
 ^[\.]?air\.toml$
 ^\.vscode$
+^vignettes/articles/\.quarto$
+^vignettes/articles/*_files$
+^vignettes/articles$

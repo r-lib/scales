@@ -32,9 +32,10 @@ Suggests:
     dichromat,
     ggplot2,
     hms (>= 0.5.0),
+    quarto,
     stringi,
     testthat (>= 3.0.0)
-Config/Needs/website: tidyverse/tidytemplate
+Config/Needs/website: tidyverse/tidytemplate, quarto
 Config/testthat/edition: 3
 Config/usethis/last-upkeep: 2025-04-23
 Encoding: UTF-8
