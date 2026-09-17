@@ -37,6 +37,14 @@ ordinal_spanish()
   Arguments passed on to
   [`number`](https://scales.r-lib.org/dev/reference/number.md)
 
+  `space`
+
+  :   Add a space before the scale suffix?
+
+  `unit`
+
+  :   SI unit abbreviation.
+
   `accuracy`
 
   :   A number to round to. Use (e.g.) `0.01` to show 2 decimal places

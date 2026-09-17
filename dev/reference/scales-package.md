@@ -20,10 +20,14 @@ Useful links:
 
 Authors:
 
+- Thomas Lin Pedersen <thomas.pedersen@posit.co>
+  ([ORCID](https://orcid.org/0000-0002-5147-4711))
+
 - Hadley Wickham <hadley@posit.co>
 
 - Dana Seidel
 
 Other contributors:
 
-- Posit Software, PBC (03wc8by49) \[copyright holder, funder\]
+- Posit Software, PBC ([ROR](https://ror.org/03wc8by49)) \[copyright
+  holder, funder\]

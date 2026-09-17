@@ -324,8 +324,9 @@ helper functions.
 - [`pal_dichromat()`](https://scales.r-lib.org/dev/reference/pal_dichromat.md)
   [`dichromat_pal()`](https://scales.r-lib.org/dev/reference/pal_dichromat.md)
   : Dichromat (colour-blind) palette (discrete)
-- [`pal_div_gradient()`](https://scales.r-lib.org/dev/reference/pal_div_gradient.md)
-  [`div_gradient_pal()`](https://scales.r-lib.org/dev/reference/pal_div_gradient.md)
+- [`pal_gradient_div()`](https://scales.r-lib.org/dev/reference/pal_gradient_div.md)
+  [`div_gradient_pal()`](https://scales.r-lib.org/dev/reference/pal_gradient_div.md)
+  [`pal_div_gradient()`](https://scales.r-lib.org/dev/reference/pal_gradient_div.md)
   : Diverging colour gradient (continuous).
 - [`pal_gradient_n()`](https://scales.r-lib.org/dev/reference/pal_gradient_n.md)
   [`gradient_n_pal()`](https://scales.r-lib.org/dev/reference/pal_gradient_n.md)
@@ -336,8 +337,9 @@ helper functions.
 - [`pal_hue()`](https://scales.r-lib.org/dev/reference/pal_hue.md)
   [`hue_pal()`](https://scales.r-lib.org/dev/reference/pal_hue.md) : Hue
   palette (discrete)
-- [`pal_seq_gradient()`](https://scales.r-lib.org/dev/reference/pal_seq_gradient.md)
-  [`seq_gradient_pal()`](https://scales.r-lib.org/dev/reference/pal_seq_gradient.md)
+- [`pal_gradient_seq()`](https://scales.r-lib.org/dev/reference/pal_gradient_seq.md)
+  [`seq_gradient_pal()`](https://scales.r-lib.org/dev/reference/pal_gradient_seq.md)
+  [`pal_seq_gradient()`](https://scales.r-lib.org/dev/reference/pal_gradient_seq.md)
   : Sequential colour gradient palette (continuous)
 - [`pal_rescale()`](https://scales.r-lib.org/dev/reference/pal_rescale.md)
   [`rescale_pal()`](https://scales.r-lib.org/dev/reference/pal_rescale.md)

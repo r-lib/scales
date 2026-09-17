@@ -59,6 +59,14 @@ label_currency(
   Arguments passed on to
   [`number`](https://scales.r-lib.org/dev/reference/number.md)
 
+  `space`
+
+  :   Add a space before the scale suffix?
+
+  `unit`
+
+  :   SI unit abbreviation.
+
   `style_positive`
 
   :   A string that determines the style of positive numbers:

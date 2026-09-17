@@ -45,6 +45,14 @@ label_bytes(units = "auto_si", accuracy = 1, scale = 1, ...)
   Arguments passed on to
   [`number`](https://scales.r-lib.org/dev/reference/number.md)
 
+  `space`
+
+  :   Add a space before the scale suffix?
+
+  `unit`
+
+  :   SI unit abbreviation.
+
   `prefix`
 
   :   Additional text to display before the number. The suffix is

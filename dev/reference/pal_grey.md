@@ -22,7 +22,7 @@ grey_pal(start = 0.2, end = 0.8)
 
 ## See also
 
-[`pal_seq_gradient()`](https://scales.r-lib.org/dev/reference/pal_seq_gradient.md)
+[`pal_seq_gradient()`](https://scales.r-lib.org/dev/reference/pal_gradient_seq.md)
 for continuous version
 
 ## Examples

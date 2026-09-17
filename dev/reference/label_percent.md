@@ -120,6 +120,10 @@ label_percent(
       an irrational value (or one with many digits), the cut value below
       will be tried to see if it improves the look of the final label.
 
+  `digits`
+
+  :   **\[deprecated\]** Use `accuracy` instead.
+
 ## Value
 
 All `label_()` functions return a "labelling" function, i.e. a function

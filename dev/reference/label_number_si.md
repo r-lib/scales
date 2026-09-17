@@ -122,6 +122,10 @@ label_number_si(unit = "", accuracy = NULL, scale = 1, suffix = "", ...)
   :   Logical, if `FALSE`, values are right-justified to a common width
       (see [`base::format()`](https://rdrr.io/r/base/format.html)).
 
+  `digits`
+
+  :   **\[deprecated\]** Use `accuracy` instead.
+
 ## Value
 
 All `label_()` functions return a "labelling" function, i.e. a function
