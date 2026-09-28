@@ -31,7 +31,7 @@ test_that("time scales learn timezones", {
   expect_equal(tz2(x), "GMT")
 })
 
-test_that("tz arugment overrules default time zone", {
+test_that("tz argument overrules default time zone", {
   time <- transform_time("GMT")
   x <- time$inverse(time$transform(a_time))
 

@@ -77,7 +77,7 @@ txhousing %>%
 #| fig-alt: >
 #|   A line plot created with ggplot2, showing personal expenses between 1967 and
 #|   1970. The x axis uses `scales::break_width()` to put a break every 3 months
-#|   and `scales::label_date_short()` to only show the year on the first occuring
+#|   and `scales::label_date_short()` to only show the year on the first occurring
 #|   break of that year. The y axis uses `scales::breaks_extended()` to request
 #|   8 breaks, though only 6 are ultimately provided, and
 #|   `scales::label_dollar()` to format the label as a dollar value.
