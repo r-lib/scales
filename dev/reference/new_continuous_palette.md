@@ -114,7 +114,7 @@ new_discrete_palette(
 #>     }
 #>     else character()
 #> }
-#> <bytecode: 0x55d9fd794920>
+#> <bytecode: 0x560b3613e4b0>
 #> <environment: namespace:grDevices>
 #> attr(,"class")
 #> [1] "pal_discrete" "scales_pal"   "function"    
@@ -130,7 +130,7 @@ new_continuous_palette(
 )
 #> function (x) 
 #> rescale(x, to = c(1, 0))
-#> <environment: 0x55d9fd9cb110>
+#> <environment: 0x560b27f519b8>
 #> attr(,"class")
 #> [1] "pal_continuous" "scales_pal"     "function"      
 #> attr(,"type")

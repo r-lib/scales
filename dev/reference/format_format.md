@@ -2,7 +2,7 @@
 
 **\[superseded\]**
 
-This function is kept for backward compatiblity; you should either use
+This function is kept for backward compatibility; you should either use
 [`label_number()`](https://scales.r-lib.org/dev/reference/label_number.md)
 or
 [`label_date()`](https://scales.r-lib.org/dev/reference/label_date.md)
