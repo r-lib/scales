@@ -27,7 +27,7 @@ Note that due to way that dates are rounded, there's no guarantee that
 All \code{breaks_()} functions return a function for generating breaks. These
 functions takes, as their first argument a vector of values that represent
 the data range to provide breaks for. Some will optionally take a second
-argument that allows you to specify the number of breaks to recieve.
+argument that allows you to specify the number of breaks to receive.
 }
 \description{
 Useful for numeric, date, and date-time scales.
@@ -58,7 +58,7 @@ demo_time(one_hour)
 demo_time(one_hour, breaks = breaks_width("15 min"))
 demo_time(one_hour, breaks = breaks_width("600 sec"))
 
-# Offets are useful for years that begin on dates other than the 1st of
+# Offsets are useful for years that begin on dates other than the 1st of
 # January, such as the UK financial year, which begins on the 1st of April.
 three_years <- as.POSIXct(c("2020-01-01", "2021-01-01", "2022-01-01"))
 demo_datetime(

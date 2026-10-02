@@ -104,7 +104,7 @@ trans_format <- function(trans, format = scientific_format()) {
 #' @description
 #' `r lifecycle::badge('superseded')`
 #'
-#' This function is kept for backward compatiblity; you should either use
+#' This function is kept for backward compatibility; you should either use
 #' [label_number()] or [label_number_si()] instead.
 #'
 #' @inheritParams number_format
@@ -147,7 +147,7 @@ unit_format <- function(
 #' @description
 #' `r lifecycle::badge('superseded')`
 #'
-#' This function is kept for backward compatiblity; you should either use
+#' This function is kept for backward compatibility; you should either use
 #' [label_number()] or [label_date()] instead.
 #'
 #' @param ... Arguments passed on to [format()].

@@ -16,7 +16,7 @@ breaks_log(n = 5, base = 10)
 All \code{breaks_()} functions return a function for generating breaks. These
 functions takes, as their first argument a vector of values that represent
 the data range to provide breaks for. Some will optionally take a second
-argument that allows you to specify the number of breaks to recieve.
+argument that allows you to specify the number of breaks to receive.
 }
 \description{
 This algorithm starts by looking for integer powers of \code{base}. If that
