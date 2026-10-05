@@ -196,7 +196,7 @@ palettes_all |>
   display_fixed(mar_left = 4.5, cex = 0.55)
 ```
 
-Each of these palettes has a fixed, limited number of colors. Requesting more colors than a palette contains will recycle values (for the fixed sets) or produce increasingly similar hues (for HCL's qualitative palettes), so these are best suited to categorical data with a known, modest number of levels.
+Many of these palettes have a fixed, limited number of colors. Requesting more colors than a palette contains will recycle values (for the fixed sets) or produce increasingly similar hues (for HCL's qualitative palettes and for ggplot2's `"hue"` palette), so these are best suited to categorical data with a known, modest number of levels.
 
 ## Continuous palettes
 
