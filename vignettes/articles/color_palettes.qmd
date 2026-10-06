@@ -1,0 +1,317 @@
+---
+title: "Available Color Palettes"
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: '#>'
+---
+
+```{r}
+#| label: setup
+#| echo: false
+#| include: false
+library(scales)
+
+# Built the total set of palettes 
+palettes_hcl <- rbind(
+    data.frame(
+      type = "qual", 
+      family = "hcl", 
+      palette = grDevices::hcl.pals("qualitative")
+    ),
+    data.frame(
+      type = "seq",
+      family = "hcl",
+      palette = grDevices::hcl.pals(type = "sequential")
+    ),
+    data.frame(
+      type = "div",
+      family = "hcl",
+      palette = grDevices::hcl.pals(type = "diverging")
+    )
+  )
+
+palettes_base <- utils::getFromNamespace("palette.pals", "grDevices")() |> 
+  data.frame(type = "qual", family = "base", palette = _)
+
+palettes_viridis <- c(
+    "magma",
+    "inferno",
+    "plasma",
+    "viridis",
+    "cividis",
+    "rocket",
+    "mako",
+    "turbo"
+  ) |> 
+    data.frame(type = "seq", palette = _, family = "viridis")
+
+palettes_brewer <- rownames(RColorBrewer::brewer.pal.info) |> 
+  data.frame(type = RColorBrewer::brewer.pal.info$category, family = "brewer", palette = _)
+
+palettes_dichromat <- names(dichromat::colorschemes) |> 
+  data.frame(family = "dichromat", palette = _)
+  
+palettes_dichromat$type <- "div"
+palettes_dichromat$type[palettes_dichromat$palette == "Categorical.12"] <- "qual"
+palettes_dichromat$type[
+  palettes_dichromat$palette %in% c(
+    "SteppedSequential.5", "LightBluetoDarkBlue.10", "LightBluetoDarkBlue.7")] <- "seq"
+
+palettes_dichromat <- palettes_dichromat[c("type", "family", "palette")]
+
+palettes_ggplot2 <- data.frame(
+  family = "ggplot2",
+  type = c("seq", "qual"),
+  palette = c("grey", "hue")
+)
+
+# combine all the palettes together and overwrite any that are later repeated
+palettes_all <- rbind(
+  palettes_hcl,
+  palettes_base,
+  palettes_viridis,
+  palettes_brewer,
+  palettes_dichromat,
+  palettes_ggplot2)
+ 
+palettes_all$palette_lower <- tolower(palettes_all$palette)
+
+palettes_all <- palettes_all[!duplicated(palettes_all$palette_lower, fromLast = TRUE),]
+palettes_all <- palettes_all[palettes_all$palette_lower %in% scales:::palette_names(),]
+
+palettes_all$type <- factor(palettes_all$type, levels = c("qual", "seq", "div"), ordered = TRUE)
+
+palettes_all <- palettes_all[order(palettes_all$type, palettes_all$family, palettes_all$palette),]
+
+```
+
+{scales} makes `{r} length(scales:::palette_names())` color palettes available to packages like {ggplot2}, which references them using the `palette` argument of `scale_*_discrete()`, `scale_*_continuous()`, and `scale_*_binned()` functions.
+
+This article groups every built-in name by the use it's best suited for: as a **discrete** palette for unordered categories or as a **continuous** palette for magnitude data (sequential or diverging).
+
+```{r}
+#| echo: false
+# helper functions to display color bars
+display_brewer <- function(palette_df) {
+  brewer_info <- RColorBrewer::brewer.pal.info
+  brewer_info$palette <- rownames(brewer_info)
+
+  palette_df <- merge(
+    brewer_info,
+    palette_df[c("palette", "type")],
+    by.x = c("palette", "category"),
+    by.y = c("palette", "type")
+  )
+
+  old_par <- par(mfrow = c(nrow(palette_df), 1), mar = c(0.1, 5.1, 0.1, 1.1))
+  for (i in 1:nrow(palette_df)) {
+    cols <- pal_brewer(type = palette_df$category[i], palette = palette_df$palette[i])(palette_df$maxcolors[i])
+    image(matrix(seq_along(cols)), col = cols, axes = FALSE)
+    mtext(palette_df$palette[i], side = 2, las = 1, line = 1, cex = 0.8)
+  }
+  par(old_par)
+}
+
+display_hcl <- function(names, n = 100, discrete = FALSE) {
+  if (discrete) n <- 8
+  old_par <- par(mfrow = c(length(names), 1), mar = c(0.1, 5.6, 0.1, 1.1))
+  for (nm in names) {
+    cols <- grDevices::hcl.colors(n, palette = nm)
+    image(matrix(seq_len(n)), col = cols, axes = FALSE)
+    mtext(nm, side = 2, las = 1, line = 1, cex = 0.6)
+  }
+  par(old_par)
+}
+
+display_fixed <- function(cols_list, mar_left = 6.5, cex = 0.6) {
+  old_par <- par(mfrow = c(length(cols_list), 1), mar = c(0.1, mar_left, 0.1, 1.1))
+  for (nm in names(cols_list)) {
+    cols <- cols_list[[nm]]
+    image(matrix(seq_along(cols)), col = cols, axes = FALSE)
+    mtext(nm, side = 2, las = 1, line = 1, cex = cex)
+  }
+  par(old_par)
+}
+
+# Make palette names easier for users to get
+palette_names <- function(type) {
+  x <- palettes_all$palette[palettes_all$type == type]
+  paste(sprintf('`"%s"`', x), collapse = ", ")  
+}
+```
+
+<details>
+<summary>Palette names</summary>
+
+```{r}
+#| echo: false
+#| results: asis
+
+cat("**Discrete:** ", paste(sprintf('`"%s"`', palettes_all$palette[palettes_all$type == "qual"]), collapse = ", "), "\n")
+```
+
+```{r}
+#| echo: false
+#| results: asis
+cat("**Sequential:** ", paste(sprintf('`"%s"`', palettes_all$palette[palettes_all$type == "seq"]), collapse = ", "), "\n")
+```
+
+```{r}
+#| echo: false
+#| results: asis
+cat("**Diverging:** ", paste(sprintf('`"%s"`', palettes_all$palette[palettes_all$type == "div"]), collapse = ", "), "\n")
+```
+
+</details>
+
+## Discrete palettes
+
+Discrete palettes assign a distinct color to each category, e.g. `scale_color_discrete(palette = "Set2")`. These come from four sources: HCL's qualitative palettes, base R's fixed categorical sets, Brewer's qualitative palettes, and one dichromat palette built specifically for categories (plus ggplot2's own default, `"hue"`). Where a name is shared across sources, the last-registered palette name takes precedence; for instance, `"Blues"` exists in both the HCL and Brewer families, but {scales} only returns the Brewer version of `"Blues"`.
+
+Brewer's qualitative palettes:
+
+```{r}
+#| echo: false
+#| fig-height: 2.67
+palettes_all[palettes_all$family == "brewer" & palettes_all$type == "qual", ] |> 
+  display_brewer()
+```
+
+Base R's fixed categorical sets (`grDevices::palette.pals()`, R >= 4.0.0 only), including familiar defaults like `"R3"` and `"R4"`, alongside color-vision-deficiency-aware sets such as `"Okabe-Ito"`:
+
+```{r}
+#| echo: false
+#| fig-height: 4.33
+base_names <- utils::getFromNamespace("palette.pals", "grDevices")() |> 
+  intersect(palettes_all[palettes_all$family == "base",]$palette) 
+
+base_names <- base_names[!grepl("ggplot2", base_names)]
+
+palette_fn <- utils::getFromNamespace("palette.colors", "grDevices")
+base_cols <- setNames(lapply(base_names, function(nm) palette_fn(palette = nm)), base_names)
+
+display_fixed(base_cols)
+```
+
+HCL's qualitative palettes, generated from a continuous hue rotation rather than a fixed set of hand-picked colors (shown here at `n = 8`; requesting many more levels than that can produce hues that are difficult to distinguish):
+
+```{r}
+#| echo: false
+#| fig-height: 1.67
+palettes_all[palettes_all$family == "hcl" & palettes_all$type == "qual", ]$palette |> 
+  display_hcl(discrete = TRUE)
+```
+
+One more standalone discrete palette: ggplot2's default `"hue"` palette:
+
+```{r}
+#| echo: false
+#| fig-height: 0.33
+display_fixed(
+  list(
+    hue = pal_hue()(8)
+  ),
+  mar_left = 2,
+  cex = 0.65
+)
+```
+
+Dichromat's single qualitative palette:
+
+```{r}
+#| echo: false
+#| fig-height: 0.33
+palettes_all[palettes_all$type == "qual" & palettes_all$family == "dichromat", ]$palette |> 
+  {\(x) dichromat::colorschemes[x]}() |> 
+  display_fixed(mar_left = 4.5, cex = 0.55)
+```
+
+Many of these palettes have a fixed, limited number of colors. Requesting more colors than a palette contains will recycle values (for the fixed sets) or produce increasingly similar hues (for HCL's qualitative palettes and for ggplot2's `"hue"` palette), so these are best suited to categorical data with a known, modest number of levels.
+
+## Continuous palettes
+
+Continuous palettes map a numeric range onto a smooth color gradient, e.g. `scale_color_continuous(palette = "viridis")`. These split naturally into two subtypes: **sequential** palettes for data that increases in magnitude from a natural minimum, and **diverging** palettes for data that departs from a meaningful midpoint (often zero). Sequential and diverging palettes can also be used with binned scales, which quantize the continuous palette into discrete steps.
+
+### Sequential
+
+The viridis family: perceptually uniform, color-blind friendly gradients, and a strong general-purpose default:
+
+```{r}
+#| echo: false
+#| fig-height: 2.67
+opts <- c("magma", "inferno", "plasma", "viridis", "cividis", "rocket", "mako", "turbo")
+old_par <- par(mfrow = c(length(opts), 1), mar = c(0.1, 4.6, 0.1, 1.1))
+for (opt in opts) {
+  cols <- pal_viridis(option = opt)(256)
+  image(matrix(seq_along(cols)), col = cols, axes = FALSE)
+  mtext(opt, side = 2, las = 1, line = 1, cex = 0.8)
+}
+par(old_par)
+```
+
+Brewer's sequential palettes:
+
+```{r}
+#| echo: false
+#| fig-height: 6
+palettes_all[palettes_all$type == "seq" & palettes_all$family == "brewer",] |> 
+  display_brewer()
+```
+
+HCL's sequential palettes — by far the largest family, including several scientific color maps (`"Batlow"`, `"Hawaii"`, `"Turku"`, `"Lajolla"`) alongside classics like `"Heat"` and `"Terrain"`:
+
+```{r}
+#| echo: false
+#| fig-height: 16
+palettes_all[palettes_all$type == "seq" & palettes_all$family == "hcl",]$palette |> 
+  display_hcl()
+```
+
+Dichromat's two color-safe ramps and its unique stepped-sequential ramp:
+
+```{r}
+#| echo: false
+#| fig-height: 1
+palettes_all[palettes_all$type == "seq" & palettes_all$family == "dichromat",]$palette |> 
+  {\(x) dichromat::colorschemes[x]}() |> 
+  display_fixed(mar_left = 9, cex = 0.55)
+```
+
+And a plain greyscale ramp, useful whenever color needs to be avoided or reserved for another variable:
+
+```{r}
+#| echo: false
+#| fig-height: .33
+display_fixed(list(grey = grDevices::grey.colors(100)), mar_left = 2.75, cex = 0.8)
+```
+
+### Diverging
+
+Brewer's diverging palettes:
+
+```{r}
+#| echo: false
+#| fig-height: 3
+palettes_all[palettes_all$type == "div" & palettes_all$family == "brewer",] |> 
+  display_brewer()
+```
+
+HCL's diverging palettes:
+
+```{r}
+#| echo: false
+#| fig-height: 6
+palettes_all[palettes_all$type == "div" & palettes_all$family == "hcl",]$palette |> 
+  display_hcl()
+```
+
+Dichromat's color-blind-safe diverging palettes:
+
+```{r}
+#| echo: false
+#| fig-height: 4.33
+palettes_all[palettes_all$type == "div" & palettes_all$family == "dichromat",]$palette |> 
+  {\(x) dichromat::colorschemes[x]}() |> 
+  display_fixed(mar_left = 8, cex = 0.55)
+```
