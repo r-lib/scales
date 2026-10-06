@@ -1,8 +1,9 @@
 pandoc: 3.8.3
 pkgdown: 2.2.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2026-10-02T07:29Z
+articles:
+  articles/color_palettes: color_palettes.html
+last_built: 2026-10-06T06:31Z
 urls:
   reference: https://scales.r-lib.org/reference
   article: https://scales.r-lib.org/articles
