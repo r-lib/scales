@@ -32,6 +32,7 @@ test_that("works with Date", {
 })
 
 test_that("works with hms/difftime", {
+  skip_if_not_installed("hms")
   x <- hms::hms(hours = 0:1)
   y <- as.difftime(c(0, 1800, 3600), units = "secs")
   expect_equal(fullseq(x, 1800), y)
