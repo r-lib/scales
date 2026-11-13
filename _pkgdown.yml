@@ -6,6 +6,7 @@ template:
 
   includes:
     in_header: |
+      <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script>
       <script defer data-domain="scales.r-lib.org,all.tidyverse.org" src="https://plausible.io/js/plausible.js"></script>
 
 development:
@@ -22,7 +23,7 @@ reference:
   - compose_label
   - number_options
 
-- title:  Axis breaks
+- title: Axis breaks
   desc: >
     Use these functions with the `breaks` argument to ggplot2 scales to
     control the position of axis breaks and values of legend keys.
