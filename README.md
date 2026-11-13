@@ -46,10 +46,10 @@ library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 
-txhousing %>%
-  mutate(date = make_date(year, month, 1)) %>%
-  group_by(city) %>%
-  filter(min(sales) > 5e2) %>%
+txhousing |>
+  mutate(date = make_date(year, month, 1)) |>
+  group_by(city) |>
+  filter(min(sales) > 5e2) |>
   ggplot(aes(date, sales, group = city)) +
   geom_line(na.rm = TRUE) +
   scale_x_date(
@@ -66,8 +66,8 @@ txhousing %>%
 <img src="man/figures/README-labels-1.png" alt="A line plot created with ggplot2, showing property sales in Texas. The x scale uses `scales::break_width()` to place breaks every second year, and `scales::label_date()` to create a custom format for the labels. The y-scale uses `scales::label_number()` to reformat the labels with `scales::cut_short_scale()`."  />
 
 ``` r
-economics %>%
-  filter(date < ymd("1970-01-01")) %>%
+economics |>
+  filter(date < ymd("1970-01-01")) |>
   ggplot(aes(date, pce)) +
   geom_line() +
   scale_x_date(NULL,
