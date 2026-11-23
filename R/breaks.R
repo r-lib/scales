@@ -183,16 +183,33 @@ pretty_breaks <- breaks_pretty
 
 #' Breaks for timespan data
 #'
-#' As timespan units span a variety of bases (1000 below seconds, 60 for second
-#' and minutes, 24 for hours, and 7 for days), the range of the input data
-#' determines the base used for calculating breaks
+#' The returned function accepts numeric durations and `difftime` objects,
+#' including `hms` vectors. The range of the durations determines whether
+#' breaks are calculated in seconds, minutes, hours, days, or weeks.
 #'
-#' @param unit The unit used to interpret numeric data input
+#' Use [transform_timespan()] with ggplot2 continuous scales to express both
+#' data and breaks in seconds. For calendar dates and date-times, see
+#' [breaks_width()] and [breaks_pretty()].
 #'
-#' @inherit breaks_width return
+#' @return A function that takes a vector of durations and returns the breaks
+#'   as a `difftime` vector in seconds.
 #'
+#' @inheritParams label_timespan
 #' @inheritParams breaks_extended
+#' @seealso [label_timespan()] for labelling durations.
 #' @export
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
+#' library(ggplot2)
+#'
+#' # faithful$waiting measures the time between eruptions in minutes.
+#' ggplot(faithful, aes(waiting, eruptions)) +
+#'   geom_point() +
+#'   scale_x_continuous(
+#'     "Time between eruptions",
+#'     transform = transform_timespan("mins"),
+#'     breaks = breaks_timespan("mins", n = 8)
+#'   )
+#'
 #' @examples
 #' demo_timespan(seq(0, 100), breaks = breaks_timespan())
 #'

@@ -73,12 +73,14 @@ transform_time <- function(tz = NULL) {
 #' @rdname transform_time
 time_trans <- transform_time
 
-#' Transformation for times (class hms)
+#' Transformations for durations
 #'
-#' `transform_timespan()` provides transformations for data encoding time passed
-#' along with breaks and label formatting showing standard unit of time fitting
-#' the range of the data. `transform_hms()` provides the same but using standard
-#' hms idioms and formatting.
+#' `transform_timespan()` converts numeric durations and `difftime` objects,
+#' including `hms` vectors, to numeric seconds. It supplies [breaks_timespan()]
+#' and [label_timespan()] as defaults for the scale. `transform_hms()` uses
+#' `hms` objects for the inverse and breaks.
+#'
+#' For dates and date-times, see [transform_date()] and [transform_time()].
 #'
 #' @inheritParams label_timespan
 #' @export
