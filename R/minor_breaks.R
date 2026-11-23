@@ -32,7 +32,23 @@ minor_breaks_n <- function(n) {
   f <- function(rng) seq(rng[1], rng[2], length = n)
 
   function(range, breaks) {
-    loop_breaks(range, breaks, f)
+    if (length(breaks) < 2L) {
+      return(loop_breaks(range, breaks, f))
+    }
+
+    # Reflect each adjacent interval's subdivisions to get the outer breaks.
+    n_breaks <- length(breaks)
+    first <- breaks[[1L]]
+    last <- breaks[[n_breaks]]
+    before <- first - (f(breaks[c(2L, 1L)]) - first)
+    after <- last + (last - f(breaks[c(n_breaks, n_breaks - 1L)]))
+    between <- loop_breaks(c(first, last), breaks, f)
+    minor <- unique(unlist(list(before, between, after)))
+    if (inherits(range, "difftime") && inherits(breaks, "difftime")) {
+      range <- as.numeric(range, units = units(breaks))
+    }
+    limits <- base::range(as.numeric(range))
+    minor[minor >= limits[[1]] & minor <= limits[[2]]]
   }
 }
 
