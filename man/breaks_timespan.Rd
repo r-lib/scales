@@ -7,23 +7,42 @@
 breaks_timespan(unit = c("secs", "mins", "hours", "days", "weeks"), n = 5)
 }
 \arguments{
-\item{unit}{The unit used to interpret numeric data input}
+\item{unit}{Unit used to interpret numeric durations. The function reads
+the units of \code{difftime} and \code{hms} inputs from the object.}
 
 \item{n}{Desired number of breaks. You may get slightly more or fewer
 breaks that requested.}
 }
 \value{
-All \code{breaks_()} functions return a function for generating breaks. These
-functions takes, as their first argument a vector of values that represent
-the data range to provide breaks for. Some will optionally take a second
-argument that allows you to specify the number of breaks to receive.
+A function that takes a vector of durations and returns the breaks
+as a \code{difftime} vector in seconds.
 }
 \description{
-As timespan units span a variety of bases (1000 below seconds, 60 for second
-and minutes, 24 for hours, and 7 for days), the range of the input data
-determines the base used for calculating breaks
+The returned function accepts numeric durations and \code{difftime} objects,
+including \code{hms} vectors. The range of the durations determines whether
+breaks are calculated in seconds, minutes, hours, days, or weeks.
+}
+\details{
+Use \code{\link[=transform_timespan]{transform_timespan()}} with ggplot2 continuous scales to express both
+data and breaks in seconds. For calendar dates and date-times, see
+\code{\link[=breaks_width]{breaks_width()}} and \code{\link[=breaks_pretty]{breaks_pretty()}}.
 }
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+library(ggplot2)
+
+# faithful$waiting measures the time between eruptions in minutes.
+ggplot(faithful, aes(waiting, eruptions)) +
+  geom_point() +
+  scale_x_continuous(
+    "Time between eruptions",
+    transform = transform_timespan("mins"),
+    breaks = breaks_timespan("mins", n = 8)
+  )
+\dontshow{\}) # examplesIf}
 demo_timespan(seq(0, 100), breaks = breaks_timespan())
 
+}
+\seealso{
+\code{\link[=label_timespan]{label_timespan()}} for labelling durations.
 }

@@ -5,7 +5,7 @@
 \alias{timespan_trans}
 \alias{transform_hms}
 \alias{hms_trans}
-\title{Transformation for times (class hms)}
+\title{Transformations for durations}
 \usage{
 transform_timespan(unit = c("secs", "mins", "hours", "days", "weeks"))
 
@@ -16,13 +16,17 @@ transform_hms()
 hms_trans()
 }
 \arguments{
-\item{unit}{The unit used to interpret numeric input}
+\item{unit}{Unit used to interpret numeric durations. The function reads
+the units of \code{difftime} and \code{hms} inputs from the object.}
 }
 \description{
-\code{transform_timespan()} provides transformations for data encoding time passed
-along with breaks and label formatting showing standard unit of time fitting
-the range of the data. \code{transform_hms()} provides the same but using standard
-hms idioms and formatting.
+\code{transform_timespan()} converts numeric durations and \code{difftime} objects,
+including \code{hms} vectors, to numeric seconds. It supplies \code{\link[=breaks_timespan]{breaks_timespan()}}
+and \code{\link[=label_timespan]{label_timespan()}} as defaults for the scale. \code{transform_hms()} uses
+\code{hms} objects for the inverse and breaks.
+}
+\details{
+For dates and date-times, see \code{\link[=transform_date]{transform_date()}} and \code{\link[=transform_time]{transform_time()}}.
 }
 \examples{
 # transform_timespan allows you to specify the time unit numeric data is

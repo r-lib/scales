@@ -7,9 +7,13 @@
 #' but uses a slightly different approach: `ConciseDateFormatter` formats
 #' "firsts" (e.g. first day of month, first day of day) specially;
 #' `date_short()` formats changes (e.g. new month, new year) specially.
-#' `label_timespan()` is intended to show time passed and adds common time units
-#' suffix to the input (ns, us, ms, s, m, h, d, w).
 #'
+#' `label_timespan()` labels durations. It accepts numeric durations and
+#' `difftime` objects, including `hms` vectors. It adds a unit suffix
+#' (ns, us, ms, s, m, h, d, or w). Use `label_date()` for calendar dates
+#' and date-times.
+#'
+#' @seealso [breaks_timespan()] and [transform_timespan()] for duration scales.
 #' @inherit label_number return
 #' @param format For `label_date()` and `label_time()` a date/time format
 #'   string using standard POSIX specification.  See [strptime()] for details.
@@ -155,7 +159,8 @@ label_time <- function(format = "%H:%M:%S", tz = "UTC", locale = NULL) {
 
 #' @export
 #' @rdname label_date
-#' @param unit The unit used to interpret numeric input
+#' @param unit Unit used to interpret numeric durations. The function reads
+#'   the units of `difftime` and `hms` inputs from the object.
 #' @param space Add a space before the time unit?
 #' @inheritDotParams number accuracy scale prefix suffix big.mark decimal.mark style_positive style_negative trim
 label_timespan <- function(

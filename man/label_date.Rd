@@ -45,7 +45,8 @@ can see a complete list of supported locales with
 \item{leading}{A string to replace leading zeroes with. Can be \code{""} to
 disable leading characters or \code{"\\u2007"} for figure-spaces.}
 
-\item{unit}{The unit used to interpret numeric input}
+\item{unit}{Unit used to interpret numeric durations. The function reads
+the units of \code{difftime} and \code{hms} inputs from the object.}
 
 \item{space}{Add a space before the time unit?}
 
@@ -116,8 +117,12 @@ sufficient to uniquely identify labels. It's inspired by matplotlib's
 but uses a slightly different approach: \code{ConciseDateFormatter} formats
 "firsts" (e.g. first day of month, first day of day) specially;
 \code{date_short()} formats changes (e.g. new month, new year) specially.
-\code{label_timespan()} is intended to show time passed and adds common time units
-suffix to the input (ns, us, ms, s, m, h, d, w).
+}
+\details{
+\code{label_timespan()} labels durations. It accepts numeric durations and
+\code{difftime} objects, including \code{hms} vectors. It adds a unit suffix
+(ns, us, ms, s, m, h, d, or w). Use \code{label_date()} for calendar dates
+and date-times.
 }
 \examples{
 \dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
@@ -150,4 +155,7 @@ demo_datetime(two_months, date_breaks = "7 days", labels = label_date_short())
 one_year <- date_range("2020-05-01", 365)
 demo_datetime(one_year, date_breaks = "month")
 demo_datetime(one_year, date_breaks = "month", labels = label_date_short())
+}
+\seealso{
+\code{\link[=breaks_timespan]{breaks_timespan()}} and \code{\link[=transform_timespan]{transform_timespan()}} for duration scales.
 }
