@@ -58,6 +58,8 @@ label_number_auto <- function() {
 }
 
 format_shortest <- function(breaks, ...) {
+  # The legacy format_format() labeller uses names as labels.
+  breaks <- unname(breaks)
   options <- list(...)
   labels <- vapply(
     options,
