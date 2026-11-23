@@ -1,4 +1,5 @@
 # scales (development version)
+* `label_number_auto()` uses the values of named vectors when choosing short labels for very large or small numbers (#516).
 * New `oob_censor_infinite()` function, which replaces only infinite values, `-Inf` and `Inf`, with `NA` (#429). 
 * Rename `pal_gradient_*` functions for consistency: Now `pal_gradient_seq` and `pal_gradient_div`
 * Argument `only_loose` added to `breaks_extended()` as a shortcut to implement labeling::extended(only.loose)

@@ -32,3 +32,9 @@ test_that("tricky breaks don't change unexpectedly", {
 test_that("single values > 1e+06 don't throw error", {
   expect_equal(label_number_auto()(30925005), "30 925 005")
 })
+
+test_that("names do not affect automatic labels for extreme values", {
+  number_auto <- label_number_auto()
+  expect_identical(number_auto(c(S = 1390229)), number_auto(1390229))
+  expect_identical(number_auto(c(p = 1e-6)), number_auto(1e-6))
+})
