@@ -16,8 +16,10 @@
 #'
 #'   For `label_date_short()` a character vector of length 4 giving the format
 #'   components to use for year, month, day, and hour respectively.
-#' @param tz a time zone name, see [timezones()]. Defaults
-#'   to UTC
+#' @param tz A time zone name, see [timezones()]. `label_date()` and
+#'   `label_time()` default to UTC. By default, `label_date_short()` uses the
+#'   input time zone or the session time zone if the input has none. It treats
+#'   `Date` values as calendar dates.
 #' @param locale Locale to use when for day and month names. The default
 #'   uses the current locale. Setting this argument requires stringi, and you
 #'   can see a complete list of supported locales with
@@ -71,13 +73,43 @@ label_date_short <- function(
   format = c("%Y", "%b", "%d", "%H:%M"),
   sep = "\n",
   leading = "0",
-  tz = "UTC",
+  tz = NULL,
   locale = NULL
 ) {
   force_all(format, sep, leading, tz, locale)
 
   function(x) {
-    dt <- unclass(as.POSIXlt(x))
+    if (inherits(x, "Date")) {
+      tz <- "UTC"
+    } else {
+      input_tz <- (attr(x, "tzone", exact = TRUE) %||% "")[[1L]]
+      tz <- tz %||% input_tz
+      # Base format() uses the wall-clock fields stored in a POSIXlt.
+      if (inherits(x, "POSIXlt") && is.null(locale) && !identical(tz, input_tz)) {
+        x <- as.POSIXct(x)
+      }
+      if (!is.null(locale) && identical(tz, "")) {
+        tz <- Sys.timezone()
+        if (is.na(tz)) {
+          tz <- ""
+        }
+      }
+    }
+
+    if (is.null(locale)) {
+      dt <- unclass(as.POSIXlt(x, tz = tz))
+    } else {
+      # Use the same ICU calendar to select and format fields.
+      check_installed("stringi")
+      fields <- stringi::stri_datetime_fields(x, tz = tz, locale = locale)
+      dt <- list(
+        year = fields$Year,
+        mon = fields$Month - 1L,
+        mday = fields$Day,
+        hour = fields$Hour,
+        min = fields$Minute
+      )
+    }
 
     changes <- cbind(
       year = changed(dt$year),

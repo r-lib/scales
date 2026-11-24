@@ -13,7 +13,7 @@ label_date_short(
   format = c("\%Y", "\%b", "\%d", "\%H:\%M"),
   sep = "\\n",
   leading = "0",
-  tz = "UTC",
+  tz = NULL,
   locale = NULL
 )
 
@@ -32,8 +32,10 @@ string using standard POSIX specification.  See \code{\link[=strptime]{strptime(
 For \code{label_date_short()} a character vector of length 4 giving the format
 components to use for year, month, day, and hour respectively.}
 
-\item{tz}{a time zone name, see \code{\link[=timezones]{timezones()}}. Defaults
-to UTC}
+\item{tz}{A time zone name, see \code{\link[=timezones]{timezones()}}. \code{label_date()} and
+\code{label_time()} default to UTC. By default, \code{label_date_short()} uses the
+input time zone or the session time zone if the input has none. It treats
+\code{Date} values as calendar dates.}
 
 \item{locale}{Locale to use when for day and month names. The default
 uses the current locale. Setting this argument requires stringi, and you

@@ -37,6 +37,40 @@ test_that("label_date_short can replace leading zeroes", {
   expect_equal(labels, c("x1-2024", paste0("x", 2:9), c(10:12), "x1-2025"))
 })
 
+test_that("label_date_short selects formats in the labeling time zone", {
+  x <- as.POSIXct(c("2021-01-01", "2021-02-01"), tz = "Asia/Tokyo")
+  format <- c("%Y", "%m", "%d", "%H:%M")
+  local_labels <- label_date_short(format = format)
+  utc_labels <- label_date_short(format = format, tz = "UTC")
+
+  expect_equal(local_labels(x), c("01\n2021", "02"))
+  expect_equal(local_labels(as.POSIXlt(x)), local_labels(x))
+  expect_equal(
+    utc_labels(x),
+    c("15:00\n31\n12\n2020", "15:00\n31\n01\n2021")
+  )
+  expect_equal(utc_labels(as.POSIXlt(x)), utc_labels(x))
+})
+
+test_that("label_date_short preserves POSIXlt wall times in their time zone", {
+  x <- strptime("2016-12-31 23:59:60", "%Y-%m-%d %H:%M:%S", tz = "UTC")
+  short <- label_date_short(format = c("%Y", "%m", "%d", "%H:%M:%S"))
+
+  expect_equal(short(x), format(x, "%H:%M:%S\n%d\n%m\n%Y"))
+})
+
+test_that("localized short date labels use the same zone for fields and output", {
+  skip_if_not_installed("stringi")
+  x <- as.POSIXct(c("2021-01-01 02:00:00", "2021-02-01 02:00:00"), tz = "UTC")
+  labels <- label_date_short(
+    format = c("%Y", "%m", "%d", "%H:%M"),
+    tz = "GMT+2",
+    locale = "en"
+  )(x)
+
+  expect_equal(labels, c("04:00\n01\n01\n2021", "04:00\n01\n02"))
+})
+
 test_that("date_short doesn't change unexpectedly", {
   expect_snapshot({
     dformat <- label_date_short()
