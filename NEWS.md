@@ -1,4 +1,5 @@
 # scales (development version)
+* `label_number()` no longer triggers a spurious `R CMD check` note when a package defines a labeller at the top level (#513, @M-Colley).
 * New `oob_censor_infinite()` function, which replaces only infinite values, `-Inf` and `Inf`, with `NA` (#429). 
 * Rename `pal_gradient_*` functions for consistency: Now `pal_gradient_seq` and `pal_gradient_div`
 * Argument `only_loose` added to `breaks_extended()` as a shortcut to implement labeling::extended(only.loose)
