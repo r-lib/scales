@@ -24,6 +24,18 @@ test_that("number format works correctly", {
   expect_equal(number(c(1, 23), trim = FALSE), c(" 1", "23"))
 })
 
+test_that("label_number() captures formatting arguments without a check note", {
+  skip_if_not_installed("codetools")
+  label <- label_number(
+    accuracy = 0.1,
+    scale_cut = cut_short_scale(),
+    width = 7
+  )
+
+  expect_output(codetools::checkUsage(label), NA)
+  expect_identical(label(c(1, 10, 100)), c("    1.0", "   10.0", "  100.0"))
+})
+
 test_that("number_format works with Inf", {
   cust <- number_format(suffix = "suff", accuracy = NULL)
   expect_equal(cust(c(Inf, -Inf)), c("Inf", "-Inf"))

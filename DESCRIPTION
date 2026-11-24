@@ -28,6 +28,7 @@ Imports:
     viridisLite
 Suggests:
     bit64,
+    codetools,
     covr,
     dichromat,
     ggplot2,

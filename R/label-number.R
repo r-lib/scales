@@ -136,35 +136,20 @@ label_number <- function(
   trim = TRUE,
   ...
 ) {
-  force_all(
-    accuracy,
-    scale,
-    prefix,
-    suffix,
-    big.mark,
-    decimal.mark,
-    style_positive,
-    style_negative,
-    scale_cut,
-    trim,
+  args <- list(
+    accuracy = accuracy,
+    scale = scale,
+    prefix = prefix,
+    suffix = suffix,
+    big.mark = big.mark,
+    decimal.mark = decimal.mark,
+    style_positive = style_positive,
+    style_negative = style_negative,
+    scale_cut = scale_cut,
+    trim = trim,
     ...
   )
-  function(x) {
-    number(
-      x,
-      accuracy = accuracy,
-      scale = scale,
-      prefix = prefix,
-      suffix = suffix,
-      big.mark = big.mark,
-      decimal.mark = decimal.mark,
-      style_positive = style_positive,
-      style_negative = style_negative,
-      scale_cut = scale_cut,
-      trim = trim,
-      ...
-    )
-  }
+  function(x) exec(number, x, !!!args)
 }
 
 
